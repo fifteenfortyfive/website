@@ -1,0 +1,92 @@
+!!!
+%html
+  %head
+    %script(src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous")
+    %script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+    %script(src="https://use.typekit.net/abb5hmw.js")
+    :javascript
+      try{Typekit.load({ async: true });}catch(e){}
+
+    %link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+    %link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous")
+    %link(rel="stylesheet" href="css/main.css?")
+
+  - config = YAML.load_file('./teams.yaml')
+  - team_names = config['teams'].map{ |team_hash| team_hash.first.first }
+
+  %body
+    %nav.navbar.navbar-inverse.navbar-static-top
+      .container
+        .navbar-header
+          %a.navbar-brand(href="teams.html") 1545 Race
+
+        %ul.nav.navbar-nav
+          %li
+            %a(href="teams.html") Teams
+          %li
+            %a(href="rules.html") Rules
+          %li
+            %a(href="captains.html") Captains
+
+    .container
+      .row
+        .col-md-12
+
+          %h2 Captain Duties
+
+          %ol
+            %li
+              Point of contact before and during the race.
+              %ul
+                %li Help answer questions for your team and help them out and cheer them on during the race.
+            %li
+              Work with your team to create a team name.
+              %ul
+                %li It does not have to relate to your team’s assigned color.
+                %li It can be whatever your team wants, but it does have to be within reason.
+                %li Please make a post in the captain’s room in the discord whenever your team decides upon a name.
+                %li
+                  %strong This is due by May 1st.
+            %li
+              Encourage the team to hang out in voice chat if they’d like.
+              %ul
+                %li If the current runner is not in voice chat, then encourage your team to hang out in the runner’s twitch chat.
+                %li Be as supportive as possible for any runners of your team who are running late at night.
+            %li
+              Schedule runs for your team.
+              %ul
+                %li Make sure everyone is available for their run.
+                %li You’ll want to make a typed out schedule either on some website, a google document, or Horaro.
+                %li Please post your schedule in the captain’s room whenever it is made.
+                %li
+                  %strong This is due by July 10th.
+            %li
+              Make sure runners are ready to start their run when it starts.
+              %ul
+                %li Try to have them ready to go at least an hour before they’re scheduled to start just in case.
+            %li
+              If someone drops unexpectedly before the race, make a post in the captain’s room and get in contact with an organizer immediately about it.
+              %ul
+                %li
+                  If someone drops unexpectedly during the race, make a post in the
+                  %code #emergency-help
+                  channel and we will help address the situation immediately.
+            %li
+              Leave someone in charge of your duties while you sleep during the marathon.
+              %ul
+                %li You can have an assistant captain if you want someone to take over your duties while you’re not there.
+            %li
+              Team channel setup.
+              %ul
+                %li You have the option to have your team stream to a single channel, rather than individual channels.
+                %li You would be in charge of adding info panels, managing the stream key, etc. You can also add channel artwork, layouts and other information.
+                %li The way you handle your stream is up to you and your team. You can name your team’s twitch channel however you want to.
+                %li Please post your team channel in the captain’s room in the discord whenever you make it.
+                %li If your team does not want to have a team channel, you don’t have to have one.
+                %li If your team is choosing to not make a team channel, please make a post in the captain’s room saying so.
+                %li
+                  %strong Your team’s decision is due by June 1st.
+            %li
+              Mitigate conflicts between team members.
+              %ul
+                %li If there is a conflict between you and a member of your team, bring it to an organizer.

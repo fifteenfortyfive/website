@@ -1,0 +1,71 @@
+!!!
+%html
+  %head
+    %script(src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous")
+    %script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+    %script(src="https://use.typekit.net/abb5hmw.js")
+    :javascript
+      try{Typekit.load({ async: true });}catch(e){}
+
+    %link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+    %link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous")
+    %link(rel="stylesheet" href="css/main.css?")
+
+  - config = YAML.load_file('./teams.yaml')
+  - team_names = config['teams'].map{ |team_hash| team_hash.first.first }
+
+  %body
+    %nav.navbar.navbar-inverse.navbar-static-top
+      .container
+        .navbar-header
+          %a.navbar-brand(href="teams.html") 1545 Race
+
+        %ul.nav.navbar-nav
+          %li
+            %a(href="teams.html") Teams
+          %li
+            %a(href="rules.html") Rules
+
+    .container
+      .row
+        .col-md-12
+          %h2 Teams
+
+          %p The race will consist of 6 teams. Each team also has a captain, who is in charge of managing their team's run schedule and who will be the main point-of-contact for the team. Captains are indicated below with a star. If you are a team captain, you should have received a message from the organizers with more information.
+
+          .row
+            - config['teams'].each do |team_hash|
+              - team_name, members = team_hash.first
+
+              .col-md-2.col-sm-4.col-xs-6{ class: "team-#{team_name}" }
+                %h4= team_name.capitalize
+
+                %ul.team-members
+                  - members.each do |member|
+                    - is_captain = member == config['captains'][team_name]
+                    %li{ class: is_captain ? "captain" : "" }
+                      = member
+
+
+          %h2 Game Assignments
+
+          %p Below is a table outlining the games that each runner is responsible for playing. These assignments were created such that the estimated total time for each team is as close as possible. Our hope is that this results in a more interesting race both for the runners and those watching the race.
+
+          %table.table.team-table
+            %thead
+              %tr
+                %th Game
+                - team_names.each do |team_name, _|
+                  %th{ class: "team-#{team_name}" }
+                    = team_name.capitalize
+
+            %tbody
+              - config['games'].each do |game_name, game_data|
+                %tr
+                  %th.game-name
+                    = game_name.split('_').map(&:capitalize).join(' ')
+                  - game_data['teams'].each.with_index do |runner, idx|
+                    %td{ class: "team-#{team_names[idx]}" }
+                      = runner
+
+          %p For those interested in more details: the average overall estimate (regardless of team structure) is 53:58:40. 3 teams are within 2 minutes of this time, and all teams are within 13 minutes. The standard deviation between the estimates is just over 6 minutes (6:11). That's less than 0.2% of the overall time!
