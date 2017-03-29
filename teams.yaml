@@ -1,5 +1,5 @@
 captains:
-  red:    Gazco
+  red:    Gazco41
   orange: TOTOzigemm
   yellow: Connor75
   green:  TheMartonFi
@@ -10,7 +10,7 @@ teams:
   - red:
     - burgerlands2
     - EmoArbiter
-    - Gazco
+    - Gazco41
     - HolySanctum
     - Kiwikiller67
     - Muimania
@@ -146,7 +146,7 @@ games:
   spyro_1:
     series: spyro
     teams:
-      - Gazco
+      - Gazco41
       - hsi_wu
       - Zacho
       - Yeswally1
@@ -166,7 +166,7 @@ games:
   spyro_3:
     series: spyro
     teams:
-      - Gazco
+      - Gazco41
       - hsi_wu
       - Wedc517
       - nerf
