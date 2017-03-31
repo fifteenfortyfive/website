@@ -13,25 +13,26 @@ a {
 nav.navbar {
   background-color: #8c2429;
   border-color: #771f23;
-  color: #fcf4f5; }
+  color: #faeced; }
   nav.navbar .navbar-brand {
-    color: #fcf4f5;
+    color: #faeced;
     font-size: 20px;
     margin-top: -1px; }
   nav.navbar .navbar-nav,
   nav.navbar .navbar-nav li,
   nav.navbar .navbar-nav li a {
     font-size: 16px;
-    color: #fcf4f5; }
+    color: #faeced; }
   nav.navbar .navbar-nav li:hover {
-    background-color: #98272d; }
+    background-color: #98272d;
+    color: white; }
   nav.navbar + div {
     margin-top: -20px; }
 
 .titlebar {
-  padding: 80px 0px;
+  padding: 60px 0px;
   background-color: #a0292f;
-  color: #fcf4f5;
+  color: #faeced;
   font-family: "proxima-nova", sans-serif; }
   .titlebar h1 {
     margin: 0 0 10px -4px;
@@ -46,7 +47,7 @@ nav.navbar {
       line-height: 1.3em;
       margin: 0; }
   .titlebar a {
-    color: #fcf4f5;
+    color: #faeced;
     font-weight: 900;
     margin: 0px 6px; }
   .titlebar .no-header {
@@ -62,7 +63,7 @@ ul.schedule {
   font-size: 20px; }
   ul.schedule .event {
     text-decoration: none;
-    margin-bottom: 6px; }
+    margin-bottom: 8px; }
     ul.schedule .event .event-date {
       display: inline-block;
       width: 70px;

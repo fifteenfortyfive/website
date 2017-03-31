@@ -2,7 +2,7 @@ $brand-primary:     #a0292f;
 $brand-muted:       lighten($brand-primary, 30%);
 $primary-bg-color:  $brand-primary;
 
-$white-text-color:  lighten($brand-primary, 58%);
+$white-text-color:  lighten($brand-primary, 56%);
 $text-color:        darken($brand-primary,  24%);
 $text-muted:        lighten(desaturate($text-color, 50%), 60%);
 
@@ -47,6 +47,7 @@ nav.navbar {
 
   .navbar-nav li:hover {
     background-color: $navbar-bg-hover-color;
+    color: lighten($navbar-color, 10%);
   }
 
   & + div {
@@ -56,7 +57,7 @@ nav.navbar {
 
 
 .titlebar {
-  padding: 80px 0px;
+  padding: 60px 0px;
   background-color: $primary-bg-color;
   color: $white-text-color;
   font-family: "proxima-nova", sans-serif;
@@ -109,7 +110,7 @@ ul.schedule {
 
   .event {
     text-decoration: none;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 
 
     .event-date {
