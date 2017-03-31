@@ -11,8 +11,6 @@
     %link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous")
     %link(rel="stylesheet" href="css/main.css?")
 
-  - config = YAML.load_file('./teams.yaml')
-  - team_names = config['teams'].map{ |team_hash| team_hash.first.first }
 
   %body.landing-page
     %nav.navbar.navbar-inverse.navbar-static-top
@@ -38,6 +36,25 @@
               July 14th - 17th at
               %br
               %a(href="https://twitch.tv/1545race") twitch.tv/1545race
+
+
+    .statbar
+      .container
+        .row
+          .stat.col-md-2
+          .stat.col-md-2
+            %span.fa.fa-gamepad
+            13 games
+          .stat.col-md-2
+            %span.fa.fa-flag
+            6 teams
+          .stat.col-md-2
+            %span.fa.fa-users
+            53 runners
+          .stat.col-md-2
+            %span.fa.fa-clock-o
+            50+ hours
+          .stat.col-md-2
 
 
     .container

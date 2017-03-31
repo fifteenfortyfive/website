@@ -1,6 +1,6 @@
 body {
   font-family: "skolar-sans-latin", sans-serif;
-  color: #3f1012;
+  color: #4f1417;
   line-height: 1.4em;
   font-size: 16px; }
 
@@ -53,6 +53,17 @@ nav.navbar {
   .titlebar .no-header {
     margin-top: 20px; }
 
+.statbar {
+  padding: 20px;
+  border-top: 1px solid #cfc6c6;
+  border-bottom: 1px solid #cfc6c6;
+  font-family: "proxima-nova", sans-serif; }
+  .statbar .stat {
+    font-size: 22px;
+    text-align: center; }
+  .statbar span.fa {
+    margin-right: 10px; }
+
 .page-header {
   font-family: "proxima-nova", sans-serif; }
   .page-header h1 {
@@ -73,9 +84,9 @@ ul.schedule {
       font-family: "proxima-nova", sans-serif;
       font-weight: 700; }
     ul.schedule .event.past {
-      color: #c6bbbb; }
+      color: #cfc6c6; }
       ul.schedule .event.past .event-date {
-        color: #c6bbbb; }
+        color: #cfc6c6; }
 
 .team-members {
   list-style-type: none;

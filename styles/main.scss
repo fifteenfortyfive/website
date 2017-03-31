@@ -3,7 +3,7 @@ $brand-muted:       lighten($brand-primary, 30%);
 $primary-bg-color:  $brand-primary;
 
 $white-text-color:  lighten($brand-primary, 56%);
-$text-color:        darken($brand-primary,  24%);
+$text-color:        darken($brand-primary,  20%);
 $text-muted:        lighten(desaturate($text-color, 50%), 60%);
 
 $navbar-color:          $white-text-color;
@@ -92,6 +92,23 @@ nav.navbar {
 
   .no-header {
     margin-top: 20px;
+  }
+}
+
+
+.statbar {
+  padding: 20px;
+  border-top: 1px solid $text-muted;
+  border-bottom: 1px solid $text-muted;
+  font-family: "proxima-nova", sans-serif;
+
+  .stat {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  span.fa {
+    margin-right: 10px;
   }
 }
 
