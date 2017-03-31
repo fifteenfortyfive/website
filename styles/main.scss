@@ -1,15 +1,135 @@
+$brand-primary:     #a0292f;
+$brand-muted:       lighten($brand-primary, 30%);
+$primary-bg-color:  $brand-primary;
+
+$white-text-color:  lighten($brand-primary, 58%);
+$text-color:        darken($brand-primary,  24%);
+$text-muted:        lighten(desaturate($text-color, 50%), 60%);
+
+$navbar-color:          $white-text-color;
+$navbar-bg-color:       darken($brand-primary,    5%);
+$navbar-bg-hover-color: lighten($navbar-bg-color, 3%);
+$navbar-border-color:   darken($navbar-bg-color,  5%);
+
+
 body {
-  background-color: #f7f7f7;
-  font-family: "skolar-sans-latin",sans-serif;
+  font-family: "skolar-sans-latin", sans-serif;
+  color: $text-color;
+  line-height: 1.4em;
+  font-size: 16px;
 }
 
-.container {
-  background-color: #fff;
+a {
+  color: $brand-muted;
+  font-weight: 500;
+
+  &:hover { color: darken($brand-muted, 10%); }
 }
 
-.navbar .container {
-  background-color: inherit;
+
+nav.navbar {
+  background-color: $navbar-bg-color;
+  border-color: $navbar-border-color;
+  color: $navbar-color;
+
+  .navbar-brand {
+    color: $navbar-color;
+    font-size: 20px;
+    margin-top: -1px;
+  }
+
+  .navbar-nav,
+  .navbar-nav li,
+  .navbar-nav li a {
+    font-size: 16px;
+    color: $navbar-color;
+  }
+
+  .navbar-nav li:hover {
+    background-color: $navbar-bg-hover-color;
+  }
+
+  & + div {
+    margin-top: -20px;
+  }
 }
+
+
+.titlebar {
+  padding: 80px 0px;
+  background-color: $primary-bg-color;
+  color: $white-text-color;
+  font-family: "proxima-nova", sans-serif;
+
+  h1 {
+    margin: 0 0 10px -4px;
+    font-size: 120px;
+    font-weight: 700;
+    text-shadow:
+      6px 4px 1px darken($brand-primary,  0%),
+      14px 6px 1px darken($brand-primary, 10%);
+  }
+
+  p {
+    font-size: 24px;
+    text-shadow:
+      4px 3px 1px darken($brand-primary,  0%),
+      6px 4px 1px darken($brand-primary, 10%);
+
+    &.lead {
+      font-size: 36px;
+      line-height: 1.3em;
+      margin: 0;
+    }
+  }
+
+  a {
+    color: $white-text-color;
+    font-weight: 900;
+    margin: 0px 6px;
+  }
+
+  .no-header {
+    margin-top: 20px;
+  }
+}
+
+
+.page-header {
+  font-family: "proxima-nova", sans-serif;
+
+  h1 { font-weight: 700; }
+}
+
+
+
+ul.schedule {
+  list-style-type: none;
+  font-size: 20px;
+
+  .event {
+    text-decoration: none;
+    margin-bottom: 6px;
+
+
+    .event-date {
+      display: inline-block;
+      width: 70px;
+      margin-right: 20px;
+      text-align: right;
+      color: $brand-muted;
+      font-family: "proxima-nova", sans-serif;
+      font-weight: 700;
+    }
+
+    &.past {
+      color: $text-muted;
+
+      .event-date { color: $text-muted; }
+    }
+  }
+}
+
 
 .team-members {
   list-style-type: none;
@@ -17,7 +137,7 @@ body {
 
   li { text-decoration: none; }
   li.captain {
-    margin-left: -16px;
+    margin-left: -19px;
     &:before {
       font-family: FontAwesome;
       content: '\f006';
