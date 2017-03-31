@@ -31,7 +31,7 @@
             %h1 The 1545
 
 
-          .col-md-4.no-header
+          .col-md-4.right
             %p.lead
               July 14th - 17th at
               %br
@@ -41,51 +41,24 @@
     .statbar
       .container
         .row
-          .stat.col-md-2
-          .stat.col-md-2
-            %span.fa.fa-gamepad
-            13 games
-          .stat.col-md-2
-            %span.fa.fa-flag
-            6 teams
-          .stat.col-md-2
-            %span.fa.fa-users
-            53 runners
-          .stat.col-md-2
-            %span.fa.fa-clock-o
-            50+ hours
-          .stat.col-md-2
+          .stats.col-md-10.col-md-offset-1
+            .stat
+              %span.fa.fa-users
+              53 runners
+            .stat
+              %span.fa.fa-flag
+              6 teams
+            .stat
+              %span.fa.fa-clock-o
+              3 days
+            .stat
+              %span.fa.fa-gamepad
+              13 games
 
 
     .container
       .row
-        .col-md-6.col-md-offset-1
-          .page-header
-            %h1 The Relay
-
-          %p.lead The 1545 is a massive speedrunning relay race where teams of runners will complete all of the games in the Super Mario 602, the Rareware 301%, and the Sprashfecta back-to-back over the course of 50+ hours.
-
-          %p Unofficially, the 1545 is likely the largest single race in speedrunning to date, with 53 runners and a total gameplay time of nearly 340 hours!
-
-          %p
-            The 1545 will take place starting on July 14th at 5pm EST at
-            %a(href="https://twitch.tv/1545race") twitch.tv/1545race
-            and will likely run through the 17th, until the last team has finished.
-
-          %p The 1545 is not a competitive event. Rather than trying to build the fastest teams possible, we're hoping to see a close race across the board. This not only makes for a more interesting finish, but also allows runners of different skill levels to participate without necessarily coming in last.
-
-
-          .page-header
-            %h1 Purpose
-
-          %p Community is a large part of speedrunning, influencing not only how enjoyable it is now, but also how well it can continue into the future. Having that network of friends who share similar interests and support each other is important to the sustainability of the
-
-          %p As with any community, though, smaller groups naturally form around various topics or franchises. And as these groups grow together, they inevitably start to separate themselves from other groups.
-
-          %p The goal of the 1545 is to be an event that crosses these group boundaries and helps create connections between them that will hopefully continue past the event.
-
-
-        .col-md-4
+        .col-md-4.col-md-offset-1
           .page-header
             %h1 Schedule
 
@@ -106,3 +79,29 @@
               %li.event{class: date < Date.today ? 'past' : 'future'}
                 %span.event-date= date.strftime('%b %d')
                 %span.event-name= event
+
+
+        .col-md-6
+          .page-header
+            %h1 The Relay
+
+          %p.lead The 1545 is a massive speedrunning relay race where teams of runners will complete all of the games in the Super Mario 602, the Rareware 301%, and the Sprashfecta, all over the course of 50+ hours.
+
+          %p The 1545 is likely the largest single race in speedrunning to date, with 53 runners and a total gameplay time of nearly 340 hours!
+
+          %p
+            The 1545 will take place starting on July 14th at 5pm EST at
+            %a(href="https://twitch.tv/1545race") twitch.tv/1545race
+            and will run through the 17th, until the last team has finished.
+
+          %p The 1545 is not a competitive event. Rather than trying to build the fastest teams possible, we're hoping to see a close race across the board. This not only makes for a more interesting finish, but also allows runners of different skill levels to participate without necessarily coming in last.
+
+
+          .page-header
+            %h1 Purpose
+
+          %p Community is a large part of speedrunning, influencing not only how enjoyable it is now, but also how well it can continue into the future.
+
+          %p As with any community, though, smaller groups naturally form around various topics or franchises. And as these groups grow together, they inevitably start to separate themselves from other groups.
+
+          %p The goal of the 1545 is to be an event that crosses these group boundaries and helps create connections between them that will hopefully continue past the event.

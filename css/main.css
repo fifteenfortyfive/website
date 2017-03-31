@@ -1,7 +1,8 @@
 body {
   font-family: "skolar-sans-latin", sans-serif;
+  background-color: #fdf9f9;
   color: #4f1417;
-  line-height: 1.4em;
+  line-height: 1.6em;
   font-size: 16px; }
 
 a {
@@ -50,17 +51,20 @@ nav.navbar {
     color: #faeced;
     font-weight: 900;
     margin: 0px 6px; }
-  .titlebar .no-header {
-    margin-top: 20px; }
+  .titlebar .right {
+    margin-top: 20px;
+    text-align: right; }
 
 .statbar {
   padding: 20px;
-  border-top: 1px solid #cfc6c6;
   border-bottom: 1px solid #cfc6c6;
   font-family: "proxima-nova", sans-serif; }
-  .statbar .stat {
-    font-size: 22px;
-    text-align: center; }
+  .statbar .stats {
+    display: flex;
+    justify-content: space-around; }
+    .statbar .stats .stat {
+      font-size: 22px;
+      text-align: center; }
   .statbar span.fa {
     margin-right: 10px; }
 
