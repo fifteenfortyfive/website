@@ -37,24 +37,67 @@ $rare:  #fdfcd1;
 
 
 
-.team-members {
-  list-style-type: none;
-  padding-left: 20px;
+.team {
+  margin: 20px 0;
 
-  li { text-decoration: none; }
-  li.captain {
-    margin-left: -19px;
-    &:before {
-      font-family: FontAwesome;
-      content: '\f006';
+  .team-members {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .member {
+      padding: 10px;
+      flex: 0 0 20%;
+
+      .member-name {
+        font-weight: 700;
+      }
+
+      .member-games {
+        font-size: 14px;
+      }
+
+      .captain {
+        .member-name:before {
+          font-family: FontAwesome;
+          content: '\f006';
+          margin-right: 4px;
+        }
+      }
     }
   }
 }
 
-.team-table {
-  .game-name {
-    text-align: right;
-    padding-right: 30px;
-    width: 200px;
+// Portrait tablet screens
+@media (max-width: 767px) {
+  .team {
+    .team-members {
+      .member {
+        flex: 0 0 25%;
+      }
+    }
+  }
+}
+
+// Portrait tablet screens
+@media (max-width: 611px) {
+  .team {
+    .team-members {
+      .member {
+        flex: 0 0 33%;
+      }
+    }
+  }
+}
+
+// Phone screens
+@media (max-width: 479px) {
+  .team {
+    .team-members {
+      .member {
+        flex: 0 0 50%;
+      }
+    }
   }
 }

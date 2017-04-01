@@ -145,22 +145,34 @@ nav.navbar {
 .false-bg {
   background-color: #ffcbcb !important; }
 
-.team-members {
-  list-style-type: none;
-  padding-left: 20px; }
-  .team-members li {
-    text-decoration: none; }
-  .team-members li.captain {
-    margin-left: -19px; }
-    .team-members li.captain:before {
-      font-family: FontAwesome;
-      content: '\f006'; }
+.team {
+  margin: 20px 0; }
+  .team .team-members {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; }
+    .team .team-members .member {
+      padding: 10px;
+      flex: 0 0 20%; }
+      .team .team-members .member .member-name {
+        font-weight: 700; }
+      .team .team-members .member .member-games {
+        font-size: 14px; }
+      .team .team-members .member .captain .member-name:before {
+        font-family: FontAwesome;
+        content: '\f006';
+        margin-right: 4px; }
 
-.team-table .game-name {
-  text-align: right;
-  padding-right: 30px;
-  width: 200px; }
-
+@media (max-width: 767px) {
+  .team .team-members .member {
+    flex: 0 0 25%; } }
+@media (max-width: 611px) {
+  .team .team-members .member {
+    flex: 0 0 33%; } }
+@media (max-width: 479px) {
+  .team .team-members .member {
+    flex: 0 0 50%; } }
 body {
   font-family: "skolar-sans-latin", sans-serif;
   background-color: #fdf9f9;
