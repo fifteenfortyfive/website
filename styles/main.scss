@@ -1,5 +1,9 @@
 @import "_variables.scss";
 
+@import "_nav.scss";
+@import "_landing_page.scss";
+@import "_teams.scss";
+
 
 body {
   font-family: "skolar-sans-latin", sans-serif;
@@ -16,108 +20,6 @@ a {
   &:hover { color: darken($brand-muted, 10%); }
 }
 
-
-nav.navbar {
-  background-color: $navbar-bg-color;
-  border-color: $navbar-border-color;
-  color: $navbar-color;
-
-  .navbar-brand {
-    color: $navbar-color;
-    font-size: 20px;
-    margin-top: -1px;
-  }
-
-  .navbar-nav,
-  .navbar-nav li,
-  .navbar-nav li a {
-    font-size: 16px;
-    color: $navbar-color;
-  }
-
-  .navbar-nav li:hover {
-    background-color: $navbar-bg-hover-color;
-    color: lighten($navbar-color, 10%);
-  }
-
-  .navbar-toggle {
-    border-color: $navbar-border-color;
-
-    &:hover,
-    &:focus {
-      background-color: $navbar-border-color;
-    }
-  }
-
-  .navbar-collapse {
-    border-color: $navbar-border-color;
-  }
-
-  & + div {
-    margin-top: -20px;
-  }
-}
-
-
-.titlebar {
-  padding: 60px 0px;
-  background-color: $primary-bg-color;
-  color: $white-color;
-  font-family: "proxima-nova", sans-serif;
-
-  h1 {
-    margin: 0 0 10px -4px;
-    font-size: 120px;
-    font-weight: 700;
-    text-shadow:
-      6px 4px 1px darken($brand-primary,  0%),
-      14px 6px 1px darken($brand-primary, 10%);
-  }
-
-  p {
-    font-size: 24px;
-    text-shadow:
-      4px 3px 1px darken($brand-primary,  0%),
-      6px 4px 1px darken($brand-primary, 10%);
-
-    &.lead {
-      font-size: 36px;
-      line-height: 1.3em;
-      margin: 0;
-    }
-  }
-
-  a {
-    color: $white-color;
-    font-weight: 900;
-  }
-
-  .right {
-    margin-top: 20px;
-    text-align: right;
-  }
-}
-
-
-.statbar {
-  border-bottom: 1px solid $text-muted;
-  font-family: "proxima-nova", sans-serif;
-
-  .stats {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px 10px;
-
-    .stat {
-      font-size: 22px;
-      text-align: center;
-    }
-  }
-
-  span.fa {
-    margin: 0 6px;
-  }
-}
 
 
 .page-header {
@@ -179,65 +81,6 @@ footer {
     }
   }
 }
-
-
-.team-members {
-  list-style-type: none;
-  padding-left: 20px;
-
-  li { text-decoration: none; }
-  li.captain {
-    margin-left: -19px;
-    &:before {
-      font-family: FontAwesome;
-      content: '\f006';
-    }
-  }
-}
-
-.team-table {
-  .game-name {
-    text-align: right;
-    padding-right: 30px;
-    width: 200px;
-  }
-}
-
-$team-red:    #b91717;
-$team-orange: #f98126;
-$team-yellow: #ecd505;
-$team-green:  #22ad0b;
-$team-blue:   #0f76c7;
-$team-purple: #720fb9;
-
-.team-red     { color: $team-red; }
-.team-orange  { color: $team-orange; }
-.team-yellow  { color: $team-yellow; }
-.team-green   { color: $team-green; }
-.team-blue    { color: $team-blue; }
-.team-purple  { color: $team-purple; }
-
-$spyro: #9c27b0;
-$crash: #ff7f3e;
-$mario: #e43535;
-$rare:  #fdfcd1;
-
-.spyro { color: $spyro !important; }
-.crash { color: $crash !important; }
-.mario { color: $mario !important; }
-.rare  { color: $rare  !important; }
-
-.spyro-bg { background-color: lighten($spyro, 50%) !important; }
-.crash-bg { background-color: lighten($crash, 30%) !important; }
-.mario-bg { background-color: lighten($mario, 35%) !important; }
-.rare-bg  { background-color: lighten($rare,   0%) !important; }
-
-.true     { color: #66a569 !important; }
-.false    { color: #ff0000 !important; }
-.neutral  { color: #aaaaaa !important; }
-
-.true-bg  { background-color: #cbead4 !important; }
-.false-bg { background-color: #ffcbcb !important; }
 
 
 .notice {

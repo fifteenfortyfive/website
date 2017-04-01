@@ -6,6 +6,22 @@ captains:
   blue:   FERANATOR115
   purple: Beuchi
 
+game_abbreviations:
+  super_mario_64: SM64
+  super_mario_sunshine: Sunshine
+  super_mario_galaxy: Galaxy 1
+  super_mario_galaxy_2: Galaxy 2
+  banjo_kazooie: Kazooie
+  banjo_tooie: Tooie
+  donkey_kong_64: DK64
+  spyro_1: Spyro 1
+  spyro_2: Spyro 2
+  spyro_3: Spyro 3
+  crash_1: Crash 1
+  crash_2: Crash 2
+  crash_3: Crash 3
+
+
 teams:
   - red:
     - burgerlands2

@@ -1,16 +1,3 @@
-body {
-  font-family: "skolar-sans-latin", sans-serif;
-  background-color: #fdf9f9;
-  color: #4f1417;
-  line-height: 1.6em;
-  font-size: 16px; }
-
-a {
-  color: #df8387;
-  font-weight: 500; }
-  a:hover {
-    color: #d55a60; }
-
 nav.navbar {
   background-color: #8c2429;
   border-color: #771f23;
@@ -73,63 +60,34 @@ nav.navbar {
   .statbar span.fa {
     margin: 0 6px; }
 
-.page-header {
-  font-family: "proxima-nova", sans-serif; }
-  .page-header h1 {
-    font-weight: 700; }
+@media (max-width: 991px) {
+  .titlebar h1 {
+    font-size: 90px;
+    text-shadow: 3px 2px 1px #a0292f, 8px 4px 1px #771f23; }
+  .titlebar p.lead {
+    font-size: 30px;
+    text-shadow: 2px 1px 1px #a0292f, 4px 2px 1px #771f23; }
+  .titlebar .right {
+    margin-top: 11px; }
 
-ul.schedule {
-  list-style-type: none;
-  font-size: 20px; }
-  ul.schedule .event {
-    text-decoration: none;
-    margin-bottom: 8px; }
-    ul.schedule .event .event-date {
-      display: inline-block;
-      width: 70px;
-      margin-right: 20px;
-      text-align: right;
-      color: #df8387;
-      font-family: "proxima-nova", sans-serif;
-      font-weight: 700; }
-    ul.schedule .event.past {
-      color: #cfc6c6; }
-      ul.schedule .event.past .event-date {
-        color: #cfc6c6; }
+  ul.schedule {
+    padding-left: 10px; } }
+@media (max-width: 767px) {
+  .titlebar .right {
+    text-align: left; }
 
-footer {
-  margin-top: 30px;
-  padding: 18px 0;
-  background-color: #cfc6c6; }
-  footer p, footer ul {
-    margin: 0; }
-  footer .pull-right {
-    text-align: right; }
-  footer ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0; }
-    footer ul li {
-      text-decoration: none;
-      display: inline-block;
-      margin-right: 20px; }
-
-.team-members {
-  list-style-type: none;
-  padding-left: 20px; }
-  .team-members li {
-    text-decoration: none; }
-  .team-members li.captain {
-    margin-left: -19px; }
-    .team-members li.captain:before {
-      font-family: FontAwesome;
-      content: '\f006'; }
-
-.team-table .game-name {
-  text-align: right;
-  padding-right: 30px;
-  width: 200px; }
-
+  .schedule-box {
+    display: flex;
+    justify-content: space-around; }
+    .schedule-box ul.schedule {
+      margin-left: -20px; } }
+@media (max-width: 479px) {
+  .titlebar h1 {
+    font-size: 60px; }
+  .titlebar p.lead {
+    font-size: 20px; }
+  .titlebar .right {
+    margin-top: 11px; } }
 .team-red {
   color: #b91717; }
 
@@ -186,6 +144,76 @@ footer {
 
 .false-bg {
   background-color: #ffcbcb !important; }
+
+.team-members {
+  list-style-type: none;
+  padding-left: 20px; }
+  .team-members li {
+    text-decoration: none; }
+  .team-members li.captain {
+    margin-left: -19px; }
+    .team-members li.captain:before {
+      font-family: FontAwesome;
+      content: '\f006'; }
+
+.team-table .game-name {
+  text-align: right;
+  padding-right: 30px;
+  width: 200px; }
+
+body {
+  font-family: "skolar-sans-latin", sans-serif;
+  background-color: #fdf9f9;
+  color: #4f1417;
+  line-height: 1.6em;
+  font-size: 16px; }
+
+a {
+  color: #df8387;
+  font-weight: 500; }
+  a:hover {
+    color: #d55a60; }
+
+.page-header {
+  font-family: "proxima-nova", sans-serif; }
+  .page-header h1 {
+    font-weight: 700; }
+
+ul.schedule {
+  list-style-type: none;
+  font-size: 20px; }
+  ul.schedule .event {
+    text-decoration: none;
+    margin-bottom: 8px; }
+    ul.schedule .event .event-date {
+      display: inline-block;
+      width: 70px;
+      margin-right: 20px;
+      text-align: right;
+      color: #df8387;
+      font-family: "proxima-nova", sans-serif;
+      font-weight: 700; }
+    ul.schedule .event.past {
+      color: #cfc6c6; }
+      ul.schedule .event.past .event-date {
+        color: #cfc6c6; }
+
+footer {
+  margin-top: 30px;
+  padding: 18px 0;
+  background-color: #cfc6c6; }
+  footer p, footer ul {
+    margin: 0; }
+  footer .pull-right {
+    text-align: right; }
+  footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+    footer ul li {
+      text-decoration: none;
+      display: inline-block;
+      margin-right: 20px; }
 
 .notice {
   font-style: italic;
