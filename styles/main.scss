@@ -1,16 +1,4 @@
-$brand-primary:     #a0292f;
-$brand-muted:       lighten($brand-primary, 30%);
-$primary-bg-color:  $brand-primary;
-$white-bg-color:    lighten($brand-primary, 59%);
-
-$white-color:       lighten($brand-primary, 56%);
-$text-color:        darken($brand-primary,  20%);
-$text-muted:        lighten(desaturate($text-color, 50%), 60%);
-
-$navbar-color:          $white-color;
-$navbar-bg-color:       darken($brand-primary,    5%);
-$navbar-bg-hover-color: lighten($navbar-bg-color, 3%);
-$navbar-border-color:   darken($navbar-bg-color,  5%);
+@import "_variables.scss";
 
 
 body {
@@ -52,6 +40,19 @@ nav.navbar {
     color: lighten($navbar-color, 10%);
   }
 
+  .navbar-toggle {
+    border-color: $navbar-border-color;
+
+    &:hover,
+    &:focus {
+      background-color: $navbar-border-color;
+    }
+  }
+
+  .navbar-collapse {
+    border-color: $navbar-border-color;
+  }
+
   & + div {
     margin-top: -20px;
   }
@@ -89,7 +90,6 @@ nav.navbar {
   a {
     color: $white-color;
     font-weight: 900;
-    margin: 0px 6px;
   }
 
   .right {
@@ -100,13 +100,13 @@ nav.navbar {
 
 
 .statbar {
-  padding: 20px;
   border-bottom: 1px solid $text-muted;
   font-family: "proxima-nova", sans-serif;
 
   .stats {
     display: flex;
     justify-content: space-around;
+    padding: 20px 10px;
 
     .stat {
       font-size: 22px;
@@ -115,7 +115,7 @@ nav.navbar {
   }
 
   span.fa {
-    margin-right: 10px;
+    margin: 0 6px;
   }
 }
 
@@ -125,7 +125,6 @@ nav.navbar {
 
   h1 { font-weight: 700; }
 }
-
 
 
 ul.schedule {
@@ -151,6 +150,32 @@ ul.schedule {
       color: $text-muted;
 
       .event-date { color: $text-muted; }
+    }
+  }
+}
+
+footer {
+  margin-top: 30px;
+  padding: 18px 0;
+  background-color: $text-muted;
+
+  p, ul {
+    margin: 0;
+  }
+
+  .pull-right {
+    text-align: right;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      text-decoration: none;
+      display: inline-block;
+      margin-right: 20px;
     }
   }
 }

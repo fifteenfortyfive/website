@@ -7,18 +7,28 @@
     :javascript
       try{Typekit.load({ async: true });}catch(e){}
 
-    %link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+    %link(rel="stylesheet" href="css/bootstrap.min.css")
     %link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous")
     %link(rel="stylesheet" href="css/main.css?")
+    %link(rel="stylesheet" href="css/responsive.css?")
+
 
   - config = YAML.load_file('./teams.yaml')
   - team_names = config['teams'].map{ |team_hash| team_hash.first.first }
 
-  %body
+  %body.landing-page
     %nav.navbar.navbar-inverse.navbar-static-top
       .container
         .navbar-header
-          %a.navbar-brand(href="/") 1545 Race
+          %a.navbar-brand(href="/") The 1545
+
+        %ul.nav.navbar-nav.navbar-right
+          %li
+            %a(href="https://discord.gg/vpxvm2Q" target="_blank") Discord
+          %li
+            %a(href="https://twitch.tv/1545race" target="_blank") Twitch
+          %li
+            %a(href="https://twitter.com/1545race" target="_blank") Twitter
 
         %ul.nav.navbar-nav
           %li
@@ -26,9 +36,10 @@
           %li
             %a(href="/rules.html") Rules
 
+
     .container
       .row
-        .col-md-12
+        .col-sm-10
           %h2 Teams
 
           %p The race will consist of 6 teams. Each team also has a captain, who is in charge of managing their team's run schedule and who will be the main point-of-contact for the team. Captains are indicated below with a star. If you are a team captain, you should have received a message from the organizers with more information.
@@ -37,7 +48,7 @@
             - config['teams'].each do |team_hash|
               - team_name, members = team_hash.first
 
-              .col-md-2.col-sm-4.col-xs-6{ class: "team-#{team_name}" }
+              .col-sm-2.col-sm-4.col-xs-6{ class: "team-#{team_name}" }
                 %h4= team_name.capitalize
 
                 %ul.team-members
@@ -70,3 +81,18 @@
                     %td{ class: "team-#{team_names[idx]}" }
                       = runner
 
+
+    %footer
+      .container
+        .row
+          .col-sm-10
+            .pull-right
+              %p &copy; 2017 fifteenfortyfive.org
+
+            %ul
+              %li
+                %a(href="https://discord.gg/vpxvm2Q" target="_blank") Discord
+              %li
+                %a(href="https://twitch.tv/1545race" target="_blank") Twitch
+              %li
+                %a(href="https://twitter.com/1545race" target="_blank") Twitter

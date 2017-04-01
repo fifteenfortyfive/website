@@ -1,0 +1,13 @@
+$brand-primary:     #a0292f;
+$brand-muted:       lighten($brand-primary, 30%);
+$primary-bg-color:  $brand-primary;
+$white-bg-color:    lighten($brand-primary, 59%);
+
+$white-color:       lighten($brand-primary, 56%);
+$text-color:        darken($brand-primary,  20%);
+$text-muted:        lighten(desaturate($text-color, 50%), 60%);
+
+$navbar-color:          $white-color;
+$navbar-bg-color:       darken($brand-primary,    5%);
+$navbar-bg-hover-color: lighten($navbar-bg-color, 3%);
+$navbar-border-color:   darken($navbar-bg-color,  5%);

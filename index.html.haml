@@ -1,64 +1,81 @@
 !!!
 %html
   %head
+    %meta(name="viewport" content="width=device-width, initial-scale=1")
+
     %script(src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous")
     %script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
     %script(src="https://use.typekit.net/abb5hmw.js")
     :javascript
       try{Typekit.load({ async: true });}catch(e){}
 
-    %link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+    %link(rel="stylesheet" href="css/bootstrap.min.css")
     %link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous")
     %link(rel="stylesheet" href="css/main.css?")
+    %link(rel="stylesheet" href="css/responsive.css?")
 
 
   %body.landing-page
     %nav.navbar.navbar-inverse.navbar-static-top
       .container
         .navbar-header
+          %button.navbar-toggle.collapsed(data-toggle="collapse" data-target="#navbar-collapse")
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
           %a.navbar-brand(href="/") The 1545
 
-        %ul.nav.navbar-nav
-          %li
-            %a(href="/teams.html") Teams
-          %li
-            %a(href="/rules.html") Rules
+        .collapse.navbar-collapse#navbar-collapse
+          %ul.nav.navbar-nav
+            %li
+              %a(href="/teams.html") Teams
+            %li
+              %a(href="/rules.html") Rules
+
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a(href="https://discord.gg/vpxvm2Q" target="_blank") Discord
+            %li
+              %a(href="https://twitch.tv/1545race" target="_blank") Twitch
+            %li
+              %a(href="https://twitter.com/1545race" target="_blank") Twitter
+
+
 
     .titlebar
       .container
         .row
-          .col-md-6.col-md-offset-1
+          .col-sm-6
             %h1 The 1545
 
 
-          .col-md-4.right
+          .col-sm-4.right
             %p.lead
               July 14th - 17th at
-              %br
               %a(href="https://twitch.tv/1545race") twitch.tv/1545race
 
 
     .statbar
       .container
         .row
-          .stats.col-md-10.col-md-offset-1
-            .stat
-              %span.fa.fa-users
-              53 runners
-            .stat
-              %span.fa.fa-flag
-              6 teams
+          .stats.col-sm-10
             .stat
               %span.fa.fa-clock-o
               3 days
             .stat
+              %span.fa.fa-flag
+              6 teams
+            .stat
               %span.fa.fa-gamepad
               13 games
+            .stat
+              %span.fa.fa-users
+              53 runners
 
 
     .container
       .row
-        .col-md-4.col-md-offset-1
+        .col-sm-4
           .page-header
             %h1 Schedule
 
@@ -74,34 +91,40 @@
               Date.new(2017,07,18) => 'Results posted'
             }
 
-          %ul.schedule
-            - dates.each do |date, event|
-              %li.event{class: date < Date.today ? 'past' : 'future'}
-                %span.event-date= date.strftime('%b %d')
-                %span.event-name= event
+          .schedule-box
+            %ul.schedule
+              - dates.each do |date, event|
+                %li.event{class: date < Date.today ? 'past' : 'future'}
+                  %span.event-date= date.strftime('%b %d')
+                  %span.event-name= event
 
 
-        .col-md-6
+        .col-sm-6
           .page-header
             %h1 The Relay
 
-          %p.lead The 1545 is a massive speedrunning relay race where teams of runners will complete all of the games in the Super Mario 602, the Rareware 301%, and the Sprashfecta, all over the course of 50+ hours.
+          %p.lead The 1545 is a massive speedrunning relay race where teams of runners will complete all of the games in the Super Mario 602, the Rareware 301%, and the Sprashfecta, all over the course of 3 days.
 
-          %p The 1545 is likely the largest single race in speedrunning to date, with 53 runners and a total gameplay time of nearly 340 hours!
+          %p The 1545 is one of the largest single races in speedrunning to date, with an estimated 330 hours of gameplay time. For reference, a week-long marathon generally has about 150-160 hours of gameplay time.
+
+          %p Each of the 6 teams are expected to take just over 54 hours to complete the full-completion categories of all 13 games sequentially.
 
           %p
             The 1545 will take place starting on July 14th at 5pm EST at
             %a(href="https://twitch.tv/1545race") twitch.tv/1545race
             and will run through the 17th, until the last team has finished.
 
-          %p The 1545 is not a competitive event. Rather than trying to build the fastest teams possible, we're hoping to see a close race across the board. This not only makes for a more interesting finish, but also allows runners of different skill levels to participate without necessarily coming in last.
+    %footer
+      .container
+        .row
+          .col-sm-10
+            .pull-right
+              %p &copy; 2017 fifteenfortyfive.org
 
-
-          .page-header
-            %h1 Purpose
-
-          %p Community is a large part of speedrunning, influencing not only how enjoyable it is now, but also how well it can continue into the future.
-
-          %p As with any community, though, smaller groups naturally form around various topics or franchises. And as these groups grow together, they inevitably start to separate themselves from other groups.
-
-          %p The goal of the 1545 is to be an event that crosses these group boundaries and helps create connections between them that will hopefully continue past the event.
+            %ul
+              %li
+                %a(href="https://discord.gg/vpxvm2Q" target="_blank") Discord
+              %li
+                %a(href="https://twitch.tv/1545race" target="_blank") Twitch
+              %li
+                %a(href="https://twitter.com/1545race" target="_blank") Twitter

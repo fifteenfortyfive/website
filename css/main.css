@@ -27,6 +27,12 @@ nav.navbar {
   nav.navbar .navbar-nav li:hover {
     background-color: #98272d;
     color: white; }
+  nav.navbar .navbar-toggle {
+    border-color: #771f23; }
+    nav.navbar .navbar-toggle:hover, nav.navbar .navbar-toggle:focus {
+      background-color: #771f23; }
+  nav.navbar .navbar-collapse {
+    border-color: #771f23; }
   nav.navbar + div {
     margin-top: -20px; }
 
@@ -49,24 +55,23 @@ nav.navbar {
       margin: 0; }
   .titlebar a {
     color: #faeced;
-    font-weight: 900;
-    margin: 0px 6px; }
+    font-weight: 900; }
   .titlebar .right {
     margin-top: 20px;
     text-align: right; }
 
 .statbar {
-  padding: 20px;
   border-bottom: 1px solid #cfc6c6;
   font-family: "proxima-nova", sans-serif; }
   .statbar .stats {
     display: flex;
-    justify-content: space-around; }
+    justify-content: space-around;
+    padding: 20px 10px; }
     .statbar .stats .stat {
       font-size: 22px;
       text-align: center; }
   .statbar span.fa {
-    margin-right: 10px; }
+    margin: 0 6px; }
 
 .page-header {
   font-family: "proxima-nova", sans-serif; }
@@ -91,6 +96,23 @@ ul.schedule {
       color: #cfc6c6; }
       ul.schedule .event.past .event-date {
         color: #cfc6c6; }
+
+footer {
+  margin-top: 30px;
+  padding: 18px 0;
+  background-color: #cfc6c6; }
+  footer p, footer ul {
+    margin: 0; }
+  footer .pull-right {
+    text-align: right; }
+  footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+    footer ul li {
+      text-decoration: none;
+      display: inline-block;
+      margin-right: 20px; }
 
 .team-members {
   list-style-type: none;

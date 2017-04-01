@@ -1,0 +1,28 @@
+@media (max-width: 991px) {
+  .titlebar h1 {
+    font-size: 90px;
+    text-shadow: 3px 2px 1px #a0292f, 8px 4px 1px #771f23; }
+  .titlebar p.lead {
+    font-size: 30px;
+    text-shadow: 2px 1px 1px #a0292f, 4px 2px 1px #771f23; }
+  .titlebar .right {
+    margin-top: 11px; }
+
+  ul.schedule {
+    padding-left: 10px; } }
+@media (max-width: 767px) {
+  .titlebar .right {
+    text-align: left; }
+
+  .schedule-box {
+    display: flex;
+    justify-content: space-around; }
+    .schedule-box ul.schedule {
+      margin-left: -20px; } }
+@media (max-width: 479px) {
+  .titlebar h1 {
+    font-size: 60px; }
+  .titlebar p.lead {
+    font-size: 20px; }
+  .titlebar .right {
+    margin-top: 11px; } }
