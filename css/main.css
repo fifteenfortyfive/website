@@ -159,10 +159,10 @@ nav.navbar {
         font-weight: 700; }
       .team .team-members .member .member-games {
         font-size: 14px; }
-      .team .team-members .member .captain .member-name:before {
+      .team .team-members .member.captain .member-name:after {
         font-family: FontAwesome;
         content: '\f006';
-        margin-right: 4px; }
+        margin-left: 4px; }
 
 @media (max-width: 767px) {
   .team .team-members .member {

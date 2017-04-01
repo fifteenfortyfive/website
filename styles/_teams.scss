@@ -58,11 +58,11 @@ $rare:  #fdfcd1;
         font-size: 14px;
       }
 
-      .captain {
-        .member-name:before {
+      &.captain {
+        .member-name:after {
           font-family: FontAwesome;
           content: '\f006';
-          margin-right: 4px;
+          margin-left: 4px;
         }
       }
     }
