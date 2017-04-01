@@ -1,0 +1,128 @@
+.titlebar {
+  padding: 60px 0px;
+  background-color: $primary-bg-color;
+  color: $white-color;
+  font-family: "proxima-nova", sans-serif;
+
+  h1 {
+    margin: 0 0 10px -4px;
+    font-size: 120px;
+    font-weight: 700;
+    text-shadow:
+      6px 4px 1px darken($brand-primary,  0%),
+      14px 6px 1px darken($brand-primary, 10%);
+  }
+
+  p {
+    font-size: 24px;
+    text-shadow:
+      4px 3px 1px darken($brand-primary,  0%),
+      6px 4px 1px darken($brand-primary, 10%);
+
+    &.lead {
+      font-size: 36px;
+      line-height: 1.3em;
+      margin: 0;
+    }
+  }
+
+  a {
+    color: $white-color;
+    font-weight: 900;
+  }
+
+  .right {
+    margin-top: 20px;
+    text-align: right;
+  }
+}
+
+
+.statbar {
+  border-bottom: 1px solid $text-muted;
+  font-family: "proxima-nova", sans-serif;
+
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 10px;
+
+    .stat {
+      font-size: 22px;
+      text-align: center;
+    }
+  }
+
+  span.fa {
+    margin: 0 6px;
+  }
+}
+
+
+
+////
+// Responsive
+////
+
+// small desktop screen sizes, landscape tablets
+@media (max-width: 991px) {
+  .titlebar {
+    h1 {
+      font-size: 90px;
+      text-shadow:
+        3px 2px 1px darken($brand-primary,  0%),
+        8px 4px 1px darken($brand-primary, 10%);
+    }
+
+    p.lead {
+      font-size: 30px;
+      text-shadow:
+        2px 1px 1px darken($brand-primary,  0%),
+        4px 2px 1px darken($brand-primary, 10%);
+    }
+
+    .right {
+      margin-top: 11px;
+    }
+  }
+
+  ul.schedule {
+    padding-left: 10px;
+  }
+}
+
+// Portrait tablet screens
+@media (max-width: 767px) {
+  .titlebar {
+    .right {
+      text-align: left;
+    }
+  }
+
+  .schedule-box {
+    display: flex;
+    justify-content: space-around;
+
+    ul.schedule {
+      margin-left: -20px;
+    }
+  }
+}
+
+
+// Phone screens
+@media (max-width: 479px) {
+  .titlebar {
+    h1 {
+      font-size: 60px;
+    }
+
+    p.lead {
+      font-size: 20px;
+    }
+
+    .right {
+      margin-top: 11px;
+    }
+  }
+}

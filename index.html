@@ -1,559 +1,169 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
     <script crossorigin='anonymous' integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=' src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
     <script src='https://use.typekit.net/abb5hmw.js'></script>
     <script>
       try{Typekit.load({ async: true });}catch(e){}
     </script>
-    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='css/bootstrap.min.css' rel='stylesheet'>
     <link crossorigin='anonymous' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' integrity='sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN' rel='stylesheet'>
     <link href='css/main.css?' rel='stylesheet'>
   </head>
-  <body>
+  <body class='landing-page'>
     <nav class='navbar navbar-inverse navbar-static-top'>
       <div class='container'>
         <div class='navbar-header'>
-          <a class='navbar-brand' href='/'>1545 Race</a>
+          <button class='navbar-toggle collapsed' data-target='#navbar-collapse' data-toggle='collapse'>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class='navbar-brand' href='/'>The 1545</a>
         </div>
-        <ul class='nav navbar-nav'>
-          <li>
-            <a href='/'>Teams</a>
-          </li>
-          <li>
-            <a href='rules.html'>Rules</a>
-          </li>
-        </ul>
+        <div class='collapse navbar-collapse' id='navbar-collapse'>
+          <ul class='nav navbar-nav'>
+            <li>
+              <a href='/teams.html'>Teams</a>
+            </li>
+            <li>
+              <a href='/rules.html'>Rules</a>
+            </li>
+          </ul>
+          <ul class='nav navbar-nav navbar-right'>
+            <li>
+              <a href='https://discord.gg/vpxvm2Q' target='_blank'>Discord</a>
+            </li>
+            <li>
+              <a href='https://twitch.tv/1545race' target='_blank'>Twitch</a>
+            </li>
+            <li>
+              <a href='https://twitter.com/1545race' target='_blank'>Twitter</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
-    <div class='container'>
-      <div class='row'>
-        <div class='col-md-12'>
-          <h2>Teams</h2>
-          <p>The race will consist of 6 teams. Each team also has a captain, who is in charge of managing their team's run schedule and who will be the main point-of-contact for the team. Captains are indicated below with a star. If you are a team captain, you should have received a message from the organizers with more information.</p>
-          <div class='row'>
-            <div class='col-md-2 col-sm-4 col-xs-6 team-red'>
-              <h4>Red</h4>
-              <ul class='team-members'>
-                <li class=''>
-                  burgerlands2
-                </li>
-                <li class=''>
-                  EmoArbiter
-                </li>
-                <li class='captain'>
-                  Gazco41
-                </li>
-                <li class=''>
-                  HolySanctum
-                </li>
-                <li class=''>
-                  Kiwikiller67
-                </li>
-                <li class=''>
-                  Muimania
-                </li>
-                <li class=''>
-                  Nostalgia64
-                </li>
-                <li class=''>
-                  Odme
-                </li>
-              </ul>
-            </div>
-            <div class='col-md-2 col-sm-4 col-xs-6 team-orange'>
-              <h4>Orange</h4>
-              <ul class='team-members'>
-                <li class=''>
-                  Cosmoing
-                </li>
-                <li class=''>
-                  hsi_wu
-                </li>
-                <li class=''>
-                  icupspeedruns
-                </li>
-                <li class=''>
-                  LazyBearBanjo
-                </li>
-                <li class=''>
-                  MonkeManTTR7
-                </li>
-                <li class=''>
-                  StrongmanLin
-                </li>
-                <li class=''>
-                  theballaam96
-                </li>
-                <li class='captain'>
-                  TOTOzigemm
-                </li>
-              </ul>
-            </div>
-            <div class='col-md-2 col-sm-4 col-xs-6 team-yellow'>
-              <h4>Yellow</h4>
-              <ul class='team-members'>
-                <li class=''>
-                  Claire
-                </li>
-                <li class='captain'>
-                  Connor75
-                </li>
-                <li class=''>
-                  Dickhiskhan
-                </li>
-                <li class=''>
-                  g0goTBC
-                </li>
-                <li class=''>
-                  KrisMarqz
-                </li>
-                <li class=''>
-                  Monger7
-                </li>
-                <li class=''>
-                  Tebt
-                </li>
-                <li class=''>
-                  Wedc517
-                </li>
-                <li class=''>
-                  Zacho
-                </li>
-              </ul>
-            </div>
-            <div class='col-md-2 col-sm-4 col-xs-6 team-green'>
-              <h4>Green</h4>
-              <ul class='team-members'>
-                <li class=''>
-                  Bandow2000
-                </li>
-                <li class=''>
-                  Conklesthemax
-                </li>
-                <li class=''>
-                  Johanian
-                </li>
-                <li class=''>
-                  nerf
-                </li>
-                <li class=''>
-                  notvanni
-                </li>
-                <li class=''>
-                  SecretHumorMan
-                </li>
-                <li class=''>
-                  SkiCrazedTeddy
-                </li>
-                <li class='captain'>
-                  TheMartonFi
-                </li>
-                <li class=''>
-                  Yeswally1
-                </li>
-              </ul>
-            </div>
-            <div class='col-md-2 col-sm-4 col-xs-6 team-blue'>
-              <h4>Blue</h4>
-              <ul class='team-members'>
-                <li class=''>
-                  5mon
-                </li>
-                <li class=''>
-                  Dact
-                </li>
-                <li class='captain'>
-                  FERANATOR115
-                </li>
-                <li class=''>
-                  KaptainKohl
-                </li>
-                <li class=''>
-                  Konditioner
-                </li>
-                <li class=''>
-                  MartyrrSenpai
-                </li>
-                <li class=''>
-                  Obiyo
-                </li>
-                <li class=''>
-                  SniperKing
-                </li>
-                <li class=''>
-                  SpikeVegeta
-                </li>
-                <li class=''>
-                  TheSludgyGamer
-                </li>
-              </ul>
-            </div>
-            <div class='col-md-2 col-sm-4 col-xs-6 team-purple'>
-              <h4>Purple</h4>
-              <ul class='team-members'>
-                <li class='captain'>
-                  Beuchi
-                </li>
-                <li class=''>
-                  GDO
-                </li>
-                <li class=''>
-                  hagginator
-                </li>
-                <li class=''>
-                  Jag
-                </li>
-                <li class=''>
-                  Nocturne_
-                </li>
-                <li class=''>
-                  Paracusia
-                </li>
-                <li class=''>
-                  Robthegamer115
-                </li>
-                <li class=''>
-                  Spyro
-                </li>
-                <li class=''>
-                  WhitePaaws
-                </li>
-              </ul>
-            </div>
+    <div class='titlebar'>
+      <div class='container'>
+        <div class='row'>
+          <div class='col-sm-6'>
+            <h1>The 1545</h1>
           </div>
-          <h2>Game Assignments</h2>
-          <p>Below is a table outlining the games that each runner is responsible for playing. These assignments were created such that the estimated total time for each team is as close as possible. Our hope is that this results in a more interesting race both for the runners and those watching the race.</p>
-          <p>For those interested in more details: the average overall estimate (regardless of team structure) is 53:58:40. 3 teams are within 2 minutes of this time, and all teams are within 13 minutes. The standard deviation between the estimates is just over 6 minutes (6:11). That's less than 0.2% of the overall time!</p>
-          <table class='table team-table'>
-            <thead>
-              <tr>
-                <th>Game</th>
-                <th class='team-red'>
-                  Red
-                </th>
-                <th class='team-orange'>
-                  Orange
-                </th>
-                <th class='team-yellow'>
-                  Yellow
-                </th>
-                <th class='team-green'>
-                  Green
-                </th>
-                <th class='team-blue'>
-                  Blue
-                </th>
-                <th class='team-purple'>
-                  Purple
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th class='game-name'>
-                  Super Mario 64
-                </th>
-                <td class='team-red'>
-                  Muimania
-                </td>
-                <td class='team-orange'>
-                  MonkeManTTR7
-                </td>
-                <td class='team-yellow'>
-                  g0goTBC
-                </td>
-                <td class='team-green'>
-                  Johanian
-                </td>
-                <td class='team-blue'>
-                  SpikeVegeta
-                </td>
-                <td class='team-purple'>
-                  Paracusia
-                </td>
-              </tr>
-              <tr>
-                <th class='game-name'>
-                  Super Mario Sunshine
-                </th>
-                <td class='team-red'>
-                  Muimania
-                </td>
-                <td class='team-orange'>
-                  Cosmoing
-                </td>
-                <td class='team-yellow'>
-                  Claire
-                </td>
-                <td class='team-green'>
-                  Johanian
-                </td>
-                <td class='team-blue'>
-                  SniperKing
-                </td>
-                <td class='team-purple'>
-                  Nocturne_
-                </td>
-              </tr>
-              <tr>
-                <th class='game-name'>
-                  Super Mario Galaxy
-                </th>
-                <td class='team-red'>
-                  Nostalgia64
-                </td>
-                <td class='team-orange'>
-                  StrongmanLin
-                </td>
-                <td class='team-yellow'>
-                  g0goTBC
-                </td>
-                <td class='team-green'>
-                  Bandow2000
-                </td>
-                <td class='team-blue'>
-                  SpikeVegeta
-                </td>
-                <td class='team-purple'>
-                  Spyro
-                </td>
-              </tr>
-              <tr>
-                <th class='game-name'>
-                  Super Mario Galaxy 2
-                </th>
-                <td class='team-red'>
-                  Odme
-                </td>
-                <td class='team-orange'>
-                  Cosmoing
-                </td>
-                <td class='team-yellow'>
-                  Claire
-                </td>
-                <td class='team-green'>
-                  Conklesthemax
-                </td>
-                <td class='team-blue'>
-                  TheSludgyGamer
-                </td>
-                <td class='team-purple'>
-                  Nocturne_
-                </td>
-              </tr>
-              <tr>
-                <th class='game-name'>
-                  Banjo Kazooie
-                </th>
-                <td class='team-red'>
-                  Kiwikiller67
-                </td>
-                <td class='team-orange'>
-                  LazyBearBanjo
-                </td>
-                <td class='team-yellow'>
-                  Dickhiskhan
-                </td>
-                <td class='team-green'>
-                  TheMartonFi
-                </td>
-                <td class='team-blue'>
-                  KaptainKohl
-                </td>
-                <td class='team-purple'>
-                  hagginator
-                </td>
-              </tr>
-              <tr>
-                <th class='game-name'>
-                  Banjo Tooie
-                </th>
-                <td class='team-red'>
-                  EmoArbiter
-                </td>
-                <td class='team-orange'>
-                  icupspeedruns
-                </td>
-                <td class='team-yellow'>
-                  Monger7
-                </td>
-                <td class='team-green'>
-                  SecretHumorMan
-                </td>
-                <td class='team-blue'>
-                  Konditioner
-                </td>
-                <td class='team-purple'>
-                  GDO
-                </td>
-              </tr>
-              <tr>
-                <th class='game-name'>
-                  Donkey Kong 64
-                </th>
-                <td class='team-red'>
-                  Kiwikiller67
-                </td>
-                <td class='team-orange'>
-                  theballaam96
-                </td>
-                <td class='team-yellow'>
-                  Connor75
-                </td>
-                <td class='team-green'>
-                  SecretHumorMan
-                </td>
-                <td class='team-blue'>
-                  Obiyo
-                </td>
-                <td class='team-purple'>
-                  Jag
-                </td>
-              </tr>
-              <tr>
-                <th class='game-name'>
-                  Spyro 1
-                </th>
-                <td class='team-red'>
-                  Gazco41
-                </td>
-                <td class='team-orange'>
-                  hsi_wu
-                </td>
-                <td class='team-yellow'>
-                  Zacho
-                </td>
-                <td class='team-green'>
-                  Yeswally1
-                </td>
-                <td class='team-blue'>
-                  MartyrrSenpai
-                </td>
-                <td class='team-purple'>
-                  Beuchi
-                </td>
-              </tr>
-              <tr>
-                <th class='game-name'>
-                  Spyro 2
-                </th>
-                <td class='team-red'>
-                  HolySanctum
-                </td>
-                <td class='team-orange'>
-                  TOTOzigemm
-                </td>
-                <td class='team-yellow'>
-                  Wedc517
-                </td>
-                <td class='team-green'>
-                  nerf
-                </td>
-                <td class='team-blue'>
-                  MartyrrSenpai
-                </td>
-                <td class='team-purple'>
-                  Beuchi
-                </td>
-              </tr>
-              <tr>
-                <th class='game-name'>
-                  Spyro 3
-                </th>
-                <td class='team-red'>
-                  Gazco41
-                </td>
-                <td class='team-orange'>
-                  hsi_wu
-                </td>
-                <td class='team-yellow'>
-                  Wedc517
-                </td>
-                <td class='team-green'>
-                  nerf
-                </td>
-                <td class='team-blue'>
-                  5mon
-                </td>
-                <td class='team-purple'>
-                  WhitePaaws
-                </td>
-              </tr>
-              <tr>
-                <th class='game-name'>
-                  Crash 1
-                </th>
-                <td class='team-red'>
-                  burgerlands2
-                </td>
-                <td class='team-orange'>
-                  hsi_wu
-                </td>
-                <td class='team-yellow'>
-                  Tebt
-                </td>
-                <td class='team-green'>
-                  notvanni
-                </td>
-                <td class='team-blue'>
-                  Dact
-                </td>
-                <td class='team-purple'>
-                  WhitePaaws
-                </td>
-              </tr>
-              <tr>
-                <th class='game-name'>
-                  Crash 2
-                </th>
-                <td class='team-red'>
-                  HolySanctum
-                </td>
-                <td class='team-orange'>
-                  TOTOzigemm
-                </td>
-                <td class='team-yellow'>
-                  KrisMarqz
-                </td>
-                <td class='team-green'>
-                  notvanni
-                </td>
-                <td class='team-blue'>
-                  Dact
-                </td>
-                <td class='team-purple'>
-                  Robthegamer115
-                </td>
-              </tr>
-              <tr>
-                <th class='game-name'>
-                  Crash 3
-                </th>
-                <td class='team-red'>
-                  burgerlands2
-                </td>
-                <td class='team-orange'>
-                  TOTOzigemm
-                </td>
-                <td class='team-yellow'>
-                  KrisMarqz
-                </td>
-                <td class='team-green'>
-                  SkiCrazedTeddy
-                </td>
-                <td class='team-blue'>
-                  FERANATOR115
-                </td>
-                <td class='team-purple'>
-                  Robthegamer115
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class='col-sm-4 right'>
+            <p class='lead'>
+              July 14th - 17th at
+              <a href='https://twitch.tv/1545race'>twitch.tv/1545race</a>
+            </p>
+          </div>
         </div>
       </div>
     </div>
+    <div class='statbar'>
+      <div class='container'>
+        <div class='row'>
+          <div class='stats col-sm-10'>
+            <div class='stat'>
+              <span class='fa fa-clock-o'></span>
+              3 days
+            </div>
+            <div class='stat'>
+              <span class='fa fa-flag'></span>
+              6 teams
+            </div>
+            <div class='stat'>
+              <span class='fa fa-gamepad'></span>
+              13 games
+            </div>
+            <div class='stat'>
+              <span class='fa fa-users'></span>
+              53 runners
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-sm-4'>
+          <div class='page-header'>
+            <h1>Schedule</h1>
+          </div>
+          <div class='schedule-box'>
+            <ul class='schedule'>
+              <li class='event past'>
+                <span class='event-date'>Feb 01</span>
+                <span class='event-name'>Event announced</span>
+              </li>
+              <li class='event past'>
+                <span class='event-date'>Feb 03</span>
+                <span class='event-name'>Signups open</span>
+              </li>
+              <li class='event past'>
+                <span class='event-date'>Mar 01</span>
+                <span class='event-name'>Signups close</span>
+              </li>
+              <li class='event past'>
+                <span class='event-date'>Mar 19</span>
+                <span class='event-name'>Teams released</span>
+              </li>
+              <li class='event future'>
+                <span class='event-date'>Jul 10</span>
+                <span class='event-name'>Schedules posted</span>
+              </li>
+              <li class='event future'>
+                <span class='event-date'>Jul 14</span>
+                <span class='event-name'>Race begins</span>
+              </li>
+              <li class='event future'>
+                <span class='event-date'>Jul 17</span>
+                <span class='event-name'>Race ends</span>
+              </li>
+              <li class='event future'>
+                <span class='event-date'>Jul 18</span>
+                <span class='event-name'>Results posted</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class='col-sm-6'>
+          <div class='page-header'>
+            <h1>The Relay</h1>
+          </div>
+          <p class='lead'>The 1545 is a massive speedrunning relay race where teams of runners will complete all of the games in the Super Mario 602, the Rareware 301%, and the Sprashfecta, all over the course of 3 days.</p>
+          <p>The 1545 is one of the largest single races in speedrunning to date, with an estimated 330 hours of gameplay time. For reference, a week-long marathon generally has about 150-160 hours of gameplay time.</p>
+          <p>Each of the 6 teams are expected to take just over 54 hours to complete the full-completion categories of all 13 games sequentially.</p>
+          <p>
+            The 1545 will take place starting on July 14th at 5pm EST at
+            <a href='https://twitch.tv/1545race'>twitch.tv/1545race</a>
+            and will run through the 17th, until the last team has finished.
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class='container'>
+        <div class='row'>
+          <div class='col-sm-10'>
+            <div class='pull-right'>
+              <p>&copy; 2017 fifteenfortyfive.org</p>
+            </div>
+            <ul>
+              <li>
+                <a href='https://discord.gg/vpxvm2Q' target='_blank'>Discord</a>
+              </li>
+              <li>
+                <a href='https://twitch.tv/1545race' target='_blank'>Twitch</a>
+              </li>
+              <li>
+                <a href='https://twitter.com/1545race' target='_blank'>Twitter</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

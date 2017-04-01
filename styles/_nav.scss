@@ -1,0 +1,40 @@
+nav.navbar {
+  background-color: $navbar-bg-color;
+  border-color: $navbar-border-color;
+  color: $navbar-color;
+
+  .navbar-brand {
+    color: $navbar-color;
+    font-size: 20px;
+    margin-top: -1px;
+  }
+
+  .navbar-nav,
+  .navbar-nav li,
+  .navbar-nav li a {
+    font-size: 16px;
+    color: $navbar-color;
+  }
+
+  .navbar-nav li:hover {
+    background-color: $navbar-bg-hover-color;
+    color: lighten($navbar-color, 10%);
+  }
+
+  .navbar-toggle {
+    border-color: $navbar-border-color;
+
+    &:hover,
+    &:focus {
+      background-color: $navbar-border-color;
+    }
+  }
+
+  .navbar-collapse {
+    border-color: $navbar-border-color;
+  }
+
+  & + div {
+    margin-top: -20px;
+  }
+}

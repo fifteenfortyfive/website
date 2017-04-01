@@ -1,44 +1,59 @@
 !!!
 %html
   %head
+    %meta(name="viewport" content="width=device-width, initial-scale=1")
+
     %script(src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous")
     %script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
     %script(src="https://use.typekit.net/abb5hmw.js")
     :javascript
       try{Typekit.load({ async: true });}catch(e){}
 
-    %link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+    %link(rel="stylesheet" href="css/bootstrap.min.css")
     %link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous")
     %link(rel="stylesheet" href="css/main.css?")
-
-  - config = YAML.load_file('./teams.yaml')
-  - team_names = config['teams'].map{ |team_hash| team_hash.first.first }
 
 
   %body
     %nav.navbar.navbar-inverse.navbar-static-top
       .container
         .navbar-header
-          %a.navbar-brand(href="/") 1545 Race
+          %button.navbar-toggle.collapsed(data-toggle="collapse" data-target="#navbar-collapse")
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand(href="/") The 1545
 
-        %ul.nav.navbar-nav
-          %li
-            %a(href="/") Teams
-          %li
-            %a(href="rules.html") Rules
+        .collapse.navbar-collapse#navbar-collapse
+          %ul.nav.navbar-nav
+            %li
+              %a(href="/teams.html") Teams
+            %li
+              %a(href="/rules.html") Rules
+
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a(href="https://discord.gg/vpxvm2Q" target="_blank") Discord
+            %li
+              %a(href="https://twitch.tv/1545race" target="_blank") Twitch
+            %li
+              %a(href="https://twitter.com/1545race" target="_blank") Twitter
+
 
 
     .container
       .row
-        .col-md-12
-          %h2 Rules
+        .col-sm-10
+          .page-header
+            %h1 Rules
 
           %p The rules for the 1545 are fairly straightforward. Rules for each game generally follow those posted on their respective <a href="http://speedrun.com">speedrun.com</a> pages. However, there are a few changes, mainly easing some restrictions on how runs are validated. For simplicity, the rules for each game are listed below the General Rules section.
 
           %p If you have any questions about these rules, feel free to contact an organizer for clarification.
 
 
-          %h2 General Rules
+          .page-header
+            %h1 General Rules
 
           %ol
             %li The first runner for each team will be in a general voice chat and will begin their game when an organizer says go after a countdown.
@@ -54,7 +69,7 @@
                 %li Checking for completion should not be counted towards the final time.
                 %li If you do not make the requirements, contact an organizer immediately, but have the next runner continue their run.
             %li
-              In the event of a runner on your team not showing up, it is the team’s responsibility to find someone else on the team to run.
+              In the event of a runner on your team not showing up, it is the team's responsibility to find someone else on the team to run.
               %ul
                 %li What happens if no replacement runner can be found?
             %li
@@ -85,7 +100,8 @@
                   mention.
 
 
-          %h2 Individual Game Rules
+          .page-header
+            %h1 Individual Game Rules
 
           %h3 Super Mario 64
           %p Complete the game while collecting all 120 stars (the Giant Star you collect after beating Final Bowser not being included in this 120 star total). No restrictions. All forms of BLJ are allowed.
@@ -104,7 +120,7 @@
 
 
           %h3 Super Mario Galaxy 2
-          %p Beat the game with all the 242 stars collected (AKA 100%). This means that you have to beat Bowser’s Galaxy Generator twice: Once to unlock World S and another time to unlock the green stars. You do not have to beat Bowser’s Galaxy Generator again after The Perfect Run.
+          %p Beat the game with all the 242 stars collected (AKA 100%). This means that you have to beat Bowser's Galaxy Generator twice: Once to unlock World S and another time to unlock the green stars. You do not have to beat Bowser's Galaxy Generator again after The Perfect Run.
 
           %ul
             %li Time starts as soon as you enter a new game file.
@@ -171,7 +187,7 @@
           %p General Submission Rules: http://www.speedrun.com/spyro/thread/j13wg
 
 
-          %h3 Spyro 2: Ripto’s Rage
+          %h3 Spyro 2: Ripto's Rage
           %p Timing starts when gaining control in Glimmer. Timing ends when Ripto's health bar drops to zero at the end of phase 3, or when the last item has been collected.
           %p 100% requires collecting all 14 talismans, 64 orbs, and 10000 gems, as well as defeating all 3 bosses. All skips and glitches are allowed.
           %p Allowed emulators are as listed: Mednafen, Xebra and ePSXe 1.9.0/1.9.25/2.0. Please note 2.0.2 and subsequently overclocking are not allowed.
@@ -241,3 +257,18 @@
           %ul
             %li Check the list of accepted emulators: http://www.speedrun.com/crash/thread/5ga2x
 
+
+    %footer
+      .container
+        .row
+          .col-sm-10
+            .pull-right
+              %p &copy; 2017 fifteenfortyfive.org
+
+            %ul
+              %li
+                %a(href="https://discord.gg/vpxvm2Q" target="_blank") Discord
+              %li
+                %a(href="https://twitch.tv/1545race" target="_blank") Twitch
+              %li
+                %a(href="https://twitter.com/1545race" target="_blank") Twitter

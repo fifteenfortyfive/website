@@ -1,0 +1,103 @@
+$team-red:    #b91717;
+$team-orange: #f98126;
+$team-yellow: #ecd505;
+$team-green:  #22ad0b;
+$team-blue:   #0f76c7;
+$team-purple: #720fb9;
+
+$spyro: #9c27b0;
+$crash: #ff7f3e;
+$mario: #e43535;
+$rare:  #fdfcd1;
+
+
+.team-red     { color: $team-red; }
+.team-orange  { color: $team-orange; }
+.team-yellow  { color: $team-yellow; }
+.team-green   { color: $team-green; }
+.team-blue    { color: $team-blue; }
+.team-purple  { color: $team-purple; }
+
+.spyro { color: $spyro !important; }
+.crash { color: $crash !important; }
+.mario { color: $mario !important; }
+.rare  { color: $rare  !important; }
+
+.spyro-bg { background-color: lighten($spyro, 50%) !important; }
+.crash-bg { background-color: lighten($crash, 30%) !important; }
+.mario-bg { background-color: lighten($mario, 35%) !important; }
+.rare-bg  { background-color: lighten($rare,   0%) !important; }
+
+.true     { color: #66a569 !important; }
+.false    { color: #ff0000 !important; }
+.neutral  { color: #aaaaaa !important; }
+
+.true-bg  { background-color: #cbead4 !important; }
+.false-bg { background-color: #ffcbcb !important; }
+
+
+
+.team {
+  margin: 20px 0;
+
+  .team-members {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .member {
+      padding: 10px;
+      flex: 0 0 20%;
+
+      .member-name {
+        font-weight: 700;
+      }
+
+      .member-games {
+        font-size: 14px;
+      }
+
+      .captain {
+        .member-name:before {
+          font-family: FontAwesome;
+          content: '\f006';
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+}
+
+// Portrait tablet screens
+@media (max-width: 767px) {
+  .team {
+    .team-members {
+      .member {
+        flex: 0 0 25%;
+      }
+    }
+  }
+}
+
+// Portrait tablet screens
+@media (max-width: 611px) {
+  .team {
+    .team-members {
+      .member {
+        flex: 0 0 33%;
+      }
+    }
+  }
+}
+
+// Phone screens
+@media (max-width: 479px) {
+  .team {
+    .team-members {
+      .member {
+        flex: 0 0 50%;
+      }
+    }
+  }
+}

@@ -28,5 +28,5 @@ guard :haml do
 end
 
 guard 'sass' do
-  watch(%r{^styles/(.+\.s[ac]ss)$})
+  watch(%r{^styles/[^_](.+\.s[ac]ss)$})
 end

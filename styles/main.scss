@@ -1,73 +1,86 @@
+@import "_variables.scss";
+
+@import "_nav.scss";
+@import "_landing_page.scss";
+@import "_teams.scss";
+
+
 body {
-  background-color: #f7f7f7;
-  font-family: "skolar-sans-latin",sans-serif;
+  font-family: "skolar-sans-latin", sans-serif;
+  background-color: $white-bg-color;
+  color: $text-color;
+  line-height: 1.6em;
+  font-size: 16px;
 }
 
-.container {
-  background-color: #fff;
+a {
+  color: $brand-muted;
+  font-weight: 500;
+
+  &:hover { color: darken($brand-muted, 10%); }
 }
 
-.navbar .container {
-  background-color: inherit;
+
+
+.page-header {
+  font-family: "proxima-nova", sans-serif;
+
+  h1 { font-weight: 700; }
 }
 
-.team-members {
+
+ul.schedule {
   list-style-type: none;
-  padding-left: 20px;
+  font-size: 20px;
 
-  li { text-decoration: none; }
-  li.captain {
-    margin-left: -16px;
-    &:before {
-      font-family: FontAwesome;
-      content: '\f006';
+  .event {
+    text-decoration: none;
+    margin-bottom: 8px;
+
+
+    .event-date {
+      display: inline-block;
+      width: 70px;
+      margin-right: 20px;
+      text-align: right;
+      color: $brand-muted;
+      font-family: "proxima-nova", sans-serif;
+      font-weight: 700;
+    }
+
+    &.past {
+      color: $text-muted;
+
+      .event-date { color: $text-muted; }
     }
   }
 }
 
-.team-table {
-  .game-name {
+footer {
+  margin-top: 30px;
+  padding: 18px 0;
+  background-color: $text-muted;
+
+  p, ul {
+    margin: 0;
+  }
+
+  .pull-right {
     text-align: right;
-    padding-right: 30px;
-    width: 200px;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      text-decoration: none;
+      display: inline-block;
+      margin-right: 20px;
+    }
   }
 }
-
-$team-red:    #b91717;
-$team-orange: #f98126;
-$team-yellow: #ecd505;
-$team-green:  #22ad0b;
-$team-blue:   #0f76c7;
-$team-purple: #720fb9;
-
-.team-red     { color: $team-red; }
-.team-orange  { color: $team-orange; }
-.team-yellow  { color: $team-yellow; }
-.team-green   { color: $team-green; }
-.team-blue    { color: $team-blue; }
-.team-purple  { color: $team-purple; }
-
-$spyro: #9c27b0;
-$crash: #ff7f3e;
-$mario: #e43535;
-$rare:  #fdfcd1;
-
-.spyro { color: $spyro !important; }
-.crash { color: $crash !important; }
-.mario { color: $mario !important; }
-.rare  { color: $rare  !important; }
-
-.spyro-bg { background-color: lighten($spyro, 50%) !important; }
-.crash-bg { background-color: lighten($crash, 30%) !important; }
-.mario-bg { background-color: lighten($mario, 35%) !important; }
-.rare-bg  { background-color: lighten($rare,   0%) !important; }
-
-.true     { color: #66a569 !important; }
-.false    { color: #ff0000 !important; }
-.neutral  { color: #aaaaaa !important; }
-
-.true-bg  { background-color: #cbead4 !important; }
-.false-bg { background-color: #ffcbcb !important; }
 
 
 .notice {

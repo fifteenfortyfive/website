@@ -1,29 +1,93 @@
-body {
-  background-color: #f7f7f7;
-  font-family: "skolar-sans-latin",sans-serif; }
+nav.navbar {
+  background-color: #8c2429;
+  border-color: #771f23;
+  color: #faeced; }
+  nav.navbar .navbar-brand {
+    color: #faeced;
+    font-size: 20px;
+    margin-top: -1px; }
+  nav.navbar .navbar-nav,
+  nav.navbar .navbar-nav li,
+  nav.navbar .navbar-nav li a {
+    font-size: 16px;
+    color: #faeced; }
+  nav.navbar .navbar-nav li:hover {
+    background-color: #98272d;
+    color: white; }
+  nav.navbar .navbar-toggle {
+    border-color: #771f23; }
+    nav.navbar .navbar-toggle:hover, nav.navbar .navbar-toggle:focus {
+      background-color: #771f23; }
+  nav.navbar .navbar-collapse {
+    border-color: #771f23; }
+  nav.navbar + div {
+    margin-top: -20px; }
 
-.container {
-  background-color: #fff; }
+.titlebar {
+  padding: 60px 0px;
+  background-color: #a0292f;
+  color: #faeced;
+  font-family: "proxima-nova", sans-serif; }
+  .titlebar h1 {
+    margin: 0 0 10px -4px;
+    font-size: 120px;
+    font-weight: 700;
+    text-shadow: 6px 4px 1px #a0292f, 14px 6px 1px #771f23; }
+  .titlebar p {
+    font-size: 24px;
+    text-shadow: 4px 3px 1px #a0292f, 6px 4px 1px #771f23; }
+    .titlebar p.lead {
+      font-size: 36px;
+      line-height: 1.3em;
+      margin: 0; }
+  .titlebar a {
+    color: #faeced;
+    font-weight: 900; }
+  .titlebar .right {
+    margin-top: 20px;
+    text-align: right; }
 
-.navbar .container {
-  background-color: inherit; }
+.statbar {
+  border-bottom: 1px solid #cfc6c6;
+  font-family: "proxima-nova", sans-serif; }
+  .statbar .stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 10px; }
+    .statbar .stats .stat {
+      font-size: 22px;
+      text-align: center; }
+  .statbar span.fa {
+    margin: 0 6px; }
 
-.team-members {
-  list-style-type: none;
-  padding-left: 20px; }
-  .team-members li {
-    text-decoration: none; }
-  .team-members li.captain {
-    margin-left: -16px; }
-    .team-members li.captain:before {
-      font-family: FontAwesome;
-      content: '\f006'; }
+@media (max-width: 991px) {
+  .titlebar h1 {
+    font-size: 90px;
+    text-shadow: 3px 2px 1px #a0292f, 8px 4px 1px #771f23; }
+  .titlebar p.lead {
+    font-size: 30px;
+    text-shadow: 2px 1px 1px #a0292f, 4px 2px 1px #771f23; }
+  .titlebar .right {
+    margin-top: 11px; }
 
-.team-table .game-name {
-  text-align: right;
-  padding-right: 30px;
-  width: 200px; }
+  ul.schedule {
+    padding-left: 10px; } }
+@media (max-width: 767px) {
+  .titlebar .right {
+    text-align: left; }
 
+  .schedule-box {
+    display: flex;
+    justify-content: space-around; }
+    .schedule-box ul.schedule {
+      margin-left: -20px; } }
+@media (max-width: 479px) {
+  .titlebar h1 {
+    font-size: 60px; }
+  .titlebar p.lead {
+    font-size: 20px; }
+  .titlebar .right {
+    margin-top: 11px; } }
 .team-red {
   color: #b91717; }
 
@@ -80,6 +144,88 @@ body {
 
 .false-bg {
   background-color: #ffcbcb !important; }
+
+.team {
+  margin: 20px 0; }
+  .team .team-members {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; }
+    .team .team-members .member {
+      padding: 10px;
+      flex: 0 0 20%; }
+      .team .team-members .member .member-name {
+        font-weight: 700; }
+      .team .team-members .member .member-games {
+        font-size: 14px; }
+      .team .team-members .member .captain .member-name:before {
+        font-family: FontAwesome;
+        content: '\f006';
+        margin-right: 4px; }
+
+@media (max-width: 767px) {
+  .team .team-members .member {
+    flex: 0 0 25%; } }
+@media (max-width: 611px) {
+  .team .team-members .member {
+    flex: 0 0 33%; } }
+@media (max-width: 479px) {
+  .team .team-members .member {
+    flex: 0 0 50%; } }
+body {
+  font-family: "skolar-sans-latin", sans-serif;
+  background-color: #fdf9f9;
+  color: #4f1417;
+  line-height: 1.6em;
+  font-size: 16px; }
+
+a {
+  color: #df8387;
+  font-weight: 500; }
+  a:hover {
+    color: #d55a60; }
+
+.page-header {
+  font-family: "proxima-nova", sans-serif; }
+  .page-header h1 {
+    font-weight: 700; }
+
+ul.schedule {
+  list-style-type: none;
+  font-size: 20px; }
+  ul.schedule .event {
+    text-decoration: none;
+    margin-bottom: 8px; }
+    ul.schedule .event .event-date {
+      display: inline-block;
+      width: 70px;
+      margin-right: 20px;
+      text-align: right;
+      color: #df8387;
+      font-family: "proxima-nova", sans-serif;
+      font-weight: 700; }
+    ul.schedule .event.past {
+      color: #cfc6c6; }
+      ul.schedule .event.past .event-date {
+        color: #cfc6c6; }
+
+footer {
+  margin-top: 30px;
+  padding: 18px 0;
+  background-color: #cfc6c6; }
+  footer p, footer ul {
+    margin: 0; }
+  footer .pull-right {
+    text-align: right; }
+  footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+    footer ul li {
+      text-decoration: none;
+      display: inline-block;
+      margin-right: 20px; }
 
 .notice {
   font-style: italic;

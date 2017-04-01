@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
     <script crossorigin='anonymous' integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=' src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
     <script src='https://use.typekit.net/abb5hmw.js'></script>
     <script>
       try{Typekit.load({ async: true });}catch(e){}
     </script>
-    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='css/bootstrap.min.css' rel='stylesheet'>
     <link crossorigin='anonymous' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' integrity='sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN' rel='stylesheet'>
     <link href='css/main.css?' rel='stylesheet'>
   </head>
@@ -15,25 +16,47 @@
     <nav class='navbar navbar-inverse navbar-static-top'>
       <div class='container'>
         <div class='navbar-header'>
-          <a class='navbar-brand' href='/'>1545 Race</a>
+          <button class='navbar-toggle collapsed' data-target='#navbar-collapse' data-toggle='collapse'>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class='navbar-brand' href='/'>The 1545</a>
         </div>
-        <ul class='nav navbar-nav'>
-          <li>
-            <a href='/'>Teams</a>
-          </li>
-          <li>
-            <a href='rules.html'>Rules</a>
-          </li>
-        </ul>
+        <div class='collapse navbar-collapse' id='navbar-collapse'>
+          <ul class='nav navbar-nav'>
+            <li>
+              <a href='/teams.html'>Teams</a>
+            </li>
+            <li>
+              <a href='/rules.html'>Rules</a>
+            </li>
+          </ul>
+          <ul class='nav navbar-nav navbar-right'>
+            <li>
+              <a href='https://discord.gg/vpxvm2Q' target='_blank'>Discord</a>
+            </li>
+            <li>
+              <a href='https://twitch.tv/1545race' target='_blank'>Twitch</a>
+            </li>
+            <li>
+              <a href='https://twitter.com/1545race' target='_blank'>Twitter</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     <div class='container'>
       <div class='row'>
-        <div class='col-md-12'>
-          <h2>Rules</h2>
+        <div class='col-sm-10'>
+          <div class='page-header'>
+            <h1>Rules</h1>
+          </div>
           <p>The rules for the 1545 are fairly straightforward. Rules for each game generally follow those posted on their respective <a href="http://speedrun.com">speedrun.com</a> pages. However, there are a few changes, mainly easing some restrictions on how runs are validated. For simplicity, the rules for each game are listed below the General Rules section.</p>
           <p>If you have any questions about these rules, feel free to contact an organizer for clarification.</p>
-          <h2>General Rules</h2>
+          <div class='page-header'>
+            <h1>General Rules</h1>
+          </div>
           <ol>
             <li>The first runner for each team will be in a general voice chat and will begin their game when an organizer says go after a countdown.</li>
             <li>Timing ends once the last runner finishes their category.</li>
@@ -52,7 +75,7 @@
               </ul>
             </li>
             <li>
-              In the event of a runner on your team not showing up, it is the team’s responsibility to find someone else on the team to run.
+              In the event of a runner on your team not showing up, it is the team's responsibility to find someone else on the team to run.
               <ul>
                 <li>What happens if no replacement runner can be found?</li>
               </ul>
@@ -93,7 +116,9 @@
               </ul>
             </li>
           </ol>
-          <h2>Individual Game Rules</h2>
+          <div class='page-header'>
+            <h1>Individual Game Rules</h1>
+          </div>
           <h3>Super Mario 64</h3>
           <p>Complete the game while collecting all 120 stars (the Giant Star you collect after beating Final Bowser not being included in this 120 star total). No restrictions. All forms of BLJ are allowed.</p>
           <p>Timing starts from power on of the console (or reset on VC) and ends when you touch the Giant Star after defeating Final Bowser.</p>
@@ -103,7 +128,7 @@
           <p>Start timing when selecting "Play This File," and end timing when touching the final Grand Star. Get all 120 Stars, then beat Bowser's Galaxy Reactor for a 2nd time. Runs must be timed in RTA timing, breaks are allowed but must be included into your final time.</p>
           <p>You can play as Mario or Luigi.</p>
           <h3>Super Mario Galaxy 2</h3>
-          <p>Beat the game with all the 242 stars collected (AKA 100%). This means that you have to beat Bowser’s Galaxy Generator twice: Once to unlock World S and another time to unlock the green stars. You do not have to beat Bowser’s Galaxy Generator again after The Perfect Run.</p>
+          <p>Beat the game with all the 242 stars collected (AKA 100%). This means that you have to beat Bowser's Galaxy Generator twice: Once to unlock World S and another time to unlock the green stars. You do not have to beat Bowser's Galaxy Generator again after The Perfect Run.</p>
           <ul>
             <li>Time starts as soon as you enter a new game file.</li>
             <li>Time stops on the same frame that you touch the star after The Perfect Run in Grandmaster Galaxy.</li>
@@ -161,7 +186,7 @@
           <p>Timing starts when first movement is possible. Timing ends on the black screen upon entering the "Return Home" whirlwind in Loot before the 120% cutscene.</p>
           <p>Allowed emulators are as listed: Mednafen, Xebra and ePSXe 1.9.0/1.9.25/2.0. Please note 2.0.2 and subsequently overclocking are not allowed.</p>
           <p>General Submission Rules: http://www.speedrun.com/spyro/thread/j13wg</p>
-          <h3>Spyro 2: Ripto’s Rage</h3>
+          <h3>Spyro 2: Ripto's Rage</h3>
           <p>Timing starts when gaining control in Glimmer. Timing ends when Ripto's health bar drops to zero at the end of phase 3, or when the last item has been collected.</p>
           <p>100% requires collecting all 14 talismans, 64 orbs, and 10000 gems, as well as defeating all 3 bosses. All skips and glitches are allowed.</p>
           <p>Allowed emulators are as listed: Mednafen, Xebra and ePSXe 1.9.0/1.9.25/2.0. Please note 2.0.2 and subsequently overclocking are not allowed.</p>
@@ -227,5 +252,27 @@
         </div>
       </div>
     </div>
+    <footer>
+      <div class='container'>
+        <div class='row'>
+          <div class='col-sm-10'>
+            <div class='pull-right'>
+              <p>&copy; 2017 fifteenfortyfive.org</p>
+            </div>
+            <ul>
+              <li>
+                <a href='https://discord.gg/vpxvm2Q' target='_blank'>Discord</a>
+              </li>
+              <li>
+                <a href='https://twitch.tv/1545race' target='_blank'>Twitch</a>
+              </li>
+              <li>
+                <a href='https://twitter.com/1545race' target='_blank'>Twitter</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
