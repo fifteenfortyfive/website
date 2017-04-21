@@ -38,7 +38,6 @@ teams:
     - hsi_wu
     - icupspeedruns
     - LazyBearBanjo
-    - MonkeManTTR7
     - StrongmanLin
     - theballaam96
     - TOTOzigemm
@@ -93,7 +92,7 @@ games:
     series: mario
     teams:
       - Muimania
-      - MonkeManTTR7
+      - Cosmoing
       - g0goTBC
       - Johanian
       - SpikeVegeta
@@ -103,7 +102,7 @@ games:
     series: mario
     teams:
       - Muimania
-      - Cosmoing
+      - StrongmanLin
       - Claire
       - Johanian
       - SniperKing
