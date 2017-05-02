@@ -6,6 +6,15 @@ captains:
   blue:   FERANATOR115
   purple: Beuchi
 
+team_names:
+  red:    Anything But Last
+  orange: Team Mornin'
+  yellow: The Happy Little Speedrunners
+  green:  Y'all just got B E A N E D
+  blue:   Team LilZ
+  purple: Iateyourgrapes
+
+
 game_abbreviations:
   super_mario_64: SM64
   super_mario_sunshine: Sunshine

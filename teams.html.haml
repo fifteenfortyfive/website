@@ -42,7 +42,7 @@
 
 
     - config = YAML.load_file('./teams.yaml')
-    - team_names = config['teams'].map{ |team_hash| team_hash.first.first }
+    - team_names = config['team_names']
 
 
     .container
@@ -58,15 +58,15 @@
 
 
           - config['teams'].each_with_index do |team_hash, team_idx|
-            - team_name, members = team_hash.first
+            - team_color, members = team_hash.first
 
             .team
-              %h4{ class: "team-#{team_name}" }= team_name.capitalize
+              %h4{ class: "team-#{team_color}" }= team_names[team_color]
 
               .team-members
                 - members.each do |member|
                   :ruby
-                    is_captain = member == config['captains'][team_name]
+                    is_captain = member == config['captains'][team_color]
 
                     games = config['games'].each_with_object([]) do |(game_name, game_data), g|
                       g << config['game_abbreviations'][game_name] if game_data['teams'][team_idx] == member
