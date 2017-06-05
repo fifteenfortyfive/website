@@ -4,6 +4,8 @@
     <meta content='width=device-width, initial-scale=1' name='viewport'>
     <script crossorigin='anonymous' integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=' src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+    <script src='js/moment.min.js'></script>
+    <script src='js/moment-timezone.min.js'></script>
     <script src='https://use.typekit.net/abb5hmw.js'></script>
     <script>
       try{Typekit.load({ async: true });}catch(e){}
@@ -136,7 +138,9 @@
           <p>The 1545 is one of the largest single races in speedrunning to date, with an estimated 330 hours of gameplay time. For reference, a week-long marathon generally has about 150-160 hours of gameplay time.</p>
           <p>Each of the 6 teams are expected to take just over 54 hours to complete the full-completion categories of all 13 games sequentially.</p>
           <p>
-            The 1545 will take place starting on July 14th at 5pm EST at
+            The 1545 will take place starting on
+            <span id='race_start_date'>July 14th at 9pm UTC</span>
+            at
             <a href='https://twitch.tv/1545race'>twitch.tv/1545race</a>
             and will run through the 17th, until the last team has finished.
           </p>
@@ -166,4 +170,15 @@
       </div>
     </footer>
   </body>
+  <script>
+    // Name of the time zone that the user is currently in.
+    var user_time_zone    = moment.tz.guess();
+    // July 14th, 2017 at 9pm UTC
+    var global_start_time = moment("2017-07-14T21:00:00Z");
+    // Start time, converted to the local time zone.
+    var local_start_time  = moment(global_start_time).tz(user_time_zone);
+    
+    
+    document.querySelector("#race_start_date").innerHTML = local_start_time.format("MMMM Do [at] h:mma z");
+  </script>
 </html>
