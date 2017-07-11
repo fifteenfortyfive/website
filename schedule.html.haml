@@ -53,8 +53,8 @@
 
           .run-schedule
             .schedule-column.timeline
-              - start_time = Time.utc(2017,7,14,9,0,0).to_datetime
-              - end_time = Time.utc(2017,7,16,18,0,0).to_datetime
+              - start_time = Time.utc(2017,7,14,21,0,0).to_datetime
+              - end_time = Time.utc(2017,7,17,5,0,0).to_datetime
               - start_time.step(end_time, 1.to_f/24).each do |hour|
                 .time
                   %span.hours= hour.strftime("%I:%M%P")
