@@ -106,30 +106,6 @@ nav.navbar {
 .team-purple {
   color: #720fb9; }
 
-.spyro {
-  color: #9c27b0 !important; }
-
-.crash {
-  color: #ff7f3e !important; }
-
-.mario {
-  color: #e43535 !important; }
-
-.rare {
-  color: #fdfcd1 !important; }
-
-.spyro-bg {
-  background-color: #f4def8 !important; }
-
-.crash-bg {
-  background-color: #ffe4d7 !important; }
-
-.mario-bg {
-  background-color: #f9d2d2 !important; }
-
-.rare-bg {
-  background-color: #fdfcd1 !important; }
-
 .true {
   color: #66a569 !important; }
 
@@ -173,6 +149,55 @@ nav.navbar {
 @media (max-width: 479px) {
   .team .team-members .member {
     flex: 0 0 50%; } }
+.spyro {
+  background-color: #f3e0f7 !important; }
+
+.crash {
+  background-color: #fbdcc5 !important; }
+
+.mario {
+  background-color: #f7d8d8 !important; }
+
+.rare {
+  background-color: #fdfde2 !important; }
+
+.run-schedule {
+  width: 100%;
+  display: flex;
+  line-height: 1.1em; }
+  .run-schedule .timeline {
+    flex: 0 0 80px;
+    margin-top: 50px;
+    margin-right: 4px;
+    text-align: right; }
+    .run-schedule .timeline .time {
+      grid-row: span 12;
+      font-size: 0.8em; }
+      .run-schedule .timeline .time .hours {
+        display: block; }
+      .run-schedule .timeline .time .date {
+        color: #777; }
+  .run-schedule .schedule-column {
+    display: grid;
+    grid-auto-rows: 2px;
+    grid-gap: 2px; }
+    .run-schedule .schedule-column .schedule-element {
+      padding: 8px;
+      border: 1px solid #f7f7f7; }
+      .run-schedule .schedule-column .schedule-element .game-name {
+        color: #821b1b; }
+      .run-schedule .schedule-column .schedule-element .runner-name {
+        color: #555; }
+      .run-schedule .schedule-column .schedule-element .estimate {
+        display: block;
+        color: #ea9999; }
+  .run-schedule .team {
+    flex: 1 1 0;
+    margin: 0 1px; }
+    .run-schedule .team .name {
+      padding: 8px;
+      height: 50px; }
+
 body {
   font-family: "skolar-sans-latin", sans-serif;
   background-color: #fdf9f9;

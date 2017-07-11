@@ -1,0 +1,66 @@
+.spyro { background-color: $spyro !important; }
+.crash { background-color: $crash !important; }
+.mario { background-color: $mario !important; }
+.rare  { background-color: $rare  !important; }
+
+.run-schedule {
+  width: 100%;
+  display: flex;
+  line-height: 1.1em;
+
+  .timeline {
+    flex: 0 0 80px;
+    margin-top: 50px;
+    margin-right: 4px;
+    text-align: right;
+
+    .time {
+      grid-row: span 12;
+      font-size: 0.8em;
+
+      .hours {
+        display: block;
+      }
+
+      .date {
+        color: #777;
+      }
+    }
+  }
+
+  .schedule-column {
+    display: grid;
+    grid-auto-rows: 2px;
+    grid-gap: 2px;
+
+
+    .schedule-element {
+      padding: 8px;
+      border: 1px solid #f7f7f7;
+
+      .game-name {
+        color: darken($mario, 60%);
+      }
+
+      .runner-name {
+        color: #555;
+      }
+
+      .estimate {
+        display: block;
+        color: darken($mario, 15%);
+      }
+    }
+  }
+
+
+  .team {
+    flex: 1 1 0;
+    margin: 0 1px;
+
+    .name {
+      padding: 8px;
+      height: 50px
+    }
+  }
+}
