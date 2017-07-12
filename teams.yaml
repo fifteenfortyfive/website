@@ -57,7 +57,6 @@ teams:
     - Dickhiskhan
     - g0goTBC
     - KrisMarqz
-    - Monger7
     - SonicBoomSensei
     - Tebt
     - Wedc517
@@ -70,12 +69,9 @@ teams:
     - nerf
     - notvanni
     - SecretHumorMan
-    - SkiCrazedTeddy
     - TheMartonFi
-    - Yeswally1
 
   - blue:
-    - 5mon
     - Dact
     - FERANATOR115
     - KaptainKohl
@@ -84,6 +80,7 @@ teams:
     - Obiyo
     - SniperKing
     - SpikeVegeta
+    - Spudlyman
     - TheSludgyGamer
 
   - purple:
@@ -153,7 +150,7 @@ games:
     teams:
       - EmoArbiter
       - icupspeedruns
-      - Monger7
+      - Dickhiskhan
       - SecretHumorMan
       - Konditioner
       - GDO
@@ -174,7 +171,7 @@ games:
       - Gazco41
       - hsi_wu
       - Zacho
-      - Yeswally1
+      - nerf
       - MartyrrSenpai
       - Beuchi
 
@@ -195,7 +192,7 @@ games:
       - hsi_wu
       - Wedc517
       - nerf
-      - 5mon
+      - Spudlyman
       - WhitePaaws
 
   crash_1:
@@ -224,6 +221,6 @@ games:
       - burgerlands2
       - TOTOzigemm
       - KrisMarqz
-      - SkiCrazedTeddy
+      - notvanni
       - FERANATOR115
       - Robthegamer115
