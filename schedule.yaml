@@ -1,5 +1,5 @@
 Anything But Last:
-  - game: Crash 2
+  - game: Crash 1
     series: crash
     runner: burgerlands2
     estimate: '1:35'
@@ -29,7 +29,7 @@ Anything But Last:
     estimate: '5:30'
   - game: Crash 3
     series: crash
-    runner: Burgerlands2
+    runner: burgerlands2
     estimate: '2:30'
   - game: Crash 2
     series: crash
