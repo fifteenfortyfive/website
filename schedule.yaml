@@ -278,7 +278,7 @@ iateyourgrapes:
     estimate: '2:00'
   - game: Tooie
     series: rare
-    runner: GDO
+    runner: GarageDoorOpener
     estimate: '4:45'
   - game: DK64
     series: rare

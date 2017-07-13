@@ -85,7 +85,7 @@ teams:
 
   - purple:
     - Beuchi
-    - GDO
+    - GarageDoorOpener
     - hagginater
     - Jag
     - Nocturne_
@@ -153,7 +153,7 @@ games:
       - Dickhiskhan
       - SecretHumorMan
       - Konditioner
-      - GDO
+      - GarageDoorOpener
 
   donkey_kong_64:
     series: rare
