@@ -27,13 +27,13 @@ Anything But Last:
     series: rare
     runner: EmoArbiter
     estimate: '5:30'
-  - game: Crash 3
-    series: crash
-    runner: burgerlands2
-    estimate: '2:30'
   - game: Crash 2
     series: crash
     runner: HolySanctum
+    estimate: '2:30'
+  - game: Crash 3
+    series: crash
+    runner: burgerlands2
     estimate: '2:30'
   - game: Sunshine
     series: mario
@@ -218,7 +218,7 @@ Team LilZ:
   - game: Spyro 1
     series: spyro
     runner: MartyrrSenpai
-    estimate: '2:05'
+    estimate: '1:50'
   - game: DK64
     series: rare
     runner: Obiyo
