@@ -80,30 +80,30 @@ Team Mornin':
     series: crash
     runner: TOTOzigemm
     estimate: '2:00'
-  - game: Spyro 1
-    series: spyro
-    runner: hsi_wu
-    estimate: '2:00'
-  - game: Spyro 2
-    series: spyro
-    runner: TOTOzigemm
-    estimate: '2:00'
-  - game: DK64
-    series: rare
-    runner: theballaam96
-    estimate: '6:25'
-  - game: Crash 1
-    series: crash
-    runner: hsi_wu
-    estimate: '1:45'
   - game: Galaxy 1
     series: mario
     runner: StrongmanLin
     estimate: '7:00'
+  - game: Spyro 2
+    series: spyro
+    runner: TOTOzigemm
+    estimate: '2:00'
+  - game: Spyro 1
+    series: spyro
+    runner: hsi_wu
+    estimate: '2:00'
+  - game: Crash 1
+    series: crash
+    runner: hsi_wu
+    estimate: '1:45'
   - game: Kazooie
     series: rare
     runner: LazyBearBanjo
     estimate: '2:25'
+  - game: DK64
+    series: rare
+    runner: theballaam96
+    estimate: '6:25'
 The Happy Little Speed Runners:
   - game: Crash 2
     series: crash
