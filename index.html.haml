@@ -31,7 +31,7 @@
             %li
               %a(href="/teams.html") Teams
             %li
-              %a(href="/schedule.html") Schedule
+              %a(href="/results.html") Results
             %li
               %a(href="/rules.html") Rules
 
@@ -73,10 +73,18 @@
               13 games
             .stat
               %span.fa.fa-users
-              53 runners
+              50 runners
 
 
     .container
+      .row.banner
+        .col-sm-12
+          %p.lead Thank you to everyone who particpated in the first ever 1545. We had an amazing time, and hope you all enjoyed it as much as we did.
+
+          %p.lead The 1545 started backed in January as a small idea for a fun event to bring different speedrunning communities together. We never would have imagined back then how big this event would become, and it's all thanks to you.
+
+          %p.lead We're excited to see what the future of this event holds. After such a positive response from everyone involved, you can be sure we'll be back again, so stay tuned!
+
       .row
         .col-sm-4
           .page-header
@@ -97,7 +105,7 @@
           .schedule-box
             %ul.schedule
               - dates.each do |date, event|
-                %li.event{class: date < Date.today ? 'past' : 'future'}
+                %li.event.past
                   %span.event-date= date.strftime('%b %d')
                   %span.event-name= event
 

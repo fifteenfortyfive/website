@@ -83,6 +83,28 @@ footer {
   }
 }
 
+.banner {
+  margin-top: 30px;
+}
+
+
+.rankings {
+  width: 100%;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  .team {
+    margin: 5px 0;
+    font-size: 1.2em;
+
+    .runners {
+      display: block;
+      font-size: 0.7em;
+    }
+  }
+}
 
 .notice {
   font-style: italic;
