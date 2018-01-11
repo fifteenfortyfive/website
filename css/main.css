@@ -198,6 +198,104 @@ nav.navbar {
       padding: 8px;
       height: 50px; }
 
+.signup {
+  max-width: 640px;
+  margin: auto;
+  overflow-y: scroll;
+  border-radius: 4px;
+  margin-top: 6px; }
+
+.signup__game {
+  display: flex;
+  margin: 12px 0;
+  border-radius: 4px;
+  border: 1px solid #cfc6c6;
+  background-color: #fdf9f9;
+  overflow: hidden; }
+
+.signup__add-game {
+  width: 100%;
+  padding: 12px;
+  text-align: center;
+  font-size: 1.6em;
+  border: 1px solid #cfc6c6;
+  border-radius: 4px;
+  background-color: #fdf9f9; }
+
+.signup__add-game__icon {
+  margin-left: 12px; }
+
+@media only screen and (max-width: 640px) {
+  .signup__game,
+  .signup__add-game {
+    border-left: none;
+    border-right: none;
+    border-radius: 0; } }
+.signup__game__boxart {
+  flex: 0 0 96px; }
+  .signup__game__boxart img {
+    width: 100%;
+    z-index: -1; }
+
+.signup__game__content {
+  flex: 1 1 auto;
+  border-left: 1px solid #cfc6c6;
+  padding: 8px 12px; }
+
+.signup__game__header {
+  display: flex; }
+
+.signup__game__button {
+  flex: 0 0 30px;
+  text-align: center;
+  cursor: pointer; }
+
+.signup__game__name {
+  flex: 0 0 120px;
+  font-size: 1.2em;
+  font-weight: 700; }
+
+.signup__game__category {
+  flex: 1 1 70px;
+  text-align: right; }
+
+.signup__game__field {
+  padding: 4px 8px;
+  margin: 8px 0;
+  display: flex;
+  background-color: #faeced;
+  border-radius: 4px;
+  border: 1px solid #efc0c2;
+  line-height: 1.4em; }
+  .signup__game__field:last-child {
+    margin-bottom: 0; }
+
+.signup__game__label {
+  flex: 0 0 45px;
+  text-align: right;
+  font-weight: 400;
+  margin: 0;
+  padding-right: 8px;
+  padding-bottom: 1px;
+  border-right: 1px solid #efc0c2; }
+
+.signup__game__input {
+  flex: 1 1 auto;
+  background-color: inherit;
+  border: none;
+  padding: 0;
+  margin-left: 12px;
+  height: 1.4em;
+  min-width: 20px; }
+  .signup__game__input:focus {
+    outline: none; }
+
+.--left {
+  text-align: left; }
+
+.--right {
+  text-align: right; }
+
 body {
   font-family: "skolar-sans-latin", sans-serif;
   background-color: #fdf9f9;

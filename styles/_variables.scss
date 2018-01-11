@@ -4,6 +4,7 @@ $primary-bg-color:  $brand-primary;
 $white-bg-color:    lighten($brand-primary, 59%);
 
 $white-color:       lighten($brand-primary, 56%);
+$border-color:      lighten($brand-primary, 45%);
 $text-color:        darken($brand-primary,  20%);
 $text-muted:        lighten(desaturate($text-color, 50%), 60%);
 
