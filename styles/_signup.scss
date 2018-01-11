@@ -4,6 +4,14 @@
   overflow-y: scroll;
   border-radius: 4px;
   margin-top: 6px;
+
+  h3 {
+    padding: 0 15px;
+  }
+
+  p {
+    padding: 0 15px;
+  }
 }
 
 .signup__game {
@@ -16,6 +24,7 @@
 }
 
 .signup__add-game {
+  display: block;
   width: 100%;
   padding: 12px;
   text-align: center;
@@ -23,15 +32,36 @@
   border: 1px solid $text-muted;
   border-radius: 4px;
   background-color: $white-bg-color;
+
+  &:hover {
+    background-color: darken($white-bg-color, 3%);
+    text-decoration: none;
+  }
 }
 
-.signup__add-game__icon {
-  margin-left: 12px;
+.signup__submit {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  text-align: center;
+  font-size: 1.6em;
+  border: 1px solid $text-muted;
+  border-radius: 4px;
+  background-color: $brand-primary;
+  color: $white-color;
+
+  &:hover {
+    color: darken($white-color, 10%);
+    text-decoration: none;
+    cursor: pointer;
+  }
 }
 
 @media only screen and (max-width: 640px) {
   .signup__game,
-  .signup__add-game {
+  .signup__add-game,
+  .signup__submit {
     border-left: none;
     border-right: none;
     border-radius: 0;
@@ -75,7 +105,7 @@
   text-align: right;
 }
 
-.signup__game__field {
+.signup-field {
   padding: 4px 8px;
   margin: 8px 0;
   display: flex;
@@ -87,6 +117,13 @@
   &:last-child {
     margin-bottom: 0;
   }
+
+  &.signup-field--full-width {
+    width: 100%;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
 }
 
 .signup__game__label {
@@ -97,6 +134,10 @@
   padding-right: 8px;
   padding-bottom: 1px;
   border-right: 1px solid $border-color;
+
+  &.signup__game__label--large {
+    flex: 0 0 120px;
+  }
 }
 
 .signup__game__input {
