@@ -71,6 +71,7 @@
 
 .signup__game__boxart {
   flex: 0 0 96px;
+  height: 128px;
 
   img {
     width: 100%;
@@ -124,6 +125,10 @@
     border-right: none;
     border-radius: 0;
   }
+
+  .signup__game__input {
+    margin-left: 12px;
+  }
 }
 
 .signup__game__label {
@@ -145,12 +150,15 @@
   background-color: inherit;
   border: none;
   padding: 0;
-  margin-left: 12px;
   height: 1.4em;
   min-width: 20px;
 
   &:focus {
     outline: none;
+  }
+
+  &::placeholder {
+    color: $text-muted;
   }
 }
 

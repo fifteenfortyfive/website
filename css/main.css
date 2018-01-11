@@ -254,7 +254,8 @@ nav.navbar {
     border-right: none;
     border-radius: 0; } }
 .signup__game__boxart {
-  flex: 0 0 96px; }
+  flex: 0 0 96px;
+  height: 128px; }
   .signup__game__boxart img {
     width: 100%;
     z-index: -1; }
@@ -296,6 +297,8 @@ nav.navbar {
     border-left: none;
     border-right: none;
     border-radius: 0; }
+  .signup-field .signup__game__input {
+    margin-left: 12px; }
 
 .signup__game__label {
   flex: 0 0 55px;
@@ -313,11 +316,12 @@ nav.navbar {
   background-color: inherit;
   border: none;
   padding: 0;
-  margin-left: 12px;
   height: 1.4em;
   min-width: 20px; }
   .signup__game__input:focus {
     outline: none; }
+  .signup__game__input::placeholder {
+    color: #cfc6c6; }
 
 .--left {
   text-align: left; }
