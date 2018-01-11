@@ -261,11 +261,11 @@ nav.navbar {
 
 .signup__game__content {
   flex: 1 1 auto;
-  border-left: 1px solid #cfc6c6;
-  padding: 8px 12px; }
+  border-left: 1px solid #cfc6c6; }
 
 .signup__game__header {
-  display: flex; }
+  display: flex;
+  padding: 8px 12px 0 12px; }
 
 .signup__game__button {
   flex: 0 0 30px;
@@ -298,7 +298,7 @@ nav.navbar {
     border-radius: 0; }
 
 .signup__game__label {
-  flex: 0 0 45px;
+  flex: 0 0 55px;
   text-align: right;
   font-weight: 400;
   margin: 0;

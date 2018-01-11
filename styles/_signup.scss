@@ -81,11 +81,11 @@
 .signup__game__content {
   flex: 1 1 auto;
   border-left: 1px solid $text-muted;
-  padding: 8px 12px;
 }
 
 .signup__game__header {
   display: flex;
+  padding: 8px 12px 0 12px;
 }
 
 .signup__game__button {
@@ -127,7 +127,7 @@
 }
 
 .signup__game__label {
-  flex: 0 0 45px;
+  flex: 0 0 55px;
   text-align: right;
   font-weight: 400;
   margin: 0;
