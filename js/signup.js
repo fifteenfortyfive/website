@@ -15,10 +15,18 @@ var AVAILABLE_GAMES = [
 ];
 
 var GAME_CARD_TEMPLATE = document.querySelector('.signup__game--blank');
+var FIND_GAME_INPUT = document.querySelector('.signup__find-game__input');
 var GAME_SELECTION_CONTAINER = document.querySelector('.signup__selected-games');
 
 
-horsey(document.querySelector('.signup__find-game__input'), {
+// Sortability
+dragula([GAME_SELECTION_CONTAINER]);
+// Disable scrolling while dragging on mobile.
+window.addEventListener('touchmove', function() {});
+
+
+// Search input
+horsey(FIND_GAME_INPUT, {
   source: [{ list: AVAILABLE_GAMES }],
   getText: 'name',
   getValue: 'id',
@@ -41,7 +49,7 @@ horsey(document.querySelector('.signup__find-game__input'), {
 // Add a Game button handler
 document.querySelector(".signup__find-game__add-button")
         .addEventListener('click', function(evt) {
-    var game_name = document.querySelector('.signup__find-game__input').value;
+    var game_name = FIND_GAME_INPUT.value;
     var game_data = AVAILABLE_GAMES.find(function(e) { return e.name == game_name; });
     console.log(game_data);
 
@@ -56,4 +64,5 @@ document.querySelector(".signup__find-game__add-button")
     new_game.querySelector(".signup__game__category").innerHTML = game_data.category;
 
     GAME_SELECTION_CONTAINER.appendChild(new_game);
+    FIND_GAME_INPUT.value = '';
 });
