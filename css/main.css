@@ -296,12 +296,6 @@ nav.navbar {
     text-decoration: none;
     cursor: pointer; }
 
-@media only screen and (max-width: 640px) {
-  .signup__game,
-  .signup__submit {
-    border-left: none;
-    border-right: none;
-    border-radius: 0; } }
 .signup__game__boxart {
   flex: 0 0 96px;
   height: 128px; }
@@ -412,6 +406,25 @@ nav.navbar {
 .--right {
   text-align: right; }
 
+@media only screen and (max-width: 640px) {
+  .signup__game,
+  .signup__submit {
+    border-left: none;
+    border-right: none;
+    border-radius: 0; }
+
+  .signup__find-game {
+    width: 100%; }
+
+  .signup__find-game__input {
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0; }
+
+  .signup__find-game__add-button {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0; } }
 .gu-mirror {
   position: fixed !important;
   margin: 0 !important;
@@ -440,6 +453,9 @@ body {
   color: #4f1417;
   line-height: 1.6em;
   font-size: 16px; }
+
+p {
+  margin-bottom: 12px; }
 
 a {
   color: #df8387;

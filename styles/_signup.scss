@@ -47,15 +47,6 @@
   }
 }
 
-@media only screen and (max-width: 640px) {
-  .signup__game,
-  .signup__submit {
-    border-left: none;
-    border-right: none;
-    border-radius: 0;
-  }
-}
-
 
 .signup__game__boxart {
   flex: 0 0 96px;
@@ -198,6 +189,33 @@
 
 .--right {
   text-align: right;
+}
+
+
+
+@media only screen and (max-width: 640px) {
+  .signup__game,
+  .signup__submit {
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+
+  .signup__find-game {
+    width: 100%;
+  }
+
+  .signup__find-game__input {
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .signup__find-game__add-button {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 }
 
 
