@@ -1,3 +1,6 @@
+.vertical-space-u2 {
+  height: 24px; }
+
 .sey-container {
   display: none;
   position: absolute;
@@ -276,7 +279,7 @@ nav.navbar {
   display: block;
   width: 100%;
   padding: 12px;
-  margin-top: 36px;
+  margin-top: 12px;
   text-align: center;
   font-size: 1.6em;
   border: 1px solid #cfc6c6;

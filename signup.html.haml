@@ -106,14 +106,6 @@
               %label.signup__game__label.signup__game__label--large Timezone
               %input.signup__game__input(placeholder="America/New York")
 
-            .signup-field.signup-field--full-width.signup__runner-info__max-games
-              %label.signup__game__label.signup__game__label--large Max games
-              %input.signup__game__input(placeholder="3")
-
-            .signup-field.signup-field--full-width.signup__runner-info__max-time
-              %label.signup__game__label.signup__game__label--large Max time
-              %input.signup__game__input(placeholder="00:00:00")
-
           .signup__team-requests
             %h3 Team Requests
 
@@ -159,9 +151,32 @@
               %input.signup__find-game__input
               %a.signup__find-game__add-button Add Game
 
+            .vertical-space-u2
 
-          %a.signup__submit
-            Submit
+            %p
+              If you have any limitations on how many games you are willing to run, or how much time you are willing to spend on runs during the event, use these fields to let us know.
+
+            %p
+              If you are okay with running all of the games you submitted, or have no time limits, leave these fields blank.
+
+            .signup-field.signup-field--full-width.signup__runner-info__max-games
+              %label.signup__game__label.signup__game__label--large Max games
+              %input.signup__game__input(placeholder="3")
+
+            .signup-field.signup-field--full-width.signup__runner-info__max-time
+              %label.signup__game__label.signup__game__label--large Max time
+              %input.signup__game__input(placeholder="00:00:00")
+
+          .signup__submission
+            %h3 Submission
+
+            %p
+              If you are happy with all of the information you've entered above. Go ahead and hit the submit button!
+
+            %p
+              Don't worry if you aren't 100% confident about your times or the games you are submitting, you'll be able to edit them after submitting.
+            %a.signup__submit
+              Submit
 
     %script(src="js/signup.js")
 
