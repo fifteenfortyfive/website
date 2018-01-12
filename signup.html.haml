@@ -131,24 +131,24 @@
             %p
               %em Only list games that you will be willing to run. While you may not end up running all of the games you submit, we cannot guarantee which runs you will end up with.
 
-            .signup__game.signup__game--blank
-              .signup__game__boxart
-                %img(src="res/crash3.jpg")
-              .signup__game__content
-                .signup__game__header
-                  .signup__game__name Crash 3
-                  .signup__game__category 105%
-                  .signup__game__button
-                    %span.fas.fa-times
-                .signup-field.signup-field--full-width.signup__game__pb
-                  %label.signup__game__label PB
-                  %input.signup__game__input(placeholder="00:00:00")
-                .signup-field.signup-field--full-width.signup__game__estimate
-                  %label.signup__game__label EST
-                  %input.signup__game__input(placeholder="00:00:00")
+            .signup__selected-games
+              .signup__game.signup__game--blank
+                .signup__game__boxart
+                .signup__game__content
+                  .signup__game__header
+                    .signup__game__name
+                    .signup__game__category
+                    .signup__game__button
+                      %span.fas.fa-times
+                  .signup-field.signup-field--full-width.signup__game__pb
+                    %label.signup__game__label PB
+                    %input.signup__game__input(placeholder="00:00:00")
+                  .signup-field.signup-field--full-width.signup__game__estimate
+                    %label.signup__game__label EST
+                    %input.signup__game__input(placeholder="00:00:00")
 
             .signup__find-game
-              %input.signup__find-game__input
+              %input.signup__find-game__input(placeholder="Game name...")
               %a.signup__find-game__add-button Add Game
 
             .vertical-space-u2

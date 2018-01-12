@@ -21,6 +21,10 @@
   border: 1px solid $text-muted;
   background-color: $white-bg-color;
   overflow: hidden;
+
+  &--blank {
+    display: none;
+  }
 }
 
 .signup__submit {
@@ -81,7 +85,7 @@
 }
 
 .signup__game__name {
-  flex: 0 0 120px;
+  flex: 0 0 160px;
   font-size: 1.2em;
   font-weight: 700;
 }

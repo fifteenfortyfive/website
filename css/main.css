@@ -277,6 +277,8 @@ nav.navbar {
   border: 1px solid #cfc6c6;
   background-color: #fdf9f9;
   overflow: hidden; }
+  .signup__game--blank {
+    display: none; }
 
 .signup__submit {
   display: block;
@@ -322,7 +324,7 @@ nav.navbar {
   cursor: pointer; }
 
 .signup__game__name {
-  flex: 0 0 120px;
+  flex: 0 0 160px;
   font-size: 1.2em;
   font-weight: 700; }
 
