@@ -7,7 +7,6 @@ $white-color:       lighten($brand-primary, 56%);
 $border-color:      lighten($brand-primary, 45%);
 $text-color:        darken($brand-primary,  20%);
 $text-muted:        lighten(desaturate($text-color, 50%), 60%);
-// $text-muted:        lighten(desaturate($text-color, 50%), 60%);
 
 $navbar-color:          $white-color;
 $navbar-bg-color:       darken($brand-primary,    5%);

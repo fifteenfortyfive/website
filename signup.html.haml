@@ -12,7 +12,7 @@
     %link(rel="stylesheet" href="css/bootstrap.min.css")
     %link(rel="stylesheet" href="css/main.css?")
 
-    %script(src="js/signup.js")
+    %script(src="js/horsey.js")
     %script(defer src="https://use.fontawesome.com/releases/v5.0.3/js/all.js")
 
 
@@ -42,7 +42,6 @@
               %a(href="https://twitch.tv/1545race" target="_blank") Twitch
             %li
               %a(href="https://twitter.com/1545race" target="_blank") Twitter
-
 
 
     .container
@@ -81,7 +80,6 @@
               %label.signup__game__label.signup__game__label--large Password
               %input.signup__game__input(type="password")
 
-
           .signup__runner-info
             %h3 Runner Info
 
@@ -116,7 +114,6 @@
               %label.signup__game__label.signup__game__label--large Max time
               %input.signup__game__input(placeholder="00:00:00")
 
-
           .signup__team-requests
             %h3 Team Requests
 
@@ -133,9 +130,8 @@
               %label.signup__game__label.signup__game__label--large Avoid
               %input.signup__game__input(placeholder="Someone random, i don't know")
 
-
           .signup__game-selection
-            %h3 Game Selection
+            %h3 Game Submissions
 
             %p
               Let us know which games you'd like to run for the event. Drag the game icon on the left to re-order the games by your preference in running them, with your most preferred game at the top of the list.
@@ -143,199 +139,7 @@
             %p
               %em Only list games that you will be willing to run. While you may not end up running all of the games you submit, we cannot guarantee which runs you will end up with.
 
-            .signup__game
-              .signup__game__boxart
-                %img(src="res/sm64.jpg")
-              .signup__game__content
-                .signup__game__header
-                  .signup__game__name SM 64
-                  .signup__game__category 120 Star
-                  .signup__game__button
-                    %span.fas.fa-times
-                .signup-field.signup-field--full-width.signup__game__pb
-                  %label.signup__game__label PB
-                  %input.signup__game__input(placeholder="00:00:00")
-                .signup-field.signup-field--full-width.signup__game__estimate
-                  %label.signup__game__label EST
-                  %input.signup__game__input(placeholder="00:00:00")
-
-            .signup__game
-              .signup__game__boxart
-                %img(src="res/sms.jpg")
-              .signup__game__content
-                .signup__game__header
-                  .signup__game__name Sunshine
-                  .signup__game__category 120 Shine
-                  .signup__game__button
-                    %span.fas.fa-times
-                .signup-field.signup-field--full-width.signup__game__pb
-                  %label.signup__game__label PB
-                  %input.signup__game__input(placeholder="00:00:00")
-                .signup-field.signup-field--full-width.signup__game__estimate
-                  %label.signup__game__label EST
-                  %input.signup__game__input(placeholder="00:00:00")
-
-            .signup__game
-              .signup__game__boxart
-                %img(src="res/smg1.jpg")
-              .signup__game__content
-                .signup__game__header
-                  .signup__game__name Galaxy
-                  .signup__game__category 120 Star
-                  .signup__game__button
-                    %span.fas.fa-times
-                .signup-field.signup-field--full-width.signup__game__pb
-                  %label.signup__game__label PB
-                  %input.signup__game__input(placeholder="00:00:00")
-                .signup-field.signup-field--full-width.signup__game__estimate
-                  %label.signup__game__label EST
-                  %input.signup__game__input(placeholder="00:00:00")
-
-            .signup__game
-              .signup__game__boxart
-                %img(src="res/smg2.jpg")
-              .signup__game__content
-                .signup__game__header
-                  .signup__game__name Galaxy 2
-                  .signup__game__category 242 Star
-                  .signup__game__button
-                    %span.fas.fa-times
-                .signup-field.signup-field--full-width.signup__game__pb
-                  %label.signup__game__label PB
-                  %input.signup__game__input(placeholder="00:00:00")
-                .signup-field.signup-field--full-width.signup__game__estimate
-                  %label.signup__game__label EST
-                  %input.signup__game__input(placeholder="00:00:00")
-
-            .signup__game
-              .signup__game__boxart
-                %img(src="res/kazooie.jpg")
-              .signup__game__content
-                .signup__game__header
-                  .signup__game__name Kazooie
-                  .signup__game__category 100%
-                  .signup__game__button
-                    %span.fas.fa-times
-                .signup-field.signup-field--full-width.signup__game__pb
-                  %label.signup__game__label PB
-                  %input.signup__game__input(placeholder="00:00:00")
-                .signup-field.signup-field--full-width.signup__game__estimate
-                  %label.signup__game__label EST
-                  %input.signup__game__input(placeholder="00:00:00")
-
-            .signup__game
-              .signup__game__boxart
-                %img(src="res/tooie.jpg")
-              .signup__game__content
-                .signup__game__header
-                  .signup__game__name Tooie
-                  .signup__game__category 100%
-                  .signup__game__button
-                    %span.fas.fa-times
-                .signup-field.signup-field--full-width.signup__game__pb
-                  %label.signup__game__label PB
-                  %input.signup__game__input(placeholder="00:00:00")
-                .signup-field.signup-field--full-width.signup__game__estimate
-                  %label.signup__game__label EST
-                  %input.signup__game__input(placeholder="00:00:00")
-
-            .signup__game
-              .signup__game__boxart
-                %img(src="res/dk64.jpg")
-              .signup__game__content
-                .signup__game__header
-                  .signup__game__name DK64
-                  .signup__game__category 101%
-                  .signup__game__button
-                    %span.fas.fa-times
-                .signup-field.signup-field--full-width.signup__game__pb
-                  %label.signup__game__label PB
-                  %input.signup__game__input(placeholder="00:00:00")
-                .signup-field.signup-field--full-width.signup__game__estimate
-                  %label.signup__game__label EST
-                  %input.signup__game__input(placeholder="00:00:00")
-
-            .signup__game
-              .signup__game__boxart
-                %img(src="res/spyro1.jpg")
-              .signup__game__content
-                .signup__game__header
-                  .signup__game__name Spyro 1
-                  .signup__game__category 120%
-                  .signup__game__button
-                    %span.fas.fa-times
-                .signup-field.signup-field--full-width.signup__game__pb
-                  %label.signup__game__label PB
-                  %input.signup__game__input(placeholder="00:00:00")
-                .signup-field.signup-field--full-width.signup__game__estimate
-                  %label.signup__game__label EST
-                  %input.signup__game__input(placeholder="00:00:00")
-
-            .signup__game
-              .signup__game__boxart
-                %img(src="res/spyro2.jpg")
-              .signup__game__content
-                .signup__game__header
-                  .signup__game__name Spyro 2
-                  .signup__game__category 100%
-                  .signup__game__button
-                    %span.fas.fa-times
-                .signup-field.signup-field--full-width.signup__game__pb
-                  %label.signup__game__label PB
-                  %input.signup__game__input(placeholder="00:00:00")
-                .signup-field.signup-field--full-width.signup__game__estimate
-                  %label.signup__game__label EST
-                  %input.signup__game__input(placeholder="00:00:00")
-
-            .signup__game
-              .signup__game__boxart
-                %img(src="res/spyro3.jpg")
-              .signup__game__content
-                .signup__game__header
-                  .signup__game__name Spyro 3
-                  .signup__game__category 117%
-                  .signup__game__button
-                    %span.fas.fa-times
-                .signup-field.signup-field--full-width.signup__game__pb
-                  %label.signup__game__label PB
-                  %input.signup__game__input(placeholder="00:00:00")
-                .signup-field.signup-field--full-width.signup__game__estimate
-                  %label.signup__game__label EST
-                  %input.signup__game__input(placeholder="00:00:00")
-
-            .signup__game
-              .signup__game__boxart
-                %img(src="res/crash1.jpg")
-              .signup__game__content
-                .signup__game__header
-                  .signup__game__name Crash 1
-                  .signup__game__category 100%
-                  .signup__game__button
-                    %span.fas.fa-times
-                .signup-field.signup-field--full-width.signup__game__pb
-                  %label.signup__game__label PB
-                  %input.signup__game__input(placeholder="00:00:00")
-                .signup-field.signup-field--full-width.signup__game__estimate
-                  %label.signup__game__label EST
-                  %input.signup__game__input(placeholder="00:00:00")
-
-            .signup__game
-              .signup__game__boxart
-                %img(src="res/crash2.jpg")
-              .signup__game__content
-                .signup__game__header
-                  .signup__game__name Crash 2
-                  .signup__game__category 100%
-                  .signup__game__button
-                    %span.fas.fa-times
-                .signup-field.signup-field--full-width.signup__game__pb
-                  %label.signup__game__label PB
-                  %input.signup__game__input(placeholder="00:00:00")
-                .signup-field.signup-field--full-width.signup__game__estimate
-                  %label.signup__game__label EST
-                  %input.signup__game__input(placeholder="00:00:00")
-
-            .signup__game
+            .signup__game.signup__game--blank
               .signup__game__boxart
                 %img(src="res/crash3.jpg")
               .signup__game__content
@@ -351,28 +155,15 @@
                   %label.signup__game__label EST
                   %input.signup__game__input(placeholder="00:00:00")
 
-            .signup__game.signup__game--blank
-              .signup__game__boxart
-              .signup__game__content
-                .signup__game__header
-                  %input.signup__game__input.signup__game__name(placeholder="Type game name...")
-                  .signup__game__category 105%
-                  .signup__game__button
-                    %span.fas.fa-times
-                .signup-field.signup-field--full-width.signup__game__pb
-                  %label.signup__game__label PB
-                  %input.signup__game__input(placeholder="00:00:00")
-                .signup-field.signup-field--full-width.signup__game__estimate
-                  %label.signup__game__label EST
-                  %input.signup__game__input(placeholder="00:00:00")
-
-            %a.signup__add-game
-              Add a Game
-
+            .signup__find-game
+              %input.signup__find-game__input
+              %a.signup__find-game__add-button Add Game
 
 
           %a.signup__submit
             Submit
+
+    %script(src="js/signup.js")
 
 
     %footer
