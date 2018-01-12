@@ -20,7 +20,11 @@ var GAME_SELECTION_CONTAINER = document.querySelector('.signup__selected-games')
 
 
 // Sortability
-dragula([GAME_SELECTION_CONTAINER]);
+dragula([GAME_SELECTION_CONTAINER], {
+  moves: function (el, source, handle, sibling) {
+    return handle.closest('.handle') !== null;
+  },
+});
 // Disable scrolling while dragging on mobile.
 window.addEventListener('touchmove', function() {});
 

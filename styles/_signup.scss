@@ -64,6 +64,11 @@
   img {
     width: 100%;
     z-index: -1;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
   }
 }
 
@@ -77,15 +82,8 @@
   padding: 8px 12px 0 12px;
 }
 
-.signup__game__button {
-  flex: 0 0 30px;
-  text-align: center;
-  margin-left: 20px;
-  cursor: pointer;
-}
-
 .signup__game__name {
-  flex: 0 0 160px;
+  flex: 1 1 auto;
   font-size: 1.2em;
   font-weight: 700;
 }
@@ -93,6 +91,13 @@
 .signup__game__category {
   flex: 1 1 70px;
   text-align: right;
+}
+
+.signup__game__button {
+  flex: 0 0 30px;
+  text-align: center;
+  margin-left: 20px;
+  cursor: pointer;
 }
 
 .signup-field {
