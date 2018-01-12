@@ -83,5 +83,30 @@ document.querySelector(".signup__find-game__add-button")
 // Submit
 document.querySelector(".signup__submit")
         .addEventListener('click', function(evt) {
-    console.log("Submitting");
+  var game_nodes = Array.prototype.slice.call(document.querySelectorAll('.signup__game:not(.signup__game--blank)'));
+  var game_selections = game_nodes.map(function(el) {
+    return {
+      name: el.querySelector('.signup__game__name').innerHTML,
+      pb:   el.querySelector('.signup__game__pb .signup__game__input').value,
+      est:  el.querySelector('.signup__game__estimate .signup__game__input').value
+    }
+  });
+
+  var submission_data = {
+    runner_info: {
+      discord:  document.querySelector('.signup__runner-info__discord .signup__game__input').value,
+      twitch:   document.querySelector('.signup__runner-info__twitch .signup__game__input').value,
+      twitter:  document.querySelector('.signup__runner-info__twitter .signup__game__input').value,
+      timezone: document.querySelector('.signup__runner-info__timezone .signup__game__input').value
+    },
+    pair_with:  document.querySelector('.signup__team-requests__pair .signup__game__input').value,
+    avoid:      document.querySelector('.signup__team-requests__avoid .signup__game__input').value,
+    limits: {
+      games:  document.querySelector('.signup__limits__games .signup__game__input').value,
+      time:  document.querySelector('.signup__limits__time .signup__game__input').value
+    },
+    games: game_selections
+  };
+
+  console.log(submission_data);
 });
