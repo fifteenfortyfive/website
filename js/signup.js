@@ -21,7 +21,7 @@ var GAME_SELECTION_CONTAINER = document.querySelector('.signup__selected-games')
 
 // Sortability
 dragula([GAME_SELECTION_CONTAINER], {
-  moves: function (el, source, handle, sibling) {
+  moves: function(el, source, handle, sibling) {
     return handle.closest('.handle') !== null;
   },
 });
@@ -30,8 +30,10 @@ window.addEventListener('touchmove', function() {});
 
 
 // Search input
+var games_not_selected = AVAILABLE_GAMES.slice(0);
+
 horsey(FIND_GAME_INPUT, {
-  source: [{ list: AVAILABLE_GAMES }],
+  source: [{ list: games_not_selected }],
   getText: 'name',
   getValue: 'id',
   renderItem: function (li, suggestion) {
@@ -57,16 +59,29 @@ document.querySelector(".signup__find-game__add-button")
     var game_data = AVAILABLE_GAMES.find(function(e) { return e.name == game_name; });
     console.log(game_data);
 
+    // Create a new game card from the template.
     var new_game = GAME_CARD_TEMPLATE.cloneNode(true);
     new_game.classList.remove('signup__game--blank');
 
+    // Add the game-specific content to the new game card.
     var boxart = document.createElement('img');
     boxart.src = 'res/'+game_data.id+'.jpg';
     new_game.querySelector(".signup__game__boxart").appendChild(boxart);
-
     new_game.querySelector(".signup__game__name").innerHTML = game_data.short_name;
     new_game.querySelector(".signup__game__category").innerHTML = game_data.category;
 
+    // Insert the new game card into the DOM.
     GAME_SELECTION_CONTAINER.appendChild(new_game);
+
+    // Reset the input and remove the added game from the list of available games.
     FIND_GAME_INPUT.value = '';
+    var idx = games_not_selected.indexOf(game_data);
+    games_not_selected.splice(idx, 1);
+});
+
+
+// Submit
+document.querySelector(".signup__submit")
+        .addEventListener('click', function(evt) {
+    console.log("Submitting");
 });
