@@ -5,6 +5,7 @@ require "crecto"
 
 require "./repo.cr"
 
+require "./models/account.cr"
 require "./models/signup.cr"
 
 require "./controllers/accounts_controller.cr"

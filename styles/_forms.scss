@@ -1,0 +1,85 @@
+.form {
+  max-width: 640px;
+  margin: auto;
+  border-radius: 4px;
+  margin-top: 6px;
+
+  h3 {
+    padding: 0 15px;
+  }
+
+  p {
+    padding: 0 15px;
+  }
+}
+
+
+.form__submit {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  text-align: center;
+  font-size: 1.6em;
+  border: 1px solid $text-muted;
+  border-radius: 4px;
+  background-color: $brand-primary;
+  color: $white-color;
+
+  &:hover,
+  &:active {
+    color: darken($white-color, 10%);
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+.form__field {
+  width: 100%;
+  padding: 4px 8px;
+  margin: 8px 0;
+  display: flex;
+  background-color: $white-color;
+  border-radius: 4px;
+  border: 1px solid $border-color;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  line-height: 1.4em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form__input {
+  flex: 1 1 auto;
+  background-color: inherit;
+  border: none;
+  padding: 0;
+  margin-left: 12px;
+  height: 1.4em;
+  min-width: 20px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: $text-muted;
+  }
+}
+
+.form__label {
+  flex: 0 0 55px;
+  text-align: right;
+  font-weight: 400;
+  margin: 0;
+  padding-right: 8px;
+  padding-bottom: 1px;
+  border-right: 1px solid $border-color;
+
+  &--large {
+    flex: 0 0 120px;
+  }
+}

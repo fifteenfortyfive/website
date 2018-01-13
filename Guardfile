@@ -27,6 +27,6 @@ guard :haml do
   watch(/^.+(\.html\.haml)$/)
 end
 
-guard 'sass' do
+guard 'sass', output: 'public/css' do
   watch(%r{^styles/[^_](.+\.s[ac]ss)$})
 end
