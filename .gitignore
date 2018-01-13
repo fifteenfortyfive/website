@@ -1,1 +1,11 @@
 .sass-cache
+.shards
+
+/repo_config.yaml
+/fifteenfortyfive
+/fifteenfortyfive.dwarf
+
+/lib/
+/dev/
+/sentry
+/sentry.dwarf

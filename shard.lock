@@ -1,0 +1,30 @@
+version: 1.0
+shards:
+  crecto:
+    github: crecto/crecto
+    version: 0.8.2
+
+  db:
+    github: crystal-lang/crystal-db
+    version: 0.4.3
+
+  kemal:
+    github: kemalcr/kemal
+    version: 0.22.0
+
+  kilt:
+    github: jeromegn/kilt
+    version: 0.4.0
+
+  pg:
+    github: will/crystal-pg
+    version: 0.14.0
+
+  radix:
+    github: luislavena/radix
+    version: 0.3.8
+
+  slang:
+    github: jeromegn/slang
+    version: 1.7.1
+

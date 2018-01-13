@@ -93,20 +93,33 @@ document.querySelector(".signup__submit")
   });
 
   var submission_data = {
-    runner_info: {
-      discord:  document.querySelector('.signup__runner-info__discord .signup__game__input').value,
-      twitch:   document.querySelector('.signup__runner-info__twitch .signup__game__input').value,
-      twitter:  document.querySelector('.signup__runner-info__twitter .signup__game__input').value,
-      timezone: document.querySelector('.signup__runner-info__timezone .signup__game__input').value
-    },
-    pair_with:  document.querySelector('.signup__team-requests__pair .signup__game__input').value,
+    discord:    document.querySelector('.signup__runner-info__discord .signup__game__input').value,
+    twitch:     document.querySelector('.signup__runner-info__twitch .signup__game__input').value,
+    twitter:    document.querySelector('.signup__runner-info__twitter .signup__game__input').value,
+    timezone:   document.querySelector('.signup__runner-info__timezone .signup__game__input').value,
+    pair:       document.querySelector('.signup__team-requests__pair .signup__game__input').value,
     avoid:      document.querySelector('.signup__team-requests__avoid .signup__game__input').value,
-    limits: {
-      games:  document.querySelector('.signup__limits__games .signup__game__input').value,
-      time:  document.querySelector('.signup__limits__time .signup__game__input').value
-    },
-    games: game_selections
+    max_games:  document.querySelector('.signup__limits__games .signup__game__input').value,
+    max_time:   document.querySelector('.signup__limits__time .signup__game__input').value,
+    games:      game_selections
   };
 
-  console.log(submission_data);
+
+  nanoajax.ajax({
+          url: '/signup/submit',
+          method: 'POST',
+          headers: {
+            "Content-Type": 'application/json'
+          },
+          body: JSON.stringify(submission_data)
+        }, function (code, responseText, request) {
+    switch(code) {
+      case 200:
+        console.log("submitted successfully.");
+        break;
+      default:
+        console.log("sorry, errored.");
+        break;
+    }
+  });
 });

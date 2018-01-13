@@ -1,0 +1,20 @@
+name: fifteenfortyfive
+version: 0.1.0
+license: MIT
+authors:
+  - Jon Egeland <jonegeland@gmail.com>
+
+description: |
+  Home page and management site for the 1545.
+
+
+dependencies:
+  pg:
+    github: will/crystal-pg
+    version: 0.14.0
+  kemal:
+    github: kemalcr/kemal
+  slang:
+    github: jeromegn/slang
+  crecto:
+    github: crecto/crecto
