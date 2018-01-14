@@ -13,7 +13,7 @@ html
     link rel="stylesheet" href="/css/main.css?"
 
     script src="/js/nanoajax.min.js"
-    script(defer=true src="https://use.fontawesome.com/releases/v5.0.3/js/all.js")
+    script(src="https://use.fontawesome.com/releases/v5.0.3/js/all.js")
 
 
   body
