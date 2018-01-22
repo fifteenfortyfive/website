@@ -2,13 +2,19 @@
 @import "_util.scss";
 @import "_horsey.scss";
 
+@import "_account-box.scss";
 @import "_nav.scss";
 @import "_landing_page.scss";
 @import "_teams.scss";
 @import "_schedule.scss";
 @import "_forms.scss";
 @import "_hero-box.scss";
+@import "_notif-banner.scss";
 @import "_signups.scss";
+
+html {
+  font-size: 14px;
+}
 
 
 body {

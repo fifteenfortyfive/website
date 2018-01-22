@@ -1,0 +1,19 @@
+.account-box {
+  padding: 12px;
+}
+
+.account-box__name {
+  word-break: break-all;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.account-box__social {
+  font-size: 1.2rem;
+  margin: 4px 0;
+}
+
+.account-box__social__icon {
+  margin-right: 4px;
+}

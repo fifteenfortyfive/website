@@ -38,7 +38,7 @@
 
 .sey-item:hover,
 .sey-selected {
-  background-color: #faeced;
+  background-color: #fcf4f5;
   color: #4f1417; }
 
 .sey-char-highlight {
@@ -59,19 +59,35 @@
 .autocomplete__content {
   padding: 12px; }
 
+.account-box {
+  padding: 12px; }
+
+.account-box__name {
+  word-break: break-all;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 12px; }
+
+.account-box__social {
+  font-size: 1.2rem;
+  margin: 4px 0; }
+
+.account-box__social__icon {
+  margin-right: 4px; }
+
 nav.navbar {
   background-color: #8c2429;
   border-color: #771f23;
-  color: #faeced; }
+  color: #fcf4f5; }
   nav.navbar .navbar-brand {
-    color: #faeced;
+    color: #fcf4f5;
     font-size: 20px;
     margin-top: -1px; }
   nav.navbar .navbar-nav,
   nav.navbar .navbar-nav li,
   nav.navbar .navbar-nav li a {
     font-size: 16px;
-    color: #faeced; }
+    color: #fcf4f5; }
   nav.navbar .navbar-nav li:hover {
     background-color: #98272d;
     color: white; }
@@ -87,7 +103,7 @@ nav.navbar {
 .titlebar {
   padding: 60px 0px;
   background-color: #a0292f;
-  color: #faeced;
+  color: #fcf4f5;
   font-family: "proxima-nova", sans-serif; }
   .titlebar h1 {
     margin: 0 0 10px -4px;
@@ -102,7 +118,7 @@ nav.navbar {
       line-height: 1.3em;
       margin: 0; }
   .titlebar a {
-    color: #faeced;
+    color: #fcf4f5;
     font-weight: 900; }
   .titlebar .right {
     margin-top: 20px;
@@ -260,7 +276,6 @@ nav.navbar {
       height: 50px; }
 
 .form {
-  max-width: 640px;
   margin: auto;
   border-radius: 4px;
   margin-top: 6px; }
@@ -279,9 +294,9 @@ nav.navbar {
   border: 1px solid #cfc6c6;
   border-radius: 4px;
   background-color: #a0292f;
-  color: #faeced; }
+  color: #fcf4f5; }
   .form__submit:hover, .form__submit:active {
-    color: #f0c4c6;
+    color: #f2ccce;
     text-decoration: none;
     cursor: pointer; }
 
@@ -290,7 +305,7 @@ nav.navbar {
   padding: 4px 8px;
   margin: 8px 0;
   display: flex;
-  background-color: #faeced;
+  background-color: #fcf4f5;
   border-radius: 4px;
   border: 1px solid #efc0c2;
   border-left: none;
@@ -369,6 +384,27 @@ nav.navbar {
 .hero-box__list__element__name {
   padding-left: 12px;
   padding-right: 24px; }
+
+.notif-banner {
+  display: block;
+  width: 100%;
+  height: 56px;
+  padding: 12px;
+  padding-left: 64px;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  position: relative; }
+  .notif-banner--success {
+    background-color: #57964d;
+    border: 1px solid #497e41;
+    color: #fcf4f5; }
+
+.notif-banner__icon {
+  font-size: 36px;
+  position: absolute;
+  width: 56px;
+  top: 9px;
+  left: 9px; }
 
 .signup__game {
   display: flex;
@@ -483,6 +519,9 @@ nav.navbar {
   opacity: 0.2;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: alpha(opacity=20); }
+
+html {
+  font-size: 14px; }
 
 body {
   font-family: "skolar-sans-latin", sans-serif;
