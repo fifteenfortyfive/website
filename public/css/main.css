@@ -322,6 +322,7 @@ nav.navbar {
   padding: 0;
   margin-left: 12px;
   height: 1.4em;
+  min-height: 1.4em;
   min-width: 20px; }
   .form__input:focus {
     outline: none; }
@@ -338,6 +339,23 @@ nav.navbar {
   border-right: 1px solid #efc0c2; }
   .form__label--large {
     flex: 0 0 120px; }
+
+.form__button {
+  display: block;
+  width: 100%;
+  padding: 4px 6px;
+  margin-top: 12px;
+  border-radius: 4px;
+  border: 1px solid #efc0c2;
+  color: #df8387;
+  background: inherit;
+  font-size: 1.2em; }
+  .form__button:focus {
+    outline: none; }
+  .form__button:hover {
+    background-color: #f4d4d6; }
+  .form__button:active {
+    background-color: #efc0c2; }
 
 .hero-box__container {
   display: flex;
@@ -395,16 +413,16 @@ nav.navbar {
   font-size: 1.6rem;
   position: relative; }
   .notif-banner--success {
-    background-color: #57964d;
-    border: 1px solid #497e41;
+    background-color: #5a9051;
+    border: 1px solid #4c7944;
     color: #fcf4f5; }
 
 .notif-banner__icon {
-  font-size: 36px;
+  font-size: 30px;
   position: absolute;
-  width: 56px;
-  top: 9px;
-  left: 9px; }
+  width: 50px;
+  top: 10px;
+  left: 10px; }
 
 .signup__game {
   display: flex;

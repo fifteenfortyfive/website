@@ -38,7 +38,7 @@ horsey(FIND_GAME_INPUT, {
   getValue: 'id',
   renderItem: function (li, suggestion) {
     li.innerHTML =
-      '<img class="autocomplete__boxart" src="res/' + suggestion.id + '.jpg" />' +
+      '<img class="autocomplete__boxart" src="/res/' + suggestion.id + '.jpg" />' +
       '<span class="autocomplete__content">' +
         '<span class="autocomplete__game">' + suggestion.name + '</span>' +
         ' - ' +
@@ -65,7 +65,7 @@ document.querySelector(".signup__find-game__add-button")
 
     // Add the game-specific content to the new game card.
     var boxart = document.createElement('img');
-    boxart.src = 'res/'+game_data.id+'.jpg';
+    boxart.src = '/res/'+game_data.id+'.jpg';
     new_game.querySelector(".signup__game__boxart").appendChild(boxart);
     new_game.querySelector(".signup__game__name").innerHTML = game_data.short_name;
     new_game.querySelector(".signup__game__category").innerHTML = game_data.category;

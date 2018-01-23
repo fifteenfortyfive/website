@@ -58,6 +58,7 @@
   padding: 0;
   margin-left: 12px;
   height: 1.4em;
+  min-height: 1.4em;
   min-width: 20px;
 
   &:focus {
@@ -80,5 +81,29 @@
 
   &--large {
     flex: 0 0 120px;
+  }
+}
+
+.form__button {
+  display: block;
+  width: 100%;
+  padding: 4px 6px;
+  margin-top: 12px;
+  border-radius: 4px;
+  border: 1px solid $border-color;
+  color: $brand-muted;
+  background: inherit;
+  font-size: 1.2em;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: lighten($brand-muted, 20%);
+  }
+
+  &:active {
+    background-color: lighten($brand-muted, 15%);
   }
 }
