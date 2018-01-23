@@ -1,16 +1,21 @@
 .container
   .row
-    .col-sm-10
+    .col-sm-8.col-sm-push-1
       .page-header
         h1 Signin
 
-    form.form(action="/accounts/signin" method="POST")
-      .form__field
-        label.form__label.form__label--large Username
-        input.form__input(name="username" placeholder="faulty")
+      p.lead
+        | Don't have an account yet?
+        a(href="/accounts/new") Create one now!
 
-      .form__field
-        label.form__label.form__label--large Password
-        input.form__input(name="password" type="password")
+      form.form(action="/accounts/signin" method="POST")
+        .form__field
+          label.form__label.form__label--large Username
+          input.form__input(name="username" placeholder="faulty")
 
-      input.form__submit(type="submit" value="Signin")
+        .form__field
+          label.form__label.form__label--large Password
+          input.form__input(name="password" type="password")
+
+        input.form__submit(type="submit" value="Signin")
+

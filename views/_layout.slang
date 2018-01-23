@@ -33,6 +33,9 @@ html
             - else
               p.navbar-text
                 a.navbar-link(href="/accounts/signin") Sign in
+                | or
+                a.navbar-link(href="/accounts/new") Sign up
+
 
 
     == content
