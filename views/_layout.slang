@@ -17,30 +17,22 @@ html
 
 
   body
-    nav.navbar.navbar-inverse.navbar-static-top
+    nav.navbar.navbar-static-top
       .container
         .navbar-header
-          button.navbar-toggle.collapsed(data-toggle="collapse" data-target="#navbar-collapse")
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
           a.navbar-brand(href="/") The 1545
 
-        .collapse.navbar-collapse#navbar-collapse
-          ul.nav.navbar-nav
-            li
-              a(href="/teams") Teams
-            li
-              a(href="/results") Results
-            li
-              a(href="/rules") Rules
+        .navbar-header.navbar-right
+          ul.nav
+            - if env.current_user?
+              p.navbar-text
+                | Hey,
+                = env.current_user.username
+                | |
+                a.navbar-link(href="/accounts/signout") Sign out
+            - else
+              p.navbar-text
+                a.navbar-link(href="/accounts/signin") Sign in
 
-          ul.nav.navbar-nav.navbar-right
-            li
-              a(href="https://discord.gg/ZYfBpdk" target="_blank") Discord
-            li
-              a(href="https://twitch.tv/1545race" target="_blank") Twitch
-            li
-              a(href="https://twitter.com/1545race" target="_blank") Twitter
 
     == content

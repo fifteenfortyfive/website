@@ -11,7 +11,6 @@ description: |
 dependencies:
   pg:
     github: will/crystal-pg
-    version: 0.14.0
   kemal:
     github: kemalcr/kemal
   slang:

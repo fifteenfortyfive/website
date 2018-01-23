@@ -1,5 +1,27 @@
+p.navbar-text,
+.navbar-inverse .navbar-text {
+  margin-top: 13px;
+  margin-bottom: 13px;
+  color: #fcf4f5; }
+
+nav.navbar a.navbar-brand {
+  font-size: 24px; }
+
+.navbar-header {
+  float: left; }
+
+.container .navbar-right {
+  float: right;
+  margin-right: 0; }
+
 .vertical-space-u2 {
   height: 24px; }
+
+.navbar-username {
+  display: inline-block;
+  max-width: 140px;
+  vertical-align: text-bottom;
+  overflow: hidden; }
 
 .sey-container {
   display: none;

@@ -2,11 +2,20 @@
   .row
     .col-sm-10
       .page-header
-        h1 Summer 2018 Signups
+        h1 2018 Signups
+
+      p.lead
+        | This year's event will continue to feature the same games as last year: the Mario 602, the Rareware 301%, and the Sprashfecta.
+        | Signups will be open until end-of-day UTC on
+        strong March 1st, 2018.
+
 
   .row
     .col-sm-5
       h3 Runner Signup
+
+      p Everyone is welcome to participate in this event! Don't worry about skill levels or how many games you can run. Teams will be balanced after signups have closed to ensure that every team has a fair chance during the event.
+
 
       p
         | You're already signed up for the 1545! You've submitted

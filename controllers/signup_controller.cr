@@ -5,6 +5,6 @@ post "/signup/submit" do |env|
   puts changeset
 end
 
-get "/signup" do
+get "/signup" do |env|
   render "views/signup.slang", "views/_layout.slang"
 end
