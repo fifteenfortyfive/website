@@ -5,15 +5,6 @@
         h1 Runner Registration
 
 
-      h3 General Info
-
-      p We'd also like to know what timezone you're in to help when creating teams. Ideally, teams will include people from multiple timezones to avoid "graveyard shifts".
-
-      .form__field.signup__runner-info__timezone
-        label.form__label.form__label--large Timezone
-        input.form__input(placeholder="UTC, EST, AEST")
-
-
       h3 Game Submissions
 
       p Let us know which games you'd like to run for the event. Drag the cards to re-order the games by your preference in running them, with your most preferred game at the top of the list.
@@ -82,21 +73,3 @@
 script src="/js/horsey.js"
 script src="/js/dragula.js"
 script src="/js/signup.js"
-
-
-footer
-  .container
-    .row
-      .col-sm-10
-        .pull-right
-          p &copy; 2018 fifteenfortyfive.org
-
-        ul
-          li
-            a(href="https://discord.gg/ZYfBpdk" target="_blank") Discord
-          li
-            a(href="https://twitch.tv/1545race" target="_blank") Twitch
-          li
-            a(href="https://twitter.com/1545race" target="_blank") Twitter
-
-

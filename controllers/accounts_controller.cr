@@ -1,14 +1,27 @@
 get "/accounts/new" do |env|
+  error = nil
   render "views/accounts/new.slang", "views/_layout.slang"
 end
 
 post "/accounts/create" do |env|
-  env.response.content_type = "application/json"
   account = Account.new
-  account.username = env.params.body["username"].as(String)
-  account.password = env.params.body["password"].as(String)
+  account.username  = env.params.body["username"]?.as?(String)
+  account.password  = env.params.body["password"]?.as?(String)
+
+  account.discord   = env.params.body["discord"]?.as?(String)
+  account.twitch    = env.params.body["twitch"]?.as?(String)
+  account.twitter   = env.params.body["twitter"]?.as?(String)
+
+  account.timezone  = env.params.body["timezone"]?.as?(String)
 
   changeset = Repo.insert(account)
+
+  if changeset.valid?
+    sign_in_user(env, changeset.instance)
+    env.redirect("/")
+  else
+    render "views/accounts/new.slang", "views/_layout.slang"
+  end
 end
 
 get "/accounts/signin" do |env|
@@ -29,11 +42,8 @@ post "/accounts/signin" do |env|
     halt(env, status_code: 422, response: "Wrong password")
   end
 
-  session = Session.build_for(account)
-  Repo.insert(session)
-
-  env.response.cookies["1545_session_id"] = session.id.not_nil!
-  env.redirect("/register")
+  sign_in_user(env, account)
+  env.redirect("/")
 end
 
 get "/accounts/signout" do |env|
@@ -43,4 +53,12 @@ get "/accounts/signout" do |env|
   end
 
   env.redirect("/")
+end
+
+
+def sign_in_user(env, account : Account)
+  session = Session.build_for(account)
+  Repo.insert(session)
+
+  env.response.cookies["1545_session_id"] = session.id.not_nil!
 end

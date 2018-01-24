@@ -42,24 +42,10 @@
         a(href="https://twitch.tv/1545race") twitch.tv/1545race
         | and will run through the 16th, until the last team has finished.
 
-footer
-  .container
-    .row
-      .col-sm-10
-        .pull-right
-          p &copy; 2018 fifteenfortyfive.org
-
-        ul
-          li
-            a(href="https://discord.gg/ZYfBpdk" target="_blank") Discord
-          li
-            a(href="https://twitch.tv/1545race" target="_blank") Twitch
-          li
-            a(href="https://twitter.com/1545race" target="_blank") Twitter
-
 
 script(src="/js/moment.min.js")
 script(src="/js/moment-timezone.min.js")
+
 
 javascript:
   // Name of the time zone that the user is currently in.

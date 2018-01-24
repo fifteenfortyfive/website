@@ -35,21 +35,3 @@
       p You are not currently signed up to be a commentator.
 
       button.form__button Signup to Commentate
-
-
-footer
-  .container
-    .row
-      .col-sm-10
-        .pull-right
-          p &copy; 2018 fifteenfortyfive.org
-
-        ul
-          li
-            a(href="https://discord.gg/ZYfBpdk" target="_blank") Discord
-          li
-            a(href="https://twitch.tv/1545race" target="_blank") Twitch
-          li
-            a(href="https://twitter.com/1545race" target="_blank") Twitter
-
-

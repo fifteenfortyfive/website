@@ -5,9 +5,18 @@ class Account < Crecto::Model
     field :id, Int32, primary_key: true
     field :username, String
     field :encrypted_password, String
+    field :discord, String
+    field :twitch, String
+    field :twitter, String
+    field :timezone, String
 
     field :password, String, virtual: true
   end
+
+  validate_required :username
+  validate_required :discord
+  validate_required :twitch
+
 
   def password=(new_password : String)
     @encrypted_password = Crypto::Bcrypt::Password.create(new_password).to_s

@@ -11,11 +11,11 @@
       form.form(action="/accounts/signin" method="POST")
         .form__field
           label.form__label.form__label--large Username
-          input.form__input(name="username" placeholder="faulty")
+          input.form__input(name="username" required="true")
 
         .form__field
           label.form__label.form__label--large Password
-          input.form__input(name="password" type="password")
+          input.form__input(name="password" type="password" required="true")
 
         input.form__submit(type="submit" value="Signin")
 
