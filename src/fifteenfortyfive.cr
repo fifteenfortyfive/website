@@ -5,6 +5,6 @@ require "crecto"
 
 require "./repo.cr"
 
-require "./src/**"
+require "./**"
 
 Kemal.run
