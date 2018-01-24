@@ -6,9 +6,15 @@
 
 
       .col-sm-4.right
-        p.lead
-          | July 13th - 16th at
-          a(href="https://twitch.tv/1545race") twitch.tv/1545race
+        - if FeatureFlag.enabled?("signups")
+          p.lead
+            | July 13th - 16th at
+            a(href="https://twitch.tv/1545race") twitch.tv/1545race
+        - else
+          p.lead
+            | Info Stream: Jan 28th at
+            a(href="https://twitch.tv/1545race") twitch.tv/1545race
+
 
 
 .statbar
