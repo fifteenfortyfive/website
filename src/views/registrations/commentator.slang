@@ -14,7 +14,7 @@
           label.form__label.form__label--large Games
           input.form__input(value=submission.try(&.games) name="games" placeholder="Mario series, crash 3, etc.")
 
-        p Do you have any experience commentating runs at other events? Please provide links to relevant videos if you have them.
+        p Do you have any experience commentating runs at other events? This can include doing runs in other marathons, couching at GDQ, etc. Please provide links to relevant videos if you have them.
 
         .form__field
           label.form__label.form__label--large Experience
