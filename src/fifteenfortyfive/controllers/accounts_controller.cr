@@ -1,9 +1,17 @@
 get "/accounts/new" do |env|
+  unless FeatureFlag.enabled?("signups")
+    halt(env, status_code: 404, response: "Not Found")
+  end
+
   error = nil
   render "src/fifteenfortyfive/views/accounts/new.slang", "src/fifteenfortyfive/views/_layout.slang"
 end
 
 post "/accounts/create" do |env|
+  unless FeatureFlag.enabled?("signups")
+    halt(env, status_code: 404, response: "Not Found")
+  end
+
   account = Account.new
   account.username  = env.params.body["username"]?.as?(String)
   account.password  = env.params.body["password"]?.as?(String)
@@ -25,11 +33,19 @@ post "/accounts/create" do |env|
 end
 
 get "/accounts/signin" do |env|
+  unless FeatureFlag.enabled?("signups")
+    halt(env, status_code: 404, response: "Not Found")
+  end
+
   redirect_target = env.params.query["redirect"]? || "/"
   render "src/fifteenfortyfive/views/accounts/signin.slang", "src/fifteenfortyfive/views/_layout.slang"
 end
 
 post "/accounts/signin" do |env|
+  unless FeatureFlag.enabled?("signups")
+    halt(env, status_code: 404, response: "Not Found")
+  end
+
   username = env.params.body["username"].as(String)
   password = env.params.body["password"].as(String)
   redirect_target = env.params.query["redirect"]? || "/"
@@ -49,6 +65,10 @@ post "/accounts/signin" do |env|
 end
 
 get "/accounts/signout" do |env|
+  unless FeatureFlag.enabled?("signups")
+    halt(env, status_code: 404, response: "Not Found")
+  end
+
   if session = env.session?
     session.active = false
     Repo.update(session)

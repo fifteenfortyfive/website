@@ -22,22 +22,23 @@ html
         .navbar-header
           a.navbar-brand(href="/") The 1545
 
-        p.navbar-text
-          a.navbar-link.navbar-link--bright(href="/register") Register
+        - if FeatureFlag.enabled?("signups")
+          p.navbar-text
+            a.navbar-link.navbar-link--bright(href="/register") Register
 
-        .navbar-header.navbar-right
-          ul.nav
-            - if env.current_user?
-              p.navbar-text
-                | Hey,
-                = env.current_user.username
-                | |
-                a.navbar-link(href="/accounts/signout") Sign out
-            - else
-              p.navbar-text
-                a.navbar-link(href="/accounts/signin") Sign in
-                | or
-                a.navbar-link(href="/accounts/new") Sign up
+          .navbar-header.navbar-right
+            ul.nav
+              - if env.current_user?
+                p.navbar-text
+                  | Hey,
+                  = env.current_user.username
+                  | |
+                  a.navbar-link(href="/accounts/signout") Sign out
+              - else
+                p.navbar-text
+                  a.navbar-link(href="/accounts/signin") Sign in
+                  | or
+                  a.navbar-link(href="/accounts/new") Sign up
 
 
 

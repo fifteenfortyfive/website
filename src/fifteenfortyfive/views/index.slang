@@ -26,12 +26,13 @@
 .container
   .row
     .col-sm-10
-      p.lead.banner
-        | Signups for this year's 1545 are now open! They will close on
-        strong March 1st, 2018.
-        a(href="/accounts/new") Create an account
-        | to get started, then
-        a(href="/register") register for the event!
+      - if FeatureFlag.enabled?("signups")
+        p.lead.banner
+          | Signups for this year's 1545 are now open! They will close on
+          strong March 1st, 2018.
+          a(href="/accounts/new") Create an account
+          | to get started, then
+          a(href="/register") register for the event!
 
       .page-header
         h1 The Relay

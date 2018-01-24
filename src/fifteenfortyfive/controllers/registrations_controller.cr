@@ -1,4 +1,8 @@
 get "/register" do |env|
+  unless FeatureFlag.enabled?("signups")
+    halt(env, status_code: 404, response: "Not Found")
+  end
+
   # Users must be signed in to register for the event.
   unless env.current_user?
     env.redirect("/accounts/signin?redirect=/register")
@@ -14,11 +18,19 @@ end
 
 
 get "/register/runner" do |env|
+  unless FeatureFlag.enabled?("signups")
+    halt(env, status_code: 404, response: "Not Found")
+  end
+
   submission = Repo.get_association(env.current_user, :runner_submission).as?(RunnerSubmission)
   render "src/fifteenfortyfive/views/registrations/runner.slang", "src/fifteenfortyfive/views/_layout.slang"
 end
 
 post "/register/runner/submit" do |env|
+  unless FeatureFlag.enabled?("signups")
+    halt(env, status_code: 404, response: "Not Found")
+  end
+
   json_params = env.params.json
 
   # Create the parent submission
@@ -46,6 +58,10 @@ post "/register/runner/submit" do |env|
 end
 
 post "/register/runner/revoke" do |env|
+  unless FeatureFlag.enabled?("signups")
+    halt(env, status_code: 404, response: "Not Found")
+  end
+
   submission = Repo.get_association(env.current_user, :runner_submission).as?(RunnerSubmission)
   if submission
     submission.revoked = true
@@ -58,11 +74,19 @@ end
 
 
 get "/register/commentator" do |env|
+  unless FeatureFlag.enabled?("signups")
+    halt(env, status_code: 404, response: "Not Found")
+  end
+
   submission = Repo.get_association(env.current_user, :commentator_submission).as?(CommentatorSubmission)
   render "src/fifteenfortyfive/views/registrations/commentator.slang", "src/fifteenfortyfive/views/_layout.slang"
 end
 
 post "/register/commentator/submit" do |env|
+  unless FeatureFlag.enabled?("signups")
+    halt(env, status_code: 404, response: "Not Found")
+  end
+
   # Create the parent submission
   submission = CommentatorSubmission.new
   submission.games        = env.params.body["games"].as(String)
@@ -87,6 +111,10 @@ post "/register/commentator/submit" do |env|
 end
 
 post "/register/commentator/revoke" do |env|
+  unless FeatureFlag.enabled?("signups")
+    halt(env, status_code: 404, response: "Not Found")
+  end
+
   submission = Repo.get_association(env.current_user, :commentator_submission).as?(CommentatorSubmission)
   if submission
     submission.revoked = true
