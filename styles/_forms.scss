@@ -86,16 +86,21 @@
   color: $brand-muted;
   background: inherit;
   font-size: 1.2em;
+  text-align: center;
+  text-decoration: none;
 
   &:focus {
     outline: none;
+    text-decoration: none;
   }
 
   &:hover {
     background-color: lighten($brand-muted, 20%);
+    text-decoration: none;
   }
 
   &:active {
     background-color: lighten($brand-muted, 15%);
+    text-decoration: none;
   }
 }

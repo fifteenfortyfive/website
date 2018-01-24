@@ -16,16 +16,10 @@
 
       p Everyone is welcome to participate in this event! Don't worry about skill levels or how many games you can run. Teams will be balanced after signups have closed to ensure that every team has a fair chance during the event.
 
+      p You haven't submitted any games yet!
 
-      p
-        | You're already signed up for the 1545! You've submitted
-        strong Crash 1 - 100%
-        | ,
-        strong SM64 - 120 Star
-        | , and
-        strong Galaxy 2 - 242 Star
+      a.form__button(href="/register/runner") Signup to Run
 
-      button.form__button Edit your Submission
 
     .col-sm-5
       h3 Commentator Signup

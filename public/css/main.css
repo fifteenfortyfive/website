@@ -364,13 +364,18 @@ nav.navbar {
   border: 1px solid #efc0c2;
   color: #df8387;
   background: inherit;
-  font-size: 1.2em; }
+  font-size: 1.2em;
+  text-align: center;
+  text-decoration: none; }
   .form__button:focus {
-    outline: none; }
+    outline: none;
+    text-decoration: none; }
   .form__button:hover {
-    background-color: #f4d4d6; }
+    background-color: #f4d4d6;
+    text-decoration: none; }
   .form__button:active {
-    background-color: #efc0c2; }
+    background-color: #efc0c2;
+    text-decoration: none; }
 
 .hero-box__container {
   display: flex;

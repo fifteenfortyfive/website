@@ -8,7 +8,7 @@
         | Don't have an account yet?
         a(href="/accounts/new") Create one now!
 
-      form.form(action="/accounts/signin" method="POST")
+      form.form(action="/accounts/signin?redirect=#{redirect_target}" method="POST")
         .form__field
           label.form__label.form__label--large Username
           input.form__input(name="username" required="true")

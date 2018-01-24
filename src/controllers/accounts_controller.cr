@@ -1,6 +1,6 @@
 get "/accounts/new" do |env|
   error = nil
-  render "views/accounts/new.slang", "views/_layout.slang"
+  render "src/views/accounts/new.slang", "src/views/_layout.slang"
 end
 
 post "/accounts/create" do |env|
@@ -20,17 +20,19 @@ post "/accounts/create" do |env|
     sign_in_user(env, changeset.instance)
     env.redirect("/")
   else
-    render "views/accounts/new.slang", "views/_layout.slang"
+    render "src/views/accounts/new.slang", "src/views/_layout.slang"
   end
 end
 
 get "/accounts/signin" do |env|
-  render "views/accounts/signin.slang", "views/_layout.slang"
+  redirect_target = env.params.query["redirect"]? || "/"
+  render "src/views/accounts/signin.slang", "src/views/_layout.slang"
 end
 
 post "/accounts/signin" do |env|
   username = env.params.body["username"].as(String)
   password = env.params.body["password"].as(String)
+  redirect_target = env.params.query["redirect"]? || "/"
 
   account = Repo.get_by(Account, username: username)
 
@@ -43,7 +45,7 @@ post "/accounts/signin" do |env|
   end
 
   sign_in_user(env, account)
-  env.redirect("/")
+  env.redirect(redirect_target)
 end
 
 get "/accounts/signout" do |env|
