@@ -11,7 +11,11 @@ class Account < Crecto::Model
     field :timezone, String
 
     field :password, String, virtual: true
+
+    has_one :runner_submission, RunnerSubmission
+    has_one :commentator_submission, CommentatorSubmission
   end
+
 
   validate_required :username
   validate_required :discord

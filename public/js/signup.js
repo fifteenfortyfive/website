@@ -85,20 +85,24 @@ document.querySelector(".form__submit")
         .addEventListener('click', function(evt) {
   var game_nodes = Array.prototype.slice.call(document.querySelectorAll('.signup__game:not(.signup__game--blank)'));
   var game_selections = game_nodes.map(function(el) {
+    game_name = el.querySelector('.signup__game__name').innerHTML;
     return {
-      name: el.querySelector('.signup__game__name').innerHTML,
+      game: AVAILABLE_GAMES.find(function(e) { return e.short_name == game_name; }),
       pb:   el.querySelector('.signup__game__pb .form__input').value,
       est:  el.querySelector('.signup__game__estimate .form__input').value
     }
   });
 
   var submission_data = {
-    pair:       document.querySelector('.signup__team-requests__pair .form__input').value,
-    avoid:      document.querySelector('.signup__team-requests__avoid .form__input').value,
-    max_games:  document.querySelector('.signup__limits__games .form__input').value,
-    max_time:   document.querySelector('.signup__limits__time .form__input').value,
+    pair:           document.querySelector('.signup__team-requests__pair .form__input').value,
+    avoid:          document.querySelector('.signup__team-requests__avoid .form__input').value,
+    max_games:      document.querySelector('.signup__limits__games .form__input').value,
+    max_time:       document.querySelector('.signup__limits__time .form__input').value,
+    submission_id:  document.querySelector('input#submission_id').value,
     games:      game_selections
   };
+
+  console.log(submission_data);
 
 
   nanoajax.ajax({

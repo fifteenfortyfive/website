@@ -62,6 +62,10 @@
   }
 }
 
+textarea.form__input {
+  height: 3em;
+}
+
 .form__label {
   flex: 0 0 55px;
   text-align: right;
@@ -79,7 +83,7 @@
 .form__button {
   display: block;
   width: 100%;
-  padding: 4px 6px;
+  padding: 8px 12px;
   margin-top: 12px;
   border-radius: 4px;
   border: 1px solid $border-color;

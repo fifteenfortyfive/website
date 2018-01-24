@@ -4,7 +4,6 @@
       .page-header
         h1 Runner Registration
 
-
       h3 Game Submissions
 
       p Let us know which games you'd like to run for the event. Drag the cards to re-order the games by your preference in running them, with your most preferred game at the top of the list.
@@ -28,6 +27,24 @@
               label.form__label EST
               input.form__input(placeholder="00:00:00")
 
+        - submission.try &.games.each do |game|
+          - game_data = game["game"].as(Hash(String, JSON::Type))
+          .signup__game
+            .signup__game__boxart.handle
+              img(src="/res/#{game_data["id"]}.jpg")
+            .signup__game__content
+              .signup__game__header
+                .signup__game__name= game_data["short_name"]
+                .signup__game__category= game_data["category"]
+                .signup__game__button
+                  span.fas.fa-times
+              .form__field.signup__game__pb
+                label.form__label PB
+                input.form__input(value="#{game["pb"]}" placeholder="00:00:00")
+              .form__field.signup__game__estimate
+                label.form__label EST
+                input.form__input(value="#{game["est"]}" placeholder="00:00:00")
+
       .signup__find-game
         input.signup__find-game__input(placeholder="Game name...")
         a.signup__find-game__add-button Add Game
@@ -38,11 +55,11 @@
 
       .form__field.signup__limits__games
         label.form__label.form__label--large Max games
-        input.form__input(placeholder="3")
+        input.form__input(value=submission.try(&.max_games) placeholder="3")
 
       .form__field.signup__limits__time
         label.form__label.form__label--large Max time
-        input.form__input(placeholder="00:00:00")
+        input.form__input(value=submission.try(&.max_time) placeholder="00:00:00")
 
 
       h3 Team Requests
@@ -53,11 +70,11 @@
 
       .form__field.signup__team-requests__pair
         label.form__label.form__label--large Team with
-        input.form__input(placeholder="SHM, HolySanctum")
+        input.form__input(value=submission.try(&.pair) placeholder="SHM, HolySanctum")
 
       .form__field.signup__team-requests__avoid
         label.form__label.form__label--large Avoid
-        input.form__input(placeholder="Someone random, i don't know")
+        input.form__input(value=submission.try(&.avoid) placeholder="Someone random, i don't know")
 
 
 
@@ -67,6 +84,7 @@
 
       p Don't worry if you aren't 100% confident about your times or the games you are submitting, you'll be able to edit them after submitting.
 
+      input(type="hidden" id="submission_id" value=submission.try(&.id) )
       a.form__submit Submit
 
 
