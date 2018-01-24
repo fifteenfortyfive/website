@@ -55,28 +55,40 @@ horsey(FIND_GAME_INPUT, {
 // Add a Game button handler
 document.querySelector(".signup__find-game__add-button")
         .addEventListener('click', function(evt) {
-    var game_name = FIND_GAME_INPUT.value;
-    var game_data = AVAILABLE_GAMES.find(function(e) { return e.name == game_name; });
-    console.log(game_data);
+  var game_name = FIND_GAME_INPUT.value;
+  var game_data = AVAILABLE_GAMES.find(function(e) { return e.name == game_name; });
+  console.log(game_data);
 
-    // Create a new game card from the template.
-    var new_game = GAME_CARD_TEMPLATE.cloneNode(true);
-    new_game.classList.remove('signup__game--blank');
+  // Create a new game card from the template.
+  var new_game = GAME_CARD_TEMPLATE.cloneNode(true);
+  new_game.classList.remove('signup__game--blank');
 
-    // Add the game-specific content to the new game card.
-    var boxart = document.createElement('img');
-    boxart.src = '/res/'+game_data.id+'.jpg';
-    new_game.querySelector(".signup__game__boxart").appendChild(boxart);
-    new_game.querySelector(".signup__game__name").innerHTML = game_data.short_name;
-    new_game.querySelector(".signup__game__category").innerHTML = game_data.category;
+  // Add the game-specific content to the new game card.
+  var boxart = document.createElement('img');
+  boxart.src = '/res/'+game_data.id+'.jpg';
+  new_game.querySelector(".signup__game__boxart").appendChild(boxart);
+  new_game.querySelector(".signup__game__name").innerHTML = game_data.short_name;
+  new_game.querySelector(".signup__game__category").innerHTML = game_data.category;
+  new_game.querySelector(".signup__game__button")
+          .addEventListener('click', function(evt) {
+    this.closest(".signup__game").remove();
+    games_not_selected.push(game_data);
+  });
 
-    // Insert the new game card into the DOM.
-    GAME_SELECTION_CONTAINER.appendChild(new_game);
+  // Insert the new game card into the DOM.
+  GAME_SELECTION_CONTAINER.appendChild(new_game);
 
-    // Reset the input and remove the added game from the list of available games.
-    FIND_GAME_INPUT.value = '';
-    var idx = games_not_selected.indexOf(game_data);
-    games_not_selected.splice(idx, 1);
+  // Reset the input and remove the added game from the list of available games.
+  FIND_GAME_INPUT.value = '';
+  var idx = games_not_selected.indexOf(game_data);
+  games_not_selected.splice(idx, 1);
+});
+
+// Remove Game button handler
+document.querySelectorAll(".signup__game__button").forEach(function(el) {
+  el.addEventListener('click', function(evt) {
+    this.closest(".signup__game").remove();
+  });
 });
 
 
