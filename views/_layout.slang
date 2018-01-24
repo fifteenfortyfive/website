@@ -22,6 +22,9 @@ html
         .navbar-header
           a.navbar-brand(href="/") The 1545
 
+        p.navbar-text
+          a.navbar-link.navbar-link--bright(href="/register") Register
+
         .navbar-header.navbar-right
           ul.nav
             - if env.current_user?

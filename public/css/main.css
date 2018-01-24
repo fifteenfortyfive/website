@@ -4,6 +4,9 @@ p.navbar-text,
   margin-bottom: 13px;
   color: #fcf4f5; }
 
+.navbar-link--bright {
+  color: #fcf4f5; }
+
 nav.navbar a.navbar-brand {
   font-size: 24px; }
 

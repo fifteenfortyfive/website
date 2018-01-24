@@ -26,6 +26,13 @@
 .container
   .row
     .col-sm-10
+      p.lead.banner
+        | Signups for this year's 1545 are now open! They will close on
+        strong March 1st, 2018.
+        a(href="/accounts/new") Create an account
+        | to get started, then
+        a(href="/register") register for the event!
+
       .page-header
         h1 The Relay
 
@@ -33,7 +40,7 @@
 
       p The 1545 is one of the largest single races in speedrunning, with an estimated 330 hours of gameplay time. For reference, a week-long marathon generally has about 150-160 hours of gameplay time.
 
-      p Each team is expected to take just around 52 hours to complete the full-completion categories of all 13 games sequentially.
+      p Each team is expected to take just over 50 hours to complete the full-completion categories of all 13 games sequentially.
 
       p
         | The 1545 will take place starting on
