@@ -17,3 +17,5 @@ dependencies:
     github: jeromegn/slang
   crecto:
     github: crecto/crecto
+  micrate:
+    github: juanedi/micrate

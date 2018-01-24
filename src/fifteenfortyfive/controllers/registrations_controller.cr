@@ -9,13 +9,13 @@ get "/register" do |env|
   runner_submission = nil if runner_submission.try(&.revoked)
   commentator_submission = Repo.get_association(env.current_user, :commentator_submission).as?(CommentatorSubmission)
   commentator_submission = nil if commentator_submission.try(&.revoked)
-  render "src/views/registrations/index.slang", "src/views/_layout.slang"
+  render "src/fifteenfortyfive/views/registrations/index.slang", "src/fifteenfortyfive/views/_layout.slang"
 end
 
 
 get "/register/runner" do |env|
   submission = Repo.get_association(env.current_user, :runner_submission).as?(RunnerSubmission)
-  render "src/views/registrations/runner.slang", "src/views/_layout.slang"
+  render "src/fifteenfortyfive/views/registrations/runner.slang", "src/fifteenfortyfive/views/_layout.slang"
 end
 
 post "/register/runner/submit" do |env|
@@ -59,7 +59,7 @@ end
 
 get "/register/commentator" do |env|
   submission = Repo.get_association(env.current_user, :commentator_submission).as?(CommentatorSubmission)
-  render "src/views/registrations/commentator.slang", "src/views/_layout.slang"
+  render "src/fifteenfortyfive/views/registrations/commentator.slang", "src/fifteenfortyfive/views/_layout.slang"
 end
 
 post "/register/commentator/submit" do |env|

@@ -84,7 +84,8 @@
 
       p Don't worry if you aren't 100% confident about your times or the games you are submitting, you'll be able to edit them after submitting.
 
-      input(type="hidden" id="submission_id" value=submission.try(&.id) )
+      - if submission
+        input(type="hidden" id="submission_id" value=submission.id )
       a.form__submit Submit
 
 

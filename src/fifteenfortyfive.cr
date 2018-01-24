@@ -3,8 +3,7 @@ require "kilt/slang"
 require "pg"
 require "crecto"
 
-require "./repo.cr"
-
-require "./**"
+require "./fifteenfortyfive/repo.cr"
+require "./fifteenfortyfive/**"
 
 Kemal.run

@@ -105,14 +105,18 @@ document.querySelector(".form__submit")
     }
   });
 
+
   var submission_data = {
     pair:           document.querySelector('.signup__team-requests__pair .form__input').value,
     avoid:          document.querySelector('.signup__team-requests__avoid .form__input').value,
     max_games:      document.querySelector('.signup__limits__games .form__input').value,
     max_time:       document.querySelector('.signup__limits__time .form__input').value,
-    submission_id:  document.querySelector('input#submission_id').value,
     games:      game_selections
   };
+
+  if(submission_id_element = document.querySelector('input#submission_id')) {
+    submission_data['submission_id'] = submission_id_element.value;
+  }
 
   console.log(submission_data);
 

@@ -1,6 +1,6 @@
 get "/accounts/new" do |env|
   error = nil
-  render "src/views/accounts/new.slang", "src/views/_layout.slang"
+  render "src/fifteenfortyfive/views/accounts/new.slang", "src/fifteenfortyfive/views/_layout.slang"
 end
 
 post "/accounts/create" do |env|
@@ -20,13 +20,13 @@ post "/accounts/create" do |env|
     sign_in_user(env, changeset.instance)
     env.redirect("/")
   else
-    render "src/views/accounts/new.slang", "src/views/_layout.slang"
+    render "src/fifteenfortyfive/views/accounts/new.slang", "src/fifteenfortyfive/views/_layout.slang"
   end
 end
 
 get "/accounts/signin" do |env|
   redirect_target = env.params.query["redirect"]? || "/"
-  render "src/views/accounts/signin.slang", "src/views/_layout.slang"
+  render "src/fifteenfortyfive/views/accounts/signin.slang", "src/fifteenfortyfive/views/_layout.slang"
 end
 
 post "/accounts/signin" do |env|
