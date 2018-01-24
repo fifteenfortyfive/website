@@ -48,7 +48,9 @@ footer
     .row
       .col-sm-10
         .pull-right
-          p &copy; 2018 fifteenfortyfive.org
+          p
+            == "&copy;"
+            | 2018 fifteenfortyfive.org
 
         ul
           li
