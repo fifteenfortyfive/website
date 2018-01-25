@@ -76,6 +76,17 @@
         label.form__label.form__label--large Avoid
         input.form__input(value=submission.try(&.avoid) placeholder="Someone random, i don't know")
 
+      h3 Captains
+
+      p Team captains are the point-of-contact for the team, and are in charge of creating the schedule and making sure the runners on their team are ready to go during the event.
+
+      .form__field.form__field--checkbox.signup__captain
+        label.form__label.form__label--checkbox
+          - if submission && submission.captain
+            input.form__input(type="checkbox" checked="true")
+          - else
+            input.form__input(type="checkbox")
+          | I am willing to be a team captain.
 
 
       h3 Submission

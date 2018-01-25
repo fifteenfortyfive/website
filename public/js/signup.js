@@ -111,6 +111,7 @@ document.querySelector(".form__submit")
     avoid:          document.querySelector('.signup__team-requests__avoid .form__input').value,
     max_games:      document.querySelector('.signup__limits__games .form__input').value,
     max_time:       document.querySelector('.signup__limits__time .form__input').value,
+    captain:        document.querySelector('.signup__captain .form__input').checked,
     games:      game_selections
   };
 

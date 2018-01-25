@@ -329,6 +329,17 @@ nav.navbar {
   line-height: 1.4em; }
   .form__field:last-child {
     margin-bottom: 0; }
+  .form__field--checkbox {
+    padding-left: 108px;
+    line-height: 1em; }
+    .form__field--checkbox .form__label {
+      display: block;
+      vertical-align: text-bottom;
+      padding-top: 2px; }
+    .form__field--checkbox input[type="checkbox"] {
+      margin-right: 12px;
+      height: 26px;
+      vertical-align: text-bottom; }
 
 .form__input {
   flex: 1 1 auto;
@@ -357,6 +368,12 @@ textarea.form__input {
   border-right: 1px solid #efc0c2; }
   .form__label--large {
     flex: 0 0 120px; }
+  .form__label--checkbox {
+    flex: 1 0 0;
+    border: none;
+    width: 100%;
+    text-align: left;
+    margin-top: -5px; }
 
 .form__button {
   display: block;

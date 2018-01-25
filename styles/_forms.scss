@@ -41,6 +41,23 @@
   &:last-child {
     margin-bottom: 0;
   }
+
+  &--checkbox {
+    padding-left: 108px;
+    line-height: 1em;
+
+    .form__label {
+      display: block;
+      vertical-align: text-bottom;
+      padding-top: 2px;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 12px;
+      height: 26px;
+      vertical-align: text-bottom;
+    }
+  }
 }
 
 .form__input {
@@ -77,6 +94,14 @@ textarea.form__input {
 
   &--large {
     flex: 0 0 120px;
+  }
+
+  &--checkbox {
+    flex: 1 0 0;
+    border: none;
+    width: 100%;
+    text-align: left;
+    margin-top: -5px;
   }
 }
 

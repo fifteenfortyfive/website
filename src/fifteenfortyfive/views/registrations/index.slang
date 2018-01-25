@@ -28,6 +28,9 @@
               | in
               strong= game["est"]
 
+        - if runner_submission.captain
+          p You are signed up to be a team captain.
+
         a.form__button(href="/register/runner") Edit your Submission
         form(action="/register/runner/revoke" method="POST")
           input.form__button.form__button--danger(type="submit" value="Withdraw Submission")

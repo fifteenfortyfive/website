@@ -39,6 +39,7 @@ post "/register/runner/submit" do |env|
   submission.max_time   = json_params["max_time"].as(String)
   submission.pair       = json_params["pair"].as(String)
   submission.avoid      = json_params["avoid"].as(String)
+  submission.captain    = json_params["captain"].as(Bool)
   submission.games_json = json_params["games"].to_json
   submission.account    = env.current_user
 

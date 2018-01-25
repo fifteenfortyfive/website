@@ -6,6 +6,7 @@ class RunnerSubmission < Crecto::Model
     field :avoid, String
     field :games_json, String
     field :revoked, Bool, default: false
+    field :captain, Bool, default: false
 
     belongs_to :account, Account
   end
