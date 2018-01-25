@@ -330,7 +330,7 @@ nav.navbar {
   .form__field:last-child {
     margin-bottom: 0; }
   .form__field--checkbox {
-    padding-left: 108px;
+    padding-left: 64px;
     line-height: 1em; }
     .form__field--checkbox .form__label {
       display: block;
