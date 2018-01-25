@@ -9,6 +9,11 @@
         | Signups will be open until end-of-day UTC on
         strong March 1st, 2018.
 
+      p.lead
+        | If you haven't already, be sure to
+        a(href="https://discord.gg/ZYfBpdk" target="_blank") join our Discord server.
+        | Runners and commentators will need to join to be part of the event, but everyone is welcome to join.
+
 
   .row
     .col-sm-5
