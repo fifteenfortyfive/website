@@ -2,7 +2,7 @@
   .row
     .col-sm-8.col-sm-push-1
       .page-header
-        h1 Signin
+        h1 Sign in
 
       p.lead
         | Don't have an account yet?
