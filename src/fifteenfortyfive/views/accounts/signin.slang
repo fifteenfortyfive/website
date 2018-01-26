@@ -17,5 +17,9 @@
           label.form__label.form__label--large Password
           input.form__input(name="password" type="password" required="true")
 
-        input.form__submit(type="submit" value="Signin")
+        p
+          | Forget your password? Contact an event organizer
+          a(href=Constants::DISCORD_URL target="_blank") on Discord
+          | to have your password reset manually.
 
+        input.form__submit(type="submit" value="Signin")

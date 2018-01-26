@@ -11,7 +11,7 @@
 
       p.lead
         | If you haven't already, be sure to
-        a(href="https://discord.gg/ZYfBpdk" target="_blank") join our Discord server.
+        a(href=Constants::DISCORD_URL target="_blank") join our Discord server.
         | Runners and commentators will need to join to be part of the event, but everyone is welcome to join.
 
 

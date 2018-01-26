@@ -55,10 +55,10 @@ footer
 
         ul
           li
-            a(href="https://discord.gg/ZYfBpdk" target="_blank") Discord
+            a(href=Constants::DISCORD_URL target="_blank") Discord
           li
-            a(href="https://twitch.tv/1545race" target="_blank") Twitch
+            a(href=Constants::TWITCH_URL target="_blank") Twitch
           li
-            a(href="https://twitter.com/1545race" target="_blank") Twitter
+            a(href=Constants::TWITTER_URL target="_blank") Twitter
 
 
