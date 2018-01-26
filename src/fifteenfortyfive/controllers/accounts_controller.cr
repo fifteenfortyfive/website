@@ -1,5 +1,5 @@
 get "/accounts/new" do |env|
-  unless FeatureFlag.enabled?("signups")
+  unless env.feature_flags["signups"].enabled
     halt(env, status_code: 404, response: "Not Found")
   end
 
@@ -8,7 +8,7 @@ get "/accounts/new" do |env|
 end
 
 post "/accounts/create" do |env|
-  unless FeatureFlag.enabled?("signups")
+  unless env.feature_flags["signups"].enabled
     halt(env, status_code: 404, response: "Not Found")
   end
 
@@ -33,7 +33,7 @@ post "/accounts/create" do |env|
 end
 
 get "/accounts/signin" do |env|
-  unless FeatureFlag.enabled?("signups")
+  unless env.feature_flags["signups"].enabled
     halt(env, status_code: 404, response: "Not Found")
   end
 
@@ -42,7 +42,7 @@ get "/accounts/signin" do |env|
 end
 
 post "/accounts/signin" do |env|
-  unless FeatureFlag.enabled?("signups")
+  unless env.feature_flags["signups"].enabled
     halt(env, status_code: 404, response: "Not Found")
   end
 
@@ -65,7 +65,7 @@ post "/accounts/signin" do |env|
 end
 
 get "/accounts/signout" do |env|
-  unless FeatureFlag.enabled?("signups")
+  unless env.feature_flags["signups"].enabled
     halt(env, status_code: 404, response: "Not Found")
   end
 

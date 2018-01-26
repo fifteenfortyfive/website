@@ -22,7 +22,7 @@ html
         .navbar-header
           a.navbar-brand(href="/") The 1545
 
-        - if FeatureFlag.enabled?("signups")
+        - if env.feature_flags["signups"].enabled
           p.navbar-text
             a.navbar-link.navbar-link--bright(href="/register") Register
 

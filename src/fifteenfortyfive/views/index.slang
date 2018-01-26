@@ -6,7 +6,7 @@
 
 
       .col-sm-4.right
-        - if FeatureFlag.enabled?("signups")
+        - if env.feature_flags["signups"].enabled
           p.lead
             | July 13th - 16th at
             a(href="https://twitch.tv/1545race") twitch.tv/1545race
@@ -32,7 +32,7 @@
 .container
   .row
     .col-sm-10
-      - if FeatureFlag.enabled?("signups")
+      - if env.feature_flags["signups"].enabled
         p.lead.banner
           | Signups for this year's 1545 are now open! They will close on
           strong March 1st, 2018.

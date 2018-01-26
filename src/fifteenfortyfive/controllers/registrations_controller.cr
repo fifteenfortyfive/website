@@ -1,5 +1,5 @@
 get "/register" do |env|
-  unless FeatureFlag.enabled?("signups")
+  unless env.feature_flags["signups"].enabled
     halt(env, status_code: 404, response: "Not Found")
   end
 
@@ -18,7 +18,7 @@ end
 
 
 get "/register/runner" do |env|
-  unless FeatureFlag.enabled?("signups")
+  unless env.feature_flags["signups"].enabled
     halt(env, status_code: 404, response: "Not Found")
   end
 
@@ -27,7 +27,7 @@ get "/register/runner" do |env|
 end
 
 post "/register/runner/submit" do |env|
-  unless FeatureFlag.enabled?("signups")
+  unless env.feature_flags["signups"].enabled
     halt(env, status_code: 404, response: "Not Found")
   end
 
@@ -59,7 +59,7 @@ post "/register/runner/submit" do |env|
 end
 
 post "/register/runner/revoke" do |env|
-  unless FeatureFlag.enabled?("signups")
+  unless env.feature_flags["signups"].enabled
     halt(env, status_code: 404, response: "Not Found")
   end
 
@@ -75,7 +75,7 @@ end
 
 
 get "/register/commentator" do |env|
-  unless FeatureFlag.enabled?("signups")
+  unless env.feature_flags["signups"].enabled
     halt(env, status_code: 404, response: "Not Found")
   end
 
@@ -84,7 +84,7 @@ get "/register/commentator" do |env|
 end
 
 post "/register/commentator/submit" do |env|
-  unless FeatureFlag.enabled?("signups")
+  unless env.feature_flags["signups"].enabled
     halt(env, status_code: 404, response: "Not Found")
   end
 
@@ -112,7 +112,7 @@ post "/register/commentator/submit" do |env|
 end
 
 post "/register/commentator/revoke" do |env|
-  unless FeatureFlag.enabled?("signups")
+  unless env.feature_flags["signups"].enabled
     halt(env, status_code: 404, response: "Not Found")
   end
 
