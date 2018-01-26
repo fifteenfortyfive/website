@@ -32,6 +32,50 @@ post "/accounts/create" do |env|
   end
 end
 
+get "/accounts/edit" do |env|
+  unless env.feature_flags["signups"].enabled
+    halt(env, status_code: 404, response: "Not Found")
+  end
+
+  unless env.current_user?
+    env.redirect("/accounts/signin")
+    next
+  end
+
+  render "src/fifteenfortyfive/views/accounts/edit.slang", "src/fifteenfortyfive/views/_layout.slang"
+end
+
+post "/accounts/update" do |env|
+  unless env.feature_flags["signups"].enabled
+    halt(env, status_code: 404, response: "Not Found")
+  end
+
+  unless env.current_user?
+    env.redirect("/accounts/signin")
+    next
+  end
+
+  account = env.current_user
+  account.username  = env.params.body["username"]?.as?(String)
+  account.password  = env.params.body["password"]?.as?(String)
+
+  account.discord   = env.params.body["discord"]?.as?(String)
+  account.twitch    = env.params.body["twitch"]?.as?(String)
+  account.twitter   = env.params.body["twitter"]?.as?(String)
+
+  account.timezone  = env.params.body["timezone"]?.as?(String)
+
+  changeset = Repo.update(account)
+
+  if changeset.valid?
+    sign_in_user(env, changeset.instance)
+    env.redirect("/")
+  else
+    render "src/fifteenfortyfive/views/accounts/edit.slang", "src/fifteenfortyfive/views/_layout.slang"
+  end
+end
+
+
 get "/accounts/signin" do |env|
   unless env.feature_flags["signups"].enabled
     halt(env, status_code: 404, response: "Not Found")

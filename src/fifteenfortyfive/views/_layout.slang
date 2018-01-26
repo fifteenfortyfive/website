@@ -20,18 +20,19 @@ html
     nav.navbar.navbar-static-top
       .container
         .navbar-header
-          a.navbar-brand(href="/") The 1545
+          p.navbar-text
+            a.navbar-link.navbar-link--bright(href="/") Home
+
+          - if env.feature_flags["signups"].enabled
+            p.navbar-text
+              a.navbar-link(href="/register") Register
 
         - if env.feature_flags["signups"].enabled
-          p.navbar-text
-            a.navbar-link.navbar-link--bright(href="/register") Register
-
           .navbar-header.navbar-right
             ul.nav
               - if env.current_user?
                 p.navbar-text
-                  | Hey,
-                  = env.current_user.username
+                  a.navbar-link(href="/accounts/edit")= env.current_user.username
                   | |
                   a.navbar-link(href="/accounts/signout") Sign out
               - else

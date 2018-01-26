@@ -1,7 +1,7 @@
 p.navbar-text,
 .navbar-inverse .navbar-text {
-  margin-top: 13px;
-  margin-bottom: 13px;
+  display: inline-block;
+  margin: 13px 6px;
   color: $white-color;
 }
 
