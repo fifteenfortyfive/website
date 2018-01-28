@@ -19,20 +19,18 @@ html
   body
     nav.navbar.navbar-static-top
       .container
-        .navbar-header
-          p.navbar-text
-            a.navbar-link.navbar-link--bright(href="/") Home
-
-          - if env.feature_flags["signups"].enabled
-            p.navbar-text
-              a.navbar-link(href="/register") Register
-
-            - if env.current_user? && env.current_user.admin
-              p.navbar-text
-                a.navbar-link(href="/admin/feature_flags") Admin
+        p.navbar-text
+          a.navbar-link.navbar-link--bright(href="/") Home
 
         - if env.feature_flags["signups"].enabled
-          .navbar-header.navbar-right
+          p.navbar-text
+            a.navbar-link(href="/register") Register
+
+          - if env.current_user? && env.current_user.admin
+            p.navbar-text
+              a.navbar-link(href="/admin/feature_flags") Admin
+
+          .navbar-right
             ul.nav
               - if env.current_user?
                 p.navbar-text
