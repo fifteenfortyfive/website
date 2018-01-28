@@ -65,3 +65,13 @@
         p You are not currently signed up to be a commentator.
 
         a.form__button(href="/register/commentator") Signup to Commentate
+
+  .vertical-space-u2
+
+  .row
+    .col-sm-10
+      h3 Volunteering
+
+      p
+        | We may also have other volunteering opportunities beyond just commentating! During the event, we will likely need help managing social media, operating the stream layouts, etc. If you are interested in helping with either of these things, or have other ideas for ways to help out, please contact an event organizer directly
+        a(href=Constants::DISCORD_URL ) on Discord.
