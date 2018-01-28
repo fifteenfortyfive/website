@@ -13,6 +13,8 @@ dependencies:
     github: will/crystal-pg
   kemal:
     github: kemalcr/kemal
+  krout:
+    github: faultyserver/krout
   slang:
     github: jeromegn/slang
   crecto:

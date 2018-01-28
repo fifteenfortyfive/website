@@ -16,6 +16,10 @@ shards:
     github: jeromegn/kilt
     version: 0.4.0
 
+  krout:
+    github: faultyserver/krout
+    commit: 0031ef83616b6e22e0500625db15d46b581c2cb8
+
   micrate:
     github: juanedi/micrate
     version: 0.3.0
