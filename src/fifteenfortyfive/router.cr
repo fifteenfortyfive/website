@@ -28,6 +28,18 @@ scope "/register/commentator" do
   post "/revoke", &->CommentatorSubmissionsController.destroy(Krout::Env)
 end
 
+scope "/admin" do
+  before_all do |env|
+    unless env.current_user? && env.current_user.admin
+      halt(env, status_code: 404, response: "Not Found")
+    end
+  end
+
+  get "/feature_flags", &->Admin::FeatureFlagsController.index(Krout::Env)
+  get "/feature_flags/:flag_name/enable",  &->Admin::FeatureFlagsController.enable(Krout::Env)
+  get "/feature_flags/:flag_name/disable", &->Admin::FeatureFlagsController.disable(Krout::Env)
+end
+
 
 get "/", &->StaticController.index(Krout::Env)
 

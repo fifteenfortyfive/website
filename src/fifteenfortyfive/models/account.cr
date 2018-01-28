@@ -9,6 +9,7 @@ class Account < Crecto::Model
     field :twitch, String
     field :twitter, String
     field :timezone, String
+    field :admin, Bool
 
     field :password, String, virtual: true
 
