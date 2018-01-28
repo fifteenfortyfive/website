@@ -34,10 +34,10 @@ html
                 p.navbar-text
                   a.navbar-link(href="/accounts/edit")= env.current_user.username
                   | |
-                  a.navbar-link(href="/accounts/signout") Sign out
+                  a.navbar-link(href="/signout") Sign out
               - else
                 p.navbar-text
-                  a.navbar-link(href="/accounts/signin") Sign in
+                  a.navbar-link(href="/signin") Sign in
                   | or
                   a.navbar-link(href="/accounts/new") Sign up
 
