@@ -2,6 +2,9 @@ class FeatureFlag < Crecto::Model
   schema "feature_flags" do
     field :name, String
     field :enabled, Bool, default: true
+
+    set_created_at_field nil
+    set_updated_at_field nil
   end
 
   def self.enabled?(name : String)

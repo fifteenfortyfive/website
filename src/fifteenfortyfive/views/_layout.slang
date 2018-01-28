@@ -27,6 +27,10 @@ html
             p.navbar-text
               a.navbar-link(href="/register") Register
 
+            - if env.current_user? && env.current_user.admin
+              p.navbar-text
+                a.navbar-link(href="/admin/feature_flags") Admin
+
         - if env.feature_flags["signups"].enabled
           .navbar-header.navbar-right
             ul.nav
