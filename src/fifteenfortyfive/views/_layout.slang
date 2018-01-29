@@ -28,7 +28,7 @@ html
 
           - if env.current_user? && env.current_user.admin
             p.navbar-text
-              a.navbar-link(href="/admin/feature_flags") Admin
+              a.navbar-link(href="/admin") Admin
 
           .navbar-right
             ul.nav
