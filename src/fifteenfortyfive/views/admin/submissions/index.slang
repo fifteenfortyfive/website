@@ -13,6 +13,7 @@
             th Max time
             th Pair with
             th Avoid
+            th Captain?
 
         tbody
           - runner_submissions.each do |sub|
@@ -33,6 +34,7 @@
               td = sub.max_time
               td = sub.pair
               td = sub.avoid
+              td = sub.captain ? "yes" : "no"
 
 
       .page-header
