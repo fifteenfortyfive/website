@@ -41,6 +41,8 @@ scope "/admin" do
   get "/feature_flags/:flag_name/enable",  &->Admin::FeatureFlagsController.enable(Krout::Env)
   get "/feature_flags/:flag_name/disable", &->Admin::FeatureFlagsController.disable(Krout::Env)
 
+  get "/accounts", &->Admin::AccountsController.index(Krout::Env)
+
   get "/submissions", &->Admin::SubmissionsController.index(Krout::Env)
 end
 
