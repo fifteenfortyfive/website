@@ -34,7 +34,7 @@ html
             ul.nav
               - if env.current_user?
                 p.navbar-text
-                  a.navbar-link(href="/accounts/edit")= env.current_user.username
+                  a.navbar-link(href="/accounts/edit")== env.current_user.username
                   | |
                   a.navbar-link(href="/signout") Sign out
               - else

@@ -15,16 +15,16 @@
         tbody
           - accounts.each do |account|
             tr
-              td = account.username
+              td == account.username
               td
                 p
                   span.fab.fa-discord
-                  = account.discord
+                  == account.discord
                 p
                   span.fab.fa-twitch
-                  = account.twitch
+                  == account.twitch
                 p
                   span.fab.fa-twitter
-                  = account.twitter
+                  == account.twitter
               td = account.timezone
               td = account.admin ? "yes" : "no"
