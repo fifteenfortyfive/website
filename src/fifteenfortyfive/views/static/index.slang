@@ -40,6 +40,16 @@
           | to get started, then
           a(href="/register") register for the event!
 
+        p.lead.banner
+          | So far,
+          strong= runner_submissions.size
+          | different runners have signed up for a total of
+          strong= runner_submissions.reduce(0){ |sum, rs| sum += rs.games.size }
+          | runs! We've also had
+          strong= commentator_submissions.size
+          | people signup for commentary during the event.
+          a(href="/register") Sign up now to join them!
+
       .page-header
         h1 The Relay
 
