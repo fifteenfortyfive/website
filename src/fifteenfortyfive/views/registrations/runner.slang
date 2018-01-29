@@ -9,6 +9,12 @@
       p Let us know which games you'd like to run for the event. Drag the cards to re-order the games by your preference in running them, with your most preferred game at the top of the list.
 
       p
+        strong A note on estimates:
+        | We're not looking for "worst-case" estimates like most marathons. Instead, we'd like a time that represents an average resetless run. The best way to determine this is to do a few resetless runs and take the average of the times. Feel free to round up or down based a bit on how you felt those runs went.
+
+      p You'll also be able to update your PBs and estimates after your initial submission, so don't worry about planning for improvement.
+
+      p
         em Only submit games that you will be willing to run. While you may not end up running all of the games you submit, we cannot guarantee which runs you will end up with.
 
       .signup__selected-games
@@ -93,7 +99,7 @@
 
       p If you are happy with all of the information you've entered above. Go ahead and hit the submit button!
 
-      p Don't worry if you aren't 100% confident about your times or the games you are submitting, you'll be able to edit them after submitting.
+      p Don't worry if you aren't 100% confident about your submission, you'll be able to edit this information any time after submitting.
 
       - if submission
         input(type="hidden" id="submission_id" value=submission.id )
