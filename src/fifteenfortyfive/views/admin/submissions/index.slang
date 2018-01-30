@@ -9,32 +9,43 @@
           tr
             th Runner
             th Games
-            th Max games
-            th Max time
-            th Pair with
-            th Avoid
-            th Captain?
+            th Limits
+            th Teaming
 
         tbody
           - runner_submissions.each do |sub|
             tr
-              td = sub.account.username
               td
-                ul
+                h4.runner-submission__name= sub.account.username
+                p.runner-submission__detail
+                  strong Captain?
+                  = sub.captain ? "Yes" : "No"
+              td
+                ul.runner-submission__games
                   - sub.games.each do |game|
                     - game_data = game["game"].as(Hash(String, JSON::Type))
-                    li
+                    li.runner-submission__game
                       strong= game_data["short_name"]
                       | -
                       strong= game_data["category"]
                       | in
                       strong= game["est"]
 
-              td = sub.max_games
-              td = sub.max_time
-              td = sub.pair
-              td = sub.avoid
-              td = sub.captain ? "yes" : "no"
+              td
+                p
+                  strong Games:
+                  = sub.max_games
+                p
+                  strong Time:
+                  = sub.max_time
+
+              td
+                p
+                  strong Pair with:
+                  = sub.pair
+                p
+                  strong Avoid:
+                  = sub.avoid
 
 
       .page-header

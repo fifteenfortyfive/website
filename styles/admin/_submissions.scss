@@ -1,0 +1,40 @@
+.runner-submissions {
+  display: block;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.runner-submission {
+  padding: 12px;
+  border-bottom: 1px solid $text-muted;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:nth-child(even) {
+    background-color: darken($white-bg-color, 1%);
+  }
+}
+
+.runner-submission__detail {
+  font-size: 1rem;
+}
+
+.runner-submission__name {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+
+.runner-submission__games {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.runner-submission__game {
+  text-decoration: none;
+  word-break: keep-all;
+}

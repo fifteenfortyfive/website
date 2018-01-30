@@ -8,8 +8,8 @@ module Admin::SubmissionsController
       return
     end
 
-    runner_submissions      = Repo.all(RunnerSubmission, preload: [:account])
-    commentator_submissions = Repo.all(CommentatorSubmission, preload: [:account])
+    runner_submissions      = Repo.all(RunnerSubmission, Query.order_by("updated_at DESC"), preload: [:account])
+    commentator_submissions = Repo.all(CommentatorSubmission, Query.order_by("updated_at DESC"), preload: [:account])
     render_view "admin/submissions/index"
   end
 end

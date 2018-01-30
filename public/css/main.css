@@ -144,7 +144,7 @@ nav.navbar {
     text-align: right; }
 
 .statbar {
-  border-bottom: 1px solid #cfc6c6;
+  border-bottom: 1px solid #b8aaab;
   font-family: "proxima-nova", sans-serif; }
   .statbar .stats {
     display: flex;
@@ -306,7 +306,7 @@ nav.navbar {
   margin-top: 36px;
   text-align: center;
   font-size: 1.6em;
-  border: 1px solid #cfc6c6;
+  border: 1px solid #b8aaab;
   border-radius: 4px;
   background-color: #a0292f;
   color: #fcf4f5; }
@@ -353,7 +353,7 @@ nav.navbar {
   .form__input:focus {
     outline: none; }
   .form__input::placeholder {
-    color: #cfc6c6; }
+    color: #b8aaab; }
 
 textarea.form__input {
   height: 3em; }
@@ -468,7 +468,7 @@ textarea.form__input {
   display: flex;
   margin: 12px 0;
   border-radius: 4px;
-  border: 1px solid #cfc6c6;
+  border: 1px solid #b8aaab;
   background-color: #fdf9f9;
   overflow: hidden; }
   .signup__game--blank {
@@ -488,7 +488,7 @@ textarea.form__input {
 
 .signup__game__content {
   flex: 1 1 auto;
-  border-left: 1px solid #cfc6c6; }
+  border-left: 1px solid #b8aaab; }
 
 .signup__game__header {
   display: flex;
@@ -578,6 +578,36 @@ textarea.form__input {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: alpha(opacity=20); }
 
+.runner-submissions {
+  display: block;
+  width: 100%;
+  margin-bottom: 24px; }
+
+.runner-submission {
+  padding: 12px;
+  border-bottom: 1px solid #b8aaab; }
+  .runner-submission:last-child {
+    border-bottom: none; }
+  .runner-submission:nth-child(even) {
+    background-color: #fcf4f5; }
+
+.runner-submission__detail {
+  font-size: 1rem; }
+
+.runner-submission__name {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px; }
+
+.runner-submission__games {
+  list-style-type: none;
+  padding-left: 0; }
+
+.runner-submission__game {
+  text-decoration: none;
+  word-break: keep-all; }
+
 html {
   font-size: 14px; }
 
@@ -617,14 +647,14 @@ ul.schedule {
       font-family: "proxima-nova", sans-serif;
       font-weight: 700; }
     ul.schedule .event.past {
-      color: #cfc6c6; }
+      color: #b8aaab; }
       ul.schedule .event.past .event-date {
-        color: #cfc6c6; }
+        color: #b8aaab; }
 
 footer {
   margin-top: 30px;
   padding: 18px 0;
-  background-color: #cfc6c6; }
+  background-color: #b8aaab; }
   footer p, footer ul {
     margin: 0; }
   footer .pull-right {
