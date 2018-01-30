@@ -15,12 +15,12 @@
         tbody
           - runner_submissions.each do |sub|
             tr
-              td
+              td(width="25%")
                 h4.runner-submission__name= sub.account.username
                 p.runner-submission__detail
                   strong Captain?
                   = sub.captain ? "Yes" : "No"
-              td
+              td(width="35%")
                 ul.runner-submission__games
                   - sub.games.each do |game|
                     - game_data = game["game"].as(Hash(String, JSON::Type))
@@ -31,20 +31,24 @@
                       | in
                       strong= game["est"]
 
-              td
+              td(width="15%")
                 p
                   strong Games:
+                  br
                   = sub.max_games
                 p
                   strong Time:
+                  br
                   = sub.max_time
 
-              td
+              td(width="25%")
                 p
                   strong Pair with:
+                  br
                   = sub.pair
                 p
                   strong Avoid:
+                  br
                   = sub.avoid
 
 
