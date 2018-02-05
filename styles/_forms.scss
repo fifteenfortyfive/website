@@ -12,13 +12,14 @@
   margin-top: 36px;
   text-align: center;
   font-size: 1.6em;
-  border: 1px solid $text-muted;
+  border: 1px solid darken($red, 10%);
   border-radius: 4px;
-  background-color: $brand-primary;
+  background-color: $red;
   color: $white-color;
 
   &:hover,
   &:active {
+    background-color: darken($red, 10%);
     color: darken($white-color, 10%);
     text-decoration: none;
     cursor: pointer;
@@ -30,9 +31,9 @@
   padding: 4px 8px;
   margin: 8px 0;
   display: flex;
-  background-color: $white-color;
+  background-color: lighten($red, 40%);
   border-radius: 4px;
-  border: 1px solid $border-color;
+  border: 1px solid $red;
   border-left: none;
   border-right: none;
   border-radius: 0;
@@ -90,7 +91,8 @@ textarea.form__input {
   margin: 0;
   padding-right: 8px;
   padding-bottom: 1px;
-  border-right: 1px solid $border-color;
+  border-right: 1px solid $red;
+  color: $red;
 
   &--large {
     flex: 0 0 120px;
@@ -111,8 +113,8 @@ textarea.form__input {
   padding: 8px 12px;
   margin-top: 12px;
   border-radius: 4px;
-  border: 1px solid $border-color;
-  color: $brand-muted;
+  border: 1px solid $red;
+  color: $red;
   background: inherit;
   font-size: 1.2em;
   text-align: center;
@@ -124,12 +126,12 @@ textarea.form__input {
   }
 
   &:hover {
-    background-color: lighten($brand-muted, 20%);
+    background-color: lighten($red, 40%);
     text-decoration: none;
   }
 
   &:active {
-    background-color: lighten($brand-muted, 15%);
+    background-color: lighten($red, 35%);
     text-decoration: none;
   }
 }

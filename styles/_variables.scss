@@ -1,20 +1,36 @@
-$brand-primary:     #a0292f;
+$dark-gray: #323234;
+$light-gray: #d8d8d9;
+$white: #fcfcfd;
+$purple: #75456C;
+$red: #D64848;
+$orange: #E26144;
+$yellow: #f9dc59;
+
+$brand-primary:     $dark-gray;
 $brand-muted:       lighten($brand-primary, 30%);
 $primary-bg-color:  $brand-primary;
-$white-bg-color:    lighten($brand-primary, 59%);
+$white-bg-color:    $white;
 
-$white-color:       lighten($brand-primary, 58%);
+$white-color:       $white;
 $border-color:      lighten($brand-primary, 45%);
-$text-color:        darken($brand-primary,  20%);
+$text-color:        $dark-gray;
 $text-muted:        lighten(desaturate($text-color, 50%), 50%);
 
 $navbar-color:          $white-color;
-$navbar-bg-color:       darken($brand-primary,    5%);
+$navbar-bg-color:       darken($dark-gray,    5%);
 $navbar-bg-hover-color: lighten($navbar-bg-color, 3%);
 $navbar-border-color:   darken($navbar-bg-color,  5%);
 
-$white: $white-color;
 $success: #5a9051;
+
+
+$link-color: $red;
+
+
+
+
+
+
 
 
 $team-red:    #b91717;

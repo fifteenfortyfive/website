@@ -34,17 +34,23 @@ p {
 }
 
 a {
-  color: $brand-muted;
+  color: $link-color;
   font-weight: 500;
 
-  &:hover { color: darken($brand-muted, 10%); }
+  &:hover { color: darken($link-color, 10%); }
 }
 
 
 .page-header {
   font-family: "proxima-nova", sans-serif;
+  border-color: $red;
 
-  h1 { font-weight: 700; }
+  h1 { font-weight: 700; color: $red; }
+}
+
+h2, h3, h4 {
+  // color: $red;
+  font-weight: 700;
 }
 
 
@@ -78,7 +84,7 @@ ul.schedule {
 footer {
   margin-top: 30px;
   padding: 18px 0;
-  background-color: $text-muted;
+  background-color: $light-gray;
 
   p, ul {
     margin: 0;

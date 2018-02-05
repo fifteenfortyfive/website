@@ -1,0 +1,5 @@
+display_name: 1545 website
+info: true
+watch:
+  - src/fifteenfortyfive/**/*.cr
+  - src/fifteenfortyfive/**/*.slang

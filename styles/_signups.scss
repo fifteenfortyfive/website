@@ -2,8 +2,8 @@
   display: flex;
   margin: 12px 0;
   border-radius: 4px;
-  border: 1px solid $text-muted;
-  background-color: $white-bg-color;
+  border: 1px solid darken($red, 10%);
+  background-color: $white;
   overflow: hidden;
 
   &--blank {
@@ -28,12 +28,13 @@
 
 .signup__game__content {
   flex: 1 1 auto;
-  border-left: 1px solid $text-muted;
+  border-left: 1px solid darken($red, 10%);
 }
 
 .signup__game__header {
   display: flex;
   padding: 8px 12px 0 12px;
+  color: $dark-gray;
 }
 
 .signup__game__name {
@@ -63,7 +64,7 @@
 
 .signup__find-game__input {
   flex: 1 0 240px;
-  border: 1px solid $border-color;
+  border: 1px solid darken($red, 10%);
   border-radius: 0;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
@@ -76,7 +77,7 @@
 
 .signup__find-game__add-button {
   flex: 0 0 auto;
-  border: 1px solid $border-color;
+  border: 1px solid darken($red, 10%);
   border-left: none;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -86,7 +87,7 @@
   &:hover,
   &:active {
     text-decoration: none;
-    background-color: $border-color;
+    background-color: lighten($red, 40%);
     cursor: pointer;
   }
 }
