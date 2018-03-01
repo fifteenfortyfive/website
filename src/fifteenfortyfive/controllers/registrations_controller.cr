@@ -3,6 +3,11 @@ module RegistrationsController
   extend self
 
   def index(env)
+    unless env.feature_flags["open_signups"].enabled
+      env.redirect("/")
+      return
+    end
+
     # Users must be signed in to register for the event.
     unless env.current_user?
       env.redirect("/signin?redirect=/register")

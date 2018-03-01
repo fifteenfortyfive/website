@@ -8,6 +8,11 @@ module RunnerSubmissionsController
   end
 
   def create(env)
+    unless env.feature_flags["open_signups"].enabled
+      env.redirect("/")
+      return
+    end
+
     json_params = env.params.json
 
     # Create the parent submission
