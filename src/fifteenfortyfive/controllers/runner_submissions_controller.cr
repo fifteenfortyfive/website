@@ -3,13 +3,18 @@ module RunnerSubmissionsController
   extend self
 
   def show(env)
+    unless env.feature_flags["open_signups"].enabled
+      env.redirect("/register")
+      return
+    end
+
     submission = Repo.get_association(env.current_user, :runner_submission).as?(RunnerSubmission)
     render_view "registrations/runner"
   end
 
   def create(env)
     unless env.feature_flags["open_signups"].enabled
-      env.redirect("/")
+      env.redirect("/register")
       return
     end
 

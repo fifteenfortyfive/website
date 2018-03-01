@@ -8,11 +8,6 @@ module CommentatorSubmissionsController
   end
 
   def create(env)
-    unless env.feature_flags["open_signups"].enabled
-      env.redirect("/")
-      return
-    end
-
     # Create the parent submission
     submission = CommentatorSubmission.new
     submission.games        = env.params.body["games"].as(String)
@@ -22,7 +17,6 @@ module CommentatorSubmissionsController
 
     changeset =
       if submission_id = env.params.body["submission_id"]?.as?(String)
-        puts submission_id
         submission.id = submission_id.to_i
         Repo.update(submission)
       else

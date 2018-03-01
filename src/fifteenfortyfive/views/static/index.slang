@@ -26,22 +26,35 @@
 .container
   .row
     .col-sm-10
-      p.lead.banner
-        | Signups for this year's 1545 are now open! They will close on
-        strong March 1st, 2018.
-        a(href="/accounts/new") Create an account
-        | to get started, then
-        a(href="/register") register for the event!
+      - if env.feature_flags["open_signups"].enabled
+        p.lead.banner
+          | Signups for this year's 1545 are now open! They will close on
+          strong March 1st, 2018.
+          a(href="/accounts/new") Create an account
+          | to get started, then
+          a(href="/register") register for the event!
 
-      p.lead.banner
-        | So far,
-        strong= runner_submissions.size
-        | different runners have signed up for a total of
-        strong= runner_submissions.reduce(0){ |sum, rs| sum += rs.games.size }
-        | runs! We've also had
-        strong= commentator_submissions.size
-        | people signup for commentary during the event.
-        a(href="/register") Sign up now to join them!
+        p.lead.banner
+          | So far,
+          strong= runner_submissions.size
+          | different runners have signed up for a total of
+          strong= runner_submissions.reduce(0){ |sum, rs| sum += rs.games.size }
+          | runs!
+          strong= commentator_submissions.size
+          | people have also registered for commentary during the event.
+          a(href="/register") Sign up now to join them!
+      - else
+        p.lead.banner
+          | Runner signups for this year's 1545 have closed! This year,
+          strong= runner_submissions.size
+          | runners submitted a total of
+          strong= runner_submissions.reduce(0){ |sum, rs| sum += rs.games.size }
+          | runs! Over the next two weeks, we'll be forming the teams and will announce them shortly afterwards.
+
+        p.lead.banner
+          strong Commentator signups are still open!
+          | If you'd like to help out with commentary during the event, there's still plenty of time to
+          a(href="/register/commentator") sign up!
 
       .page-header
         h1 The Relay
@@ -54,7 +67,7 @@
 
       p
         | The 1545 will take place starting on
-        span#race_start_date July 13th, 2018 at 11pm UTC
+        strong#race_start_date July 13th, 2018 at 11pm UTC
         | at
         a(href="https://twitch.tv/1545race") twitch.tv/1545race
         | and will run through the 16th, until the last team has finished.

@@ -23,9 +23,8 @@ html
         p.navbar-text
           a.navbar-link.navbar-link--bright(href="/") Home
 
-        - if env.feature_flags["open_signups"].enabled
-          p.navbar-text
-            a.navbar-link(href="/register") Register
+        p.navbar-text
+          a.navbar-link(href="/register") Register
 
         - if env.current_user? && env.current_user.admin
           p.navbar-text

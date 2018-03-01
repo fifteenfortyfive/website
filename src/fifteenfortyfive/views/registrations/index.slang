@@ -4,10 +4,16 @@
       .page-header
         h1 2018 Signups
 
-      p.lead
-        | This year's event will continue to feature the same games as last year: the Mario 602, the Rareware 301%, and the Sprashfecta.
-        | Signups will be open until end-of-day UTC on
-        strong March 1st, 2018.
+      - if env.feature_flags["open_signups"].enabled
+        p.lead
+          | This year's event will continue to feature the same games as last year: the Mario 602, the Rareware 301%, and the Sprashfecta.
+          | Signups will be open until end-of-day UTC on
+          strong March 1st, 2018.
+      - else
+        p.lead
+          | This year's event will continue to feature the same games as last year: the Mario 602, the Rareware 301%, and the Sprashfecta.
+          | Runner signups closed on March 1st, 2018, but
+          strong commentator signups are still open!
 
       p.lead
         | If you haven't already, be sure to
@@ -19,31 +25,59 @@
     .col-sm-5
       h3 Runner Signup
 
-      p Everyone is welcome to participate in this event! Don't worry about skill levels or how many games you can run. Teams will be balanced after signups have closed to ensure that every team has a fair chance during the event.
+      - if env.feature_flags["open_signups"].enabled
+        p Everyone is welcome to participate in this event! Don't worry about skill levels or how many games you can run. Teams will be balanced after signups have closed to ensure that every team has a fair chance during the event.
 
-      - if runner_submission
-        p You've submitted:
-        ul
-          - runner_submission.games.each do |game|
-            - game_data = game["game"].as(Hash(String, JSON::Type))
-            li
-              strong= game_data["short_name"]
-              | -
-              strong= game_data["category"]
-              | in
-              strong= game["est"]
+        - if runner_submission
+          p You've submitted:
+          ul
+            - runner_submission.games.each do |game|
+              - game_data = game["game"].as(Hash(String, JSON::Type))
+              li
+                strong= game_data["short_name"]
+                | -
+                strong= game_data["category"]
+                | in
+                strong= game["est"]
 
-        - if runner_submission.captain
-          p You are signed up to be a team captain.
+          - if runner_submission.captain
+            p You are signed up to be a team captain.
 
-        a.form__button(href="/register/runner") Edit your Submission
-        form(action="/register/runner/revoke" method="POST")
-          input.form__button.form__button--danger(type="submit" value="Withdraw Submission")
+          a.form__button(href="/register/runner") Edit your Submission
+          form(action="/register/runner/revoke" method="POST")
+            input.form__button.form__button--danger(type="submit" value="Withdraw Submission")
 
+        - else
+          p You haven't submitted any games yet!
+
+          a.form__button(href="/register/runner") Signup to Run
       - else
-        p You haven't submitted any games yet!
+        p Runner signups are now closed.
 
-        a.form__button(href="/register/runner") Signup to Run
+        - if runner_submission
+          p You submitted:
+          ul
+            - runner_submission.games.each do |game|
+              - game_data = game["game"].as(Hash(String, JSON::Type))
+              li
+                strong= game_data["short_name"]
+                | -
+                strong= game_data["category"]
+                | in
+                strong= game["est"]
+
+          - if runner_submission.captain
+            p You are signed up to be a team captain.
+
+          p
+            | If you need to edit your submission, please contact an organizer
+            a(href=Constants::DISCORD_URL ) on Discord.
+        - else
+          p You are not signed up for any runs.
+
+          p
+            | If you are still interested in participating in the event, please contact an organizer
+            a(href=Constants::DISCORD_URL ) on Discord.
 
 
     .col-sm-5
