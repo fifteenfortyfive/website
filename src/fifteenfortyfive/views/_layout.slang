@@ -22,26 +22,25 @@ html
         p.navbar-text
           a.navbar-link.navbar-link--bright(href="/") Home
 
-        - if env.feature_flags["signups"].enabled
+        p.navbar-text
+          a.navbar-link(href="/register") Register
+
+        - if env.current_user? && env.current_user.admin
           p.navbar-text
-            a.navbar-link(href="/register") Register
+            a.navbar-link(href="/admin") Admin
 
-          - if env.current_user? && env.current_user.admin
-            p.navbar-text
-              a.navbar-link(href="/admin") Admin
-
-          .navbar-right
-            ul.nav
-              - if env.current_user?
-                p.navbar-text
-                  a.navbar-link(href="/accounts/edit")== env.current_user.username
-                  | |
-                  a.navbar-link(href="/signout") Sign out
-              - else
-                p.navbar-text
-                  a.navbar-link(href="/signin") Sign in
-                  | or
-                  a.navbar-link(href="/accounts/new") Sign up
+        .navbar-right
+          ul.nav
+            - if env.current_user?
+              p.navbar-text
+                a.navbar-link(href="/accounts/edit")== env.current_user.username
+                | |
+                a.navbar-link(href="/signout") Sign out
+            - else
+              p.navbar-text
+                a.navbar-link(href="/signin") Sign in
+                | or
+                a.navbar-link(href="/accounts/new") Sign up
 
 
 

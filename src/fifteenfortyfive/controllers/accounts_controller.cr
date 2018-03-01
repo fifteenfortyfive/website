@@ -3,21 +3,11 @@ module AccountsController
   extend self
 
   def _new(env)
-    unless env.feature_flags["signups"].enabled
-      render_404(env)
-      return
-    end
-
     error = nil
     render_view "accounts/new"
   end
 
   def create(env)
-    unless env.feature_flags["signups"].enabled
-      render_404(env)
-      return
-    end
-
     account = Account.new
     account.username  = env.params.body["username"]?.as?(String)
     account.password  = env.params.body["password"]?.as?(String)
@@ -39,11 +29,6 @@ module AccountsController
   end
 
   def edit(env)
-    unless env.feature_flags["signups"].enabled
-      render_404(env)
-      return
-    end
-
     unless env.current_user?
       env.redirect("/signin")
       return
@@ -53,11 +38,6 @@ module AccountsController
   end
 
   def update(env)
-    unless env.feature_flags["signups"].enabled
-      render_404(env)
-      return
-    end
-
     unless env.current_user?
       env.redirect("/signin")
       return

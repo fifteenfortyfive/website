@@ -3,21 +3,11 @@ module CommentatorSubmissionsController
   extend self
 
   def show(env)
-    unless env.feature_flags["signups"].enabled
-      render_404(env)
-      return
-    end
-
     submission = Repo.get_association(env.current_user, :commentator_submission).as?(CommentatorSubmission)
     render_view "registrations/commentator"
   end
 
   def create(env)
-    unless env.feature_flags["signups"].enabled
-      render_404(env)
-      return
-    end
-
     # Create the parent submission
     submission = CommentatorSubmission.new
     submission.games        = env.params.body["games"].as(String)
@@ -43,11 +33,6 @@ module CommentatorSubmissionsController
   end
 
   def destroy(env)
-    unless env.feature_flags["signups"].enabled
-      render_404(env)
-      return
-    end
-
     submission = Repo.get_association(env.current_user, :commentator_submission).as?(CommentatorSubmission)
     if submission
       submission.revoked = true

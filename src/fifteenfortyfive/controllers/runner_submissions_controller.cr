@@ -3,21 +3,11 @@ module RunnerSubmissionsController
   extend self
 
   def show(env)
-    unless env.feature_flags["signups"].enabled
-      render_404(env)
-      return
-    end
-
     submission = Repo.get_association(env.current_user, :runner_submission).as?(RunnerSubmission)
     render_view "registrations/runner"
   end
 
   def create(env)
-    unless env.feature_flags["signups"].enabled
-      render_404(env)
-      return
-    end
-
     json_params = env.params.json
 
     # Create the parent submission
@@ -45,11 +35,6 @@ module RunnerSubmissionsController
   end
 
   def destroy(env)
-    unless env.feature_flags["signups"].enabled
-      render_404
-      return
-    end
-
     submission = Repo.get_association(env.current_user, :runner_submission).as?(RunnerSubmission)
     if submission
       submission.revoked = true

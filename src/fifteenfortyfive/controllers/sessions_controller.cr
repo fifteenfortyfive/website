@@ -3,21 +3,11 @@ module SessionsController
   extend self
 
   def _new(env)
-    unless env.feature_flags["signups"].enabled
-      render_404(env)
-      return
-    end
-
     redirect_target = env.params.query["redirect"]? || "/"
     render_view "sessions/new"
   end
 
   def create(env)
-    unless env.feature_flags["signups"].enabled
-      render_404(env)
-      return
-    end
-
     username = env.params.body["username"].as(String)
     password = env.params.body["password"].as(String)
     redirect_target = env.params.query["redirect"]? || "/"
@@ -39,11 +29,6 @@ module SessionsController
   end
 
   def destroy(env)
-    unless env.feature_flags["signups"].enabled
-      render_404(env)
-      return
-    end
-
     if session = env.session?
       session.active = false
       Repo.update(session)

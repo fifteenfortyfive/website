@@ -6,15 +6,9 @@
 
 
       .col-sm-4.right
-        - if env.feature_flags["signups"].enabled
-          p.lead
-            | July 13th - 16th at
-            a(href="https://twitch.tv/1545race") twitch.tv/1545race
-        - else
-          p.lead
-            | Info Stream: Jan 28th at
-            a(href="https://twitch.tv/1545race") twitch.tv/1545race
-
+        p.lead
+          | July 13th - 16th at
+          a(href="https://twitch.tv/1545race") twitch.tv/1545race
 
 
 .statbar
@@ -32,23 +26,22 @@
 .container
   .row
     .col-sm-10
-      - if env.feature_flags["signups"].enabled
-        p.lead.banner
-          | Signups for this year's 1545 are now open! They will close on
-          strong March 1st, 2018.
-          a(href="/accounts/new") Create an account
-          | to get started, then
-          a(href="/register") register for the event!
+      p.lead.banner
+        | Signups for this year's 1545 are now open! They will close on
+        strong March 1st, 2018.
+        a(href="/accounts/new") Create an account
+        | to get started, then
+        a(href="/register") register for the event!
 
-        p.lead.banner
-          | So far,
-          strong= runner_submissions.size
-          | different runners have signed up for a total of
-          strong= runner_submissions.reduce(0){ |sum, rs| sum += rs.games.size }
-          | runs! We've also had
-          strong= commentator_submissions.size
-          | people signup for commentary during the event.
-          a(href="/register") Sign up now to join them!
+      p.lead.banner
+        | So far,
+        strong= runner_submissions.size
+        | different runners have signed up for a total of
+        strong= runner_submissions.reduce(0){ |sum, rs| sum += rs.games.size }
+        | runs! We've also had
+        strong= commentator_submissions.size
+        | people signup for commentary during the event.
+        a(href="/register") Sign up now to join them!
 
       .page-header
         h1 The Relay

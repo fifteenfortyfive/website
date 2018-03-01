@@ -3,11 +3,6 @@ module RegistrationsController
   extend self
 
   def index(env)
-    unless env.feature_flags["signups"].enabled
-      render_404(env)
-      return
-    end
-
     # Users must be signed in to register for the event.
     unless env.current_user?
       env.redirect("/signin?redirect=/register")
