@@ -38,3 +38,8 @@
   text-decoration: none;
   word-break: keep-all;
 }
+
+.submission--revoked {
+  background-color: darken($white-bg-color, 3%);
+  color: $text-muted;
+}

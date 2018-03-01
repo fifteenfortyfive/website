@@ -611,6 +611,10 @@ textarea.form__input {
   text-decoration: none;
   word-break: keep-all; }
 
+.submission--revoked {
+  background-color: #f3f3f7;
+  color: #b3b3b3; }
+
 html {
   font-size: 14px; }
 

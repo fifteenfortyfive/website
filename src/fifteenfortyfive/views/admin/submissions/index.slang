@@ -14,7 +14,8 @@
 
         tbody
           - runner_submissions.each do |sub|
-            tr
+            - row_class = sub.revoked ? "submission--revoked" : ""
+            tr(class=row_class )
               td(width="25%")
                 h4.runner-submission__name= sub.account.username
                 p.runner-submission__detail
@@ -65,7 +66,8 @@
 
         tbody
           - commentator_submissions.each do |sub|
-            tr
+            - row_class = sub.revoked ? "submission--revoked" : ""
+            tr(class=row_class )
               td = sub.account.username
               td = sub.games
               td = sub.experience
