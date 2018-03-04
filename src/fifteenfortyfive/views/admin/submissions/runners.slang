@@ -23,15 +23,26 @@
         tr(class=row_class )
           td.runner-cell(width="22%")
             h4.runner-submission__name= sub.account.username
-            p.runner-submission__detail
+
+            .runner-submission__detail
               strong Captain?
               = sub.captain ? "Yes" : "No"
-              br
-              strong Pair:
-              span= sub.pair
-              br
-              strong Avoid:
-              span = sub.avoid
+              p
+                strong Pair:
+                br
+                span= sub.pair || "--"
+              p
+                strong Avoid:
+                br
+                span = sub.avoid || "--"
+              p
+                strong Max games
+                br
+                span= sub.max_games || "--"
+              p
+                strong Max time
+                br
+                span = sub.max_time || "--"
 
 
           - ["sm64", "sms", "smg1", "smg2", "kazooie", "tooie", "dk64", "spyro1", "spyro2", "spyro3", "crash1", "crash2", "crash3"].each do |name|

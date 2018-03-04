@@ -9,6 +9,8 @@
       ul
         li
           a(href="/admin/submissions") Manage Submissions
+        li
+          a(href="/admin/submissions/runners") Runner Submissions Table
 
 
       h2 Account management
