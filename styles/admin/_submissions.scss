@@ -89,7 +89,7 @@ table.runner-submissions__table {
       position: absolute;
       left: 140px;
       background-color: #fcfcfd;
-      width: 260px;
+      width: 540px;
       padding: 12px;
       border: 1px solid #323234;
       box-shadow: 2px 2px 5px #323234;
@@ -120,4 +120,13 @@ table.runner-submissions__table {
   .crash1, .crash2, .crash3 {
     background-color: #ffdba6;
   }
+
+  tbody td {
+    &.first:hover {
+    }
+  }
+}
+
+.list--condensed {
+  padding-left: 24px;
 }

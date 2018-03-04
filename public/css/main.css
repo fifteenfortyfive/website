@@ -641,7 +641,7 @@ table.runner-submissions__table {
     position: absolute;
     left: 140px;
     background-color: #fcfcfd;
-    width: 260px;
+    width: 540px;
     padding: 12px;
     border: 1px solid #323234;
     box-shadow: 2px 2px 5px #323234;
@@ -659,6 +659,9 @@ table.runner-submissions__table {
     background-color: #f7c6ff; }
   table.runner-submissions__table .crash1, table.runner-submissions__table .crash2, table.runner-submissions__table .crash3 {
     background-color: #ffdba6; }
+
+.list--condensed {
+  padding-left: 24px; }
 
 html {
   font-size: 14px; }
