@@ -615,6 +615,28 @@ textarea.form__input {
   background-color: #f3f3f7;
   color: #b3b3b3; }
 
+.runner-submissions__table-container {
+  width: 100%;
+  overflow-x: scroll; }
+
+table.runner-submissions__table {
+  width: 100vw; }
+  table.runner-submissions__table thead th, table.runner-submissions__table tbody td {
+    border-top-color: #323234;
+    border-bottom-color: #323234;
+    border-left: 1px solid #323234;
+    border-right: 1px solid #323234; }
+  table.runner-submissions__table .runner-cell {
+    position: fixed; }
+  table.runner-submissions__table .sm64, table.runner-submissions__table .sms, table.runner-submissions__table .smg1, table.runner-submissions__table .smg2 {
+    background-color: #ffc5c5; }
+  table.runner-submissions__table .kazooie, table.runner-submissions__table .tooie, table.runner-submissions__table .dk64 {
+    background-color: #fff8be; }
+  table.runner-submissions__table .spyro1, table.runner-submissions__table .spyro2, table.runner-submissions__table .spyro3 {
+    background-color: #f7c6ff; }
+  table.runner-submissions__table .crash1, table.runner-submissions__table .crash2, table.runner-submissions__table .crash3 {
+    background-color: #ffdba6; }
+
 html {
   font-size: 14px; }
 

@@ -43,3 +43,40 @@
   background-color: darken($white-bg-color, 3%);
   color: $text-muted;
 }
+
+.runner-submissions__table-container {
+  width: 100%;
+  overflow-x: scroll;
+}
+
+table.runner-submissions__table {
+  width: 100vw;
+
+  thead th, tbody td {
+    border-top-color: #323234;
+    border-bottom-color: #323234;
+
+    border-left: 1px solid #323234;
+    border-right: 1px solid #323234;
+  }
+
+  .runner-cell {
+    position: fixed;
+  }
+
+  .sm64, .sms, .smg1, .smg2 {
+    background-color: #ffc5c5;
+  }
+
+  .kazooie, .tooie, .dk64 {
+    background-color: #fff8be;
+  }
+
+  .spyro1, .spyro2, .spyro3 {
+    background-color: #f7c6ff;
+  }
+
+  .crash1, .crash2, .crash3 {
+    background-color: #ffdba6;
+  }
+}

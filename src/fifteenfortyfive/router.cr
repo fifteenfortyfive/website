@@ -43,7 +43,8 @@ scope "/admin" do
 
   get "/accounts", &->Admin::AccountsController.index(Krout::Env)
 
-  get "/submissions", &->Admin::SubmissionsController.index(Krout::Env)
+  get "/submissions",         &->Admin::SubmissionsController.index(Krout::Env)
+  get "/submissions/runners", &->Admin::SubmissionsController.runners(Krout::Env)
 end
 
 
