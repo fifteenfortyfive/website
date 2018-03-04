@@ -637,8 +637,9 @@ table.runner-submissions__table {
     display: block; }
   table.runner-submissions__table .runner-cell .runner-submission__detail {
     font-size: 1rem;
-    opacity: 0;
+    display: none;
     position: absolute;
+    left: 140px;
     background-color: #fcfcfd;
     width: 260px;
     padding: 12px;
@@ -649,8 +650,7 @@ table.runner-submissions__table {
   table.runner-submissions__table .runner-cell:hover {
     background-color: #ededf3; }
     table.runner-submissions__table .runner-cell:hover .runner-submission__detail {
-      display: block;
-      opacity: 1; }
+      display: block; }
   table.runner-submissions__table .sm64, table.runner-submissions__table .sms, table.runner-submissions__table .smg1, table.runner-submissions__table .smg2 {
     background-color: #ffc5c5; }
   table.runner-submissions__table .kazooie, table.runner-submissions__table .tooie, table.runner-submissions__table .dk64 {

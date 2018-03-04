@@ -88,11 +88,24 @@
 
 
           - ["sm64", "sms", "smg1", "smg2", "kazooie", "tooie", "dk64", "spyro1", "spyro2", "spyro3", "crash1", "crash2", "crash3"].each do |name|
-            td(width="7%" class=name )
-              - if game = sub.games.find{ |g| name == g["game"].as(Hash(String, JSON::Type))["id"] }
+            - if game = sub.games.find{ |g| name == g["game"].as(Hash(String, JSON::Type))["id"] }
+              - idx = sub.games.index(game).not_nil!
+              - rank = case (idx+1)
+                - when 1 then "first"
+                - when 2 then "second"
+                - when 3 then "third"
+                - when 4 then "fourth"
+                - when 5 then "fifth"
+                - when 6 then "sixth"
+                - when 7 then "seventh"
+
+              td(width="7%" class="#{name} #{rank}")
                 strong= game["est"]
                 br
                 span= game["pb"]
+
+            - else
+              td(width="7%" class=name )
 
 
 script(src="/js/tablesort.min.js")
