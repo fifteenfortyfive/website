@@ -623,12 +623,24 @@ table.runner-submissions__table {
     border-bottom-color: #323234;
     border-left: 1px solid #323234;
     border-right: 1px solid #323234; }
+  table.runner-submissions__table thead th:hover {
+    background-color: #ededf3;
+    cursor: pointer; }
+  table.runner-submissions__table thead th .sort-ascending,
+  table.runner-submissions__table thead th .sort-descending {
+    float: right;
+    display: none;
+    margin-top: 3px; }
+  table.runner-submissions__table thead th[aria-sort="ascending"] .sort-ascending {
+    display: block; }
+  table.runner-submissions__table thead th[aria-sort="descending"] .sort-descending {
+    display: block; }
   table.runner-submissions__table .runner-cell .runner-submission__detail {
     font-size: 1rem;
     opacity: 0;
     position: absolute;
     background-color: #fcfcfd;
-    width: 400px;
+    width: 260px;
     padding: 12px;
     border: 1px solid #323234;
     box-shadow: 2px 2px 5px #323234;

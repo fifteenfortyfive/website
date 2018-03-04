@@ -9,7 +9,7 @@ module Admin::SubmissionsController
   end
 
   def runners(env)
-    runner_submissions      = Repo.all(RunnerSubmission, Query.order_by("updated_at DESC").where(revoked: "false"), preload: [:account])
+    runner_submissions      = Repo.all(RunnerSubmission, Query.where(revoked: "false"), preload: [:account]).sort_by{ |rs| rs.account.username.not_nil! }
 
     render_view "admin/submissions/runners"
   end
