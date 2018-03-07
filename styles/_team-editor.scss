@@ -1,0 +1,53 @@
+.runs-list {
+  border: 1px solid $light-gray;
+  border-radius: 4px;
+  height: 600px;
+  overflow-y: scroll;
+}
+
+.run {
+  padding: 8px;
+  border-bottom: 1px solid $light-gray;
+
+  &__game-name {
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+
+  &__runner-name {
+  }
+
+  &__runner-id {
+    display: none;
+  }
+
+  &__pb {
+    &::before {
+      color: $text-muted;
+      content: "PB: "
+    }
+  }
+
+  &__estimate {
+    &::before {
+      color: $text-muted;
+      content: "EST: "
+    }
+  }
+}
+
+.run--template {
+  display: none;
+}
+
+
+.teams-list {
+}
+
+.team {
+  border: 1px solid $light-gray;
+}
+
+.add-team-button {
+  cursor: pointer;
+}

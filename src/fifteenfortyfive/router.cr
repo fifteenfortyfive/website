@@ -11,6 +11,10 @@ scope "/accounts" do
 end
 
 
+scope "/teams" do
+  get  "",        &->TeamsController.index(Krout::Env)
+end
+
 
 scope "/register" do
   get "", &->RegistrationsController.index(Krout::Env)
@@ -27,6 +31,8 @@ scope "/register/commentator" do
   post "/submit", &->CommentatorSubmissionsController.create(Krout::Env)
   post "/revoke", &->CommentatorSubmissionsController.destroy(Krout::Env)
 end
+
+
 
 scope "/admin" do
   before_all do |env|
@@ -47,6 +53,8 @@ scope "/admin" do
   get "/submissions/runners", &->Admin::SubmissionsController.runners(Krout::Env)
   get "/submissions/export",          &->Admin::SubmissionsController.export(Krout::Env)
   get "/submissions/export.:format",  &->Admin::SubmissionsController.export(Krout::Env)
+
+  get "/teams",               &->Admin::TeamsController.index(Krout::Env)
 end
 
 

@@ -581,6 +581,36 @@ textarea.form__input {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: alpha(opacity=20); }
 
+.runs-list {
+  border: 1px solid #d8d8d9;
+  border-radius: 4px;
+  height: 600px;
+  overflow-y: scroll; }
+
+.run {
+  padding: 8px;
+  border-bottom: 1px solid #d8d8d9; }
+  .run__game-name {
+    font-weight: 700;
+    font-size: 1.3rem; }
+  .run__runner-id {
+    display: none; }
+  .run__pb::before {
+    color: #b3b3b3;
+    content: "PB: "; }
+  .run__estimate::before {
+    color: #b3b3b3;
+    content: "EST: "; }
+
+.run--template {
+  display: none; }
+
+.team {
+  border: 1px solid #d8d8d9; }
+
+.add-team-button {
+  cursor: pointer; }
+
 .runner-submissions {
   display: block;
   width: 100%;

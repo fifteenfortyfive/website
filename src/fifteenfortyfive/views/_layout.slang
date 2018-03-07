@@ -21,7 +21,12 @@ html
     nav.navbar.navbar-static-top
       .container
         p.navbar-text
-          a.navbar-link.navbar-link--bright(href="/") Home
+          a.hidden-xs.navbar-link.navbar-link--bright(href="/") Home
+          a.visible-xs.navbar-link.navbar-link--bright(href="/")
+            span.fas.fa-home
+
+        p.navbar-text
+          a.navbar-link(href="/teams") Teams
 
         p.navbar-text
           a.navbar-link(href="/register") Register
