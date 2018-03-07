@@ -11,6 +11,11 @@
           a(href="/admin/submissions") Manage Submissions
         li
           a(href="/admin/submissions/runners") Runner Submissions Table
+        li
+          | Export Runner Submissions
+          ul
+            li
+              a(href="/admin/submissions/export.csv") as CSV
 
 
       h2 Account management

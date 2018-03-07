@@ -45,6 +45,8 @@ scope "/admin" do
 
   get "/submissions",         &->Admin::SubmissionsController.index(Krout::Env)
   get "/submissions/runners", &->Admin::SubmissionsController.runners(Krout::Env)
+  get "/submissions/export",          &->Admin::SubmissionsController.export(Krout::Env)
+  get "/submissions/export.:format",  &->Admin::SubmissionsController.export(Krout::Env)
 end
 
 
