@@ -56,6 +56,22 @@
           | If you'd like to help out with commentary during the event, there's still plenty of time to
           a(href="/register/commentator") sign up!
 
+
+
+      .page-header
+        h1 2018 Teams
+
+      p This year's 1545 will feature an impressive 72 runners organized into 8 teams. These teams are mostly final, but subject to change based on drop outs and substitutions. Our goal is to balance teams for a more fair and interesting race.
+
+      p Team names and schedules will be determined by each team individually, and updated here as they are finalized.
+
+      .team-listings
+        .team-listing.team-listing--red
+          span.team-listing__name Red Team
+
+
+
+
       .page-header
         h1 The Relay
 

@@ -17,14 +17,26 @@ runs.forEach(function(run) {
   run_node.querySelector('.run__runner-id').innerText   = run.runner_id;
   run_node.querySelector('.run__pb').innerText          = run.pb;
   run_node.querySelector('.run__estimate').innerText    = run.estimate;
+  run_node.setAttribute('data-gs-id', run.id);
 
   RUNS_CONTAINER.appendChild(run_node);
 });
 
+
+var teams_drag_manager = dragula([RUNS_CONTAINER], {
+  revertOnSpill: true,
+  accepts: function(el, target) {
+    return target !== RUNS_CONTAINER
+  }
+}).on('drop', function(el) {
+  el.classList.remove('run--block');
+  el.classList.add('run--inline');
+});
 
 ADD_TEAM_BUTTON.addEventListener('click', function(evt) {
   var team_node = TEAM_TEMPLATE.cloneNode(true);
   team_node.classList.remove('team--template');
 
   TEAMS_CONTAINER.appendChild(team_node);
+  teams_drag_manager.containers.push(team_node.querySelector('.team__runs'));
 });

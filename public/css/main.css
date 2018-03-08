@@ -184,67 +184,6 @@ nav.navbar {
     font-size: 20px; }
   .titlebar .right {
     margin-top: 11px; } }
-.team-red {
-  color: #b91717; }
-
-.team-orange {
-  color: #f98126; }
-
-.team-yellow {
-  color: #ecd505; }
-
-.team-green {
-  color: #22ad0b; }
-
-.team-blue {
-  color: #0f76c7; }
-
-.team-purple {
-  color: #720fb9; }
-
-.true {
-  color: #66a569 !important; }
-
-.false {
-  color: #ff0000 !important; }
-
-.neutral {
-  color: #aaaaaa !important; }
-
-.true-bg {
-  background-color: #cbead4 !important; }
-
-.false-bg {
-  background-color: #ffcbcb !important; }
-
-.team {
-  margin: 20px 0; }
-  .team .team-members {
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; }
-    .team .team-members .member {
-      padding: 10px;
-      flex: 0 0 20%; }
-      .team .team-members .member .member-name {
-        font-weight: 700; }
-      .team .team-members .member .member-games {
-        font-size: 14px; }
-      .team .team-members .member.captain .member-name:after {
-        font-family: FontAwesome;
-        content: '\f006';
-        margin-left: 4px; }
-
-@media (max-width: 767px) {
-  .team .team-members .member {
-    flex: 0 0 25%; } }
-@media (max-width: 611px) {
-  .team .team-members .member {
-    flex: 0 0 33%; } }
-@media (max-width: 479px) {
-  .team .team-members .member {
-    flex: 0 0 50%; } }
 .spyro {
   background-color: #f3e0f7 !important; }
 
@@ -399,6 +338,9 @@ textarea.form__input {
     background-color: #f7dada;
     text-decoration: none; }
 
+.page-header .form__button {
+  margin-top: 0; }
+
 .hero-box__container {
   display: flex;
   margin: 24px 0; }
@@ -419,7 +361,7 @@ textarea.form__input {
   display: block;
   margin: 36px auto;
   font-size: 3em;
-  color: #22ad0b; }
+  color: #6fa56b; }
 
 .hero-box--list {
   padding: 0; }
@@ -581,32 +523,84 @@ textarea.form__input {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: alpha(opacity=20); }
 
+.team-editor-container {
+  height: 70vh;
+  overflow-y: scroll; }
+
 .runs-list {
   border: 1px solid #d8d8d9;
-  border-radius: 4px;
-  height: 600px;
-  overflow-y: scroll; }
+  border-radius: 4px; }
 
 .run {
   padding: 8px;
-  border-bottom: 1px solid #d8d8d9; }
-  .run__game-name {
-    font-weight: 700;
-    font-size: 1.3rem; }
-  .run__runner-id {
-    display: none; }
-  .run__pb::before {
+  border-bottom: 1px solid #d8d8d9;
+  cursor: pointer; }
+  .run .run__pb::before {
     color: #b3b3b3;
     content: "PB: "; }
-  .run__estimate::before {
+  .run .run__estimate::before {
     color: #b3b3b3;
     content: "EST: "; }
+  .run .run__runner-id {
+    display: none; }
+  .run .run__game-name {
+    font-weight: 700; }
+  .run--block .run__game-name {
+    font-size: 1.3rem; }
+  .run--block .run__times {
+    display: block; }
+  .run--inline .run__runner-name {
+    color: #b3b3b3;
+    font-size: 0.9em; }
+  .run--inline .run__times {
+    display: inline;
+    float: right; }
+  .run--inline .run__pb {
+    display: inline-block;
+    text-align: right;
+    width: 120px; }
+  .run--inline .run__estimate {
+    display: inline-block;
+    text-align: right;
+    width: 120px; }
 
 .run--template {
   display: none; }
 
+.teams-list {
+  height: 600px;
+  overflow-y: scroll; }
+
 .team {
-  border: 1px solid #d8d8d9; }
+  padding: 12px;
+  margin: 12px 0;
+  border: 1px solid #d8d8d9;
+  border-radius: 4px; }
+  .team__id {
+    display: none; }
+  .team input {
+    border: none;
+    outline: none;
+    background: none; }
+  .team__remove-button {
+    float: right; }
+  .team__name {
+    width: 260px;
+    font-size: 1.4em; }
+  .team__runs {
+    margin-top: 4px;
+    border-top: 1px solid #d8d8d9;
+    min-height: 40px;
+    padding-bottom: 16px; }
+    .team__runs:empty::after {
+      content: 'Drag runs to here from the left to add them to this team.';
+      display: block;
+      padding: 8px;
+      text-align: center;
+      color: #b3b3b3; }
+
+.team--template {
+  display: none; }
 
 .add-team-button {
   cursor: pointer; }

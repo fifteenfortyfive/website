@@ -1,81 +1,16 @@
-.team-red     { color: $team-red; }
-.team-orange  { color: $team-orange; }
-.team-yellow  { color: $team-yellow; }
-.team-green   { color: $team-green; }
-.team-blue    { color: $team-blue; }
-.team-purple  { color: $team-purple; }
+$team-red: #d46060;
+$team-orange: #df9753;
+$team-yellow: #f0c566;
+$team-green: #6fa56b;
+$team-gray: #979c9f;
+$team-blue: #56a3d8;
+$team-purple: #8c5eac;
+$team-pink: #dd8eb4;
 
-
-.true     { color: #66a569 !important; }
-.false    { color: #ff0000 !important; }
-.neutral  { color: #aaaaaa !important; }
-
-.true-bg  { background-color: #cbead4 !important; }
-.false-bg { background-color: #ffcbcb !important; }
-
-
-
-.team {
-  margin: 20px 0;
-
-  .team-members {
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-
-    .member {
-      padding: 10px;
-      flex: 0 0 20%;
-
-      .member-name {
-        font-weight: 700;
-      }
-
-      .member-games {
-        font-size: 14px;
-      }
-
-      &.captain {
-        .member-name:after {
-          font-family: FontAwesome;
-          content: '\f006';
-          margin-left: 4px;
-        }
-      }
-    }
-  }
-}
-
-// Portrait tablet screens
-@media (max-width: 767px) {
-  .team {
-    .team-members {
-      .member {
-        flex: 0 0 25%;
-      }
-    }
-  }
-}
-
-// Portrait tablet screens
-@media (max-width: 611px) {
-  .team {
-    .team-members {
-      .member {
-        flex: 0 0 33%;
-      }
-    }
-  }
-}
-
-// Phone screens
-@media (max-width: 479px) {
-  .team {
-    .team-members {
-      .member {
-        flex: 0 0 50%;
-      }
-    }
+@mixin team-listing($root-color) {
+  .team-listing__name {
+    color: $root-color;
+    font-size: 1.4em;
+    font-weight: 700;
   }
 }
