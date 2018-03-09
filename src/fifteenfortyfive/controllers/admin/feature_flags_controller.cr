@@ -21,4 +21,14 @@ module Admin::FeatureFlagsController
 
     env.redirect("/admin/feature_flags")
   end
+
+  def create(env)
+    flag = FeatureFlag.new
+    flag.name = env.params.body["name"]
+    flag.enabled = false
+
+    Repo.insert(flag)
+
+    env.redirect("/admin/feature_flags")
+  end
 end

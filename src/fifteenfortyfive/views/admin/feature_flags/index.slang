@@ -4,6 +4,7 @@
       .page-header
         h1 Feature Flags
 
+
       table.table
         thead
           tr
@@ -21,3 +22,15 @@
                   a(href="/admin/feature_flags/#{name}/disable") Disable
                 -else
                   a(href="/admin/feature_flags/#{name}/enable") Enable
+
+  .row
+    .col-sm-4
+      .page-header
+        h1 Create New Flag
+
+      form.form(action="/admin/feature_flags/create" method="POST")
+        .form__field
+          label.form__label Name
+          input.form__input(name="name" placeholder="flag name...")
+
+        input.form__submit(type="submit" value="Create")
