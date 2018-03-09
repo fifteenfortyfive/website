@@ -54,7 +54,8 @@ scope "/admin" do
   get "/submissions/export",          &->Admin::SubmissionsController.export(Krout::Env)
   get "/submissions/export.:format",  &->Admin::SubmissionsController.export(Krout::Env)
 
-  get "/teams",               &->Admin::TeamsController.index(Krout::Env)
+  get  "/teams",          &->Admin::TeamsController.index(Krout::Env)
+  post "/teams/save",     &->Admin::TeamsController.save(Krout::Env)
 end
 
 

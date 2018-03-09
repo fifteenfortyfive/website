@@ -1,6 +1,5 @@
 class Run < Crecto::Model
   schema "runs" do
-    field :name, String
     field :pb, String
     field :estimate, String
 

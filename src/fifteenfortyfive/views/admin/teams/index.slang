@@ -3,7 +3,7 @@
     .col-sm-10
       .page-header
         .pull-right
-          .form__button
+          .form__button.save-button
             | Save
 
         h1 Teams Editor
@@ -12,6 +12,7 @@
 
   .row
     .col-sm-4
+      input.runs-filter(placeholder="Search runs...")
       .runs-list.team-editor-container
         .run.run--template
           span.run__game-name

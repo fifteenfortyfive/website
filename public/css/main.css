@@ -524,17 +524,31 @@ textarea.form__input {
   filter: alpha(opacity=20); }
 
 .team-editor-container {
-  height: 70vh;
+  height: 600px;
   overflow-y: scroll; }
+
+.runs-filter {
+  border: 1px solid #d8d8d9;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom: none;
+  width: 100%;
+  padding: 8px;
+  background: none;
+  outline: none; }
 
 .runs-list {
   border: 1px solid #d8d8d9;
-  border-radius: 4px; }
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px; }
+
+.hidden {
+  display: none; }
 
 .run {
   padding: 8px;
   border-bottom: 1px solid #d8d8d9;
-  cursor: pointer; }
+  cursor: move; }
   .run .run__pb::before {
     color: #b3b3b3;
     content: "PB: "; }

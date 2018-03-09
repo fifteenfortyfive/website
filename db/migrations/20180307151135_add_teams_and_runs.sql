@@ -4,6 +4,8 @@ CREATE TABLE "public"."teams" (
     "name" text,
     "captain_id" integer,
     "color" text,
+    "created_at" timestamp without time zone,
+    "updated_at" timestamp without time zone,
     PRIMARY KEY ("id"),
     FOREIGN KEY ("captain_id") REFERENCES "public"."accounts"("id")
 );
@@ -15,6 +17,8 @@ CREATE TABLE "public"."runs" (
     "team_id" integer,
     "pb" text,
     "estimate" text,
+    "created_at" timestamp without time zone,
+    "updated_at" timestamp without time zone,
     PRIMARY KEY ("id"),
     FOREIGN KEY ("runner_id") REFERENCES "public"."accounts"("id"),
     FOREIGN KEY ("game_id") REFERENCES "public"."games"("id"),

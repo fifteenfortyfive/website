@@ -4,5 +4,6 @@ class Team < Crecto::Model
     field :color, String
 
     belongs_to :captain, Account, foreign_key: :captain_id
+    has_many :runs, Run
   end
 end

@@ -8,4 +8,5 @@ module Repo
 end
 
 Query = Crecto::Repo::Query
+Multi = Crecto::Multi
 Crecto::DbLogger.set_handler(STDOUT)
