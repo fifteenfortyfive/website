@@ -3,7 +3,7 @@ class Game < Crecto::Model
     field :name, String
     field :series, String
     field :progress_unit, String
-    field :progress_max, Int32
+    field :progress_max, String
     field :sequence_number, Int32
     field :default_splits, String
   end
