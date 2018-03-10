@@ -25,6 +25,10 @@ html
           a.visible-xs.navbar-link.navbar-link--bright(href="/")
             span.fas.fa-home
 
+        - if env.feature_flags["teams"].enabled
+          p.navbar-text
+            a.navbar-link(href="/teams") Teams
+
         p.navbar-text
           a.navbar-link(href="/register") Register
 

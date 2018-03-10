@@ -3,6 +3,11 @@ module TeamsController
   extend self
 
   def index(env)
+    unless env.feature_flags["teams"].enabled || (env.current_user? && env.current_user.admin)
+      env.redirect("/")
+      return
+    end
+
     teams = Repo.all(Team, preload: [:captain]).index_by{ |t| t.id }
     runs = Repo.all(Run,
       Query.where(team_id: teams.keys),

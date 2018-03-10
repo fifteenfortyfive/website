@@ -26,7 +26,8 @@
 .container
   .row
     .col-sm-10
-      - if env.feature_flags["open_signups"].enabled
+      - case true
+      - when env.feature_flags["open_signups"].enabled
         p.lead.banner
           | Signups for this year's 1545 are now open! They will close on
           strong March 1st, 2018.
@@ -43,6 +44,15 @@
           strong= commentator_submissions.size
           | people have also registered for commentary during the event.
           a(href="/register") Sign up now to join them!
+      - when env.feature_flags["teams"].enabled
+        p.lead.banner
+          | Teams for this year's 1545 have been announced! Find out who's running what
+          a(href="/teams") on the teams page!
+
+        p.lead.banner
+          strong Commentator signups are still open!
+          | If you'd like to help out with commentary during the event, there's still plenty of time to
+          a(href="/register/commentator") sign up!
       - else
         p.lead.banner
           | Runner signups for this year's 1545 have closed! This year,
