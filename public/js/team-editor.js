@@ -31,32 +31,64 @@ function fuzzysearch(needle, haystack) {
   return true;
 }
 
-
-runs.forEach(function(run) {
+function createRunNode(run, class_modifier) {
+  class_modifier = class_modifier || "block";
   var run_node = RUN_TEMPLATE.cloneNode(true);
   run_node.classList.remove('run--template');
-  run_node.classList.add('run--block');
+  run_node.classList.add('run--' + class_modifier);
 
   run_node.querySelector('.run__game-name').innerText   = run.game;
   run_node.querySelector('.run__runner-name').innerText = run.runner;
   run_node.querySelector('.run__runner-id').innerText   = run.runner_id;
   run_node.querySelector('.run__pb').innerText          = run.pb;
   run_node.querySelector('.run__estimate').innerText    = run.estimate;
-  run_node.setAttribute('data-gs-id', run.id);
+  run_node.setAttribute('data-run-id', run.id);
 
-  RUNS_CONTAINER.appendChild(run_node);
+  return run_node;
+}
+
+
+existing_teams.forEach(function(team) {
+  var team_node = TEAM_TEMPLATE.cloneNode(true);
+  team_node.classList.remove('team--template')
+  var team_runs = team_node.querySelector('.team__runs');
+
+  team_node.querySelector('.team__id').value = team.id;
+  team_node.querySelector('.team__name').value = team.name;
+  team_node.querySelector('.team__color').value = team.color;
+  team.runs.forEach(function(run_id) {
+    run_index = available_runs.findIndex(function(r, idx) { return r.id == run_id; });
+    // Remove the run from the available runs list.
+    run = available_runs.splice(run_index, 1)[0];
+    // then add it to the team run list.
+    team_runs.appendChild(createRunNode(run, 'inline'));
+  });
+
+  TEAMS_CONTAINER.appendChild(team_node);
+});
+
+available_runs.forEach(function(run) {
+  RUNS_CONTAINER.appendChild(createRunNode(run));
 });
 
 
+
+
 // Drag and drop support between containers.
-var teams_drag_manager = dragula([RUNS_CONTAINER], {
+var teams_drag_manager = dragula({
   revertOnSpill: true,
-  accepts: function(el, target) {
-    return target !== RUNS_CONTAINER
+  isContainer: function(el) {
+    return el == RUNS_CONTAINER || el.classList.contains('team__runs');
+  },
+}).on('drop', function(el, target) {
+  console.log(target);
+  if(target == RUNS_CONTAINER) {
+    el.classList.add('run--block');
+    el.classList.remove('run--inline');
+  } else {
+    el.classList.remove('run--block');
+    el.classList.add('run--inline');
   }
-}).on('drop', function(el) {
-  el.classList.remove('run--block');
-  el.classList.add('run--inline');
 });
 
 
@@ -81,9 +113,10 @@ SAVE_BUTTON.addEventListener('click', function(evt) {
     runs = [].slice.call(team_node.querySelector('.team__runs').querySelectorAll('.run'));
 
     teams_data.push({
+      id:     team_node.querySelector('.team__id').value,
       name:   team_node.querySelector('.team__name').value,
       color:  team_node.querySelector('.team__color').value,
-      runs:   runs.map(function(r) { return r.getAttribute('data-gs-id'); })
+      runs:   runs.map(function(r) { return r.getAttribute('data-run-id'); })
     });
   });
 
@@ -96,7 +129,6 @@ SAVE_BUTTON.addEventListener('click', function(evt) {
     })
   }).catch(function(error) { return console.error('Error:', error) })
   .then(function(response) { return console.log('Success:', response) });
-
 });
 
 

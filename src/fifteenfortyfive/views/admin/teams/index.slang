@@ -25,7 +25,7 @@
     .col-sm-6
       .teams-list.team-editor-container
         .team.team--template
-          span.team__id
+          input.team__id(type="hidden")
           span.team__remove-button
             .fas.fa-times
           input.team__name(placeholder="Team name")
@@ -37,7 +37,8 @@
 
 
 javascript:
-  var runs = #{available_runs_json};
+  var available_runs = #{available_runs_json};
+  var existing_teams = #{existing_teams_json};
 
 script(src="/js/dragula.js")
 script(src="/js/team-editor.js")

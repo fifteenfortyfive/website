@@ -563,20 +563,22 @@ textarea.form__input {
     font-size: 1.3rem; }
   .run--block .run__times {
     display: block; }
-  .run--inline .run__runner-name {
-    color: #b3b3b3;
-    font-size: 0.9em; }
-  .run--inline .run__times {
-    display: inline;
-    float: right; }
-  .run--inline .run__pb {
-    display: inline-block;
-    text-align: right;
-    width: 120px; }
-  .run--inline .run__estimate {
-    display: inline-block;
-    text-align: right;
-    width: 120px; }
+  .run--inline {
+    padding: 4px 8px; }
+    .run--inline .run__runner-name {
+      color: #b3b3b3;
+      font-size: 0.9em; }
+    .run--inline .run__times {
+      display: inline;
+      float: right; }
+    .run--inline .run__pb {
+      display: inline-block;
+      text-align: right;
+      width: 120px; }
+    .run--inline .run__estimate {
+      display: inline-block;
+      text-align: right;
+      width: 120px; }
 
 .run--template {
   display: none; }

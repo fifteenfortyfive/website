@@ -9,6 +9,7 @@ class RunnerSubmission < Crecto::Model
     field :captain, Bool, default: false
 
     belongs_to :account, Account
+    has_many :runs, Run, foreign_key: :submission_id
   end
 
   def games
