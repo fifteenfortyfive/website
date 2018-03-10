@@ -1,152 +1,154 @@
-.team-editor-container {
-  height: 600px;
-  overflow-y: scroll;
-}
-
-.runs-filter {
-  border: 1px solid $light-gray;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  border-bottom: none;
-  width: 100%;
-  padding: 8px;
-  background: none;
-  outline: none;
-}
-
-.runs-list {
-  border: 1px solid $light-gray;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-
-.hidden {
-  display: none;
-}
-
-.run {
-  padding: 8px;
-  border-bottom: 1px solid $light-gray;
-  cursor: move;
-
-  .run__pb {
-    &::before {
-      color: $text-muted;
-      content: "PB: "
-    }
+.teams-editor {
+  .team-editor-container {
+    height: 600px;
+    overflow-y: scroll;
   }
 
-  .run__estimate {
-    &::before {
-      color: $text-muted;
-      content: "EST: "
-    }
+  .runs-filter {
+    border: 1px solid $light-gray;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom: none;
+    width: 100%;
+    padding: 8px;
+    background: none;
+    outline: none;
   }
 
-  .run__runner-id {
+  .runs-list {
+    border: 1px solid $light-gray;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  .hidden {
     display: none;
   }
 
-  .run__game-name {
-    font-weight: 700;
-  }
-
-  &--block {
-    .run__game-name {
-      font-size: 1.3rem;
-    }
-
-    .run__times {
-      display: block;
-    }
-  }
-
-  &--inline {
-    padding: 4px 8px;
-
-    .run__runner-name {
-      color: $text-muted;
-      font-size: 0.9em;
-    }
-
-    .run__times {
-      display: inline;
-      float: right;
-    }
+  .run {
+    padding: 8px;
+    border-bottom: 1px solid $light-gray;
+    cursor: move;
 
     .run__pb {
-      display: inline-block;
-      text-align: right;
-      width: 120px;
+      &::before {
+        color: $text-muted;
+        content: "PB: "
+      }
     }
 
     .run__estimate {
-      display: inline-block;
-      text-align: right;
-      width: 120px;
+      &::before {
+        color: $text-muted;
+        content: "EST: "
+      }
+    }
+
+    .run__runner-id {
+      display: none;
+    }
+
+    .run__game-name {
+      font-weight: 700;
+    }
+
+    &--block {
+      .run__game-name {
+        font-size: 1.3rem;
+      }
+
+      .run__times {
+        display: block;
+      }
+    }
+
+    &--inline {
+      padding: 4px 8px;
+
+      .run__runner-name {
+        color: $text-muted;
+        font-size: 0.9em;
+      }
+
+      .run__times {
+        display: inline;
+        float: right;
+      }
+
+      .run__pb {
+        display: inline-block;
+        text-align: right;
+        width: 120px;
+      }
+
+      .run__estimate {
+        display: inline-block;
+        text-align: right;
+        width: 120px;
+      }
     }
   }
-}
 
-.run--template {
-  display: none;
-}
-
-
-
-.teams-list {
-  height: 600px;
-  overflow-y: scroll;
-}
-
-.team {
-  padding: 12px;
-  margin: 12px 0;
-  border: 1px solid $light-gray;
-  border-radius: 4px;
-
-  &__id {
+  .run--template {
     display: none;
   }
 
-  input {
-    border: none;
-    outline: none;
-    background: none;
+
+
+  .teams-list {
+    height: 600px;
+    overflow-y: scroll;
   }
 
-  &__remove-button {
-    float: right;
-  }
+  .team {
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid $light-gray;
+    border-radius: 4px;
 
-  &__name {
-    width: 260px;
-    font-size: 1.4em;
-  }
+    &__id {
+      display: none;
+    }
 
-  &__color {
-  }
+    input {
+      border: none;
+      outline: none;
+      background: none;
+    }
 
-  &__runs {
-    margin-top: 4px;
-    border-top: 1px solid $light-gray;
-    min-height: 40px;
-    padding-bottom: 16px;
+    &__remove-button {
+      float: right;
+    }
 
-    &:empty::after {
-      content: 'Drag runs to here from the left to add them to this team.';
-      display: block;
-      padding: 8px;
-      text-align: center;
-      color: $text-muted;
+    &__name {
+      width: 260px;
+      font-size: 1.4em;
+    }
+
+    &__color {
+    }
+
+    &__runs {
+      margin-top: 4px;
+      border-top: 1px solid $light-gray;
+      min-height: 40px;
+      padding-bottom: 16px;
+
+      &:empty::after {
+        content: 'Drag runs to here from the left to add them to this team.';
+        display: block;
+        padding: 8px;
+        text-align: center;
+        color: $text-muted;
+      }
     }
   }
-}
 
-.team--template {
-  display: none;
-}
+  .team--template {
+    display: none;
+  }
 
-.add-team-button {
-  cursor: pointer;
+  .add-team-button {
+    cursor: pointer;
+  }
 }

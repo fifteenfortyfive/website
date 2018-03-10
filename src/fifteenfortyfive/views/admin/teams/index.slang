@@ -1,4 +1,4 @@
-.container
+.container.teams-editor
   .row
     .col-sm-10
       .page-header

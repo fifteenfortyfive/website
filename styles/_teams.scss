@@ -1,16 +1,49 @@
-$team-red: #d46060;
-$team-orange: #df9753;
-$team-yellow: #f0c566;
-$team-green: #6fa56b;
-$team-gray: #979c9f;
-$team-blue: #56a3d8;
-$team-purple: #8c5eac;
-$team-pink: #dd8eb4;
+.teams-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 16px;
 
-@mixin team-listing($root-color) {
-  .team-listing__name {
-    color: $root-color;
-    font-size: 1.4em;
+  .team {
+    border: 2px solid var(--color);
+    border-radius: 4px;
+  }
+
+  .team__header {
+    background-color: var(--color);
+    padding: 8px;
+    color: $white-color;
+  }
+
+  .team__name {
+    font-size: 1.6rem;
     font-weight: 700;
+    display: block;
+  }
+
+  .team__captain {
+    font-size: 1rem;
+    font-weight: 700;
+
+    &::before {
+      content: 'Captain: ';
+      font-weight: 400;
+    }
+  }
+
+  .team__runs {
+    padding: 4px 16px;
+  }
+
+  .runner {
+    margin: 8px 0;
+
+    .runner__name {
+      display: block;
+      font-weight: 700;
+    }
+
+    .runner__runs {
+      color: $text-muted;
+    }
   }
 }

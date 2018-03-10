@@ -184,6 +184,37 @@ nav.navbar {
     font-size: 20px; }
   .titlebar .right {
     margin-top: 11px; } }
+.teams-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 16px; }
+  .teams-display .team {
+    border: 2px solid var(--color);
+    border-radius: 4px; }
+  .teams-display .team__header {
+    background-color: var(--color);
+    padding: 8px;
+    color: #fcfcfd; }
+  .teams-display .team__name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    display: block; }
+  .teams-display .team__captain {
+    font-size: 1rem;
+    font-weight: 700; }
+    .teams-display .team__captain::before {
+      content: 'Captain: ';
+      font-weight: 400; }
+  .teams-display .team__runs {
+    padding: 4px 16px; }
+  .teams-display .runner {
+    margin: 8px 0; }
+    .teams-display .runner .runner__name {
+      display: block;
+      font-weight: 700; }
+    .teams-display .runner .runner__runs {
+      color: #b3b3b3; }
+
 .spyro {
   background-color: #f3e0f7 !important; }
 
@@ -361,7 +392,7 @@ textarea.form__input {
   display: block;
   margin: 36px auto;
   font-size: 3em;
-  color: #6fa56b; }
+  color: #22ad0b; }
 
 .hero-box--list {
   padding: 0; }
@@ -523,11 +554,10 @@ textarea.form__input {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: alpha(opacity=20); }
 
-.team-editor-container {
+.teams-editor .team-editor-container {
   height: 600px;
   overflow-y: scroll; }
-
-.runs-filter {
+.teams-editor .runs-filter {
   border: 1px solid #d8d8d9;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
@@ -536,89 +566,81 @@ textarea.form__input {
   padding: 8px;
   background: none;
   outline: none; }
-
-.runs-list {
+.teams-editor .runs-list {
   border: 1px solid #d8d8d9;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px; }
-
-.hidden {
+.teams-editor .hidden {
   display: none; }
-
-.run {
+.teams-editor .run {
   padding: 8px;
   border-bottom: 1px solid #d8d8d9;
   cursor: move; }
-  .run .run__pb::before {
+  .teams-editor .run .run__pb::before {
     color: #b3b3b3;
     content: "PB: "; }
-  .run .run__estimate::before {
+  .teams-editor .run .run__estimate::before {
     color: #b3b3b3;
     content: "EST: "; }
-  .run .run__runner-id {
+  .teams-editor .run .run__runner-id {
     display: none; }
-  .run .run__game-name {
+  .teams-editor .run .run__game-name {
     font-weight: 700; }
-  .run--block .run__game-name {
+  .teams-editor .run--block .run__game-name {
     font-size: 1.3rem; }
-  .run--block .run__times {
+  .teams-editor .run--block .run__times {
     display: block; }
-  .run--inline {
+  .teams-editor .run--inline {
     padding: 4px 8px; }
-    .run--inline .run__runner-name {
+    .teams-editor .run--inline .run__runner-name {
       color: #b3b3b3;
       font-size: 0.9em; }
-    .run--inline .run__times {
+    .teams-editor .run--inline .run__times {
       display: inline;
       float: right; }
-    .run--inline .run__pb {
+    .teams-editor .run--inline .run__pb {
       display: inline-block;
       text-align: right;
       width: 120px; }
-    .run--inline .run__estimate {
+    .teams-editor .run--inline .run__estimate {
       display: inline-block;
       text-align: right;
       width: 120px; }
-
-.run--template {
+.teams-editor .run--template {
   display: none; }
-
-.teams-list {
+.teams-editor .teams-list {
   height: 600px;
   overflow-y: scroll; }
-
-.team {
+.teams-editor .team {
   padding: 12px;
   margin: 12px 0;
   border: 1px solid #d8d8d9;
   border-radius: 4px; }
-  .team__id {
+  .teams-editor .team__id {
     display: none; }
-  .team input {
+  .teams-editor .team input {
     border: none;
     outline: none;
     background: none; }
-  .team__remove-button {
+  .teams-editor .team__remove-button {
     float: right; }
-  .team__name {
+  .teams-editor .team__name {
     width: 260px;
     font-size: 1.4em; }
-  .team__runs {
+  .teams-editor .team__runs {
     margin-top: 4px;
     border-top: 1px solid #d8d8d9;
     min-height: 40px;
     padding-bottom: 16px; }
-    .team__runs:empty::after {
+    .teams-editor .team__runs:empty::after {
       content: 'Drag runs to here from the left to add them to this team.';
       display: block;
       padding: 8px;
       text-align: center;
       color: #b3b3b3; }
-
-.team--template {
+.teams-editor .team--template {
   display: none; }
-
-.add-team-button {
+.teams-editor .add-team-button {
   cursor: pointer; }
 
 .runner-submissions {

@@ -2,7 +2,6 @@ require "crypto/bcrypt/password"
 
 class Account < Crecto::Model
   schema "accounts" do
-    field :id, Int32, primary_key: true
     field :username, String
     field :encrypted_password, String
     field :discord, String
