@@ -13,7 +13,7 @@
               span.team__captain= team.captain.try(&.username)
 
             .team__runs
-              - runs.sort_by(&.runner.username.not_nil!).group_by(&.runner).each do |runner, runs|
+              - runs.sort_by(&.runner.username.not_nil!.downcase).group_by(&.runner).each do |runner, runs|
                 - is_captain = team.captain_id == runner.id
                 .runner(data-captain=is_captain )
                   span.runner__name= runner.username
