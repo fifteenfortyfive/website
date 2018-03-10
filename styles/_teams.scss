@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 16px;
+  margin-top: 32px;
 
   .team {
     border: 2px solid var(--color);

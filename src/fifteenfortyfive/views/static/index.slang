@@ -14,60 +14,44 @@
 .statbar
   .container
     .row
-      .stats.col-sm-10
-        .stat
-          span.fa.fa-clock
-          | 3 days
-        .stat
-          span.fa.fa-gamepad
-          | 13 games
+      .col-sm-10
+        - case true
+        - when env.feature_flags["open_signups"].enabled
+          p.lead.banner
+            | Signups for this year's 1545 are now open! They will close on
+            strong March 1st, 2018.
+            a(href="/accounts/new") Create an account
+            | to get started, then
+            a(href="/register") register for the event!
+
+          p.lead.banner
+            | So far,
+            strong= runner_submissions.size
+            | different runners have signed up for a total of
+            strong= runner_submissions.reduce(0){ |sum, rs| sum += rs.games.size }
+            | runs!
+            strong= commentator_submissions.size
+            | people have also registered for commentary during the event.
+            a(href="/register") Sign up now to join them!
+        - when env.feature_flags["teams"].enabled
+          p.lead.banner
+            strong Teams for this year's 1545 have been announced!
+            | Find out who's running what
+            a(href="/teams") on the teams page!
+
+        - else
+          p.lead.banner
+            | Runner signups for this year's 1545 have closed! This year,
+            strong= runner_submissions.size
+            | runners submitted a total of
+            strong= runner_submissions.reduce(0){ |sum, rs| sum += rs.games.size }
+            | runs! Over the next two weeks, we'll be forming the teams and will announce them shortly afterwards.
+
 
 
 .container
   .row
-    .col-sm-10
-      - case true
-      - when env.feature_flags["open_signups"].enabled
-        p.lead.banner
-          | Signups for this year's 1545 are now open! They will close on
-          strong March 1st, 2018.
-          a(href="/accounts/new") Create an account
-          | to get started, then
-          a(href="/register") register for the event!
-
-        p.lead.banner
-          | So far,
-          strong= runner_submissions.size
-          | different runners have signed up for a total of
-          strong= runner_submissions.reduce(0){ |sum, rs| sum += rs.games.size }
-          | runs!
-          strong= commentator_submissions.size
-          | people have also registered for commentary during the event.
-          a(href="/register") Sign up now to join them!
-      - when env.feature_flags["teams"].enabled
-        p.lead.banner
-          | Teams for this year's 1545 have been announced! Find out who's running what
-          a(href="/teams") on the teams page!
-
-        p.lead.banner
-          strong Commentator signups are still open!
-          | If you'd like to help out with commentary during the event, there's still plenty of time to
-          a(href="/register/commentator") sign up!
-      - else
-        p.lead.banner
-          | Runner signups for this year's 1545 have closed! This year,
-          strong= runner_submissions.size
-          | runners submitted a total of
-          strong= runner_submissions.reduce(0){ |sum, rs| sum += rs.games.size }
-          | runs! Over the next two weeks, we'll be forming the teams and will announce them shortly afterwards.
-
-        p.lead.banner
-          strong Commentator signups are still open!
-          | If you'd like to help out with commentary during the event, there's still plenty of time to
-          a(href="/register/commentator") sign up!
-
-
-
+    .col-sm-6
       .page-header
         h1 The Relay
 
@@ -83,11 +67,22 @@
         | at
         a(href="https://twitch.tv/1545race") twitch.tv/1545race
         | and will run through the 16th, until the last team has finished.
+    .col-sm-4
+      .page-header
+        h1 Commentary
+
+      p
+        strong Commentator signups are still open!
+        | If you'd like to help out with commentary during the event, there's still plenty of time to
+        a(href="/register/commentator") sign up!
+
+      p
+        | Signups for commentary will remain open until a month or so before the event begins.
+
 
 
 script(src="/js/moment.min.js")
 script(src="/js/moment-timezone.min.js")
-
 
 javascript:
   // Name of the time zone that the user is currently in.

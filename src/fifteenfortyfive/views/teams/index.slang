@@ -4,6 +4,18 @@
       .page-header
         h1 2018 Teams
 
+      p.lead
+        | This year's event features
+        = runs.uniq{ |r| r.runner }.size
+        | runners racing in
+        = teams.size
+        | different teams.
+
+      p
+        | Teams are specifically created for a balanced race, with every team having a competitive estimate and a fair chance at winning the race. The average estimate for every team is 53 hours and 7 minutes, with the standard deviation between them sitting just under 4 minutes.
+
+      p
+        | Teams are responsible for creating their own run schedules. These schedules will be finalized and posted roughly a week before the event.
 
       .teams-display
         - runs_by_team.each do |team, runs|

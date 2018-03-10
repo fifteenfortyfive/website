@@ -145,7 +145,7 @@ nav.navbar {
 
 .statbar {
   border-bottom: 1px solid #323234;
-  font-family: "proxima-nova", sans-serif; }
+  text-align: center; }
   .statbar .stats {
     display: flex;
     justify-content: space-around;
@@ -187,7 +187,8 @@ nav.navbar {
 .teams-display {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 16px; }
+  grid-gap: 16px;
+  margin-top: 32px; }
   .teams-display .team {
     border: 2px solid var(--color);
     border-radius: 4px; }
@@ -791,7 +792,7 @@ footer {
       margin-right: 20px; }
 
 .banner {
-  margin-top: 30px; }
+  margin-top: 20px; }
 
 .rankings {
   width: 100%;
