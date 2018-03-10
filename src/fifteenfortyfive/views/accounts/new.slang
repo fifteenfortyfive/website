@@ -27,20 +27,22 @@
           input.form__input(name="confirm_password" type="password" required="true")
 
 
-        p We also need to know your name on Twitch and Discord. We'll use your Twitch name to load your feed on the official stream, and Discord will be our primary means of contact.
+        p We also need to know your name on Discord and Twitch. We'll use your Twitch name to load your feed on the official stream, and Discord will be our primary means of contact.
 
         p Your Twitter name is optional. If you choose to provide it, we'll use it to tag you in announcements about your runs during the event.
-
-        .form__field
-          label.form__label.form__label--large Twitch
-          input.form__input(name="twitch" required="true")
 
         .form__field
           label.form__label.form__label--large Discord
           input.form__input(name="discord" required="true")
 
         .form__field
+          label.form__label.form__label--large Twitch
+          span.form__leadin twitch.tv/
+          input.form__input(name="twitch" required="true")
+
+        .form__field
           label.form__label.form__label--large Twitter
+          span.form__leadin twitter.com/
           input.form__input(name="twitter")
 
 
