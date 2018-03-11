@@ -13,6 +13,7 @@ end
 
 scope "/teams" do
   get  "",        &->TeamsController.index(Krout::Env)
+  get  "/:slug",  &->TeamsController.show(Krout::Env)
 end
 
 

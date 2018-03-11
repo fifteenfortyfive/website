@@ -21,7 +21,8 @@
         - runs_by_team.each do |team, runs|
           .team(style="--color: ##{team.color}")
             .team__header
-              span.team__name= team.name
+              a.no-color(href="/teams/#{team.slug}")
+                span.team__name= team.name
               span.team__captain= team.captain.try(&.username)
 
             .team__runs

@@ -222,6 +222,16 @@ nav.navbar {
     .teams-display .runner:hover .runner__link {
       display: inline-block; }
 
+.team-show-page .runner-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+  .team-show-page .runner-list .runner {
+    text-decoration: none;
+    margin: 8px 0; }
+    .team-show-page .runner-list .runner .runner__link {
+      margin-left: 4px; }
+
 .spyro {
   background-color: #f3e0f7 !important; }
 
@@ -568,10 +578,11 @@ textarea.form__input {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: alpha(opacity=20); }
 
-.teams-editor .team-editor-container {
+.team-editor-container {
   height: 600px;
   overflow-y: scroll; }
-.teams-editor .runs-filter {
+
+.runs-filter {
   border: 1px solid #d8d8d9;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
@@ -580,82 +591,87 @@ textarea.form__input {
   padding: 8px;
   background: none;
   outline: none; }
-.teams-editor .runs-list {
+
+.runs-list {
   border: 1px solid #d8d8d9;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px; }
-.teams-editor .hidden {
+
+.hidden {
   display: none; }
-.teams-editor .run {
+
+.run {
   padding: 8px;
   border-bottom: 1px solid #d8d8d9;
   cursor: move; }
-  .teams-editor .run .run__pb::before {
+  .run .run__pb::before {
     color: #b3b3b3;
     content: "PB: "; }
-  .teams-editor .run .run__estimate::before {
+  .run .run__estimate::before {
     color: #b3b3b3;
     content: "EST: "; }
-  .teams-editor .run .run__runner-id {
+  .run .run__runner-id {
     display: none; }
-  .teams-editor .run .run__game-name {
+  .run .run__game-name {
     font-weight: 700; }
-  .teams-editor .run--block .run__game-name {
+  .run--block .run__game-name {
     font-size: 1.3rem; }
-  .teams-editor .run--block .run__times {
+  .run--block .run__times {
     display: block; }
-  .teams-editor .run--inline {
+  .run--inline {
     padding: 4px 8px; }
-    .teams-editor .run--inline .run__runner-name {
+    .run--inline .run__runner-name {
       color: #b3b3b3;
       font-size: 0.9em; }
-    .teams-editor .run--inline .run__times {
+    .run--inline .run__times {
       display: inline;
       float: right; }
-    .teams-editor .run--inline .run__pb {
+    .run--inline .run__pb {
       display: inline-block;
       text-align: right;
       width: 120px; }
-    .teams-editor .run--inline .run__estimate {
+    .run--inline .run__estimate {
       display: inline-block;
       text-align: right;
       width: 120px; }
-.teams-editor .run--template {
+
+.run--template {
   display: none; }
-.teams-editor .teams-list {
+
+.teams-list {
   height: 600px;
   overflow-y: scroll; }
-.teams-editor .team {
-  padding: 12px;
-  margin: 12px 0;
-  border: 1px solid #d8d8d9;
-  border-radius: 4px; }
-  .teams-editor .team__id {
+  .teams-list .team {
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #d8d8d9;
+    border-radius: 4px; }
+    .teams-list .team__id {
+      display: none; }
+    .teams-list .team input {
+      border: none;
+      outline: none;
+      background: none; }
+    .teams-list .team__remove-button {
+      float: right; }
+    .teams-list .team__name {
+      width: 260px;
+      font-size: 1.4em; }
+    .teams-list .team__runs {
+      margin-top: 4px;
+      border-top: 1px solid #d8d8d9;
+      min-height: 40px;
+      padding-bottom: 16px; }
+      .teams-list .team__runs:empty::after {
+        content: 'Drag runs to here from the left to add them to this team.';
+        display: block;
+        padding: 8px;
+        text-align: center;
+        color: #b3b3b3; }
+  .teams-list .team--template {
     display: none; }
-  .teams-editor .team input {
-    border: none;
-    outline: none;
-    background: none; }
-  .teams-editor .team__remove-button {
-    float: right; }
-  .teams-editor .team__name {
-    width: 260px;
-    font-size: 1.4em; }
-  .teams-editor .team__runs {
-    margin-top: 4px;
-    border-top: 1px solid #d8d8d9;
-    min-height: 40px;
-    padding-bottom: 16px; }
-    .teams-editor .team__runs:empty::after {
-      content: 'Drag runs to here from the left to add them to this team.';
-      display: block;
-      padding: 8px;
-      text-align: center;
-      color: #b3b3b3; }
-.teams-editor .team--template {
-  display: none; }
-.teams-editor .add-team-button {
-  cursor: pointer; }
+  .teams-list .add-team-button {
+    cursor: pointer; }
 
 .runner-submissions {
   display: block;
@@ -761,6 +777,19 @@ a {
       color: #00aced !important; }
     a:hover[data-brand="twitch"] {
       color: #6441a4 !important; }
+  a.no-color {
+    color: inherit;
+    text-decoration-color: inherit; }
+    a.no-color:hover {
+      color: inherit;
+      text-decoration-color: inherit; }
+  a.unstyled {
+    color: inherit;
+    font-weight: inherit;
+    text-decoration: none; }
+    a.unstyled:hover {
+      color: inherit;
+      text-decoration: none; }
 
 .page-header {
   font-family: "proxima-nova", sans-serif;
@@ -768,6 +797,15 @@ a {
   .page-header h1 {
     font-weight: 700;
     color: #D64848; }
+  .page-header.colored {
+    border: none;
+    border-radius: 4px;
+    background-color: var(--color, #D64848);
+    padding: 0; }
+    .page-header.colored h1 {
+      color: #fcfcfd;
+      margin: 0;
+      padding: 16px; }
 
 h2, h3, h4 {
   font-weight: 700; }
