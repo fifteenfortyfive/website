@@ -213,8 +213,14 @@ nav.navbar {
     .teams-display .runner .runner__name {
       display: block;
       font-weight: 700; }
+    .teams-display .runner .runner__link {
+      display: none;
+      margin-left: 4px;
+      color: #b3b3b3; }
     .teams-display .runner .runner__runs {
       color: #b3b3b3; }
+    .teams-display .runner:hover .runner__link {
+      display: inline-block; }
 
 .spyro {
   background-color: #f3e0f7 !important; }
@@ -751,6 +757,10 @@ a {
   font-weight: 500; }
   a:hover {
     color: #c02b2b; }
+    a:hover[data-brand="twitter"] {
+      color: #00aced !important; }
+    a:hover[data-brand="twitch"] {
+      color: #6441a4 !important; }
 
 .page-header {
   font-family: "proxima-nova", sans-serif;

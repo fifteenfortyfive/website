@@ -43,8 +43,20 @@
       font-weight: 700;
     }
 
+    .runner__link {
+      display: none;
+      margin-left: 4px;
+      color: $text-muted;
+    }
+
     .runner__runs {
       color: $text-muted;
+    }
+
+    &:hover {
+      .runner__link {
+        display: inline-block;
+      }
     }
   }
 }

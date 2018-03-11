@@ -38,7 +38,12 @@ a {
   color: $link-color;
   font-weight: 500;
 
-  &:hover { color: darken($link-color, 10%); }
+  &:hover {
+    color: darken($link-color, 10%);
+
+    &[data-brand="twitter"] { color: #00aced !important; }
+    &[data-brand="twitch"] { color: #6441a4 !important; }
+  }
 }
 
 

@@ -28,5 +28,13 @@
               - runs.sort_by(&.runner.username.not_nil!.downcase).group_by(&.runner).each do |runner, runs|
                 - is_captain = team.captain_id == runner.id
                 .runner(data-captain=is_captain )
-                  span.runner__name= runner.username
+                  span.runner__name
+                    = runner.username
+                    - if runner.twitch && !runner.twitch.not_nil!.empty?
+                      a.runner__link(href="https://twitch.tv/#{runner.twitch}" target="_blank" data-brand="twitch")
+                        span.fab.fa-twitch
+                    - if runner.twitter && !runner.twitter.not_nil!.empty?
+                      a.runner__link(href="https://twitter.com/#{runner.twitter}" target="_blank" data-brand="twitter")
+                        span.fab.fa-twitter
+
                   span.runner__runs= runs.map(&.game.name).join(", ")
