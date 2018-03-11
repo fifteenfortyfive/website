@@ -41,9 +41,48 @@ module TeamsController
   end
 
   def edit(env)
+    team = team_from_slug(env.params.url["slug"])
+    unless team
+      env.redirect("/")
+      return
+    end
+
+    unless user_can_edit?(env.current_user?, team)
+      render_error(env, 403, "Forbidden")
+      return
+    end
+
+    captain = Repo.get(Account, team.captain_id)
+    runs = Repo.all(Run,
+      Query.where(team_id: team.id),
+      preload: [:game, :runner]
+    )
+
+    render_view "teams/edit"
   end
 
   def update(env)
+    team = team_from_slug(env.params.url["slug"])
+    unless team
+      env.redirect("/teams/#{env.params.url["slug"]}/edit")
+      return
+    end
+
+    unless user_can_edit?(env.current_user?, team)
+      render_error(env, 403, "Forbidden")
+      return
+    end
+
+    team.name = env.params.body["name"]
+    team.slug = env.params.body["slug"]
+
+    changeset = Repo.update(team)
+
+    if changeset.valid?
+      env.redirect("/teams/#{team.slug}")
+    else
+      env.redirect("/teams/#{team.slug}/edit")
+    end
   end
 
 

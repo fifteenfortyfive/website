@@ -2,7 +2,13 @@
   .row
     .col-sm-10
       .page-header.colored
-        h1= team.name
+        h1
+          = team.name
+          .pull-right
+            - if user_can_edit?(env.current_user?, team)
+              a.unstyled(href="/teams/#{team.slug}/edit")
+                .fas.fa-pencil-alt
+
 
   .row
     .col-sm-4

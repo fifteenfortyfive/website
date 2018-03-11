@@ -801,7 +801,8 @@ a {
     border: none;
     border-radius: 4px;
     background-color: var(--color, #D64848);
-    padding: 0; }
+    padding: 0;
+    color: #fcfcfd; }
     .page-header.colored h1 {
       color: #fcfcfd;
       margin: 0;
