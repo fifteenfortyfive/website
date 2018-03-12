@@ -39,14 +39,19 @@ html
         .navbar-right
           ul.nav
             - if env.current_user?
-              p.navbar-text
-                a.navbar-link(href="/accounts/edit")
+              .navbar-dropdown
+                .navbar-dropdown__display
                   - if env.current_user.avatar_object_id
                     img.avatar.avatar--navbar(src="#{Constants::ASSETS_URL}/#{env.current_user.avatar_object_id}")
                   - else
                     == env.current_user.username
-                | |
-                a.navbar-link(href="/signout") Sign out
+                .navbar-dropdown__menu
+                  span.navbar-dropdown__menu-item.--header
+                    | Signed in as
+                    strong== env.current_user.username
+                  a.navbar-dropdown__menu-item(href="/accounts/edit") Edit Account
+                  a.navbar-dropdown__menu-item(href="/signout") Sign out
+
             - else
               p.navbar-text
                 a.navbar-link(href="/signin") Sign in
@@ -54,8 +59,8 @@ html
                 a.navbar-link(href="/accounts/new") Sign up
 
 
-
     == content
+
 
 footer
   .container
@@ -75,3 +80,14 @@ footer
             a(href=Constants::TWITTER_URL target="_blank") Twitter
 
 
+javascript:
+  var navbar_dropdown = document.querySelector('.navbar-dropdown');
+  var dropdown_display = navbar_dropdown.querySelector('.navbar-dropdown__display');
+
+  dropdown_display.addEventListener('click', function(evt) {
+    if(navbar_dropdown.classList.contains('--open')) {
+      navbar_dropdown.classList.remove('--open');
+    } else {
+      navbar_dropdown.classList.add('--open');
+    }
+  });
