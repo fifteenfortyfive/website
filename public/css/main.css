@@ -701,8 +701,7 @@ textarea.form__input {
   position: relative;
   margin-top: 12px; }
   .navbar-dropdown:hover .navbar-dropdown__menu, .navbar-dropdown.--open .navbar-dropdown__menu {
-    display: block;
-    opacity: 1; }
+    display: block; }
 
 .navbar-dropdown__display {
   cursor: pointer;
@@ -713,28 +712,23 @@ textarea.form__input {
   position: absolute;
   right: 0;
   width: 180px;
-  opacity: 0;
-  box-shadow: 0 0 4px 3px #323234;
-  transition: all .05s ease-in; }
+  padding: 4px 0;
+  background-color: #fcfcfd;
+  border: 1px solid #a4a4a8;
+  border-radius: 4px; }
 
 .navbar-dropdown__menu-item {
   display: block;
   width: 100%;
-  padding: 4px 8px;
-  background-color: #fcfcfd; }
-  .navbar-dropdown__menu-item:first-child {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px; }
-  .navbar-dropdown__menu-item:last-child {
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px; }
+  padding: 4px 12px; }
   .navbar-dropdown__menu-item:hover:not(.--header) {
     text-decoration: none;
     background-color: #D64848;
     color: #fcfcfd; }
   .navbar-dropdown__menu-item.--header {
     color: #b3b3b3;
-    border-bottom: 1px solid #b3b3b3; }
+    border-bottom: 1px solid #a4a4a8;
+    padding-bottom: 8px; }
 
 .runner-submissions {
   display: block;
