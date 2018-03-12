@@ -13,15 +13,16 @@
 
 .navbar-dropdown__display {
   cursor: pointer;
+  padding-bottom: 4px;
 }
 
 .navbar-dropdown__menu {
   display: none;
   position: absolute;
   right: 0;
-  padding-top: 4px;
   width: 180px;
   opacity: 0;
+  box-shadow: 0 0 4px 3px $dark-gray;
   transition: all .05s ease-in;
 }
 
