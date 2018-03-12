@@ -40,7 +40,11 @@ html
           ul.nav
             - if env.current_user?
               p.navbar-text
-                a.navbar-link(href="/accounts/edit")== env.current_user.username
+                a.navbar-link(href="/accounts/edit")
+                  - if env.current_user.avatar_object_id
+                    img.avatar.avatar--navbar(src="#{Constants::ASSETS_URL}/#{env.current_user.avatar_object_id}")
+                  - else
+                    == env.current_user.username
                 | |
                 a.navbar-link(href="/signout") Sign out
             - else

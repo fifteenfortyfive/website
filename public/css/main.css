@@ -137,6 +137,12 @@ nav.navbar {
   nav.navbar + div {
     margin-top: -20px; }
 
+.avatar.avatar--navbar {
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  vertical-align: bottom; }
+
 .titlebar {
   padding: 60px 0px;
   background-color: #323234;
