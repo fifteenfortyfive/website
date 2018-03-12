@@ -9,6 +9,7 @@ class Account < Crecto::Model
     field :twitter, String
     field :timezone, String
     field :admin, Bool
+    field :avatar_object_id, String
 
     field :password, String, virtual: true
 

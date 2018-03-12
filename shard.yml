@@ -19,5 +19,8 @@ dependencies:
     github: jeromegn/slang
   crecto:
     github: crecto/crecto
+    version: 0.8.3
   micrate:
     github: juanedi/micrate
+  awscr-s3:
+    github: taylorfinnell/awscr-s3

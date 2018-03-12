@@ -1,17 +1,38 @@
 .account-box {
-  padding: 12px;
+  display: flex;
+  margin: 12px 0;
+  border: 2px solid $text-color;
+  border-radius: 4px;
+  --base-size: 100px;
 }
 
-.account-box__name {
+.account-box--small {
+  --base-size: 60px;
+  font-size: 0.7em;
+}
+
+.account-box__avatar {
+  flex: 0 0 var(--base-size);
+  height: var(--base-size);
+}
+
+.account-box__info {
+  flex: 1 0 auto;
+  padding: 12px 24px;
+}
+
+.account-box__username {
+  display: block;
+  margin: 8px 0 12px 0;
   word-break: break-all;
-  font-size: 2rem;
+  font-size: 2em;
   font-weight: 700;
-  margin-bottom: 12px;
 }
 
 .account-box__social {
-  font-size: 1.2rem;
-  margin: 4px 0;
+  display: inline-block;
+  font-size: 1.2em;
+  margin-right: 12px;
 }
 
 .account-box__social__icon {

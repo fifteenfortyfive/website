@@ -4,6 +4,7 @@ end
 
 
 scope "/accounts" do
+  get   "/:id",     &->AccountsController.show(Krout::Env)
   get   "/new",     &->AccountsController._new(Krout::Env)
   post  "/create",  &->AccountsController.create(Krout::Env)
   get   "/edit",    &->AccountsController.edit(Krout::Env)
