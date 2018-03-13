@@ -17,7 +17,7 @@
             - row_class = sub.revoked ? "submission--revoked" : ""
             tr(class=row_class )
               td(width="25%")
-                h4.runner-submission__name= sub.account.username
+                h4.runner-submission__name== sub.account.username
                 p.runner-submission__detail
                   strong Captain?
                   = sub.captain ? "Yes" : "No"
@@ -46,11 +46,11 @@
                 p
                   strong Pair with:
                   br
-                  = sub.pair
+                  == sub.pair
                 p
                   strong Avoid:
                   br
-                  = sub.avoid
+                  == sub.avoid
 
 
       .page-header
@@ -68,7 +68,7 @@
           - commentator_submissions.each do |sub|
             - row_class = sub.revoked ? "submission--revoked" : ""
             tr(class=row_class )
-              td = sub.account.username
-              td = sub.games
-              td = sub.experience
-              td = sub.availability
+              td== sub.account.username
+              td= sub.games
+              td= sub.experience
+              td= sub.availability

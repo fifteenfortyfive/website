@@ -22,15 +22,15 @@
           .team(style="--color: ##{team.color}")
             .team__header
               a.no-color(href="/teams/#{team.slug}")
-                span.team__name= team.name
-              span.team__captain= team.captain.try(&.username)
+                span.team__name== team.name
+              span.team__captain== team.captain.try(&.username)
 
             .team__runs
               - runs.sort_by(&.runner.username.not_nil!.downcase).group_by(&.runner).each do |runner, runs|
                 - is_captain = team.captain_id == runner.id
                 .runner(data-captain=is_captain )
                   span.runner__name
-                    = runner.username
+                    == runner.username
                     - if runner.twitch && !runner.twitch.not_nil!.empty?
                       a.runner__link(href="https://twitch.tv/#{runner.twitch}" target="_blank" data-brand="twitch")
                         span.fab.fa-twitch

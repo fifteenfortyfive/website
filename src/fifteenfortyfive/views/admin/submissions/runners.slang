@@ -64,7 +64,7 @@
         - row_class = sub.revoked ? "submission--revoked" : ""
         tr(class=row_class )
           td.runner-cell(width="260px")
-            h4.runner-submission__name= sub.account.username
+            h4.runner-submission__name== sub.account.username
 
             .runner-submission__detail
               .row
@@ -74,11 +74,11 @@
                   p
                     strong Pair:
                     br
-                    span= sub.pair || "--"
+                    span== sub.pair || "--"
                   p
                     strong Avoid:
                     br
-                    span = sub.avoid || "--"
+                    span== sub.avoid || "--"
                 .col-xs-5
                   p
                     strong Max games
@@ -87,7 +87,7 @@
                   p
                     strong Max time
                     br
-                    span = sub.max_time || "--"
+                    span= sub.max_time || "--"
 
                   strong Preference
                   ol.list--condensed

@@ -4,7 +4,7 @@
       .page-header.colored
         h1
           | Editing
-          = team.name
+          == team.name
 
 
       form.form(action="/teams/#{team.slug}/update" method="POST")

@@ -9,7 +9,7 @@
           img.account-box__avatar
 
         .account-box__info
-          span.account-box__username= account.username
+          span.account-box__username== account.username
 
           - if (twitch_name = account.twitch) && !twitch_name.empty?
             .account-box__social

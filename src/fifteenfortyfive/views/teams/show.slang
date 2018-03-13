@@ -3,7 +3,7 @@
     .col-sm-10
       .page-header.colored
         h1
-          = team.name
+          == team.name
           .pull-right
             - if user_can_edit?(env.current_user?, team)
               a.unstyled(href="/teams/#{team.slug}/edit")
@@ -14,7 +14,7 @@
     .col-sm-4
       h3 Captain
       - if captain
-        p= captain.username
+        p== captain.username
       - else
         p This team does not have a captain.
 
@@ -22,7 +22,7 @@
       ul.runner-list
         - runs.map(&.runner).uniq.sort_by(&.username.not_nil!).each do |runner|
           li.runner
-            = runner.username
+            == runner.username
             - if runner.twitch && !runner.twitch.not_nil!.empty?
               span.text-muted
                 a.runner__link.unstyled(href="https://twitch.tv/#{runner.twitch}" target="_blank" data-brand="twitch")
