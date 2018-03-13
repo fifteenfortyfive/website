@@ -82,7 +82,6 @@ nav.navbar a.navbar-brand {
   --base-size: 100px;
   --color: #b3b3b3;
   display: flex;
-  margin: 12px 0;
   border: 2px solid var(--color);
   border-radius: 4px; }
 
@@ -129,6 +128,11 @@ a.account-box__social {
     font-size: 1.5em; }
   .account-box--small .account-box__social {
     margin-right: 8px; }
+
+.account-box-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-gap: 16px; }
 
 nav.navbar {
   background-color: #262627;
@@ -263,16 +267,6 @@ nav.navbar {
       color: #b3b3b3; }
     .teams-display .runner:hover .runner__link {
       display: inline-block; }
-
-.team-show-page .runner-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0; }
-  .team-show-page .runner-list .runner {
-    text-decoration: none;
-    margin: 8px 0; }
-    .team-show-page .runner-list .runner .runner__link {
-      margin-left: 4px; }
 
 .spyro {
   background-color: #f3e0f7 !important; }

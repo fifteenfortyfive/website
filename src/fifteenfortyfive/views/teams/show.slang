@@ -19,7 +19,7 @@
         p This team does not have a captain.
 
       h3 Runners
-      ul.runner-list
+      .account-box-grid
         - runs.map(&.runner).uniq.sort_by(&.username.not_nil!).each do |runner|
           .account-box.account-box--small(style="--color: ##{team.color}")
             - if runner.avatar_object_id

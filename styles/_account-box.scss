@@ -2,7 +2,6 @@
   --base-size: 100px;
   --color: #{$text-muted};
   display: flex;
-  margin: 12px 0;
   border: 2px solid var(--color);
   border-radius: 4px;
 }
@@ -64,4 +63,10 @@ a.account-box__social {
   .account-box__social {
     margin-right: 8px;
   }
+}
+
+.account-box-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-gap: 16px;
 }
