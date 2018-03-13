@@ -68,6 +68,12 @@ a {
   }
 }
 
+// Border rendering bug in Chrome shows borders on images with no source.
+img[src=''],
+img:not([src]) {
+  opacity: 0;
+}
+
 
 .page-header {
   font-family: "proxima-nova", sans-serif;
