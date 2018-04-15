@@ -21,7 +21,7 @@ html
     nav.navbar.navbar-static-top
       .container
         p.navbar-text
-          a.hidden-xs.navbar-link.navbar-link--bright(href="/") Home
+          a.hidden-xs.navbar-link.navbar-link--bright.navbar-title(href="/") The 1545
           a.visible-xs.navbar-link.navbar-link--bright(href="/")
             span.fas.fa-home
 

@@ -138,10 +138,12 @@ nav.navbar {
   background-color: #262627;
   border-color: #19191a;
   color: #fcfcfd; }
-  nav.navbar .navbar-brand {
+  nav.navbar .navbar-title {
     color: #fcfcfd;
-    font-size: 20px;
-    margin-top: -1px; }
+    font-size: 24px;
+    font-family: 'cortado';
+    margin-right: 12px;
+    margin-top: -4px; }
   nav.navbar .navbar-nav,
   nav.navbar .navbar-nav li,
   nav.navbar .navbar-nav li a {
