@@ -288,7 +288,7 @@ nav.navbar {
   background-color: #f7d8d8 !important; }
 
 .rare {
-  background-color: #fdfde2 !important; }
+  background-color: #fdfdce !important; }
 
 .run-schedule {
   width: 100%;
@@ -623,6 +623,26 @@ textarea.form__input {
   opacity: 0.2;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: alpha(opacity=20); }
+
+.scheduler .schedule-grid {
+  margin-top: 16px; }
+.scheduler .schedule-entry {
+  padding: 4px 8px;
+  margin: 8px 0;
+  border: none;
+  display: flex; }
+  .scheduler .schedule-entry .schedule-entry__runner-name {
+    flex: 1 0 160px;
+    font-weight: 700; }
+  .scheduler .schedule-entry .schedule-entry__runner-timezone {
+    display: inline-block;
+    font-weight: 400;
+    font-size: 0.8em; }
+  .scheduler .schedule-entry .schedule-entry__game-name {
+    flex: 1 0 120px;
+    font-weight: 400; }
+  .scheduler .schedule-entry .schedule-entry__estimate {
+    flex: 1 0 120px; }
 
 .team-editor-container {
   height: 600px;

@@ -1,0 +1,32 @@
+.scheduler {
+  .schedule-grid {
+    margin-top: 16px;
+  }
+
+  .schedule-entry {
+    padding: 4px 8px;
+    margin: 8px 0;
+    border: none;
+    display: flex;
+
+    .schedule-entry__runner-name {
+      flex: 1 0 160px;
+      font-weight: 700;
+    }
+
+    .schedule-entry__runner-timezone {
+      display: inline-block;
+      font-weight: 400;
+      font-size: 0.8em;
+    }
+
+    .schedule-entry__game-name {
+      flex: 1 0 120px;
+      font-weight: 400;
+    }
+
+    .schedule-entry__estimate {
+      flex: 1 0 120px;
+    }
+  }
+}

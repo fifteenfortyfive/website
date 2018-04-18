@@ -8,6 +8,8 @@
             - if user_can_edit?(env.current_user?, team)
               a.unstyled(href="/teams/#{team.slug}/edit")
                 .fas.fa-pencil-alt
+              a.unstyled(href="/teams/#{team.slug}/schedule")
+                .far.fa-clock
 
 
   .row
