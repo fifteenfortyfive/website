@@ -1,65 +1,68 @@
-.scheduler {
-  .schedule-grid {
-    // 150 seconds/pixel == 24 pixels/hour
-    --seconds-per-pixel: 150;
-    margin-top: 32px;
-    font-size: 0.9rem;
-    display: flex;
+.schedule-grid {
+  // 150 seconds/pixel == 24 pixels/hour
+  --seconds-per-pixel: 150;
+  margin-top: 32px;
+  font-size: 0.9rem;
+  display: flex;
+}
+
+.schedule-grid__timeline {
+  flex: 0 0 48px;
+}
+
+.timeline-entry {
+  border-top: 1px solid $border-color;
+  border-right: 1px solid $border-color;
+}
+
+.timeline-entry__time {
+  display: block;
+  width: 100%;
+  line-height: 1em;
+  text-align: right;
+}
+
+.timeline-entry__date {
+  background-color: $text-color;
+  color: $white-bg-color;
+}
+
+.schedule-grid__entries {
+  flex: 1 0 auto;
+}
+
+.schedule-entry {
+  padding: 4px 8px;
+  border-top: 1px solid $border-color;
+  display: flex;
+  height: calc(var(--schedule-entry-seconds) / var(--seconds-per-pixel));
+
+  .schedule-entry__name {
+    flex: 1 0 160px;
+    font-weight: 400;
   }
 
-  .schedule-grid__timeline {
-    flex: 0 0 48px;
+  .schedule-entry__runner-name {
+    font-weight: 700;
   }
 
-  .timeline-entry {
-    border-top: 1px solid $border-color;
-    border-right: 1px solid $border-color;
+  .schedule-entry__runner-timezone {
+    display: inline-block;
+    font-weight: 400;
+    font-size: 0.8em;
   }
 
-  .timeline-entry__time {
-    display: block;
-    width: 100%;
-    line-height: 1em;
-    text-align: right;
+  .schedule-entry__estimate {
+    flex: 0 0 40px;
   }
+}
 
-  .timeline-entry__date {
-    background-color: $text-color;
-    color: $white-bg-color;
-  }
 
-  .schedule-grid__entries {
-    flex: 1 0 auto;
-  }
+// Styling specific to the schedule editor
+.scheduler .schedule-entry:not(.timeline-entry) {
+  cursor: move;
 
-  .schedule-entry {
-    padding: 4px 8px;
-    border-top: 1px solid $border-color;
-    display: flex;
-    cursor: move;
-    height: calc(var(--schedule-entry-seconds) / var(--seconds-per-pixel));
-
-    &:hover {
-      opacity: 0.7;
-    }
-
-    .schedule-entry__name {
-      flex: 1 0 160px;
-      font-weight: 400;
-    }
-
-    .schedule-entry__runner-name {
-      font-weight: 700;
-    }
-
-    .schedule-entry__runner-timezone {
-      display: inline-block;
-      font-weight: 400;
-      font-size: 0.8em;
-    }
-
-    .schedule-entry__estimate {
-      flex: 0 0 40px;
-    }
+  &:hover {
+    opacity: 0.7;
   }
 }

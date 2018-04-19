@@ -17,6 +17,11 @@ nav.navbar a.navbar-brand {
   float: right;
   margin-right: 0; }
 
+.page-header__action {
+  display: block;
+  float: left;
+  margin-left: 24px; }
+
 .vertical-space-u2 {
   height: 24px; }
 
@@ -635,45 +640,53 @@ textarea.form__input {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: alpha(opacity=20); }
 
-.scheduler .schedule-grid {
+.schedule-grid {
   --seconds-per-pixel: 150;
   margin-top: 32px;
   font-size: 0.9rem;
   display: flex; }
-.scheduler .schedule-grid__timeline {
+
+.schedule-grid__timeline {
   flex: 0 0 48px; }
-.scheduler .timeline-entry {
+
+.timeline-entry {
   border-top: 1px solid #a4a4a8;
   border-right: 1px solid #a4a4a8; }
-.scheduler .timeline-entry__time {
+
+.timeline-entry__time {
   display: block;
   width: 100%;
   line-height: 1em;
   text-align: right; }
-.scheduler .timeline-entry__date {
+
+.timeline-entry__date {
   background-color: #323234;
   color: #fcfcfd; }
-.scheduler .schedule-grid__entries {
+
+.schedule-grid__entries {
   flex: 1 0 auto; }
-.scheduler .schedule-entry {
+
+.schedule-entry {
   padding: 4px 8px;
   border-top: 1px solid #a4a4a8;
   display: flex;
-  cursor: move;
   height: calc(var(--schedule-entry-seconds) / var(--seconds-per-pixel)); }
-  .scheduler .schedule-entry:hover {
-    opacity: 0.7; }
-  .scheduler .schedule-entry .schedule-entry__name {
+  .schedule-entry .schedule-entry__name {
     flex: 1 0 160px;
     font-weight: 400; }
-  .scheduler .schedule-entry .schedule-entry__runner-name {
+  .schedule-entry .schedule-entry__runner-name {
     font-weight: 700; }
-  .scheduler .schedule-entry .schedule-entry__runner-timezone {
+  .schedule-entry .schedule-entry__runner-timezone {
     display: inline-block;
     font-weight: 400;
     font-size: 0.8em; }
-  .scheduler .schedule-entry .schedule-entry__estimate {
+  .schedule-entry .schedule-entry__estimate {
     flex: 0 0 40px; }
+
+.scheduler .schedule-entry:not(.timeline-entry) {
+  cursor: move; }
+  .scheduler .schedule-entry:not(.timeline-entry):hover {
+    opacity: 0.7; }
 
 .team-editor-container {
   height: 600px;

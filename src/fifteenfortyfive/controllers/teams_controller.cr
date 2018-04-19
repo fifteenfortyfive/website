@@ -33,7 +33,7 @@ module TeamsController
 
     captain = Repo.get(Account, team.captain_id)
     runs = Repo.all(Run,
-      Query.where(team_id: team.id),
+      Query.where(team_id: team.id).order_by("schedule_index ASC"),
       preload: [:game, :runner]
     )
 
