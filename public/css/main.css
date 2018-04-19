@@ -295,16 +295,16 @@ nav.navbar {
       display: inline-block; }
 
 .spyro {
-  background-color: #f3e0f7 !important; }
+  background-color: #8c5eac !important; }
 
 .crash {
-  background-color: #fbdcc5 !important; }
+  background-color: #df9753 !important; }
 
 .mario {
-  background-color: #f7d8d8 !important; }
+  background-color: #d46060 !important; }
 
 .rare {
-  background-color: #fdfdce !important; }
+  background-color: #f0c566 !important; }
 
 .run-schedule {
   width: 100%;
@@ -330,12 +330,12 @@ nav.navbar {
       padding: 8px;
       border: 1px solid #f7f7f7; }
       .run-schedule .schedule-column .schedule-element .game-name {
-        color: #821b1b; }
+        color: #020000; }
       .run-schedule .schedule-column .schedule-element .runner-name {
         color: #555; }
       .run-schedule .schedule-column .schedule-element .estimate {
         display: block;
-        color: #ea9999; }
+        color: #b63131; }
   .run-schedule .team {
     flex: 1 1 0;
     margin: 0 1px; }
@@ -641,19 +641,29 @@ textarea.form__input {
   filter: alpha(opacity=20); }
 
 .schedule-grid {
-  --seconds-per-pixel: 150;
+  --seconds-per-pixel: 120;
   margin-top: 32px;
-  font-size: 0.9rem;
-  display: flex; }
+  font-size: 1rem;
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
+  position: relative; }
 
 .schedule-grid__timeline {
+  position: sticky;
+  left: 0;
+  background-color: #fcfcfd;
+  border-right: 2px solid #fcfcfd;
   flex: 0 0 48px;
   font-size: 1rem; }
 
 .schedule-entry.timeline-entry {
-  border-top: 1px solid #a4a4a8;
-  border-right: 1px solid #a4a4a8;
-  border-bottom: none; }
+  border-top: 1px solid #d8d8da;
+  border-bottom: none;
+  border-radius: 0;
+  padding: 1px 4px;
+  font-size: 1em;
+  color: #b3b3b3; }
 
 .timeline-entry__time {
   display: block;
@@ -661,22 +671,26 @@ textarea.form__input {
   line-height: 1em;
   text-align: right; }
 
-.timeline-entry__date {
-  background-color: #323234;
-  color: #fcfcfd;
+.schedule-entry.timeline-entry__date {
+  font-weight: 700;
+  color: #323234;
   position: sticky;
   top: 0px; }
 
 .schedule-grid__entries {
-  flex: 1 0 auto; }
+  flex: 1 0 auto;
+  margin: 0 2px; }
 
 .schedule-entry {
-  padding: 4px 8px;
+  padding: 8px;
+  font-size: 1.2em;
+  line-height: 1em;
   border-bottom: 4px solid #fcfcfd;
+  color: #fcfcfd;
   display: flex;
   height: calc(var(--schedule-entry-seconds) / var(--seconds-per-pixel)); }
   .schedule-entry .schedule-entry__name {
-    flex: 1 0 160px;
+    flex: 1 1 160px;
     font-weight: 400; }
   .schedule-entry .schedule-entry__runner-name {
     font-weight: 700; }

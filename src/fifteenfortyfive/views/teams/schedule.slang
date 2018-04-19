@@ -27,7 +27,7 @@
             - entry_time = race_start + hour.hours
             - if entry_time.hour == 0
               .schedule-entry.timeline-entry.timeline-entry__date(style="--schedule-entry-seconds: 3600px")
-                strong.timeline-entry__time= entry_time.to_s("%m/%d")
+                span.timeline-entry__time= entry_time.to_s("%m/%d")
             - else
               .schedule-entry.timeline-entry(style="--schedule-entry-seconds: 3600px")
                 span.timeline-entry__time= entry_time.to_s("%l%p")
@@ -42,7 +42,6 @@
                 span.schedule-entry__runner-name
                   = run.runner.username
                   span.schedule-entry__runner-timezone= "(#{run.runner.timezone})"
-              span.schedule-entry__estimate= run.estimate_time
 
 script(src="/js/dragula.js")
 script(src="/js/scheduler.js")

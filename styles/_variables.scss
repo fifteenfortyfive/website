@@ -27,8 +27,9 @@ $success: #c5e6bf;
 $link-color: $red;
 
 
-
-
+$breakpoint-xs: 768px;
+$breakpoint-sm: 992px;
+$breakpoint-md: 1200px;
 
 
 
@@ -40,7 +41,7 @@ $team-green:  #22ad0b;
 $team-blue:   #0f76c7;
 $team-purple: #720fb9;
 
-$spyro: #f3e0f7;
-$crash: #fbdcc5;
-$mario: #f7d8d8;
-$rare:  #fdfdce;
+$spyro: #8c5eac;
+$crash: #df9753;
+$mario: #d46060;
+$rare:  #f0c566;

@@ -1,20 +1,30 @@
 .schedule-grid {
   // 150 seconds/pixel == 24 pixels/hour
-  --seconds-per-pixel: 150;
+  --seconds-per-pixel: 120;
   margin-top: 32px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   display: flex;
+  width: 100%;
+  overflow-x: scroll;
+  position: relative;
 }
 
 .schedule-grid__timeline {
+  position: sticky;
+  left: 0;
+  background-color: $white-bg-color;
+  border-right: 2px solid $white-bg-color;
   flex: 0 0 48px;
   font-size: 1rem;
 }
 
 .schedule-entry.timeline-entry {
-  border-top: 1px solid $border-color;
-  border-right: 1px solid $border-color;
+  border-top: 1px solid lighten($border-color, 20%);
   border-bottom: none;
+  border-radius: 0;
+  padding: 1px 4px;
+  font-size: 1em;
+  color: $text-muted;
 }
 
 .timeline-entry__time {
@@ -24,25 +34,30 @@
   text-align: right;
 }
 
-.timeline-entry__date {
-  background-color: $text-color;
-  color: $white-color;
+.schedule-entry.timeline-entry__date {
+  font-weight: 700;
+  color: $text-color;
   position: sticky;
   top: 0px;
 }
 
 .schedule-grid__entries {
   flex: 1 0 auto;
+  margin: 0 2px;
 }
 
 .schedule-entry {
-  padding: 4px 8px;
+  padding: 8px;
+  font-size: 1.2em;
+  line-height: 1em;
   border-bottom: 4px solid $white-bg-color;
+  color: $white-color;
   display: flex;
   height: calc(var(--schedule-entry-seconds) / var(--seconds-per-pixel));
 
+
   .schedule-entry__name {
-    flex: 1 0 160px;
+    flex: 1 1 160px;
     font-weight: 400;
   }
 

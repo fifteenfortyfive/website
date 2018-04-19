@@ -44,7 +44,9 @@
     .col-sm-6
       h3 Schedule
 
-      small Note that schedules are subject to change until roughly 1 week before the event.
+      p
+        small
+          em Schedules are subject to change until 1 week before the event.
 
       .schedule-grid
         .schedule-grid__timeline
@@ -56,7 +58,7 @@
             - entry_time = race_start + hour.hours
             - if entry_time.hour == 0
               .schedule-entry.timeline-entry.timeline-entry__date(style="--schedule-entry-seconds: 3600px")
-                strong.timeline-entry__time= entry_time.to_s("%m/%d")
+                span.timeline-entry__time= entry_time.to_s("%m/%d")
             - else
               .schedule-entry.timeline-entry(style="--schedule-entry-seconds: 3600px")
                 span.timeline-entry__time= entry_time.to_s("%l%p")
@@ -66,10 +68,9 @@
           - runs.each do |run|
             - seconds = Math.max(run.estimate_seconds || 0, 3600)
             .schedule-entry(class=run.game.series style="--schedule-entry-seconds: #{seconds}px" data-run-id=run.id )
-              span.schedule-entry__name
-                = run.game.name
+              .schedule-entry__name
+                strong= run.game.name
+                | by
                 span.schedule-entry__runner-name
                   = run.runner.username
-                  span.schedule-entry__runner-timezone= "(#{run.runner.timezone})"
-              span.schedule-entry__estimate= run.estimate_time
 

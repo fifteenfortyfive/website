@@ -8,9 +8,9 @@ module TeamsController
       return
     end
 
-    teams = Repo.all(Team, preload: [:captain]).index_by{ |t| t.id }
+    teams = Repo.all(Team, Query.order_by("id ASC"), preload: [:captain]).index_by{ |t| t.id }
     runs = Repo.all(Run,
-      Query.where(team_id: teams.keys),
+      Query.where(team_id: teams.keys).order_by("runs.schedule_index ASC"),
       preload: [:game, :runner]
     )
 
