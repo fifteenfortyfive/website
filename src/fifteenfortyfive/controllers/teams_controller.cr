@@ -33,7 +33,7 @@ module TeamsController
 
     captain = Repo.get(Account, team.captain_id)
     runs = Repo.all(Run,
-      Query.where(team_id: team.id),
+      Query.where(team_id: team.id).order_by("schedule_index ASC"),
       preload: [:game, :runner]
     )
 
@@ -82,6 +82,59 @@ module TeamsController
       env.redirect("/teams/#{team.slug}")
     else
       env.redirect("/teams/#{team.slug}/edit")
+    end
+  end
+
+  def schedule(env)
+    team = team_from_slug(env.params.url["slug"])
+    unless team
+      env.redirect("/")
+      return
+    end
+
+    unless user_can_edit?(env.current_user?, team)
+      render_error(env, 403, "Forbidden")
+      return
+    end
+
+    captain = Repo.get(Account, team.captain_id)
+    runs = Repo.all(Run,
+      Query.where(team_id: team.id).order_by("schedule_index ASC"),
+      preload: [:game, :runner]
+    )
+
+    render_view "teams/schedule"
+  end
+
+  def update_schedule(env)
+    team = team_from_slug(env.params.url["slug"])
+    unless team
+      env.redirect("/teams/#{env.params.url["slug"]}/edit")
+      return
+    end
+
+    unless user_can_edit?(env.current_user?, team)
+      render_error(env, 403, "Forbidden")
+      return
+    end
+
+
+    run_ids = env.params.json["run_ids"]
+    runs = Repo.all(Run, Query.where(team_id: team.id)).index_by{ |r| r.id.to_s }
+    multi = Multi.new
+    run_ids.as(Array(JSON::Type)).each_with_index do |id, index|
+      run = runs[id]
+      run.schedule_index = index
+      multi.update(run)
+    end
+
+    Repo.transaction(multi)
+
+
+    if multi.errors.any?
+      render_error(env, 500, "Failed to save schedule")
+    else
+      env.redirect("/teams/#{team.slug}")
     end
   end
 

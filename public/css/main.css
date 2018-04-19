@@ -17,6 +17,11 @@ nav.navbar a.navbar-brand {
   float: right;
   margin-right: 0; }
 
+.page-header__action {
+  display: block;
+  float: left;
+  margin-left: 24px; }
+
 .vertical-space-u2 {
   height: 24px; }
 
@@ -133,6 +138,17 @@ a.account-box__social {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-gap: 16px; }
+
+.flash-message {
+  width: 100%;
+  padding: 8px 12px;
+  margin: 8px 0;
+  border: 1px solid #a4a4a8;
+  border-radius: 4px; }
+  .flash-message.--success {
+    background-color: #c5e6bf; }
+  .flash-message.--error {
+    background-color: #fbefef; }
 
 nav.navbar {
   background-color: #262627;
@@ -288,7 +304,7 @@ nav.navbar {
   background-color: #f7d8d8 !important; }
 
 .rare {
-  background-color: #fdfde2 !important; }
+  background-color: #fdfdce !important; }
 
 .run-schedule {
   width: 100%;
@@ -498,8 +514,8 @@ textarea.form__input {
   font-size: 1.6rem;
   position: relative; }
   .notif-banner--success {
-    background-color: #5a9051;
-    border: 1px solid #4c7944;
+    background-color: #c5e6bf;
+    border: 1px solid #aedca5;
     color: #fcfcfd; }
 
 .notif-banner__icon {
@@ -623,6 +639,54 @@ textarea.form__input {
   opacity: 0.2;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: alpha(opacity=20); }
+
+.schedule-grid {
+  --seconds-per-pixel: 150;
+  margin-top: 32px;
+  font-size: 0.9rem;
+  display: flex; }
+
+.schedule-grid__timeline {
+  flex: 0 0 48px; }
+
+.timeline-entry {
+  border-top: 1px solid #a4a4a8;
+  border-right: 1px solid #a4a4a8; }
+
+.timeline-entry__time {
+  display: block;
+  width: 100%;
+  line-height: 1em;
+  text-align: right; }
+
+.timeline-entry__date {
+  background-color: #323234;
+  color: #fcfcfd; }
+
+.schedule-grid__entries {
+  flex: 1 0 auto; }
+
+.schedule-entry {
+  padding: 4px 8px;
+  border-top: 1px solid #a4a4a8;
+  display: flex;
+  height: calc(var(--schedule-entry-seconds) / var(--seconds-per-pixel)); }
+  .schedule-entry .schedule-entry__name {
+    flex: 1 0 160px;
+    font-weight: 400; }
+  .schedule-entry .schedule-entry__runner-name {
+    font-weight: 700; }
+  .schedule-entry .schedule-entry__runner-timezone {
+    display: inline-block;
+    font-weight: 400;
+    font-size: 0.8em; }
+  .schedule-entry .schedule-entry__estimate {
+    flex: 0 0 40px; }
+
+.scheduler .schedule-entry:not(.timeline-entry) {
+  cursor: move; }
+  .scheduler .schedule-entry:not(.timeline-entry):hover {
+    opacity: 0.7; }
 
 .team-editor-container {
   height: 600px;

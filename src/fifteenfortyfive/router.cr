@@ -13,10 +13,12 @@ end
 
 
 scope "/teams" do
-  get  "",              &->TeamsController.index(Krout::Env)
-  get  "/:slug",        &->TeamsController.show(Krout::Env)
-  get  "/:slug/edit",   &->TeamsController.edit(Krout::Env)
-  post "/:slug/update", &->TeamsController.update(Krout::Env)
+  get  "",                      &->TeamsController.index(Krout::Env)
+  get  "/:slug",                &->TeamsController.show(Krout::Env)
+  get  "/:slug/edit",           &->TeamsController.edit(Krout::Env)
+  post "/:slug/update",         &->TeamsController.update(Krout::Env)
+  get  "/:slug/schedule",       &->TeamsController.schedule(Krout::Env)
+  post "/:slug/schedule/save",  &->TeamsController.update_schedule(Krout::Env)
 end
 
 

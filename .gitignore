@@ -9,3 +9,6 @@
 /dev/
 /sentry
 /sentry.dwarf
+
+# Database dump files from heroku
+*.dump
