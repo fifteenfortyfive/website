@@ -647,11 +647,13 @@ textarea.form__input {
   display: flex; }
 
 .schedule-grid__timeline {
-  flex: 0 0 48px; }
+  flex: 0 0 48px;
+  font-size: 1rem; }
 
-.timeline-entry {
+.schedule-entry.timeline-entry {
   border-top: 1px solid #a4a4a8;
-  border-right: 1px solid #a4a4a8; }
+  border-right: 1px solid #a4a4a8;
+  border-bottom: none; }
 
 .timeline-entry__time {
   display: block;
@@ -661,14 +663,16 @@ textarea.form__input {
 
 .timeline-entry__date {
   background-color: #323234;
-  color: #fcfcfd; }
+  color: #fcfcfd;
+  position: sticky;
+  top: 0px; }
 
 .schedule-grid__entries {
   flex: 1 0 auto; }
 
 .schedule-entry {
   padding: 4px 8px;
-  border-top: 1px solid #a4a4a8;
+  border-bottom: 4px solid #fcfcfd;
   display: flex;
   height: calc(var(--schedule-entry-seconds) / var(--seconds-per-pixel)); }
   .schedule-entry .schedule-entry__name {

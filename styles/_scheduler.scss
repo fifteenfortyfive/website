@@ -8,11 +8,13 @@
 
 .schedule-grid__timeline {
   flex: 0 0 48px;
+  font-size: 1rem;
 }
 
-.timeline-entry {
+.schedule-entry.timeline-entry {
   border-top: 1px solid $border-color;
   border-right: 1px solid $border-color;
+  border-bottom: none;
 }
 
 .timeline-entry__time {
@@ -24,7 +26,9 @@
 
 .timeline-entry__date {
   background-color: $text-color;
-  color: $white-bg-color;
+  color: $white-color;
+  position: sticky;
+  top: 0px;
 }
 
 .schedule-grid__entries {
@@ -33,7 +37,7 @@
 
 .schedule-entry {
   padding: 4px 8px;
-  border-top: 1px solid $border-color;
+  border-bottom: 4px solid $white-bg-color;
   display: flex;
   height: calc(var(--schedule-entry-seconds) / var(--seconds-per-pixel));
 

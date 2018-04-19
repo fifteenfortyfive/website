@@ -42,14 +42,17 @@
 
 
     .col-sm-6
-      h3 Runs
+      h3 Schedule
+
+      small Note that schedules are subject to change until roughly 1 week before the event.
 
       .schedule-grid
         .schedule-grid__timeline
           /TODO: The race starts at 11pm UTC on the 14th and (should) end on the 17th.
             These numbers should be managed by an `event` record instead of hard coded.
           - race_start = Time.new(2018, 7, 14, 23, 0, 0)
-          - 56.times do |hour|
+          - total_hours = runs.reduce(Time::Span.zero){ |acc, run| acc += run.estimate_time || 2.hours }.total_hours.to_i + 1
+          - total_hours.times do |hour|
             - entry_time = race_start + hour.hours
             - if entry_time.hour == 0
               .schedule-entry.timeline-entry.timeline-entry__date(style="--schedule-entry-seconds: 3600px")
