@@ -625,24 +625,44 @@ textarea.form__input {
   filter: alpha(opacity=20); }
 
 .scheduler .schedule-grid {
-  margin-top: 16px; }
+  --seconds-per-pixel: 150;
+  margin-top: 32px;
+  font-size: 0.9rem;
+  display: flex; }
+.scheduler .schedule-grid__timeline {
+  flex: 0 0 48px; }
+.scheduler .timeline-entry {
+  border-top: 1px solid #a4a4a8;
+  border-right: 1px solid #a4a4a8; }
+.scheduler .timeline-entry__time {
+  display: block;
+  width: 100%;
+  line-height: 1em;
+  text-align: right; }
+.scheduler .timeline-entry__date {
+  background-color: #323234;
+  color: #fcfcfd; }
+.scheduler .schedule-grid__entries {
+  flex: 1 0 auto; }
 .scheduler .schedule-entry {
   padding: 4px 8px;
-  margin: 8px 0;
-  border: none;
-  display: flex; }
-  .scheduler .schedule-entry .schedule-entry__runner-name {
+  border-top: 1px solid #a4a4a8;
+  display: flex;
+  cursor: move;
+  height: calc(var(--schedule-entry-seconds) / var(--seconds-per-pixel)); }
+  .scheduler .schedule-entry:hover {
+    opacity: 0.7; }
+  .scheduler .schedule-entry .schedule-entry__name {
     flex: 1 0 160px;
+    font-weight: 400; }
+  .scheduler .schedule-entry .schedule-entry__runner-name {
     font-weight: 700; }
   .scheduler .schedule-entry .schedule-entry__runner-timezone {
     display: inline-block;
     font-weight: 400;
     font-size: 0.8em; }
-  .scheduler .schedule-entry .schedule-entry__game-name {
-    flex: 1 0 120px;
-    font-weight: 400; }
   .scheduler .schedule-entry .schedule-entry__estimate {
-    flex: 1 0 120px; }
+    flex: 0 0 40px; }
 
 .team-editor-container {
   height: 600px;

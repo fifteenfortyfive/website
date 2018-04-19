@@ -1,16 +1,54 @@
 .scheduler {
   .schedule-grid {
-    margin-top: 16px;
+    // 150 seconds/pixel == 24 pixels/hour
+    --seconds-per-pixel: 150;
+    margin-top: 32px;
+    font-size: 0.9rem;
+    display: flex;
+  }
+
+  .schedule-grid__timeline {
+    flex: 0 0 48px;
+  }
+
+  .timeline-entry {
+    border-top: 1px solid $border-color;
+    border-right: 1px solid $border-color;
+  }
+
+  .timeline-entry__time {
+    display: block;
+    width: 100%;
+    line-height: 1em;
+    text-align: right;
+  }
+
+  .timeline-entry__date {
+    background-color: $text-color;
+    color: $white-bg-color;
+  }
+
+  .schedule-grid__entries {
+    flex: 1 0 auto;
   }
 
   .schedule-entry {
     padding: 4px 8px;
-    margin: 8px 0;
-    border: none;
+    border-top: 1px solid $border-color;
     display: flex;
+    cursor: move;
+    height: calc(var(--schedule-entry-seconds) / var(--seconds-per-pixel));
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    .schedule-entry__name {
+      flex: 1 0 160px;
+      font-weight: 400;
+    }
 
     .schedule-entry__runner-name {
-      flex: 1 0 160px;
       font-weight: 700;
     }
 
@@ -20,13 +58,8 @@
       font-size: 0.8em;
     }
 
-    .schedule-entry__game-name {
-      flex: 1 0 120px;
-      font-weight: 400;
-    }
-
     .schedule-entry__estimate {
-      flex: 1 0 120px;
+      flex: 0 0 40px;
     }
   }
 }
