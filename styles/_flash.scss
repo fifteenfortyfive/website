@@ -1,0 +1,15 @@
+.flash-message {
+  width: 100%;
+  padding: 8px 12px;
+  margin: 8px 0;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+
+  &.--success {
+    background-color: $success;
+  }
+
+  &.--error {
+    background-color: lighten($red, 40%);
+  }
+}

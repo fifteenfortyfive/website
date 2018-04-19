@@ -134,6 +134,17 @@ a.account-box__social {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-gap: 16px; }
 
+.flash-message {
+  width: 100%;
+  padding: 8px 12px;
+  margin: 8px 0;
+  border: 1px solid #a4a4a8;
+  border-radius: 4px; }
+  .flash-message.--success {
+    background-color: #c5e6bf; }
+  .flash-message.--error {
+    background-color: #fbefef; }
+
 nav.navbar {
   background-color: #262627;
   border-color: #19191a;
@@ -498,8 +509,8 @@ textarea.form__input {
   font-size: 1.6rem;
   position: relative; }
   .notif-banner--success {
-    background-color: #5a9051;
-    border: 1px solid #4c7944;
+    background-color: #c5e6bf;
+    border: 1px solid #aedca5;
     color: #fcfcfd; }
 
 .notif-banner__icon {

@@ -14,6 +14,8 @@
       .form__button.schedule-submit-button
         | Save Schedule
 
+      .flash-container
+
 
     .col-sm-6
       .schedule-grid
@@ -34,7 +36,7 @@
         .schedule-grid__entries
           - runs.each do |run|
             - seconds = Math.max(run.estimate_seconds || 0, 3600)
-            .schedule-entry(class=run.game.series style="--schedule-entry-seconds: #{seconds}px")
+            .schedule-entry(class=run.game.series style="--schedule-entry-seconds: #{seconds}px" data-run-id=run.id )
               span.schedule-entry__name
                 = run.game.name
                 span.schedule-entry__runner-name

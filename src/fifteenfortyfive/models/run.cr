@@ -3,6 +3,7 @@ class Run < Crecto::Model
     field :pb, String
     field :estimate, String
     field :priority, Int32
+    field :schedule_index, Int32
 
     # Parsed versions of the user's pb and estimate inputs, used for all time-
     # based calculations.

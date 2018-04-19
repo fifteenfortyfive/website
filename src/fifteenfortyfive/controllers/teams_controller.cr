@@ -99,7 +99,7 @@ module TeamsController
 
     captain = Repo.get(Account, team.captain_id)
     runs = Repo.all(Run,
-      Query.where(team_id: team.id),
+      Query.where(team_id: team.id).order_by("schedule_index ASC"),
       preload: [:game, :runner]
     )
 
@@ -118,15 +118,23 @@ module TeamsController
       return
     end
 
-    team.name = env.params.body["name"]
-    team.slug = env.params.body["slug"]
 
-    changeset = Repo.update(team)
+    run_ids = env.params.json["run_ids"]
+    runs = Repo.all(Run, Query.where(team_id: team.id)).index_by{ |r| r.id.to_s }
+    multi = Multi.new
+    run_ids.as(Array(JSON::Type)).each_with_index do |id, index|
+      run = runs[id]
+      run.schedule_index = index
+      multi.update(run)
+    end
 
-    if changeset.valid?
-      env.redirect("/teams/#{team.slug}")
+    Repo.transaction(multi)
+
+
+    if multi.errors.any?
+      render_error(env, 500, "Failed to save schedule")
     else
-      env.redirect("/teams/#{team.slug}/schedule")
+      env.redirect("/teams/#{team.slug}")
     end
   end
 
