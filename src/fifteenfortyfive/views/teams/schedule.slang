@@ -1,6 +1,6 @@
 .container.scheduler(style="--color: ##{team.color}")
   .row
-    .col-sm-4
+    .col-md-5.col-sm-3
       .page-header
         h1 Scheduling
 
@@ -17,7 +17,7 @@
       .flash-container
 
 
-    .col-sm-6
+    .col-md-5.col-sm-7
       .schedule-grid
         .schedule-grid__timeline
           /TODO: The race starts at 11pm UTC on the 14th and (should) end on the 17th.
@@ -42,6 +42,7 @@
                 span.schedule-entry__runner-name
                   = run.runner.username
                   span.schedule-entry__runner-timezone= "(#{run.runner.timezone})"
+              span.schedule-entry__estimate= run.estimate_time
 
 script(src="/js/dragula.js")
 script(src="/js/scheduler.js")
