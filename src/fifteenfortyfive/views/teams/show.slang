@@ -52,7 +52,7 @@
         .schedule-grid__timeline
           /TODO: The race starts at 11pm UTC on the 14th and (should) end on the 17th.
             These numbers should be managed by an `event` record instead of hard coded.
-          - race_start = Time.new(2018, 7, 14, 23, 0, 0)
+          - race_start = Time.new(2018, 7, 13, 23, 0, 0)
           - total_hours = runs.reduce(Time::Span.zero){ |acc, run| acc += run.estimate_time || 2.hours }.total_hours.to_i + 1
           - total_hours.times do |hour|
             - entry_time = race_start + hour.hours
