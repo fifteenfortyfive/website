@@ -88,15 +88,16 @@ nav.navbar a.navbar-brand {
   --color: #b3b3b3;
   display: flex;
   border: 2px solid var(--color);
-  border-radius: 4px; }
+  border-radius: 4px;
+  background-color: var(--color);
+  color: #fcfcfd; }
 
 .account-box__avatar {
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
   flex: 0 0 var(--base-size);
   height: var(--base-size);
-  width: var(--base-size);
-  background-color: #fcfcfd; }
+  width: var(--base-size); }
 
 .account-box__info {
   flex: 1 0 auto;
@@ -113,14 +114,8 @@ a.account-box__social {
   display: inline-block;
   margin-right: 12px;
   font-size: 1.2em;
-  color: #b3b3b3;
+  color: #fcfcfd;
   text-decoration: none; }
-  a.account-box__social:hover {
-    text-decoration: none; }
-
-.account-box__social__icon {
-  margin-right: 4px;
-  color: #b3b3b3; }
 
 .account-box--small {
   --base-size: 60px;

@@ -16,13 +16,29 @@
     .col-sm-4
       h3 Captain
       - if captain
-        p== captain.username
+        .account-box.account-box--small(style="--color: ##{team.color}")
+          - if captain.avatar_object_id
+            img.account-box__avatar(src="#{Constants::ASSETS_URL}/#{captain.avatar_object_id}")
+          - else
+            img.account-box__avatar(src="#{Constants::ASSETS_URL}/default-avatar")
+
+          .account-box__info
+            span.account-box__username== captain.username
+
+            - if (twitch_name = captain.twitch) && !twitch_name.empty?
+              a.account-box__social(href="https://twitch.tv/#{twitch_name}" target="_blank" data-brand="twitch")
+                span.account-box__social__brand.fab.fa-twitch
+
+            - if (twitter_name = captain.twitter) && !twitter_name.empty?
+              a.account-box__social(href="https://twitter.com/#{twitter_name}" target="_blank" data-brand="twitter")
+                span.account-box__social__brand.fab.fa-twitter
       - else
         p This team does not have a captain.
 
       h3 Runners
       .account-box-grid
         - runs.map(&.runner).uniq.sort_by(&.username.not_nil!).each do |runner|
+          - next if runner.id == (captain && captain.id)
           .account-box.account-box--small(style="--color: ##{team.color}")
             - if runner.avatar_object_id
               img.account-box__avatar(src="#{Constants::ASSETS_URL}/#{runner.avatar_object_id}")

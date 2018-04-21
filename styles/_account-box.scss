@@ -4,6 +4,8 @@
   display: flex;
   border: 2px solid var(--color);
   border-radius: 4px;
+  background-color: var(--color);
+  color: $white-color;
 }
 
 .account-box__avatar {
@@ -12,7 +14,6 @@
   flex: 0 0 var(--base-size);
   height: var(--base-size);
   width: var(--base-size);
-  background-color: $white-bg-color;
 }
 
 .account-box__info {
@@ -32,17 +33,8 @@ a.account-box__social {
   display: inline-block;
   margin-right: 12px;
   font-size: 1.2em;
-  color: $text-muted;
+  color: $white-color;
   text-decoration: none;
-
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-.account-box__social__icon {
-  margin-right: 4px;
-  color: $text-muted;
 }
 
 
