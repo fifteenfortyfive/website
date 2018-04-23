@@ -11,4 +11,7 @@ require "./fifteenfortyfive/**"
 add_handler SessionHandler.new
 add_handler FeatureFlagHandler.new
 
+
+StreamStatusService.run_in_background
+
 Kemal.run

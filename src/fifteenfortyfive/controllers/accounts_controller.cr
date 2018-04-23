@@ -25,6 +25,7 @@ module AccountsController
     if changeset.valid?
       sign_in_user(env, changeset.instance)
       env.redirect("/")
+      spawn{ TwitchService.get_user_id_for(account) }
     else
       render_view "accounts/new"
     end
@@ -74,6 +75,7 @@ module AccountsController
     if changeset.valid?
       sign_in_user(env, changeset.instance)
       env.redirect("/")
+      spawn{ TwitchService.get_user_id_for(account) }
     else
       render_view "accounts/edit"
     end

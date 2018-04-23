@@ -15,6 +15,7 @@ html
 
     script src="/js/nanoajax.min.js"
     script(src="https://use.fontawesome.com/releases/v5.0.3/js/all.js")
+    script(src="/js/stream-status.js" defer=true )
 
 
   body

@@ -23,7 +23,9 @@
             img.account-box__avatar(src="#{Constants::ASSETS_URL}/default-avatar")
 
           .account-box__info
-            span.account-box__username== captain.username
+            span.account-box__username
+              == captain.username
+              span.account-box__stream-status.stream-indicator(data-account-id=captain.id )
 
             - if (twitch_name = captain.twitch) && !twitch_name.empty?
               a.account-box__social(href="https://twitch.tv/#{twitch_name}" target="_blank" data-brand="twitch")
@@ -46,7 +48,9 @@
               img.account-box__avatar(src="#{Constants::ASSETS_URL}/default-avatar")
 
             .account-box__info
-              span.account-box__username== runner.username
+              span.account-box__username
+                == runner.username
+                span.account-box__stream-status.stream-indicator(data-account-id=runner.id )
 
               - if (twitch_name = runner.twitch) && !twitch_name.empty?
                 a.account-box__social(href="https://twitch.tv/#{twitch_name}" target="_blank" data-brand="twitch")

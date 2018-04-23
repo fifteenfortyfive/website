@@ -1,0 +1,21 @@
+.stream-indicator {
+  --indicator-size: 0.6em;
+  display: none;
+  width: var(--indicator-size);
+  height: var(--indicator-size);
+  border-radius: 50%;
+  border: 1px solid $white;
+  background-color: $red;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+.stream-indicator.--active {
+  display: inline-block;
+  animation: stream-status-breathing 4s ease-out infinite normal;
+}
+
+@keyframes stream-status-breathing {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}

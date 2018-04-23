@@ -3,6 +3,7 @@ module Constants
   TWITCH_URL  = "https://twitch.tv/1545race"
   TWITTER_URL = "https://twitter.com/1545race"
 
+  TWITCH_CLIENT_ID = ENV["TWITCH_CLIENT_ID"]
 
   STORAGE_CLIENT = Awscr::S3::Client.new(
     ENV["FIFTEENFORTYFIVE_ASSETS_REGION"],

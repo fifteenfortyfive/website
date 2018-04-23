@@ -66,6 +66,12 @@ scope "/admin" do
 end
 
 
+
+scope "/api" do
+  get "/stream-status",   &->API::StreamStatusController.index(Krout::Env)
+end
+
+
 get "/", &->StaticController.index(Krout::Env)
 
 get   "/signin",  &->SessionsController._new(Krout::Env)

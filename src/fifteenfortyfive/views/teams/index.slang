@@ -31,6 +31,7 @@
                 .runner(data-captain=is_captain )
                   span.runner__name
                     == runner.username
+                    span.account-box__stream-status.stream-indicator(data-account-id=runner.id )
                     - if runner.twitch && !runner.twitch.not_nil!.empty?
                       a.runner__link(href="https://twitch.tv/#{runner.twitch}" target="_blank" data-brand="twitch")
                         span.fab.fa-twitch
