@@ -66,7 +66,7 @@
         strong#race_start_date July 13th, 2018 at 11pm UTC
         | at
         a(href="https://twitch.tv/1545race") twitch.tv/1545race
-        | and will run through the 16th, until the last team has finished.
+        | and will run through the 17th, until the last team has finished.
     .col-sm-4
       .page-header
         h1 Commentary
@@ -80,9 +80,34 @@
         | Signups for commentary will remain open until a month or so before the event begins.
 
 
+  - unless live_streams.empty?
+    .row
+      .col-sm-10
+        .page-header
+          h1 Live Runners
+
+        .stream-grid
+          - live_streams.each do |at, stream|
+            - runner, team = at.account, at.team
+            - game = games[stream.game_id]?
+            - next unless game
+            .stream(style="--color: ##{team.color};")
+              .stream__header
+                - if runner.avatar_object_id
+                  img.stream__avatar(src="#{Constants::ASSETS_URL}/#{runner.avatar_object_id}")
+                - else
+                  img.stream__avatar(src="#{Constants::ASSETS_URL}/default-avatar")
+                .stream__info
+                  span.stream__runner= runner.username
+                  span.stream__game= game.name
+                  span.stream__title= stream.title
+              a(href=TwitchService.stream_link(runner.twitch) target="_blank")
+                img.stream__thumbnail(src=stream.thumbnail_url )
+
 
 script(src="/js/moment.min.js")
 script(src="/js/moment-timezone.min.js")
+script(src="/js/stream-displays.js")
 
 javascript:
   // Name of the time zone that the user is currently in.

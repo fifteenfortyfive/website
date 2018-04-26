@@ -46,6 +46,18 @@ module TwitchService
         language: String,
         thumbnail_url: String
       )
+
+      def in_community?(community_id : String)
+        community_ids.includes?(community_id)
+      end
+
+      def live? : Bool
+        self.type == "live"
+      end
+
+      def thumbnail_url(width=340, height=180)
+        @thumbnail_url.gsub("{width}", width).gsub("{height}", height)
+      end
     end
 
     struct ArrayResponse(T)

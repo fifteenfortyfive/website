@@ -1,12 +1,23 @@
+require "./twitch_service.cr"
+
 module StreamStatusService
   extend self
 
   alias KeyType = Int32 | Int64
-  class_property statuses = {} of KeyType => Bool
+  alias Stream = TwitchService::Schemas::StreamData
+  class_property statuses = {} of KeyType => Stream
 
+  # Returns all accounts that are currently live.
+  def live
+    @@statuses.select{ |_, stream| stream.live? }
+  end
+  def live(community : String)
+    @@statuses.select{ |_, stream| stream.live? && stream.in_community?(community) }
+  end
 
+  # Returns true if the given account is currently streaming.
   def live?(account_id : KeyType) : Bool
-    !!@@statuses[account_id]? || false
+    @@statuses[account_id]?.try(&.live?) || false
   end
   def live?(account : Account)
     self.live?(account.id)
@@ -20,8 +31,11 @@ module StreamStatusService
       live_streams = TwitchService.get_streams(stream_ids).index_by(&.user_id)
 
       streams.each do |stream|
-        is_live = !!live_streams[stream.service_user_id]?
-        @@statuses[stream.account_id.not_nil!] = is_live
+        if stream_data = live_streams[stream.service_user_id]?
+          @@statuses[stream.account_id.not_nil!] = stream_data
+        else
+          @@statuses.delete(stream.account_id.not_nil!)
+        end
       end
 
       sleep(10)

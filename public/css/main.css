@@ -722,6 +722,54 @@ textarea.form__input {
     opacity: 1; }
   100% {
     opacity: 0; } }
+.stream-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 16px;
+  margin-top: 32px;
+  font-size: 1rem; }
+  .stream-grid .stream {
+    --border-size: 4px;
+    color: #fcfcfd;
+    background-color: var(--color);
+    border: var(--border-size) solid var(--color);
+    border-radius: 4px;
+    position: relative; }
+  .stream-grid .stream__header {
+    display: flex; }
+  .stream-grid .stream__avatar {
+    --avatar-size: 76px;
+    border-top-left-radius: 2px;
+    border-bottom: var(--border-size) solid var(--color);
+    flex: 0 0 var(--avatar-size);
+    height: var(--avatar-size);
+    width: var(--avatar-size); }
+  .stream-grid .stream__info {
+    padding: 4px 8px;
+    overflow: hidden; }
+  .stream-grid .stream__runner {
+    font-size: 1.3em;
+    line-height: 1em;
+    font-weight: 700; }
+  .stream-grid .stream__game {
+    display: block;
+    font-size: 0.9em;
+    font-weight: 700;
+    line-height: 1em;
+    margin-bottom: 4px; }
+    .stream-grid .stream__game::before {
+      content: 'running ';
+      font-weight: 400; }
+  .stream-grid .stream__title {
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+  .stream-grid .stream__thumbnail {
+    width: 100%;
+    bottom: 0;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px; }
+
 .team-editor-container {
   height: 600px;
   overflow-y: scroll; }
