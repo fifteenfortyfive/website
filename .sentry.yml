@@ -1,6 +1,6 @@
 display_name: 1545 website
 info: true
-build: crystal build src/fifteenfortyfive.cr
+build: crystal build src/fifteenfortyfive.cr --no-debug
 watch:
   - src/fifteenfortyfive/**/*.cr
   - src/fifteenfortyfive/**/*.slang

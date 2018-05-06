@@ -16,6 +16,10 @@ shards:
     github: crystal-lang/crystal-db
     version: 0.5.0
 
+  honcho:
+    github: faultyserver/honcho
+    commit: cf15aa3d10bab3350d44d3c4276db705e0b15d58
+
   kemal:
     github: kemalcr/kemal
     version: 0.22.0

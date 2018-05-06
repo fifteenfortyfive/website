@@ -24,3 +24,5 @@ dependencies:
     github: juanedi/micrate
   awscr-s3:
     github: taylorfinnell/awscr-s3
+  honcho:
+    github: faultyserver/honcho
