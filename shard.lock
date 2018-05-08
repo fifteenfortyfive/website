@@ -18,7 +18,7 @@ shards:
 
   honcho:
     github: faultyserver/honcho
-    commit: cf15aa3d10bab3350d44d3c4276db705e0b15d58
+    commit: 8939e7651e6cfd2e427ec978fef4baddc0e098ae
 
   kemal:
     github: kemalcr/kemal
