@@ -1,0 +1,11 @@
+.run-editor {
+  font-size: 1rem; }
+  .run-editor .run {
+    border: none;
+    margin: 0;
+    margin-bottom: 8px;
+    cursor: pointer; }
+  .run-editor .run__game {
+    display: block;
+    font-size: 1.6em;
+    font-weight: 500; }

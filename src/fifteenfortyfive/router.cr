@@ -21,6 +21,11 @@ scope "/teams" do
   post "/:slug/schedule/save",  &->TeamsController.update_schedule(Krout::Env)
 end
 
+scope "/runs" do
+  get  "/edit",   &->RunsController.edit(Krout::Env)
+  post "/update", &->RunsController.update(Krout::Env)
+end
+
 
 scope "/register" do
   get "", &->RegistrationsController.index(Krout::Env)

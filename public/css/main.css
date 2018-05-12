@@ -520,6 +520,17 @@ textarea.form__input {
   top: 10px;
   left: 10px; }
 
+.run-editor {
+  font-size: 1rem; }
+  .run-editor .run {
+    border: none;
+    margin: 0;
+    cursor: initial; }
+  .run-editor .run__game {
+    display: block;
+    font-size: 1.4em;
+    font-weight: 700; }
+
 .signup__game {
   display: flex;
   margin: 12px 0;
