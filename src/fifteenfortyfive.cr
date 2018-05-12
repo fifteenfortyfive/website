@@ -9,8 +9,6 @@ require "./fifteenfortyfive/repo.cr"
 require "./fifteenfortyfive/controllers/base_controller.cr"
 require "./fifteenfortyfive/**"
 
-require "./supervisor.cr"
-
 add_handler SessionHandler.new
 add_handler FeatureFlagHandler.new
 
