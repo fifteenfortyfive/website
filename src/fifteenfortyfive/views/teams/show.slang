@@ -66,7 +66,7 @@
 
       p
         small
-          em Schedules are subject to change until 1 week before the event.
+          em Schedules are subject to change until 1 week before the event. All times are shown in UTC.
 
       .schedule-grid
         .schedule-grid__timeline
