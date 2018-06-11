@@ -20,6 +20,8 @@
       ul
         li
           a(href="/admin/teams") Manage teams
+        li
+          a(href="/admin/teams/schedules") Event Schedule
 
       h2 Account management
       ul
