@@ -68,11 +68,11 @@
         small
           em Schedules are subject to change until 1 week before the event. All times are shown in UTC.
 
+      /TODO: The race starts at 11pm UTC on the 14th and (should) end on the 17th.
+        These numbers should be managed by an `event` record instead of hard coded.
+      - race_start = Time.new(2018, 7, 13, 23, 0, 0)
       .schedule-grid
         .schedule-grid__timeline
-          /TODO: The race starts at 11pm UTC on the 14th and (should) end on the 17th.
-            These numbers should be managed by an `event` record instead of hard coded.
-          - race_start = Time.new(2018, 7, 13, 23, 0, 0)
           - total_hours = runs.reduce(Time::Span.zero){ |acc, run| acc += run.estimate_time || 2.hours }.total_hours.to_i + 1
           - total_hours.times do |hour|
             - entry_time = race_start + hour.hours
@@ -87,7 +87,7 @@
         .schedule-grid__entries
           - runs.each do |run|
             - has_actual_time = !!run.actual_time_seconds
-            - time = run.actual_time_seconds || run.estimate_seconds
+            - time = run.estimate_seconds
             - seconds = Math.max(time || 0, 3600)
             .schedule-entry(class=run.game.series style="--schedule-entry-seconds: #{seconds}px" data-is-actual=has_actual_time data-run-id=run.id )
               .schedule-entry__name
