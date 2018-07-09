@@ -3,6 +3,20 @@ macro render_view(template)
 end
 
 
+scope "/live" do
+  before_all do |env|
+    unless env.current_user?
+      halt(env, status_code: 401, response: "Not Authorized")
+    end
+  end
+
+  get "/runner", &->LiveController.runner(Krout::Env)
+  ws "/runner" do |socket, env|
+    Sockets::Runner.new(socket, env.current_user)
+  end
+end
+
+
 scope "/accounts" do
   get   "/:id",     &->AccountsController.show(Krout::Env)
   get   "/new",     &->AccountsController._new(Krout::Env)

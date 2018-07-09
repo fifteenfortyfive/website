@@ -531,6 +531,79 @@ textarea.form__input {
     font-size: 1.4em;
     font-weight: 700; }
 
+.runner-dashboard --template {
+  display: none; }
+.runner-dashboard .status-indicator {
+  --color: #323234;
+  display: block;
+  margin: 0 0 16px 0;
+  color: #323234;
+  font-weight: 700; }
+  .runner-dashboard .status-indicator .status-indicator__text {
+    padding: 3px 6px 2px 6px;
+    border: 1px solid var(--color);
+    border-radius: 3px;
+    background-color: var(--color);
+    color: #fcfcfd;
+    font-size: 0.9em;
+    font-family: 'proxima-nova'; }
+  .runner-dashboard .status-indicator .status-indicator__help {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.85em;
+    line-height: 1.4em;
+    font-weight: 400; }
+  .runner-dashboard .status-indicator.--positive {
+    --color: #c5e6bf; }
+  .runner-dashboard .status-indicator.--negative {
+    --color: #D64848; }
+  .runner-dashboard .status-indicator.--neutral {
+    --color: #d8d8d9; }
+.runner-dashboard .run {
+  border: 1px solid #a4a4a8;
+  border-radius: 4px;
+  margin: 24px 0;
+  cursor: initial; }
+  .runner-dashboard .run .run__game {
+    display: block;
+    font-weight: 700;
+    font-size: 1.4em;
+    margin-bottom: 12px; }
+  .runner-dashboard .run .run__info {
+    display: flex;
+    justify-content: space-around;
+    margin-right: 12px; }
+  .runner-dashboard .run .run__timer-container {
+    flex: 0 1 auto; }
+  .runner-dashboard .run .run__timer {
+    display: block;
+    padding-top: 10px;
+    font-size: 2.4em;
+    font-weight: 700;
+    font-family: 'proxima-nova';
+    font-variant-numeric: tabular-nums; }
+  .runner-dashboard .run .run__timer-state {
+    display: block;
+    padding-bottom: 8px;
+    color: #b3b3b3;
+    font-size: 1.2em;
+    font-family: 'proxima-nova'; }
+  .runner-dashboard .run .run__timer-actions {
+    margin-left: 12px; }
+    .runner-dashboard .run .run__timer-actions .run__button {
+      border: 1px solid #a4a4a8;
+      padding: 12px 12px;
+      border-radius: 4px;
+      float: left;
+      margin: 4px 8px 0 0; }
+      .runner-dashboard .run .run__timer-actions .run__button:hover {
+        background-color: #d8d8d9;
+        cursor: pointer; }
+      .runner-dashboard .run .run__timer-actions .run__button:active {
+        background-color: #bebec0; }
+      .runner-dashboard .run .run__timer-actions .run__button [data-fa-processed] {
+        margin-right: 2px; }
+
 .signup__game {
   display: flex;
   margin: 12px 0;

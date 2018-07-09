@@ -3,7 +3,7 @@ module Repo
 
   config do |conf|
     conf.adapter  = Crecto::Adapters::Postgres
-    conf.uri      = ENV["DATABASE_URL"]? || ""
+    conf.uri      = ENV["FIFTEENFORTYFIVE_DATABASE_URL"]? || ENV["DATABASE_URL"]? || ""
   end
 end
 

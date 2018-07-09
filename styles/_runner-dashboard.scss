@@ -1,0 +1,110 @@
+.runner-dashboard {
+  --template {
+    display: none;
+  }
+
+  .status-indicator {
+    --color: #{$dark-gray};
+    display: block;
+    margin: 0 0 16px 0;
+    color: $text-color;
+    font-weight: 700;
+
+    .status-indicator__text {
+      padding: 3px 6px 2px 6px;
+      border: 1px solid var(--color);
+      border-radius: 3px;
+      background-color: var(--color);
+      color: $white;
+      font-size: 0.9em;
+      font-family: 'proxima-nova';
+    }
+
+    .status-indicator__help {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.85em;
+      line-height: 1.4em;
+      font-weight: 400;
+    }
+
+
+    &.--positive {
+      --color: #{$success};
+    }
+
+    &.--negative {
+      --color: #{$red};
+    }
+
+    &.--neutral {
+      --color: #{$light-gray};
+    }
+  }
+
+  .run {
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    margin: 24px 0;
+    cursor: initial;
+
+    .run__game {
+      display: block;
+      font-weight: 700;
+      font-size: 1.4em;
+      margin-bottom: 12px;
+    }
+
+    .run__info {
+      display: flex;
+      justify-content: space-around;
+      margin-right: 12px;
+    }
+
+    .run__timer-container {
+      flex: 0 1 auto;
+    }
+
+    .run__timer {
+      display: block;
+      padding-top: 10px;
+      font-size: 2.4em;
+      font-weight: 700;
+      font-family: 'proxima-nova';
+      font-variant-numeric: tabular-nums;
+    }
+
+    .run__timer-state {
+      display: block;
+      padding-bottom: 8px;
+      color: $text-muted;
+      font-size: 1.2em;
+      font-family: 'proxima-nova';
+    }
+
+    .run__timer-actions {
+      margin-left: 12px;
+
+      .run__button {
+        border: 1px solid $border-color;
+        padding: 12px 12px;
+        border-radius: 4px;
+        float: left;
+        margin: 4px 8px 0 0;
+
+        &:hover {
+          background-color: $light-gray;
+          cursor: pointer;
+        }
+
+        &:active {
+          background-color: darken($light-gray, 10%);
+        }
+
+        [data-fa-processed] {
+          margin-right: 2px;
+        }
+      }
+    }
+  }
+}

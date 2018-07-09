@@ -10,6 +10,11 @@ class Run < Crecto::Model
     field :pb_seconds, Int32
     field :estimate_seconds, Int32
 
+    # The actual time
+    field :actual_start_time, Time
+    field :actual_end_time, Time
+    field :actual_time_seconds, Int32
+
     belongs_to :runner, Account, foreign_key: :account_id
     belongs_to :submission, RunnerSubmission, foreign_key: :runner_submission_id
     belongs_to :game, Game
