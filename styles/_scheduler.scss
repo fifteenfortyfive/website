@@ -55,6 +55,9 @@
   display: flex;
   height: calc(var(--schedule-entry-seconds) / var(--seconds-per-pixel));
 
+  &[data-is-actual="false"] {
+    opacity: 0.6;
+  }
 
   .schedule-entry__name {
     flex: 1 1 160px;

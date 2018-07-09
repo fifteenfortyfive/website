@@ -18,8 +18,10 @@ h3 All Schedules
   - runs_by_team.each do |team, runs|
     .schedule-grid__entries
       - runs.each do |run|
-        - seconds = Math.max(run.estimate_seconds || 0, 3600)
-        .schedule-entry(class=run.game.series style="--schedule-entry-seconds: #{seconds}px" data-run-id=run.id )
+        - has_actual_time = !!run.actual_time_seconds
+        - time = run.actual_time_seconds || run.estimate_seconds
+        - seconds = Math.max(time || 0, 3600)
+        .schedule-entry(class=run.game.series style="--schedule-entry-seconds: #{seconds}px" data-is-actual=has_actual_time data-run-id=run.id )
           .schedule-entry__name
             strong= run.game.name
             | by

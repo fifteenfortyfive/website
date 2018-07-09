@@ -768,6 +768,8 @@ textarea.form__input {
   color: #fcfcfd;
   display: flex;
   height: calc(var(--schedule-entry-seconds) / var(--seconds-per-pixel)); }
+  .schedule-entry[data-is-actual="false"] {
+    opacity: 0.6; }
   .schedule-entry .schedule-entry__name {
     flex: 1 1 160px;
     font-weight: 400; }

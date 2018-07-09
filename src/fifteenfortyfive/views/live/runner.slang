@@ -63,12 +63,14 @@
 
       h3 Schedule
 
+      em.text-muted This schedule does not have live updates. To get the most recent updates, refresh the page. It is always safe to refresh.
+
       .schedule-grid
         .schedule-grid__timeline
           /TODO: The race starts at 11pm UTC on the 14th and (should) end on the 17th.
             These numbers should be managed by an `event` record instead of hard coded.
           - race_start = Time.new(2018, 7, 13, 23, 0, 0)
-          - 56.times do |hour|
+          - 54.times do |hour|
             - entry_time = race_start + hour.hours
             - if entry_time.hour == 0
               .schedule-entry.timeline-entry.timeline-entry__date(style="--schedule-entry-seconds: 3600px")
@@ -80,13 +82,14 @@
 
         .schedule-grid__entries
           - team_runs.each do |run|
-            - seconds = Math.max(run.estimate_seconds || 0, 3600)
-            .schedule-entry(class=run.game.series style="--schedule-entry-seconds: #{seconds}px" data-run-id=run.id )
+            - has_actual_time = !!run.actual_time_seconds
+            - time = run.actual_time_seconds || run.estimate_seconds
+            - seconds = Math.max(time || 0, 3600)
+            .schedule-entry(class=run.game.series style="--schedule-entry-seconds: #{seconds}px" data-is-actual=has_actual_time data-run-id=run.id )
               span.schedule-entry__name
                 = run.game.name
                 span.schedule-entry__runner-name
                   = run.runner.username
-              span.schedule-entry__estimate= run.estimate_time
 
 
 
