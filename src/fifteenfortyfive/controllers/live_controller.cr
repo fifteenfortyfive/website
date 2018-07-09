@@ -3,8 +3,8 @@ module LiveController
   extend self
 
   def runner(env)
-    unless env.current_user? && env.current_user
-      render_404
+    unless env.current_user?
+      env.redirect("/signin?redirect=/live/runner")
       return
     end
 

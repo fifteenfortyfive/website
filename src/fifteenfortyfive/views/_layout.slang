@@ -50,6 +50,7 @@ html
                   span.navbar-dropdown__menu-item.--header
                     | Signed in as
                     strong== env.current_user.username
+                  a.navbar-dropdown__menu-item(href="/live/runner") Live Dashboard
                   a.navbar-dropdown__menu-item(href="/accounts/edit") Edit Account
                   a.navbar-dropdown__menu-item(href="/runs/edit") Edit Runs
                   a.navbar-dropdown__menu-item(href="/signout") Sign out

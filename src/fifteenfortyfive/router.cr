@@ -4,14 +4,11 @@ end
 
 
 scope "/live" do
-  before_all do |env|
+  get "/runner", &->LiveController.runner(Krout::Env)
+  ws "/runner" do |socket, env|
     unless env.current_user?
       halt(env, status_code: 401, response: "Not Authorized")
     end
-  end
-
-  get "/runner", &->LiveController.runner(Krout::Env)
-  ws "/runner" do |socket, env|
     Sockets::Runner.new(socket, env.current_user)
   end
 end
