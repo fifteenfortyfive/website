@@ -11,6 +11,10 @@ scope "/live" do
     end
     Sockets::Runner.new(socket, env.current_user)
   end
+
+  ws "/stream" do |socket, env|
+    SocketService.add_stream(socket)
+  end
 end
 
 
