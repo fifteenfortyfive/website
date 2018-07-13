@@ -1,9 +1,10 @@
-class CurrentRun < Crecto::Model
-  schema "current_runs" do
+class FeaturedRun < Crecto::Model
+  schema "featured_runs" do
     belongs_to :run, Run
     belongs_to :team, Team
     belongs_to :account, Account
 
+    field :feature_index, Int32
     field :schedule_index, Int32
 
     field :pb, String

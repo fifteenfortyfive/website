@@ -13,7 +13,7 @@ scope "/live" do
   end
 
   ws "/stream" do |socket, env|
-    SocketService.add_stream(socket)
+    Sockets::Stream.new(socket)
   end
 end
 

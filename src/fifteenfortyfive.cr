@@ -19,6 +19,6 @@ visor = Honcho::Visor.new(strategy: Honcho::Strategy::ISOLATED)
 # an infinite loop of timeouts.
 visor.start_supervised("stream statuses", delay: 60.0, &->StreamStatusService.run)
 visor.start_supervised("kemal", &->Kemal.run)
-visor.start_supervised("kemal", &->SocketService.run)
+# visor.start_supervised("socket service", &->SocketService.run)
 
 visor.run
