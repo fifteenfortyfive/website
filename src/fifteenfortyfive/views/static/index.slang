@@ -1,14 +1,6 @@
 .titlebar
   .container
-    .row
-      .col-sm-6
-        h1 The 1545
-
-
-      .col-sm-4.right
-        p.lead
-          | July 13th - 16th at
-          a(href="https://twitch.tv/1545race") twitch.tv/1545race
+    iframe(src="http://player.twitch.tv/?channel=1545Race" height="432" width="768" frameborder="false" scrolling="no" allowfullscreen="true")
 
 
 .statbar
@@ -34,10 +26,14 @@
             | people have also registered for commentary during the event.
             a(href="/register") Sign up now to join them!
         - when env.feature_flags["teams"].enabled
+          / p.lead.banner
+          /   strong Teams for this year's 1545 have been announced!
+          /   | Find out who's running what
+          /   a(href="/teams") on the teams page!
           p.lead.banner
-            strong Teams for this year's 1545 have been announced!
-            | Find out who's running what
-            a(href="/teams") on the teams page!
+            strong The 2nd Annual 1545 is live!
+            | Come hang out
+            a(href="https://twitch.tv/1545Race") on Twitch!
 
         - else
           p.lead.banner
@@ -67,17 +63,14 @@
         | at
         a(href="https://twitch.tv/1545race") twitch.tv/1545race
         | and will run through the 17th, until the last team has finished.
+
     .col-sm-4
       .page-header
-        h1 Commentary
+        h1 Schedule
 
       p
-        strong Commentator signups are still open!
-        | If you'd like to help out with commentary during the event, there's still plenty of time to
-        a(href="/register/commentator") sign up!
-
-      p
-        | Signups for commentary will remain open until a month or so before the event begins.
+        | The full schedule for this year's event is now available! Find out who will be running what and when
+        a(href="/teams/schedules") here!
 
 
   - unless live_streams.empty?

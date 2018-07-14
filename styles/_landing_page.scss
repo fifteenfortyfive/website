@@ -38,6 +38,12 @@
   }
 }
 
+.titlebar iframe {
+  display: block;
+  width: 774px;
+  margin: auto;
+}
+
 
 .statbar {
   border-bottom: 1px solid $dark-gray;
