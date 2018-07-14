@@ -58,6 +58,8 @@ scope "/register/commentator" do
   post "/revoke", &->CommentatorSubmissionsController.destroy(Krout::Env)
 end
 
+get  "/teams/schedules",  &->Admin::TeamsController.schedules(Krout::Env)
+
 
 
 scope "/admin" do

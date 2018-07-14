@@ -19,6 +19,7 @@
 }
 
 .schedule-entry.timeline-entry {
+  background-color: $white-bg-color;
   border-top: 1px solid lighten($border-color, 20%);
   border-bottom: none;
   border-radius: 0;
@@ -44,6 +45,10 @@
 .schedule-grid__entries {
   flex: 1 0 auto;
   margin: 0 2px;
+}
+
+.schedule-grid__entries:last-child {
+  padding-right: 16px;
 }
 
 .schedule-entry {

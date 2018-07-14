@@ -737,6 +737,7 @@ textarea.form__input {
   font-size: 1rem; }
 
 .schedule-entry.timeline-entry {
+  background-color: #fcfcfd;
   border-top: 1px solid #d8d8da;
   border-bottom: none;
   border-radius: 0;
@@ -759,6 +760,9 @@ textarea.form__input {
 .schedule-grid__entries {
   flex: 1 0 auto;
   margin: 0 2px; }
+
+.schedule-grid__entries:last-child {
+  padding-right: 16px; }
 
 .schedule-entry {
   padding: 8px;
