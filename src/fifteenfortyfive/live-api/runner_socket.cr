@@ -37,6 +37,10 @@ module Sockets
         if (start = run.actual_start_time) && (finish = run.actual_end_time)
           run.actual_time_seconds = (finish - start).to_i
         end
+        team = Repo.get!(Team, run.team_id)
+        team.current_run_index = (run.schedule_index || 0) + 1
+        Repo.update(team)
+
         Repo.update(run)
         notify(run)
 
