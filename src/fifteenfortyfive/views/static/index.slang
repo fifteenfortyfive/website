@@ -1,6 +1,6 @@
 .titlebar
   .container
-    iframe(src="http://player.twitch.tv/?channel=1545Race" height="432" width="768" frameborder="false" scrolling="no" allowfullscreen="true")
+    iframe(src="https://player.twitch.tv/?channel=1545Race" height="432" width="768" frameborder="false" scrolling="no" allowfullscreen="true")
 
 
 .statbar
