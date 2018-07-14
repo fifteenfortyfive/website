@@ -39,6 +39,11 @@ module Sockets
         run = current_featured_run(force_update: true)
         notify({type: "featured_run", run: run })
 
+      when "all_current_runs"
+        runs = Repo.all(CurrentRun)
+        notify({type: "all_current_runs", runs: runs})
+
+
       when "run_data"
         run = Repo.get(Run, msg["run_id"].to_s)
         notify({type: "run_data", run: run})
