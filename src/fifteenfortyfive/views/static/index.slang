@@ -1,6 +1,12 @@
 .titlebar
   .container
-    iframe(src="https://player.twitch.tv/?channel=1545Race" height="432" width="768" frameborder="false" scrolling="no" allowfullscreen="true")
+    h1 The 1545
+
+    .links
+      a.link(href=Constants::DISCORD_URL target="_blank") Discord
+      a.link(href=Constants::TWITCH_URL target="_blank") Twitch
+      a.link(href=Constants::TWITTER_URL target="_blank") Twitter
+      a.link(href=Constants::SRCOM_URL target="_blank") speedrun.com
 
 
 .statbar
@@ -31,9 +37,12 @@
           /   | Find out who's running what
           /   a(href="/teams") on the teams page!
           p.lead.banner
-            strong The 2nd Annual 1545 is live!
-            | Come hang out
-            a(href="https://twitch.tv/1545Race") on Twitch!
+            strong This year's 1545 has ended!
+            br
+            | Check out the results
+            a(href="https://www.speedrun.com/1545" target="_blank") on speedrun.com
+            | and please
+            a(href="https://goo.gl/forms/cuE0dzc2BljjzePn1" target="_blank") let us know what you thought of the event!
 
         - else
           p.lead.banner
@@ -47,7 +56,7 @@
 
 .container
   .row
-    .col-sm-6
+    .col-sm-10
       .page-header
         h1 The Relay
 
@@ -57,20 +66,14 @@
 
       p Each team is expected to take just over 50 hours to complete the full-completion categories of all 13 games sequentially.
 
+      / p
+      /   | The 1545 will take place starting on
+      /   strong#race_start_date July 13th, 2018 at 11pm UTC
+      /   | at
+      /   a(href="https://twitch.tv/1545race") twitch.tv/1545race
+      /   | and will run through the 17th, until the last team has finished.
       p
-        | The 1545 will take place starting on
-        strong#race_start_date July 13th, 2018 at 11pm UTC
-        | at
-        a(href="https://twitch.tv/1545race") twitch.tv/1545race
-        | and will run through the 17th, until the last team has finished.
-
-    .col-sm-4
-      .page-header
-        h1 Schedule
-
-      p
-        | The full schedule for this year's event is now available! Find out who will be running what and when
-        a(href="/teams/schedules") here!
+        strong The next 1545 will take place in the summer of 2019. We hope to see you there!
 
 
   - unless live_streams.empty?

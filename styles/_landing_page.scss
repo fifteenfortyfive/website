@@ -1,14 +1,17 @@
 .titlebar {
-  padding: 60px 0px;
+  padding: 48px 0px;
   background-color: $primary-bg-color;
   color: $white-color;
   font-family: "proxima-nova", sans-serif;
 
   h1 {
-    margin: -20px 0 0 0;
+    display: block;
+    width: 100%;
+    text-align: center;
     font-family: "cortado", sans-serif;
     font-size: 160px;
     font-weight: 400;
+    line-height: 1em;
     text-shadow:
       6px 4px 1px darken($brand-primary,  0%),
       14px 6px 1px darken($brand-primary, 10%);
@@ -30,11 +33,47 @@
   a {
     color: $white-color;
     font-weight: 900;
+
+    &:hover {
+      color: $white-color;
+      text-decoration: none;
+    }
+    &:focus {
+      color: $white-color;
+      text-decoration: none;
+    }
+    &:active {
+      color: $white-color;
+      text-decoration: none;
+    }
   }
 
   .right {
     margin-top: 20px;
     text-align: right;
+  }
+
+
+  .links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+    max-width: 640px;
+    margin: 48px auto 0 auto;
+
+    .link {
+      font-size: 1.4em;
+      padding: 12px 24px;
+      border: 1px solid $red;
+      border-radius: 4px;
+      text-align: center;
+      background-color: transparent;
+      box-shadow: 1px 1px 10px darken($brand-primary, 15%);
+
+      &:hover {
+        background-color: $red;
+      }
+    }
   }
 }
 
@@ -139,6 +178,11 @@
 
     .right {
       margin-top: 11px;
+    }
+
+    .links .link {
+      font-size: 1em;
+      padding: 8px 14px;
     }
   }
 }

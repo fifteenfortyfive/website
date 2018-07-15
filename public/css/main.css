@@ -179,15 +179,18 @@ nav.navbar {
   vertical-align: bottom; }
 
 .titlebar {
-  padding: 60px 0px;
+  padding: 48px 0px;
   background-color: #323234;
   color: #fcfcfd;
   font-family: "proxima-nova", sans-serif; }
   .titlebar h1 {
-    margin: -20px 0 0 0;
+    display: block;
+    width: 100%;
+    text-align: center;
     font-family: "cortado", sans-serif;
     font-size: 160px;
     font-weight: 400;
+    line-height: 1em;
     text-shadow: 6px 4px 1px #323234, 14px 6px 1px #19191a; }
   .titlebar p {
     font-size: 24px;
@@ -199,9 +202,39 @@ nav.navbar {
   .titlebar a {
     color: #fcfcfd;
     font-weight: 900; }
+    .titlebar a:hover {
+      color: #fcfcfd;
+      text-decoration: none; }
+    .titlebar a:focus {
+      color: #fcfcfd;
+      text-decoration: none; }
+    .titlebar a:active {
+      color: #fcfcfd;
+      text-decoration: none; }
   .titlebar .right {
     margin-top: 20px;
     text-align: right; }
+  .titlebar .links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+    max-width: 640px;
+    margin: 48px auto 0 auto; }
+    .titlebar .links .link {
+      font-size: 1.4em;
+      padding: 12px 24px;
+      border: 1px solid #D64848;
+      border-radius: 4px;
+      text-align: center;
+      background-color: transparent;
+      box-shadow: 1px 1px 10px #0d0d0d; }
+      .titlebar .links .link:hover {
+        background-color: #D64848; }
+
+.titlebar iframe {
+  display: block;
+  width: 774px;
+  margin: auto; }
 
 .statbar {
   border-bottom: 1px solid #323234;
@@ -250,7 +283,10 @@ nav.navbar {
     .titlebar p.lead {
       font-size: 20px; }
     .titlebar .right {
-      margin-top: 11px; } }
+      margin-top: 11px; }
+    .titlebar .links .link {
+      font-size: 1em;
+      padding: 8px 14px; } }
 .teams-display {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

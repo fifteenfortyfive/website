@@ -30,8 +30,8 @@ html
           p.navbar-text
             a.navbar-link(href="/teams") Teams
 
-        p.navbar-text
-          a.navbar-link(href="/register") Register
+        // p.navbar-text
+        //   a.navbar-link(href="/register") Register
 
         - if env.current_user? && env.current_user.admin
           p.navbar-text
