@@ -32,7 +32,7 @@
           p You've submitted:
           ul
             - runner_submission.games.each do |game|
-              - game_data = game["game"].as(Hash(String, JSON::Type))
+              - game_data = game["game"].as_h
               li
                 strong= game_data["short_name"]
                 | -
@@ -58,7 +58,7 @@
           p You submitted:
           ul
             - runner_submission.games.each do |game|
-              - game_data = game["game"].as(Hash(String, JSON::Type))
+              - game_data = game["game"].as_h
               li
                 strong= game_data["short_name"]
                 | -

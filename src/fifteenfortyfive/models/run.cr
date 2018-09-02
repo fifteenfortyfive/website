@@ -44,7 +44,7 @@ class Run < Crecto::Model
     self.pb = new_time
     self.pb_seconds =
       KNOWN_TIME_FORMATS.each do |format|
-        break to_seconds(Time.parse(new_time, format))
+        break to_seconds(Time.parse!(new_time, format))
       rescue
         nil
       end
@@ -54,7 +54,7 @@ class Run < Crecto::Model
     self.estimate = new_time
     self.estimate_seconds =
       KNOWN_TIME_FORMATS.each do |format|
-        break to_seconds(Time.parse(new_time, format))
+        break to_seconds(Time.parse!(new_time, format))
       rescue
         nil
       end

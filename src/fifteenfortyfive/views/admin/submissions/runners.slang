@@ -92,12 +92,12 @@
                   strong Preference
                   ol.list--condensed
                     - sub.games.each do |g|
-                      li= g["game"].as(Hash(String, JSON::Type))["name"]
+                      li= g["game"].as_h["name"]
 
 
           - ["sm64", "sms", "smg1", "smg2", "kazooie", "tooie", "dk64", "spyro1", "spyro2", "spyro3", "crash1", "crash2", "crash3"].each do |name|
             td(width="7%" class=name )
-              - if game = sub.games.find{ |g| name == g["game"].as(Hash(String, JSON::Type))["id"] }
+              - if game = sub.games.find{ |g| name == g["game"].as_h["id"] }
                 strong= game["est"]
                 br
                 span= game["pb"]

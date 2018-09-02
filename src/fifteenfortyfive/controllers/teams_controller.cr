@@ -122,7 +122,7 @@ module TeamsController
     run_ids = env.params.json["run_ids"]
     runs = Repo.all(Run, Query.where(team_id: team.id)).index_by{ |r| r.id.to_s }
     multi = Multi.new
-    run_ids.as(Array(JSON::Type)).each_with_index do |id, index|
+    run_ids.as(Array(JSON::Any)).each_with_index do |id, index|
       run = runs[id]
       run.schedule_index = index
       multi.update(run)

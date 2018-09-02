@@ -2,11 +2,11 @@ version: 1.0
 shards:
   awscr-s3:
     github: taylorfinnell/awscr-s3
-    version: 0.3.1
+    version: 0.3.2
 
   awscr-signer:
     github: taylorfinnell/awscr-signer
-    version: 0.5.0
+    version: 0.5.2
 
   crecto:
     github: crecto/crecto
@@ -16,13 +16,17 @@ shards:
     github: crystal-lang/crystal-db
     version: 0.5.0
 
+  exception_page:
+    github: crystal-loot/exception_page
+    version: 0.1.1
+
   honcho:
     github: faultyserver/honcho
     commit: 8939e7651e6cfd2e427ec978fef4baddc0e098ae
 
   kemal:
     github: kemalcr/kemal
-    version: 0.22.0
+    version: 0.24.0
 
   kilt:
     github: jeromegn/kilt
@@ -34,11 +38,11 @@ shards:
 
   micrate:
     github: juanedi/micrate
-    version: 0.3.0
+    version: 0.3.3
 
   pg:
     github: will/crystal-pg
-    version: 0.14.1
+    version: 0.15.0
 
   radix:
     github: luislavena/radix

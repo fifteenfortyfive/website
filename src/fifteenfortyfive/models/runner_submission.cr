@@ -14,7 +14,7 @@ class RunnerSubmission < Crecto::Model
 
   def games
     JSON.parse(@games_json || "[]").as_a.map do |game|
-      game.as(Hash(String, JSON::Type))
+      game.as_h
     end
   end
 end

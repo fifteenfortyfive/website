@@ -27,7 +27,7 @@ game_map = {
 
 submissions.each do |sub|
   sub.games.each_with_index do |game_data, idx|
-    game = game_map[game_data["game"].as(Hash(String, JSON::Type))["id"]]
+    game = game_map[game_data["game"].as_h["id"]]
 
     game_submission = GameSubmission.new
     game_submission.runner_submission = sub

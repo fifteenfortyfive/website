@@ -14,7 +14,7 @@ module Admin::TeamsController
 
 
   def save(env)
-    teams_json = JSON.parse(env.request.body.not_nil!)
+    teams_json = JSON.parse(env.request.body.not_nil!).as_a
 
     teams_json.each do |team_json|
       team =
@@ -33,7 +33,7 @@ module Admin::TeamsController
       end
 
       # Create runs for the submissions used on the team
-      submission_ids = team_json["runs"].to_a.map{ |r| r.to_s }
+      submission_ids = team_json["runs"].as_a.map{ |r| r.to_s }
       Repo.update_all(Run, Query.where(team_id: team.id), { updated_at: Time.now, team_id: nil })
       Repo.update_all(Run, Query.where(id: submission_ids), { updated_at: Time.now, team_id: team.id })
     end

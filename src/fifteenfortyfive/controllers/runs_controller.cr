@@ -24,10 +24,10 @@ module RunsController
 
     multi = Multi.new
     runs.each do |run|
-      run_data = env.params.json[run.id.to_s].as(Hash(String, JSON::Type))
+      run_data = env.params.json[run.id.to_s].as(Hash(String, JSON::Any))
 
-      run.update_pb(run_data["pb"].as(String))
-      run.update_estimate(run_data["est"].as(String))
+      run.update_pb(run_data["pb"].as_s)
+      run.update_estimate(run_data["est"].as_s)
 
       multi.update(run)
     end

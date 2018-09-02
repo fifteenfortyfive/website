@@ -34,7 +34,7 @@
               input.form__input(placeholder="00:00:00")
 
         - submission.try &.games.each do |game|
-          - game_data = game["game"].as(Hash(String, JSON::Type))
+          - game_data = game["game"].as_h
           .signup__game
             .signup__game__boxart.handle
               img(src="/res/#{game_data["id"]}.jpg")

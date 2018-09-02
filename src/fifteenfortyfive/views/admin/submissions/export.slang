@@ -50,9 +50,9 @@
           = sub.avoid
           = sub.max_games
           = sub.max_time
-          = sub.games.map{ |g| g["game"].as(Hash(String, JSON::Type))["id"] }.join(".")
+          = sub.games.map{ |g| g["game"].as_h["id"] }.join(".")
           - ["sm64", "sms", "smg1", "smg2", "kazooie", "tooie", "dk64", "spyro1", "spyro2", "spyro3", "crash1", "crash2", "crash3"].each do |name|
-              - if game = sub.games.find{ |g| name == g["game"].as(Hash(String, JSON::Type))["id"] }
+              - if game = sub.games.find{ |g| name == g["game"].as_h["id"] }
                 strong= game["est"]
                 br
                 span= game["pb"]

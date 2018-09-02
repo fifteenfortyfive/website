@@ -24,7 +24,7 @@
               td(width="35%")
                 ul.runner-submission__games
                   - sub.games.each do |game|
-                    - game_data = game["game"].as(Hash(String, JSON::Type))
+                    - game_data = game["game"].as_h
                     li.runner-submission__game
                       strong= game_data["short_name"]
                       | -
