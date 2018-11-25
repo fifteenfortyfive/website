@@ -10,6 +10,10 @@ module StaticController
     render_view "static/index"
   end
 
+  def volunteer(env)
+    render_view "static/volunteer"
+  end
+
   protected def live_runner_streams
     runners = Repo.all(AccountTeam, preload: [:account, :team]).uniq(&.account)
     indexed_streams = Hash(AccountTeam, StreamStatusService::Stream).new
