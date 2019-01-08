@@ -1,3 +1,5 @@
+require "../util/template.cr"
+
 module BaseController
   def render_404(env)
     env.response.status_code = 404

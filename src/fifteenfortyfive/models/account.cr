@@ -1,6 +1,10 @@
+require "crinja"
 require "crypto/bcrypt/password"
 
+@[Crinja::Attributes]
 class Account < Crecto::Model
+  include Crinja::Object::Auto
+
   schema "accounts" do
     field :username, String
     field :encrypted_password, String
@@ -11,6 +15,7 @@ class Account < Crecto::Model
     field :admin, Bool
     field :avatar_object_id, String
 
+    @[Crinja::Attribute(ignore: true)]
     field :password, String, virtual: true
 
     has_one :runner_submission, RunnerSubmission

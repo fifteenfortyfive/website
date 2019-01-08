@@ -1,0 +1,20 @@
+body {
+  font-family: $font-body;
+}
+
+.has-font-brand {
+  font-family: $font-brand;
+}
+
+.has-font-body {
+  font-family: $font-body;
+}
+
+.has-font-header {
+  font-family: $font-header;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  // font-family: $font-header;
+  letter-spacing: -0.5px;
+}

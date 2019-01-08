@@ -6,7 +6,7 @@ module AccountsController
 
   def _new(env)
     error = nil
-    render_view "accounts/new"
+    Template.render(env, "accounts/new.html.j2")
   end
 
   def create(env)

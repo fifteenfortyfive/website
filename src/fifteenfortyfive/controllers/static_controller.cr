@@ -7,7 +7,7 @@ module StaticController
 
     live_streams = live_runner_streams
     games = games_for_streams(live_streams.values)
-    render_view "static/index"
+    Template.render(env, "static/index.html.j2")
   end
 
   def volunteer(env)

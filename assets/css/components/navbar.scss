@@ -1,0 +1,14 @@
+.navbar-item {
+  border-radius: $radius;
+  margin: 1em 0.25em;
+  padding: 1em;
+}
+
+.navbar-brand-icon {
+  padding: 0 1em;
+  // padding: 8px 20px 8px 12px;
+
+  .brand-logo {
+    font-size: 1.2rem;
+  }
+}

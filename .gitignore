@@ -1,14 +1,22 @@
+# Caching
 .sass-cache
+.cache
 .shards
+.DS_Store
 
+# Config
 /repo_config.yaml
 /fifteenfortyfive
 /fifteenfortyfive.dwarf
 
+# Crystal deps
 /lib/
 /dev/
 /sentry
 /sentry.dwarf
+
+# Asset deps
+node_modules/
 
 # Database dump files from heroku
 *.dump

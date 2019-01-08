@@ -1,0 +1,93 @@
+$field-oneline-border-color: $danger !default;
+$field-oneline-border: 1px solid $field-oneline-border-color;
+$field-oneline-background-color: lighten($danger, 40%) !default;
+$field-oneline-background-color--darker: darken($field-oneline-background-color, 4%) !default;
+$field-oneline-color: $danger !default;
+$field-oneline-prefix-color: $grey !default;
+$field-oneline-font-size: 1rem;
+$field-oneline-label-width: 10ch;
+
+.is-isolated {
+  padding: 1.25rem 0;
+  margin: 1.25rem 0;
+  background-color: $field-oneline-background-color;
+}
+
+.field {
+  .control.is-oneline {
+    display: flex;
+    background-color: $field-oneline-background-color;
+    border: none;
+    border-top: $field-oneline-border;
+    border-bottom: $field-oneline-border;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: $field-oneline-font-size;
+
+    &:focus-within {
+      background-color: $field-oneline-background-color--darker;
+    }
+
+    .label {
+      display: inline-block;
+      flex: 0 0 $field-oneline-label-width;
+      padding-bottom: calc(0.125em - 3px);
+      padding-left: 0;
+      padding-right: calc(0.625em - 1px);
+      padding-top: calc(0.125em - 0px);
+      color: $field-oneline-color;
+      border-right: $field-oneline-border;
+      margin: 0.25em 0;
+      font-weight: $weight-normal;
+      text-align: right;
+    }
+
+    .divider {
+      border-right: $field-oneline-border;
+      margin: 0.25em 0;
+      padding: 0 0.25em;
+    }
+
+    .input {
+      flex: 1 1 auto;
+      display: inline-block;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      background: none;
+      margin: 0;
+
+      &.is-narrow {
+        width: 7ch;
+      }
+    }
+
+    .prefix {
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      color: $field-oneline-prefix-color;
+      font-size: $field-oneline-font-size;
+      padding-bottom: calc(0.375em - 1px);
+      padding-left: calc(0.625em - 1px);
+      padding-right: 0;
+      padding-top: calc(0.375em - 1px);
+    }
+
+    .prefix + .input {
+      padding-left: calc(0.375em - 1px);
+    }
+  }
+
+  .control.is-rounded {
+    border-radius: $radius-rounded;
+    border: none;
+    border: $field-oneline-border;
+    overflow: hidden;
+  }
+}
+
+.input.button {
+  font-weight: $weight-bold;
+  box-shadow: none;
+}

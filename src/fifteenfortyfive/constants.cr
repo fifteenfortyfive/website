@@ -19,4 +19,13 @@ module Constants
     ENV["FIFTEENFORTYFIVE_ASSETS_SECRET"],
     endpoint: ENV["FIFTEENFORTYFIVE_ASSETS_ENDPOINT"]
   )
+
+  def self.template_constants
+    {
+      "discord_url" => DISCORD_URL,
+      "twitch_url" => TWITCH_URL,
+      "twitter_url" => TWITTER_URL,
+      "assets_url" => ASSETS_URL
+    }
+  end
 end

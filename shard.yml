@@ -17,6 +17,8 @@ dependencies:
     github: faultyserver/krout
   slang:
     github: jeromegn/slang
+  crinja:
+    github: straight-shoota/crinja
   crecto:
     github: crecto/crecto
     version: 0.8.3

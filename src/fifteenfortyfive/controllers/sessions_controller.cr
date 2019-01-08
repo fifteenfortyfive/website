@@ -4,7 +4,7 @@ module SessionsController
 
   def _new(env)
     redirect_target = env.params.query["redirect"]? || "/"
-    render_view "sessions/new"
+    Template.render(env, "sessions/new.html.j2")
   end
 
   def create(env)

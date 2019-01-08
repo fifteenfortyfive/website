@@ -1,0 +1,25 @@
+.page--index {
+  .splash {
+    position: relative;
+
+    .splash-primary {
+      padding-bottom: 9em;
+    }
+
+    .hero-body .brand-logo {
+      font-size: 240px;
+    }
+
+    .subtitle {
+      font-size: 2rem;
+      line-height: 1.5rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 4px;
+    }
+  }
+
+  .hero-foot {
+    padding: 2em 0;
+  }
+}
