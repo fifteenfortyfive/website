@@ -4,7 +4,7 @@
 {% block main %}
   <section class="hero splash is-fullheight is-dark">
     <div class="hero-head">
-      <nav class="navbar">
+      <nav class="navbar is-dark">
         <div class="container">
           <div class="navbar-brand">
             <div class="navbar-item navbar-brand-icon">
@@ -17,29 +17,49 @@
             </span>
           </div>
 
-          <div class="navbar-start">
-            <p class="navbar-item">
-              {% if conn.user.avatar_object_id %}
-                <img class="avatar avatar--navbar" src="{{ conn.constants.assets_url }}/{{ conn.user.avatar_object_id }}">
-              {% else %}
-                {{ conn.user.username }}
-              {% endif %}
-            </p>
-          </div>
+          <div class="navbar-menu">
+            <div class="navbar-end">
+              {% if conn.user %}
+                <div class="navbar-item has-dropdown is-hoverable">
+                  <div class="navbar-link">
+                    {% if conn.user.avatar_object_id %}
+                      <img class="avatar avatar--navbar" src="{{ conn.constants.assets_url }}/{{ conn.user.avatar_object_id }}">
+                    {% endif %}
+                    {{ conn.user.username }}
+                  </div>
 
-          <div class="navbar-end">
-            <a class="navbar-item" href="https://discord.fifteenfortyfive.org" target="_blank">
-              <i class="fab fa-discord"></i>
-            </a>
-            <a class="navbar-item" href="https://speedrun.com/1545" target="_blank">
-              <i class="fa fa-trophy"></i>
-            </a>
-            <a class="navbar-item" href="https://twitch.tv/1545race" target="_blank">
-              <i class="fab fa-twitch"></i>
-            </a>
-            <a class="navbar-item" href="https://twitter.com/1545race" target="_blank">
-              <i class="fab fa-twitter"></i>
-            </a>
+                  <div class="navbar-dropdown is-boxed">
+                    <a class="navbar-item">Profile</a>
+                    <a class="navbar-item">Edit Account</a>
+                    <div class="navbar-divider"></div>
+                    <a class="navbar-item" href="/signout">Log Out</a>
+                  </div>
+                </div>
+              {% else %}
+                <p class="navbar-item">
+                  <a class="button is-danger is-outlined" href="/signin">
+                    Sign In
+                  </a>
+                </p>
+              {% endif %}
+
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button is-dark" href="https://discord.fifteenfortyfive.org" target="_blank">
+                    <i class="fab fa-discord"></i>
+                  </a>
+                  <a class="button is-dark" href="https://speedrun.com/1545" target="_blank">
+                    <i class="fa fa-trophy"></i>
+                  </a>
+                  <a class="button is-dark" href="https://twitch.tv/1545race" target="_blank">
+                    <i class="fab fa-twitch"></i>
+                  </a>
+                  <a class="button is-dark" href="https://twitter.com/1545race" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </nav>

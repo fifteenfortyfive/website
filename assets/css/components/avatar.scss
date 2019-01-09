@@ -1,0 +1,11 @@
+$avatar-border-radius: $radius !default;
+$avatar-box-shadow: $box-shadow !default;
+
+.avatar {
+  border-radius: $avatar-border-radius;
+  box-shadow: $avatar-box-shadow;
+
+  &.avatar--navbar {
+    margin-right: 0.75rem;
+  }
+}

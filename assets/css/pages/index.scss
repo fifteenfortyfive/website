@@ -1,21 +1,41 @@
 .page--index {
+  .navbar {
+    padding: 1em 0;
+  }
+
   .splash {
     position: relative;
 
     .splash-primary {
-      padding-bottom: 9em;
+      padding-bottom: 7rem;
     }
 
-    .hero-body .brand-logo {
-      font-size: 240px;
-    }
+    .hero-body {
+      font-size: 80px;
 
-    .subtitle {
-      font-size: 2rem;
-      line-height: 1.5rem;
-      text-transform: uppercase;
-      font-weight: bold;
-      letter-spacing: 4px;
+      .subtitle {
+        font-size: 24px;
+        line-height: 1.5rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 4px;
+      }
+
+      @include tablet {
+        font-size: 160px;
+
+        .subtitle {
+          font-size: 48px;
+        }
+      }
+
+      @include desktop {
+        font-size: 240px;
+
+        .subtitle {
+          font-size: 48px;
+        }
+      }
     }
   }
 

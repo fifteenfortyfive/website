@@ -8977,10 +8977,36 @@ h1, h2, h3, h4, h5, h6 {
   background-color: white;
 }
 
+.avatar {
+  border-radius: 4px;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+}
+.avatar.avatar--navbar {
+  margin-right: 0.75rem;
+}
+
 .navbar-item {
   border-radius: 4px;
   margin: 1em 0.25em;
-  padding: 1em;
+  padding: 0.25em 1em;
+}
+
+.navbar-item.has-dropdown > .navbar-link {
+  border-radius: 4px;
+}
+.navbar-item.has-dropdown > .navbar-link:hover, .navbar-item.has-dropdown > .navbar-link:active {
+  background-color: white;
+}
+.navbar-item.has-dropdown .navbar-dropdown.is-boxed .navbar-item {
+  padding: 0.375rem 1rem;
+  margin: 0;
+  border-radius: 0;
+  color: #4a4a4a !important;
+  letter-spacing: 0;
+}
+.navbar-item.has-dropdown .navbar-dropdown.is-boxed .navbar-item:hover {
+  background-color: whitesmoke;
+  color: #0a0a0a !important;
 }
 
 .navbar-brand-icon {
@@ -9122,21 +9148,40 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: none;
 }
 
+.page--index .navbar {
+  padding: 1em 0;
+}
 .page--index .splash {
   position: relative;
 }
 .page--index .splash .splash-primary {
-  padding-bottom: 9em;
+  padding-bottom: 7rem;
 }
-.page--index .splash .hero-body .brand-logo {
-  font-size: 240px;
+.page--index .splash .hero-body {
+  font-size: 80px;
 }
-.page--index .splash .subtitle {
-  font-size: 2rem;
+.page--index .splash .hero-body .subtitle {
+  font-size: 24px;
   line-height: 1.5rem;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 4px;
+}
+@media screen and (min-width: 769px), print {
+  .page--index .splash .hero-body {
+    font-size: 160px;
+  }
+  .page--index .splash .hero-body .subtitle {
+    font-size: 48px;
+  }
+}
+@media screen and (min-width: 1088px) {
+  .page--index .splash .hero-body {
+    font-size: 240px;
+  }
+  .page--index .splash .hero-body .subtitle {
+    font-size: 48px;
+  }
 }
 .page--index .hero-foot {
   padding: 2em 0;
