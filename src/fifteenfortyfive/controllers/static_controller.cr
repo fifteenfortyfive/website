@@ -11,7 +11,7 @@ module StaticController
   end
 
   def volunteer(env)
-    render_view "static/volunteer"
+    Template.render(env, "static/volunteer.html.j2")
   end
 
   protected def live_runner_streams
