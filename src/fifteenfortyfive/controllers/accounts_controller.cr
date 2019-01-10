@@ -34,7 +34,9 @@ module AccountsController
   def show(env)
     account = Repo.get!(Account, env.params.url["id"])
 
-    render_view "accounts/show"
+    Template.render(env, "accounts/show.html.j2", {
+      "account" => account
+    })
   end
 
   def edit(env)

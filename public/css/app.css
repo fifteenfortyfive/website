@@ -8977,6 +8977,10 @@ h1, h2, h3, h4, h5, h6 {
 .avatar.is-bordered {
   border: 5px solid white;
 }
+.avatar.is-bordered--outset {
+  box-sizing: content-box;
+  border: 5px solid white;
+}
 
 .brand-logo {
   font-family: "Cortado";
@@ -8986,6 +8990,68 @@ h1, h2, h3, h4, h5, h6 {
 
 .section:not(.is-transparent) {
   background-color: white;
+}
+
+.box.is-fullbleed {
+  padding: 0;
+}
+.box.is-fullbleed > * {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+.box.is-fullbleed > :first-child {
+  padding-top: 1.25rem;
+}
+.box.is-fullbleed > :last-child {
+  padding-bottom: 1.25rem;
+}
+
+.box-link {
+  display: block;
+  color: #4a4a4a;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+}
+.box-link:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+.box-link:hover .box-link-header {
+  color: #4a4a4a;
+}
+
+.box-link-header {
+  display: block;
+  color: #eb3d4c;
+}
+
+.card .card-header .card-header-image {
+  margin: 0 1rem;
+  position: relative;
+}
+.card .card-header .card-header-image img {
+  position: absolute;
+  bottom: -32px;
+}
+
+.footer {
+  background-color: #e7e7e7;
+  padding: 3rem 1.5rem;
+  font-size: 1rem;
+}
+
+.footer-section-title {
+  font-size: 1.25em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+.footer-link-icon {
+  margin-right: 0.25rem;
+}
+
+.footer .box-link {
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
 }
 
 .navbar-brand-icon {
@@ -9020,61 +9086,8 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-item.is-divider {
   border-radius: 0;
   border-right: 1px solid #dbdbdb;
-  margin: 1rem 0.25rem;
+  margin: 1.25rem 0.25rem;
   padding: 0;
-}
-
-.footer {
-  background-color: #e7e7e7;
-  padding: 3rem 1.5rem;
-  font-size: 1rem;
-}
-
-.footer-section-title {
-  font-size: 1.25em;
-  font-weight: 700;
-  margin-bottom: 0.5em;
-}
-
-.footer-link-icon {
-  margin-right: 0.25rem;
-}
-
-.footer .box-link {
-  margin-left: -0.75rem;
-  margin-right: -0.75rem;
-}
-
-.box.is-fullbleed {
-  padding: 0;
-}
-.box.is-fullbleed > * {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-}
-.box.is-fullbleed > :first-child {
-  padding-top: 1.25rem;
-}
-.box.is-fullbleed > :last-child {
-  padding-bottom: 1.25rem;
-}
-
-.box-link {
-  display: block;
-  color: #4a4a4a;
-  padding: 0.5rem 0.75rem;
-  border-radius: 4px;
-}
-.box-link:hover {
-  background-color: rgba(0, 0, 0, 0.06);
-}
-.box-link:hover .box-link-header {
-  color: #4a4a4a;
-}
-
-.box-link-header {
-  display: block;
-  color: #eb3d4c;
 }
 
 .form-section {

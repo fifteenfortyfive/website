@@ -1,4 +1,5 @@
 $avatar-border-radius: $radius !default;
+$avatar-border: 5px solid $white !default;
 $avatar-border-color: $white !default;
 $avatar-box-shadow: $box-shadow !default;
 
@@ -11,6 +12,11 @@ $avatar-box-shadow: $box-shadow !default;
   }
 
   &.is-bordered {
-    border: 5px solid $white;
+    border: $avatar-border;
+  }
+
+  &.is-bordered--outset {
+    box-sizing: content-box;
+    border: $avatar-border;
   }
 }
