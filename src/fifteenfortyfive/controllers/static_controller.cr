@@ -14,6 +14,10 @@ module StaticController
     Template.render(env, "static/volunteer.html.j2")
   end
 
+  def event_calendar(env)
+    Template.render(env, "static/event-calendar.html.j2")
+  end
+
   protected def live_runner_streams
     runners = Repo.all(AccountTeam, preload: [:account, :team]).uniq(&.account)
     indexed_streams = Hash(AccountTeam, StreamStatusService::Stream).new

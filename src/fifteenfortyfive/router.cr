@@ -97,6 +97,7 @@ end
 
 get "/", &->StaticController.index(Krout::Env)
 get "/volunteer", &->StaticController.volunteer(Krout::Env)
+get "/event-calendar", &->StaticController.event_calendar(Krout::Env)
 
 get   "/signin",  &->SessionsController._new(Krout::Env)
 post  "/signin",  &->SessionsController.create(Krout::Env)
