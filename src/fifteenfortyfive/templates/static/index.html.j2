@@ -29,18 +29,23 @@
                   </div>
 
                   <div class="navbar-dropdown is-boxed">
-                    <a class="navbar-item">Profile</a>
+                    <a class="navbar-item" href="/accounts/{{conn.user.id}}">Profile</a>
                     <a class="navbar-item" href="/accounts/edit">Edit Account</a>
                     <div class="navbar-divider"></div>
                     <a class="navbar-item" href="/signout">Log Out</a>
                   </div>
                 </div>
               {% else %}
-                <p class="navbar-item">
-                  <a class="button is-danger is-outlined" href="/signin">
-                    Sign In
-                  </a>
-                </p>
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <a class="button is-small is-danger is-outlined" href="/signin">
+                      Sign In
+                    </a>
+                    <a class="button is-small is-white is-outlined" href="/accounts/new">
+                      Sign Up
+                    </a>
+                  </div>
+                </div>
               {% endif %}
 
               <div class="navbar-item is-divider">
