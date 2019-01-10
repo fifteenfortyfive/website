@@ -27,7 +27,7 @@ module AccountsController
       env.redirect("/")
       spawn{ TwitchService.get_user_id_for(changeset.instance) }
     else
-      render_view "accounts/new"
+      Template.render(env, "accounts/new.html.j2")
     end
   end
 
@@ -43,7 +43,7 @@ module AccountsController
       return
     end
 
-    render_view "accounts/edit"
+    Template.render(env, "accounts/edit.html.j2")
   end
 
   def update(env)
@@ -89,7 +89,7 @@ module AccountsController
       env.redirect("/")
       spawn{ TwitchService.get_user_id_for(account) }
     else
-      render_view "accounts/edit"
+      Template.render(env, "accounts/edit.html.j2")
     end
   end
 

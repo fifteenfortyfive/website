@@ -11,6 +11,8 @@
     <script src="/js/app.js"></script>
 
     <script src="https://use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
+
+    {% block head %}{% endblock %}
   </head>
 
   <body>
@@ -20,4 +22,6 @@
 
     {% include "layouts/_footer.html.j2" %}
   </body>
+
+  {% block postbody %}{% endblock %}
 </html>

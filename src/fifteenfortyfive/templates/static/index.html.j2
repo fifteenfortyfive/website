@@ -30,7 +30,7 @@
 
                   <div class="navbar-dropdown is-boxed">
                     <a class="navbar-item">Profile</a>
-                    <a class="navbar-item">Edit Account</a>
+                    <a class="navbar-item" href="/accounts/edit">Edit Account</a>
                     <div class="navbar-divider"></div>
                     <a class="navbar-item" href="/signout">Log Out</a>
                   </div>
@@ -43,18 +43,21 @@
                 </p>
               {% endif %}
 
+              <div class="navbar-item is-divider">
+              </div>
+
               <div class="navbar-item">
                 <div class="buttons">
-                  <a class="button is-dark" href="https://discord.fifteenfortyfive.org" target="_blank">
+                  <a class="button is-dark" href="{{conn.constants.discord_url}}" target="_blank">
                     <i class="fab fa-discord"></i>
                   </a>
-                  <a class="button is-dark" href="https://speedrun.com/1545" target="_blank">
+                  <a class="button is-dark" href="{{conn.constants.srcom_url}}" target="_blank">
                     <i class="fa fa-trophy"></i>
                   </a>
-                  <a class="button is-dark" href="https://twitch.tv/1545race" target="_blank">
+                  <a class="button is-dark" href="{{conn.constants.twitch_url}}" target="_blank">
                     <i class="fab fa-twitch"></i>
                   </a>
-                  <a class="button is-dark" href="https://twitter.com/1545race" target="_blank">
+                  <a class="button is-dark" href="{{conn.constants.twitter_url}}" target="_blank">
                     <i class="fab fa-twitter"></i>
                   </a>
                 </div>

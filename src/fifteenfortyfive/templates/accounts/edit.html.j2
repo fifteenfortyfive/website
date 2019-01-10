@@ -1,0 +1,122 @@
+{% extends "layouts/main.html.j2" %}
+
+{% block main %}
+  <section class="section">
+    <div class="container">
+      <main class="content">
+        <div class="box is-danger is-fullbleed">
+          <div class="has-text-centered">
+            <h1 class="title sign-up-header">Edit Your Account</h1>
+          </div>
+
+          <form class="form is-isolated" action="/accounts/update" method="POST" enctype="multipart/form-data">
+            <div class="columns is-multiline">
+              <div class="column is-3-desktop is-4-tablet">
+                <div class="form-section">
+                  <div class="level">
+                    <div class="level-item">
+                      <div class="image-upload is-bordered">
+                        <label class="image-upload-label">
+                          <input class="image-upload-input" id="avatar_file_upload" type="file" name="avatar" accept="image/*">
+                          <figure class="image is-128x128">
+                            {% if conn.user.avatar_object_id %}
+                              <img class="avatar is-shadowless is-radiusless" id="avatar_file_preview" src="{{ conn.constants.assets_url }}/{{ conn.user.avatar_object_id }}" />
+                            {% else %}
+                              <img class="avatar is-shadowless is-radiusless" id="avatar_file_preview" />
+                            {% endif %}
+                          </figure>
+
+                          <div class="image-upload-hover">
+                            <p class="has-text-centered has-text-weight-bold">
+                              <i class="fas fa-plus"></i>
+                              <br />
+                              Upload New Avatar
+                            </p>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="column is-4-desktop is-8-tablet">
+                <div class="form-section">
+                  <div class="field">
+                    <div class="control is-oneline is-rounded">
+                      <label class="label">Username</label>
+                      <input class="input" name="username" required="true" value="{{conn.user.username}}">
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <div class="control is-oneline is-rounded has-icons-right">
+                      <label class="label">Password</label>
+                      <input class="input" type="password" name="password" required="true">
+                      <span class="icon is-right has-text-danger">
+                        <i class="fas fa-eye-slash"></i>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <div class="control is-oneline is-rounded">
+                      <label class="label">Timezone</label>
+                      <input class="input" name="timezone" value="{{conn.user.timezone}}" placeholder="UTC, EST, AEST">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="column is-5-desktop">
+                <div class="form-section">
+                  <div class="field">
+                    <div class="control is-oneline is-rounded">
+                      <label class="label">Discord</label>
+                      <input class="input" type="text" name="discord_username" required="true" value="{{conn.user.discord}}">
+                      <div class="divider"></div>
+                      <div class="prefix has-text-danger is-icon">#</div>
+                      <input class="input is-narrow" type="text" name="discord_discriminator" required="true" pattern="\d{4}" maxlength="4" placeholder="0000">
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <div class="control is-oneline is-rounded">
+                      <label class="label">Twitch</label>
+                      <div class="prefix">twitch.tv/</div>
+                      <input class="input" type="text" name="twitch" value="{{conn.user.twitch}}">
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <div class="control is-oneline is-rounded">
+                      <label class="label">Twitter</label>
+                      <div class="prefix">twitter.com/</div>
+                      <input class="input" type="text" name="twitter" value="{{conn.user.twitter}}">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <input class="input button is-fullwidth is-danger is-rounded is-outlined" type="submit" value="Save Changes">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+  </section>
+{% endblock %}
+
+
+{% block postbody %}
+  <script>
+    var avatar_input = document.querySelector('#avatar_file_upload');
+    var avatar_preview = document.querySelector('#avatar_file_preview');
+
+    avatar_input.addEventListener('change', function(evt) {
+      avatar_preview.src = window.URL.createObjectURL(evt.target.files[0]);
+    });
+  </script>
+{% endblock %}

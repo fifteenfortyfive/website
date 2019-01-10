@@ -1,4 +1,5 @@
 $avatar-border-radius: $radius !default;
+$avatar-border-color: $white !default;
 $avatar-box-shadow: $box-shadow !default;
 
 .avatar {
@@ -7,5 +8,9 @@ $avatar-box-shadow: $box-shadow !default;
 
   &.avatar--navbar {
     margin-right: 0.75rem;
+  }
+
+  &.is-bordered {
+    border: 5px solid $white;
   }
 }

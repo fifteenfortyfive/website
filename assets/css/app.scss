@@ -9,16 +9,17 @@
 
 @import "_fonts";
 
+@import "elements/avatar";
 @import "elements/brand-logo";
 @import "elements/section";
 
-@import "components/avatar";
 @import "components/navbar";
 @import "components/footer";
 @import "components/box";
 @import "components/box-link";
 
 @import "forms/form-section";
+@import "forms/image-upload";
 @import "forms/fields";
 
 @import "pages/index";

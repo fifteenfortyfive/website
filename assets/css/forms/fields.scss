@@ -71,7 +71,11 @@ $field-oneline-label-width: 10ch;
       padding-bottom: calc(0.375em - 1px);
       padding-left: calc(0.625em - 1px);
       padding-right: 0;
-      padding-top: calc(0.375em - 1px);
+      padding-top: calc(0.375em + 1px);
+
+      &.is-icon {
+        padding-top: calc(0.375em - 1px);
+      }
     }
 
     .prefix + .input {
