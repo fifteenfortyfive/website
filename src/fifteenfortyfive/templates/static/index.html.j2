@@ -10,17 +10,38 @@
             <div class="navbar-item navbar-brand-icon">
               <span class="brand-logo">The 1545</span>
             </div>
-            <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+            <span class="navbar-burger burger" data-target="primaryNav">
               <span></span>
               <span></span>
               <span></span>
             </span>
           </div>
 
-          <div class="navbar-menu">
+          <div class="navbar-menu" id="primaryNav">
+            <div class="navbar-start">
+              <a class="navbar-item" href="/event-calendar">
+                Event Calendar
+              </a>
+
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                  More
+                </a>
+
+                <div class="navbar-dropdown is-boxed">
+                  <a class="navbar-item" href="mailto:{{conn.constants.contact_url}}">
+                    Contact
+                  </a>
+                  <a class="navbar-item" href="/volunteer">
+                    Volunteer
+                  </a>
+                </div>
+              </div>
+            </div>
+
             <div class="navbar-end">
               {% if conn.user %}
-                <div class="navbar-item has-dropdown is-hoverable">
+                <div class="navbar-item has-dropdown is-hoverable is-paddingless">
                   <div class="navbar-link">
                     {% if conn.user.avatar_object_id %}
                       <img class="avatar avatar--navbar" src="{{ conn.constants.assets_url }}/{{ conn.user.avatar_object_id }}">
@@ -35,23 +56,23 @@
                     <a class="navbar-item" href="/signout">Log Out</a>
                   </div>
                 </div>
+
+                <div class="navbar-item is-divider">
+                </div>
               {% else %}
-                <div class="navbar-item">
+                <div class="navbar-item is-paddingless">
                   <div class="buttons">
                     <a class="button is-small is-danger is-outlined" href="/signin">
                       Sign In
                     </a>
                     <a class="button is-small is-white is-outlined" href="/accounts/new">
-                      Sign Up
+                      Create an Account
                     </a>
                   </div>
                 </div>
               {% endif %}
 
-              <div class="navbar-item is-divider">
-              </div>
-
-              <div class="navbar-item">
+              <div class="navbar-item is-paddingless">
                 <div class="buttons">
                   <a class="button is-dark" href="{{conn.constants.discord_url}}" target="_blank">
                     <i class="fab fa-discord"></i>

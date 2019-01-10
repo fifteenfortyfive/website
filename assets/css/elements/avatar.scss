@@ -9,6 +9,7 @@ $avatar-box-shadow: $box-shadow !default;
 
   &.avatar--navbar {
     margin-right: 0.75rem;
+    vertical-align: bottom;
   }
 
   &.is-bordered {

@@ -8973,6 +8973,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .avatar.avatar--navbar {
   margin-right: 0.75rem;
+  vertical-align: bottom;
 }
 .avatar.is-bordered {
   border: 5px solid white;
@@ -9024,15 +9025,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #eb3d4c;
 }
 
-.card .card-header .card-header-image {
-  margin: 0 1rem;
-  position: relative;
-}
-.card .card-header .card-header-image img {
-  position: absolute;
-  bottom: -32px;
-}
-
 .footer {
   background-color: #e7e7e7;
   padding: 3rem 1.5rem;
@@ -9064,24 +9056,29 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-item {
   border-radius: 4px;
   margin: 1rem 0.25rem;
-  padding: 0;
 }
 .navbar-item.has-dropdown > .navbar-link {
   border-radius: 4px;
 }
-.navbar-item.has-dropdown > .navbar-link:hover, .navbar-item.has-dropdown > .navbar-link:active {
-  background-color: white;
+@media screen and (min-width: 1088px) {
+  .navbar-item.has-dropdown > .navbar-link:hover, .navbar-item.has-dropdown > .navbar-link:active {
+    background-color: white;
+  }
 }
 .navbar-item.has-dropdown .navbar-dropdown.is-boxed .navbar-item {
   padding: 0.375rem 1rem;
   margin: 0;
   border-radius: 0;
-  color: #4a4a4a !important;
   letter-spacing: 0;
 }
-.navbar-item.has-dropdown .navbar-dropdown.is-boxed .navbar-item:hover {
-  background-color: whitesmoke;
-  color: #0a0a0a !important;
+@media screen and (min-width: 1088px) {
+  .navbar-item.has-dropdown .navbar-dropdown.is-boxed .navbar-item {
+    color: #4a4a4a !important;
+  }
+  .navbar-item.has-dropdown .navbar-dropdown.is-boxed .navbar-item:hover {
+    background-color: whitesmoke;
+    color: #0a0a0a !important;
+  }
 }
 .navbar-item.is-divider {
   border-radius: 0;
