@@ -5,6 +5,9 @@ module Constants
   TWITTER_URL = "https://twitter.com/The_1545"
   SRCOM_URL   = "https://www.speedrun.com/1545"
 
+  CONTACT_EMAIL = "contact@fifteenfortyfive.org"
+  VOLUNTEER_EMAIL = "volunteer@fifteenfortyfive.org"
+
 
   # Various Twitch configurations
   TWITCH_CLIENT_ID = ENV["TWITCH_CLIENT_ID"]
@@ -26,7 +29,9 @@ module Constants
       "twitch_url" => TWITCH_URL,
       "twitter_url" => TWITTER_URL,
       "srcom_url" => SRCOM_URL,
-      "assets_url" => ASSETS_URL
+      "assets_url" => ASSETS_URL,
+      "contact_email" => CONTACT_EMAIL,
+      "volunteer_email" => VOLUNTEER_EMAIL
     }
   end
 end
