@@ -1,3 +1,3 @@
-shards build --release
+shards build
 
 (cd assets && yarn build)

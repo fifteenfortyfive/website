@@ -7,6 +7,10 @@ authors:
 description: |
   Home page and management site for the 1545.
 
+targets:
+  fifteenfortyfive:
+    main: src/fifteenfortyfive.cr
+
 
 dependencies:
   pg:
