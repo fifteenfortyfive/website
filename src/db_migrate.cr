@@ -1,8 +1,9 @@
+require "dotenv"
 require "micrate"
 require "pg"
 require "yaml"
 
-CONFIG = YAML.parse(File.read("./repo_config.yaml"))
+Dotenv.load!
 
-Micrate::DB.connection_url = ENV["DATABASE_URL"]? || CONFIG["DATABASE_URL"].to_s
+Micrate::DB.connection_url = ENV["DATABASE_URL"]
 Micrate::Cli.run
