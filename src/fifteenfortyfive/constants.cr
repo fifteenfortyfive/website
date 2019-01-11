@@ -17,10 +17,10 @@ module Constants
   # Asset Storage configuration (avatars, etc.)
   ASSETS_URL  = "https://fifteenfortyfive-assets.nyc3.digitaloceanspaces.com"
   STORAGE_CLIENT = Awscr::S3::Client.new(
-    ENV["FIFTEENFORTYFIVE_ASSETS_REGION"],
-    ENV["FIFTEENFORTYFIVE_ASSETS_KEY"],
-    ENV["FIFTEENFORTYFIVE_ASSETS_SECRET"],
-    endpoint: ENV["FIFTEENFORTYFIVE_ASSETS_ENDPOINT"]
+    ENV["ASSETS_REGION"],
+    ENV["ASSETS_KEY"],
+    ENV["ASSETS_SECRET"],
+    endpoint: ENV["ASSETS_ENDPOINT"]
   )
 
   def self.template_constants
