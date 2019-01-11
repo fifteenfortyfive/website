@@ -18,6 +18,7 @@
 
 # Asset deps
 node_modules/
+public/
 
 # Database dump files from heroku
 *.dump
