@@ -6,6 +6,7 @@
 
 # Config
 /repo_config.yaml
+.env
 /fifteenfortyfive
 /fifteenfortyfive.dwarf
 

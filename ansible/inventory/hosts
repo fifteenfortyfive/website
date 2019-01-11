@@ -1,0 +1,28 @@
+# NOTE: The IPs given here are _hardware_ IPs, not the Floating IPs that
+# are set up on DigitalOcean for DNS. This is to make sure that we are always
+# targeting specific hardware for provisioning rather than relying on routing
+# to be set up properly.
+
+[staging]
+157.230.62.211
+
+[production]
+
+[web-servers]
+157.230.62.211
+
+[build-servers]
+157.230.62.211
+
+[db-servers]
+157.230.62.211
+
+[py3-hosts]
+157.230.62.211
+
+[py3-hosts:vars]
+ansible_python_interpreter=/usr/bin/python3
+
+
+[local]
+localhost ansible_sudo=false

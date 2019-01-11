@@ -13,6 +13,7 @@ dependencies:
     github: will/crystal-pg
   kemal:
     github: kemalcr/kemal
+    version: 0.24.0
   krout:
     github: faultyserver/krout
   slang:
@@ -28,3 +29,5 @@ dependencies:
     github: taylorfinnell/awscr-s3
   honcho:
     github: faultyserver/honcho
+  dotenv:
+    github: gdotdesign/cr-dotenv
