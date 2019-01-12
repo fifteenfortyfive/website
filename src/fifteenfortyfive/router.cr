@@ -2,22 +2,6 @@ macro render_view(template)
   render "src/fifteenfortyfive/views/{{template.id}}.slang", "src/fifteenfortyfive/views/_layout.slang"
 end
 
-
-scope "/live" do
-  get "/runner", &->LiveController.runner(Krout::Env)
-  ws "/runner" do |socket, env|
-    unless env.current_user?
-      halt(env, status_code: 401, response: "Not Authorized")
-    end
-    Sockets::Runner.new(socket, env.current_user)
-  end
-
-  ws "/stream" do |socket, env|
-    Sockets::Stream.new(socket)
-  end
-end
-
-
 scope "/accounts" do
   get   "/:id",     &->AccountsController.show(Krout::Env)
   get   "/new",     &->AccountsController._new(Krout::Env)
@@ -42,25 +26,6 @@ scope "/runs" do
 end
 
 
-scope "/register" do
-  get "", &->RegistrationsController.index(Krout::Env)
-end
-
-scope "/register/runner" do
-  get  "",        &->RunnerSubmissionsController.show(Krout::Env)
-  post "/submit", &->RunnerSubmissionsController.create(Krout::Env)
-  post "/revoke", &->RunnerSubmissionsController.destroy(Krout::Env)
-end
-
-scope "/register/commentator" do
-  get  "",        &->CommentatorSubmissionsController.show(Krout::Env)
-  post "/submit", &->CommentatorSubmissionsController.create(Krout::Env)
-  post "/revoke", &->CommentatorSubmissionsController.destroy(Krout::Env)
-end
-
-get  "/teams/schedules",  &->Admin::TeamsController.schedules(Krout::Env)
-
-
 
 scope "/admin" do
   before_all do |env|
@@ -82,10 +47,6 @@ scope "/admin" do
   get "/submissions/runners", &->Admin::SubmissionsController.runners(Krout::Env)
   get "/submissions/export",          &->Admin::SubmissionsController.export(Krout::Env)
   get "/submissions/export.:format",  &->Admin::SubmissionsController.export(Krout::Env)
-
-  get  "/teams",            &->Admin::TeamsController.index(Krout::Env)
-  post "/teams/save",       &->Admin::TeamsController.save(Krout::Env)
-  get  "/teams/schedules",  &->Admin::TeamsController.schedules(Krout::Env)
 end
 
 
