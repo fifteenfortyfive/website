@@ -1,11 +1,15 @@
 # Pull the latest changes
+echo ">> pulling lateset changes"
 git pull
 
 # Update any tools
+echo ">> updating tools"
 asdf install
 
 # Build the application
-shards build
+echo ">> building application"
+shards build fifteenfortyfive
 
 # Build assets
-(cd assets && yarn build)
+echo ">> compiling assets"
+(cd assets && yarn && yarn build)

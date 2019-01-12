@@ -83,7 +83,7 @@ ansible-playbook -u root -v -l staging playbooks/setup-db.yml -D
 ansible-playbook -u root -v -l staging playbooks/config-build.yml -D
 ```
 
-One final step, Crystal requires extra libraries to be installed to be able to run the compiler. An updated list of required libraries can be found [here](https://github.com/crystal-lang/crystal/wiki/All-required-libraries). Below is the command to install all of the required libraries for an Ubuntu server:
+Crystal also requires extra libraries to be installed to be able to run the compiler. An updated list of required libraries can be found [here](https://github.com/crystal-lang/crystal/wiki/All-required-libraries). Below is the command to install all of the required libraries for an Ubuntu server (you must be a root user to run this):
 
 ```shell
 sudo apt-get install \
@@ -109,6 +109,15 @@ sudo apt-get install \
   build-essential -y
 ```
 
+One final step, we use `yarn` as the package manager for assets. You can use npm, but yarn is much preferred. To install `yarn` on the server, use [this guide](https://yarnpkg.com/en/docs/install#debian-stable). Or, if you're on Ubuntu, use the following commands (you'll need to be a root user, as before):
+
+```shell
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+sudo apt-get update && sudo apt-get install yarn
+```
+
 And that's it. Your server is now completely set up to build, release, and run the application.
 
 
@@ -128,3 +137,14 @@ These scripts will likely be updated for a more robust deployment solution in th
 If you'd like to access the database remotely, you can find the generated credentials in the `.env` file on the server. The `DATABASE_URL` can then be pasted into your favorite client.
 
 Note that the database only listens for connections on `localhost`, so you'll need to have an SSH tunnel (as any user) to be able to make the connection.
+
+
+### Setting up Swapfile
+
+Crystal uses a very large amount of RAM when compiling medium-size applications such as this one. Especially on small servers like DigitalOcean's $5/month droplet, this is a big issue. That server is more than capable enough with CPU (even with only 1 core), but 1GB of RAM is not nearly large enough even just to build the app, let alone also have it running and a database up as well.
+
+Swapfiles let you provide more space for the OS to move data around to simulate more RAM. It should be used _sparingly_, but is useful for situations like this.
+
+[This guide](https://linuxize.com/post/how-to-add-swap-space-on-ubuntu-18-04/) goes through how to configure a Swapfile on Ubuntu. A 2GB Swapfile will be more than sufficient for the needs of this application.
+
+Configuring the Swappiness to a low value is also good (to ensure that it is only really used when compiling, not in normal operation).
