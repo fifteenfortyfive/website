@@ -27,7 +27,7 @@
 
         .form__field
           label.form__label.form__label--large Discord
-          input.form__input(name="discord" value=env.current_user.discord required="true")
+          input.form__input(name="discord" value=env.current_user.discord_username required="true")
 
         .form__field
           label.form__label.form__label--large Twitch

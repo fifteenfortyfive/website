@@ -14,7 +14,8 @@ module AccountsController
     account.username  = env.params.body["username"]?.as?(String)
     account.password  = env.params.body["password"]?.as?(String)
 
-    account.discord   = env.params.body["discord"]?.as?(String)
+    account.discord_username   = env.params.body["discord_username"]?.as?(String)
+    account.discord_discriminator   = env.params.body["discord_discriminator"]?.as?(String)
     account.twitch    = env.params.body["twitch"]?.as?(String)
     account.twitter   = env.params.body["twitter"]?.as?(String)
 
@@ -27,6 +28,7 @@ module AccountsController
       env.redirect("/")
       spawn{ TwitchService.get_user_id_for(changeset.instance) }
     else
+      pp changeset.errors
       Template.render(env, "accounts/new.html.j2")
     end
   end
@@ -73,8 +75,10 @@ module AccountsController
         account.username  = part.body.gets_to_end
       when "password"
         account.password  = part.body.gets_to_end
-      when "discord"
-        account.discord   = part.body.gets_to_end
+      when "discord_username"
+        account.discord_username      = part.body.gets_to_end
+      when "discord_discriminator"
+        account.discord_discriminator = part.body.gets_to_end
       when "twitch"
         account.twitch    = part.body.gets_to_end
       when "twitter"

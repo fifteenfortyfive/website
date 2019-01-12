@@ -8,7 +8,8 @@ class Account < Crecto::Model
   schema "accounts" do
     field :username, String
     field :encrypted_password, String
-    field :discord, String
+    field :discord_username, String
+    field :discord_discriminator, String
     field :twitch, String
     field :twitter, String
     field :timezone, String
@@ -31,8 +32,8 @@ class Account < Crecto::Model
 
 
   validate_required :username
-  validate_required :discord
-  validate_required :twitch
+  validate_required :discord_username
+  validate_required :discord_discriminator
 
 
   def password=(new_password : String)

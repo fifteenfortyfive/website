@@ -19,7 +19,7 @@
               td
                 p
                   span.fab.fa-discord
-                  == account.discord
+                  == account.discord_username
                 p
                   span.fab.fa-twitch
                   == account.twitch
