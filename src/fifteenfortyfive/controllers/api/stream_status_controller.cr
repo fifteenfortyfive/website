@@ -22,7 +22,7 @@ module API
       response = {} of PkeyValue => Schemas::Status
       accounts.each do |account|
         response[account.id] = Schemas::Status.new(
-          live: StreamStatusService.live?(account.id.not_nil!),
+          live: StreamStatusService.live?(account.id.as(Int64)),
           link: TwitchService.stream_link(account.twitch)
         )
       end

@@ -27,8 +27,11 @@ dependencies:
   crinja:
     github: straight-shoota/crinja
   crecto:
-    github: crecto/crecto
-    version: 0.8.3
+    # github: crecto/crecto
+    # Using this until updated changesets and typecasting are
+    # supported by the official crecto
+    github: faultyserver/crecto
+    branch: temp/casts
   migrate:
     github: vladfaust/migrate.cr
   awscr-s3:
