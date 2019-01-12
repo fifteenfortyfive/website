@@ -1,4 +1,4 @@
--- +micrate Up
+-- +migrate up
 DROP TABLE "runs";
 ALTER TABLE "public"."game_submissions" RENAME TO "runs";
 

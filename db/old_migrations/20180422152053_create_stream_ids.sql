@@ -1,5 +1,5 @@
--- +micrate Up
-CREATE TABLE "public"."stream_ids" (
+-- +migrate up
+CREATE TABLE IF NOT EXISTS "public"."stream_ids" (
     "id" serial,
     "account_id" integer,
     "service" text,
@@ -9,5 +9,5 @@ CREATE TABLE "public"."stream_ids" (
 );
 
 
--- +micrate Down
-DROP TABLE "public"."stream_ids";
+-- +migrate down
+DROP TABLE IF EXISTS "public"."stream_ids";

@@ -10,6 +10,8 @@ description: |
 targets:
   fifteenfortyfive:
     main: src/fifteenfortyfive.cr
+  tool:
+    main: src/tool.cr
 
 
 dependencies:
@@ -27,8 +29,8 @@ dependencies:
   crecto:
     github: crecto/crecto
     version: 0.8.3
-  micrate:
-    github: juanedi/micrate
+  migrate:
+    github: vladfaust/migrate.cr
   awscr-s3:
     github: taylorfinnell/awscr-s3
   honcho:

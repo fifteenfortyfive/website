@@ -1,5 +1,5 @@
--- +micrate Up
-CREATE TABLE accounts (
+-- +migrate up
+CREATE TABLE IF NOT EXISTS accounts (
     id integer PRIMARY KEY,
     username text NOT NULL,
     encrypted_password text NOT NULL,
@@ -24,7 +24,7 @@ ALTER TABLE ONLY accounts ALTER COLUMN id SET DEFAULT nextval('accounts_id_seq':
 
 
 
-CREATE TABLE commentator_submissions (
+CREATE TABLE IF NOT EXISTS commentator_submissions (
     id integer PRIMARY KEY,
     games text,
     experience text,
@@ -46,7 +46,7 @@ ALTER TABLE ONLY commentator_submissions ALTER COLUMN id SET DEFAULT nextval('co
 
 
 
-CREATE TABLE runner_submissions (
+CREATE TABLE IF NOT EXISTS runner_submissions (
     id integer PRIMARY KEY,
     max_games text,
     max_time text,
@@ -70,7 +70,7 @@ ALTER TABLE ONLY runner_submissions ALTER COLUMN id SET DEFAULT nextval('runner_
 
 
 
-CREATE TABLE sessions (
+CREATE TABLE IF NOT EXISTS sessions (
     id character varying NOT NULL,
     account_id integer,
     expires_at timestamp without time zone,
@@ -87,3 +87,10 @@ ALTER TABLE ONLY sessions
     ADD CONSTRAINT sessions_user_id_fkey FOREIGN KEY (account_id) REFERENCES accounts(id) ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE ONLY runner_submissions
     ADD CONSTRAINT submissions_account_id_fkey FOREIGN KEY (account_id) REFERENCES accounts(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+-- +migrate down
+DROP TABLE IF EXISTS sessions;
+DROP TABLE IF EXISTS runner_submissions;
+DROP TABLE IF EXISTS commentator_submissions
+DROP TABLE IF EXISTS accounts;

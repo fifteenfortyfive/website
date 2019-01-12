@@ -1,4 +1,4 @@
--- +micrate Up
+-- +migrate up
 ALTER TABLE "public"."runs"
   ADD COLUMN "featured" boolean DEFAULT 'false',
   ADD COLUMN "feature_index" integer;
@@ -34,7 +34,7 @@ CREATE OR REPLACE VIEW "public"."featured_runs" AS  SELECT runs.id AS run_id,
 
 
 
--- +micrate Down
+-- +migrate down
 DROP VIEW "public"."featured_runs";
 
 ALTER TABLE "public"."runs"

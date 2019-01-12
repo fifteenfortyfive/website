@@ -22,3 +22,6 @@ public/
 
 # Database dump files from heroku
 *.dump
+
+# Executables
+bin/

@@ -1,5 +1,5 @@
--- +micrate Up
-CREATE TABLE "public"."teams" (
+-- +migrate up
+CREATE TABLE IF NOT EXISTS "public"."teams" (
     "id" serial,
     "name" text,
     "captain_id" integer,
@@ -10,7 +10,7 @@ CREATE TABLE "public"."teams" (
     FOREIGN KEY ("captain_id") REFERENCES "public"."accounts"("id")
 );
 
-CREATE TABLE "public"."runs" (
+CREATE TABLE IF NOT EXISTS "public"."runs" (
     "id" serial,
     "runner_id" integer,
     "game_id" integer,
@@ -24,3 +24,8 @@ CREATE TABLE "public"."runs" (
     FOREIGN KEY ("game_id") REFERENCES "public"."games"("id"),
     FOREIGN KEY ("team_id") REFERENCES "public"."teams"("id")
 );
+
+
+-- +migrate down
+DROP TABLE IF EXISTS "public"."runs";
+DROP TABLE IF EXISTS "public"."teams";

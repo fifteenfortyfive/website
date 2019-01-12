@@ -44,9 +44,9 @@ shards:
     github: faultyserver/krout
     commit: 0031ef83616b6e22e0500625db15d46b581c2cb8
 
-  micrate:
-    github: juanedi/micrate
-    version: 0.3.3
+  migrate:
+    github: vladfaust/migrate.cr
+    version: 0.4.1
 
   pg:
     github: will/crystal-pg
@@ -59,4 +59,8 @@ shards:
   slang:
     github: jeromegn/slang
     version: 1.7.1
+
+  time_format:
+    github: vladfaust/time_format.cr
+    version: 0.1.1
 

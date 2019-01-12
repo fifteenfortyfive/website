@@ -1,4 +1,4 @@
--- +micrate Up
+-- +migrate up
 ALTER TABLE "public"."teams"
   ADD COLUMN "slug" text;
 
@@ -8,6 +8,6 @@ UPDATE "public"."teams" SET
 ALTER TABLE "public"."teams"
   ADD UNIQUE("slug");
 
--- +micrate Down
+-- +migrate down
 ALTER TABLE "public"."teams"
   DROP COLUMN "slug";

@@ -1,5 +1,5 @@
--- +micrate Up
-CREATE TABLE "public"."game_submissions" (
+-- +migrate up
+CREATE TABLE IF NOT EXISTS "public"."game_submissions" (
     "id" serial,
     "runner_submission_id" integer,
     "game_id" integer,
@@ -14,3 +14,7 @@ CREATE TABLE "public"."game_submissions" (
     FOREIGN KEY ("game_id") REFERENCES "public"."games"("id"),
     FOREIGN KEY ("account_id") REFERENCES "public"."accounts"("id")
 );
+
+
+-- +migrate down
+DROP TABLE IF EXISTS "public"."game_submissions";

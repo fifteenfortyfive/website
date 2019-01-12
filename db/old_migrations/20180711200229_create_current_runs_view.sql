@@ -1,4 +1,4 @@
--- +micrate Up
+-- +migrate up
 CREATE OR REPLACE VIEW "public"."current_runs" AS SELECT ordered_runs.id as run_id,
     ordered_runs.schedule_index,
     ordered_runs.team_id,
@@ -28,5 +28,5 @@ CREATE OR REPLACE VIEW "public"."current_runs" AS SELECT ordered_runs.id as run_
      LEFT JOIN accounts ON accounts.id = ordered_runs.account_id
      LEFT JOIN games ON games.id = ordered_runs.game_id;
 
--- +micrate Down
+-- +migrate down
 DROP VIEW "public"."current_runs";

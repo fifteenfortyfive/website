@@ -1,4 +1,4 @@
--- +micrate Up
+-- +migrate up
 CREATE VIEW "public"."accounts_teams" AS
   SELECT accounts.id AS account_id, runs.team_id AS team_id
   FROM accounts
@@ -8,5 +8,5 @@ CREATE VIEW "public"."accounts_teams" AS
 COMMENT ON VIEW "public"."accounts_teams" IS 'A view for directly getting the teams that an account is on';
 
 
--- +micrate Down
+-- +migrate down
 DROP VIEW "public"."accounts_teams";

@@ -1,7 +1,7 @@
--- +micrate Up
+-- +migrate up
 ALTER TABLE "public"."games"
   ADD COLUMN "twitch_id" text;
 
--- +micrate Down
+-- +migrate down
 ALTER TABLE "public"."games"
   DROP COLUMN "twitch_id";

@@ -1,6 +1,6 @@
--- +micrate Up
+-- +migrate up
 ALTER TABLE "public"."accounts" ADD COLUMN "avatar_object_id" text;
 
 
--- +micrate Down
+-- +migrate down
 ALTER TABLE "public"."accounts" DROP COLUMN "avatar_object_id";
