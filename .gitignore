@@ -7,14 +7,11 @@
 # Config
 /repo_config.yaml
 .env
-/fifteenfortyfive
-/fifteenfortyfive.dwarf
+ansible/inventory/hosts
 
 # Crystal deps
 /lib/
 /dev/
-/sentry
-/sentry.dwarf
 
 # Asset deps
 node_modules/
@@ -25,3 +22,6 @@ public/
 
 # Executables
 bin/
+/fifteenfortyfive
+/sentry
+/*.dwarf
