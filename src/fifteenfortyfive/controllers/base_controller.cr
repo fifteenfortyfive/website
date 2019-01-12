@@ -1,3 +1,4 @@
+require "../contexts/accounts.cr"
 require "../util/template.cr"
 
 module BaseController
@@ -15,8 +16,7 @@ module BaseController
 
 
   def sign_in_user(env, account : Account)
-    session = Session.build_for(account)
-    Repo.insert(session)
+    session = Accounts.create_session(account)
 
     env.response.cookies["1545_session_id"] = session.id.not_nil!
   end

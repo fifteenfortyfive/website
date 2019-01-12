@@ -1,4 +1,5 @@
 require "awscr-s3"
+require "../contexts/accounts"
 
 module AccountsController
   extend BaseController
@@ -10,18 +11,7 @@ module AccountsController
   end
 
   def create(env)
-    account = Account.new
-    account.username  = env.params.body["username"]?.as?(String)
-    account.password  = env.params.body["password"]?.as?(String)
-
-    account.discord_username   = env.params.body["discord_username"]?.as?(String)
-    account.discord_discriminator   = env.params.body["discord_discriminator"]?.as?(String)
-    account.twitch    = env.params.body["twitch"]?.as?(String)
-    account.twitter   = env.params.body["twitter"]?.as?(String)
-
-    account.timezone  = env.params.body["timezone"]?.as?(String)
-
-    changeset = Repo.insert(account)
+    changeset = Accounts.create_account(env.params.body)
 
     if changeset.valid?
       sign_in_user(env, changeset.instance)
