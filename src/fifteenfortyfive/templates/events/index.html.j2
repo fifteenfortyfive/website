@@ -1,0 +1,42 @@
+{% extends "layouts/main.html.j2" %}
+
+{% block main %}
+  <div class="container">
+    <main class="content">
+      <section class="section">
+        <h1 class="title">2019 Event Calendar</h1>
+
+        <p>
+          We've got a lot planned for this year and are excited to share everything on
+          <strong>January 13th, 2019</strong>!
+          Check back then to see what we've got in the works, and be sure to
+          <a href="{{conn.constants.twitter_url}}" target="_blank" rel="nofollow noopener">follow us on Twitter</a>
+          to keep up with news and events as soon as they happen.
+        </p>
+
+        {% for event in events %}
+          {% set start_day = event.start_time.day %}
+          {% set end_day   = event.end_time.day %}
+
+          <div class="event">
+            <div class="event-datetime">
+              <p class="event-datetime-month">{{ event.start_time | strftime("%b") }}</p>
+              {% if start_day == end_day %}
+                <p class="event-datetime-day">{{ event.start_time.day }}</p>
+              {% else %}
+                <p class="event-datetime-day">{{ event.start_time.day }}-{{event.end_time.day }}</p>
+              {% endif %}
+            </div>
+
+            <div class="event-divider"></div>
+
+            <div class="event-body">
+              <p class="title has-text-danger is-4">{{event.name}}</p>
+              <p>{{event.description}}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+    </main>
+  </div>
+{% endblock %}

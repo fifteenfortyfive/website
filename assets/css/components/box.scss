@@ -1,0 +1,18 @@
+.box {
+  &.is-fullbleed {
+    padding: 0;
+
+    > * {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    > :first-child {
+      padding-top: 1.25rem;
+    }
+
+    > :last-child {
+      padding-bottom: 1.25rem;
+    }
+  }
+}

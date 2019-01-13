@@ -32,9 +32,9 @@ module StreamStatusService
 
       streams.each do |stream|
         if stream_data = live_streams[stream.service_user_id]?
-          @@statuses[stream.account_id.not_nil!] = stream_data
+          @@statuses[stream.account_id.as(Int64)] = stream_data
         else
-          @@statuses.delete(stream.account_id.not_nil!)
+          @@statuses.delete(stream.account_id.as(Int64))
         end
       end
 

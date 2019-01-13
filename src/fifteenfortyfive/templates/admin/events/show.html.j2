@@ -1,0 +1,29 @@
+{% extends "layouts/main.html.j2" %}
+
+{% block main %}
+  <div class="container">
+    <main class="content">
+      <section class="section">
+        <div class="columns">
+          <div class="column is-two-fifths">
+            <div class="card">
+              <div class="card-content">
+                <p class="title is-4">{{event.name}}</p>
+              </div>
+
+              <footer class="card-footer">
+                <a href="/admin/events/{{event.id}}/edit" class="card-footer-item">
+                  Edit
+                </a>
+              </footer>
+            </div>
+          </div>
+
+          <div class="column">
+            {{event.description}}
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+{% endblock %}

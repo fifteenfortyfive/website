@@ -2,19 +2,27 @@ version: 1.0
 shards:
   awscr-s3:
     github: taylorfinnell/awscr-s3
-    version: 0.3.2
+    version: 0.3.3
 
   awscr-signer:
     github: taylorfinnell/awscr-signer
-    version: 0.5.2
+    version: 0.5.3
 
   crecto:
-    github: crecto/crecto
-    version: 0.8.3
+    github: faultyserver/crecto
+    commit: eb3a7ecfd9a4a775a3b3e522b8a4b689e8860c76
+
+  crinja:
+    github: straight-shoota/crinja
+    version: 0.4.1
 
   db:
     github: crystal-lang/crystal-db
-    version: 0.5.0
+    version: 0.5.1
+
+  dotenv:
+    github: gdotdesign/cr-dotenv
+    version: 0.1.0
 
   exception_page:
     github: crystal-loot/exception_page
@@ -36,9 +44,9 @@ shards:
     github: faultyserver/krout
     commit: 0031ef83616b6e22e0500625db15d46b581c2cb8
 
-  micrate:
-    github: juanedi/micrate
-    version: 0.3.3
+  migrate:
+    github: vladfaust/migrate.cr
+    version: 0.4.1
 
   pg:
     github: will/crystal-pg
@@ -46,9 +54,13 @@ shards:
 
   radix:
     github: luislavena/radix
-    version: 0.3.8
+    version: 0.3.9
 
   slang:
     github: jeromegn/slang
     version: 1.7.1
+
+  time_format:
+    github: vladfaust/time_format.cr
+    version: 0.1.1
 

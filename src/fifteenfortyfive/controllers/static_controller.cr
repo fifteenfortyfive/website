@@ -7,11 +7,15 @@ module StaticController
 
     live_streams = live_runner_streams
     games = games_for_streams(live_streams.values)
-    render_view "static/index"
+    Template.render(env, "static/index.html.j2")
   end
 
   def volunteer(env)
-    render_view "static/volunteer"
+    Template.render(env, "static/volunteer.html.j2")
+  end
+
+  def event_calendar(env)
+    Template.render(env, "static/event-calendar.html.j2")
   end
 
   protected def live_runner_streams

@@ -21,24 +21,6 @@ class Run < Crecto::Model
     belongs_to :team, Team
   end
 
-  @pb_time : Time::Span?
-  def pb_time
-    @pb_time ||= begin
-      if seconds = self.pb_seconds
-        Time::Span.new(seconds: seconds, nanoseconds: 0)
-      end
-    end
-  end
-
-  @estimate_time : Time::Span?
-  def estimate_time
-    @estimate_time ||= begin
-      if seconds = self.estimate_seconds
-        Time::Span.new(seconds: seconds, nanoseconds: 0)
-      end
-    end
-  end
-
 
   def update_pb(new_time : String)
     self.pb = new_time

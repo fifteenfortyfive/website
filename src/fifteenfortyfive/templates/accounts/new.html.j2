@@ -1,0 +1,58 @@
+{% extends "layouts/main.html.j2" %}
+
+{% block main %}
+  <section class="section">
+    <div class="container">
+      <main class="content">
+        <div class="columns is-centered">
+          <div class="column is-8-tablet is-6-widescreen">
+            <div class="box is-danger is-fullbleed">
+              <div class="has-text-centered">
+                <h1 class="title sign-up-header">Create an Account</h1>
+              </div>
+
+              <form class="form is-isolated" action="/accounts/create" method="POST">
+                <div class="columns is-centered">
+                  <div class="column is-10">
+                    <div class="field">
+                      <div class="control is-oneline is-rounded">
+                        <label class="label">Username</label>
+                        <input class="input" name="username" required="true">
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <div class="control is-oneline is-rounded has-icons-right">
+                        <label class="label">Password</label>
+                        <input class="input" type="password" name="password" required="true">
+                        <span class="icon is-right has-text-danger">
+                          <i class="fas fa-eye-slash"></i>
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <div class="control is-oneline is-rounded">
+                        <label class="label">Discord</label>
+                        <input class="input" type="text" name="discord_username" required="true">
+                        <div class="divider"></div>
+                        <div class="prefix has-text-danger is-icon">#</div>
+                        <input class="input is-narrow" type="text" name="discord_discriminator" required="true" pattern="\d{4}" maxlength="4" placeholder="0000">
+                      </div>
+                    </div>
+
+                    <input class="input button is-fullwidth is-danger is-rounded is-outlined" type="submit" value="Sign Up">
+                  </div>
+                </div>
+              </form>
+
+              <p>We use profiles to track submissions and runs, and to create a profile page to display during the event. You'll also be able to log in and edit your information (including submissions, PBs, and estimates) at any point later on.</p>
+
+              <p>We use Discord as our primary means of communication. As such, we need your full username to be able to contact you directly if needed and ensure that we are reaching the right person. Your discriminator (the 4 digits after your name) will never be displayed publicly.</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
+{% endblock %}

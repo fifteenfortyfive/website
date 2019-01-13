@@ -3,10 +3,10 @@ module Repo
 
   config do |conf|
     conf.adapter  = Crecto::Adapters::Postgres
-    conf.uri      = ENV["FIFTEENFORTYFIVE_DATABASE_URL"]? || ENV["DATABASE_URL"]? || ""
+    conf.uri      = ENV["DATABASE_URL"]
   end
 end
 
-Query = Crecto::Repo::Query
-Multi = Crecto::Multi
+alias Query = Crecto::Repo::Query
+alias Multi = Crecto::Multi
 Crecto::DbLogger.set_handler(STDOUT)

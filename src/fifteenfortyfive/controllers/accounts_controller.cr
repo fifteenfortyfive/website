@@ -1,4 +1,5 @@
 require "awscr-s3"
+require "../contexts/accounts"
 
 module AccountsController
   extend BaseController
@@ -6,35 +7,28 @@ module AccountsController
 
   def _new(env)
     error = nil
-    render_view "accounts/new"
+    Template.render(env, "accounts/new.html.j2")
   end
 
   def create(env)
-    account = Account.new
-    account.username  = env.params.body["username"]?.as?(String)
-    account.password  = env.params.body["password"]?.as?(String)
-
-    account.discord   = env.params.body["discord"]?.as?(String)
-    account.twitch    = env.params.body["twitch"]?.as?(String)
-    account.twitter   = env.params.body["twitter"]?.as?(String)
-
-    account.timezone  = env.params.body["timezone"]?.as?(String)
-
-    changeset = Repo.insert(account)
+    changeset = Accounts.create_account(env.params.body)
 
     if changeset.valid?
       sign_in_user(env, changeset.instance)
       env.redirect("/")
       spawn{ TwitchService.get_user_id_for(changeset.instance) }
     else
-      render_view "accounts/new"
+      pp changeset.errors
+      Template.render(env, "accounts/new.html.j2")
     end
   end
 
   def show(env)
     account = Repo.get!(Account, env.params.url["id"])
 
-    render_view "accounts/show"
+    Template.render(env, "accounts/show.html.j2", {
+      "account" => account
+    })
   end
 
   def edit(env)
@@ -43,7 +37,7 @@ module AccountsController
       return
     end
 
-    render_view "accounts/edit"
+    Template.render(env, "accounts/edit.html.j2")
   end
 
   def update(env)
@@ -71,8 +65,10 @@ module AccountsController
         account.username  = part.body.gets_to_end
       when "password"
         account.password  = part.body.gets_to_end
-      when "discord"
-        account.discord   = part.body.gets_to_end
+      when "discord_username"
+        account.discord_username      = part.body.gets_to_end
+      when "discord_discriminator"
+        account.discord_discriminator = part.body.gets_to_end
       when "twitch"
         account.twitch    = part.body.gets_to_end
       when "twitter"
@@ -89,7 +85,7 @@ module AccountsController
       env.redirect("/")
       spawn{ TwitchService.get_user_id_for(account) }
     else
-      render_view "accounts/edit"
+      Template.render(env, "accounts/edit.html.j2")
     end
   end
 

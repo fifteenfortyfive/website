@@ -7,22 +7,36 @@ authors:
 description: |
   Home page and management site for the 1545.
 
+targets:
+  fifteenfortyfive:
+    main: src/fifteenfortyfive.cr
+  tool:
+    main: src/tool.cr
+
 
 dependencies:
   pg:
     github: will/crystal-pg
   kemal:
     github: kemalcr/kemal
+    version: 0.24.0
   krout:
     github: faultyserver/krout
   slang:
     github: jeromegn/slang
+  crinja:
+    github: straight-shoota/crinja
   crecto:
-    github: crecto/crecto
-    version: 0.8.3
-  micrate:
-    github: juanedi/micrate
+    # github: crecto/crecto
+    # Using this until updated changesets and typecasting are
+    # supported by the official crecto
+    github: faultyserver/crecto
+    branch: temp/casts
+  migrate:
+    github: vladfaust/migrate.cr
   awscr-s3:
     github: taylorfinnell/awscr-s3
   honcho:
     github: faultyserver/honcho
+  dotenv:
+    github: gdotdesign/cr-dotenv

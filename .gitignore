@@ -1,14 +1,27 @@
+# Caching
 .sass-cache
+.cache
 .shards
+.DS_Store
 
+# Config
 /repo_config.yaml
-/fifteenfortyfive
-/fifteenfortyfive.dwarf
+.env
+ansible/inventory/hosts
 
+# Crystal deps
 /lib/
 /dev/
-/sentry
-/sentry.dwarf
+
+# Asset deps
+node_modules/
+public/
 
 # Database dump files from heroku
 *.dump
+
+# Executables
+bin/
+/fifteenfortyfive
+/sentry
+/*.dwarf

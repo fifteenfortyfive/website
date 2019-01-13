@@ -1,0 +1,156 @@
+{% set page_class = 'page--index' %}
+{% extends "layouts/base.html.j2" %}
+
+{% block main %}
+  <section class="hero splash is-fullheight is-dark">
+    <div class="hero-head">
+      <nav class="navbar is-dark">
+        <div class="container">
+          <div class="navbar-brand">
+            <div class="navbar-item navbar-brand-icon">
+              <span class="brand-logo">The 1545</span>
+            </div>
+            <span class="navbar-burger burger" data-target="primaryNav">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+
+          <div class="navbar-menu" id="primaryNav">
+            <div class="navbar-start">
+              <a class="navbar-item" href="/events">
+                Event Calendar
+              </a>
+
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                  More
+                </a>
+
+                <div class="navbar-dropdown is-boxed">
+                  <a class="navbar-item" href="mailto:{{conn.constants.contact_url}}">
+                    Contact
+                  </a>
+                  <a class="navbar-item" href="/volunteer">
+                    Volunteer
+                  </a>
+                </div>
+              </div>
+
+              {% if conn.user.admin %}
+                <div class="navbar-item has-dropdown is-hoverable">
+                  <a class="navbar-link" href="/admin">
+                    Admin
+                  </a>
+
+                  <div class="navbar-dropdown is-boxed">
+                    <a class="navbar-item" href="/admin/accounts">
+                      Account Management
+                    </a>
+                    <a class="navbar-item" href="/admin/events">
+                      Events
+                    </a>
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="navbar-end">
+              {% if conn.user %}
+                <div class="navbar-item has-dropdown is-hoverable is-paddingless">
+                  <div class="navbar-link">
+                    {% if conn.user.avatar_object_id %}
+                      <img class="avatar avatar--navbar" src="{{ conn.constants.assets_url }}/{{ conn.user.avatar_object_id }}">
+                    {% endif %}
+                    {{ conn.user.username }}
+                  </div>
+
+                  <div class="navbar-dropdown is-boxed">
+                    <a class="navbar-item" href="/accounts/{{conn.user.id}}">Profile</a>
+                    <a class="navbar-item" href="/accounts/edit">Edit Account</a>
+                    <div class="navbar-divider"></div>
+                    <a class="navbar-item" href="/signout">Log Out</a>
+                  </div>
+                </div>
+
+                <div class="navbar-item is-divider">
+                </div>
+              {% else %}
+                <div class="navbar-item is-paddingless">
+                  <div class="buttons">
+                    <a class="button is-small is-danger is-outlined" href="/signin">
+                      Sign In
+                    </a>
+                    <a class="button is-small is-white is-outlined" href="/accounts/new">
+                      Create an Account
+                    </a>
+                  </div>
+                </div>
+              {% endif %}
+
+              <div class="navbar-item is-paddingless">
+                <div class="buttons">
+                  <a class="button is-dark" href="{{conn.constants.discord_url}}" target="_blank">
+                    <i class="fab fa-discord"></i>
+                  </a>
+                  <a class="button is-dark" href="{{conn.constants.srcom_url}}" target="_blank">
+                    <i class="fa fa-trophy"></i>
+                  </a>
+                  <a class="button is-dark" href="{{conn.constants.twitch_url}}" target="_blank">
+                    <i class="fab fa-twitch"></i>
+                  </a>
+                  <a class="button is-dark" href="{{conn.constants.twitter_url}}" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-body splash-primary">
+      <div class="container has-text-centered">
+        <h1 class="brand-logo">
+          The 1545
+        </h1>
+        <h2 class="subtitle">
+          July 2019
+        </h2>
+      </div>
+    </div>
+
+    <!-- Hero footer: will stick at the bottom -->
+    <div class="hero-foot">
+      <div class="container has-text-centered">
+        <i class="fa fa-lg fa-arrow-circle-down"></i>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container">
+      <main class="content">
+        <div class="columns is-desktop">
+          <div class="column is-7-desktop">
+            <h1 class="title">The Relay</h1>
+            <p class="is-size-4">The 1545 is a massive annual speedrunning relay race where teams of runners will complete the Super Mario 602, the Rareware 301%, and the Sprashfecta, all in a row, back to back to back.</p>
+            <p>Every year, dozens of runners from the three communities come together in one of the largest single races in speedrunning to date. Last year, more than 70 runners took part, with times averaging just over 50 hours per team.</p>
+          </div>
+
+          <div class="column is-5-desktop">
+            <h1 class="title">Summer 2019</h1>
+            <p>This year's event schedule, including signups, runner announcements, and the event date itself will be announced on <strong>January 13th, 2019</strong>.</p>
+            <p>Follow us on <a href="https://twitter.com/The_1545">Twitter</a> to keep up with these and other updates throughout the year.</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  {% include "layouts/_footer.html.j2" %}
+{% endblock %}

@@ -1,0 +1,22 @@
+---
+# Configure build
+# ansible-playbook --vault-password-file vault.key -u $USER -v -l web-servers playbooks/config-build.yml -D
+
+- name: Configure build
+  hosts: '*'
+  become: true
+  gather_facts: true
+  no_log: true
+  tasks:
+    - name: Set db_pass
+      set_fact:
+        db_pass: "{{ lookup('password', '/tmp/db_pass.txt length=16') }}"
+      when: db_pass is not defined
+
+    - name: Configure .env
+      template:
+        src: ../templates/.env.j2
+        dest: "/home/{{ users_deploy_user }}/build/{{ app_name }}/.env"
+        owner: "{{ users_deploy_user }}"
+        group: "{{ users_deploy_group }}"
+        mode: "0640"
