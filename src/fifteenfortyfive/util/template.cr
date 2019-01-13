@@ -24,3 +24,5 @@ module Template
     }
   end
 end
+
+require "./template/**"

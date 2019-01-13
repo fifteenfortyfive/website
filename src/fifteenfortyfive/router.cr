@@ -15,6 +15,11 @@ scope "/runs" do
   post "/update", &->RunsController.update(Krout::Env)
 end
 
+scope "/events" do
+  get "/", &->EventsController.index(Krout::Env)
+  get "/:event_id", &->EventsController.show(Krout::Env)
+end
+
 
 
 scope "/admin" do
@@ -37,6 +42,13 @@ scope "/admin" do
   get "/submissions/runners", &->Admin::SubmissionsController.runners(Krout::Env)
   get "/submissions/export",          &->Admin::SubmissionsController.export(Krout::Env)
   get "/submissions/export.:format",  &->Admin::SubmissionsController.export(Krout::Env)
+
+  get   "/events",                  &->Admin::EventsController.index(Krout::Env)
+  get   "/events/:event_id",        &->Admin::EventsController.show(Krout::Env)
+  get   "/events/new",              &->Admin::EventsController._new(Krout::Env)
+  post  "/events/create",           &->Admin::EventsController.create(Krout::Env)
+  get   "/events/:event_id/edit",   &->Admin::EventsController.edit(Krout::Env)
+  post  "/events/:event_id/update", &->Admin::EventsController.update(Krout::Env)
 end
 
 

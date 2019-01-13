@@ -1,0 +1,27 @@
+<div class="field">
+  <label class="label">Name</label>
+  <div class="control">
+    <input class="input" type="text" name="name" placeholder="Event name" value="{{event.name|d('')}}">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="description">Description</label>
+  <div class="control is-expanded">
+    <textarea class="textarea" type="text" name="description" placeholder="This content will be displayed on the home page of your event">{{event.description|d('')}}</textarea>
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="start_time">Start Time</label>
+  <div class="control is-expanded">
+    <input class="input" type="datetime" name="start_time" value="{{event.start_time}}">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="end_time">End Time</label>
+  <div class="control is-expanded">
+    <input class="input" type="datetime" name="end_time" value="{{event.end_time}}">
+  </div>
+</div>

@@ -19,7 +19,7 @@
 
           <div class="navbar-menu" id="primaryNav">
             <div class="navbar-start">
-              <a class="navbar-item" href="/event-calendar">
+              <a class="navbar-item" href="/events">
                 Event Calendar
               </a>
 
@@ -37,6 +37,23 @@
                   </a>
                 </div>
               </div>
+
+              {% if conn.user.admin %}
+                <div class="navbar-item has-dropdown is-hoverable">
+                  <a class="navbar-link" href="/admin">
+                    Admin
+                  </a>
+
+                  <div class="navbar-dropdown is-boxed">
+                    <a class="navbar-item" href="/admin/accounts">
+                      Account Management
+                    </a>
+                    <a class="navbar-item" href="/admin/events">
+                      Events
+                    </a>
+                  </div>
+                </div>
+              {% endif %}
             </div>
 
             <div class="navbar-end">
