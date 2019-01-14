@@ -30,6 +30,7 @@ $event-border: 1px solid $event-border-color !default;
 
     @include mobile {
       font-size: $size-4;
+      flex: 0 0 5.3ch;
     }
   }
 
