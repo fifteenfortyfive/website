@@ -4,10 +4,10 @@
 .shards
 .DS_Store
 
-# Config
+# Config / Security
 /repo_config.yaml
 .env
-ansible/inventory/hosts
+ssl/
 
 # Crystal deps
 /lib/

@@ -1,2 +1,4 @@
 # roles.galaxy/*
 vault.key
+
+inventory/hosts
