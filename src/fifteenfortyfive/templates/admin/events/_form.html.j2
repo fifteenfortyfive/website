@@ -16,7 +16,14 @@
   <div class="select">
     <select name="state">
       {% for state in event.available_states %}
-        <option value="{{state}}">{{state}}</option>
+        <option
+          value="{{state}}"
+          {% if state == event.state %}
+            selected
+          {% endif %}
+        >
+          {{state}}
+        </option>
       {% endfor %}
     </select>
   </div>
@@ -33,5 +40,26 @@
   <label class="label" for="end_time">End Time</label>
   <div class="control is-expanded">
     <input class="input" type="datetime" name="end_time" value="{{event.end_time}}">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="end_time">Signups Open Time</label>
+  <div class="control is-expanded">
+    <input class="input" type="datetime" name="signups_open_time" value="{{event.signups_open_time}}">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="end_time">Signups Close Time</label>
+  <div class="control is-expanded">
+    <input class="input" type="datetime" name="signups_closed_time" value="{{event.signups_closed_time}}">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="end_time">Runners Announced Time</label>
+  <div class="control is-expanded">
+    <input class="input" type="datetime" name="runners_announced_time" value="{{event.runners_announced_time}}">
   </div>
 </div>

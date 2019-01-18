@@ -11,14 +11,50 @@
         <div class="columns">
           <div class="column is-4">
             <div class="card">
+              <div class="card-header">
+                <p class="card-header-title">
+                  <a class="icon">
+                    <i class="fas fa-exclamation"></i>
+                  </a>
+                  Important Info
+                </p>
+              </div>
+
               <div class="card-content">
                 <p>
-                  <strong>Starts at:</strong>
-                  {{ event.start_time | strftime("%B %d, %Y %H:%M:%S UTC") }}
+                  <strong>Signups Open:</strong>
+                  <br/>
+                  <span class="js-date-string js-localized">
+                    {{ event.signups_open_time | strftime("%s") }}
+                  </span>
                 </p>
                 <p>
-                  <strong>Ends at:</strong>
-                  {{ event.end_time | strftime("%B %d, %Y %H:%M:%S UTC") }}
+                  <strong>Signups Close:</strong>
+                  <br/>
+                  <span class="js-date-string js-localized">
+                    {{ event.signups_closed_time | strftime("%s") }}
+                  </span>
+                </p>
+                <p>
+                  <strong>Runners Announced:</strong>
+                  <br/>
+                  <span class="js-date-string js-localized">
+                    {{ event.runners_announced_time | strftime("%s") }}
+                  </span>
+                </p>
+                <p>
+                  <strong>Starts:</strong>
+                  <br/>
+                  <span class="js-date-string js-localized">
+                    {{ event.start_time | strftime("%s") }}
+                  </span>
+                </p>
+                <p>
+                  <strong>Ends:</strong>
+                  <br/>
+                  <span class="js-date-string js-localized">
+                    {{ event.end_time | strftime("%s") }}
+                  </span>
                 </p>
               </div>
 
