@@ -6,7 +6,7 @@ module EventsController
   extend self
 
   def index(env)
-    events = Events.list_events(Query.order_by("start_time ASC").where("start_time > now()"))
+    events = Events.list_events(Query.order_by("start_time ASC").where("start_time > now()").preload(:runs))
 
     Template.render(env, "events/index.html.j2", {
       "events" => events
@@ -14,7 +14,7 @@ module EventsController
   end
 
   def show(env)
-    event = Events.get_event!(env.params.url["event_id"])
+    event = Events.get_event!(env.params.url["event_id"], Query.preload(:runs))
 
     Template.render(env, "events/show.html.j2", {
       "event" => event

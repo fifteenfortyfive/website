@@ -1,0 +1,47 @@
+{% extends "layouts/main.html.j2" %}
+
+{% block title %}
+  {{ event.name }} | The 1545
+{% endblock %}
+
+{% block main %}
+  <div class="container">
+    <main class="content">
+      <section class="section">
+        <div class="columns">
+          <div class="column is-4">
+            <div class="card">
+              <div class="card-content">
+                <p>
+                  <strong>Starts at:</strong>
+                  {{ event.start_time | strftime("%B %d, %Y %H:%M:%S UTC") }}
+                </p>
+                <p>
+                  <strong>Ends at:</strong>
+                  {{ event.end_time | strftime("%B %d, %Y %H:%M:%S UTC") }}
+                </p>
+              </div>
+
+              <div class="card-footer">
+                <div class="card-footer-item">
+                  <strong>{{ event.runs | count }}</strong>&nbsp;Runs Submitted
+                </div>
+                <div class="card-footer-button is-danger">
+                  Submit a Run!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-8">
+            <h1 class="title">{{event.name}}</h1>
+
+            <p>
+              {{event.description}}
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+{% endblock %}

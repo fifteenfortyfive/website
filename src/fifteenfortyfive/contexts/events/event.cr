@@ -29,6 +29,7 @@ module Events
       field :state, String, default: "created"
 
       belongs_to :owner, Account, foreign_key: :owner_id
+      has_many :runs, Run
     end
 
     @[Crinja::Attribute]
