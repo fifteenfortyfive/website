@@ -11,10 +11,13 @@
         <div class="columns">
           <div class="column is-7 is-8-desktop">
             <h1 class="title">{{event.name}}</h1>
+            {{event.summary | safe}}
 
-            <p>
-              {{event.description}}
-            </p>
+            <h1 class="title">Details</h1>
+            {{event.details | safe}}
+
+            <h1 class="title">Rules</h1>
+            {{event.rules | safe}}
           </div>
 
           <div class="column is-5 is-4-desktop">

@@ -6,9 +6,23 @@
 </div>
 
 <div class="field">
-  <label class="label" for="description">Description</label>
+  <label class="label" for="summary">Summary</label>
   <div class="control is-expanded">
-    <textarea class="textarea" type="text" name="description" placeholder="This content will be displayed on the home page of your event">{{event.description|d('')}}</textarea>
+    <textarea class="textarea" type="text" name="summary" placeholder="This content will be displayed on the event calendar">{{event.summary|d('')}}</textarea>
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="details">Details</label>
+  <div class="control is-expanded">
+    <textarea class="textarea" type="text" name="details" placeholder="This content will be displayed on the home page of your event">{{event.details|d('')}}</textarea>
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="rules">Rules</label>
+  <div class="control is-expanded">
+    <textarea class="textarea" type="text" name="rules" placeholder="This content will be displayed on the home page of your event">{{event.rules|d('')}}</textarea>
   </div>
 </div>
 

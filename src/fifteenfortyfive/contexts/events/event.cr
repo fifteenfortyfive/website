@@ -19,7 +19,9 @@ module Events
 
     schema "events" do
       field :name, String
-      field :description, String
+      field :summary, String
+      field :details, String
+      field :rules, String
 
       field :signups_open_time, Time
       field :signups_closed_time, Time
