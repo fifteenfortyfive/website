@@ -6,6 +6,17 @@ module Events
   class Event < Crecto::Model
     include Crinja::Object::Auto
 
+    STATES = [
+      "created",
+      "signups open",
+      "signups closed",
+      "runners announced",
+      "scheduled",
+      "in progress",
+      "completed",
+      "cancelled"
+    ]
+
     schema "events" do
       field :name, String
       field :start_time, Time
@@ -15,7 +26,14 @@ module Events
       field :avatar_object_id, String
       field :link, String
 
+      field :state, String, default: "created"
+
       belongs_to :owner, Account, foreign_key: :owner_id
+    end
+
+    @[Crinja::Attribute]
+    def available_states
+      STATES
     end
   end
 end

@@ -13,6 +13,16 @@
 </div>
 
 <div class="field">
+  <div class="select">
+    <select name="state">
+      {% for state in event.available_states %}
+        <option value="{{state}}">{{state}}</option>
+      {% endfor %}
+    </select>
+  </div>
+</div>
+
+<div class="field">
   <label class="label" for="start_time">Start Time</label>
   <div class="control is-expanded">
     <input class="input" type="datetime" name="start_time" value="{{event.start_time}}">

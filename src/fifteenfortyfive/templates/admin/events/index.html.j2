@@ -16,6 +16,7 @@
           <thead>
             <tr>
               <th>Name</th>
+              <th>State</th>
               <th>Start Time</th>
               <th>End Time</th>
             </tr>
@@ -25,6 +26,7 @@
             {% for event in events %}
               <tr>
                 <td><a href="/admin/events/{{event.id}}">{{ event.name }}</a></td>
+                <td>{{ event.state }}</td>
                 <td>{{ event.start_time }}</td>
                 <td>{{ event.end_time }}</td>
               </tr>
