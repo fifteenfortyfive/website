@@ -41,6 +41,7 @@ module Events
 
       belongs_to :owner, Account, foreign_key: :owner_id
       has_many :runs, Run
+      has_many :run_submissions, RunSubmission
     end
 
     @[Crinja::Attribute]

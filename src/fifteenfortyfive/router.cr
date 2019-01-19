@@ -11,8 +11,12 @@ scope "/accounts" do
 end
 
 scope "/events" do
-  get "/", &->EventsController.index(Krout::Env)
-  get "/:event_id", &->EventsController.show(Krout::Env)
+  get  "/", &->EventsController.index(Krout::Env)
+  get  "/:event_id", &->EventsController.show(Krout::Env)
+
+  get  "/:event_id/submit",       &->RunSubmissionsController._new(Krout::Env)
+  post "/:event_id/submit",       &->RunSubmissionsController.create(Krout::Env)
+  get  "/:event_id/submissions",  &->RunSubmissionsController.index(Krout::Env)
 end
 
 
