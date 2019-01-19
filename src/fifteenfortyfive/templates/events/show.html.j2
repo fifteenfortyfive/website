@@ -33,62 +33,42 @@
                 <p>
                   <span class="info-header">Signups Open</span>
                   <br/>
-                  {% if event.signups_open_time %}
-                    <span class="js-date-string js-localized">
-                      {{ event.signups_open_time | strftime("%s") }}
-                    </span>
-                  {% else %}
-                    Not Set
-                  {% endif %}
+                  <span class="js-date-string js-localized">
+                    {{ event.signups_open_time | strftime("%s", default="Not Set") }}
+                  </span>
                 </p>
                 <p>
                   <span class="info-header">Signups Close</span>
                   <br/>
-                  {% if event.signups_closed_time %}
-                    <span class="js-date-string js-localized">
-                      {{ event.signups_closed_time | strftime("%s") }}
-                    </span>
-                  {% else %}
-                    Not Set
-                  {% endif %}
+                  <span class="js-date-string js-localized">
+                    {{ event.signups_closed_time | strftime("%s", default="Not Set") }}
+                  </span>
                 </p>
                 <p>
                   <span class="info-header">Runners Announced</span>
                   <br/>
-                  {% if event.runners_announced_time %}
-                    <span class="js-date-string js-localized">
-                      {{ event.runners_announced_time | strftime("%s") }}
-                    </span>
-                  {% else %}
-                    Not Set
-                  {% endif %}
+                  <span class="js-date-string js-localized">
+                    {{ event.runners_announced_time | strftime("%s", default="Not Set") }}
+                  </span>
                 </p>
                 <p>
                   <span class="info-header">Event Starts</span>
                   <br/>
-                  {% if event.start_time %}
-                    <span class="js-date-string js-localized">
-                      {{ event.start_time | strftime("%s") }}
-                    </span>
-                    {% if event.start_time_is_estimate %}
-                      (estimated)
-                    {% endif %}
-                  {% else %}
-                    Not Set
+                  <span class="js-date-string js-localized">
+                    {{ event.start_time | strftime("%s", default="Not Set") }}
+                  </span>
+                  {% if event.start_time_is_estimate %}
+                    (estimated)
                   {% endif %}
                 </p>
                 <p>
                   <span class="info-header">Event Ends</span>
                   <br/>
-                  {% if event.end_time %}
-                    <span class="js-date-string js-localized">
-                      {{ event.end_time | strftime("%s") }}
-                    </span>
-                    {% if event.end_time_is_estimate %}
-                      (estimated)
-                    {% endif %}
-                  {% else %}
-                    Not Set
+                  <span class="js-date-string js-localized">
+                    {{ event.end_time | strftime("%s", default="Not Set") }}
+                  </span>
+                  {% if event.end_time_is_estimate %}
+                    (estimated)
                   {% endif %}
                 </p>
               </div>
