@@ -34,6 +34,6 @@ module StaticController
   protected def games_for_streams(streams)
     twitch_game_ids = streams.map(&.game_id)
 
-    Repo.all(Game, Query.where(twitch_id: twitch_game_ids)).index_by(&.twitch_id)
+    Inventory.list_games(Query.where(twitch_id: twitch_game_ids)).index_by(&.twitch_id)
   end
 end

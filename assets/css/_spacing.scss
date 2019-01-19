@@ -1,0 +1,56 @@
+$sizeUnit: rem;
+$marginKey: 'has-margin';
+$paddingKey: 'has-padding';
+$separator: '-';
+$sizes: (
+    ('none', 0),
+    ('xxs', 0.125),
+    ('xs', 0.25),
+    ('sm', 0.5),
+    ('md', 1),
+    ('lg', 2),
+    ('xl', 4),
+    ('xxl', 8),
+);
+$positions: (
+    ('top', 'top'),
+    ('right', 'right'),
+    ('bottom', 'bottom'),
+    ('left', 'left')
+);
+
+@function sizeValue($key, $value) {
+    @return if($key == 'none', 0, $value + $sizeUnit);
+}
+
+@each $size in $sizes {
+    $sizeKey: nth($size, 1);
+    $sizeValue: nth($size, 2);
+    .#{$marginKey}#{$separator}#{$sizeKey} {
+        margin: sizeValue($sizeKey, $sizeValue) !important;
+    }
+    .#{$paddingKey}#{$separator}#{$sizeKey} {
+        padding: sizeValue($sizeKey, $sizeValue) !important;
+    }
+    @each $position in $positions {
+        $posKey: nth($position, 1);
+        $posValue: nth($position, 2);
+        .#{$marginKey}#{$separator}#{$posKey}#{$separator}#{$sizeKey} {
+            margin-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+        }
+        .#{$paddingKey}#{$separator}#{$posKey}#{$separator}#{$sizeKey} {
+            padding-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+        }
+    }
+}
+
+// Auto Margins
+
+.has-margin-top-auto { margin-top: auto; }
+.has-margin-right-auto { margin-right: auto; }
+.has-margin-bottom-auto { margin-bottom: auto; }
+.has-margin-left-auto { margin-left: auto; }
+
+// Just Because
+
+.has-padding-right-nudge { padding-right: 2px; }

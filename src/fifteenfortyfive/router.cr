@@ -10,14 +10,13 @@ scope "/accounts" do
   post  "/update",  &->AccountsController.update(Krout::Env)
 end
 
-scope "/runs" do
-  get  "/edit",   &->RunsController.edit(Krout::Env)
-  post "/update", &->RunsController.update(Krout::Env)
-end
-
 scope "/events" do
-  get "/", &->EventsController.index(Krout::Env)
-  get "/:event_id", &->EventsController.show(Krout::Env)
+  get  "/", &->EventsController.index(Krout::Env)
+  get  "/:event_id", &->EventsController.show(Krout::Env)
+
+  get  "/:event_id/submit",       &->RunSubmissionsController._new(Krout::Env)
+  post "/:event_id/submit",       &->RunSubmissionsController.create(Krout::Env)
+  get  "/:event_id/submissions",  &->RunSubmissionsController.index(Krout::Env)
 end
 
 
@@ -37,11 +36,6 @@ scope "/admin" do
   get  "/feature_flags/:flag_name/disable", &->Admin::FeatureFlagsController.disable(Krout::Env)
 
   get "/accounts", &->Admin::AccountsController.index(Krout::Env)
-
-  get "/submissions",         &->Admin::SubmissionsController.index(Krout::Env)
-  get "/submissions/runners", &->Admin::SubmissionsController.runners(Krout::Env)
-  get "/submissions/export",          &->Admin::SubmissionsController.export(Krout::Env)
-  get "/submissions/export.:format",  &->Admin::SubmissionsController.export(Krout::Env)
 
   get   "/events",                  &->Admin::EventsController.index(Krout::Env)
   get   "/events/:event_id",        &->Admin::EventsController.show(Krout::Env)

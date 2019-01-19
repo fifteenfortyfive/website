@@ -9,18 +9,32 @@
             <div class="card">
               <div class="card-content">
                 <p class="title is-4">{{event.name}}</p>
+                <p class="subtitle is-6">State: {{event.state}}</p>
               </div>
 
               <footer class="card-footer">
-                <a href="/admin/events/{{event.id}}/edit" class="card-footer-item">
-                  Edit
-                </a>
+                <div class="card-footer-item">
+                  <a href="/events/{{event.id}}">
+                    Go to Event
+                  </a>
+                </div>
+
+                <div class="card-footer-item">
+                  <a href="/admin/events/{{event.id}}/edit">
+                    Edit
+                  </a>
+                </div>
               </footer>
             </div>
           </div>
 
           <div class="column">
-            {{event.description}}
+            <h1 class="title">Summary</h1>
+            {{event.summary | safe}}
+            <h1 class="title">Details</h1>
+            {{event.details | safe}}
+            <h1 class="title">Rules</h1>
+            {{event.rules | safe}}
           </div>
         </div>
       </section>

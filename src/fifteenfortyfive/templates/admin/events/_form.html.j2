@@ -6,9 +6,71 @@
 </div>
 
 <div class="field">
-  <label class="label" for="description">Description</label>
+  <label class="label">Game</label>
+  <div class="control">
+    <div class="select">
+      <select name="game_id">
+        <option value="">No game restriction</option>
+        {% for game in games %}
+          <option
+            value="{{game.id}}"
+            {% if game.id == event.game_id %}
+              selected
+            {% endif %}
+          >
+            {{game.name}}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Category</label>
+  <div class="control">
+    <input class="input" type="text" name="category" placeholder="Any%, 100%, No OOB, etc." value="{{event.category | d('')}}">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="summary">Summary</label>
   <div class="control is-expanded">
-    <textarea class="textarea" type="text" name="description" placeholder="This content will be displayed on the home page of your event">{{event.description|d('')}}</textarea>
+    <textarea class="textarea" type="text" name="summary" placeholder="This content will be displayed on the event calendar">{{event.summary|d('')}}</textarea>
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="details">Details</label>
+  <div class="control is-expanded">
+    <textarea class="textarea" type="text" name="details" placeholder="This content will be displayed on the home page of your event">{{event.details|d('')}}</textarea>
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="rules">Rules</label>
+  <div class="control is-expanded">
+    <textarea class="textarea" type="text" name="rules" placeholder="This content will be displayed on the home page of your event">{{event.rules|d('')}}</textarea>
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="state">Event State</label>
+  <div class="control">
+    <div class="select">
+      <select name="state">
+        {% for state in event.available_states %}
+          <option
+            value="{{state}}"
+            {% if state == event.state %}
+              selected
+            {% endif %}
+          >
+            {{state}}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
   </div>
 </div>
 
@@ -23,5 +85,26 @@
   <label class="label" for="end_time">End Time</label>
   <div class="control is-expanded">
     <input class="input" type="datetime" name="end_time" value="{{event.end_time}}">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="end_time">Signups Open Time</label>
+  <div class="control is-expanded">
+    <input class="input" type="datetime" name="signups_open_time" value="{{event.signups_open_time}}">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="end_time">Signups Close Time</label>
+  <div class="control is-expanded">
+    <input class="input" type="datetime" name="signups_closed_time" value="{{event.signups_closed_time}}">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="end_time">Runners Announced Time</label>
+  <div class="control is-expanded">
+    <input class="input" type="datetime" name="runners_announced_time" value="{{event.runners_announced_time}}">
   </div>
 </div>

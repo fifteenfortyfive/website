@@ -3,7 +3,7 @@ $field-oneline-border: 1px solid $field-oneline-border-color;
 $field-oneline-background-color: lighten($danger, 40%) !default;
 $field-oneline-background-color--darker: darken($field-oneline-background-color, 4%) !default;
 $field-oneline-color: $danger !default;
-$field-oneline-prefix-color: $grey !default;
+$field-oneline-prefix-color: $grey-light !default;
 $field-oneline-font-size: 1rem;
 $field-oneline-label-width: 10ch;
 
@@ -71,10 +71,11 @@ $field-oneline-label-width: 10ch;
       padding-bottom: calc(0.375em - 1px);
       padding-left: calc(0.625em - 1px);
       padding-right: 0;
-      padding-top: calc(0.375em + 1px);
+      padding-top: calc(0.375em - 1px);
 
       &.is-icon {
-        padding-top: calc(0.375em - 1px);
+        margin-left: 0.125rem;
+        margin-right: 0.125rem;
       }
     }
 

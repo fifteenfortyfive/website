@@ -1,4 +1,9 @@
+require "crinja"
+
+@[Crinja::Attributes]
 class Run < Crecto::Model
+  include Crinja::Object::Auto
+
   schema "runs" do
     field :pb, String
     field :estimate, String
@@ -17,8 +22,9 @@ class Run < Crecto::Model
 
     belongs_to :runner, Account, foreign_key: :account_id
     belongs_to :submission, RunnerSubmission, foreign_key: :runner_submission_id
-    belongs_to :game, Game
+    belongs_to :game, Inventory::Game
     belongs_to :team, Team
+    belongs_to :event, Events::Event
   end
 
 

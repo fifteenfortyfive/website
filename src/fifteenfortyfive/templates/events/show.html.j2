@@ -1,0 +1,107 @@
+{% extends "layouts/main.html.j2" %}
+
+{% block title %}
+  {{ event.name }} | The 1545
+{% endblock %}
+
+{% block main %}
+  <div class="container">
+    <main class="content">
+      <section class="section">
+
+        <div class="columns is-multiline">
+          <div class="column is-12">
+            <h1 class="title">{{event.name}}</h1>
+            <span class="is-size-5">{{event.summary | safe}}</span>
+          </div>
+
+          <div class="column is-5 is-4-desktop is-3-fullhd">
+            <div class="card">
+              <div class="card-content">
+                {% if event.game_id %}
+                  <p>
+                    <span class="info-header">Game</span>
+                    <br/>
+                    {{ event.game.name }}
+                  </p>
+                  <p>
+                    <span class="info-header">Category</span>
+                    <br/>
+                    {{ event.category | d('Any Category') }}
+                  </p>
+                {% endif %}
+                <p>
+                  <span class="info-header">Signups Open</span>
+                  <br/>
+                  {% if event.signups_open_time %}
+                    <span class="js-date-string js-localized">
+                      {{ event.signups_open_time | strftime("%s") }}
+                    </span>
+                  {% else %}
+                    Not Set
+                  {% endif %}
+                </p>
+                <p>
+                  <span class="info-header">Signups Close</span>
+                  <br/>
+                  {% if event.signups_closed_time %}
+                    <span class="js-date-string js-localized">
+                      {{ event.signups_closed_time | strftime("%s") }}
+                    </span>
+                  {% else %}
+                    Not Set
+                  {% endif %}
+                </p>
+                <p>
+                  <span class="info-header">Runners Announced</span>
+                  <br/>
+                  {% if event.runners_announced_time %}
+                    <span class="js-date-string js-localized">
+                      {{ event.runners_announced_time | strftime("%s") }}
+                    </span>
+                  {% else %}
+                    Not Set
+                  {% endif %}
+                </p>
+                <p>
+                  <span class="info-header">Event Starts</span>
+                  <br/>
+                  {% if event.start_time %}
+                    <span class="js-date-string js-localized">
+                      {{ event.start_time | strftime("%s") }}
+                    </span>
+                  {% else %}
+                    Not Set
+                  {% endif %}
+                </p>
+                <p>
+                  <span class="info-header">Event Ends</span>
+                  <br/>
+                  {% if event.end_time %}
+                    <span class="js-date-string js-localized">
+                      {{ event.end_time | strftime("%s") }}
+                    </span>
+                  {% else %}
+                    Not Set
+                  {% endif %}
+                </p>
+              </div>
+            </div>
+
+            <div class="buttons has-margin-top-md">
+              <a class="button is-danger is-fullwidth" href="/events/{{event.id}}/submit">Submit a Run</a>
+              <a class="button is-outlined is-fullwidth" href="/events/{{event.id}}/submissions">View Submissions</a>
+            </div>
+          </div>
+
+          <div class="column is-7 is-8-desktop is-9-fullhd">
+            {% if event.rules %}
+              <h1 class="title">Rules</h1>
+              {{event.rules | safe}}
+            {% endif %}
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+{% endblock %}

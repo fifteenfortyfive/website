@@ -8,13 +8,16 @@
 @import "node_modules/bulma/sass/layout/_all";
 
 @import "_fonts";
+@import "_spacing";
 
 @import "elements/avatar";
 @import "elements/brand-logo";
+@import "elements/info-header";
 @import "elements/section";
 
 @import "components/box";
 @import "components/box-link";
+@import "components/card";
 @import "components/event";
 @import "components/footer";
 @import "components/navbar";

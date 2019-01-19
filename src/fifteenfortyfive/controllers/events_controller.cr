@@ -14,7 +14,7 @@ module EventsController
   end
 
   def show(env)
-    event = Events.get_event!(env.params.url["event_id"])
+    event = Events.get_event!(env.params.url["event_id"], Query.preload(:game))
 
     Template.render(env, "events/show.html.j2", {
       "event" => event
