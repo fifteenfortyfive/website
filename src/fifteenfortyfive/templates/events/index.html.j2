@@ -24,7 +24,7 @@
 
             <div class="event-body">
               <p><a class="title has-text-danger is-4" href="/events/{{event.id}}">{{event.name}}</a></p>
-              <p>{{event.description}}</p>
+              {{event.summary | safe }}
             </div>
           </div>
         {% endfor %}

@@ -33,7 +33,8 @@ module Admin::EventsController
     end
 
     Template.render(env, "admin/events/new.html.j2", {
-      "event" => Events.new_event()
+      "event" => Events.new_event(),
+      "games" => Inventory.list_games()
     })
   end
 
@@ -50,7 +51,8 @@ module Admin::EventsController
       env.redirect("/admin/events/#{event.id}")
     else
       Template.render(env, "admin/events/new.html.j2", {
-        "event" => event
+        "event" => event,
+        "games" => Inventory.list_games()
       })
     end
   end
@@ -63,7 +65,8 @@ module Admin::EventsController
 
     event = Events.get_event(env.params.url["event_id"])
     Template.render(env, "admin/events/edit.html.j2", {
-      "event" => event
+      "event" => event,
+      "games" => Inventory.list_games()
     })
   end
 
@@ -80,7 +83,8 @@ module Admin::EventsController
       env.redirect("/admin/events/#{event.id}")
     else
       Template.render(env, "admin/events/edit.html.j2", {
-        "event" => event
+        "event" => event,
+        "games" => Inventory.list_games()
       })
     end
   end
