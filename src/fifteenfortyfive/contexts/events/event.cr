@@ -27,7 +27,9 @@ module Events
       field :signups_closed_time, Time
       field :runners_announced_time, Time
       field :start_time, Time
+      field :start_time_is_estimate, Bool, default: false
       field :end_time, Time
+      field :end_time_is_estimate, Bool, default: false
 
       field :avatar_object_id, String
       field :link, String

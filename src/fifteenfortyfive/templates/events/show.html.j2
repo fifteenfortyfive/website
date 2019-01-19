@@ -70,6 +70,9 @@
                     <span class="js-date-string js-localized">
                       {{ event.start_time | strftime("%s") }}
                     </span>
+                    {% if event.start_time_is_estimate %}
+                      (estimated)
+                    {% endif %}
                   {% else %}
                     Not Set
                   {% endif %}
@@ -81,6 +84,9 @@
                     <span class="js-date-string js-localized">
                       {{ event.end_time | strftime("%s") }}
                     </span>
+                    {% if event.end_time_is_estimate %}
+                      (estimated)
+                    {% endif %}
                   {% else %}
                     Not Set
                   {% endif %}
