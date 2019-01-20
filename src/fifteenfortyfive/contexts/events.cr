@@ -94,4 +94,8 @@ module Events
             minutes.to_i * 60 +
             seconds.to_i
   end
+
+  def accepting_submissions?(event : Event)
+    event.state == "signups open"
+  end
 end
