@@ -26,13 +26,29 @@ module Events
   end
 
   def create_event(attrs)
+    parsed_attrs = attrs.to_h.merge({
+      "start_time"              => maybe_parse_date_time(attrs, "start_time"),
+      "end_time"                => maybe_parse_date_time(attrs, "end_time"),
+      "signups_open_time"       => maybe_parse_date_time(attrs, "signups_open_time"),
+      "signups_closed_time"     => maybe_parse_date_time(attrs, "signups_closed_time"),
+      "runners_announced_time"  => maybe_parse_date_time(attrs, "runners_announced_time")
+    })
+
     event = Event.new
-    event = event.cast(attrs)
+    event = event.cast(parsed_attrs)
     Repo.insert(event)
   end
 
   def update_event(event : Event, changes)
-    changeset = event.cast(changes)
+    parsed_changes = changes.to_h.merge({
+      "start_time"              => maybe_parse_date_time(changes, "start_time"),
+      "end_time"                => maybe_parse_date_time(changes, "end_time"),
+      "signups_open_time"       => maybe_parse_date_time(changes, "signups_open_time"),
+      "signups_closed_time"     => maybe_parse_date_time(changes, "signups_closed_time"),
+      "runners_announced_time"  => maybe_parse_date_time(changes, "runners_announced_time")
+    })
+
+    changeset = event.cast(parsed_changes)
     Repo.update(changeset)
   end
 
@@ -97,5 +113,14 @@ module Events
 
   def accepting_submissions?(event : Event)
     event.state == "signups open"
+  end
+
+  def maybe_parse_date_time(attrs, attribute)
+    if (value = attrs[attribute]?) && !value.empty?
+      puts value
+      t = Time.parse(value, "%FT%T.%3NZ", Time::Location::UTC)
+    else
+      nil
+    end
   end
 end

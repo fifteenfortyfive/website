@@ -23,7 +23,7 @@ visor = Honcho::Visor.new(strategy: Honcho::Strategy::ISOLATED)
 
 # Delay restarting the stream status service by one full rate-limit window to avoid
 # an infinite loop of timeouts.
-visor.start_supervised("stream statuses", delay: 60.0, &->StreamStatusService.run)
+# visor.start_supervised("stream statuses", delay: 60.0, &->StreamStatusService.run)
 visor.start_supervised("kemal") { Kemal.run(APP_PORT) }
 # visor.start_supervised("socket service", &->SocketService.run)
 

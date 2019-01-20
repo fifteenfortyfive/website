@@ -75,9 +75,9 @@
 </div>
 
 <div class="field">
-  <label class="label" for="start_time">Start Time</label>
+  <label class="label" for="start_time">Start Time (Local Time)</label>
   <div class="control is-expanded">
-    <input class="input" type="datetime" name="start_time" value="{{event.start_time}}">
+    <input class="input js-datepicker" name="start_time" value="{{event.start_time|d('')}}">
   </div>
 
   <label class="checkbox">
@@ -87,9 +87,9 @@
 </div>
 
 <div class="field">
-  <label class="label" for="end_time">End Time</label>
+  <label class="label" for="end_time">End Time (Local Time)</label>
   <div class="control is-expanded">
-    <input class="input" type="datetime" name="end_time" value="{{event.end_time}}">
+    <input class="input js-datepicker" name="end_time" value="{{event.end_time|d('')}}">
   </div>
 
 
@@ -100,22 +100,22 @@
 </div>
 
 <div class="field">
-  <label class="label" for="end_time">Signups Open Time</label>
+  <label class="label" for="end_time">Signups Open Time (Local Time)</label>
   <div class="control is-expanded">
-    <input class="input" type="datetime" name="signups_open_time" value="{{event.signups_open_time}}">
+    <input class="input js-datepicker" name="signups_open_time" value="{{event.signups_open_time|d('')}}">
   </div>
 </div>
 
 <div class="field">
-  <label class="label" for="end_time">Signups Close Time</label>
+  <label class="label" for="end_time">Signups Close Time (Local Time)</label>
   <div class="control is-expanded">
-    <input class="input" type="datetime" name="signups_closed_time" value="{{event.signups_closed_time}}">
+    <input class="input js-datepicker" name="signups_closed_time" value="{{event.signups_closed_time|d('')}}">
   </div>
 </div>
 
 <div class="field">
-  <label class="label" for="end_time">Runners Announced Time</label>
+  <label class="label" for="end_time">Runners Announced Time (Local Time)</label>
   <div class="control is-expanded">
-    <input class="input" type="datetime" name="runners_announced_time" value="{{event.runners_announced_time}}">
+    <input class="input js-datepicker" name="runners_announced_time" value="{{event.runners_announced_time|d('')}}">
   </div>
 </div>

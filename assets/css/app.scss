@@ -27,3 +27,8 @@
 @import "forms/fields";
 
 @import "pages/index";
+
+
+@import "node_modules/flatpickr/dist/flatpickr.min";
+@import "node_modules/flatpickr/dist/themes/airbnb";
+@import "fixes/flatpickr";
