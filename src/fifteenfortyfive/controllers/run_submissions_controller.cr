@@ -7,7 +7,10 @@ module RunSubmissionsController
 
   def index(env)
     event = Events.get_event!(env.params.url["event_id"])
-    submissions = Events.list_run_submissions(Query.where(event_id: event.id).preload([:account, :game]))
+    submissions = Events.list_run_submissions(Query.
+      where(event_id: event.id, revoked: "false").
+      preload([:account, :game])
+    )
 
     Template.render(env, "run_submissions/index.html.j2", {
       "event" => event,
@@ -23,6 +26,11 @@ module RunSubmissionsController
 
     event = Events.get_event!(env.params.url["event_id"], Query.preload(:game))
 
+    unless Events.accepting_submissions?(event)
+      env.redirect("/events/#{event.id}")
+      return
+    end
+
     Template.render(env, "run_submissions/new.html.j2", {
       "submission" => Events.new_run_submission(),
       "event" => event,
@@ -37,6 +45,11 @@ module RunSubmissionsController
     end
 
     event = Events.get_event!(env.params.url["event_id"], Query.preload(:game))
+
+    unless Events.accepting_submissions?(event)
+      env.redirect("/events/#{event.id}")
+      return
+    end
 
     updated_params = env.params.body.to_h.merge({
       "event_id" => event.id,

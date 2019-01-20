@@ -21,4 +21,20 @@ module Template
 
     "%02d:%02d:%02d" % [hours, minutes, seconds]
   end
+
+  ENGINE.filters["unique"] = Crinja.filter do |arguments|
+    if target.none?
+      ""
+    elsif arguments.is_set?("attribute")
+      attribute = arguments["attribute"].raw
+      arguments.target!.map do |item|
+        Crinja::Resolver.resolve_getattr(attribute, item)
+      end.uniq
+    else
+      varargs = arguments.varargs
+      filter = env.filters[varargs.shift.as_s!]
+
+      target.to_a.uniq
+    end
+  end
 end
