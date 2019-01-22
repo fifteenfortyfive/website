@@ -1,24 +1,29 @@
+require "http"
+
 class HTTP::Server::Context
   property! current_user : Account
   property! session : Session
 end
 
-class SessionHandler < Kemal::Handler
-  def call(env)
-    set_current_user(env)
-    call_next(env)
+class SessionHandler
+  include HTTP::Handler
+
+  def call(conn : HTTP::Server::Context)
+    set_current_user(conn)
+    call_next(conn)
   end
 
-  def set_current_user(env)
-    return unless session_id = env.request.cookies["1545_session_id"]?
+  def set_current_user(conn)
+    return unless session_id = conn.request.cookies["1545_session_id"]?
+    session_id = session_id.value
 
-    session = Repo.get_by(Session, id: session_id.value)
-    return unless session && session.valid?
+    session = Accounts.get_valid_session(session_id)
+    return unless session
 
-    account = Repo.get_association(session, :account)
+    account = Accounts.get_account_for_session(session)
     return unless account
 
-    env.session = session.as(Session)
-    env.current_user = account.as(Account)
+    conn.session = session.as(Session)
+    conn.current_user = account.as(Account)
   end
 end

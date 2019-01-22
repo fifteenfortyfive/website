@@ -1,54 +1,39 @@
 require "awscr-s3"
 require "../contexts/accounts"
 
-module AccountsController
-  extend BaseController
-  extend self
-
-  def _new(env)
-    error = nil
-    Template.render(env, "accounts/new.html.j2")
+class AccountsController < AppController
+  def new
+    render("accounts/new.html.j2")
   end
 
-  def create(env)
-    changeset = Accounts.create_account(env.params.body)
+  def create
+    changeset = Accounts.create_account(body_params)
 
     if changeset.valid?
-      sign_in_user(env, changeset.instance)
-      env.redirect("/")
+      sign_in_user(changeset.instance)
+      redirect_to root_path
       spawn{ TwitchService.get_user_id_for(changeset.instance) }
     else
-      pp changeset.errors
-      Template.render(env, "accounts/new.html.j2")
+      render("accounts/new.html.j2")
     end
   end
 
-  def show(env)
-    account = Repo.get!(Account, env.params.url["id"])
+  def show
+    account = Repo.get!(Account, url_params["id"])
 
-    Template.render(env, "accounts/show.html.j2", {
+    render("accounts/show.html.j2", {
       "account" => account
     })
   end
 
-  def edit(env)
-    unless env.current_user?
-      env.redirect("/signin")
-      return
-    end
-
-    Template.render(env, "accounts/edit.html.j2")
+  def edit
+    render("accounts/edit.html.j2")
   end
 
-  def update(env)
-    unless env.current_user?
-      env.redirect("/signin")
-      return
-    end
+  def update
+    account = @context.current_user
 
-    account = env.current_user
-
-    HTTP::FormData.parse(env.request) do |part|
+    HTTP::FormData.parse(@context.request) do |part|
       case part.name
       when "avatar"
         # TODO: figure out how to handle avatar uploads again
@@ -81,11 +66,11 @@ module AccountsController
     changeset = Repo.update(account)
 
     if changeset.valid?
-      sign_in_user(env, changeset.instance)
-      env.redirect("/")
+      sign_in_user(changeset.instance)
+      redirect_to root_path
       spawn{ TwitchService.get_user_id_for(account) }
     else
-      Template.render(env, "accounts/edit.html.j2")
+      render("accounts/edit.html.j2")
     end
   end
 

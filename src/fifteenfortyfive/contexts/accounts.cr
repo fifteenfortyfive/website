@@ -50,11 +50,11 @@ module Accounts
   ###
 
   def get_session(session_id, query : Query = Query.new)
-    Repo.all(Session, query.where(key: session_id)).first?
+    Repo.all(Session, query.where(id: session_id)).first?
   end
 
   def get_valid_session(session_id, query : Query = Query.new)
-    get_session(session_id, query.where(valid: "true"))
+    get_session(session_id, query.where(active: "true"))
   end
 
   def create_session(account : Account)
@@ -69,7 +69,7 @@ module Accounts
   end
 
   def invalidate_session(session : Session)
-    session.valid = false
+    session.active = false
     Repo.update(session)
   end
 end

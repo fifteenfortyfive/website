@@ -1,39 +1,36 @@
-module SessionsController
-  extend BaseController
-  extend self
-
-  def _new(env)
-    redirect_target = env.params.query["redirect"]? || "/"
-    Template.render(env, "sessions/new.html.j2")
+class SessionsController < AppController
+  def new
+    redirect_target = query_params["redirect"]? || "/"
+    render("sessions/new.html.j2")
   end
 
-  def create(env)
-    username = env.params.body["username"].as(String)
-    password = env.params.body["password"].as(String)
-    redirect_target = env.params.query["redirect"]? || "/"
+  def create
+    username = body_params["username"]
+    password = body_params["password"]
+    redirect_target = query_params["redirect"]? || "/"
 
     account = Repo.get_by(Account, username: username)
 
     unless account
-      render_error(env, 422, "Username does not exist")
+      render_error(422, "Username does not exist")
       return
     end
 
     unless account.password_matches?(password)
-      render_error(env, 422, "Wrong password")
+      render_error(422, "Wrong password")
       return
     end
 
-    sign_in_user(env, account)
-    env.redirect(redirect_target)
+    sign_in_user(account)
+    redirect_to(redirect_target)
   end
 
-  def destroy(env)
-    if session = env.session?
+  def destroy
+    if session = @context.session?
       session.active = false
       Repo.update(session)
     end
 
-    env.redirect("/")
+    redirect_to("/")
   end
 end

@@ -18,9 +18,6 @@ module Template
     {
       "user" => conn.current_user?,
       "constants" => Constants.template_constants
-      # "user_is_admin" => conn.current_user_is_admin?,
-      # "session" => conn.session? ? conn.session.to_h : nil,
-      # "event" => conn.event? ? conn.event.to_h : nil
     }
   end
 end
