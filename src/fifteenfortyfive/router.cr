@@ -1,61 +1,68 @@
-macro render_view(template)
-  render "src/fifteenfortyfive/views/{{template.id}}.slang", "src/fifteenfortyfive/views/_layout.slang"
-end
+require "orion"
 
-scope "/accounts" do
-  get   "/:id",     &->AccountsController.show(Krout::Env)
-  get   "/new",     &->AccountsController._new(Krout::Env)
-  post  "/create",  &->AccountsController.create(Krout::Env)
-  get   "/edit",    &->AccountsController.edit(Krout::Env)
-  post  "/update",  &->AccountsController.update(Krout::Env)
-end
+router AppRouter do
+  use HTTP::ErrorHandler
+  use HTTP::LogHandler.new(STDOUT)
+  use SessionHandler
 
-scope "/events" do
-  get  "/", &->EventsController.index(Krout::Env)
-  get  "/:event_id", &->EventsController.show(Krout::Env)
+  concern :authenticated do
+    use AuthenticationHandler
+  end
 
-  get  "/:event_id/submit",       &->RunSubmissionsController._new(Krout::Env)
-  post "/:event_id/submit",       &->RunSubmissionsController.create(Krout::Env)
-  get  "/:event_id/submissions",  &->RunSubmissionsController.index(Krout::Env)
-end
+  concern :admin_authorized do
+    implements :authenticated
+    use AuthorizationHandler.new(required_level: :admin)
+  end
 
 
+  scope "accounts", helper_prefix: "user" do
+    get   ":id",    to: "accounts#show",    helper: "show"
+    get   "new",    to: "accounts#new",     helper: "new"
+    post  "create", to: "accounts#create",  helper: "create"
 
-scope "/admin" do
-  before_all do |env|
-    unless env.current_user? && env.current_user.admin
-      halt(env, status_code: 404, response: "Not Found")
+    implements :authenticated
+    get   "edit",   to: "accounts#edit",    helper: "edit"
+    post  "update", to: "accounts#update",  helper: "update"
+  end
+
+  scope "events", helper_prefix: "events" do
+    root to: "events#index"
+    get  ":event_id",             to: "events#show",              helper: "show"
+    get  ":event_id/submissions", to: "run_submissions#index",    helper: "run_submissions"
+
+    implements :authenticated
+    get  ":event_id/submit",       to: "run_submissions#new",     helper: "submit"
+    post ":event_id/submit",       to: "run_submissions#create",  helper: "create"
+  end
+
+
+  scope "admin", helper_prefix: "admin" do
+    implements :admin_authorized
+
+    scope "events", helper_prefix: "events" do
+      root to: "admin::Events#index"
+      get   "/:event_id",        to: "admin::Events#show",    helper: "show"
+      get   "/new",              to: "admin::Events#new",     helper: "new"
+      post  "/create",           to: "admin::Events#create",  helper: "create"
+      get   "/:event_id/edit",   to: "admin::Events#edit",    helper: "edit"
+      post  "/:event_id/update", to: "admin::Events#update",  helper: "update"
     end
   end
 
-  get "", &->AdminController.index(Krout::Env)
 
-  get  "/feature_flags",                    &->Admin::FeatureFlagsController.index(Krout::Env)
-  post "/feature_flags/create",             &->Admin::FeatureFlagsController.create(Krout::Env)
-  get  "/feature_flags/:flag_name/enable",  &->Admin::FeatureFlagsController.enable(Krout::Env)
-  get  "/feature_flags/:flag_name/disable", &->Admin::FeatureFlagsController.disable(Krout::Env)
+  root to: "static#index"
+  get   "volunteer", to: "static#volunteer", helper: "static_volunteer"
 
-  get "/accounts", &->Admin::AccountsController.index(Krout::Env)
+  get   "signin",  to: "sessions#new", helper: "login"
+  post  "signin",  to: "sessions#create", helper: "sessions_create"
+  get   "signout", to: "sessions#destroy", helper: "logout"
 
-  get   "/events",                  &->Admin::EventsController.index(Krout::Env)
-  get   "/events/:event_id",        &->Admin::EventsController.show(Krout::Env)
-  get   "/events/new",              &->Admin::EventsController._new(Krout::Env)
-  post  "/events/create",           &->Admin::EventsController.create(Krout::Env)
-  get   "/events/:event_id/edit",   &->Admin::EventsController.edit(Krout::Env)
-  post  "/events/:event_id/update", &->Admin::EventsController.update(Krout::Env)
+
+  ## Static assets
+  scope "css" do
+    use HTTP::StaticFileHandler.new("public/", fallthrough: false, directory_listing: false)
+  end
+  scope "js" do
+    use HTTP::StaticFileHandler.new("public/", fallthrough: false, directory_listing: false)
+  end
 end
-
-
-
-scope "/api" do
-  get "/stream-status",   &->API::StreamStatusController.index(Krout::Env)
-end
-
-
-get "/", &->StaticController.index(Krout::Env)
-get "/volunteer", &->StaticController.volunteer(Krout::Env)
-get "/event-calendar", &->StaticController.event_calendar(Krout::Env)
-
-get   "/signin",  &->SessionsController._new(Krout::Env)
-post  "/signin",  &->SessionsController.create(Krout::Env)
-get   "/signout", &->SessionsController.destroy(Krout::Env)
