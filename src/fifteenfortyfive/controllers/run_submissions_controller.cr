@@ -19,7 +19,7 @@ class RunSubmissionsController < AppController
     event = Events.get_event!(url_params["event_id"], Query.preload(:game))
 
     unless Events.accepting_submissions?(event)
-      redirect_to("/events/#{event.id}")
+      redirect_to events_show_path(event_id: event.id)
       return
     end
 
@@ -34,7 +34,7 @@ class RunSubmissionsController < AppController
     event = Events.get_event!(url_params["event_id"], Query.preload(:game))
 
     unless Events.accepting_submissions?(event)
-      redirect_to("/events/#{event.id}")
+      redirect_to events_show_path(event_id: event.id)
       return
     end
 
@@ -49,7 +49,7 @@ class RunSubmissionsController < AppController
     submission = changeset.instance
 
     if changeset.valid?
-      redirect_to("/events/#{event.id}")
+      redirect_to events_show_path(event_id: event.id)
     else
       render("run_submissions/new.html.j2", {
         "submission" => submission,

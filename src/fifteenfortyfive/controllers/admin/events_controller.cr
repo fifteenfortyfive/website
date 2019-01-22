@@ -25,7 +25,7 @@ class Admin::EventsController < AppController
     event = changeset.instance
 
     if changeset.valid?
-      redirect_to("/admin/events/#{event.id}")
+      redirect_to admin_events_show_path(event_id: event.id)
     else
       render("admin/events/new.html.j2", {
         "event" => event,
@@ -47,7 +47,7 @@ class Admin::EventsController < AppController
     changeset = Events.update_event(event, body_params)
 
     if changeset.valid?
-      redirect_to("/admin/events/#{event.id}")
+      redirect_to admin_events_show_path(event_id: event.id)
     else
       render("admin/events/edit.html.j2", {
         "event" => event,
