@@ -4,6 +4,7 @@ module Constants
   TWITCH_URL  = "https://twitch.tv/The1545"
   TWITTER_URL = "https://twitter.com/The_1545"
   SRCOM_URL   = "https://www.speedrun.com/1545"
+  YOUTUBE_URL = "https://www.youtube.com/channel/UCH-_VSTu551p5M4Oz95GIjQ"
 
   CONTACT_EMAIL = "contact@fifteenfortyfive.org"
   VOLUNTEER_EMAIL = "volunteer@fifteenfortyfive.org"
@@ -29,6 +30,7 @@ module Constants
       "twitch_url" => TWITCH_URL,
       "twitter_url" => TWITTER_URL,
       "srcom_url" => SRCOM_URL,
+      "youtube_url" => YOUTUBE_URL,
       "assets_url" => ASSETS_URL,
       "contact_email" => CONTACT_EMAIL,
       "volunteer_email" => VOLUNTEER_EMAIL
