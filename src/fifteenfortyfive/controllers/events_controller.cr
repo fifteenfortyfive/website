@@ -4,6 +4,9 @@ require "../contexts/accounts"
 class EventsController < AppController
   def index
     events = Events.list_events(Query.order_by("start_time ASC").where("start_time > now()"))
+    render("events/index.html.j2", {
+      "events" => events
+    })
   end
 
   def show
