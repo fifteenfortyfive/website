@@ -6,7 +6,8 @@ class RunSubmissionsController < AppController
     event = Events.get_event!(url_params["event_id"])
     submissions = Events.list_run_submissions(Query.
       where(event_id: event.id, revoked: "false").
-      preload([:account, :game])
+      preload([:account, :game]).
+      order_by("created_at ASC")
     )
 
     render("run_submissions/index.html.j2", {

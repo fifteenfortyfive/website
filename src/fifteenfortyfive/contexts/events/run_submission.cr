@@ -17,6 +17,7 @@ module Events
       field :comment, String
 
       field :revoked, Bool, default: false
+      field :accepted, Bool, default: false
     end
   end
 end

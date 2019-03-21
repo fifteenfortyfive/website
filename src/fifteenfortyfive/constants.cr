@@ -16,7 +16,7 @@ module Constants
 
 
   # Asset Storage configuration (avatars, etc.)
-  ASSETS_URL  = "https://fifteenfortyfive-assets.nyc3.digitaloceanspaces.com"
+  ASSETS_URL  = "https://fifteenfortyfive-assets.nyc3.cdn.digitaloceanspaces.com"
   STORAGE_CLIENT = Awscr::S3::Client.new(
     ENV["ASSETS_REGION"],
     ENV["ASSETS_KEY"],

@@ -93,6 +93,16 @@ module Events
     Repo.delete(submission)
   end
 
+  def accept_run_submission(submission : RunSubmission)
+    submission.accepted = true
+    Repo.update(submission)
+  end
+
+  def unaccept_run_submission(submission : RunSubmission)
+    submission.accepted = false
+    Repo.update(submission)
+  end
+
 
 
   ###

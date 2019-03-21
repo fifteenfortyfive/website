@@ -26,6 +26,46 @@
                 </div>
               </footer>
             </div>
+
+            <h1 class="title is-4">Accepted Runs</h1>
+
+            <table class="table is-fullwidth">
+              <thead>
+                <tr>
+                  <th>Runner</th>
+                  <th>EST/PB</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for submission in accepted_submissions %}
+                  <tr>
+                    <td style="max-width: 60%">
+                      <div class="media">
+                        <div class="media-left">
+                          <figure class="image is-32x32 is-square is-marginless">
+                            <img class="avatar" src="{{ conn.constants.assets_url }}/{{ submission.account.avatar_object_id }}">
+                          </figure>
+                        </div>
+                        <div class="media-content">
+                          <p>{{submission.account.username}}</p>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      <strong>{{submission.est_seconds | duration}}</strong>
+                      <br/>
+                      <span>{{submission.pb_seconds | duration}}</span>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+            <a class="button is-danger is-fullwidth" href="/admin/events/{{event.id}}/submissions">
+              Manage Submissions
+            </a>
           </div>
 
           <div class="column">
