@@ -74,13 +74,36 @@
               </div>
             </div>
 
-            <div class="buttons has-margin-top-md">
-              {% if event.state == "signups open" %}
+            {% if event.state == "signups open" %}
+              <div class="buttons has-margin-top-md">
                 <a class="button is-danger is-fullwidth" href="/events/{{event.id}}/submit">Submit a Run</a>
-              {% endif %}
+                <a class="button is-outlined is-fullwidth" href="/events/{{event.id}}/submissions">View Submissions</a>
+              </div>
+            {% elif event.state == "runners announced" %}
+              <div class="card has-margin-top-lg">
+                <div class="card-content">
+                  <h1 class="title is-4">Runners</h1>
 
-              <a class="button is-outlined is-fullwidth" href="/events/{{event.id}}/submissions">View Submissions</a>
-            </div>
+                  {% for submission in accepted_submissions %}
+                    <div class="media">
+                      <div class="media-left">
+                        <figure class="image is-48x48 is-square is-marginless">
+                          <img class="avatar" src="{{ conn.constants.assets_url }}/{{ submission.account.avatar_object_id }}">
+                        </figure>
+                      </div>
+                      <div class="media-content">
+                        <p class="title is-6 has-margin-top-xxs has-margin-bottom-none">
+                          {{submission.account.username}}
+                        </p>
+                        <p class="is-6 has-text-grey has-margin-top-none">
+                          <span>PB: {{submission.pb_seconds | duration}}</span>
+                        </p>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
           </div>
 
           <div class="column is-7 is-8-desktop is-9-fullhd">

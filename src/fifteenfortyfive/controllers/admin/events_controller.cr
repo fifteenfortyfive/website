@@ -7,9 +7,16 @@ class Admin::EventsController < AppController
   end
 
   def show
-    event = Events.get_event(url_params["event_id"], Query.preload(:owner))
+    event = Events.get_event!(url_params["event_id"], Query.preload(:owner))
+    submissions = Events.list_run_submissions(Query.
+      where(event_id: event.id, revoked: "false").
+      preload([:account, :game]).
+      order_by("created_at ASC")
+    )
+    accepted_submissions = submissions.select(&.accepted)
     render("admin/events/show.html.j2", {
-      "event" => event
+      "event" => event,
+      "accepted_submissions" => accepted_submissions
     })
   end
 

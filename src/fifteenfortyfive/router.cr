@@ -46,6 +46,10 @@ router AppRouter do
       post  "/create",           to: "admin::Events#create",  helper: "create"
       get   "/:event_id/edit",   to: "admin::Events#edit",    helper: "edit"
       post  "/:event_id/update", to: "admin::Events#update",  helper: "update"
+
+      get   "/:event_id/submissions", to: "admin::RunSubmissions#index",  helper: "submissions"
+      get   "/:event_id/submissions/:submission_id/accept", to: "admin::RunSubmissions#accept",  helper: "submissions_accept"
+      get   "/:event_id/submissions/:submission_id/unaccept", to: "admin::RunSubmissions#unaccept",  helper: "submissions_unaccept"
     end
   end
 
