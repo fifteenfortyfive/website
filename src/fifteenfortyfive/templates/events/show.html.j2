@@ -30,13 +30,16 @@
                     {{ event.category | d('Any Category') }}
                   </p>
                 {% endif %}
-                <p>
-                  <span class="info-header">Signups Open</span>
-                  <br/>
-                  <span class="js-date-string js-localized">
-                    {{ event.signups_open_time | strftime("%s", default="Not Set") }}
-                  </span>
-                </p>
+                {% if event.signups_open_time %}
+                  <p>
+                    <span class="info-header">Signups Open</span>
+                    <br/>
+                    <span class="js-date-string js-localized">
+                      {{ event.signups_open_time | strftime("%s", default="Not Set") }}
+                    </span>
+                  </p>
+                {% endif %}
+                {% if event.signups_closed_time %}
                 <p>
                   <span class="info-header">Signups Close</span>
                   <br/>
@@ -44,6 +47,8 @@
                     {{ event.signups_closed_time | strftime("%s", default="Not Set") }}
                   </span>
                 </p>
+                {% endif %}
+                {% if event.runners_announced_time %}
                 <p>
                   <span class="info-header">Runners Announced</span>
                   <br/>
@@ -51,6 +56,7 @@
                     {{ event.runners_announced_time | strftime("%s", default="Not Set") }}
                   </span>
                 </p>
+                {% endif %}
                 <p>
                   <span class="info-header">Event Starts</span>
                   <br/>
@@ -107,7 +113,11 @@
           </div>
 
           <div class="column is-7 is-8-desktop is-9-fullhd">
-            {% if event.rules %}
+            {% if event.details != "" %}
+              <h1 class="title">Details</h1>
+              {{event.details | safe}}
+            {% endif %}
+            {% if event.rules != "" %}
               <h1 class="title">Rules</h1>
               {{event.rules | safe}}
             {% endif %}
