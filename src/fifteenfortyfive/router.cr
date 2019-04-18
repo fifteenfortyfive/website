@@ -51,6 +51,10 @@ router AppRouter do
       get   "/:event_id/submissions/:submission_id/accept", to: "admin::RunSubmissions#accept",  helper: "submissions_accept"
       get   "/:event_id/submissions/:submission_id/unaccept", to: "admin::RunSubmissions#unaccept",  helper: "submissions_unaccept"
     end
+
+    scope "users", helper_prefix: "users" do
+      root to: "admin::Users#index"
+    end
   end
 
 
