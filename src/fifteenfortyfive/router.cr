@@ -3,6 +3,7 @@ require "orion"
 router AppRouter do
   use HTTP::ErrorHandler
   use HTTP::LogHandler.new(STDOUT)
+  use AnalyticsHandler
   use SessionHandler
 
   concern :authenticated do
