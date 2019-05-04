@@ -22,8 +22,7 @@ class AnalyticsHandler
 
     Analytics.track(
       Analytics::Event.page_requested(
-        request_id: conn.request_id.to_s,
-        path: path,
+        conn: conn,
         processing_time: processing_time,
         timestamp: request_start
       )
