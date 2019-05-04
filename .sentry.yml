@@ -4,3 +4,4 @@ build: crystal build src/fifteenfortyfive.cr --no-debug
 watch:
   - src/fifteenfortyfive/*.cr
   - src/fifteenfortyfive/**/*.cr
+  - src/analytics/*.cr

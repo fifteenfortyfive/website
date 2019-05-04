@@ -20,12 +20,23 @@ class AnalyticsHandler
 
     processing_time = (request_end - request_start).total_nanoseconds
 
-    Analytics.track(
-      Analytics::Event.page_requested(
-        conn: conn,
-        processing_time: processing_time,
-        timestamp: request_start
-      )
-    )
+    # Forcing `flush` ensures that requests all act "atomically". Or, at least,
+    # so long as the request does not crash the server, all analytics events
+    # for that request will be sent as soon as it finishes processing.
+    Analytics.track({
+      "type" => Analytics::Events::PAGE_REQUESTED,
+      "request_id" => conn.request_id.to_s,
+      "timestamp" => request_start,
+      "request_host" => conn.request.host,
+      "request_path" => conn.request.path,
+      "request_method" => conn.request.method,
+      "referrer" => conn.request.headers["Referer"]?,
+      "request_user_agent" => conn.request.headers["User-Agent"]?,
+      "response_status" => conn.response.status_code,
+      "response_content_type" => conn.response.headers["Content-Type"]?,
+      "response_content_length" => conn.response.headers["Content-Length"]?,
+      "is_authenticated" => !!conn.session?,
+      "processing_time" => processing_time
+    }, flush: true)
   end
 end
