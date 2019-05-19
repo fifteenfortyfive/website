@@ -215,6 +215,10 @@ $field-oneline-label-width: 10ch;
   }
 }
 
+.field + p {
+  margin-top: 2em;
+}
+
 .input.button {
   font-weight: $weight-bold;
   box-shadow: none;

@@ -219,7 +219,7 @@ class App extends Component {
 
                         { hasSubmitted &&
                           <div class="notification is-success">
-                            <p>You're submission has been entered!</p>
+                            <p>Your submission has been entered!</p>
                           </div>
                         }
                       </div>

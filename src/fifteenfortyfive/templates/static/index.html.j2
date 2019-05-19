@@ -19,9 +19,11 @@
 
           <div class="navbar-menu" id="primaryNav">
             <div class="navbar-start">
-              <a class="navbar-item" href="/events">
-                Event Calendar
-              </a>
+              <div class="navbar-item">
+                <a href="/events/16/submit" class="button is-danger">
+                  <strong>Submit a Run!</strong>
+                </a>
+              </div>
 
               <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">
@@ -123,6 +125,24 @@
         <h2 class="subtitle">
           July 12-14, 2019
         </h2>
+{#
+        <div class="nag-message">
+          <p class="nag-header">Signups for the main event are open now!</p>
+          <div class="nag-content">
+            <p>
+              Head over to the <a href="/events/16/submit">Submissions page</a> to submit your runs! Signups will close on June 1st, so make sure to get your runs in before then!
+            </p>
+          </div>
+        </div> #}
+
+        <article class="message is-danger">
+          <div class="message-header">
+            Signups are now open!
+          </div>
+          <div class="message-body">
+            Head over to the <a href="/events/16/submit">Submissions page</a> to submit your runs! Signups will close on June 1st, so make sure to get your runs in before then!
+          </div>
+        </article>
       </div>
     </div>
 

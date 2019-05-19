@@ -7,7 +7,8 @@
     position: relative;
 
     .splash-primary {
-      padding-bottom: 8rem;
+      padding-top: 0;
+      padding-bottom: 0rem;
     }
 
     .hero-body {
@@ -19,6 +20,13 @@
         text-transform: uppercase;
         font-weight: bold;
         letter-spacing: 4px;
+        margin-bottom: 2rem;
+      }
+
+      .message {
+        margin: auto;
+        margin-top: 4rem;
+        max-width: 560px;
       }
 
       @include tablet {
