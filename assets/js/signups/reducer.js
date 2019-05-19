@@ -37,7 +37,15 @@ const defaultState = {
   // Whether the submission has been revoked
   revoked: false,
   // True once the user has hit the submit button
-  submitting: false
+  submitting: false,
+  // Current user information
+  user: {
+    username: null,
+    twitter: null,
+    twitch: null,
+    discord_username: null,
+    discord_discriminator: null
+  }
 };
 
 const reducerActions = {
@@ -137,7 +145,8 @@ const reducerActions = {
       pairWith: data.pair_with,
       avoid: data.avoid,
       captain: data.captain,
-      submitting: false
+      submitting: false,
+      user: data.user
     }
   }
 }

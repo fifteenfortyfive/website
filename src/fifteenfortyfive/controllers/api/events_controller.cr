@@ -31,7 +31,14 @@ class API::EventsController < AppController
           name: run.game.name,
           pb: Events.seconds_to_string(run.pb_seconds.as(Int)),
           est: Events.seconds_to_string(run.est_seconds.as(Int))
-        }}
+        }},
+        user: {
+          username: user.username,
+          twitter: user.twitter,
+          twitch: user.twitch,
+          discord_username: user.discord_username,
+          discord_discriminator: user.discord_discriminator
+        }
       }
     })
   end

@@ -63,6 +63,7 @@ class App extends Component {
       captain,
       submitting,
       hasSubmitted,
+      user,
       dispatch,
     } = this.props;
 
@@ -82,13 +83,7 @@ class App extends Component {
                       <div class="column is-10">
                         <h3>User Information</h3>
                         <UserInfo
-                          user={{
-                            username: "faulty",
-                            twitter: "amfaulty",
-                            twitch: "amfaulty",
-                            discord_username: "faulty",
-                            discord_discriminator: "7958"
-                          }}
+                          user={user}
                         />
 
 
