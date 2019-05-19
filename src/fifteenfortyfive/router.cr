@@ -58,6 +58,15 @@ router AppRouter do
     end
   end
 
+  scope "api" do
+    implements :authenticated
+
+    scope "events" do
+      get  "/:event_id/runner_submission", to: "aPI::Events#get_existing_submission"
+      post "/:event_id/submit", to: "aPI::Events#submit"
+    end
+  end
+
 
   root to: "static#index"
   get   "volunteer", to: "static#volunteer", helper: "static_volunteer"

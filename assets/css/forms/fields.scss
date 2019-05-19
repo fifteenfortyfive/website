@@ -13,6 +13,10 @@ $field-oneline-label-width: 10ch;
   background-color: $field-oneline-background-color;
 }
 
+.field-group {
+  margin: 2rem 0;
+}
+
 .field {
   .control.is-oneline {
     display: flex;
@@ -46,6 +50,10 @@ $field-oneline-label-width: 10ch;
       border-right: $field-oneline-border;
       margin: 0.25em 0;
       padding: 0 0.25em;
+
+      &.is-paddingless {
+        padding: 0;
+      }
     }
 
     .input {
@@ -82,6 +90,78 @@ $field-oneline-label-width: 10ch;
     .prefix + .input {
       padding-left: calc(0.375em - 1px);
     }
+
+    .suffix {
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      color: $field-oneline-prefix-color;
+      font-size: $field-oneline-font-size;
+      padding-bottom: calc(0.375em - 1px);
+      padding-left: calc(0.625em - 1px);
+      padding-right: 0;
+      padding-top: calc(0.375em + 1px);
+
+      &.is-icon {
+        margin-left: 0.125rem;
+        margin-right: 0.125rem;
+      }
+    }
+
+    &:hover {
+      .suffix {
+        color: $field-oneline-color;
+      }
+    }
+
+    .input.select {
+      position: relative;
+      cursor: pointer;
+      padding-bottom: calc(0.375em + 1px);
+
+      &:hover {
+        background-color: $field-oneline-background-color--darker;
+      }
+    }
+
+    .button {
+      padding: 0 1em;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      outline: none;
+      color: $field-oneline-color;
+
+      &:hover,
+      &:active {
+        background-color: $field-oneline-background-color--darker;
+      }
+
+      &.is-wide {
+        // padding: 0 1.25em;
+      }
+    }
+  }
+
+  .checkbox {
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    margin-left: 1em;
+    user-select: none;
+
+    &:hover {
+      background-color: $field-oneline-background-color--darker;
+    }
+
+    &, label {
+      cursor: pointer;
+    }
+  }
+
+  .checkbox__check {
+    display: inline-block;
+    margin-right: 0.75em;
+    color: $field-oneline-color;
   }
 
   .control.is-rounded {
@@ -90,9 +170,57 @@ $field-oneline-label-width: 10ch;
     border: $field-oneline-border;
     overflow: hidden;
   }
+
+  .list-input {
+    margin: 1em 0;
+
+    ul {
+      list-style-type: none;
+      margin: 0.5em;
+    }
+
+    .list-input__item {
+      text-decoration: none;
+      display: flex;
+      align-content: center;
+      padding: 0.125em 0.5em;
+
+      .button {
+        padding: 0 0.75em;
+        margin-right: 0.5em;
+        background: transparent;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        color: $field-oneline-color;
+
+        &:hover,
+        &:active {
+          background-color: $field-oneline-background-color--darker;
+        }
+
+        &.is-wide {
+          // padding: 0 1.25em;
+        }
+      }
+
+      span {
+        padding-top: 2px;
+      }
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
 }
 
 .input.button {
   font-weight: $weight-bold;
   box-shadow: none;
+}
+
+hr {
+  background-color: $field-oneline-border-color;
+  height: 1px;
 }
