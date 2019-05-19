@@ -19,6 +19,15 @@ class AppController
     response.print(message)
   end
 
+  def render_json(content : String, status : Int32 = 200)
+    response.status_code = status
+    response.print(content)
+  end
+
+  def render_json(content, status : Int32 = 200)
+    render_json(content.to_json, status)
+  end
+
 
   property! body_params   : Hash(String, String)
   property! url_params    : Hash(String, String)
@@ -26,6 +35,10 @@ class AppController
 
   def body_params
     @body_params ||= HTTP::Params.parse(request.body.not_nil!.gets_to_end).to_h
+  end
+
+  def json_params
+    @json_params ||= JSON.parse(request.body.not_nil!.gets_to_end)
   end
 
   def url_params

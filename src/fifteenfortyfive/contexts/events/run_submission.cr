@@ -13,11 +13,14 @@ module Events
 
       field :pb_seconds, Int64
       field :est_seconds, Int64
+      field :rank, Int32, default: 1
 
       field :comment, String
 
       field :revoked, Bool, default: false
       field :accepted, Bool, default: false
+
+      belongs_to :runner_submission, RunnerSubmission
     end
   end
 end

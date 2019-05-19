@@ -19,7 +19,7 @@ class AccountsController < AppController
   end
 
   def show
-    account = Repo.get!(Account, url_params["id"])
+    account = Accounts.get_account(url_params["id"])
 
     render("accounts/show.html.j2", {
       "account" => account

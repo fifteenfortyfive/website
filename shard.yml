@@ -35,3 +35,5 @@ dependencies:
     github: faultyserver/honcho
   dotenv:
     github: gdotdesign/cr-dotenv
+  auto_initialize:
+    github: kostya/auto_initialize

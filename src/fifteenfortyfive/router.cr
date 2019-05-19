@@ -3,6 +3,7 @@ require "orion"
 router AppRouter do
   use HTTP::ErrorHandler
   use HTTP::LogHandler.new(STDOUT)
+  use AnalyticsHandler
   use SessionHandler
 
   concern :authenticated do
@@ -50,6 +51,19 @@ router AppRouter do
       get   "/:event_id/submissions", to: "admin::RunSubmissions#index",  helper: "submissions"
       get   "/:event_id/submissions/:submission_id/accept", to: "admin::RunSubmissions#accept",  helper: "submissions_accept"
       get   "/:event_id/submissions/:submission_id/unaccept", to: "admin::RunSubmissions#unaccept",  helper: "submissions_unaccept"
+    end
+
+    scope "users", helper_prefix: "users" do
+      root to: "admin::Users#index"
+    end
+  end
+
+  scope "api" do
+    implements :authenticated
+
+    scope "events" do
+      get  "/:event_id/runner_submission", to: "aPI::Events#get_existing_submission"
+      post "/:event_id/submit", to: "aPI::Events#submit"
     end
   end
 
