@@ -127,13 +127,6 @@ const reducerActions = {
     };
   },
 
-  'SUBMISSION_SUCCEEDED': (state, {data}) => {
-    return {
-      ...state,
-      submitting: false
-    };
-  },
-
   'RECEIVE_EXISTING_SUBMISSION': (state, {data}) => {
     return {
       ...state,
@@ -144,6 +137,7 @@ const reducerActions = {
       pairWith: data.pair_with,
       avoid: data.avoid,
       captain: data.captain,
+      submitting: false
     }
   }
 }

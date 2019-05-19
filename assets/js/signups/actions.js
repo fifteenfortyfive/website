@@ -145,7 +145,7 @@ export function submit(eventId, state) {
     .then(checkStatus)
     .then(parseJSON)
     .then((response) => {
-      return dispatch(submissionSucceeded());
+      return dispatch(fetchSubmissionData(eventId));
     })
     .catch((response) => {
       return dispatch(submissionFailed());
