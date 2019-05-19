@@ -14,7 +14,7 @@ const defaultState = {
     "Spyro 2: Ripto's Rage",
     "Spyro: Year of the Dragon",
     "Crash Bandicoot",
-    "Crash Bandicoot 2: The Wrath of Cortex",
+    "Crash Bandicoot 2: Cortex Strikes Back",
     "Crash Bandicoot: Warped"
   ],
   id: null,
