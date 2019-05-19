@@ -60,11 +60,11 @@ class API::EventsController < AppController
     submission = Events::RunnerSubmission.new
     submission.account_id = account_id
     submission.event_id = event_id.to_i
-    submission.max_games = json_params["maxGames"].as_s?.try(&.to_i)
-    submission.max_time = json_params["maxTime"].as_s?
-    submission.pair_with = json_params["pairWith"].as_s?
-    submission.avoid = json_params["avoid"].as_s?
-    submission.captain = json_params["captain"].as_bool
+    submission.max_games = json_params["maxGames"]?.try(&.as_s?.try(&.to_i))
+    submission.max_time = json_params["maxTime"]?.try(&.as_s?)
+    submission.pair_with = json_params["pairWith"]?.try(&.as_s?)
+    submission.avoid = json_params["avoid"]?.try(&.as_s?)
+    submission.captain = json_params["captain"]?.try(&.as_bool) || false
 
     submission = Events.create_runner_submission(submission).instance
 
