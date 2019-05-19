@@ -83,7 +83,6 @@
             {% if event.state == "signups open" %}
               <div class="buttons has-margin-top-md">
                 <a class="button is-danger is-fullwidth" href="/events/{{event.id}}/submit">Submit a Run</a>
-                <a class="button is-outlined is-fullwidth" href="/events/{{event.id}}/submissions">View Submissions</a>
               </div>
             {% elif event.state == "runners announced" %}
               <div class="card has-margin-top-lg">

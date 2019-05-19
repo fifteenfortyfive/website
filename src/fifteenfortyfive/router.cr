@@ -29,11 +29,13 @@ router AppRouter do
   scope "events", helper_prefix: "events" do
     root to: "events#index"
     get  ":event_id",             to: "events#show",              helper: "show"
-    get  ":event_id/submissions", to: "run_submissions#index",    helper: "run_submissions"
 
     implements :authenticated
     get  ":event_id/submit",       to: "run_submissions#new",     helper: "submit"
     post ":event_id/submit",       to: "run_submissions#create",  helper: "create"
+
+    implements :admin_authorized
+    get  ":event_id/submissions", to: "run_submissions#index",    helper: "run_submissions"
   end
 
 
