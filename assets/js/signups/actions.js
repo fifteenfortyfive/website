@@ -127,9 +127,7 @@ export function fetchSubmissionData(eventId) {
     .then(checkStatus)
     .then(parseJSON)
     .then((response) => {
-      if(response.exists) {
-        return dispatch(receiveExistingSubmission(response.data));
-      }
+      return dispatch(receiveExistingSubmission(response.data));
     });
   };
 }

@@ -12,7 +12,15 @@ class API::EventsController < AppController
     unless submission
       render_json({
         exists: false,
-        data: {} of String => String
+        data: {
+          user: {
+            username: user.username,
+            twitter: user.twitter,
+            twitch: user.twitch,
+            discord_username: user.discord_username,
+            discord_discriminator: user.discord_discriminator
+          }
+        }
       })
       return
     end
