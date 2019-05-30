@@ -58,6 +58,10 @@ router AppRouter do
     scope "users", helper_prefix: "users" do
       root to: "admin::Users#index"
     end
+
+    scope "v2" do
+      get "/", to: "admin::V2::App#index"
+    end
   end
 
   scope "api" do
