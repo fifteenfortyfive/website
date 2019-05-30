@@ -7,7 +7,6 @@ class Account < Crecto::Model
 
   schema "accounts" do
     field :username, String
-    field :encrypted_password, String
     field :discord_username, String
     field :discord_discriminator, String
     field :twitch, String
@@ -16,6 +15,8 @@ class Account < Crecto::Model
     field :admin, Bool
     field :avatar_object_id, String
 
+    @[Crinja::Attribute(ignore: true)]
+    field :encrypted_password, String
     @[Crinja::Attribute(ignore: true)]
     field :password, String, virtual: true
 
@@ -47,5 +48,18 @@ class Account < Crecto::Model
 
   def avatar_object_id
     @avatar_object_id || "default-avatar"
+  end
+
+  def to_json(json : JSON::Builder)
+    json.raw({
+      username: self.username,
+      discord_username: self.discord_username,
+      discord_discriminator: self.discord_discriminator,
+      twitch: self.twitch,
+      twitter: self.twitter,
+      timezone: self.timezone,
+      admin: self.admin,
+      avatar_object_id: self.avatar_object_id
+    }.to_json)
   end
 end

@@ -42,7 +42,8 @@ module Events
       field :category, String
 
       belongs_to :owner, Account, foreign_key: :owner_id
-      # has_many :runs, Run
+
+      has_many :runner_submissions, RunnerSubmission
       has_many :run_submissions, RunSubmission
     end
 

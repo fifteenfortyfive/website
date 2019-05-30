@@ -67,6 +67,22 @@ router AppRouter do
       get  "/:event_id/runner_submission", to: "aPI::Events#get_existing_submission"
       post "/:event_id/submit", to: "aPI::Events#submit"
     end
+
+    scope "admin" do
+      implements :admin_authorized
+      scope "events" do
+        get "/", to: "aPI::Admin#events"
+        get "/:event_id/", to: "aPI::Admin#event"
+      end
+
+      scope "accounts" do
+        get "/", to: "aPI::Admin#accounts"
+      end
+
+      scope "games" do
+        get "/", to: "aPI::Admin#games"
+      end
+    end
   end
 
 
