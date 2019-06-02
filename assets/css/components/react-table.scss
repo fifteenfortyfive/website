@@ -1,0 +1,59 @@
+.ReactTable {
+
+  // Custom theming
+  .spyro { color: $spyro; }
+  .crash { color: $crash; }
+  .rare  { color: $rare;  }
+  .mario { color: $mario; }
+
+  .spyro-bg { background-color: lighten(desaturate($spyro, 10%), 30%); }
+  .crash-bg { background-color: lighten(desaturate($crash, 20%), 30%); }
+  .rare-bg  { background-color: lighten(desaturate($rare, 20%), 20%);  }
+  .mario-bg { background-color: lighten(desaturate($mario, 20%), 30%); }
+
+  .foldable-header {
+    cursor: pointer;
+  }
+
+  .has-hover-card {
+    .hover-card-container {
+      position: absolute;
+      display: none;
+    }
+
+    .hover-card {
+      z-index: 100;
+      position: absolute;
+      right: -80px;
+      width: 240px;
+      padding: 12px;
+      border: 1px solid $grey-light;
+      border-radius: $radius;
+      background-color: $white;
+      box-shadow: 2px 2px 5px $grey;
+      transition: all 0.1s linear;
+
+      font-size: 0.875rem;
+      word-wrap: break-word;
+    }
+
+    &:hover .hover-card-container {
+      display: block;
+    }
+
+    .header {
+      text-transform: uppercase;
+      color: $grey-light;
+      font-size: 0.75rem;
+    }
+
+    ul, ol {
+      margin-left: 0.75rem;
+    }
+  }
+
+  .verti-flex {
+    display: flex;
+    flex-direction: column;
+  }
+}

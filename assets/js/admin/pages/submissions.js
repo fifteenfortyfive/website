@@ -4,12 +4,16 @@ import { connect } from 'preact-redux';
 import { Link } from 'preact-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';
-import Duration from 'luxon/src/duration';
 
 import Table, { ReactTableDefaults } from 'react-table';
+import FoldableTableHOC from 'react-table/lib/hoc/foldableTable';
+const FoldableTable = FoldableTableHOC(Table);
 
 import * as Actions from '../actions';
 
+import Folder from '../components/foldable-header';
+import RunCell from '../components/run-cell';
+import RunnerCell from '../components/runner-cell';
 
 const SubmissionsPage = ({event, accounts, games, loading}) => {
   if(loading || event == null) return <h1 class="title">Loading...</h1>;
@@ -22,33 +26,34 @@ const SubmissionsPage = ({event, accounts, games, loading}) => {
     return acc.concat(submission.run_submissions);
   }, []);
 
-  const gameColumns = _.map(games, (game, gameId) => ({
-    Header: game.name,
-    id: `game-${gameId}`,
-    accessor: sub => {
-      const run = _.find(sub.run_submissions, (g) => g.game_id == gameId);
-      return run
-        ? Duration.fromMillis(run.pb_seconds * 1000).toFormat("hh:mm:ss")
-        : null;
-    }
-  }));
+  const gameColumns =  _.chain(Object.values(games))
+      .groupBy('series')
+      .map((seriesGames, series) => ({
+        Header: _.capitalize(series),
+        foldable: true,
+        headerClassName: `${series}-bg`,
+        columns: _.map(seriesGames, (game) => ({
+          Header: game.name,
+          id: `game-${game.id}`,
+          accessor: sub => _.find(sub.run_submissions, (g) => g.game_id == game.id),
+          Cell: ({value: run}) => <RunCell
+              run={run}
+              runner={run && accounts[run.account_id]}
+              submission={run && submissionsByAccount[run.account_id]}
+              games={games}
+          />
+        })),
+      }))
+      .value();
 
   const columns = [
     {
       Header: 'Runner',
       id: 'runner',
-      accessor: run => accounts[run.account_id].username,
-      Cell: ({original: run}) => {
-        const runner = accounts[run.account_id];
-        const submission = submissionsByAccount[run.account_id];
-        return (
-          <div>
-            <strong>{runner.username}</strong>
-            <br />
-            <small>{submission.max_games} Games / {submission.max_time}</small>
-          </div>
-        );
-      }
+      accessor: sub => accounts[sub.account_id].username,
+      minWidth: 160,
+      defaultPageSize: 20,
+      Cell: ({original: sub}) => <RunnerCell submission={sub} runner={accounts[sub.account_id]} />,
     },
     ...gameColumns
   ];
@@ -61,8 +66,8 @@ const SubmissionsPage = ({event, accounts, games, loading}) => {
         </section>
       </div>
 
-      <Table
-        className="-highlight"
+      <FoldableTable
+        className="has-margin-bottom-lg -striped -highlight"
         data={runner_submissions}
         columns={columns}
         defaultSorted={[
@@ -71,6 +76,7 @@ const SubmissionsPage = ({event, accounts, games, loading}) => {
             desc: false
           }
         ]}
+        FoldButtonComponent={Folder}
       />
     </div>
   );
