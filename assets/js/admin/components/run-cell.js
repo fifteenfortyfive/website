@@ -45,6 +45,9 @@ const RunCell = (props) => {
               <strong class="header">Runner</strong>
               <p><strong>{runner.username}</strong></p>
               <p><small>{runner.discord_username}#{runner.discord_discriminator}</small></p>
+              { submission.captain &&
+                <p><small>Willing to be Captain</small></p>
+              }
             </div>
 
 

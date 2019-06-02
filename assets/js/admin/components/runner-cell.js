@@ -12,9 +12,8 @@ const RunnerCell = (props) => {
     <div>
       <strong>{runner.username}</strong>
       <br />
-      { submission.max_games || submission.max_time
-        ? <small>{submission.max_games || "Any"} Games / {submission.max_time || "Any Time"}</small>
-        : <small class="has-text-grey-light">No limits</small>
+      { submission.captain &&
+        <small class="has-text-grey-light">Willing to be Captain</small>
       }
     </div>
   );
