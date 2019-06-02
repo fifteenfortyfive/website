@@ -5,43 +5,81 @@ const defaultHeaders = {
 };
 
 
-export function submit(eventId, state) {
-  return dispatch => {
-    dispatch(startSubmission());
-    fetch(`/api/events/${eventId}/submit`, {
-      headers: defaultHeaders,
-      method: 'POST',
-      body: JSON.stringify(state)
-    })
-    .then(checkStatus)
-    .then(parseJSON)
-    .then((response) => {
-      return dispatch(fetchSubmissionData(eventId));
-    })
-    .catch((response) => {
-      return dispatch(submissionFailed());
-    });
+export function fetchAccounts() {
+  return commonThunk({
+    method: 'get',
+    path: '/api/admin/accounts',
+    name: 'accounts'
+  }, (dispatch, response) => {
+    dispatch(receiveAccounts(response))
+  });
+}
+
+export function fetchGames() {
+  return commonThunk({
+    method: 'get',
+    path: '/api/admin/games',
+    name: 'games'
+  }, (dispatch, response) => {
+    dispatch(receiveGames(response))
+  });
+}
+
+export function fetchEvents() {
+  return commonThunk({
+    method: 'get',
+    path: '/api/admin/events',
+    name: 'events'
+  }, (dispatch, response) => {
+    dispatch(receiveEvents(response))
+  });
+}
+
+export function receiveAccounts(accounts) {
+  return {
+    type: 'RECEIVE_ACCOUNTS',
+    data: {
+      accounts
+    }
   };
 }
 
-export function startSubmission() {
+export function receiveGames(games) {
   return {
-    type: 'SUBMISSION_STARTED',
-    data: {}
+    type: 'RECEIVE_GAMES',
+    data: {
+      games
+    }
+  };
+}
+
+export function receiveEvents(events) {
+  return {
+    type: 'RECEIVE_EVENTS',
+    data: {
+      events
+    }
+  };
+}
+
+export function fetchStarted(fetchId) {
+  return {
+    type: 'FETCH_STARTED',
+    data: {fetchId}
   }
 }
 
-export function submissionSucceeded() {
+export function fetchSucceeded(fetchId) {
   return {
-    type: 'SUBMISSION_SUCCEEDED',
-    data: {}
+    type: 'FETCH_SUCCEEDED',
+    data: {fetchId}
   }
 }
 
-export function submissionFailed() {
+export function fetchFailed(fetchId) {
   return {
-    type: 'SUBMISSION_FAILED',
-    data: {}
+    type: 'FETCH_FAILED',
+    data: {fetchId}
   }
 }
 
@@ -57,3 +95,24 @@ function checkStatus(response) {
 function parseJSON(response) {
   return response.json();
 };
+
+
+function commonThunk({method, path, name, body}, then) {
+  const fetchId = path || name;
+
+  return dispatch => {
+    dispatch(fetchStarted(fetchId));
+    fetch(path, {
+      headers: defaultHeaders,
+      method: method.toUpperCase(),
+      credentials: 'include',
+      body: JSON.stringify(body)
+    })
+    .then(checkStatus)
+    .then(parseJSON)
+    .then((response) => {
+      dispatch(fetchSucceeded(fetchId));
+      then(dispatch, response);
+    });
+  };
+}

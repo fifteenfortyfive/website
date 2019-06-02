@@ -52,6 +52,7 @@ class Account < Crecto::Model
 
   def to_json(json : JSON::Builder)
     json.raw({
+      id: self.id,
       username: self.username,
       discord_username: self.discord_username,
       discord_discriminator: self.discord_discriminator,

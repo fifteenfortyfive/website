@@ -53,8 +53,8 @@ class Analytics
   end
 
   def flush
-    buffer.each do |message|
-      puts "ANALYTICS: " + message.content.inspect
-    end
+    # buffer.each do |message|
+    #   puts "ANALYTICS: " + message.content.inspect
+    # end
   end
 end
