@@ -8,12 +8,13 @@
 
         <div class="columns is-multiline">
           {% for team in teams %}
-            <div class="column is-4-widescreen is-6">
+            <div class="column is-3-widescreen is-6">
               <h2 class="title is-4" style="color: #{{team.color}};">{{team.name}}</h2>
+              <p class="subtitle is-6 has-text-grey-light has-text-weight-bold">Captain: {{ accounts[team.captain_id].username}}</p>
               {% for run in team.runs %}
                 {% set runner = accounts[run.account_id] %}
                 {% set game = games[run.game_id] %}
-                <div class="has-margin-bottom-sm">
+                <div class="has-margin-bottom-sm has-text-grey-light">
                   <span>{{ game.name }}
                   </span>
                   <br/>
