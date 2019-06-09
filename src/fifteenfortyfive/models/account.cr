@@ -19,16 +19,6 @@ class Account < Crecto::Model
     field :encrypted_password, String
     @[Crinja::Attribute(ignore: true)]
     field :password, String, virtual: true
-
-    has_one :runner_submission, RunnerSubmission
-    has_one :commentator_submission, CommentatorSubmission
-
-    # This is _almost_ a `has_many :through`, but it's possible that runners
-    # get added without having submissions. Since `Run` has a direct
-    # association to the accounts, this inverse association avoids that issue.
-    has_many :runs, Run
-
-    has_many :account_teams, AccountTeam
   end
 
 

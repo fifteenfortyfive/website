@@ -38,6 +38,11 @@ router AppRouter do
     get  ":event_id/submissions", to: "run_submissions#index",    helper: "run_submissions"
   end
 
+  scope "teams", helper_prefix: "teams" do
+    implements :admin_authorized
+    root to: "teams#index"
+  end
+
 
   scope "admin", helper_prefix: "admin" do
     implements :admin_authorized

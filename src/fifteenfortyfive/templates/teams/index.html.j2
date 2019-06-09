@@ -1,0 +1,29 @@
+{% extends "layouts/main.html.j2" %}
+
+{% block main %}
+  <div class="container">
+    <main class="content">
+      <section class="section">
+        <h1 class="title">2019 Teams</h1>
+
+        <div class="columns is-multiline">
+          {% for team in teams %}
+            <div class="column is-4-widescreen is-6">
+              <h2 class="title is-4" style="color: #{{team.color}};">{{team.name}}</h2>
+              {% for run in team.runs %}
+                {% set runner = accounts[run.account_id] %}
+                {% set game = games[run.game_id] %}
+                <div class="has-margin-bottom-sm">
+                  <span>{{ game.name }}
+                  </span>
+                  <br/>
+                  <strong>{{ runner.username }}</strong>
+                </div>
+              {% endfor %}
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+    </main>
+  </div>
+{% endblock %}

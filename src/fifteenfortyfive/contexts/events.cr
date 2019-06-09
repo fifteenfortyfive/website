@@ -59,6 +59,47 @@ module Events
 
 
   ###
+  # Teams
+  ###
+
+  def list_teams(query : Query = Query.new)
+    Repo.all(Team, query)
+  end
+
+  def get_team(team_id, query : Query = Query.new)
+    Repo.all(Team, query.where(id: team_id).limit(1)).first?
+  end
+
+  def get_team!(team_id, query : Query = Query.new)
+    Repo.all(Team, query.where(id: team_id).limit(1)).first
+  end
+
+  def new_team()
+    Team.new
+  end
+
+  def create_team(submission : Team)
+    Repo.insert(submission)
+  end
+
+  def create_team(attrs)
+    team = Team.new
+    team = team.cast(attrs)
+    Repo.insert(team)
+  end
+
+  def update_team(team : Team, changes)
+    changeset = team.cast(changes)
+    Repo.update(changeset)
+  end
+
+  def delete_team(team : Team)
+    Repo.delete(team)
+  end
+
+
+
+  ###
   # Run Submissions
   ###
 
