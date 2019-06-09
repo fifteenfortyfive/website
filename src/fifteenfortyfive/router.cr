@@ -39,7 +39,6 @@ router AppRouter do
   end
 
   scope "teams", helper_prefix: "teams" do
-    implements :admin_authorized
     root to: "teams#index"
   end
 
