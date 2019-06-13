@@ -14,11 +14,11 @@ module Events
   end
 
   def get_event(event_id, query : Query = Query.new)
-    Repo.all(Event, query.where(id: event_id).limit(1)).first?
+    Repo.all(Event, query.where(id: event_id.to_s).limit(1)).first?
   end
 
   def get_event!(event_id, query : Query = Query.new)
-    Repo.all(Event, query.where(id: event_id).limit(1)).first
+    Repo.all(Event, query.where(id: event_id.to_s).limit(1)).first
   end
 
   def new_event()
@@ -67,11 +67,11 @@ module Events
   end
 
   def get_team(team_id, query : Query = Query.new)
-    Repo.all(Team, query.where(id: team_id).limit(1)).first?
+    Repo.all(Team, query.where(id: team_id.to_s).limit(1)).first?
   end
 
   def get_team!(team_id, query : Query = Query.new)
-    Repo.all(Team, query.where(id: team_id).limit(1)).first
+    Repo.all(Team, query.where(id: team_id.to_s).limit(1)).first
   end
 
   def new_team()
@@ -108,11 +108,11 @@ module Events
   end
 
   def get_run_submission(submission_id, query : Query = Query.new)
-    Repo.all(RunSubmission, query.where(id: submission_id).limit(1)).first?
+    Repo.all(RunSubmission, query.where(id: submission_id.to_s).limit(1)).first?
   end
 
   def get_run_submission!(submission_id, query : Query = Query.new)
-    Repo.all(RunSubmission, query.where(id: submission_id).limit(1)).first
+    Repo.all(RunSubmission, query.where(id: submission_id.to_s).limit(1)).first
   end
 
   def new_run_submission()
@@ -159,11 +159,11 @@ module Events
   end
 
   def get_runner_submission(submission_id, query : Query = Query.new)
-    Repo.all(RunnerSubmission, query.where(id: submission_id).limit(1)).first?
+    Repo.all(RunnerSubmission, query.where(id: submission_id.to_s).limit(1)).first?
   end
 
   def get_runner_submission!(submission_id, query : Query = Query.new)
-    Repo.all(RunnerSubmission, query.where(id: submission_id).limit(1)).first
+    Repo.all(RunnerSubmission, query.where(id: submission_id.to_s).limit(1)).first
   end
 
   def new_runner_submission()

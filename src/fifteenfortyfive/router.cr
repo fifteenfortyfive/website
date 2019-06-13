@@ -69,6 +69,36 @@ router AppRouter do
   end
 
   scope "api" do
+    scope "v1" do
+      scope "events" do
+        get "/", to: "aPI::Events#index"
+        get "/:event_id", to: "aPI::Events#get"
+
+        scope ":event_id" do
+          scope "teams" do
+            get "/", to: "aPI::Teams#index"
+            get "/:team_id", to: "aPI::Teams#get"
+          end
+
+          scope "runs" do
+            get "/", to: "aPI::Runs#index"
+            get "/:run_id", to: "aPI::Runs#get"
+          end
+        end
+      end
+
+      scope "accounts" do
+        get "/", to: "aPI::Accounts#index"
+        get "/:account_id", to: "aPI::Accounts#get"
+      end
+
+      scope "games" do
+        get "/", to: "aPI::Games#index"
+        get "/:game_id", to: "aPI::Games#get"
+      end
+    end
+
+
     implements :authenticated
 
     scope "events" do

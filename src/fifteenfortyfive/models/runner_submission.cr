@@ -1,4 +1,7 @@
+@[Crinja::Attributes]
 class RunnerSubmission < Crecto::Model
+  include Crinja::Object::Auto
+
   schema "runner_submissions" do
     field :max_games, String
     field :max_time, String

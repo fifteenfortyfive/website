@@ -1,5 +1,6 @@
 require "../contexts/accounts.cr"
 require "../util/template.cr"
+require "./errors.cr"
 
 class AppController
   include Orion::ControllerHelper
@@ -26,6 +27,10 @@ class AppController
 
   def render_json(content, status : Int32 = 200)
     render_json(content.to_json, status)
+  end
+
+  def render_error_json(error : Errors::Error)
+    render_json(error.message, error.status)
   end
 
 

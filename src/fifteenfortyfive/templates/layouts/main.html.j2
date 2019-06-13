@@ -12,6 +12,12 @@
 
     <script src="https://use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
 
+    <script>
+      window.currentUserId = {{ conn.user.id }};
+      // Yay hardcoding
+      window.mainEventId = 16;
+    </script>
+
     {% block head %}{% endblock %}
   </head>
 

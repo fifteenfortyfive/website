@@ -2,8 +2,8 @@
   "repository": {},
   "license": "MIT",
   "scripts": {
-    "build": "parcel build css/app.scss js/app.js js/signups.js js/admin.js --out-dir ../public/",
-    "watch": "parcel watch --no-hmr css/app.scss js/app.js js/signups.js js/admin.js --out-dir ../public/"
+    "build": "parcel build css/app.scss js/app.js js/signups.js js/admin.js js/app-v2.js --out-dir ../public/",
+    "watch": "parcel watch --no-hmr css/app.scss js/app.js js/signups.js js/admin.js js/app-v2.js --out-dir ../public/"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.0-7",
