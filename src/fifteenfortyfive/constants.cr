@@ -9,6 +9,8 @@ module Constants
   CONTACT_EMAIL = "contact@fifteenfortyfive.org"
   VOLUNTEER_EMAIL = "volunteer@fifteenfortyfive.org"
 
+  # TODO: Get rid of this soon
+  MAIN_EVENT_ID = 16
 
   # Various Twitch configurations
   TWITCH_CLIENT_ID = ENV["TWITCH_CLIENT_ID"]

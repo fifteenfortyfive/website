@@ -3,7 +3,7 @@ require "../contexts/accounts"
 
 class TeamsController < AppController
   def index
-    teams = Events.list_teams(Query.preload(:runs, Query.order_by("index ASC")).order_by("id ASC"))
+    teams = Events.list_teams(Constants::MAIN_EVENT_ID, Query.preload(:runs, Query.order_by("index ASC")).order_by("id ASC"))
     runs = teams.map(&.runs).flatten
 
     account_ids = runs.map(&.account_id)
