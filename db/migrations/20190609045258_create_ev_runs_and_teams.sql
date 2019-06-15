@@ -1,6 +1,6 @@
 -- +migrate up
 CREATE TABLE IF NOT EXISTS "public"."ev_teams" (
-  id serial,
+  id serial PRIMARY KEY,
   name text,
   color text,
   slug text,
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS "public"."ev_teams" (
 );
 
 CREATE TABLE IF NOT EXISTS "public"."ev_runs" (
-  id serial,
+  id serial PRIMARY KEY,
   index integer,
   run_submission_id integer,
   account_id integer,
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS "public"."ev_runs" (
   FOREIGN KEY ("account_id") REFERENCES "public"."accounts"("id"),
   FOREIGN KEY ("event_id") REFERENCES "public"."events"("id"),
   FOREIGN KEY ("game_id") REFERENCES "public"."games"("id"),
-  FOREIGN KEY ("team_id") REFERENCES "public"."teams"("id")
+  FOREIGN KEY ("team_id") REFERENCES "public"."ev_teams"("id")
 );
 
 -- +migrate down
