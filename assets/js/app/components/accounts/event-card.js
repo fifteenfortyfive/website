@@ -13,7 +13,7 @@ const EventCard = (props) => {
   const startTime = event.start_time;
   const orderedRuns = _.sortBy(runs, (run) => run.index);
 
-  const color = team ? `#${team.color}` : 'hsl(0, 0%, 71%)';
+  const color = team && team.color ? `#${team.color}` : 'hsl(0, 0%, 71%)';
 
 
   return (
