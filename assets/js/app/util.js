@@ -7,9 +7,27 @@ export function runTime(seconds) {
 }
 
 export function simpleDate(date) {
-  const dt = DateTime.fromISO(date);
-  return dt.toLocaleString({
+  return DateTime.fromISO(date).toLocaleString({
     year: 'numeric',
     month: 'long',
+  });
+}
+
+export function fullDate(date) {
+  return DateTime.fromISO(date).toLocaleString({
+    year: 'numeric',
+    month: 'long',
+    day: '2-digit'
+  });
+}
+
+export function simpleDateTime(date) {
+  return DateTime.fromISO(date).toLocaleString({
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZoneName: 'short'
   });
 }

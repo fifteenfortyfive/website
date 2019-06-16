@@ -8,19 +8,27 @@ module StreamStatusService
   class_property statuses = {} of KeyType => Stream
 
   # Returns all accounts that are currently live.
-  def live
-    @@statuses.select{ |_, stream| stream.live? }
+  def live : Array(Stream)
+    @@statuses.values.select(&.live?)
   end
-  def live(community : String)
-    @@statuses.select{ |_, stream| stream.live? && stream.in_community?(community) }
+  def live(community : String) : Array(Stream)
+    @@statuses.values.select{ |stream| stream.live? && stream.in_community?(community) }
   end
 
   # Returns true if the given account is currently streaming.
   def live?(account_id : KeyType) : Bool
     @@statuses[account_id]?.try(&.live?) || false
   end
-  def live?(account : Account)
+  def live?(account : Account) : Bool
     self.live?(account.id)
+  end
+
+  def get(account_id : KeyType) : Stream?
+    @@statuses[account_id]?
+  end
+
+  def get!(account_id : KeyType) : Stream
+    @@statuses[account_id]?
   end
 
 
@@ -32,14 +40,18 @@ module StreamStatusService
 
       streams.each do |stream|
         if stream_data = live_streams[stream.service_user_id]?
-          @@statuses[stream.account_id.as(Int64)] = stream_data
+          @@statuses[stream.account_id.as(KeyType)] = stream_data
         else
-          @@statuses.delete(stream.account_id.as(Int64))
+          @@statuses.delete(stream.account_id.as(KeyType))
         end
       end
 
-      sleep(10)
+      sleep(30)
     end
+  rescue e
+    puts "Statuses crashed :(\n"
+    puts e.inspect
+    raise e
   end
 
   def run_in_background

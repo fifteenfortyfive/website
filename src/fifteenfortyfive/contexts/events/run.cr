@@ -16,6 +16,9 @@ module Events
 
       field :pb_seconds, Int32
       field :est_seconds, Int32
+      field :actual_seconds, Int32
+
+      field :finished, Bool, default: false
 
       field :index, Int32
       field :accepted, Bool, default: false

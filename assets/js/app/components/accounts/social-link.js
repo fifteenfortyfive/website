@@ -11,27 +11,25 @@ const SocialTag = (props) => {
   const url = urlOverride || `${service.url}/${name}`;
 
   return (
-    <a native href={url} target="_blank" rel="nofollow noopener">
-      <span class="tags has-addons">
-        <span class={`tag ${service.style}`}>
-          <FontAwesomeIcon {...service.iconProps} />
-        </span>
-        <span class="tag">
-          {name}
-        </span>
+    <div class="has-margin-sm has-margin-left-md has-margin-right-md">
+      <span class="has-margin-right-md">
+        <FontAwesomeIcon {...service.iconProps} />
       </span>
-    </a>
+      <a native href={url} target="_blank" rel="nofollow noopener">
+        {name}
+      </a>
+    </div>
   );
 };
 
 SocialTag.Services = {
   TWITCH: {
-    url: 'https://twitch.tv/',
+    url: 'https://twitch.tv',
     iconProps: { icon: ['fab', 'twitch'] },
     style: 'is-dark'
   },
   TWITTER: {
-    url: 'https://twitter.com/',
+    url: 'https://twitter.com',
     iconProps: { icon: ['fab', 'twitter'] },
     style: 'is-info'
   }

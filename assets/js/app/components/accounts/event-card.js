@@ -1,7 +1,7 @@
 import {h} from 'preact';
 import _ from 'lodash';
 
-import {runTime} from '../../util';
+import {runTime, fullDate} from '../../util';
 
 const EventCard = (props) => {
   const {
@@ -10,22 +10,55 @@ const EventCard = (props) => {
     runs
   } = props;
 
+  const startTime = event.start_time;
   const orderedRuns = _.sortBy(runs, (run) => run.index);
+
+  const color = team ? `#${team.color}` : 'hsl(0, 0%, 71%)';
 
 
   return (
-    <div class="box has-margin-bottom-md">
-      <h2 class="title is-5">{event.name}</h2>
-      { team &&
-        <p class="subtitle is-6" style={{color: `#${team.color}`}}>Run for {team.name}</p>
-      }
+    <div class="box has-margin-bottom-md is-paddingless is-clipped">
+      <div
+        class="has-padding-left-md has-padding-right-md has-padding-top-nudge has-padding-bottom-xs has-text-white is-clearfix"
+        style={{backgroundColor: `${color}`}}
+      >
+        <div class="is-pulled-right">
+          <p>{fullDate(startTime)}</p>
+        </div>
+        { team &&
+          <span class="has-text-weight-bold">{team.name}</span>
+        }
+      </div>
 
-      { _.map(orderedRuns, (run) => {
-          return (
-            <div>{run.game.name} - {runTime(run.est_seconds)}</div>
-          );
-        })
-      }
+      <div class="has-padding-md" style={{border: `3px solid #${color}`}}>
+        <h2 class="is-size-5 has-text-weight-bold">{event.name}</h2>
+
+
+        <table class="table is-fullwidth is-narrow">
+          <tbody>
+            { _.map(orderedRuns, (run) => {
+                return (
+                  <tr>
+                    <td>{run.game.name}</td>
+                    <td class="has-text-right">
+                      { run.est_seconds &&
+                        <span class="has-text-grey-light">{runTime(run.est_seconds)} / </span>
+                      }
+                      { run.finished
+                        ? run.actual_seconds
+                          ? runTime(run.actual_seconds)
+                          : <span class="has-text-grey-light">No time recorded</span>
+                        : <span class="has-text-grey-light has-text-weight-bold">DNF</span>
+                      }
+                    </td>
+                    {/*<td><span class="has-text-grey-light">{runTime(run.est_seconds)}</span></td>*/}
+                  </tr>
+                );
+              })
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

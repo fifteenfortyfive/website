@@ -6,7 +6,7 @@ class TeamsController < AppController
     teams = Events.list_teams(Constants::MAIN_EVENT_ID, Query.preload(:runs, Query.order_by("index ASC")).order_by("id ASC"))
     runs = teams.map(&.runs).flatten
 
-    account_ids = runs.map(&.account_id)
+    account_ids = runs.map(&.account_id) + teams.map(&.captain_id)
     accounts = Accounts.list_accounts(Query.where(id: account_ids)).index_by(&.id.to_s)
 
     game_ids = runs.map(&.game_id)

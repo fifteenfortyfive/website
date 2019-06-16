@@ -4,6 +4,7 @@ import { Link } from 'preact-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import * as AccountActions from '../actions/accounts';
+import * as StreamActions from '../actions/streams';
 
 import AccountCard from '../components/accounts/account-card';
 import RunList from '../components/accounts/run-list';
@@ -13,10 +14,11 @@ class AccountPage extends Component {
     const {accountId, dispatch} = this.props;
 
     dispatch(AccountActions.fetchAccount(accountId));
+    dispatch(StreamActions.fetchStream(accountId));
   }
 
   render() {
-    const {account, loading} = this.props;
+    const {account, stream, loading, loadingStream} = this.props;
 
     if(account == null) return "loading";
 
@@ -25,7 +27,11 @@ class AccountPage extends Component {
         <section class="section">
           <div class="columns">
             <div class="column is-4-tablet is-3-desktop">
-              <AccountCard account={account} />
+              <AccountCard
+                account={account}
+                stream={stream}
+                loadingStream={loadingStream}
+              />
             </div>
 
             <div class="column is-8-tablet is-5-desktop">
@@ -42,7 +48,9 @@ const mapStateToProps = (state, props) => {
   const {accountId} = props;
   return {
     account: state.accounts[accountId],
-    loading: state.fetching[`accounts.${accountId}`]
+    stream: state.streams[accountId],
+    loading: state.fetching[`accounts.${accountId}`],
+    loadingStream: state.fetching[`streams.${accountId}`]
   };
 }
 

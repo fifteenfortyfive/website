@@ -1,0 +1,34 @@
+.stream-preview {
+  color: $white;
+
+  .stream-preview__header {
+    display: block;
+    color: $grey-lighter;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.25px;
+    text-transform: uppercase;
+  }
+
+  .stream-preview__image {
+    margin-left: 8px;
+    margin-right: 8px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    transition: box-shadow 0.1s ease-out;
+  }
+
+  .stream-preview__title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: $white;
+  }
+
+
+  &:hover {
+    .stream-preview__image {
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+    }
+  }
+}

@@ -4,6 +4,7 @@ import _ from 'lodash';
 
 const defaultState = {
   accounts: {},
+  streams: {},
   events: {},
   games: {},
   teams: {},
@@ -54,6 +55,18 @@ const reducerActions = {
       accounts: {
         ...state.accounts,
         ...accountsById
+      }
+    }
+  },
+
+  'RECEIVE_STREAMS': (state, {data}) => {
+    const {streams} = data;
+
+    return {
+      ...state,
+      streams: {
+        ...state.streams,
+        ...streams
       }
     }
   },
@@ -126,6 +139,7 @@ const reducerActions = {
 export function reducer(state = defaultState, action) {
   const func = reducerActions[action.type];
   const newState = func ? func(state, action) : state;
+  console.log(newState)
   return newState;
 }
 

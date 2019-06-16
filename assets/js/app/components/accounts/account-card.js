@@ -5,10 +5,14 @@ import {simpleDate} from '../../util';
 
 import Avatar from './avatar';
 import SocialLink from './social-link';
+import StreamPreview from './stream-preview';
 
 const AccountCard = (props) => {
   const {
-    account
+    account,
+    stream,
+    loading,
+    loadingStream,
   } = props;
 
   const {
@@ -22,7 +26,7 @@ const AccountCard = (props) => {
 
 
   return (
-    <div class="box is-paddingless">
+    <div class="box is-paddingless is-clipped">
       <div class="account-header has-padding-md has-padding-top-lg has-background-white-ter">
         <div class="has-text-centered has-margin-bottom-sm">
           <Avatar src={avatar_object_id} />
@@ -55,10 +59,17 @@ const AccountCard = (props) => {
           />
         }
 
-        <p>
+
+        <p class="has-margin-sm has-margin-left-md has-margin-right-md">
           Joined {simpleDate(created_at)}
         </p>
       </div>
+
+      <StreamPreview
+        stream={stream}
+        username={twitch}
+        loading={loadingStream}
+      />
     </div>
   );
 };

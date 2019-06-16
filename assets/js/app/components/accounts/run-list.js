@@ -10,7 +10,9 @@ const RunList = (props) => {
 
   const events = _.chain(runs)
       .map('event')
-      .keyBy('id')
+      .uniqBy('id')
+      .sortBy('start_time')
+      .reverse()
       .value();
 
   const teams = _.chain(runs)
@@ -22,8 +24,9 @@ const RunList = (props) => {
 
   return (
     <div class="run-list">
-      { _.map(runsByEvent, (runs, eventId) => {
-          return <EventCard event={events[eventId]} team={teams[runs[0].team_id]} runs={runs} />;
+      { _.map(events, (event) => {
+          const runs = runsByEvent[event.id];
+          return <EventCard event={event} team={teams[runs[0].team_id]} runs={runs} />;
         })
       }
     </div>
