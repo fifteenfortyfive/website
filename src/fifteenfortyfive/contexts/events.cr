@@ -192,6 +192,47 @@ module Events
 
 
   ###
+  # Runs
+  ###
+
+  def list_runs(query : Query = Query.new)
+    Repo.all(Run, query)
+  end
+
+  def get_run(run_id, query : Query = Query.new)
+    Repo.all(Run, query.where(id: run_id.to_s).limit(1)).first?
+  end
+
+  def get_run!(run_id, query : Query = Query.new)
+    Repo.all(Run, query.where(id: run_id.to_s).limit(1)).first
+  end
+
+  def new_run()
+    Run.new
+  end
+
+  def create_run(run : Run)
+    Repo.insert(run)
+  end
+
+  def create_run(attrs)
+    run = Run.new
+    run = run.cast(attrs)
+    Repo.insert(run)
+  end
+
+  def update_run(run : Run, changes)
+    changeset = run.cast(changes)
+    Repo.update(changeset)
+  end
+
+  def delete_run(run : Run)
+    Repo.delete(run)
+  end
+
+
+
+  ###
   # Utility
   ###
 

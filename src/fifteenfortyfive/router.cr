@@ -80,6 +80,11 @@ router AppRouter do
             get "/:team_id", to: "aPI::Teams#get"
           end
 
+          scope "run_submissions" do
+            get "/", to: "aPI::RunSubmissions#index"
+            get "/:run_submission_id", to: "aPI::RunSubmissions#get"
+          end
+
           scope "runs" do
             get "/", to: "aPI::Runs#index"
             get "/:run_id", to: "aPI::Runs#get"

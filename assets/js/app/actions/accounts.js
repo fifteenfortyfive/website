@@ -17,7 +17,7 @@ export function fetchAccount(accountId) {
   return commonThunk({
     method: 'get',
     path: `/api/v1/accounts/${accountId}`,
-    name: 'accounts',
+    name: `accounts.${accountId}`,
     query: denulled({
       embed: 'runs'
     })

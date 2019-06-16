@@ -43,7 +43,7 @@ export function parseJSON(response) {
 
 
 export function commonThunk({method, path, name, body, query}, then) {
-  const fetchId = path || name;
+  const fetchId = name || path;
   const url = `${path}?${query ? params(query) : ""}`;
 
   return dispatch => {

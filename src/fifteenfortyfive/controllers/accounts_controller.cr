@@ -19,10 +19,13 @@ class AccountsController < AppController
   end
 
   def show
-    account = Accounts.get_account(url_params["id"])
+    account_id = url_params["id"]
+    account = Accounts.get_account(account_id)
+    runs = Events.list_runs(Query.where(account_id: account_id).preload([:team, :game, :event, :submission])).sort_by(&.event.start_time!).reverse.group_by(&.event)
 
     render("accounts/show.html.j2", {
-      "account" => account
+      "account" => account,
+      "runs" => runs
     })
   end
 

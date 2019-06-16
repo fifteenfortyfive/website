@@ -14,7 +14,11 @@ module Events
       belongs_to :account, Account
       belongs_to :game, Inventory::Game
 
+      field :pb_seconds, Int32
+      field :est_seconds, Int32
+
       field :index, Int32
+      field :accepted, Bool, default: false
     end
   end
 end

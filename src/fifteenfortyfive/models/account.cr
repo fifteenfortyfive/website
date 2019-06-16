@@ -41,16 +41,20 @@ class Account < Crecto::Model
   end
 
   def to_json(json : JSON::Builder)
-    json.raw({
-      id: self.id,
-      username: self.username,
-      discord_username: self.discord_username,
-      discord_discriminator: self.discord_discriminator,
-      twitch: self.twitch,
-      twitter: self.twitter,
-      timezone: self.timezone,
-      admin: self.admin,
-      avatar_object_id: self.avatar_object_id
-    }.to_json)
+    json.raw(self.to_h.to_json)
+  end
+
+  def to_h
+    {
+      "id" => self.id,
+      "username" => self.username,
+      "discord_username" => self.discord_username,
+      "discord_discriminator" => self.discord_discriminator,
+      "twitch" => self.twitch,
+      "twitter" => self.twitter,
+      "timezone" => self.timezone,
+      "admin" => self.admin,
+      "avatar_object_id" => self.avatar_object_id
+    }
   end
 end

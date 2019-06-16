@@ -5,17 +5,15 @@ import { Router, Link } from 'preact-router';
 import { createHashHistory } from 'history';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import * as AccountActions from './actions/accounts';
-import * as TeamActions from './actions/teams';
 import * as EventActions from './actions/events';
 
+import AccountPage from './pages/account-page';
 import TeamsPage from './pages/teams-page';
 import NotFoundPage from './pages/not-found-page';
 
 class App extends Component {
   componentDidMount() {
     const {currentUserId, eventId, dispatch} = this.props;
-    dispatch(AccountActions.fetchAccount(currentUserId));
     dispatch(EventActions.fetchEvent(eventId));
   }
 
@@ -26,6 +24,7 @@ class App extends Component {
       <div>
         <Router>
           <TeamsPage path="/teams" eventId={eventId} />
+          <AccountPage path="/accounts/:accountId" />
           <NotFoundPage default />
         </Router>
       </div>

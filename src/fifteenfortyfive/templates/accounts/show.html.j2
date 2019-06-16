@@ -1,66 +1,9 @@
 {% extends "layouts/main.html.j2" %}
 
 {% block main %}
-  <section class="section">
-    <div class="container">
-      <div class="columns is-multiline">
-        <div class="column is-6-desktop">
-          <div class="card">
-            <div class="card-content">
-              <div class="media">
-                <div class="media-left">
-                  <figure class="image is-64x64">
-                    <img class="avatar avatar--navbar" src="{{ conn.constants.assets_url }}/{{ account.avatar_object_id }}">
-                  </figure>
-                </div>
-                <div class="media-content">
-                  <p class="title is-4">{{ account.username | safe}}</p>
-                  <p class="subtitle is-6">
-                    <div class="field is-grouped is-grouped-multiline">
-                      {% if account.twitch %}
-                        <div class="control">
-                          <a href="https://twitch.tv/{{account.twitch}}" target="_blank" rel="nofollow noopener">
-                            <span class="tags has-addons">
-                              <span class="tag is-dark">
-                                <i class="fab fa-twitch"></i>
-                              </span>
-                              <span class="tag">
-                                {{account.twitch}}
-                              </span>
-                            </span>
-                          </a>
-                        </div>
-                      {% endif %}
+  <div id="app-container"></div>
+{% endblock %}
 
-                      {% if account.twitter %}
-                        <div class="control">
-                          <a href="https://twitter.com/{{account.twitter}}" target="_blank" rel="nofollow noopener">
-                            <span class="tags has-addons">
-                              <span class="tag is-info">
-                                <i class="fab fa-twitter"></i>
-                              </span>
-                              <span class="tag">
-                                {{account.twitter}}
-                              </span>
-                            </span>
-                          </a>
-                        </div>
-                      {% endif %}
-
-                      <div class="control">
-                        {% if account.admin %}
-                          <span class="tag is-info is-rounded">
-                            Admin
-                          </span>
-                        {% endif %}
-                      </div>
-                    </div>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
-    </div>
-  </section>
+{% block postbody %}
+  <script src="/js/app-v2.js"></script>
 {% endblock %}
