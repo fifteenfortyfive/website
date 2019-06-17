@@ -45,7 +45,7 @@ const AccountCard = (props) => {
         </div>
 
         { bio &&
-          <div class="has-margin-top-sm has-text-left">
+          <div class="has-margin-top-sm has-text-centered">
             {bio}
           </div>
         }

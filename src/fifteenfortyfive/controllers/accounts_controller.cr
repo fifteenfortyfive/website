@@ -1,3 +1,5 @@
+require "tempfile"
+
 require "awscr-s3"
 require "../contexts/accounts"
 
@@ -38,19 +40,10 @@ class AccountsController < AppController
 
     HTTP::FormData.parse(@context.request) do |part|
       case part.name
-      when "avatar"
-        # TODO: figure out how to handle avatar uploads again
-        # file = Tempfile.open("avatar_upload") do |f|
-        #   IO.copy(part.body, f)
-        # end
-
-        # if object_id = upload_avatar_object(file)
-        #   account.avatar_object_id = object_id
-        # end
-
-        # file.delete
       when "username"
         account.username  = part.body.gets_to_end
+      when "bio"
+        account.bio  = part.body.gets_to_end
       when "password"
         account.password  = part.body.gets_to_end
       when "discord_username"

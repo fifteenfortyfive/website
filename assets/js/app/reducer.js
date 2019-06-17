@@ -139,7 +139,6 @@ const reducerActions = {
 export function reducer(state = defaultState, action) {
   const func = reducerActions[action.type];
   const newState = func ? func(state, action) : state;
-  console.log(newState)
   return newState;
 }
 

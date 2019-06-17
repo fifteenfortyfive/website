@@ -18,7 +18,8 @@ class AccountPage extends Component {
   }
 
   render() {
-    const {account, stream, loading, loadingStream} = this.props;
+    const {account, stream, loadingAccount, loadingStream} = this.props;
+    const loading = loadingAccount || loadingStream;
 
     if(account == null) return "loading";
 
@@ -49,7 +50,7 @@ const mapStateToProps = (state, props) => {
   return {
     account: state.accounts[accountId],
     stream: state.streams[accountId],
-    loading: state.fetching[`accounts.${accountId}`],
+    loadingAccount: state.fetching[`accounts.${accountId}`],
     loadingStream: state.fetching[`streams.${accountId}`]
   };
 }
