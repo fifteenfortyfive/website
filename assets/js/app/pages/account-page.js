@@ -26,7 +26,7 @@ class AccountPage extends Component {
       <div class="container">
         <section class="section">
           <div class="columns">
-            <div class="column is-4-tablet is-3-desktop">
+            <div class="column is-4-tablet is-4-desktop is-3-widescreen">
               <AccountCard
                 account={account}
                 stream={stream}
@@ -34,7 +34,7 @@ class AccountPage extends Component {
               />
             </div>
 
-            <div class="column is-8-tablet is-5-desktop">
+            <div class="column is-8-tablet is-5-desktop is-5-widescreen">
               <RunList runs={account.runs} />
             </div>
           </div>

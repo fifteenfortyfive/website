@@ -7,6 +7,7 @@ class Account < Crecto::Model
 
   schema "accounts" do
     field :username, String
+    field :bio, String
     field :discord_username, String
     field :discord_discriminator, String
     field :twitch, String
@@ -25,6 +26,7 @@ class Account < Crecto::Model
   validate_required :username
   validate_required :discord_username
   validate_required :discord_discriminator
+  validate_length :bio, max: 140
 
 
   def password=(new_password : String)
@@ -48,6 +50,7 @@ class Account < Crecto::Model
     {
       "id" => self.id,
       "username" => self.username,
+      "bio" => self.bio,
       "discord_username" => self.discord_username,
       "discord_discriminator" => self.discord_discriminator,
       "twitch" => self.twitch,

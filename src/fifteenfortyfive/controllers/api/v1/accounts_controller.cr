@@ -40,6 +40,7 @@ class API::AccountsController < AppController
       account: {
         id: account.id,
         username: account.username,
+        bio: account.bio,
         discord_username: account.discord_username,
         discord_discriminator: account.discord_discriminator,
         twitch: account.twitch,

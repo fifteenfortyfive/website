@@ -16,6 +16,7 @@ const AccountCard = (props) => {
   } = props;
 
   const {
+    bio,
     avatar_object_id,
     username,
     twitch,
@@ -42,7 +43,19 @@ const AccountCard = (props) => {
               </span>
             }
         </div>
+
+        { bio &&
+          <div class="has-margin-top-sm has-text-left">
+            {bio}
+          </div>
+        }
       </div>
+
+      <StreamPreview
+        stream={stream}
+        username={twitch}
+        loading={loadingStream}
+      />
 
       <div class="account-content has-padding-md">
         { twitch &&
@@ -64,12 +77,6 @@ const AccountCard = (props) => {
           Joined {simpleDate(created_at)}
         </p>
       </div>
-
-      <StreamPreview
-        stream={stream}
-        username={twitch}
-        loading={loadingStream}
-      />
     </div>
   );
 };

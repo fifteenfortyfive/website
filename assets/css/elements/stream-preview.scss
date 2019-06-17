@@ -20,9 +20,9 @@
 
   .stream-preview__title {
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
     color: $white;
+    font-size: 0.875rem;
+    font-weight: 500;
   }
 
 

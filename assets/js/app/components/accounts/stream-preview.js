@@ -31,16 +31,15 @@ const StreamPreview = (props) => {
         href={`https://twitch.tv/${username}`}
         target="_blank"
         rel="nofollow noopener"
-        class="has-text-white is-size-7"
       >
-        <div class="has-padding-left-sm has-padding-right-sm has-padding-top-sm has-padding-bottom-sm">
+        <div class="has-padding-left-md has-padding-right-md has-padding-top-sm has-padding-bottom-sm">
           <span class="stream-preview__header">NOW STREAMING:</span>
         </div>
         <figure class="stream-preview__image image is-16by9 is-clipped">
           <img src={url} />
         </figure>
 
-        <div class="stream-preview__title has-padding-left-sm has-padding-right-sm has-padding-top-sm has-padding-bottom-sm">
+        <div class="stream-preview__title has-padding-left-md has-padding-right-md has-padding-top-sm has-padding-bottom-sm">
           {title}
         </div>
       </a>
