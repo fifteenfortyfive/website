@@ -1,5 +1,4 @@
 require "crinja"
-require "crypto/bcrypt/password"
 
 module Events
   @[Crinja::Attributes]

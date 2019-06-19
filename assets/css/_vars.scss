@@ -30,21 +30,24 @@ $mario: $red;
 
 // Typography
 
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,400i,800,700i,900,900i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Palanquin:400,400i,600,600i,700,700i&display=swap');
+
 $font-brand: 'cortado';
-$font-body: 'skolar-sans-latin';
-$font-header: 'proxima-nova';
+$font-body: 'PT Sans';
+$font-header: 'skolar-sans-latin';
 
 $family-sans-serif: 'skolar-sans-latin', BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 $family-monospace: monospace;
 $render-mode: optimizeLegibility;
 
 $size-1: 3rem;
-$size-2: 2.5rem;
-$size-3: 2rem;
-$size-4: 1.5rem;
-$size-5: 1.25rem;
-$size-6: 1rem;
-$size-7: 0.75rem;
+$size-2: 2.25rem;
+$size-3: 1.75rem;
+$size-4: 1.25rem;
+$size-5: 1rem;
+$size-6: 0.875rem;
+$size-7: 0.65rem;
 
 $weight-light: 300;
 $weight-normal: 400;
