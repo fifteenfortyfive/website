@@ -71,7 +71,7 @@ module Accounts
         default: true,
         section: "General",
         description: <<-DESC
-          Allow your Twitter username to be displayed and linked across the site.
+          Allow the site to display how long you have been a member of the site.
         DESC
       },
       "show_run_history" => {
