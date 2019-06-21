@@ -72,10 +72,11 @@ const AccountCard = (props) => {
           />
         }
 
-
-        <p class="has-margin-sm has-margin-left-md has-margin-right-md">
-          Joined {simpleDate(created_at)}
-        </p>
+        { created_at &&
+          <p class="has-margin-sm has-margin-left-md has-margin-right-md">
+            Joined {simpleDate(created_at)}
+          </p>
+        }
       </div>
     </div>
   );

@@ -41,15 +41,13 @@ class API::AccountsController < AppController
         id: account.id,
         username: account.username,
         bio: account.bio,
-        discord_username: account.discord_username,
-        discord_discriminator: account.discord_discriminator,
-        twitch: account.twitch,
-        twitter: account.twitter,
+        twitch: account.preferences.show_twitch ? account.twitch : nil,
+        twitter: account.preferences.show_twitter ? account.twitter : nil,
         timezone: account.timezone,
         admin: account.admin,
         avatar_object_id: account.avatar_object_id,
-        created_at: account.created_at,
-        runs: runs
+        created_at: account.preferences.show_join_date ? account.created_at : nil,
+        runs: account.preferences.show_run_history ? runs : [] of String
       }
     })
   end

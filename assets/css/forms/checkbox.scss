@@ -1,0 +1,31 @@
+@import "./_form_vars";
+
+.checkbox {
+  display: flex;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  margin-left: 1em;
+  user-select: none;
+  transition: background 0.1s ease-out;
+
+  &:hover {
+    background-color: $field-oneline-background-color--darker;
+  }
+
+  &, label {
+    cursor: pointer;
+  }
+
+
+  &__check {
+    display: inline-block;
+    margin-right: 0.75em;
+    color: $field-oneline-color;
+
+    .hidden {
+      display: none;
+    }
+  }
+}
+
+

@@ -2,6 +2,7 @@ import { h, render, Component } from 'preact';
 import { connect } from 'preact-redux';
 import { bindActionCreators } from 'redux';
 import { Router, Link } from 'preact-router';
+import { Match } from 'preact-router/match';
 import { createHashHistory } from 'history';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -24,7 +25,7 @@ class App extends Component {
       <div>
         <Router>
           <TeamsPage path="/teams" eventId={eventId} />
-          <AccountPage path="/accounts/:accountId" />
+          <AccountPage path="/accounts/:accountId" currentUserId={currentUserId} />
           <NotFoundPage default />
         </Router>
       </div>

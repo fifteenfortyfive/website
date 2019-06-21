@@ -6,19 +6,96 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as AccountActions from '../actions/accounts';
 import * as StreamActions from '../actions/streams';
 
+import AccountPreferences from '../containers/account-preferences';
 import AccountCard from '../components/accounts/account-card';
 import RunList from '../components/accounts/run-list';
 
+const SubPages = {
+  SHOW: 'show',
+  PREFERENCES: 'preferences'
+};
+
 class AccountPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      subPage: SubPages.SHOW
+    }
+  }
+
   componentDidMount() {
     const {accountId, dispatch} = this.props;
+    const {subPage} = this.state;
 
     dispatch(AccountActions.fetchAccount(accountId));
     dispatch(StreamActions.fetchStream(accountId));
   }
 
+  goTo(subPage) {
+    this.setState({ subPage });
+  }
+
+  renderNav() {
+    const {account} = this.props;
+    const {subPage} = this.state;
+
+    switch(subPage) {
+      case SubPages.SHOW:
+        return (
+          <div>
+            { currentUserId && currentUserId === account.id &&
+              <button
+                class="button is-medium is-fullwidth"
+                onClick={() => this.goTo(SubPages.PREFERENCES)}
+              >
+                Edit Preferences
+              </button>
+            }
+          </div>
+        );
+      case SubPages.PREFERENCES:
+        return (
+          <div>
+            <button
+              class="button is-medium is-fullwidth"
+              onClick={() => this.goTo(SubPages.SHOW)}
+            >
+              Back
+            </button>
+          </div>
+        );
+    }
+  }
+
+  renderPageBody() {
+    const {account} = this.props;
+    const {subPage} = this.state;
+
+    switch(subPage) {
+      case SubPages.PREFERENCES:
+        return (
+          <div class="column is-8">
+            <AccountPreferences />
+          </div>
+        );
+      case SubPages.SHOW:
+      default:
+        return (
+          <div class="column is-8-tablet is-5-desktop is-5-widescreen">
+            <RunList runs={account.runs} />
+          </div>
+        );
+    }
+  }
+
   render() {
-    const {account, stream, loadingAccount, loadingStream} = this.props;
+    const {
+      account,
+      stream,
+      currentUserId,
+      loadingAccount,
+      loadingStream
+    } = this.props;
     const loading = loadingAccount || loadingStream;
 
     if(account == null) return "loading";
@@ -33,11 +110,11 @@ class AccountPage extends Component {
                 stream={stream}
                 loadingStream={loadingStream}
               />
+
+              {this.renderNav()}
             </div>
 
-            <div class="column is-8-tablet is-5-desktop is-5-widescreen">
-              <RunList runs={account.runs} />
-            </div>
+            {this.renderPageBody()}
           </div>
         </section>
       </div>

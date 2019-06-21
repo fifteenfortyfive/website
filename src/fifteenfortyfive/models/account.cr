@@ -1,5 +1,6 @@
 require "crinja"
 require "crypto/bcrypt/password"
+require "../contexts/accounts/account_preferences"
 
 @[Crinja::Attributes]
 class Account < Crecto::Model
@@ -20,6 +21,8 @@ class Account < Crecto::Model
     field :encrypted_password, String
     @[Crinja::Attribute(ignore: true)]
     field :password, String, virtual: true
+
+    field :preference_overrides, Json
   end
 
 
@@ -42,19 +45,34 @@ class Account < Crecto::Model
     @avatar_object_id || "default-avatar"
   end
 
+  @preferences : Accounts::AccountPreferences?
+  def preferences
+    @preferences ||= begin
+      if json = @preference_overrides
+        Accounts::AccountPreferences.from_json(json.to_json)
+      else
+        Accounts::AccountPreferences::DEFAULT
+      end
+    end
+  end
+
+  def preferences=(new_prefs : Accounts::AccountPreferences)
+    @preferences = new_prefs
+  end
+
   def to_json(json : JSON::Builder)
     json.raw(self.to_h.to_json)
   end
 
-  def to_h
+  def to_h(is_admin : Bool = false)
     {
       "id" => self.id,
       "username" => self.username,
       "bio" => self.bio,
-      "discord_username" => self.discord_username,
-      "discord_discriminator" => self.discord_discriminator,
-      "twitch" => self.twitch,
-      "twitter" => self.twitter,
+      "discord_username" => is_admin ? self.discord_username : nil,
+      "discord_discriminator" => is_admin ? self.discord_discriminator : nil,
+      "twitch" => self.preferences.show_twitch ? self.twitch : nil,
+      "twitter" => self.preferences.show_twitter ? self.twitter : nil,
       "timezone" => self.timezone,
       "admin" => self.admin,
       "avatar_object_id" => self.avatar_object_id

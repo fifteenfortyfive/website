@@ -106,6 +106,15 @@ router AppRouter do
         get "/", to: "aPI::Streams#index"
         get "/:account_id", to: "aPI::Streams#get"
       end
+
+      scope "@me" do
+        implements :authenticated
+
+        scope "account_preferences" do
+          get  "/", to: "aPI::AccountPreferences#get"
+          post "/", to: "aPI::AccountPreferences#update"
+        end
+      end
     end
 
 

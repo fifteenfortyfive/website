@@ -1,5 +1,6 @@
 require "../models/account"
 require "../models/session"
+require "./accounts/**"
 
 module Accounts
   extend self
@@ -41,6 +42,19 @@ module Accounts
 
   def delete_account(account : Account)
     Repo.delete(account)
+  end
+
+
+  ###
+  # Account Preferences
+  ###
+
+  def update_account_preferences(account : Account, preferences : AccountPreferences)
+    account.preferences = account.preferences.merge(preferences)
+    changeset = account.cast({
+      preference_overrides: account.preferences.to_json
+    })
+    Repo.update(changeset)
   end
 
 

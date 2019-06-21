@@ -3,13 +3,14 @@ import thunk from 'redux-thunk';
 import _ from 'lodash';
 
 const defaultState = {
+  me: {},
   accounts: {},
   streams: {},
   events: {},
   games: {},
   teams: {},
   runs: {},
-  fetching: {}
+  fetching: {},
 };
 
 const reducerActions = {
@@ -133,6 +134,34 @@ const reducerActions = {
         ...runsById
       }
     }
+  },
+
+  'RECEIVE_ACCOUNT_PREFERENCES': (state, {data}) => {
+    const {preferences, descriptions} = data;
+
+    return {
+      ...state,
+      me: {
+        ...state.me,
+        preferences,
+        preferenceDescriptions: descriptions
+      }
+    };
+  },
+
+  'SET_ACCOUNT_PREFERENCE': (state, {data}) => {
+    const {preference, value} = data;
+
+    return {
+      ...state,
+      me: {
+        ...state.me,
+        preferences: {
+          ...state.me.preferences,
+          [preference]: value
+        }
+      }
+    };
   }
 }
 

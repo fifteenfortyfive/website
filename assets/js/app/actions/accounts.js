@@ -22,7 +22,7 @@ export function fetchAccount(accountId) {
       embed: 'runs'
     })
   }, (dispatch, response) => {
-    dispatch(receiveAccounts(response))
+    dispatch(receiveAccounts([response.account]))
   });
 }
 

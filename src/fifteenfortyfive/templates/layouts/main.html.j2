@@ -13,7 +13,7 @@
     <script src="https://use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
 
     <script>
-      window.currentUserId = {{ conn.user.id }};
+      window.currentUserId = {{ conn.user.id | d("null") }};
       // Yay hardcoding
       window.mainEventId = 16;
     </script>

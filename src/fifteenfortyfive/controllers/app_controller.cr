@@ -37,13 +37,14 @@ class AppController
   property! body_params   : Hash(String, String)
   property! url_params    : Hash(String, String)
   property! query_params  : Hash(String, String)
+  property! body_content  : String
 
   def body_params
-    @body_params ||= HTTP::Params.parse(request.body.not_nil!.gets_to_end).to_h
+    @body_params ||= HTTP::Params.parse(body_content).to_h
   end
 
   def json_params
-    @json_params ||= JSON.parse(request.body.not_nil!.gets_to_end)
+    @json_params ||= JSON.parse(body_content)
   end
 
   def url_params
@@ -52,6 +53,10 @@ class AppController
 
   def query_params
     @query_params ||= request.query_params.to_h
+  end
+
+  def body_content
+    @body_content ||= request.body.not_nil!.gets_to_end
   end
 
 
