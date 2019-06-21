@@ -15,16 +15,19 @@ router AppRouter do
     use AuthorizationHandler.new(required_level: :admin)
   end
 
-
   scope "accounts", helper_prefix: "user" do
-    get   ":id",    to: "accounts#show",    helper: "show"
     get   "new",    to: "accounts#new",     helper: "new"
     post  "create", to: "accounts#create",  helper: "create"
+    get   ":id",    to: "static#app_root",  helper: "show"
 
-    implements :authenticated
-    get   "edit",   to: "accounts#edit",    helper: "edit"
-    post  "update", to: "accounts#update",  helper: "update"
+    scope do
+      implements :authenticated
+      get   "edit",   to: "accounts#edit",    helper: "edit"
+      post  "update", to: "accounts#update",  helper: "update"
+    end
   end
+
+  match "@me/*", to: "static#app_root"
 
   scope "events", helper_prefix: "events" do
     root to: "events#index"
@@ -140,6 +143,8 @@ router AppRouter do
         get "/", to: "aPI::Admin#games"
       end
     end
+
+    match "*", to: "aPI::Errors#not_found"
   end
 
 

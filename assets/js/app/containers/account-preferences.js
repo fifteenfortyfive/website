@@ -18,8 +18,9 @@ class AccountPreferences extends Component {
   }
 
   handleSave() {
-    const {preferences, dispatch} = this.props;
+    const {preferences, dispatch, onFinish} = this.props;
     dispatch(AccountPreferencesActions.persistAccountPreferences(preferences));
+    onFinish();
   }
 
   handlePreferenceChange(name, value) {
@@ -52,7 +53,8 @@ class AccountPreferences extends Component {
       preferences,
       descriptions,
       loading,
-      submitting
+      submitting,
+      onFinish
     } = this.props;
 
     if(loading) return "Loading...";
@@ -65,14 +67,25 @@ class AccountPreferences extends Component {
           })
         }
 
-        <div class="has-margin-top-md">
-          <button
-            class="button is-danger is-medium"
-            disabled={submitting}
-            onClick={this.handleSave.bind(this)}
-          >
-            { submitting ? "Submitting..." : "Save Preferences" }
-          </button>
+        <div class="field is-grouped has-margin-top-md">
+          <span class="control">
+            <button
+              class="button is-danger is-medium"
+              disabled={submitting}
+              onClick={this.handleSave.bind(this)}
+            >
+              { submitting ? "Submitting..." : "Save Preferences" }
+            </button>
+          </span>
+          <span class="control">
+            <button
+              class="button is-light is-medium"
+              disabled={submitting}
+              onClick={onFinish}
+            >
+              Cancel
+            </button>
+          </span>
         </div>
       </div>
     );

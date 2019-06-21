@@ -12,6 +12,7 @@ import RunList from '../components/accounts/run-list';
 
 const SubPages = {
   SHOW: 'show',
+  EDIT: 'edit',
   PREFERENCES: 'preferences'
 };
 
@@ -31,6 +32,16 @@ class AccountPage extends Component {
     dispatch(StreamActions.fetchStream(accountId));
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const {accountId, dispatch} = this.props;
+    const {subPage} = this.state;
+    const pageChanged = prevState.subPage !== subPage;
+
+    if(pageChanged && subPage === SubPages.SHOW) {
+      dispatch(AccountActions.fetchAccount(accountId));
+    }
+  }
+
   goTo(subPage) {
     this.setState({ subPage });
   }
@@ -45,23 +56,12 @@ class AccountPage extends Component {
           <div>
             { currentUserId && currentUserId === account.id &&
               <button
-                class="button is-medium is-fullwidth"
+                class="button is-medium is-fullwidth is-light"
                 onClick={() => this.goTo(SubPages.PREFERENCES)}
               >
                 Edit Preferences
               </button>
             }
-          </div>
-        );
-      case SubPages.PREFERENCES:
-        return (
-          <div>
-            <button
-              class="button is-medium is-fullwidth"
-              onClick={() => this.goTo(SubPages.SHOW)}
-            >
-              Back
-            </button>
           </div>
         );
     }
@@ -75,7 +75,7 @@ class AccountPage extends Component {
       case SubPages.PREFERENCES:
         return (
           <div class="column is-8">
-            <AccountPreferences />
+            <AccountPreferences onFinish={() => this.goTo(SubPages.SHOW)} />
           </div>
         );
       case SubPages.SHOW:

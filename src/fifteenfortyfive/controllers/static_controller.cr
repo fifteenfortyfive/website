@@ -6,4 +6,8 @@ class StaticController < AppController
   def volunteer
     render("static/volunteer.html.j2")
   end
+
+  def app_root
+    render("static/app_root.html.j2")
+  end
 end
