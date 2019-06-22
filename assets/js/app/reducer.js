@@ -3,7 +3,10 @@ import thunk from 'redux-thunk';
 import _ from 'lodash';
 
 const defaultState = {
-  me: {},
+  me: {
+    account: null,
+    preferences: null
+  },
   accounts: {},
   streams: {},
   events: {},
@@ -162,6 +165,18 @@ const reducerActions = {
         }
       }
     };
+  },
+
+  'RECEIVE_ME': (state, {data}) => {
+    const {account} = data;
+
+    return {
+      ...state,
+      me: {
+        ...state.me,
+        account
+      }
+    }
   }
 }
 

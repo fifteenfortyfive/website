@@ -25,7 +25,6 @@
 @import "components/navbar";
 @import "components/react-table";
 
-@import "forms/checkbox";
 @import "forms/form-section";
 @import "forms/image-upload";
 @import "forms/fields";
@@ -36,3 +35,7 @@
 @import "node_modules/flatpickr/dist/flatpickr.min";
 @import "node_modules/flatpickr/dist/themes/airbnb";
 @import "fixes/flatpickr";
+
+
+@import "ff-forms/checkbox";
+@import "ff-forms/text-input";

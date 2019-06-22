@@ -5,87 +5,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import * as AccountActions from '../actions/accounts';
 import * as StreamActions from '../actions/streams';
+import * as MeActions from '../actions/me';
 
 import AccountPreferences from '../containers/account-preferences';
 import AccountCard from '../components/accounts/account-card';
 import RunList from '../components/accounts/run-list';
 
-const SubPages = {
-  SHOW: 'show',
-  EDIT: 'edit',
-  PREFERENCES: 'preferences'
-};
-
 class AccountPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      subPage: SubPages.SHOW
-    }
-  }
-
   componentDidMount() {
     const {accountId, dispatch} = this.props;
-    const {subPage} = this.state;
 
     dispatch(AccountActions.fetchAccount(accountId));
     dispatch(StreamActions.fetchStream(accountId));
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const {accountId, dispatch} = this.props;
-    const {subPage} = this.state;
-    const pageChanged = prevState.subPage !== subPage;
-
-    if(pageChanged && subPage === SubPages.SHOW) {
-      dispatch(AccountActions.fetchAccount(accountId));
-    }
-  }
-
-  goTo(subPage) {
-    this.setState({ subPage });
-  }
-
-  renderNav() {
-    const {account} = this.props;
-    const {subPage} = this.state;
-
-    switch(subPage) {
-      case SubPages.SHOW:
-        return (
-          <div>
-            { currentUserId && currentUserId === account.id &&
-              <button
-                class="button is-medium is-fullwidth is-light"
-                onClick={() => this.goTo(SubPages.PREFERENCES)}
-              >
-                Edit Preferences
-              </button>
-            }
-          </div>
-        );
-    }
-  }
-
-  renderPageBody() {
-    const {account} = this.props;
-    const {subPage} = this.state;
-
-    switch(subPage) {
-      case SubPages.PREFERENCES:
-        return (
-          <div class="column is-8">
-            <AccountPreferences onFinish={() => this.goTo(SubPages.SHOW)} />
-          </div>
-        );
-      case SubPages.SHOW:
-      default:
-        return (
-          <div class="column is-8-tablet is-5-desktop is-5-widescreen">
-            <RunList runs={account.runs} />
-          </div>
-        );
-    }
   }
 
   render() {
@@ -111,10 +42,11 @@ class AccountPage extends Component {
                 loadingStream={loadingStream}
               />
 
-              {this.renderNav()}
             </div>
 
-            {this.renderPageBody()}
+            <div class="column is-8-tablet is-5-desktop is-5-widescreen">
+              <RunList runs={account.runs} />
+            </div>
           </div>
         </section>
       </div>

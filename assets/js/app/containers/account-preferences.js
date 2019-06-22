@@ -29,6 +29,7 @@ class AccountPreferences extends Component {
   }
 
   renderPreference(preference, value, detail) {
+    const { preferences, descriptions } = this.props;
     const {
       name,
       type,
@@ -36,14 +37,26 @@ class AccountPreferences extends Component {
       description
     } = detail;
 
+    const requirements = _.chain(requires)
+        .map((pref) => descriptions[pref].name)
+        .join(", ")
+        .value();
+    const requirementsMet = _.every(requires, (pref) => preferences[pref]);
+
     return (
       <Checkbox
         className="has-padding-md has-margin-top-sm has-margin-bottom-sm"
-        checked={value}
+        checked={requirementsMet && value}
+        disabled={!requirementsMet}
         onChange={(checked) => this.handlePreferenceChange(preference, checked)}
       >
         <h3 class="title is-5 has-margin-top-nudge has-margin-bottom-sm">{name}</h3>
         <p>{description}</p>
+        { requires &&
+          <p class="is-size-6 has-text-grey has-margin-top-xs">
+            Requires: {requirements}
+          </p>
+        }
       </Checkbox>
     );
   }
@@ -61,6 +74,7 @@ class AccountPreferences extends Component {
 
     return (
       <div>
+        <h1 class="title is-3">Account Preferences</h1>
         { _.map(preferences, (value, preference) => {
             const detail = descriptions[preference];
             return this.renderPreference(preference, value, detail);

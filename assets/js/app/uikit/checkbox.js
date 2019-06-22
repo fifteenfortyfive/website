@@ -5,6 +5,7 @@ const Checkbox = (props) => {
   const {
     checked = false,
     label,
+    disabled,
     children,
     onChange,
     className
@@ -14,8 +15,8 @@ const Checkbox = (props) => {
   const visibleChecked = checked ? "visible" : "hidden";
 
   return (
-    <div class={`checkbox ${className || ''}`} onClick={() => onChange(!checked)}>
-      <div class="checkbox__check">
+    <div class={`ff-checkbox ${disabled && '--disabled'} ${className || ''}`} onClick={() => !disabled && onChange(!checked)}>
+      <div class="ff-checkbox__check">
         <span class={visibleUnchecked}>
           <FontAwesomeIcon className="icon" icon={['far', 'square']} size="lg" />
         </span>

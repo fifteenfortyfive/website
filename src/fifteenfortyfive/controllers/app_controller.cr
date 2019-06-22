@@ -33,7 +33,6 @@ class AppController
     render_json(error.message, error.status)
   end
 
-
   property! body_params   : Hash(String, String)
   property! url_params    : Hash(String, String)
   property! query_params  : Hash(String, String)

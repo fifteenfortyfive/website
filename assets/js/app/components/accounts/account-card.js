@@ -21,6 +21,7 @@ const AccountCard = (props) => {
     username,
     twitch,
     twitter,
+    discord_tag,
     created_at,
     admin
   } = account;
@@ -51,11 +52,13 @@ const AccountCard = (props) => {
         }
       </div>
 
-      <StreamPreview
-        stream={stream}
-        username={twitch}
-        loading={loadingStream}
-      />
+      { stream &&
+        <StreamPreview
+          stream={stream}
+          username={twitch}
+          loading={loadingStream}
+        />
+      }
 
       <div class="account-content has-padding-md">
         { twitch &&
@@ -69,6 +72,13 @@ const AccountCard = (props) => {
           <SocialLink
             service={SocialLink.Services.TWITTER}
             name={twitter}
+          />
+        }
+
+        { discord_tag &&
+          <SocialLink
+            service={SocialLink.Services.DISCORD}
+            name={discord_tag}
           />
         }
 

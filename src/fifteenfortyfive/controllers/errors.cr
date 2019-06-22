@@ -17,4 +17,5 @@ module Errors
   Unauthorized = Error.new("unauthorized", 403)
   NotFound = Error.new("not found", 404)
   InternalServerError = Error.new("internal server error", 500)
+  InvalidInput = Error.new("invalid input", 422)
 end

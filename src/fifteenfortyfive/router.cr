@@ -27,7 +27,9 @@ router AppRouter do
     end
   end
 
-  match "@me/*", to: "static#app_root"
+  scope "@me" do
+    match "*", to: "static#app_root"
+  end
 
   scope "events", helper_prefix: "events" do
     root to: "events#index"
@@ -112,6 +114,9 @@ router AppRouter do
 
       scope "@me" do
         implements :authenticated
+
+        get  "/", to: "API::MeController#get"
+        post "/", to: "API::MeController#update_account"
 
         scope "account_preferences" do
           get  "/", to: "aPI::AccountPreferences#get"

@@ -1,0 +1,9 @@
+$field-border-color: $danger !default;
+$field-border: 1px solid $field-border-color;
+$field-background-color: lighten($danger, 40%) !default;
+$field-background-color--darker: darken($field-background-color, 4%) !default;
+$field-background-color--darkest: darken($field-background-color, 8%) !default;
+$field-color: $danger !default;
+$field-prefix-color: $grey-light !default;
+$field-font-size: 1rem;
+$field-label-width: 10ch;

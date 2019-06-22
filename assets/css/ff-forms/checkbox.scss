@@ -1,0 +1,51 @@
+@import "./_ff-form-vars";
+
+.ff-checkbox {
+  display: flex;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  user-select: none;
+  cursor: pointer;
+
+  &.--disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+
+    label {
+      cursor: not-allowed;
+    }
+  }
+
+  &:not(.--disabled):hover {
+    background-color: $field-background-color--darker;
+  }
+
+  &:not(.--disabled):active {
+    background-color: $field-background-color--darkest;
+  }
+
+  label {
+    cursor: pointer;
+    margin-top: 0.125rem;
+    margin-left: 32px;
+  }
+
+
+  &__check {
+    display: inline-block;
+    color: $field-color;
+
+    span {
+      position: absolute;
+      transition: opacity 0.12s ease-out;
+
+      &.visible {
+        opacity: 1;
+      }
+
+      &.hidden {
+        opacity: 0;
+      }
+    }
+  }
+}

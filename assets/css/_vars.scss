@@ -33,13 +33,13 @@ $mario: $red;
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,400i,800,700i,900,900i&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Encode+Sans:400,400i,600,600i&display=swap');
 
-$font-brand: 'cortado';
-$font-body: 'Encode Sans';
-$font-header: 'Encode Sans';
-
 $family-sans-serif: 'Encode Sans', BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 $family-monospace: monospace;
 $render-mode: optimizeLegibility;
+
+$font-brand: 'cortado', sans-serif;
+$font-body: $family-sans-serif;
+$font-header: $family-sans-serif;
 
 $size-1: 3rem;
 $size-2: 2.25rem;

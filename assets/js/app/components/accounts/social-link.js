@@ -8,16 +8,19 @@ const SocialTag = (props) => {
     urlOverride
   } = props;
 
-  const url = urlOverride || `${service.url}/${name}`;
+  const url = urlOverride || (service.url ? `${service.url}/${name}` : null);
 
   return (
     <div class="has-margin-sm has-margin-left-md has-margin-right-md">
       <span class="has-margin-right-md">
         <FontAwesomeIcon {...service.iconProps} />
       </span>
-      <a native href={url} target="_blank" rel="nofollow noopener">
-        {name}
-      </a>
+      { url
+        ? <a native href={url} target="_blank" rel="nofollow noopener">
+            {name}
+          </a>
+        : <span>{name}</span>
+      }
     </div>
   );
 };
@@ -31,6 +34,11 @@ SocialTag.Services = {
   TWITTER: {
     url: 'https://twitter.com',
     iconProps: { icon: ['fab', 'twitter'] },
+    style: 'is-info'
+  },
+  DISCORD: {
+    url: null,
+    iconProps: { icon: ['fab', 'discord'] },
     style: 'is-info'
   }
 }

@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as EventActions from './actions/events';
 
 import AccountPage from './pages/account-page';
+import MePage from './pages/me-page';
 import TeamsPage from './pages/teams-page';
 import NotFoundPage from './pages/not-found-page';
 
@@ -26,7 +27,7 @@ class App extends Component {
         <Router>
           <TeamsPage path="/teams" eventId={eventId} />
           <AccountPage path="/accounts/:accountId" currentUserId={currentUserId} />
-          <AccountPage path="/@me" accountId={currentUserId} currentUserId={currentUserId} />
+          <MePage path="/@me/:page?" />
           <NotFoundPage default />
         </Router>
       </div>

@@ -9,7 +9,7 @@
   transition: background 0.1s ease-out;
 
   &:hover {
-    background-color: $field-oneline-background-color--darker;
+    background-color: $field-background-color--darker;
   }
 
   &, label {
@@ -20,7 +20,7 @@
   &__check {
     display: inline-block;
     margin-right: 0.75em;
-    color: $field-oneline-color;
+    color: $field-color;
 
     .hidden {
       display: none;

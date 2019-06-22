@@ -60,22 +60,35 @@ class Account < Crecto::Model
     @preferences = new_prefs
   end
 
+  @discord_tag : String?
+  def discord_tag
+    @discord_tag ||= String.build do |str|
+      if preferences.show_discord_username
+        str << discord_username
+      end
+      if preferences.show_discord_discriminator
+        str << "#" << discord_discriminator
+      end
+    end
+  end
+
   def to_json(json : JSON::Builder)
     json.raw(self.to_h.to_json)
   end
 
-  def to_h(is_admin : Bool = false)
+  def to_h
     {
-      "id" => self.id,
-      "username" => self.username,
-      "bio" => self.bio,
-      "discord_username" => is_admin ? self.discord_username : nil,
-      "discord_discriminator" => is_admin ? self.discord_discriminator : nil,
-      "twitch" => self.preferences.show_twitch ? self.twitch : nil,
-      "twitter" => self.preferences.show_twitter ? self.twitter : nil,
-      "timezone" => self.timezone,
-      "admin" => self.admin,
-      "avatar_object_id" => self.avatar_object_id
+      "id" => id,
+      "username" => username,
+      "bio" => bio,
+      "discord_username" => preferences.show_discord_username ? discord_username : nil,
+      "discord_discriminator" => preferences.show_discord_discriminator ? discord_discriminator : nil,
+      "discord_tag" => discord_tag.empty? ? discord_tag : nil,
+      "twitch" => preferences.show_twitch ? twitch : nil,
+      "twitter" => preferences.show_twitter ? twitter : nil,
+      "timezone" => timezone,
+      "admin" => admin,
+      "avatar_object_id" => avatar_object_id
     }
   end
 end

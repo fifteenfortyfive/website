@@ -11,23 +11,21 @@ module Accounts
     # General profile visibility
     ###
 
-    # Allow their Twitch username to be displayed/linked
     property show_twitch : Bool = true
-    # Allow their Twitter username to be displayed/linked
     property show_twitter : Bool = true
-    # Allow displaying when they became a member of the site.
     property show_join_date : Bool = true
-    # Allow runs to be displayed on their profile.
-    # NOTE: This setting does not affect aggregations or displays as part of
-    # event details.
+    property show_discord_username : Bool = false
+    property show_discord_discriminator : Bool = false
+    def show_discord_discriminator : Bool
+      @show_discord_username && @show_discord_discriminator
+    end
     property show_run_history : Bool = true
+
 
     ###
     # Statuses
     ###
 
-    # Allow tracking when they're streaming and displaying that information
-    # across the site. This requires `show_twitch` to be true.
     property show_streaming : Bool = true
     def show_streaming : Bool
       @show_twitch && @show_streaming
@@ -40,6 +38,8 @@ module Accounts
       copy.show_twitch = other.show_twitch
       copy.show_twitter = other.show_twitter
       copy.show_join_date = other.show_join_date
+      copy.show_discord_username = other.show_discord_username
+      copy.show_discord_discriminator = other.show_discord_discriminator
       copy.show_run_history = other.show_run_history
       copy.show_streaming = other.show_streaming
 
@@ -72,6 +72,28 @@ module Accounts
         section: "General",
         description: <<-DESC
           Allow the site to display how long you have been a member of the site.
+        DESC
+      },
+      "show_discord_username" => {
+        name: "Display Discord Username",
+        type: "flag",
+        default: false,
+        section: "General",
+        description: <<-DESC
+          Allow the site to display your Discord username.
+          This does not include the numbers after the name and is geenerally safe to display.
+          Other users will generally only be able to identify you if they are in a Discord server with you.
+        DESC
+      },
+      "show_discord_discriminator" => {
+        name: "Display Discord Discriminator",
+        type: "flag",
+        requires: ["show_discord_username"],
+        default: false,
+        section: "General",
+        description: <<-DESC
+          Allow the site to display the numbers associated with your Discord username on the site.
+          Enabling this setting will allow anyone to uniquely identify you on Discord, so be careful!
         DESC
       },
       "show_run_history" => {
