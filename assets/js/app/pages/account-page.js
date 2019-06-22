@@ -1,13 +1,11 @@
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
-import { Link } from 'preact-router';
+import { Link } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import * as AccountActions from '../actions/accounts';
 import * as StreamActions from '../actions/streams';
-import * as MeActions from '../actions/me';
 
-import AccountPreferences from '../containers/account-preferences';
 import AccountCard from '../components/accounts/account-card';
 import RunList from '../components/accounts/run-list';
 

@@ -1,15 +1,18 @@
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
-import { Link } from 'preact-router';
+import { Link, route } from 'preact-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import * as AccountActions from '../actions/accounts';
 import * as StreamActions from '../actions/streams';
 import * as MeActions from '../actions/me';
 
-import AccountPreferences from '../containers/account-preferences';
+import Preferences from '../components/me/preferences';
+import Edit from '../components/me/edit';
 import AccountCard from '../components/accounts/account-card';
 import RunList from '../components/accounts/run-list';
+
+import { Routes } from '../constants';
 
 const Pages = {
   SHOW: 'show',
@@ -20,30 +23,21 @@ const Pages = {
 class MePage extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      subPage: Pages.SHOW
-    }
   }
 
   componentDidMount() {
     const {dispatch} = this.props;
-    const {subPage} = this.state;
 
     dispatch(MeActions.fetchMe());
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const {dispatch} = this.props;
-    const {subPage} = this.state;
-    const pageChanged = prevState.subPage !== subPage;
+    const {dispatch, page} = this.props;
+    const pageChanged = prevState.page != page;
 
-    if(pageChanged && subPage === Pages.SHOW) {
+    if(pageChanged && page === Pages.SHOW) {
       dispatch(MeActions.fetchMe());
     }
-  }
-
-  goTo(subPage) {
-    this.setState({ subPage });
   }
 
   renderNav() {
@@ -53,58 +47,47 @@ class MePage extends Component {
       <div>
         { accountId &&
           <Link
-            href={`/accounts/${accountId}`}
+            href={Routes.ACCOUNT(accountId)}
             class="button is-medium is-fullwidth is-light"
           >
             View Public Profile
           </Link>
         }
+
+        <div>
+          <Link
+            class="button is-medium is-fullwidth is-light has-margin-top-sm"
+            href={Routes.ME_PREFERENCES}
+          >
+            Edit Preferences
+          </Link>
+          <Link
+            class="button is-medium is-fullwidth is-light has-margin-top-sm"
+            href={Routes.ME_EDIT}
+          >
+            Edit Account
+          </Link>
+        </div>
       </div>
     );
   }
 
-  renderPageNav() {
-    const {account} = this.props;
-    const {subPage} = this.state;
-
-    switch(subPage) {
-      case Pages.SHOW:
-        return (
-          <div>
-            <button
-              class="button is-medium is-fullwidth is-light has-margin-top-sm"
-              onClick={() => this.goTo(Pages.PREFERENCES)}
-            >
-              Edit Preferences
-            </button>
-            <button
-              class="button is-medium is-fullwidth is-light has-margin-top-sm"
-              onClick={() => this.goTo(Pages.EDIT)}
-            >
-              Edit Account
-            </button>
-          </div>
-        );
-    }
-  }
-
   renderPageBody() {
-    const {account} = this.props;
-    const {subPage} = this.state;
+    const {account, page} = this.props;
 
-    switch(subPage) {
+    switch(page) {
       case Pages.PREFERENCES:
         return (
-          <div class="column is-8">
-            <AccountPreferences onFinish={() => this.goTo(Pages.SHOW)} />
-          </div>
+          <Preferences onFinish={() => route(Routes.ME)} />
+        );
+      case Pages.EDIT:
+        return (
+          <Edit onFinish={() => route(Routes.ME)} />
         );
       case Pages.SHOW:
       default:
         return (
-          <div class="column is-8-tablet is-5-desktop is-5-widescreen">
-            <div>Hi there's nothing here yet</div>
-          </div>
+          <div>Hi there's nothing here yet</div>
         );
     }
   }
@@ -128,10 +111,12 @@ class MePage extends Component {
               />
 
               {this.renderNav()}
-              {this.renderPageNav()}
             </div>
 
-            {this.renderPageBody()}
+
+            <div class="column is-8">
+              {this.renderPageBody()}
+            </div>
           </div>
         </section>
       </div>

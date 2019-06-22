@@ -19,7 +19,7 @@
     "luxon": "1.10.0",
     "parcel-bundler": "1.10.3",
     "preact": "8.4.2",
-    "preact-compat": "3.18.5",
+    "preact-compat": "^3.19.0",
     "preact-redux": "2.0.3",
     "preact-router": "2.6.1",
     "react-table": "^6.10.0",

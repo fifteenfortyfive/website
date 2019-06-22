@@ -177,6 +177,21 @@ const reducerActions = {
         account
       }
     }
+  },
+
+  'SET_ACCOUNT_DETAIL': (state, {data}) => {
+    const {name, value} = data;
+
+    return {
+      ...state,
+      me: {
+        ...state.me,
+        account: {
+          ...state.me.account,
+          [name]: value
+        }
+      }
+    };
   }
 }
 

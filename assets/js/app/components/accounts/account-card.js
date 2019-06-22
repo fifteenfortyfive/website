@@ -65,6 +65,7 @@ const AccountCard = (props) => {
           <SocialLink
             service={SocialLink.Services.TWITCH}
             name={twitch}
+            key="Twitch"
           />
         }
 
@@ -72,6 +73,7 @@ const AccountCard = (props) => {
           <SocialLink
             service={SocialLink.Services.TWITTER}
             name={twitter}
+            key="Twitter"
           />
         }
 
@@ -79,6 +81,7 @@ const AccountCard = (props) => {
           <SocialLink
             service={SocialLink.Services.DISCORD}
             name={discord_tag}
+            key="Discord"
           />
         }
 

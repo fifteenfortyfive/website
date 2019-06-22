@@ -1,13 +1,13 @@
 import { h, Component } from 'preact';
 
-const TextInput = (props) => {
+// Password inputs are intentionally uncontrolled to avoid potentially leaking
+// the value
+const PasswordInput = (props) => {
   const {
     label,
-    value,
     placeholder="",
     multiline=false,
     onChange,
-    onInput,
     className,
     ...inputProps
   } = props;
@@ -16,15 +16,13 @@ const TextInput = (props) => {
     <div class="ff-text-input ${className}">
       <h3 class="title is-6 has-margin-bottom-sm">{label}</h3>
       <input
-        type="text"
-        value={value}
+        type="password"
         placeholder={placeholder}
         onChange={onChange}
-        onInput={onInput}
         {...inputProps}
       />
     </div>
   );
 };
 
-export default TextInput;
+export default PasswordInput;

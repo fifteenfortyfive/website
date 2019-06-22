@@ -1,4 +1,23 @@
 .ff-text-input {
   background: transparent;
   outline: none;
+  margin: 1em 0;
+
+  input {
+    display: block;
+    width: 100%;
+    padding: 0.625em 1em;
+    background-color: $field-background-color--darker;
+    border-radius: 3px;
+    border: none;
+    font-size: $field-font-size;
+
+    &:active,
+    &:focus {
+      border: none;
+      outline: none;
+      box-shadow: $field-border-box-shadow;
+    }
+  }
+
 }

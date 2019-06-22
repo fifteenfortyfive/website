@@ -27,6 +27,7 @@ class Account < Crecto::Model
 
 
   validate_required :username
+  validate_length   :username, min: 1
   validate_required :discord_username
   validate_required :discord_discriminator
   validate_length :bio, max: 140

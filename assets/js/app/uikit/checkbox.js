@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Checkbox = (props) => {
   const {
     checked = false,
-    label,
+    header,
     disabled,
     children,
     onChange,
@@ -25,7 +25,8 @@ const Checkbox = (props) => {
         </span>
       </div>
       <label>
-        {label || children}
+        <h3 class="title is-5 has-margin-top-nudge has-margin-bottom-sm">{header}</h3>
+        {children}
       </label>
     </div>
   );

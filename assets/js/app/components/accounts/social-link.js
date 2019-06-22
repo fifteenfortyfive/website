@@ -27,16 +27,19 @@ const SocialTag = (props) => {
 
 SocialTag.Services = {
   TWITCH: {
+    name: 'Twitch',
     url: 'https://twitch.tv',
     iconProps: { icon: ['fab', 'twitch'] },
     style: 'is-dark'
   },
   TWITTER: {
+    name: 'Twitter',
     url: 'https://twitter.com',
     iconProps: { icon: ['fab', 'twitter'] },
     style: 'is-info'
   },
   DISCORD: {
+    name: 'Discord',
     url: null,
     iconProps: { icon: ['fab', 'discord'] },
     style: 'is-info'
