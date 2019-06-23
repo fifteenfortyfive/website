@@ -107,7 +107,7 @@ module Accounts
         DESC
       },
       "show_streaming" => {
-        name: "Track/Display Streaming Status (TBD)",
+        name: "Track/Display Streaming Status",
         type: "flag",
         requires: ["show_twitch"],
         default: true,

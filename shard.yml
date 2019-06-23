@@ -17,23 +17,29 @@ targets:
 dependencies:
   pg:
     github: will/crystal-pg
+    version: 0.15.0
   crinja:
     github: straight-shoota/crinja
+    version: 0.4.1
   crecto:
     # github: crecto/crecto
     # Using this until updated changesets and typecasting are
     # supported by the official crecto
     github: faultyserver/crecto
-    branch: temp/casts
+    commit: 1155a1944f861f2367de21c2cc227ad149e1211f
   migrate:
     github: vladfaust/migrate.cr
   orion:
     github: obsidian/orion
+    version: 1.6.0
   awscr-s3:
     github: taylorfinnell/awscr-s3
+    version: 0.3.4
   honcho:
     github: faultyserver/honcho
   dotenv:
     github: gdotdesign/cr-dotenv
+    version: 0.2.0
   auto_initialize:
     github: kostya/auto_initialize
+    version: 0.1.0

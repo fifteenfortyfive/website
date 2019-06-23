@@ -5,7 +5,7 @@ require "../../errors"
 
 class API::StreamsController < AppController
   def index
-    streams = StreamStatusService.statuses
+    streams = Streams.list_streams_by_account()
 
     render_json({
       streams: streams
@@ -18,7 +18,7 @@ class API::StreamsController < AppController
       return
     end
 
-    unless stream = StreamStatusService.get(account_id.to_i64)
+    unless stream = Streams.get_stream(account_id.to_i64)
       render_error_json(Errors::NotFound)
       return
     end

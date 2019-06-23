@@ -23,12 +23,19 @@ module StreamStatusService
     self.live?(account.id)
   end
 
+  # Get the stream information for the given user.
   def get(account_id : KeyType) : Stream?
     @@statuses[account_id]?
   end
 
   def get!(account_id : KeyType) : Stream
     @@statuses[account_id]?
+  end
+
+  # Immediately remove stream status information about the given user.
+  # Mainly used when users change their preferences.
+  def clear!(account_id : KeyType)
+    @@statuses.delete(account_id)
   end
 
 

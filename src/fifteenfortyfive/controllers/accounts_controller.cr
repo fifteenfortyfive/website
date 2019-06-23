@@ -12,9 +12,10 @@ class AccountsController < AppController
     changeset = Accounts.create_account(body_params)
 
     if changeset.valid?
-      sign_in_user(changeset.instance)
+      account = changeset.instance
+      sign_in_user(account)
       redirect_to root_path
-      spawn{ TwitchService.get_user_id_for(changeset.instance) }
+      Streams.refresh_stream(account)
     else
       render("accounts/new.html.j2")
     end

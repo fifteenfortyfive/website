@@ -14,7 +14,7 @@ class Account < Crecto::Model
     field :twitch, String
     field :twitter, String
     field :timezone, String
-    field :admin, Bool
+    field :admin, Bool, default: false, read_only: true
     field :avatar_object_id, String
 
     @[Crinja::Attribute(ignore: true)]
@@ -30,7 +30,7 @@ class Account < Crecto::Model
   validate_length   :username, min: 1
   validate_required :discord_username
   validate_required :discord_discriminator
-  validate_length :bio, max: 140
+  validate_length   :bio, max: 140
 
 
   def password=(new_password : String)

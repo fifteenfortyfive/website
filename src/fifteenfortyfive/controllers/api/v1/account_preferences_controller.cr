@@ -16,6 +16,7 @@ class API::AccountPreferencesController < AppController
 
     new_prefs = Accounts::AccountPreferences.from_json(body_content)
     Accounts.update_account_preferences(account, new_prefs)
+    Streams.refresh_stream(account)
 
     render_json({
       account_preferences: account.preferences,
