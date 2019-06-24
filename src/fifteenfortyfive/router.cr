@@ -75,6 +75,8 @@ router AppRouter do
 
   scope "api" do
     scope "v1" do
+      use OptionsHandler.new("/api/v1")
+
       scope "events" do
         get "/", to: "aPI::Events#index"
         get "/:event_id", to: "aPI::Events#get"
