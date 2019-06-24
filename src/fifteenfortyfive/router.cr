@@ -75,7 +75,7 @@ router AppRouter do
 
   scope "api" do
     scope "v1" do
-      use OptionsHandler.new("/api/v1")
+      use CORSHandler.new("/api/v1")
 
       scope "events" do
         get "/", to: "aPI::Events#index"

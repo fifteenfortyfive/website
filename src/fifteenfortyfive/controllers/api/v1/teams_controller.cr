@@ -11,7 +11,7 @@ class API::TeamsController < AppController
     end
 
     render_json({
-      teams: Events.list_teams(query)
+      teams: Events.list_teams(event_id, query)
     })
   end
 
