@@ -1,0 +1,20 @@
+.ff-card {
+  display: block;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  border: 1px solid $white-ish;
+  box-shadow: none;
+  border-radius: $radius-large;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease-out, border 0.3s ease-out;
+
+  &.ff-card__image-header {
+    width: 100%;
+  }
+
+  &:hover {
+    border: 1px solid $grey-lighter;
+    box-shadow: 0 1px 6px $white-ish;
+  }
+}

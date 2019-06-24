@@ -10,6 +10,7 @@ import * as EventActions from './actions/events';
 
 import AccountPage from './pages/account-page';
 import MePage from './pages/me-page';
+import StreamsPage from './pages/streams-page';
 import TeamsPage from './pages/teams-page';
 import NotFoundPage from './pages/not-found-page';
 
@@ -28,6 +29,7 @@ class App extends Component {
           <TeamsPage path="/teams" eventId={eventId} />
           <AccountPage path="/accounts/:accountId" currentUserId={currentUserId} />
           <MePage path="/@me/:page?" />
+          <StreamsPage path="/streams" />
           <NotFoundPage default />
         </Router>
       </div>
