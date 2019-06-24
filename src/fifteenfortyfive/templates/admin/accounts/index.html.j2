@@ -23,7 +23,7 @@
                   <span class="has-margin-right-sm">{{account.id}}</span>
                   <strong><a href="/accounts/{{account.id}}">{{account.username}}</a></strong>
                   <br/>
-                  {{account.discord_username}}#{{account.discord_discriminator}}
+                  {{account.discord_username | safe}}#{{account.discord_discriminator}}
                 </td>
                 <td>{{account.twitter}}</td>
                 <td>{{account.twitch}}</td>
