@@ -45,6 +45,7 @@ class Preferences extends Component {
 
     return (
       <Checkbox
+        key={name}
         className="has-padding-md has-margin-top-sm has-margin-bottom-sm"
         checked={requirementsMet && value}
         disabled={!requirementsMet}
