@@ -16,7 +16,7 @@ class API::MeController < AppController
       Streams.refresh_stream(updated_account)
       render_json({account: serialize_me(updated_account)})
     else
-      render_error_json(Errors::InvalidInput)
+      render_error_json(Errors::Unprocessable)
     end
   end
 

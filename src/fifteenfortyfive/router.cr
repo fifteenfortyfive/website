@@ -10,6 +10,10 @@ router AppRouter do
     use AuthenticationHandler
   end
 
+  concern :api_authenticated do
+    use AuthenticationHandler.new{ |conn| conn.response.status_code = 401 }
+  end
+
   concern :admin_authorized do
     implements :authenticated
     use AuthorizationHandler.new(required_level: :admin)
@@ -95,6 +99,13 @@ router AppRouter do
           scope "runs" do
             get "/", to: "aPI::Runs#index"
             get "/:run_id", to: "aPI::Runs#get"
+
+            implements :api_authenticated
+
+            post "/:run_id/start",  to: "aPI::Runs#start"
+            post "/:run_id/finish", to: "aPI::Runs#finish"
+            post "/:run_id/resume", to: "aPI::Runs#resume"
+            post "/:run_id/reset",  to: "aPI::Runs#reset"
           end
         end
       end
@@ -119,7 +130,7 @@ router AppRouter do
       end
 
       scope "@me" do
-        implements :authenticated
+        implements :api_authenticated
 
         get  "/", to: "API::MeController#get"
         post "/", to: "API::MeController#update_account"

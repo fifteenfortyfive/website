@@ -233,6 +233,76 @@ module Events
 
 
   ###
+  # Run Events
+  ###
+
+  def start_run(run : Run, start_at : Time = Time.utc_now)
+    return if run.started_at
+
+    log_run_event(run.id, "run_started", start_at)
+
+    changeset = run.cast({
+      finished: "false",
+      actual_seconds: nil,
+      started_at: start_at,
+      finished_at: nil
+    })
+    Repo.update(changeset)
+  end
+
+  def finish_run(run : Run, finish_at : Time = Time.utc_now)
+    return unless started_at = run.started_at
+    return if run.finished_at
+
+    log_run_event(run.id, "run_finished", finish_at)
+
+    elapsed_seconds = (finish_at - started_at).total_seconds
+    changeset = run.cast({
+      finished: "true",
+      actual_seconds: elapsed_seconds,
+      finished_at: finish_at,
+    })
+    Repo.update(changeset)
+  end
+
+  def resume_run(run : Run, resume_at : Time = Time.utc_now)
+    return unless run.finished_at
+    log_run_event(run.id, "run_resumed", resume_at)
+
+    changeset = run.cast({
+      finished: "false",
+      actual_seconds: nil,
+      finished_at: nil,
+    })
+    Repo.update(changeset)
+  end
+
+  def reset_run(run : Run, reset_at : Time = Time.utc_now)
+    return unless run.started_at
+    log_run_event(run.id, "run_reset", reset_at)
+
+    changeset = run.cast({
+      finished: "false",
+      actual_seconds: nil,
+      started_at: nil,
+      finished_at: nil,
+    })
+    changeset = Repo.update(changeset)
+  end
+
+  def log_run_event(run_id, type : String, timestamp : Time)
+    run_event = RunEvent.new
+    run_event = run_event.cast({
+      run_id: run_id,
+      type: type,
+      occurred_at: timestamp
+    })
+    Repo.insert(run_event)
+  end
+
+
+
+  ###
   # Utility
   ###
 

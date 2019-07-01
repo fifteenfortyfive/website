@@ -22,6 +22,7 @@ class AppController
 
   def render_json(content : String, status : Int32 = 200)
     response.status_code = status
+    response.headers["Content-Type"] = "application/json"
     response.print(content)
   end
 
