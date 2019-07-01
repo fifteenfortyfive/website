@@ -19,6 +19,13 @@ module SocketService
     end
   end
 
+  def self.broadcast(message)
+    if serv = @@service
+      serv.broadcast(message)
+    end
+  end
+
+
   class Service
     property sockets : Array(HTTP::WebSocket)
 
@@ -39,6 +46,16 @@ module SocketService
       @sockets.each(&.send(%q({"type": "ping"})))
     end
 
+    def broadcast(message)
+      @sockets.each do |sock|
+        notify(sock, message)
+      end
+    end
+
+
+    private def notify(socket : HTTP::WebSocket, message : String)
+      socket.send(message)
+    end
 
     private def notify(socket : HTTP::WebSocket, message)
       socket.send(message.to_json)

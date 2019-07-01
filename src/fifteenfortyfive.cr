@@ -28,6 +28,6 @@ visor.start_supervised("analytics", delay: 1.0) do
   Analytics.start_service(ANALYTICS_ENDPOINT)
   Analytics.instance.run
 end
-# visor.start_supervised("socket service", &->SocketService.run)
+visor.start_supervised("socket service", &->SocketService.run)
 
 visor.run

@@ -1,3 +1,4 @@
+require "http"
 require "orion"
 
 router AppRouter do
@@ -142,8 +143,13 @@ router AppRouter do
       end
     end
 
+    scope "/live/stream" do
+      use HTTP::WebSocketHandler.new{ |socket, conn| SocketService.add_stream(socket) }
 
-    implements :authenticated
+      match "*" do |conn| true end
+    end
+
+    implements :api_authenticated
 
     scope "events" do
       get  "/:event_id/runner_submission", to: "aPI::Events#get_existing_submission"
@@ -185,7 +191,6 @@ router AppRouter do
   scope "js" do
     use HTTP::StaticFileHandler.new("public/", fallthrough: false, directory_listing: false)
   end
-
 
   match "*", to: "static#app_root"
 end

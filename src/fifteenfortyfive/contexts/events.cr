@@ -239,7 +239,7 @@ module Events
   def start_run(run : Run, start_at : Time = Time.utc_now)
     return if run.started_at
 
-    log_run_event(run.id, "run_started", start_at)
+    run_event = log_run_event(run.id, "run_started", start_at)
 
     changeset = run.cast({
       finished: "false",
@@ -247,14 +247,20 @@ module Events
       started_at: start_at,
       finished_at: nil
     })
-    Repo.update(changeset)
+    changeset = Repo.update(changeset)
+
+    if changeset.valid?
+      SocketService.broadcast(run_event.instance)
+    end
+
+    changeset
   end
 
   def finish_run(run : Run, finish_at : Time = Time.utc_now)
     return unless started_at = run.started_at
     return if run.finished_at
 
-    log_run_event(run.id, "run_finished", finish_at)
+    run_event = log_run_event(run.id, "run_finished", finish_at)
 
     elapsed_seconds = (finish_at - started_at).total_seconds
     changeset = run.cast({
@@ -262,24 +268,36 @@ module Events
       actual_seconds: elapsed_seconds,
       finished_at: finish_at,
     })
-    Repo.update(changeset)
+    changeset = Repo.update(changeset)
+
+    if changeset.valid?
+      SocketService.broadcast(run_event.instance)
+    end
+
+    changeset
   end
 
   def resume_run(run : Run, resume_at : Time = Time.utc_now)
     return unless run.finished_at
-    log_run_event(run.id, "run_resumed", resume_at)
+    run_event = log_run_event(run.id, "run_resumed", resume_at)
 
     changeset = run.cast({
       finished: "false",
       actual_seconds: nil,
       finished_at: nil,
     })
-    Repo.update(changeset)
+    changeset = Repo.update(changeset)
+
+    if changeset.valid?
+      SocketService.broadcast(run_event.instance)
+    end
+
+    changeset
   end
 
   def reset_run(run : Run, reset_at : Time = Time.utc_now)
     return unless run.started_at
-    log_run_event(run.id, "run_reset", reset_at)
+    run_event = log_run_event(run.id, "run_reset", reset_at)
 
     changeset = run.cast({
       finished: "false",
@@ -288,6 +306,12 @@ module Events
       finished_at: nil,
     })
     changeset = Repo.update(changeset)
+
+    if changeset.valid?
+      SocketService.broadcast(run_event.instance)
+    end
+
+    changeset
   end
 
   def log_run_event(run_id, type : String, timestamp : Time)
