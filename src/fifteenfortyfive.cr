@@ -28,6 +28,11 @@ visor.start_supervised("analytics", delay: 1.0) do
   Analytics.start_service(ANALYTICS_ENDPOINT)
   Analytics.instance.run
 end
+visor.start_supervised("run_tracking_supervisor", delay: 10){
+  puts "Run Tracking service started"
+  RunTracking.start
+  sleep
+}
 # visor.start_supervised("socket service", &->SocketService.run)
 
 visor.run

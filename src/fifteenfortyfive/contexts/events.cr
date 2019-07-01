@@ -1,4 +1,4 @@
-require "./events/**"
+require "./events/models/**"
 require "crecto"
 
 module Events
