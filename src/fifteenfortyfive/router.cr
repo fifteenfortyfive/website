@@ -109,6 +109,10 @@ router AppRouter do
         get "/:game_id", to: "aPI::Games#get"
       end
 
+      scope "teams" do
+        get "/:team_id", to: "aPI::Teams#get"
+      end
+
       scope "streams" do
         get "/", to: "aPI::Streams#index"
         get "/:account_id", to: "aPI::Streams#get"

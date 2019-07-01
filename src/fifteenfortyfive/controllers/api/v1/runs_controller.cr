@@ -10,6 +10,10 @@ class API::RunsController < AppController
       query = query.where(id: run_ids.split(','))
     end
 
+    if team_id = query_params["team_id"]?
+      query = query.where(team_id: team_id)
+    end
+
     render_json({
       runs: Events.list_runs(query)
     })

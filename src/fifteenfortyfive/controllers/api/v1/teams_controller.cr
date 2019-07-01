@@ -21,7 +21,7 @@ class API::TeamsController < AppController
       return
     end
 
-    unless team = Events.get_team(team_id, Query.preload(:runs))
+    unless team = Events.get_team(team_id)
       render_error_json(Errors::NotFound)
       return
     end
