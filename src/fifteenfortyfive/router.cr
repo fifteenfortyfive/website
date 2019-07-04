@@ -143,10 +143,21 @@ router AppRouter do
       end
     end
 
-    scope "/live/stream" do
-      use HTTP::WebSocketHandler.new{ |socket, conn| SocketService.add_stream(socket) }
+    scope "live" do
+      scope "stream" do
+        use HTTP::WebSocketHandler.new{ |socket, conn|
+          socket.on_message(&->SocketService.broadcast_to_admin(String))
+          SocketService.add_stream(socket)
+        }
 
-      match "*" do |conn| true end
+        match "*" do |conn| true end
+      end
+
+      scope "admin" do
+        use HTTP::WebSocketHandler.new{ |socket, conn| SocketService.add_stream_admin(socket) }
+
+        match "*" do |conn| true end
+      end
     end
 
     implements :api_authenticated
