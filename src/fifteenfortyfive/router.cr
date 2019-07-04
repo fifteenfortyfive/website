@@ -116,6 +116,11 @@ router AppRouter do
         get "/:account_id", to: "aPI::Accounts#get"
       end
 
+      scope "sessions" do
+        post "/", to: "aPI::Sessions#login"
+        post "/delete", to: "aPI::Sessions#logout"
+      end
+
       scope "games" do
         get "/", to: "aPI::Games#index"
         get "/:game_id", to: "aPI::Games#get"
@@ -154,6 +159,7 @@ router AppRouter do
       end
 
       scope "admin" do
+        implements :admin_authorized
         use HTTP::WebSocketHandler.new{ |socket, conn| SocketService.add_stream_admin(socket) }
 
         match "*" do |conn| true end
