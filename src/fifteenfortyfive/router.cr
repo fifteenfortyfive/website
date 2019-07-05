@@ -149,6 +149,21 @@ router AppRouter do
     end
 
     scope "live" do
+      scope "push" do
+        implements :admin_authorized
+        use CORSHandler.new("/api/live/push")
+
+        post "/action" do |conn|
+          if body = conn.request.body
+            SocketService.broadcast(body.gets_to_end)
+          end
+
+          conn.response.status_code = 200
+          conn.response.puts({processed: true}.to_json)
+          true
+        end
+      end
+
       scope "stream" do
         use HTTP::WebSocketHandler.new{ |socket, conn|
           socket.on_message(&->SocketService.broadcast_to_admin(String))

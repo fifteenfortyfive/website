@@ -17,7 +17,6 @@ class CORSHandler
     end
 
     if conn.request.path.starts_with?(@path)
-      puts "Matching the request"
       conn.response.status_code = 200
       _add_default_headers(conn)
       return
