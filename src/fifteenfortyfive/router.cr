@@ -17,7 +17,12 @@ router AppRouter do
 
   concern :admin_authorized do
     implements :authenticated
-    use AuthorizationHandler.new(required_level: :admin)
+    use AuthorizationHandler.new(required_level: :admin, api: false)
+  end
+
+  concern :api_admin_authorized do
+    implements :api_authenticated
+    use AuthorizationHandler.new(required_level: :admin, api: true)
   end
 
   scope "accounts", helper_prefix: "user" do
@@ -87,6 +92,15 @@ router AppRouter do
         get "/:event_id", to: "aPI::Events#get"
 
         scope ":event_id" do
+          scope do
+            implements :api_admin_authorized
+
+            post "/start",  to: "aPI::Events#start"
+            post "/finish", to: "aPI::Events#finish"
+            post "/resume", to: "aPI::Events#resume"
+            post "/reset",  to: "aPI::Events#reset"
+          end
+
           scope "teams" do
             get "/", to: "aPI::Teams#index"
             get "/:team_id", to: "aPI::Teams#get"
@@ -150,7 +164,7 @@ router AppRouter do
 
     scope "live" do
       scope "push" do
-        implements :admin_authorized
+        implements :api_admin_authorized
         use CORSHandler.new("/api/live/push")
 
         post "/action" do |conn|
@@ -174,7 +188,7 @@ router AppRouter do
       end
 
       scope "admin" do
-        implements :admin_authorized
+        implements :api_admin_authorized
         use HTTP::WebSocketHandler.new{ |socket, conn| SocketService.add_stream_admin(socket) }
 
         match "*" do |conn| true end
@@ -189,7 +203,7 @@ router AppRouter do
     end
 
     scope "admin" do
-      implements :admin_authorized
+      implements :api_admin_authorized
       scope "events" do
         get "/", to: "aPI::Admin#events"
         get "/:event_id/", to: "aPI::Admin#event"

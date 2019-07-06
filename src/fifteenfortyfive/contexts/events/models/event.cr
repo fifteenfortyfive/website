@@ -30,6 +30,10 @@ module Events
       field :end_time, Time
       field :end_time_is_estimate, Bool, default: false
 
+      field :actual_start_time, Time
+      field :actual_end_time, Time
+      field :actual_time_seconds, Int32
+
       field :avatar_object_id, String
       field :link, String
 

@@ -66,7 +66,11 @@ module SocketService
 
 
     def ping_all
+      @sockets = @sockets.reject(&.closed?)
       @sockets.each(&.send(%q({"type": "ping"})))
+
+      @admins = @admins.reject(&.closed?)
+      @admins.each(&.send(%q({"type": "ping"})))
     end
 
     def broadcast(message)

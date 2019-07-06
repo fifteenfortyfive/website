@@ -57,6 +57,52 @@ module Events
   end
 
 
+  def start_event(event : Event, start_at : Time = Time.utc_now)
+    return if event.actual_start_time
+
+    changeset = event.cast({
+      actual_start_time: start_at,
+      actual_end_time: nil,
+      actual_time_seconds: nil
+    })
+
+    Repo.update(changeset)
+  end
+
+  def finish_event(event : Event, finish_at : Time = Time.utc_now)
+    return unless started_at = event.actual_start_time
+    return if event.actual_end_time
+
+    elapsed_seconds = (finish_at - started_at).total_seconds
+    changeset = event.cast({
+      actual_time_seconds: elapsed_seconds,
+      actual_end_time: finish_at,
+    })
+    Repo.update(changeset)
+  end
+
+  def resume_event(event : Event, resume_at : Time = Time.utc_now)
+    return unless event.actual_end_time
+
+    changeset = event.cast({
+      actual_time_seconds: nil,
+      actual_end_time: nil,
+    })
+    Repo.update(changeset)
+  end
+
+  def reset_event(event : Event, reset_at : Time = Time.utc_now)
+    return unless event.actual_start_time
+
+    changeset = event.cast({
+      actual_time_seconds: nil,
+      actual_start_time: nil,
+      actual_end_time: nil,
+    })
+    Repo.update(changeset)
+  end
+
+
 
   ###
   # Teams

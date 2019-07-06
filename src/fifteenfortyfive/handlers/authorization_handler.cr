@@ -7,7 +7,7 @@ class AuthorizationHandler
   include HTTP::Handler
   include AppRouter::Helpers
 
-  def initialize(@required_level = :admin)
+  def initialize(@required_level = :admin, @api : Bool = false)
   end
 
   def call(conn : HTTP::Server::Context)
@@ -20,11 +20,19 @@ class AuthorizationHandler
       end
 
     unless passed
-      conn.response.headers.add "Location", login_path(redirect: conn.request.path)
-      conn.response.status_code = 302
+      fail(conn)
       return
     end
 
     call_next(conn)
+  end
+
+  def fail(conn : HTTP::Server::Context)
+    if @api
+      conn.response.status_code = 403
+    else
+      conn.response.headers.add "Location", login_path(redirect: conn.request.path)
+      conn.response.status_code = 302
+    end
   end
 end
