@@ -17,7 +17,6 @@ class CORSHandler
     end
 
     if conn.request.path.starts_with?(@path)
-      puts "Matching the request"
       conn.response.status_code = 200
       _add_default_headers(conn)
       return
@@ -31,5 +30,6 @@ class CORSHandler
     conn.response.headers["Access-Control-Allow-Origin"] = conn.request.headers["Origin"]? || "*"
     conn.response.headers["Allow"] = "HEAD,GET,PUT,POST,DELETE,OPTIONS"
     conn.response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
+    conn.response.headers["Access-Control-Allow-Credentials"] = "true"
   end
 end

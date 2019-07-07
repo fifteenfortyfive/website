@@ -1,4 +1,4 @@
-import { commonThunk, denulled } from '../actions';
+import { commonThunk, multipartThunk, denulled } from '../actions';
 
 export function fetchMe() {
   return commonThunk({
@@ -20,6 +20,20 @@ export function persistMe(account) {
     }
   }, (dispatch, response) => {
     dispatch(receiveMe(response.account));
+  });
+};
+
+export function uploadAvatar(avatar) {
+  const formData  = new FormData();
+  formData.append("avatar", avatar);
+
+  return multipartThunk({
+    method: 'post',
+    path: '/api/v1/@me/avatar',
+    name: 'sending.@me.avatar',
+    body: formData
+  }, (dispatch, response) => {
+    dispatch(fetchMe());
   });
 };
 

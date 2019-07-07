@@ -25,6 +25,7 @@ module Constants
     ENV["ASSETS_SECRET"],
     endpoint: ENV["ASSETS_ENDPOINT"]
   )
+  DEFAULT_ASSET_BUCKET = "fifteenfortyfive-assets"
 
   def self.template_constants
     {

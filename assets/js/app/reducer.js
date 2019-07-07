@@ -14,6 +14,9 @@ const defaultState = {
   teams: {},
   runs: {},
   fetching: {},
+  dashboard: {
+    runs: {}
+  }
 };
 
 const reducerActions = {
@@ -42,7 +45,7 @@ const reducerActions = {
       ...state,
       fetching: {
         ...state.fetching,
-        [data.fetchId]: 'failed'
+        [data.fetchId]: 0
       }
     };
   },
@@ -136,7 +139,26 @@ const reducerActions = {
         ...state.runs,
         ...runsById
       }
-    }
+    };
+  },
+
+  'RECEIVE_DASHBOARD_RUNS': (state, {data}) => {
+    const {runs} = data;
+    const runsById = _.reduce(runs, (acc, run) => {
+      acc[run.id] = run;
+      return acc;
+    }, {});
+
+    return {
+      ...state,
+      dashboard: {
+        ...state.dashboard,
+        runs: {
+          ...state.dashboard.runs,
+          ...runsById
+        }
+      }
+    };
   },
 
   'RECEIVE_ACCOUNT_PREFERENCES': (state, {data}) => {
@@ -192,7 +214,7 @@ const reducerActions = {
         }
       }
     };
-  }
+  },
 }
 
 export function reducer(state = defaultState, action) {

@@ -22,6 +22,7 @@ class AppController
 
   def render_json(content : String, status : Int32 = 200)
     response.status_code = status
+    response.headers["Content-Type"] = "application/json"
     response.print(content)
   end
 
@@ -62,5 +63,6 @@ class AppController
   protected def sign_in_user(account : Account)
     session = Accounts.create_session(account)
     response.cookies["1545_session_id"] = session.id.not_nil!
+    session
   end
 end

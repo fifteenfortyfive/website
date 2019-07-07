@@ -70,17 +70,4 @@ class AccountsController < AppController
       render("accounts/edit.html.j2")
     end
   end
-
-  private def upload_avatar_object(file)
-    object_id = UUID.random.to_s
-    uploader = Awscr::S3::FileUploader.new(Constants::STORAGE_CLIENT)
-    uploader.upload(
-      "fifteenfortyfive-assets",
-      object_id,
-      file,
-      # Avatar files need to be public for clients to load them easily.
-      { "x-amz-acl" => "public-read" }
-    )
-    return object_id
-  end
 end

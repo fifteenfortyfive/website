@@ -1,3 +1,4 @@
+require "http"
 require "orion"
 
 router AppRouter do
@@ -10,9 +11,18 @@ router AppRouter do
     use AuthenticationHandler
   end
 
+  concern :api_authenticated do
+    use AuthenticationHandler.new{ |conn| conn.response.status_code = 401 }
+  end
+
   concern :admin_authorized do
     implements :authenticated
-    use AuthorizationHandler.new(required_level: :admin)
+    use AuthorizationHandler.new(required_level: :admin, api: false)
+  end
+
+  concern :api_admin_authorized do
+    implements :api_authenticated
+    use AuthorizationHandler.new(required_level: :admin, api: true)
   end
 
   scope "accounts", helper_prefix: "user" do
@@ -82,6 +92,15 @@ router AppRouter do
         get "/:event_id", to: "aPI::Events#get"
 
         scope ":event_id" do
+          scope do
+            implements :api_admin_authorized
+
+            post "/start",  to: "aPI::Events#start"
+            post "/finish", to: "aPI::Events#finish"
+            post "/resume", to: "aPI::Events#resume"
+            post "/reset",  to: "aPI::Events#reset"
+          end
+
           scope "teams" do
             get "/", to: "aPI::Teams#index"
             get "/:team_id", to: "aPI::Teams#get"
@@ -95,6 +114,13 @@ router AppRouter do
           scope "runs" do
             get "/", to: "aPI::Runs#index"
             get "/:run_id", to: "aPI::Runs#get"
+
+            implements :api_authenticated
+
+            post "/:run_id/start",  to: "aPI::Runs#start"
+            post "/:run_id/finish", to: "aPI::Runs#finish"
+            post "/:run_id/resume", to: "aPI::Runs#resume"
+            post "/:run_id/reset",  to: "aPI::Runs#reset"
           end
         end
       end
@@ -102,6 +128,11 @@ router AppRouter do
       scope "accounts" do
         get "/", to: "aPI::Accounts#index"
         get "/:account_id", to: "aPI::Accounts#get"
+      end
+
+      scope "sessions" do
+        post "/", to: "aPI::Sessions#login"
+        post "/delete", to: "aPI::Sessions#logout"
       end
 
       scope "games" do
@@ -119,10 +150,12 @@ router AppRouter do
       end
 
       scope "@me" do
-        implements :authenticated
+        implements :api_authenticated
 
         get  "/", to: "API::MeController#get"
         post "/", to: "API::MeController#update_account"
+
+        post "/avatar", to: "API::MeController#update_avatar"
 
         scope "account_preferences" do
           get  "/", to: "aPI::AccountPreferences#get"
@@ -131,8 +164,40 @@ router AppRouter do
       end
     end
 
+    scope "live" do
+      scope "push" do
+        implements :api_admin_authorized
+        use CORSHandler.new("/api/live/push")
 
-    implements :authenticated
+        post "/action" do |conn|
+          if body = conn.request.body
+            SocketService.broadcast(body.gets_to_end)
+          end
+
+          conn.response.status_code = 200
+          conn.response.puts({processed: true}.to_json)
+          true
+        end
+      end
+
+      scope "stream" do
+        use HTTP::WebSocketHandler.new{ |socket, conn|
+          socket.on_message(&->SocketService.broadcast_to_admin(String))
+          SocketService.add_stream(socket)
+        }
+
+        match "*" do |conn| true end
+      end
+
+      scope "admin" do
+        implements :api_admin_authorized
+        use HTTP::WebSocketHandler.new{ |socket, conn| SocketService.add_stream_admin(socket) }
+
+        match "*" do |conn| true end
+      end
+    end
+
+    implements :api_authenticated
 
     scope "events" do
       get  "/:event_id/runner_submission", to: "aPI::Events#get_existing_submission"
@@ -140,7 +205,7 @@ router AppRouter do
     end
 
     scope "admin" do
-      implements :admin_authorized
+      implements :api_admin_authorized
       scope "events" do
         get "/", to: "aPI::Admin#events"
         get "/:event_id/", to: "aPI::Admin#event"
@@ -174,7 +239,6 @@ router AppRouter do
   scope "js" do
     use HTTP::StaticFileHandler.new("public/", fallthrough: false, directory_listing: false)
   end
-
 
   match "*", to: "static#app_root"
 end

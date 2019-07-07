@@ -16,7 +16,38 @@ class API::MeController < AppController
       Streams.refresh_stream(updated_account)
       render_json({account: serialize_me(updated_account)})
     else
-      render_error_json(Errors::InvalidInput)
+      render_error_json(Errors::Unprocessable)
+    end
+  end
+
+  def update_avatar
+    account = @context.current_user
+
+    avatar_file = nil
+
+    HTTP::FormData.parse(@context.request) do |part|
+      if part.name == "avatar"
+        avatar_file = FileUploadService.extract_image_from_multipart(part)
+      end
+    end
+
+    unless avatar_file
+      render_error_json(Errors::BadRequest)
+      return
+    end
+
+    begin
+      Accounts.set_account_avatar(account, avatar_file)
+
+      render_json({
+        succeeded: true
+      })
+    rescue FileUploadService::UploadException
+      render_error_json(Errors::Unprocessable)
+    end
+  ensure
+    if avatar_file
+      File.delete(avatar_file.path)
     end
   end
 
@@ -39,4 +70,6 @@ class API::MeController < AppController
       updated_at: account.updated_at
     }
   end
+
+
 end

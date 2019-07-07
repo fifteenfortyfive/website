@@ -1,4 +1,4 @@
-require "./events/**"
+require "./events/models/**"
 require "crecto"
 
 module Events
@@ -54,6 +54,52 @@ module Events
 
   def delete_event(event : Event)
     Repo.delete(event)
+  end
+
+
+  def start_event(event : Event, start_at : Time = Time.utc_now)
+    return if event.actual_start_time
+
+    changeset = event.cast({
+      actual_start_time: start_at,
+      actual_end_time: nil,
+      actual_time_seconds: nil
+    })
+
+    Repo.update(changeset)
+  end
+
+  def finish_event(event : Event, finish_at : Time = Time.utc_now)
+    return unless started_at = event.actual_start_time
+    return if event.actual_end_time
+
+    elapsed_seconds = (finish_at - started_at).total_seconds
+    changeset = event.cast({
+      actual_time_seconds: elapsed_seconds,
+      actual_end_time: finish_at,
+    })
+    Repo.update(changeset)
+  end
+
+  def resume_event(event : Event, resume_at : Time = Time.utc_now)
+    return unless event.actual_end_time
+
+    changeset = event.cast({
+      actual_time_seconds: nil,
+      actual_end_time: nil,
+    })
+    Repo.update(changeset)
+  end
+
+  def reset_event(event : Event, reset_at : Time = Time.utc_now)
+    return unless event.actual_start_time
+
+    changeset = event.cast({
+      actual_time_seconds: nil,
+      actual_start_time: nil,
+      actual_end_time: nil,
+    })
+    Repo.update(changeset)
   end
 
 
@@ -228,6 +274,100 @@ module Events
 
   def delete_run(run : Run)
     Repo.delete(run)
+  end
+
+
+
+  ###
+  # Run Events
+  ###
+
+  def start_run(run : Run, start_at : Time = Time.utc_now)
+    return if run.started_at
+
+    run_event = log_run_event(run.id, "run_started", start_at)
+
+    changeset = run.cast({
+      finished: "false",
+      actual_seconds: nil,
+      started_at: start_at,
+      finished_at: nil
+    })
+    changeset = Repo.update(changeset)
+
+    if changeset.valid?
+      SocketService.broadcast(run_event.instance)
+    end
+
+    changeset
+  end
+
+  def finish_run(run : Run, finish_at : Time = Time.utc_now)
+    return unless started_at = run.started_at
+    return if run.finished_at
+
+    run_event = log_run_event(run.id, "run_finished", finish_at)
+
+    elapsed_seconds = (finish_at - started_at).total_seconds
+    changeset = run.cast({
+      finished: "true",
+      actual_seconds: elapsed_seconds,
+      finished_at: finish_at,
+    })
+    changeset = Repo.update(changeset)
+
+    if changeset.valid?
+      SocketService.broadcast(run_event.instance)
+    end
+
+    changeset
+  end
+
+  def resume_run(run : Run, resume_at : Time = Time.utc_now)
+    return unless run.finished_at
+    run_event = log_run_event(run.id, "run_resumed", resume_at)
+
+    changeset = run.cast({
+      finished: "false",
+      actual_seconds: nil,
+      finished_at: nil,
+    })
+    changeset = Repo.update(changeset)
+
+    if changeset.valid?
+      SocketService.broadcast(run_event.instance)
+    end
+
+    changeset
+  end
+
+  def reset_run(run : Run, reset_at : Time = Time.utc_now)
+    return unless run.started_at
+    run_event = log_run_event(run.id, "run_reset", reset_at)
+
+    changeset = run.cast({
+      finished: "false",
+      actual_seconds: nil,
+      started_at: nil,
+      finished_at: nil,
+    })
+    changeset = Repo.update(changeset)
+
+    if changeset.valid?
+      SocketService.broadcast(run_event.instance)
+    end
+
+    changeset
+  end
+
+  def log_run_event(run_id, type : String, timestamp : Time)
+    run_event = RunEvent.new
+    run_event = run_event.cast({
+      run_id: run_id,
+      type: type,
+      occurred_at: timestamp
+    })
+    Repo.insert(run_event)
   end
 
 

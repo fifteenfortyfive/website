@@ -10,5 +10,6 @@ export const Routes = {
   ME: '/@me',
   ME_EDIT: '/@me/edit',
   ME_PREFERENCES: '/@me/preferences',
+  ME_RUN_DASHBOARD: '/@me/run-dashboard',
   ACCOUNT: (id) => `/accounts/${id}`,
 };
