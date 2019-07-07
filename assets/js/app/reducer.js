@@ -45,7 +45,7 @@ const reducerActions = {
       ...state,
       fetching: {
         ...state.fetching,
-        [data.fetchId]: 'failed'
+        [data.fetchId]: 0
       }
     };
   },
@@ -214,7 +214,7 @@ const reducerActions = {
         }
       }
     };
-  }
+  },
 }
 
 export function reducer(state = defaultState, action) {

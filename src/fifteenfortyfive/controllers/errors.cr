@@ -13,6 +13,7 @@ module Errors
     end
   end
 
+  BadRequest = Error.new("bad request", 400)
   Unauthorized = Error.new("unauthorized", 401)
   Forbidden = Error.new("forbidden", 403)
   NotFound = Error.new("not found", 404)

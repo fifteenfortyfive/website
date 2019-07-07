@@ -155,6 +155,8 @@ router AppRouter do
         get  "/", to: "API::MeController#get"
         post "/", to: "API::MeController#update_account"
 
+        post "/avatar", to: "API::MeController#update_avatar"
+
         scope "account_preferences" do
           get  "/", to: "aPI::AccountPreferences#get"
           post "/", to: "aPI::AccountPreferences#update"

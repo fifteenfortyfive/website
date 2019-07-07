@@ -6,10 +6,11 @@ const Avatar = (props) => {
   const {
     url=ASSETS_URL,
     src,
+    fullSrc = null,
     size=128, // should be one of 16, 24, 32, 48, 64, 96, 128
   } = props;
 
-  const assetUrl = `${url}/${src}`;
+  const assetUrl = fullSrc != null ? fullSrc : `${url}/${src}`;
 
   return (
     <img

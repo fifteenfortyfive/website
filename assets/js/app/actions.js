@@ -1,9 +1,19 @@
 import _ from 'lodash';
 
-export const defaultHeaders = {
+
+const bareHeaders = {
   'Accept': 'application/json',
-  'Content-Type': 'application/json',
   'x-expires': window.expiration
+};
+
+export const defaultHeaders = {
+  ...bareHeaders,
+  'Content-Type': 'application/json',
+};
+
+
+const multipartHeaders = {
+  ...bareHeaders,
 };
 
 
@@ -48,20 +58,49 @@ export function commonThunk({method, path, name, body, query}, then) {
 
   return dispatch => {
     dispatch(fetchStarted(fetchId));
-    fetch(url, {
-      headers: defaultHeaders,
-      method: method.toUpperCase(),
-      credentials: 'include',
-      body: JSON.stringify(body)
-    })
-    .then(checkStatus)
-    .then(parseJSON)
-    .then((response) => {
-      dispatch(fetchSucceeded(fetchId));
-      then(dispatch, response);
-    });
+    return fetch(url, {
+          headers: defaultHeaders,
+          method: method.toUpperCase(),
+          credentials: 'include',
+          body: JSON.stringify(body)
+        })
+        .then(checkStatus)
+        .then(parseJSON)
+        .then((response) => {
+          dispatch(fetchSucceeded(fetchId));
+          then(dispatch, response);
+        })
+        .catch((error) => {
+          dispatch(fetchFailed(fetchId));
+          throw error;
+        });
   };
 }
+
+export function multipartThunk({method, path, name, body}, then) {
+  const fetchId = name || path;
+
+  return dispatch => {
+    dispatch(fetchStarted(fetchId));
+    return fetch(path, {
+          headers: multipartHeaders,
+          method: method.toUpperCase(),
+          credentials: 'include',
+          body: body
+        })
+        .then(checkStatus)
+        .then(parseJSON)
+        .then((response) => {
+          dispatch(fetchSucceeded(fetchId));
+          then && then(dispatch, response);
+        })
+        .catch((error) => {
+          dispatch(fetchFailed(fetchId));
+          throw error;
+        });
+  };
+}
+
 
 export function denulled(object) {
   return _.reduce(object, (acc, value, key) => {

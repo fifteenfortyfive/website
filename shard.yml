@@ -34,7 +34,11 @@ dependencies:
     version: 1.6.0
   awscr-s3:
     github: taylorfinnell/awscr-s3
-    version: 0.3.4
+    version: 0.3.2
+  # This is explicitly needed to avoid getting a newer version of that breaks on Crystal 0.26
+  awscr-signer:
+    github: taylorfinnell/awscr-signer
+    version: 0.5.2
   honcho:
     github: faultyserver/honcho
   dotenv:

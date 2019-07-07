@@ -4,6 +4,11 @@ const defaultHeaders = {
   'x-expires': window.expiration
 };
 
+const multipartHeaders = {
+  ...defaultHeaders,
+  'Content-Type': 'multipart/form-data'
+};
+
 
 export function fetchAccounts() {
   return commonThunk({
@@ -97,22 +102,42 @@ function parseJSON(response) {
 };
 
 
-function commonThunk({method, path, name, body}, then) {
+export function commonThunk({method, path, name, body, useJSON = true}, then) {
   const fetchId = path || name;
 
   return dispatch => {
     dispatch(fetchStarted(fetchId));
-    fetch(path, {
-      headers: defaultHeaders,
-      method: method.toUpperCase(),
-      credentials: 'include',
-      body: JSON.stringify(body)
-    })
-    .then(checkStatus)
-    .then(parseJSON)
-    .then((response) => {
-      dispatch(fetchSucceeded(fetchId));
-      then(dispatch, response);
-    });
+    return fetch(path, {
+          headers: defaultHeaders,
+          method: method.toUpperCase(),
+          credentials: 'include',
+          body: useJSON ? JSON.stringify(body) : body
+        })
+        .then(checkStatus)
+        .then(parseJSON)
+        .then((response) => {
+          dispatch(fetchSucceeded(fetchId));
+          then && then(dispatch, response);
+        });
+  };
+}
+
+export function multipartThunk({method, path, name, body}, then) {
+  const fetchId = path || name;
+
+  return dispatch => {
+    dispatch(fetchStarted(fetchId));
+    return fetch(path, {
+          headers: multipartHeaders,
+          method: method.toUpperCase(),
+          credentials: 'include',
+          body: body
+        })
+        .then(checkStatus)
+        .then(parseJSON)
+        .then((response) => {
+          dispatch(fetchSucceeded(fetchId));
+          then && then(dispatch, response);
+        });
   };
 }
