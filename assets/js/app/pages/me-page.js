@@ -7,8 +7,9 @@ import * as AccountActions from '../actions/accounts';
 import * as StreamActions from '../actions/streams';
 import * as MeActions from '../actions/me';
 
-import Preferences from '../components/me/preferences';
 import Edit from '../components/me/edit';
+import Preferences from '../components/me/preferences';
+import RunDashboard from '../components/me/run-dashboard';
 import AccountCard from '../components/accounts/account-card';
 import RunList from '../components/accounts/run-list';
 
@@ -17,7 +18,8 @@ import { Routes } from '../constants';
 const Pages = {
   SHOW: 'show',
   EDIT: 'edit',
-  PREFERENCES: 'preferences'
+  PREFERENCES: 'preferences',
+  RUN_DASHBOARD: 'run-dashboard'
 };
 
 class MePage extends Component {
@@ -56,6 +58,12 @@ class MePage extends Component {
 
         <div>
           <Link
+            class="button is-medium is-danger is-fullwidth is-light has-margin-top-sm"
+            href={Routes.ME_RUN_DASHBOARD}
+          >
+            Run Dasboard
+          </Link>
+          <Link
             class="button is-medium is-fullwidth is-light has-margin-top-sm"
             href={Routes.ME_PREFERENCES}
           >
@@ -73,12 +81,16 @@ class MePage extends Component {
   }
 
   renderPageBody() {
-    const {account, page} = this.props;
+    const {accountId, eventId, page} = this.props;
 
     switch(page) {
       case Pages.PREFERENCES:
         return (
           <Preferences onFinish={() => route(Routes.ME)} />
+        );
+      case Pages.RUN_DASHBOARD:
+        return (
+          <RunDashboard eventId={eventId} accountId={accountId} eventId={eventId} />
         );
       case Pages.EDIT:
         return (
@@ -128,6 +140,7 @@ const mapStateToProps = (state) => {
   const accountId = state.me.account && state.me.account.id;
 
   return {
+    accountId,
     account: state.me.account,
     loadingAccount: state.fetching[`accounts.${accountId}`]
   };

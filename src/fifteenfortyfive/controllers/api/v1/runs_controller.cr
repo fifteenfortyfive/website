@@ -14,6 +14,10 @@ class API::RunsController < AppController
       query = query.where(team_id: team_id)
     end
 
+    if account_id = query_params["account_id"]?
+      query = query.where(account_id: account_id)
+    end
+
     render_json({
       runs: Events.list_runs(query)
     })
@@ -52,6 +56,10 @@ class API::RunsController < AppController
     end
 
     Events.start_run(run, Time.utc_now)
+
+    render_json({
+      run: run
+    })
   end
 
   def finish
@@ -71,6 +79,10 @@ class API::RunsController < AppController
     end
 
     Events.finish_run(run, Time.utc_now)
+
+    render_json({
+      run: run
+    })
   end
 
   def resume
@@ -90,6 +102,10 @@ class API::RunsController < AppController
     end
 
     Events.resume_run(run, Time.utc_now)
+
+    render_json({
+      run: run
+    })
   end
 
   def reset
@@ -109,5 +125,9 @@ class API::RunsController < AppController
     end
 
     Events.reset_run(run, Time.utc_now)
+
+    render_json({
+      run: run
+    })
   end
 end

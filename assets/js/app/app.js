@@ -28,7 +28,7 @@ class App extends Component {
         <Router>
           <TeamsPage path="/teams" eventId={eventId} />
           <AccountPage path="/accounts/:accountId" currentUserId={currentUserId} />
-          <MePage path="/@me/:page?" />
+          <MePage path="/@me/:page?" eventId={eventId} />
           <StreamsPage path="/streams" />
           <NotFoundPage default />
         </Router>
