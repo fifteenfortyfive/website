@@ -32,7 +32,9 @@ class Run extends Component {
 
   _handleResetRun() {
     const {dispatch, eventId, runId} = this.props;
-    dispatch(RunDashboardActions.resetRun(eventId, runId));
+    if(confirm("Are you sure you want to reset? You cannot go back after resetting.")) {
+      dispatch(RunDashboardActions.resetRun(eventId, runId));
+    }
   }
 
   getRunTime(run) {
