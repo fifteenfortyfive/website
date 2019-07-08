@@ -81,7 +81,7 @@ module Accounts
         section: "General",
         description: <<-DESC
           Allow the site to display your Discord username.
-          This does not include the numbers after the name and is geenerally safe to display.
+          This does not include the numbers after the name and is generally safe to display.
           Other users will generally only be able to identify you if they are in a Discord server with you.
         DESC
       },

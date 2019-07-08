@@ -61,7 +61,7 @@ class MePage extends Component {
             class="button is-medium is-danger is-fullwidth is-light has-margin-top-sm"
             href={Routes.ME_RUN_DASHBOARD}
           >
-            Run Dasboard
+            Run Dashboard
           </Link>
           <Link
             class="button is-medium is-fullwidth is-light has-margin-top-sm"
