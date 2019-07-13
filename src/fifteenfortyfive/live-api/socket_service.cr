@@ -76,12 +76,16 @@ module SocketService
     def broadcast(message)
       @sockets.each do |sock|
         notify(sock, message)
+      rescue
+        @sockets.delete(sock)
       end
     end
 
     def broadcast_to_admin(message)
       @admins.each do |sock|
         notify(sock, message)
+      rescue
+        @admins.delete(sock)
       end
     end
 
