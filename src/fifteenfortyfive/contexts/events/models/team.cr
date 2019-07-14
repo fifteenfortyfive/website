@@ -12,6 +12,10 @@ module Events
 
       has_many :runs, Events::Run
 
+      field :actual_start_time, Time
+      field :actual_end_time, Time
+      field :actual_time_seconds, Int32
+
       belongs_to :captain, Account, foreign_key: :captain_id
       has_many :runners, Account, through: :runs, foreign_key: :account_id
 

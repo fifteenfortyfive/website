@@ -144,6 +144,52 @@ module Events
   end
 
 
+  def start_team(team : Team, start_at : Time = Time.utc_now)
+    return if team.actual_start_time
+
+    changeset = team.cast({
+      actual_start_time: start_at,
+      actual_end_time: nil,
+      actual_time_seconds: nil
+    })
+
+    Repo.update(changeset)
+  end
+
+  def finish_team(team : Team, finish_at : Time = Time.utc_now)
+    return unless started_at = team.actual_start_time
+    return if team.actual_end_time
+
+    elapsed_seconds = (finish_at - started_at).total_seconds
+    changeset = team.cast({
+      actual_time_seconds: elapsed_seconds,
+      actual_end_time: finish_at,
+    })
+    Repo.update(changeset)
+  end
+
+  def resume_team(team : Team, resume_at : Time = Time.utc_now)
+    return unless team.actual_end_time
+
+    changeset = team.cast({
+      actual_time_seconds: nil,
+      actual_end_time: nil,
+    })
+    Repo.update(changeset)
+  end
+
+  def reset_team(team : Team, reset_at : Time = Time.utc_now)
+    return unless team.actual_start_time
+
+    changeset = team.cast({
+      actual_time_seconds: nil,
+      actual_start_time: nil,
+      actual_end_time: nil,
+    })
+    Repo.update(changeset)
+  end
+
+
 
   ###
   # Run Submissions

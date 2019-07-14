@@ -103,7 +103,17 @@ router AppRouter do
 
           scope "teams" do
             get "/", to: "aPI::Teams#index"
-            get "/:team_id", to: "aPI::Teams#get"
+
+            scope "/:team_id" do
+              get "/", to: "aPI::Teams#get"
+
+              implements :api_admin_authorized
+
+              post "/start",  to: "aPI::Teams#start"
+              post "/finish", to: "aPI::Teams#finish"
+              post "/resume", to: "aPI::Teams#resume"
+              post "/reset",  to: "aPI::Teams#reset"
+            end
           end
 
           scope "run_submissions" do

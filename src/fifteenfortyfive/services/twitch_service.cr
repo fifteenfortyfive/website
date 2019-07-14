@@ -38,7 +38,6 @@ module TwitchService
         id: String,
         user_id: String,
         game_id: String,
-        community_ids: Array(String),
         type: String,
         title: String,
         viewer_count: Int64,
