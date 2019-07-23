@@ -1,6 +1,5 @@
 import { h, Component } from 'preact';
-import { connect } from 'preact-redux';
-import { Link } from 'react-router';
+import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import * as AccountActions from '../actions/accounts';

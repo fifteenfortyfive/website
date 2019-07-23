@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 import { bindActionCreators } from 'redux';
-import { connect } from 'preact-redux';
+import { connect } from 'react-redux';
 import { Link } from 'preact-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';

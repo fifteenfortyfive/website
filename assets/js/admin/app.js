@@ -1,5 +1,5 @@
 import { h, render, Component } from 'preact';
-import { connect } from 'preact-redux';
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Router, Link } from 'preact-router';
 import { createHashHistory } from 'history';

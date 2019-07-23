@@ -1,4 +1,4 @@
-import {DateTime} from 'luxon';
+import DateTime from 'luxon/src/datetime';
 import Duration from 'luxon/src/duration';
 
 export function getUTCNow() {

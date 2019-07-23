@@ -8,17 +8,17 @@ const RunList = (props) => {
     runs
   } = props;
 
-  const events = _.chain(runs)
-      .map('event')
-      .uniqBy('id')
-      .sortBy('start_time')
-      .reverse()
-      .value();
+  const events = _.flow([
+      _.partialRight(_.map, 'event'),
+      _.partialRight(_.uniqBy, 'id'),
+      _.partialRight(_.sortBy, 'start_time'),
+      _.reverse
+    ])(runs);
 
-  const teams = _.chain(runs)
-      .map('team')
-      .keyBy('id')
-      .value();
+  const teams = _.flow([
+      _.partialRight(_.map, 'team'),
+      _.partialRight(_.keyBy, 'id'),
+    ])(runs);
 
   const runsByEvent = _.groupBy(runs, 'event_id');
 

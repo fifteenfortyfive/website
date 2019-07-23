@@ -1,5 +1,5 @@
 import { h, Component } from 'preact';
-import { connect } from 'preact-redux';
+import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 

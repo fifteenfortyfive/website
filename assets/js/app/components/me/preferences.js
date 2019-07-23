@@ -1,5 +1,5 @@
 import { h, Component } from 'preact';
-import { connect } from 'preact-redux';
+import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';
 
@@ -37,10 +37,10 @@ class Preferences extends Component {
       description
     } = detail;
 
-    const requirements = _.chain(requires)
-        .map((pref) => descriptions[pref].name)
-        .join(", ")
-        .value();
+    const requirements = _.flow([
+        _.partialRight(_.map, (pref) => descriptions[pref].name),
+        _.partialRight(_.join, ", ")
+      ])(requires);
     const requirementsMet = _.every(requires, (pref) => preferences[pref]);
 
     return (
