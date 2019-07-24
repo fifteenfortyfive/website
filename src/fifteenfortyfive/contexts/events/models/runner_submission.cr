@@ -6,7 +6,7 @@ module Events
     include Crinja::Object::Auto
 
     schema "ev_runner_submissions" do
-      belongs_to :account, Account
+      belongs_to :account, Accounts::Account
       belongs_to :event, Event
 
       field :max_games, Int32

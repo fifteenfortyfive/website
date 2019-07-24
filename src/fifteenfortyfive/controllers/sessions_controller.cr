@@ -9,7 +9,7 @@ class SessionsController < AppController
     password = body_params["password"]
     redirect_target = query_params["redirect"]? || "/"
 
-    account = Repo.get_by(Account, username: username)
+    account = Accounts.get_account_from_username(username)
 
     unless account
       render_error(422, "Username does not exist")

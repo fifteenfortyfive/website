@@ -41,7 +41,7 @@ class AccountPage extends Component {
 
             </div>
 
-            <div class="column is-8-tablet is-5-desktop is-5-widescreen">
+            <div class="column is-8-tablet is-6-desktop is-6-widescreen">
               <RunList runs={account.runs} />
             </div>
           </div>

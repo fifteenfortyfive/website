@@ -16,7 +16,7 @@ module Events
       "cancelled"
     ]
 
-    schema "events" do
+    schema "ev_events" do
       field :name, String
       field :summary, String
       field :details, String
@@ -44,7 +44,7 @@ module Events
       belongs_to :game, Inventory::Game
       belongs_to :category, Inventory::Category
 
-      belongs_to :owner, Account, foreign_key: :owner_id
+      belongs_to :owner, Accounts::Account, foreign_key: :owner_id
 
       has_many :runner_submissions, RunnerSubmission
       has_many :run_submissions, RunSubmission

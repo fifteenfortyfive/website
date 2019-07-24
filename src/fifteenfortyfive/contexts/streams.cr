@@ -1,4 +1,4 @@
-require "../models/stream_id"
+require "./streams/**"
 require "crecto"
 
 module Streams
@@ -13,12 +13,12 @@ module Streams
     Repo.all(StreamID, query)
   end
 
-  def get_stream_id(account_id, query : Query = Query.new)
-    Repo.all(StreamID, query.where(id: account_id.to_s).limit(1)).first?
+  def get_stream_id(account_id, service, query : Query = Query.new)
+    Repo.all(StreamID, query.where(service: service, account_id: account_id.to_s).limit(1)).first?
   end
 
-  def get_stream_id!(account_id, query : Query = Query.new)
-    Repo.all(StreamID, query.where(id: account_id.to_s).limit(1)).first
+  def get_stream_id!(account_id, service, query : Query = Query.new)
+    Repo.all(StreamID, query.where(service: service, account_id: account_id.to_s).limit(1)).first
   end
 
   def get_stream_id_from_service_id(service_user_id, query : Query = Query.new)
@@ -65,7 +65,7 @@ module Streams
     StreamStatusService.get(account_id)
   end
 
-  def refresh_stream(account : Account)
+  def refresh_stream(account : Accounts::Account)
     if account.preferences.show_streaming
       spawn do
         TwitchService.get_user_id_for(account)

@@ -5,8 +5,8 @@ module Events
   class RunSubmission < Crecto::Model
     include Crinja::Object::Auto
 
-    schema "run_submissions" do
-      belongs_to :account, Account
+    schema "ev_run_submissions" do
+      belongs_to :account, Accounts::Account
       belongs_to :event, Event
       belongs_to :game, Inventory::Game
       belongs_to :category, Inventory::Category

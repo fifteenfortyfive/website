@@ -33,7 +33,7 @@ class API::AccountsController < AppController
     runs = Events.list_runs(
         Query
           .where(account_id: account_id)
-          .preload([:team, :game, :event, :submission])
+          .preload([:team, :game, :category, :event, :submission])
       )
 
     render_json({

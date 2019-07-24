@@ -3,7 +3,7 @@ class API::SessionsController < AppController
     username = json_params["username"].as_s
     password = json_params["password"].as_s
 
-    account = Repo.get_by(Account, username: username)
+    account = Accounts.get_account_from_username(username)
 
     unless account
       render_error_json(Errors::Unprocessable)

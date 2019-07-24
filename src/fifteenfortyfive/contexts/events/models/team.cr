@@ -16,8 +16,8 @@ module Events
       field :actual_end_time, Time
       field :actual_time_seconds, Int32
 
-      belongs_to :captain, Account, foreign_key: :captain_id
-      has_many :runners, Account, through: :runs, foreign_key: :account_id
+      belongs_to :captain, Accounts::Account, foreign_key: :captain_id
+      has_many :runners, Accounts::Account, through: :runs, foreign_key: :account_id
 
       belongs_to :event, Event
     end

@@ -39,7 +39,7 @@ const EventCard = (props) => {
             { _.map(orderedRuns, (run) => {
                 return (
                   <tr>
-                    <td>{run.game.name}</td>
+                    <td>{run.game.name} - {run.category.name}</td>
                     <td class="has-text-right">
                       { run.est_seconds &&
                         <span class="has-text-grey-light">{runTime(run.est_seconds)} / </span>

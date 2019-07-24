@@ -52,7 +52,7 @@ class API::MeController < AppController
   end
 
 
-  private def serialize_me(account : Account)
+  private def serialize_me(account : Accounts::Account)
     # The current user bypasses all visibility restrictions on their own data.
     {
       id: account.id,
@@ -70,6 +70,4 @@ class API::MeController < AppController
       updated_at: account.updated_at
     }
   end
-
-
 end

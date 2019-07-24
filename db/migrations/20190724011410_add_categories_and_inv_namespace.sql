@@ -8,6 +8,8 @@ CREATE TABLE "public"."inv_categories" (
   name text,
   description text,
   rules text,
+  created_at timestamp without time zone,
+  updated_at timestamp without time zone,
   PRIMARY KEY("id"),
   FOREIGN KEY("game_id") REFERENCES "public"."inv_games"("id")
 );

@@ -72,7 +72,7 @@ module TwitchService
   end
 
 
-  def get_user_id_for(account : Account)
+  def get_user_id_for(account : Accounts::Account)
     response = TWITCH_CLIENT.get(
       "#{ENDPOINTS[:users]}?login=#{account.twitch}",
       headers: HEADERS
@@ -83,17 +83,15 @@ module TwitchService
     return if users_data.empty?
     user_data = users_data.first
 
-    stream_id = Repo.get_by(StreamID, service: "twitch", account_id: account.id).as?(StreamID)
+    stream_id = Streams.get_stream_id(account.id, "twitch")
     if stream_id
-      stream_id.service_user_id = user_data.id
-      Repo.update(stream_id)
+      Streams.update_stream_id(stream_id, {service_user_id: user_data.id})
     else
-      stream_id = StreamID.new
-      stream_id.account = account
-      stream_id.service = "twitch"
-      stream_id.service_user_id = user_data.id
-
-      Repo.insert(stream_id)
+      Streams.create_stream_id({
+        account_id: account.id,
+        service: "twitch",
+        service_user_id: user_data.id
+      })
     end
   end
 

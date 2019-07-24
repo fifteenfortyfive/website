@@ -60,7 +60,7 @@ class AppController
   end
 
 
-  protected def sign_in_user(account : Account)
+  protected def sign_in_user(account : Accounts::Account)
     session = Accounts.create_session(account)
     response.cookies["1545_session_id"] = session.id.not_nil!
     session

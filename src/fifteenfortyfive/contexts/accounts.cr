@@ -1,5 +1,3 @@
-require "../models/account"
-require "../models/session"
 require "./accounts/**"
 
 module Accounts
@@ -42,6 +40,10 @@ module Accounts
 
   def delete_account(account : Account)
     Repo.delete(account)
+  end
+
+  def get_account_from_username(username : String)
+    Repo.all(Account, Query.where(username: username).limit(1)).first?
   end
 
 

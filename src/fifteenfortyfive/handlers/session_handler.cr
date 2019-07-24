@@ -1,8 +1,8 @@
 require "http"
 
 class HTTP::Server::Context
-  property! current_user : Account
-  property! session : Session
+  property! current_user : Accounts::Account
+  property! session : Accounts::Session
 end
 
 class SessionHandler
@@ -23,7 +23,7 @@ class SessionHandler
     account = Accounts.get_account_for_session(session)
     return unless account
 
-    conn.session = session.as(Session)
-    conn.current_user = account.as(Account)
+    conn.session = session.as(Accounts::Session)
+    conn.current_user = account.as(Accounts::Account)
   end
 end

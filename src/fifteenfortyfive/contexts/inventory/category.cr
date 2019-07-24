@@ -1,6 +1,6 @@
 module Inventory
   class Category < Crecto::Model
-    schema "inv_category" do
+    schema "inv_categories" do
       belongs_to :game, Game
 
       field :name, String

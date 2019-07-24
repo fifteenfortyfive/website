@@ -11,7 +11,7 @@ module Events
       has_many :run_events, RunEvent
 
       belongs_to :team, Team
-      belongs_to :account, Account
+      belongs_to :account, Accounts::Account
       belongs_to :game, Inventory::Game
       belongs_to :category, Inventory::Category
 

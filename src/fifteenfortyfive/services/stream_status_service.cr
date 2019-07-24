@@ -19,7 +19,7 @@ module StreamStatusService
   def live?(account_id : KeyType) : Bool
     @@statuses[account_id]?.try(&.live?) || false
   end
-  def live?(account : Account) : Bool
+  def live?(account : Accounts::Account) : Bool
     self.live?(account.id)
   end
 
@@ -66,14 +66,14 @@ module StreamStatusService
   end
 
 
-  @@cached_streams = [] of StreamID
+  @@cached_streams = [] of Streams::StreamID
 
   private def next_stream_id_chunk(size = 100)
     # If the cache doesn't have enough entries to fill the chunk, re-query the
     # table to ensure that any new entries are included (e.g., a new account
     # is added, or someone links a different twitch account).
     if @@cached_streams.size < size
-      @@cached_streams += Repo.all(StreamID, Query.order_by("id ASC"))
+      @@cached_streams += Streams.list_stream_ids(Query.order_by("id ASC"))
     end
 
     @@cached_streams.shift(size)
