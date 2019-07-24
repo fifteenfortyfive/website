@@ -5,7 +5,7 @@ module Inventory
   class Game < Crecto::Model
     include Crinja::Object::Auto
 
-    schema "games" do
+    schema "inv_games" do
       field :name, String
       field :series, String
       field :progress_unit, String
@@ -14,6 +14,8 @@ module Inventory
       field :default_splits, String
 
       field :twitch_id, String
+
+      has_many :categories, Category
     end
   end
 end

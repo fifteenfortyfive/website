@@ -42,7 +42,7 @@ module Events
       # Psuedo-temporary solution for events with only one game/category being run,
       # i.e., individual race events.
       belongs_to :game, Inventory::Game
-      field :category, String
+      belongs_to :category, Inventory::Category
 
       belongs_to :owner, Account, foreign_key: :owner_id
 

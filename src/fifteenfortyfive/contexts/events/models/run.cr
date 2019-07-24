@@ -13,6 +13,7 @@ module Events
       belongs_to :team, Team
       belongs_to :account, Account
       belongs_to :game, Inventory::Game
+      belongs_to :category, Inventory::Category
 
       field :pb_seconds, Int32
       field :est_seconds, Int32

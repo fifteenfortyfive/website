@@ -9,7 +9,7 @@ module Events
       belongs_to :account, Account
       belongs_to :event, Event
       belongs_to :game, Inventory::Game
-      field :category, String
+      belongs_to :category, Inventory::Category
 
       field :pb_seconds, Int64
       field :est_seconds, Int64
