@@ -53,7 +53,7 @@ module Accounts
 
   def set_account_avatar(account : Account, avatar_file : File)
     avatar_hash = FileUploadService.upload_image(avatar_file)
-    update_account(account, {avatar_object_id: avatar_hash})
+    update_account(account, {avatar_hash: avatar_hash})
   end
 
 

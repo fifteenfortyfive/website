@@ -58,8 +58,8 @@
         {% if conn.user %}
           <div class="navbar-item has-dropdown is-hoverable is-paddingless">
             <div class="navbar-link">
-              {% if conn.user.avatar_object_id %}
-                <img class="avatar avatar--navbar" src="{{ conn.constants.assets_url }}/{{ conn.user.avatar_object_id }}">
+              {% if conn.user.avatar_hash %}
+                <img class="avatar avatar--navbar" src="{{ conn.constants.assets_url }}/{{ conn.user.avatar_hash }}">
               {% endif %}
               {{ conn.user.username }}
             </div>

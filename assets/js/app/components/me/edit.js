@@ -98,7 +98,7 @@ class Edit extends Component {
               <div class="has-padding-md">
                 { newAvatarSrc
                   ? <Avatar fullSrc={newAvatarSrc} />
-                  : <Avatar src={account.avatar_object_id} />
+                  : <Avatar src={account.avatar_hash} />
                 }
               </div>
 

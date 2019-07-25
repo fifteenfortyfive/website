@@ -15,7 +15,7 @@ module Accounts
       field :twitter, String
       field :timezone, String
       field :admin, Bool, default: false, read_only: true
-      field :avatar_object_id, String
+      field :avatar_hash, String
 
       @[Crinja::Attribute(ignore: true)]
       field :encrypted_password, String
@@ -42,8 +42,8 @@ module Accounts
       Crypto::Bcrypt::Password.new(@encrypted_password.not_nil!) == other_password
     end
 
-    def avatar_object_id
-      @avatar_object_id || "default-avatar"
+    def avatar_hash
+      @avatar_hash || "default-avatar"
     end
 
     @preferences : Accounts::AccountPreferences?
@@ -89,7 +89,7 @@ module Accounts
         "twitter" => preferences.show_twitter ? twitter : nil,
         "timezone" => timezone,
         "admin" => admin,
-        "avatar_object_id" => avatar_object_id
+        "avatar_hash" => avatar_hash
       }
     end
   end

@@ -16,6 +16,8 @@ module Events
       field :actual_end_time, Time
       field :actual_time_seconds, Int32
 
+      field :icon_hash, String
+
       belongs_to :captain, Accounts::Account, foreign_key: :captain_id
       has_many :runners, Accounts::Account, through: :runs, foreign_key: :account_id
 

@@ -34,7 +34,7 @@ module Events
       field :actual_end_time, Time
       field :actual_time_seconds, Int32
 
-      field :avatar_object_id, String
+      field :avatar_hash, String
       field :link, String
 
       field :state, String, default: "created"

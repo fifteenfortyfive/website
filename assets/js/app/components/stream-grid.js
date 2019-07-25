@@ -19,7 +19,7 @@ const StreamGrid = (props) => {
       { account &&
         <div class="is-flex has-padding-top-sm">
           <div class="has-margin-right-sm" style={{flex: "0 0 48px"}}>
-            <Avatar src={account.avatar_object_id} size={48} />
+            <Avatar src={account.avatar_hash} size={48} />
           </div>
           <div>
             <p class="has-text-weight-bold">{stream.title}</p>

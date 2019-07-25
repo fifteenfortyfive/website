@@ -17,7 +17,7 @@ const AccountCard = (props) => {
 
   const {
     bio,
-    avatar_object_id,
+    avatar_hash,
     username,
     twitch,
     twitter,
@@ -31,7 +31,7 @@ const AccountCard = (props) => {
     <div class="box is-paddingless is-clipped">
       <div class="account-header has-padding-md has-padding-top-lg has-background-white-ter">
         <div class="has-text-centered has-margin-bottom-sm">
-          <Avatar src={avatar_object_id} />
+          <Avatar src={avatar_hash} />
         </div>
 
         <div class="has-text-centered">

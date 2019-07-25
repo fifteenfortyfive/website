@@ -48,7 +48,7 @@ class API::AccountsController < AppController
         discord_tag: account.discord_tag,
         timezone: account.timezone,
         admin: account.admin,
-        avatar_object_id: account.avatar_object_id,
+        avatar_hash: account.avatar_hash,
         created_at: account.preferences.show_join_date ? account.created_at : nil,
         runs: account.preferences.show_run_history ? runs : [] of String
       }

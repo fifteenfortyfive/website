@@ -65,7 +65,7 @@ class API::MeController < AppController
       twitter: account.twitter,
       timezone: account.timezone,
       admin: account.admin,
-      avatar_object_id: account.avatar_object_id,
+      avatar_hash: account.avatar_hash,
       created_at: account.created_at,
       updated_at: account.updated_at
     }
