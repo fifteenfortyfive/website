@@ -13,15 +13,21 @@ export function fetchTeams(eventId, teamIds) {
   });
 }
 
-export function fetchTeam(teamId) {
-  return fetchTeams([teamId]);
+export function fetchTeam(eventId, teamId) {
+  return commonThunk({
+    method: 'get',
+    path: `/api/v1/events/${eventId}/teams/${teamId}`,
+    name: `teams.${teamId}`,
+  }, (dispatch, response) => {
+    dispatch(receiveTeams([response.team]))
+  });
 }
 
 
 
 export function receiveTeams(teams) {
   return {
-    type: 'RECEIVE_EVENTS',
+    type: 'RECEIVE_TEAMS',
     data: {
       teams
     }

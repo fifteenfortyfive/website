@@ -55,6 +55,8 @@ router AppRouter do
 
   scope "teams", helper_prefix: "teams" do
     root to: "teams#index"
+
+    match "*", to: "static#app_root"
   end
 
 

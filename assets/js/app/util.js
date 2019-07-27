@@ -9,21 +9,25 @@ export function runTime(seconds) {
   return Duration.fromMillis(seconds * 1000).toFormat("hh:mm:ss");
 }
 
+export function timeFromISO(timeString) {
+  return DateTime.fromISO(timeString, {zone: 'utc'});
+}
+
 export function runTimeFromStart(startString) {
   return DateTime.utc()
-      .diff(DateTime.fromISO(startString, {zone: 'utc'}))
+      .diff(timeFromISO(startString))
       .toFormat("hh:mm:ss");
 }
 
 export function simpleDate(date) {
-  return DateTime.fromISO(date).toLocaleString({
+  return timeFromISO(date).toLocaleString({
     year: 'numeric',
     month: 'long',
   });
 }
 
 export function fullDate(date) {
-  return DateTime.fromISO(date).toLocaleString({
+  return timeFromISO(date).toLocaleString({
     year: 'numeric',
     month: 'long',
     day: '2-digit'
@@ -31,7 +35,7 @@ export function fullDate(date) {
 }
 
 export function simpleDateTime(date) {
-  return DateTime.fromISO(date).toLocaleString({
+  return timeFromISO(date).toLocaleString({
     year: 'numeric',
     month: 'short',
     day: '2-digit',

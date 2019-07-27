@@ -5,6 +5,7 @@ import _ from 'lodash';
 
 import * as RunDashboardActions from '../../actions/run-dashboard';
 import * as GameActions from '../../actions/games';
+import * as DashboardStore from '../../selectors/dashboard';
 import Run from './dashboard/run';
 
 import {getUTCNow} from '../../util';
@@ -68,11 +69,8 @@ class RunDashboard extends Component {
 }
 
 export default connect((state) => {
-  const runs = state.dashboard && state.dashboard.runs || {};
-  const accountRuns = _.sortBy(runs, 'index');
-
   return {
-    runs: accountRuns,
+    runs: DashboardStore.getOrderedRuns(state),
   };
 })(RunDashboard);
 

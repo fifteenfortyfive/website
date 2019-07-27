@@ -1,4 +1,6 @@
-const defaultState = {};
+const defaultState = {
+  groups: {},
+};
 
 const actions = {
   'FETCH_STARTED': (state, {data}) => {
@@ -21,6 +23,28 @@ const actions = {
       [data.fetchId]: 0
     };
   },
+
+  'INCREMENT_FETCH_GROUP': (state, {data}) => {
+    const {group} = data;
+    return {
+      ...state,
+      groups: {
+        ...state.groups,
+        [group]: state.groups[group] + 1
+      }
+    };
+  },
+
+  'DECREMENT_FETCH_GROUP': (state, {data}) => {
+    const {group} = data;
+    return {
+      ...state,
+      groups: {
+        ...state.groups,
+        [group]: state.groups[group] - 1
+      }
+    };
+  }
 };
 
 

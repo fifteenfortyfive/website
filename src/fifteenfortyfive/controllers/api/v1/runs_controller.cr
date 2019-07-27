@@ -2,9 +2,19 @@ require "../../../contexts/events"
 require "../../errors"
 
 class API::RunsController < AppController
+  ALLOWED_PRELOADS = {
+    "team" => :team,
+    "account" => :account,
+    "category" => :category,
+    "game" => :game,
+    "run_events" => :run_events
+  }
+
   def index
     event_id = url_params["event_id"]
-    query = Query.where(event_id: event_id).preload([:run_events])
+    requested_preloads = query_params["embeds"]?.try(&.split(',')) || [] of String
+    preloads = requested_preloads.map{ |p| ALLOWED_PRELOADS[p]? }.compact.uniq
+    query = Query.where(event_id: event_id).preload([:run_events] + preloads)
 
     if run_ids = query_params["run_ids"]?
       query = query.where(id: run_ids.split(','))
