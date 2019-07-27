@@ -1,6 +1,8 @@
 import {h} from 'preact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import style from './social-link.css';
+
 const SocialTag = (props) => {
   const {
     service, // one of `Services`
@@ -11,8 +13,8 @@ const SocialTag = (props) => {
   const url = urlOverride || (service.url ? `${service.url}/${name}` : null);
 
   return (
-    <div class="has-margin-sm has-margin-left-md has-margin-right-md">
-      <span class="has-margin-right-md">
+    <div class={style.container}>
+      <span class={style.icon}>
         <FontAwesomeIcon {...service.iconProps} />
       </span>
       { url

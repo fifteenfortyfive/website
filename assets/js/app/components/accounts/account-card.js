@@ -1,8 +1,8 @@
 import {h} from 'preact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import SocialLink from './social-link';
 import StreamPreview from './stream-preview';
+import SocialLink from '../../uikit/social-link';
 import Avatar from '../../uikit/avatar';
 
 import {simpleDate} from '../../util';
