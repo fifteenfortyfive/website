@@ -1,6 +1,6 @@
 import {h} from 'preact';
 
-import Avatar from './accounts/avatar';
+import Avatar from '../uikit/avatar';
 
 import { Routes, ASSETS_URL } from '../constants';
 import { getThumbnailURL } from '../util';

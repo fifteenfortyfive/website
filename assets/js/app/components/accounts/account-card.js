@@ -1,11 +1,11 @@
 import {h} from 'preact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import {simpleDate} from '../../util';
-
-import Avatar from './avatar';
 import SocialLink from './social-link';
 import StreamPreview from './stream-preview';
+import Avatar from '../../uikit/avatar';
+
+import {simpleDate} from '../../util';
 
 const AccountCard = (props) => {
   const {

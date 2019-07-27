@@ -2,7 +2,7 @@ import {h} from 'preact';
 import {connect} from 'react-redux';
 
 import * as TeamStore from '../../selectors/teams';
-import Avatar from '../accounts/avatar';
+import Avatar from '../../uikit/avatar';
 
 const TeamSummary = (props) => {
   const {

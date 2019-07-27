@@ -5,8 +5,8 @@ import _ from 'lodash';
 import * as RunActions from '../actions/runs';
 import * as TeamActions from '../actions/teams';
 import * as TeamStore from '../selectors/teams';
-import Avatar from '../components/accounts/avatar';
 import RunList from '../components/accounts/run-list';
+import Avatar from '../uikit/avatar';
 import Container from '../uikit/container';
 
 import {runTime} from '../util';

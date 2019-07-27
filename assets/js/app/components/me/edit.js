@@ -5,8 +5,7 @@ import _ from 'lodash';
 
 import * as MeActions from '../../actions/me';
 
-import Avatar from '../accounts/avatar';
-
+import Avatar from '../../uikit/avatar';
 import Checkbox from '../../uikit/checkbox';
 import TextInput from '../../uikit/text-input';
 import PasswordInput from '../../uikit/password-input';

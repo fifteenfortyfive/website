@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';
 
-import Avatar from '../components/accounts/avatar';
 import StreamCard from '../components/stream-card';
+import Avatar from '../uikit/avatar';
 
 import {Routes} from '../constants';
 import * as AccountActions from '../actions/accounts';

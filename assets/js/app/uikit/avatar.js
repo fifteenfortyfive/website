@@ -1,6 +1,7 @@
 import {h} from 'preact';
 
-import { ASSETS_URL } from '../../constants';
+import { ASSETS_URL } from '../constants';
+import style from './avatar.css';
 
 const Avatar = (props) => {
   const {
@@ -14,7 +15,7 @@ const Avatar = (props) => {
 
   return (
     <img
-      class="avatar"
+      class={style.avatar}
       width={size}
       height={size}
       src={assetUrl}
