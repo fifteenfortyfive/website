@@ -8,10 +8,12 @@ const Avatar = (props) => {
     url=ASSETS_URL,
     src,
     fullSrc = null,
-    size=128, // should be one of 16, 24, 32, 48, 64, 96, 128
+    size=128,
+    useDefault=true
   } = props;
 
-  const assetUrl = fullSrc != null ? fullSrc : `${url}/${src}`;
+  const resolvedSrc = src || (useDefault ? 'default-avatar' : src);
+  const assetUrl = fullSrc != null ? fullSrc : `${url}/${resolvedSrc}`;
 
   return (
     <img

@@ -29,6 +29,11 @@ export const getTeamRuns = createCachedSelector(
   }
 )(getTeamId);
 
+export const getCaptainId = createCachedSelector(
+  [getTeam],
+  (team) => team && team.captain_id
+)(getTeamId);
+
 export const getTeamRunIds = createCachedSelector(
   [getTeamRuns],
   (runs) => _.map(runs, 'id')

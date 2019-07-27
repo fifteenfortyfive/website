@@ -9,7 +9,7 @@ export function fetchTeams(eventId, teamIds) {
       team_ids: teamIds
     })
   }, (dispatch, response) => {
-    dispatch(receiveTeams(response.teams))
+    dispatch(receiveTeams(response.teams));
   });
 }
 
@@ -19,7 +19,7 @@ export function fetchTeam(eventId, teamId) {
     path: `/api/v1/events/${eventId}/teams/${teamId}`,
     name: `teams.${teamId}`,
   }, (dispatch, response) => {
-    dispatch(receiveTeams([response.team]))
+    dispatch(receiveTeams([response.team]));
   });
 }
 
