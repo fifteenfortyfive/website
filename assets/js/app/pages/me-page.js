@@ -13,6 +13,8 @@ import RunDashboard from '../components/me/run-dashboard';
 import AccountCard from '../components/accounts/account-card';
 import RunList from '../components/accounts/run-list';
 
+import Button from '../uikit/button';
+
 import { Routes } from '../constants';
 
 const Pages = {
@@ -48,33 +50,36 @@ class MePage extends Component {
     return (
       <div>
         { accountId &&
-          <Link
-            href={Routes.ACCOUNT(accountId)}
-            class="button is-medium is-fullwidth is-light"
-          >
+          <Button
+              fullwidth
+              onClick={() => route(Routes.ACCOUNT(accountId))}
+            >
             View Public Profile
-          </Link>
+          </Button>
         }
 
         <div>
-          <Link
-            class="button is-medium is-danger is-fullwidth is-light has-margin-top-sm"
-            href={Routes.ME_RUN_DASHBOARD}
-          >
+          <Button
+              color={Button.Colors.PRIMARY}
+              fullwidth
+              onClick={() => route(Routes.ME_RUN_DASHBOARD)}
+            >
             Run Dashboard
-          </Link>
-          <Link
-            class="button is-medium is-fullwidth is-light has-margin-top-sm"
-            href={Routes.ME_PREFERENCES}
-          >
+          </Button>
+
+          <Button
+              fullwidth
+              onClick={() => route(Routes.ME_PREFERENCES)}
+            >
             Edit Preferences
-          </Link>
-          <Link
-            class="button is-medium is-fullwidth is-light has-margin-top-sm"
-            href={Routes.ME_EDIT}
-          >
+          </Button>
+
+          <Button
+              fullwidth
+              onClick={() => route(Routes.ME_EDIT)}
+            >
             Edit Account
-          </Link>
+          </Button>
         </div>
       </div>
     );

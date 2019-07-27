@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,400i,800,700i,900,900i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans:400,400i,600,600i&display=swap');
+
+@value family-sans-serif 'Encode Sans', BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+@value family-monospace monospace;
+@value render-mode optimizeLegibility;
+
+@value font-brand 'cortado', sans-serif;
+@value font-body $family-sans-serif;
+@value font-header $family-sans-serif;
+
+@value size-1 3rem;
+@value size-2 2.25rem;
+@value size-3 1.75rem;
+@value size-4 1.25rem;
+@value size-5 1rem;
+@value size-6 0.875rem;
+@value size-7 0.65rem;
+
+@value weight-light 300;
+@value weight-normal 400;
+@value weight-medium 500;
+@value weight-semibold 600;
+@value weight-bold 700;

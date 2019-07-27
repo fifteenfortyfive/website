@@ -1,0 +1,43 @@
+@value colors: "../style/colors.css";
+@value primary, black, gray-100, gray-200, gray-300, gray-400, white from colors;
+
+.button {
+  /* resets */
+  background: none;
+  border: none;
+  outline: none;
+  display: block;
+
+  /* common style */
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  border-radius: 3px;
+  font-size: 1em;
+  user-select: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    outline: none;
+  }
+}
+
+.colorPrimary {
+  background-color: primary;
+  color: white;
+}
+
+.colorDefault {
+  background-color: gray-100;
+  color: black;
+
+  &:hover {
+    background-color: gray-200;
+  }
+}
+
+.isFullwidth {
+  width: 100%;
+}
