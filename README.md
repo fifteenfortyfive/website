@@ -148,3 +148,18 @@ Swapfiles let you provide more space for the OS to move data around to simulate 
 [This guide](https://linuxize.com/post/how-to-add-swap-space-on-ubuntu-18-04/) goes through how to configure a Swapfile on Ubuntu. A 2GB Swapfile will be more than sufficient for the needs of this application.
 
 Configuring the Swappiness to a low value is also good (to ensure that it is only really used when compiling, not in normal operation).
+
+
+### Installing `systemd` service
+
+This repo includes a basic `1545.service` system service configuration. This can be installed on most unix-based servers and will take care of automatically restarting the application if it ever hard-crashes.
+
+This also simplifies redeployment when updating the application, just the simple command `systemctl restart 1545`.
+
+To install the service, copy the configuration into `/etc/systemd/system/`:
+
+```
+cp 1545.service /etc/systemd/system/
+```
+
+Note that you'll need a sudo permissions on the account managing the application (e.g., `deploy`) to be able to install and use this. `visudo` is good for this.

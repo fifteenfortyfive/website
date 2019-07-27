@@ -2,8 +2,9 @@
 Description=The 1545 Web Services
 
 [Service]
-WorkingDirectory=~/build/fifteenfortyfive/
-ExecStart=./scripts/deploy_production.sh
+User=deploy
+WorkingDirectory=/home/deploy/build/fifteenfortyfive/
+ExecStart=/bin/bash ./scripts/deploy_systemctl.sh
 Type=simple
 Restart=on-failure
 StandardOutput=syslog
@@ -11,4 +12,4 @@ StandardError=syslog
 SyslogIdentifier=1545
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
