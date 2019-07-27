@@ -1,0 +1,14 @@
+[Unit]
+Description=The 1545 Web Services
+
+[Service]
+WorkingDirectory=~/build/fifteenfortyfive/
+ExecStart=./scripts/deploy_production.sh
+Type=simple
+Restart=on-failure
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=1545
+
+[Install]
+WantedBy=multi-user.target
