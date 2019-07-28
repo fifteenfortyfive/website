@@ -46,7 +46,7 @@ router AppRouter do
     match "/", to: "static#app_root"
 
     scope ":event_id" do
-      get  "/",             to: "events#show",              helper: "show"
+      get  "/", to: "static#app_root", helper: "show"
 
       implements :authenticated
       get  ":event_id/submit",       to: "run_submissions#new",     helper: "submit"

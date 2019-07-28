@@ -1,12 +1,13 @@
 import { commonThunk, denulled } from '../actions';
 
-export function fetchTeams(teamIds) {
+export function fetchTeams(queryParams = {}) {
   return commonThunk({
     method: 'get',
     path: `/api/v1/teams`,
     name: 'teams',
     query: denulled({
-      team_ids: teamIds
+      event_id: queryParams.eventId,
+      team_ids: queryParams.teamIds
     })
   }, (dispatch, response) => {
     dispatch(receiveTeams(response.teams));

@@ -30,7 +30,7 @@ const Text = (props) => {
   } = props;
 
   return (
-    <p className={classNames(style.header, style[color], style[size], className)}>
+    <p className={classNames(style.text, style[color], style[size], className)}>
       {children}
     </p>
   )

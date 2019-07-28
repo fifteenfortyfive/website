@@ -5,6 +5,10 @@ import {Link} from 'preact-router';
 import * as EventStore from '../../selectors/events';
 import Header from '../../uikit/header';
 
+import {Routes} from '../../constants';
+import style from './event-card.css';
+
+
 const EventCard = (props) => {
   const {
     event
@@ -12,15 +16,16 @@ const EventCard = (props) => {
 
   const {
     name,
-    series
+    series,
+    summary
   } = event;
 
   return (
-    <div>
-      <Header size={Header.Sizes.H4} color={Header.Colors.DEFAULT}>{name}</Header>
-      { series &&
-        <p class="subtitle">{series.name}</p>
-      }
+    <div class={style.container}>
+      <Link href={Routes.EVENT(event.id)}>
+        <Header size={Header.Sizes.H4} color={Header.Colors.PRIMARY}>{name}</Header>
+      </Link>
+      <p class="subtitle">{summary}</p>
     </div>
   );
 };

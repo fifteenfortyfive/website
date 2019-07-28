@@ -1,8 +1,8 @@
 @value colors: '../style/colors.css';
 @value black, gray-700, gray-500, white, primary, secondary from colors;
 
-.header {
-  font-weight: 700;
+.text {
+  font-weight: 400;
 }
 
 .size24 {

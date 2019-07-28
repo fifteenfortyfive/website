@@ -3,15 +3,14 @@ require "../../errors"
 
 class API::EventsController < AppController
   def index
-    events =
-      if event_ids = query_params["event_ids"]?
-        Events.list_events(Query.where(id: event_ids.split(',')))
-      else
-        Events.list_events()
-      end
+    query = Query.order_by("start_time DESC")
+
+    if event_ids = query_params["event_ids"]?
+      query = query.where(id: event_ids.split(','))
+    end
 
     render_json({
-      events: events
+      events: Events.list_events(query)
     })
   end
 
@@ -21,7 +20,9 @@ class API::EventsController < AppController
       return
     end
 
-    unless event = Events.get_event(event_id)
+    query = Query.preload([:series])
+
+    unless event = Events.get_event(event_id, query)
       render_error_json(Errors::NotFound)
       return
     end

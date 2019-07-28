@@ -12,5 +12,8 @@ export const Routes = {
   ME_PREFERENCES: '/@me/preferences',
   ME_RUN_DASHBOARD: '/@me/run-dashboard',
   ACCOUNT: (id) => `/accounts/${id}`,
+  TEAMS: 'teams',
   TEAM: (id) => `/teams/${id}`,
+  EVENTS: 'events',
+  EVENT: (id) => `/events/${id}`,
 };

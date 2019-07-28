@@ -2,6 +2,8 @@ import {createSelector} from 'reselect';
 import createCachedSelector from 're-reselect';
 import _ from 'lodash';
 
+import {getTeams} from './teams';
+
 
 export const getEventsState = (state) => state.events;
 export const getEventId = (_, props) => props.eventId;
@@ -22,3 +24,7 @@ export const getSortedEvents = createSelector(
   (events) => _.orderBy(events, ['start_time'], ['desc'])
 );
 
+export const getEventTeams = createCachedSelector(
+  [getEventId, getTeams],
+  (eventId, teams) => _.filter(teams, (t) => t.event_id == eventId)
+)(getEventId);
