@@ -9,16 +9,17 @@ module Events
   # Events
   ###
 
+  EVENT_PRELOADS = [:game, :category, :series]
   def list_events(query : Query = Query.new)
-    Repo.all(Event, query)
+    Repo.all(Event, query.preload(EVENT_PRELOADS))
   end
 
   def get_event(event_id, query : Query = Query.new)
-    Repo.all(Event, query.where(id: event_id.to_s).limit(1)).first?
+    Repo.all(Event, query.where(id: event_id.to_s).preload(EVENT_PRELOADS).limit(1)).first?
   end
 
   def get_event!(event_id, query : Query = Query.new)
-    Repo.all(Event, query.where(id: event_id.to_s).limit(1)).first
+    Repo.all(Event, query.where(id: event_id.to_s).preload(EVENT_PRELOADS).limit(1)).first
   end
 
   def new_event()

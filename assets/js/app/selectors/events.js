@@ -12,7 +12,13 @@ export const getEvents = createSelector(
   (eventsState) => Object.values(eventsState)
 );
 
+export const getEventIds = createSelector(
+  [getEventsState],
+  (eventsState) => Object.keys(eventsState)
+);
+
 export const getSortedEvents = createSelector(
   [getEvents],
   (events) => _.orderBy(events, ['start_time'], ['desc'])
 );
+

@@ -21,6 +21,7 @@ module Events
       field :summary, String
       field :details, String
       field :rules, String
+      field :icon_hash, String
 
       field :signups_open_time, Time
       field :signups_closed_time, Time
@@ -41,6 +42,7 @@ module Events
 
       # Psuedo-temporary solution for events with only one game/category being run,
       # i.e., individual race events.
+      belongs_to :series, Series
       belongs_to :game, Inventory::Game
       belongs_to :category, Inventory::Category
 

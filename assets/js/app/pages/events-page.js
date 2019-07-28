@@ -4,6 +4,8 @@ import _ from 'lodash';
 
 import * as EventActions from '../actions/events';
 import * as EventStore from '../selectors/events';
+import EventCard from '../components/events/event-card';
+import Header from '../uikit/header';
 
 
 class EventsPage extends Component {
@@ -13,21 +15,14 @@ class EventsPage extends Component {
   }
 
   render() {
-    const {events} = this.props;
+    const {eventIds} = this.props;
 
     return (
       <div class="container">
         <section class="section">
-          <h1 class="title">Events</h1>
+          <Header size={Header.Sizes.H1}>Events</Header>
 
-          { _.map(events, (event) => {
-              return (
-                <div>
-                  <h2>{event.name}</h2>
-                </div>
-              );
-            })
-          }
+          { _.map(eventIds, (eventId) => <EventCard eventId={eventId} />)}
         </section>
       </div>
     );
@@ -36,7 +31,7 @@ class EventsPage extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    events: EventStore.getSortedEvents(state, props),
+    eventIds: EventStore.getEventIds(state, props),
   };
 }
 

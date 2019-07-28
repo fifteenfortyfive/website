@@ -1,0 +1,64 @@
+@value colors: '../style/colors.css';
+@value black, gray-500, white, primary, secondary from colors;
+
+.header {
+  font-weight: 700;
+}
+
+.size1 {
+  font-size: 2em;
+  letter-spacing: -0.5px;
+}
+
+.size2 {
+  font-size: 1.75em;
+  letter-spacing: -0.5px;
+}
+
+.size3 {
+  font-size: 1.5em;
+  letter-spacing: -0.25px;
+}
+
+.size4 {
+  font-size: 1.25em;
+  letter-spacing: -0.25px;
+}
+
+.size5 {
+  font-size: 1em;
+  letter-spacing: -0.25px;
+}
+
+.size6 {
+  font-size: 0.875em;
+}
+
+
+.colorDefault {
+  color: black;
+}
+
+.colorMuted {
+  color: gray-500;
+}
+
+.colorPrimary {
+  color: primary;
+}
+
+.colorSecondary {
+  color: secondary;
+}
+
+.colorThemed {
+  color: var(--themeColor);
+}
+
+.colorBlack {
+  color: black;
+}
+
+.colorWhite {
+  color: white;
+}

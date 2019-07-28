@@ -1,0 +1,56 @@
+@value colors: '../style/colors.css';
+@value black, gray-700, gray-500, white, primary, secondary from colors;
+
+.header {
+  font-weight: 700;
+}
+
+.size24 {
+  font-size: 24px;
+}
+
+.size20 {
+  font-size: 20px;
+}
+
+.size16 {
+  font-size: 16px;
+}
+
+.size12 {
+  font-size: 12px;
+}
+
+.size10 {
+  font-size: 10px;
+}
+
+
+.colorDefault {
+  color: gray-700;
+}
+
+.colorMuted {
+  color: gray-500;
+}
+
+.colorPrimary {
+  color: primary;
+}
+
+.colorSecondary {
+  color: secondary;
+}
+
+.colorThemed {
+  color: var(--themeColor);
+}
+
+.colorBlack {
+  color: black;
+}
+
+.colorWhite {
+  color: white;
+}
+
