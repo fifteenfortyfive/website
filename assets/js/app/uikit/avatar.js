@@ -1,4 +1,5 @@
 import {h} from 'preact';
+import classNames from 'classnames';
 
 import { ASSETS_URL } from '../constants';
 import style from './avatar.css';
@@ -9,7 +10,8 @@ const Avatar = (props) => {
     src,
     fullSrc = null,
     size=128,
-    useDefault=true
+    useDefault=true,
+    className,
   } = props;
 
   const resolvedSrc = src || (useDefault ? 'default-avatar' : src);
@@ -17,7 +19,8 @@ const Avatar = (props) => {
 
   return (
     <img
-      class={style.avatar}
+      class={classNames(style.avatar, className)}
+      style={{'--size': `${size}px`}}
       width={size}
       height={size}
       src={assetUrl}

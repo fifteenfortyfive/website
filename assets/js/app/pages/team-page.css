@@ -1,0 +1,9 @@
+.flexInline {
+  display: flex;
+  align-items: center;
+}
+
+.runnerAvatar {
+  display: inline-block;
+  margin-right: 8px;
+}

@@ -16,6 +16,7 @@ import Container from '../uikit/container';
 
 import {Routes} from '../constants';
 import {runTime} from '../util';
+import style from './team-page.css';
 
 class TeamPage extends Component {
   componentDidMount() {
@@ -62,13 +63,18 @@ class TeamPage extends Component {
             <p></p>
           </div>
           <div class="column">
-            <table class="table is-fullwidth is-narrow">
+            <table class="table is-fullwidth">
               <tbody>
                 { _.map(runs, (run) => {
                     return (
                       <tr>
-                        <td>
-                          <Link href={Routes.ACCOUNT(run.account_id)}>
+                        <td class={style.tableCell}>
+                          <Link className={style.flexInline} href={Routes.ACCOUNT(run.account_id)}>
+                            <Avatar
+                              className={style.runnerAvatar}
+                              src={run.account.avatar_hash}
+                              size={24}
+                            />
                             {run.account.username}
                           </Link>
                         </td>
@@ -84,7 +90,6 @@ class TeamPage extends Component {
                             : <span class="has-text-grey-light has-text-weight-bold">DNF</span>
                           }
                         </td>
-                        {/*<td><span class="has-text-grey-light">{runTime(run.est_seconds)}</span></td>*/}
                       </tr>
                     );
                   })
