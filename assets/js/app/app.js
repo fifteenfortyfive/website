@@ -12,7 +12,7 @@ import AccountPage from './pages/account-page';
 import MePage from './pages/me-page';
 import StreamsPage from './pages/streams-page';
 import TeamPage from './pages/team-page';
-import TeamsPage from './pages/teams-page';
+import EventsPage from './pages/events-page';
 import NotFoundPage from './pages/not-found-page';
 
 class App extends Component {
@@ -28,7 +28,7 @@ class App extends Component {
       <div>
         <Router>
           <TeamPage path="/teams/:teamId" />
-          <TeamsPage path="/teams" eventId={eventId} />
+          <EventsPage path="/events" />
           <AccountPage path="/accounts/:accountId" currentUserId={currentUserId} />
           <MePage path="/@me/:page?" eventId={eventId} />
           <StreamsPage path="/streams" />

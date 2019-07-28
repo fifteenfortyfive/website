@@ -3,15 +3,18 @@ require "../../errors"
 
 class API::TeamsController < AppController
   def index
-    event_id = url_params["event_id"]
-    query = Query.where(event_id: event_id).preload(:runs)
+    query = Query.preload(:runs)
+
+    if event_id = url_params["event_id"]?
+      query = query.where(event_id: event_id)
+    end
 
     if team_ids = query_params["team_ids"]?
       query = query.where(id: team_ids.split(','))
     end
 
     render_json({
-      teams: Events.list_teams(event_id, query)
+      teams: Events.list_teams(query)
     })
   end
 

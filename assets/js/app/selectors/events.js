@@ -1,5 +1,6 @@
 import {createSelector} from 'reselect';
 import createCachedSelector from 're-reselect';
+import _ from 'lodash';
 
 
 export const getEventsState = (state) => state.events;
@@ -13,5 +14,5 @@ export const getEvents = createSelector(
 
 export const getSortedEvents = createSelector(
   [getEvents],
-  (events) => _.sortBy(events, 'id')
+  (events) => _.orderBy(events, ['start_time'], ['desc'])
 );

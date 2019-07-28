@@ -108,6 +108,10 @@ module Events
   # Teams
   ###
 
+  def list_teams(query : Query = Query.new)
+    Repo.all(Team, query)
+  end
+
   def list_teams(event_id, query : Query = Query.new)
     Repo.all(Team, query.where(event_id: event_id.to_s))
   end

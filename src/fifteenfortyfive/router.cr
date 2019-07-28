@@ -25,6 +25,7 @@ router AppRouter do
     use AuthorizationHandler.new(required_level: :admin, api: true)
   end
 
+
   scope "accounts", helper_prefix: "user" do
     get   "new",    to: "accounts#new",     helper: "new"
     post  "create", to: "accounts#create",  helper: "create"
@@ -42,20 +43,23 @@ router AppRouter do
   end
 
   scope "events", helper_prefix: "events" do
-    root to: "events#index"
-    get  ":event_id",             to: "events#show",              helper: "show"
+    match "/", to: "static#app_root"
 
-    implements :authenticated
-    get  ":event_id/submit",       to: "run_submissions#new",     helper: "submit"
-    post ":event_id/submit",       to: "run_submissions#create",  helper: "create"
+    scope ":event_id" do
+      get  "/",             to: "events#show",              helper: "show"
 
-    implements :admin_authorized
-    get  ":event_id/submissions", to: "run_submissions#index",    helper: "run_submissions"
+      implements :authenticated
+      get  ":event_id/submit",       to: "run_submissions#new",     helper: "submit"
+      post ":event_id/submit",       to: "run_submissions#create",  helper: "create"
+
+      implements :admin_authorized
+      get  ":event_id/submissions", to: "run_submissions#index",    helper: "run_submissions"
+    end
+
+    match "*", to: "static#app_root"
   end
 
   scope "teams", helper_prefix: "teams" do
-    root to: "teams#index"
-
     match "*", to: "static#app_root"
   end
 
@@ -91,9 +95,10 @@ router AppRouter do
 
       scope "events" do
         get "/", to: "aPI::Events#index"
-        get "/:event_id", to: "aPI::Events#get"
 
         scope ":event_id" do
+          get "/", to: "aPI::Events#get"
+
           scope do
             implements :api_admin_authorized
 
@@ -158,6 +163,7 @@ router AppRouter do
       end
 
       scope "teams" do
+        get "/", to: "aPI::Teams#index"
         get "/:team_id", to: "aPI::Teams#get"
       end
 
