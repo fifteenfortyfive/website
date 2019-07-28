@@ -113,11 +113,19 @@ module Events
   end
 
   def get_team(team_id, query : Query = Query.new)
-    Repo.all(Team, query.where(id: team_id.to_s).limit(1)).first?
+    Repo.all(Team, query
+      .where(id: team_id.to_s)
+      .preload([:captain, :event])
+      .limit(1)
+    ).first?
   end
 
   def get_team!(team_id, query : Query = Query.new)
-    Repo.all(Team, query.where(id: team_id.to_s).limit(1)).first
+    Repo.all(Team, query
+      .where(id: team_id.to_s)
+      .preload([:captain, :event])
+      .limit(1)
+    ).first
   end
 
   def new_team()

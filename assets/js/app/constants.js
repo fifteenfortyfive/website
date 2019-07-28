@@ -12,4 +12,5 @@ export const Routes = {
   ME_PREFERENCES: '/@me/preferences',
   ME_RUN_DASHBOARD: '/@me/run-dashboard',
   ACCOUNT: (id) => `/accounts/${id}`,
+  TEAM: (id) => `/teams/${id}`,
 };

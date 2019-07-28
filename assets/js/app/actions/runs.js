@@ -1,12 +1,13 @@
 import { commonThunk, denulled } from '../actions';
 import _ from 'lodash';
 
-export function fetchRuns(eventId, queryParams) {
+export function fetchRuns(queryParams) {
   return commonThunk({
     method: 'get',
-    path: `/api/v1/events/${eventId}/runs`,
+    path: `/api/v1/runs`,
     name: 'runs',
     query: denulled({
+      event_id: queryParams.eventId,
       team_id: queryParams.teamId,
       account_id: queryParams.accountId,
       run_ids: queryParams.runIds,

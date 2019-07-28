@@ -1,5 +1,6 @@
 import { h, Component } from 'preact';
 import { connect } from 'react-redux';
+import { Link } from 'preact-router';
 import _ from 'lodash';
 
 import * as AccountActions from '../actions/accounts';
@@ -13,36 +14,24 @@ import RunList from '../components/accounts/run-list';
 import Avatar from '../uikit/avatar';
 import Container from '../uikit/container';
 
+import {Routes} from '../constants';
 import {runTime} from '../util';
 
 class TeamPage extends Component {
   componentDidMount() {
-    const {captainId, eventId, teamId, dispatch} = this.props;
-    dispatch(TeamActions.fetchTeam(eventId, teamId));
-    dispatch(RunActions.fetchRuns(eventId, {teamId, embeds: ['game', 'category', 'account']}));
-    if(captainId != null) {
-      dispatch(AccountActions.fetchAccount(captainId));
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    const {captainId, dispatch} = this.props;
-
-    if(prevProps.captainId != captainId) {
-      dispatch(AccountActions.fetchAccount(captainId));
-    }
+    const {captainId, teamId, dispatch} = this.props;
+    dispatch(TeamActions.fetchTeam(teamId));
+    dispatch(RunActions.fetchRuns({teamId, embeds: ['game', 'category', 'account']}));
   }
 
   render() {
     const {
       teamId,
       team,
-      captain,
+      estimate,
       loading,
       runs,
     } = this.props;
-
-    console.log(captain)
 
     if(loading || team == null) return <div>Loading</div>;
 
@@ -57,9 +46,20 @@ class TeamPage extends Component {
           <div class="column is-4">
             <Avatar src={avatar_hash} />
             <h1 class="title is-3" style={{color: `#${team.color}`}}>{name}</h1>
-            { captain &&
-              <p class="subtitle is-4">Captain: {captain.username}</p>
+            { team.captain &&
+              <p class="subtitle is-4">
+                Captain: <Link href={Routes.ACCOUNT(team.captain_id)}>
+                  {team.captain.username}
+                </Link>
+              </p>
             }
+            { estimate &&
+              <p>Game Estimate: {runTime(estimate)}</p>
+            }
+            { team.actual_time_seconds &&
+              <p>Finished in: {runTime(team.actual_time_seconds)}</p>
+            }
+            <p></p>
           </div>
           <div class="column">
             <table class="table is-fullwidth is-narrow">
@@ -67,7 +67,11 @@ class TeamPage extends Component {
                 { _.map(runs, (run) => {
                     return (
                       <tr>
-                        <td>{run.account.username}</td>
+                        <td>
+                          <Link href={Routes.ACCOUNT(run.account_id)}>
+                            {run.account.username}
+                          </Link>
+                        </td>
                         <td>{run.game.name} - {run.category.name}</td>
                         <td class="has-text-right">
                           { run.est_seconds &&
@@ -105,6 +109,7 @@ const mapStateToProps = (state, props) => {
     team: TeamStore.getTeam(state, props),
     runs: TeamStore.getTeamRuns(state, props),
     captainId,
+    estimate: TeamStore.getTeamEstimate(state, props),
     captain: AccountStore.getAccount(state, {accountId: captainId})
   };
 }

@@ -1,6 +1,8 @@
 import {h} from 'preact';
+import {Link} from 'preact-router';
 import _ from 'lodash';
 
+import {Routes} from '../../constants';
 import {runTime, fullDate} from '../../util';
 
 const EventCard = (props) => {
@@ -26,7 +28,9 @@ const EventCard = (props) => {
           <p>{fullDate(startTime)}</p>
         </div>
         { team &&
-          <span class="has-text-weight-bold">{team.name}</span>
+          <Link href={Routes.TEAM(team.id)}>
+            <span class="has-text-weight-bold has-text-white">{team.name}</span>
+          </Link>
         }
       </div>
 

@@ -27,7 +27,7 @@ class App extends Component {
     return (
       <div>
         <Router>
-          <TeamPage path="/teams/:teamId" eventId={eventId} />
+          <TeamPage path="/teams/:teamId" />
           <TeamsPage path="/teams" eventId={eventId} />
           <AccountPage path="/accounts/:accountId" currentUserId={currentUserId} />
           <MePage path="/@me/:page?" eventId={eventId} />

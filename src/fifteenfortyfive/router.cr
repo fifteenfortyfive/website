@@ -152,6 +152,11 @@ router AppRouter do
         get "/:game_id", to: "aPI::Games#get"
       end
 
+      scope "runs" do
+        get "/", to: "aPI::Runs#index"
+        get "/:run_id", to: "aPI::Runs#get"
+      end
+
       scope "teams" do
         get "/:team_id", to: "aPI::Teams#get"
       end

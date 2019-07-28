@@ -11,21 +11,34 @@ class API::RunsController < AppController
   }
 
   def index
-    event_id = url_params["event_id"]
     requested_preloads = query_params["embeds"]?.try(&.split(',')) || [] of String
     preloads = requested_preloads.map{ |p| ALLOWED_PRELOADS[p]? }.compact.uniq
-    query = Query.where(event_id: event_id).preload([:run_events] + preloads)
+    query = Query.preload([:run_events] + preloads)
+    has_selector = false
+
+    if event_id = query_params["event_id"]?
+      has_selector = true
+      query = query.where(event_id: event_id)
+    end
 
     if run_ids = query_params["run_ids"]?
+      has_selector = true
       query = query.where(id: run_ids.split(','))
     end
 
     if team_id = query_params["team_id"]?
+      has_selector = true
       query = query.where(team_id: team_id)
     end
 
     if account_id = query_params["account_id"]?
+      has_selector = true
       query = query.where(account_id: account_id)
+    end
+
+    unless has_selector
+      render_error_json(Errors::Unprocessable)
+      return
     end
 
     render_json({
