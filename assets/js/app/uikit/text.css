@@ -1,5 +1,5 @@
 @value colors: '../style/colors.css';
-@value black, gray-700, gray-500, white, primary, secondary from colors;
+@value black, gray-700, gray-400, white, primary, secondary from colors;
 
 .text {
   font-weight: 400;
@@ -31,7 +31,7 @@
 }
 
 .colorMuted {
-  color: gray-500;
+  color: gray-400;
 }
 
 .colorPrimary {

@@ -3,7 +3,7 @@ require "../../errors"
 
 class API::TeamsController < AppController
   def index
-    query = Query.preload(:runs)
+    query = Query.preload(:runs, Query.preload([:game, :category, :account]))
 
     if event_id = query_params["event_id"]?
       query = query.where(event_id: event_id)

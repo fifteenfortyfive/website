@@ -6,6 +6,7 @@ import _ from 'lodash';
 import * as EventStore from '../../selectors/events';
 
 import Header from '../../uikit/header';
+import Text from '../../uikit/text';
 
 import {Routes} from '../../constants';
 
@@ -31,7 +32,10 @@ const Team = (props) => {
 
       { _.map(runs, (run) => (
           <div>
-            {run.game_id}
+            <Text color={Text.Colors.MUTED}>{run.game.name}</Text>
+            <Link href={Routes.ACCOUNT(run.account_id)}>
+              <Text>{run.account.username}</Text>
+            </Link>
           </div>
         ))
       }
