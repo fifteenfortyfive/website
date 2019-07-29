@@ -7,11 +7,16 @@ import * as TeamActions from '../actions/teams';
 import * as EventStore from '../selectors/events';
 import * as FetchStore from '../selectors/fetch';
 
+import {
+  Columns,
+  Column,
+  Heading,
+} from 'bloomer';
+import EventHeader from '../components/events/event-header';
+import Team from '../components/events/team';
 import Container from '../uikit/container';
 import Header from '../uikit/header';
 import Text from '../uikit/text';
-
-import {fullDate} from '../util';
 
 class EventPage extends Component {
   componentDidMount() {
@@ -29,24 +34,18 @@ class EventPage extends Component {
 
     if(loading || event == null) return <Container>Loading</Container>;
 
-    const {
-      name,
-      series,
-      summary,
-      start_time
-    } = event;
-
     return (
       <Container>
-        <Header>{name}</Header>
-        <Text size={Text.Sizes.SIZE_20}>
-          { series && `${series.name} - `}
-          Starts {fullDate(start_time)}
-        </Text>
-        <Text>
-          {summary}
-        </Text>
-        { _.map(teams, (team) => <p>{team.name}</p>) }
+        <EventHeader event={event} />
+
+        <Columns isMultiline>
+          { _.map(teams, (team) => (team &&
+              <Column isSize={3}>
+                <Team team={team}></Team>
+              </Column>
+            ))
+          }
+        </Columns>
       </Container>
     );
   }

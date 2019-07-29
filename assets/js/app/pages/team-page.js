@@ -54,6 +54,13 @@ class TeamPage extends Component {
                 </Link>
               </p>
             }
+            { team.event &&
+              <p>
+                Part of: <Link href={Routes.EVENT(team.event_id)}>
+                  {team.event.name}
+                </Link>
+              </p>
+            }
             { estimate &&
               <p>Game Estimate: {runTime(estimate)}</p>
             }

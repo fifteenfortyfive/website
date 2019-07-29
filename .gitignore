@@ -16,6 +16,7 @@ ssl/
 # Asset deps
 node_modules/
 public/
+webpack-stats.json
 
 # Database dump files from heroku
 *.dump
