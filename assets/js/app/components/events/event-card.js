@@ -1,9 +1,9 @@
 import {h} from 'preact';
 import {connect} from 'react-redux';
-import {Link} from 'preact-router';
 
 import * as EventStore from '../../selectors/events';
 import Header from '../../uikit/header';
+import Link from '../../uikit/link';
 
 import {Routes} from '../../constants';
 import style from './event-card.css';

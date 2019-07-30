@@ -1,6 +1,7 @@
 import {h} from 'preact';
-import {Link} from 'preact-router';
 import _ from 'lodash';
+
+import Link from '../../uikit/link';
 
 import {Routes} from '../../constants';
 import {runTime, fullDate} from '../../util';

@@ -1,0 +1,7 @@
+.wrapper {
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: underline currentColor;
+  }
+}

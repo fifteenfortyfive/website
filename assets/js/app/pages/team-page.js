@@ -1,6 +1,5 @@
 import { h, Component } from 'preact';
 import { connect } from 'react-redux';
-import { Link } from 'preact-router';
 import _ from 'lodash';
 
 import * as AccountActions from '../actions/accounts';
@@ -13,6 +12,7 @@ import * as TeamStore from '../selectors/teams';
 import RunList from '../components/accounts/run-list';
 import Avatar from '../uikit/avatar';
 import Container from '../uikit/container';
+import Link from '../uikit/link';
 
 import {Routes} from '../constants';
 import {runTime} from '../util';
