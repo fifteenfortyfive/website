@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="container">
     <div class="navbar-brand">
-      <a class="navbar-item navbar-brand-icon" href="/">
+      <a class="navbar-item navbar-brand-icon" href="/" native>
         <span class="brand-logo">The 1545</span>
       </a>
       <span class="navbar-burger burger" data-target="primaryNav">
@@ -13,24 +13,24 @@
 
     <div class="navbar-menu" id="primaryNav">
       <div class="navbar-start">
-        <a class="navbar-item" href="/teams">
+        <a class="navbar-item" href="/teams" native>
           Teams
         </a>
 
-        <a class="navbar-item" href="/streams">
+        <a class="navbar-item" href="/streams" native>
           Streams
         </a>
 
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
+          <a class="navbar-link" native>
             More
           </a>
 
           <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item" href="mailto:{{conn.constants.contact_url}}">
+            <a class="navbar-item" href="mailto:{{conn.constants.contact_url}}" native>
               Contact
             </a>
-            <a class="navbar-item" href="/volunteer">
+            <a class="navbar-item" href="/volunteer" native>
               Volunteer
             </a>
           </div>
@@ -38,15 +38,15 @@
 
         {% if conn.user.admin %}
           <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link" href="/admin">
+            <a class="navbar-link" href="/admin" native>
               Admin
             </a>
 
             <div class="navbar-dropdown is-boxed">
-              <a class="navbar-item" href="/admin/users">
+              <a class="navbar-item" href="/admin/users" native>
                 Account Management
               </a>
-              <a class="navbar-item" href="/admin/events">
+              <a class="navbar-item" href="/admin/events" native>
                 Events
               </a>
             </div>
@@ -65,10 +65,10 @@
             </div>
 
             <div class="navbar-dropdown is-boxed">
-              <a class="navbar-item" href="/@me">Profile</a>
-              <a class="navbar-item" href="/@me/edit">Edit Account</a>
+              <a class="navbar-item" href="/@me">Profile</a native>
+              <a class="navbar-item" href="/@me/edit">Edit Account</a native>
               <div class="navbar-divider"></div>
-              <a class="navbar-item" href="/signout">Log Out</a>
+              <a class="navbar-item" href="/signout">Log Out</a native>
             </div>
           </div>
 
@@ -77,10 +77,10 @@
         {% else %}
           <div class="navbar-item is-paddingless">
             <div class="buttons">
-              <a class="button is-small is-danger is-outlined" href="/signin">
+              <a class="button is-small is-danger is-outlined" href="/signin" native>
                 Sign In
               </a>
-              <a class="button is-small is-dark is-outlined" href="/accounts/new">
+              <a class="button is-small is-dark is-outlined" href="/accounts/new" native>
                 Create an Account
               </a>
             </div>
@@ -89,19 +89,19 @@
 
         <div class="navbar-item is-paddingless">
           <div class="buttons">
-            <a class="button is-white" href="{{conn.constants.discord_url}}" target="_blank">
+            <a class="button is-white" href="{{conn.constants.discord_url}}" target="_blank" native>
               <i class="fab fa-discord"></i>
             </a>
-            <a class="button is-white" href="{{conn.constants.srcom_url}}" target="_blank">
+            <a class="button is-white" href="{{conn.constants.srcom_url}}" target="_blank" native>
               <i class="fa fa-trophy"></i>
             </a>
-            <a class="button is-white" href="{{conn.constants.twitch_url}}" target="_blank">
+            <a class="button is-white" href="{{conn.constants.twitch_url}}" target="_blank" native>
               <i class="fab fa-twitch"></i>
             </a>
-            <a class="button is-white" href="{{conn.constants.twitter_url}}" target="_blank">
+            <a class="button is-white" href="{{conn.constants.twitter_url}}" target="_blank" native>
               <i class="fab fa-twitter"></i>
             </a>
-            <a class="button is-white" href="{{conn.constants.youtube_url}}" target="_blank">
+            <a class="button is-white" href="{{conn.constants.youtube_url}}" target="_blank" native>
               <i class="fab fa-youtube"></i>
             </a>
           </div>
