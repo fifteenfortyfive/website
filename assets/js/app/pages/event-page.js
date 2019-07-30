@@ -21,6 +21,17 @@ import Text from '../uikit/text';
 class EventPage extends Component {
   componentDidMount() {
     const { eventId, dispatch } = this.props;
+    this.fetchEvent();
+  }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.eventId != this.props.eventId) {
+      this.fetchEvent();
+    }
+  }
+
+  fetchEvent() {
+    const { eventId, dispatch } = this.props;
     dispatch(EventActions.fetchEvent(eventId));
     dispatch(TeamActions.fetchTeams({eventId}));
   }
