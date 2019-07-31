@@ -1,0 +1,55 @@
+@value colors: "../style/colors.css";
+@value primary, primary-bg-400, primary-bg-600 from colors;
+
+.checkbox {
+  display: flex;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.label {
+  cursor: pointer;
+  margin-top: 0.125rem;
+  margin-left: 32px;
+}
+
+.check {
+  display: inline-block;
+  color: primary;
+
+  & span {
+    position: absolute;
+    transition: opacity 0.12s ease-out;
+    opacity: 0;
+
+    &.visible {
+      opacity: 1;
+    }
+  }
+}
+
+.checkbox.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+
+  &:active,
+  &:hover {
+    background-color: inherit;
+  }
+
+  & .label {
+    cursor: not-allowed;
+  }
+}
+
+.checkbox:not(.disabled) {
+  &:hover {
+    background-color: primary-bg-400;
+  }
+
+  &:active {
+    background-color: primary-bg-600;
+  }
+}

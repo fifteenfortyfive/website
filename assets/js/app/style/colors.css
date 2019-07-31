@@ -30,4 +30,8 @@
 
 
 @value primary #eb3d4c;
+@value primary-bg #fce3e6;
+@value primary-bg-400 #fce3e6;
+@value primary-bg-600 #fad1d5;
+
 @value secondary hsl(171, 100%, 41%);

@@ -1,5 +1,10 @@
 import { h } from 'preact';
+import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import Header from './header';
+
+import style from './checkbox.css';
 
 const Checkbox = (props) => {
   const {
@@ -15,17 +20,24 @@ const Checkbox = (props) => {
   const visibleChecked = checked ? "visible" : "hidden";
 
   return (
-    <div class={`ff-checkbox ${disabled && '--disabled'} ${className || ''}`} onClick={() => !disabled && onChange(!checked)}>
-      <div class="ff-checkbox__check">
-        <span class={visibleUnchecked}>
+    <div
+        class={classNames(style.checkbox, {
+          [style.disabled]: disabled
+        })}
+        onClick={() => !disabled && onChange(!checked)}
+      >
+      <div class={style.check}>
+        <span class={classNames({[style.visible]: !checked})}>
           <FontAwesomeIcon className="icon" icon={['far', 'square']} size="lg" />
         </span>
-        <span class={visibleChecked}>
+        <span class={classNames({[style.visible]: checked})}>
           <FontAwesomeIcon className="icon" icon={['far', 'check-square']} size="lg" />
         </span>
       </div>
-      <label>
-        <h3 class="title is-5 has-margin-top-nudge has-margin-bottom-sm">{header}</h3>
+      <label class={style.label}>
+        <Header size={Header.Sizes.H5} className="has-margin-top-nudge has-margin-bottom-sm">
+          {header}
+        </Header>
         {children}
       </label>
     </div>
