@@ -14,6 +14,7 @@ import StreamsPage from './pages/streams-page';
 import TeamPage from './pages/team-page';
 import EventPage from './pages/event-page';
 import EventsPage from './pages/events-page';
+import LoginPage from './pages/login-page';
 import NotFoundPage from './pages/not-found-page';
 
 class App extends Component {
@@ -34,6 +35,7 @@ class App extends Component {
           <AccountPage path="/accounts/:accountId" currentUserId={currentUserId} />
           <MePage path="/@me/:page?" eventId={eventId} />
           <StreamsPage path="/streams" />
+          <LoginPage path="/login" />
           <NotFoundPage default />
         </Router>
       </div>

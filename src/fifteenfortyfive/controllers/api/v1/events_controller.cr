@@ -3,7 +3,7 @@ require "../../errors"
 
 class API::EventsController < AppController
   def index
-    query = Query.order_by("start_time DESC")
+    query = Query.order_by("start_time DESC").preload([:series])
 
     if event_ids = query_params["event_ids"]?
       query = query.where(id: event_ids.split(','))

@@ -1,4 +1,5 @@
 import { commonThunk, denulled } from '../actions';
+import * as Cookies from 'js-cookie';
 
 export function login(username, password) {
   return commonThunk({
@@ -7,33 +8,33 @@ export function login(username, password) {
     name: 'login',
     body: {
       username,
-      passsord
+      password
     },
   }, (dispatch, response) => {
-    window.currentUserId = response.accountId;
-    dispatch(loginSuccess(response.accountId))
-  })
-  .catch(loginFailure);
+    const { session_id: sessionId } = response;
+    Cookies.set('1545_session_id', sessionId, { expires: 31 });
+    dispatch(loginSuccess(response.sessionId))
+  });
 }
 
-export function logout(accountId) {
+export function logout() {
   return commonThunk({
     method: 'post',
     path: `/api/v1/sessions/delete`,
     name: 'logout'
   }, (dispatch, response) => {
+    Cookies.remove('1545_session_id');
     dispatch(logoutSuccess());
-  })
-  .catch(logoutFailure);
+  });
 }
 
 
 
-export function loginSuccess(accountId) {
+export function loginSuccess(sessionId) {
   return {
     type: 'LOGIN_SUCCESS',
     data: {
-      accountId
+      sessionId
     }
   };
 }

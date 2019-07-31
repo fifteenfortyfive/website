@@ -23,7 +23,10 @@ const EventCard = (props) => {
   return (
     <div class={style.container}>
       <Link href={Routes.EVENT(event.id)}>
-        <Header size={Header.Sizes.H4} color={Header.Colors.PRIMARY}>{name}</Header>
+        <Header size={Header.Sizes.H4} color={Header.Colors.PRIMARY}>
+          {series && `${series.name} - `}
+          {name}
+        </Header>
       </Link>
       <p class="subtitle">{summary}</p>
     </div>

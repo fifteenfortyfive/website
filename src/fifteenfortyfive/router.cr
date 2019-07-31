@@ -59,10 +59,6 @@ router AppRouter do
     match "*", to: "static#app_root"
   end
 
-  scope "teams", helper_prefix: "teams" do
-    match "*", to: "static#app_root"
-  end
-
 
   scope "admin", helper_prefix: "admin" do
     implements :admin_authorized
