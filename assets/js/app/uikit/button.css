@@ -1,5 +1,5 @@
 @value colors: "../style/colors.css";
-@value primary, black, gray-100, gray-200, gray-300, gray-400, white from colors;
+@value primary, primary-bg-600, black, gray-100, gray-200, gray-300, gray-400, white from colors;
 
 .button {
   /* resets */
@@ -21,6 +21,11 @@
 
   &:active {
     outline: none;
+  }
+
+  &:focus {
+    outline: 2px solid primary-bg-600;
+    box-shadow: 0 0 4px primary;
   }
 }
 

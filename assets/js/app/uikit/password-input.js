@@ -5,6 +5,7 @@ import { h, Component } from 'preact';
 const PasswordInput = (props) => {
   const {
     label,
+    name,
     placeholder="",
     multiline=false,
     onChange,
@@ -17,6 +18,7 @@ const PasswordInput = (props) => {
       <h3 class="title is-6 has-margin-bottom-sm">{label}</h3>
       <input
         type="password"
+        name={name}
         placeholder={placeholder}
         onChange={onChange}
         {...inputProps}

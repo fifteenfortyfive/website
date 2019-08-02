@@ -3,6 +3,7 @@ import { h, Component } from 'preact';
 const TextInput = (props) => {
   const {
     label,
+    name,
     value,
     placeholder="",
     multiline=false,
@@ -17,6 +18,7 @@ const TextInput = (props) => {
       <h3 class="title is-6 has-margin-bottom-sm">{label}</h3>
       <input
         type="text"
+        name={name}
         value={value}
         placeholder={placeholder}
         onChange={onChange}
