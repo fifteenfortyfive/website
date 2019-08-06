@@ -14,9 +14,9 @@ export const Routes = {
   ME_RUN_DASHBOARD: '/@me/run-dashboard',
   ACCOUNT: (id) => `/accounts/${id}`,
   ACCOUNTS_NEW: '/accounts/new',
-  TEAMS: 'teams',
+  TEAMS: '/teams',
   TEAM: (id) => `/teams/${id}`,
-  EVENTS: 'events',
+  EVENTS: '/events',
   EVENT: (id) => `/events/${id}`,
   STREAMS: '/streams',
   VOLUNTEER: '/volunteer',
@@ -27,8 +27,8 @@ export const Routes = {
   ADMIN_EVENTS: '/admin/events',
 
   // Auth
-  LOGIN: 'login',
-  LOGOUT: 'logout',
+  LOGIN: '/login',
+  LOGOUT: '/logout',
 };
 
 
