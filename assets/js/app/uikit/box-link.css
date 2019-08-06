@@ -1,0 +1,21 @@
+@value colors: '../style/colors.css';
+@value primary, hover-darken from colors;
+
+.boxLink {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: hover-darken;
+
+    & .header {
+      color: primary;
+    }
+  }
+}
+
+.header {
+  display: block;
+  color: primary;
+}

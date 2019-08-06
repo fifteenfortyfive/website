@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';
 
-import StreamCard from '../components/stream-card';
-import Avatar from '../uikit/avatar';
-
-import {Routes} from '../constants';
 import * as AccountActions from '../actions/accounts';
 import * as StreamActions from '../actions/streams';
+import StreamCard from '../components/stream-card';
+import Avatar from '../uikit/avatar';
+import Layout from './layout';
+
+import {Routes} from '../constants';
 
 
 class StreamsPage extends Component {
@@ -40,24 +41,22 @@ class StreamsPage extends Component {
     } = this.props;
 
     return (
-      <div class="container">
-        <section class="section">
-          <h1 class="title">Live Streams!</h1>
+      <Layout>
+        <h1 class="title">Live Streams!</h1>
 
-          <div class="ff-grid is-4">
-            { _.map(streams, (stream, accountId) => {
-                const account = accounts[accountId];
-                return <StreamCard
-                  account={account}
-                  stream={stream}
-                  loadingAccount={loadingAccounts}
-                  loadingStream={loading}
-                />;
-              })
-            }
-          </div>
-        </section>
-      </div>
+        <div class="ff-grid is-4">
+          { _.map(streams, (stream, accountId) => {
+              const account = accounts[accountId];
+              return <StreamCard
+                account={account}
+                stream={stream}
+                loadingAccount={loadingAccounts}
+                loadingStream={loading}
+              />;
+            })
+          }
+        </div>
+      </Layout>
     );
   }
 };

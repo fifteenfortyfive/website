@@ -12,7 +12,10 @@ const UILink = (props) => {
   } = props;
 
   return (
-    <Link className={classNames(className, style.wrapper)} {...linkProps}>
+    <Link
+        className={classNames(className, style.wrapper)}
+        {...linkProps}
+      >
       {children}
     </Link>
   )

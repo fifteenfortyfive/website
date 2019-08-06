@@ -35,3 +35,5 @@
 @value primary-bg-600 #fad1d5;
 
 @value secondary hsl(171, 100%, 41%);
+
+@value hover-darken rgba(0, 0, 0, 0.06);

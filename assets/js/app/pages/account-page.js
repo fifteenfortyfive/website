@@ -4,9 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import * as AccountActions from '../actions/accounts';
 import * as StreamActions from '../actions/streams';
-
 import AccountCard from '../components/accounts/account-card';
 import RunList from '../components/accounts/run-list';
+import Layout from './layout';
+
 
 class AccountPage extends Component {
   componentDidMount() {
@@ -29,24 +30,21 @@ class AccountPage extends Component {
     if(account == null) return "loading";
 
     return (
-      <div class="container">
-        <section class="section">
-          <div class="columns">
-            <div class="column is-4-tablet is-4-desktop is-3-widescreen">
-              <AccountCard
-                account={account}
-                stream={stream}
-                loadingStream={loadingStream}
-              />
-
-            </div>
-
-            <div class="column is-8-tablet is-6-desktop is-6-widescreen">
-              <RunList runs={account.runs} />
-            </div>
+      <Layout>
+        <div class="columns">
+          <div class="column is-4-tablet is-4-desktop is-3-widescreen">
+            <AccountCard
+              account={account}
+              stream={stream}
+              loadingStream={loadingStream}
+            />
           </div>
-        </section>
-      </div>
+
+          <div class="column is-8-tablet is-6-desktop is-6-widescreen">
+            <RunList runs={account.runs} />
+          </div>
+        </div>
+      </Layout>
     );
   }
 };

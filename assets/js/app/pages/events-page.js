@@ -6,6 +6,7 @@ import * as EventActions from '../actions/events';
 import * as EventStore from '../selectors/events';
 import EventCard from '../components/events/event-card';
 import Header from '../uikit/header';
+import Layout from './layout';
 
 
 class EventsPage extends Component {
@@ -18,13 +19,11 @@ class EventsPage extends Component {
     const {eventIds} = this.props;
 
     return (
-      <div class="container">
-        <section class="section">
-          <Header size={Header.Sizes.H1}>Events</Header>
+      <Layout>
+        <Header size={Header.Sizes.H1}>Events</Header>
 
-          { _.map(eventIds, (eventId) => <EventCard eventId={eventId} />)}
-        </section>
-      </div>
+        { _.map(eventIds, (eventId) => <EventCard eventId={eventId} />)}
+      </Layout>
     );
   }
 };

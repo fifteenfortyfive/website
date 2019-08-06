@@ -6,14 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as AccountActions from '../actions/accounts';
 import * as StreamActions from '../actions/streams';
 import * as MeActions from '../actions/me';
-
 import Edit from '../components/me/edit';
 import Preferences from '../components/me/preferences';
 import RunDashboard from '../components/me/run-dashboard';
 import AccountCard from '../components/accounts/account-card';
 import RunList from '../components/accounts/run-list';
-
 import Button from '../uikit/button';
+import Layout from './layout';
 
 import { Routes } from '../constants';
 
@@ -118,25 +117,23 @@ class MePage extends Component {
     if(account == null) return "loading";
 
     return (
-      <div class="container">
-        <section class="section">
-          <div class="columns">
-            <div class="column is-4-tablet is-4-desktop is-3-widescreen">
-              <AccountCard
-                account={account}
-                loading={loadingAccount}
-              />
+      <Layout>
+        <div class="columns">
+          <div class="column is-4-tablet is-4-desktop is-3-widescreen">
+            <AccountCard
+              account={account}
+              loading={loadingAccount}
+            />
 
-              {this.renderNav()}
-            </div>
-
-
-            <div class="column is-8">
-              {this.renderPageBody()}
-            </div>
+            {this.renderNav()}
           </div>
-        </section>
-      </div>
+
+
+          <div class="column is-8">
+            {this.renderPageBody()}
+          </div>
+        </div>
+      </Layout>
     );
   }
 };

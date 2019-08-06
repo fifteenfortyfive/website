@@ -1,0 +1,18 @@
+@value colors: '../../style/colors.css';
+@value gray-300 from colors;
+
+.avatar {
+  margin-right: 12px;
+}
+
+.brandLogo {
+  font-size: 1.4em;
+  padding: 0;
+}
+
+.divider {
+  border-radius: 0;
+  border-right: 1px solid gray-300;
+  margin: 1.25rem 0.25rem;
+  padding: 0;
+}

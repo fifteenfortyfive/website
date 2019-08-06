@@ -1,5 +1,5 @@
-import { h } from 'preact';
-import {useEffect, useState} from 'preact/hooks';
+import { h, Fragment } from 'preact';
+import { useEffect, useState } from 'preact/hooks';
 import { connect } from 'react-redux';
 import { route } from 'preact-router';
 import _ from 'lodash';
@@ -11,6 +11,7 @@ import Header from '../uikit/header';
 import Link from '../uikit/link';
 import PasswordInput from '../uikit/password-input';
 import TextInput from '../uikit/text-input';
+import Layout from './layout';
 
 import { Routes } from '../constants';
 
@@ -37,26 +38,24 @@ const LoginPage = (props) => {
   }
 
   return (
-    <div class="container">
-      <section class="section">
-        <Header size={Header.Sizes.H1}>Login</Header>
+    <Layout>
+      <Header size={Header.Sizes.H1}>Login</Header>
 
-        <TextInput
-          label="Username"
-          value={username}
-          onInput={({target}) => setUsername(target.value)}
-        />
-        <PasswordInput
-          label="Password"
-          value={password}
-          onInput={({target}) => setPassword(target.value)}
-        />
+      <TextInput
+        label="Username"
+        value={username}
+        onInput={({target}) => setUsername(target.value)}
+      />
+      <PasswordInput
+        label="Password"
+        value={password}
+        onInput={({target}) => setPassword(target.value)}
+      />
 
-        <Button color={Button.Colors.PRIMARY} onClick={handleLogin}>
-          Login
-        </Button>
-      </section>
-    </div>
+      <Button color={Button.Colors.PRIMARY} onClick={handleLogin}>
+        Login
+      </Button>
+    </Layout>
   );
 };
 

@@ -11,8 +11,8 @@ import * as FetchStore from '../selectors/fetch';
 import * as TeamStore from '../selectors/teams';
 import RunList from '../components/accounts/run-list';
 import Avatar from '../uikit/avatar';
-import Container from '../uikit/container';
 import Link from '../uikit/link';
+import Layout from './layout';
 
 import {Routes} from '../constants';
 import {runTime} from '../util';
@@ -42,7 +42,7 @@ class TeamPage extends Component {
     } = team;
 
     return (
-      <Container>
+      <Layout>
         <div class="columns">
           <div class="column is-4">
             <Avatar src={avatar_hash} />
@@ -105,7 +105,7 @@ class TeamPage extends Component {
             </table>
           </div>
         </div>
-      </Container>
+      </Layout>
     );
   }
 };

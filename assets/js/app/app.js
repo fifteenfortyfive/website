@@ -27,18 +27,16 @@ class App extends Component {
     const {currentUserId, eventId} = this.props;
 
     return (
-      <div>
-        <Router>
-          <TeamPage path="/teams/:teamId" />
-          <EventsPage path="/events" />
-          <EventPage path="/events/:eventId" />
-          <AccountPage path="/accounts/:accountId" currentUserId={currentUserId} />
-          <MePage path="/@me/:page?" eventId={eventId} />
-          <StreamsPage path="/streams" />
-          <LoginPage path="/login" />
-          <NotFoundPage default />
-        </Router>
-      </div>
+      <Router>
+        <TeamPage path="/teams/:teamId" />
+        <EventsPage path="/events" />
+        <EventPage path="/events/:eventId" />
+        <AccountPage path="/accounts/:accountId" currentUserId={currentUserId} />
+        <MePage path="/@me/:page?" eventId={eventId} />
+        <StreamsPage path="/streams" />
+        <LoginPage path="/login" />
+        <NotFoundPage default />
+      </Router>
     );
   }
 }

@@ -14,9 +14,9 @@ import {
 } from 'bloomer';
 import EventHeader from '../components/events/event-header';
 import Team from '../components/events/team';
-import Container from '../uikit/container';
 import Header from '../uikit/header';
 import Text from '../uikit/text';
+import Layout from './layout';
 
 class EventPage extends Component {
   componentDidMount() {
@@ -43,10 +43,10 @@ class EventPage extends Component {
       loading
     } = this.props;
 
-    if(loading || event == null) return <Container>Loading</Container>;
+    if(loading || event == null) return <Layout>Loading</Layout>;
 
     return (
-      <Container>
+      <Layout>
         <EventHeader event={event} />
 
         <Columns isMultiline>
@@ -57,7 +57,7 @@ class EventPage extends Component {
             ))
           }
         </Columns>
-      </Container>
+      </Layout>
     );
   }
 };
