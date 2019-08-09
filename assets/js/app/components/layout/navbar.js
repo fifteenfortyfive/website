@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import * as MeActions from '../../actions/me';
+import * as AuthStore from '../../selectors/auth';
 import * as MeStore from '../../selectors/me';
 
 import {
@@ -18,7 +19,6 @@ import {
   NavbarLink,
   NavbarMenu,
   NavbarStart,
-  Buttons,
   Button,
   Container
 } from 'bloomer';
@@ -36,16 +36,18 @@ const LayoutNavbar = (props) => {
 
   const [isActive, setIsActive] = useState(false);
   const user = useSelector(MeStore.getAccount);
-  const isAdmin = user && user.admin;
+  const loggedIn = useSelector(AuthStore.isLoggedIn);
+
+  const isAdmin = loggedIn && user != null && user.admin;
 
   const dispatch = useDispatch();
-  useEffect(() => dispatch(MeActions.fetchMe()), []);
+  useEffect(() => loggedIn && dispatch(MeActions.fetchMe()), [loggedIn]);
 
   return (
     <Navbar isTransparent={isDark}>
       <Container>
         <NavbarBrand>
-          <NavbarItem href={Routes.HOME} native>
+          <NavbarItem href={Routes.HOME}>
             <BrandLogo className={style.brandLogo} />
           </NavbarItem>
           <NavbarBurger onClick={() => setIsActive(!isActive)} />
@@ -53,7 +55,7 @@ const LayoutNavbar = (props) => {
 
         <NavbarMenu isActive={isActive}>
           <NavbarStart>
-            <NavbarItem href={Routes.TEAMS} native>Teams</NavbarItem>
+            <NavbarItem href={Routes.TEAMS}>Teams</NavbarItem>
 
             <NavbarItem href={Routes.STREAMS}>Streams</NavbarItem>
 
@@ -61,7 +63,7 @@ const LayoutNavbar = (props) => {
               <NavbarLink>More</NavbarLink>
               <NavbarDropdown isBoxed>
                 <NavbarItem href={ExternalRoutes.CONTACT_URL} native>Contact</NavbarItem>
-                <NavbarItem href={Routes.VOLUNTEER} native>Volunteer</NavbarItem>
+                <NavbarItem href={Routes.VOLUNTEER}>Volunteer</NavbarItem>
               </NavbarDropdown>
             </NavbarItem>
 
@@ -82,7 +84,7 @@ const LayoutNavbar = (props) => {
           </NavbarStart>
 
           <NavbarEnd>
-            { user != null
+            { loggedIn && user != null
               ? <Fragment>
                   <NavbarItem hasDropdown isHoverable isPaddingless>
                     <NavbarLink>
@@ -106,13 +108,13 @@ const LayoutNavbar = (props) => {
 
                 </Fragment>
               : <NavbarItem isPaddingless>
-                  <div class="buttons">
-                    <a class="button is-small is-danger is-outlined" href="/signin" native>
+                  <div class={style.buttonGroup}>
+                    <Button className={style.navButton} isSize="small" isColor="danger" isOutlined href="/signin" native>
                       Sign In
-                    </a>
-                    <a class="button is-small is-dark is-outlined" href={Routes.ACCOUNTS_NEW} native>
+                    </Button>
+                    <Button className={style.navButton} isSize="small" isColor={isDark ? 'white' : 'dark'} isOutlined href={Routes.ACCOUNTS_NEW}>
                       Create an Account
-                    </a>
+                    </Button>
                   </div>
                 </NavbarItem>
             }
@@ -120,12 +122,12 @@ const LayoutNavbar = (props) => {
             <div class={style.divider} />
 
             <NavbarItem isPaddingless>
-              <Buttons>
+              <div class={style.buttonGroup}>
                 <Button isColor={isDark ? 'dark' : 'white'} href={ExternalRoutes.DISCORD_URL} target="_blank" native>
                   <FontAwesomeIcon icon={['fab', 'discord']}></FontAwesomeIcon>
                 </Button>
                 <Button isColor={isDark ? 'dark' : 'white'} href={ExternalRoutes.SRCOM_URL} target="_blank" native>
-                  <FontAwesomeIcon icon="trophy"></FontAwesomeIcon>
+                  <FontAwesomeIcon icon={['fas', 'trophy']}></FontAwesomeIcon>
                 </Button>
                 <Button isColor={isDark ? 'dark' : 'white'} href={ExternalRoutes.TWITCH_URL} target="_blank" native>
                   <FontAwesomeIcon icon={['fab', 'twitch']}></FontAwesomeIcon>
@@ -136,7 +138,7 @@ const LayoutNavbar = (props) => {
                 <Button isColor={isDark ? 'dark' : 'white'} href={ExternalRoutes.YOUTUBE_URL} target="_blank" native>
                   <FontAwesomeIcon icon={['fab', 'youtube']}></FontAwesomeIcon>
                 </Button>
-              </Buttons>
+              </div>
             </NavbarItem>
           </NavbarEnd>
         </NavbarMenu>

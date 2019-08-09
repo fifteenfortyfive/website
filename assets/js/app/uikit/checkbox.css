@@ -3,7 +3,7 @@
 
 .checkbox {
   display: flex;
-  padding: 0.5em 1em;
+  padding: 0.75em 1em;
   border-radius: 5px;
   user-select: none;
   cursor: pointer;
@@ -11,7 +11,7 @@
 
 .label {
   cursor: pointer;
-  margin-top: 0.125rem;
+  /* margin-top: 0.125rem; */
   margin-left: 32px;
 }
 

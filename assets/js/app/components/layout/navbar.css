@@ -16,3 +16,11 @@
   margin: 1.25rem 0.25rem;
   padding: 0;
 }
+
+.buttonGroup {
+  display: flex;
+}
+
+.navButton {
+  margin: 0 4px;
+}
