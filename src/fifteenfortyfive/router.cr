@@ -244,7 +244,6 @@ router AppRouter do
 
 
   root to: "static#index"
-  get   "volunteer", to: "static#volunteer", helper: "static_volunteer"
 
   get   "signin",  to: "sessions#new", helper: "login"
   post  "signin",  to: "sessions#create", helper: "sessions_create"
