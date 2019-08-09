@@ -3,7 +3,6 @@ import {h} from 'preact';
 import Layout from '../pages/layout';
 
 import {Content, Section} from 'bloomer';
-import Header from '../uikit/header';
 
 const Volunteer = (props) => {
   return (

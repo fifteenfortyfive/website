@@ -30,6 +30,7 @@ import style from './navbar.css';
 
 const LayoutNavbar = (props) => {
   const {
+    isDark=false,
     className
   } = props;
 
@@ -41,7 +42,7 @@ const LayoutNavbar = (props) => {
   useEffect(() => dispatch(MeActions.fetchMe()), []);
 
   return (
-    <Navbar>
+    <Navbar isTransparent={isDark}>
       <Container>
         <NavbarBrand>
           <NavbarItem href={Routes.HOME} native>
@@ -120,19 +121,19 @@ const LayoutNavbar = (props) => {
 
             <NavbarItem isPaddingless>
               <Buttons>
-                <Button isColor="white" href={ExternalRoutes.DISCORD_URL} target="_blank" native>
+                <Button isColor={isDark ? 'dark' : 'white'} href={ExternalRoutes.DISCORD_URL} target="_blank" native>
                   <FontAwesomeIcon icon={['fab', 'discord']}></FontAwesomeIcon>
                 </Button>
-                <Button isColor="white" href={ExternalRoutes.SRCOM_URL} target="_blank" native>
+                <Button isColor={isDark ? 'dark' : 'white'} href={ExternalRoutes.SRCOM_URL} target="_blank" native>
                   <FontAwesomeIcon icon="trophy"></FontAwesomeIcon>
                 </Button>
-                <Button isColor="white" href={ExternalRoutes.TWITCH_URL} target="_blank" native>
+                <Button isColor={isDark ? 'dark' : 'white'} href={ExternalRoutes.TWITCH_URL} target="_blank" native>
                   <FontAwesomeIcon icon={['fab', 'twitch']}></FontAwesomeIcon>
                 </Button>
-                <Button isColor="white" href={ExternalRoutes.TWITTER_URL} target="_blank" native>
+                <Button isColor={isDark ? 'dark' : 'white'} href={ExternalRoutes.TWITTER_URL} target="_blank" native>
                   <FontAwesomeIcon icon={['fab', 'twitter']}></FontAwesomeIcon>
                 </Button>
-                <Button isColor="white" href={ExternalRoutes.YOUTUBE_URL} target="_blank" native>
+                <Button isColor={isDark ? 'dark' : 'white'} href={ExternalRoutes.YOUTUBE_URL} target="_blank" native>
                   <FontAwesomeIcon icon={['fab', 'youtube']}></FontAwesomeIcon>
                 </Button>
               </Buttons>

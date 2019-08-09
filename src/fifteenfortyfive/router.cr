@@ -243,7 +243,7 @@ router AppRouter do
   end
 
 
-  root to: "static#index"
+  root to: "static#app_root"
 
   get   "signin",  to: "sessions#new", helper: "login"
   post  "signin",  to: "sessions#create", helper: "sessions_create"

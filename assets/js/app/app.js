@@ -15,6 +15,7 @@ import TeamPage from './pages/team-page';
 import EventPage from './pages/event-page';
 import EventsPage from './pages/events-page';
 import LoginPage from './pages/login-page';
+import Index from './static-pages/index';
 import Volunteer from './static-pages/volunteer';
 import NotFoundPage from './pages/not-found-page';
 
@@ -29,6 +30,7 @@ class App extends Component {
 
     return (
       <Router>
+        <Index path="/" exact />
         <TeamPage path="/teams/:teamId" />
         <EventsPage path="/events" />
         <EventPage path="/events/:eventId" />
