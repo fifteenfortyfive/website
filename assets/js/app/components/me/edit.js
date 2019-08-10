@@ -148,7 +148,8 @@ class Edit extends Component {
                 onInput={({target}) => this.setDetail("username", target.value)}
               />
               <TextInput
-                label="Bio (Max 140 characters)"
+                label="Bio"
+                note="Max 140 characters"
                 value={account.bio}
                 placeholder="1545 Oydssey Advocate"
                 onInput={({target}) => this.setDetail("bio", target.value)}

@@ -6,6 +6,8 @@
 @value gray-660   hsl(0, 0%, 21%);
 @value gray-600   hsl(0, 0%, 29%);
 @value gray-500   hsl(0, 0%, 48%);
+@value gray-460   hsl(0, 0%, 62%);
+@value gray-430   hsl(0, 0%, 67%);
 @value gray-400   hsl(0, 0%, 71%);
 @value gray-330   hsl(0, 0%, 86%);
 
@@ -37,3 +39,7 @@
 @value secondary hsl(171, 100%, 41%);
 
 @value hover-darken rgba(0, 0, 0, 0.06);
+
+@value foreground-1 gray-660;
+@value foreground-2 gray-500;
+@value foreground-3 gray-400;

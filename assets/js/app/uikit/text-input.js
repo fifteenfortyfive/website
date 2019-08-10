@@ -1,10 +1,16 @@
 import { h, Component } from 'preact';
+import classNames from 'classnames';
+
+import InputWrapper from './input-wrapper';
+
+import style from './text-input.css';
 
 const TextInput = (props) => {
   const {
-    label,
     name,
     value,
+    label,
+    note,
     placeholder="",
     multiline=false,
     onChange,
@@ -14,18 +20,23 @@ const TextInput = (props) => {
   } = props;
 
   return (
-    <div class="ff-text-input ${className}">
-      <h3 class="title is-6 has-margin-bottom-sm">{label}</h3>
+    <InputWrapper
+        name={name}
+        label={label}
+        note={note}
+        className={className}
+      >
       <input
         type="text"
         name={name}
         value={value}
         placeholder={placeholder}
+        class={style.input}
         onChange={onChange}
         onInput={onInput}
         {...inputProps}
       />
-    </div>
+    </InputWrapper>
   );
 };
 
