@@ -1,5 +1,9 @@
 import { h, Component } from 'preact';
 
+import InputWrapper from './input-wrapper';
+
+import style from './password-input.css';
+
 // Password inputs are intentionally uncontrolled to avoid potentially leaking
 // the value
 const PasswordInput = (props) => {
@@ -8,22 +12,28 @@ const PasswordInput = (props) => {
     name,
     placeholder="",
     multiline=false,
+    note,
     onChange,
     className,
     ...inputProps
   } = props;
 
   return (
-    <div class="ff-text-input ${className}">
-      <h3 class="title is-6 has-margin-bottom-sm">{label}</h3>
+    <InputWrapper
+        name={name}
+        label={label}
+        note={note}
+        className={className}
+      >
       <input
         type="password"
         name={name}
+        class={style.input}
         placeholder={placeholder}
         onChange={onChange}
         {...inputProps}
       />
-    </div>
+    </InputWrapper>
   );
 };
 
