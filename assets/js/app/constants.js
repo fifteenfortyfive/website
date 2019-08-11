@@ -40,4 +40,15 @@ export const ExternalRoutes = {
   TWITTER_URL: 'https://twitter.com/The_1545',
   SRCOM_URL: 'https://www.speedrun.com/1545',
   YOUTUBE_URL: 'https://www.youtube.com/channel/UCH-_VSTu551p5M4Oz95GIjQ',
+  GITHUB_URL: 'https://github.com/fifteenfortyfive',
+
+  // Friends
+  RAREWARE_301_URL: 'https://twitch.tv/rareware301',
+  CRASH_MARATHON_URL: 'https://www.twitch.tv/crashmarathon',
+  SPRASHFECTA_URL: 'https://docs.google.com/spreadsheets/d/1n1bZ8DV7vhFT0X2fLaXpThEZa9M8aNNyIN1SqR8dr-Q/edit?usp=sharing',
+  SPYROTHON_URL: 'https://twitch.tv/spyrothon',
+  MARIO_602_URL: 'https://twitch.tv/602Race',
+
+  // Attribution
+  GITHUB_FAULTY_URL: 'https://github.com/faultyserver'
 };

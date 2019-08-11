@@ -62,3 +62,8 @@
 .colorWhite {
   color: white;
 }
+
+
+.withMargin {
+  margin-bottom: 1em;
+}

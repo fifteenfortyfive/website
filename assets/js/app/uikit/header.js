@@ -26,12 +26,21 @@ const Header = (props) => {
   const {
     size = Sizes.H2,
     color = Colors.DEFAULT,
+    withMargin=false,
     className,
     children
   } = props;
 
   return (
-    <h1 className={classNames(style.header, style[color], style[size], className)}>
+    <h1 className={classNames(
+          style.header,
+          style[color],
+          style[size],
+          className,
+          {
+            [style.withMargin]: withMargin
+          }
+        )}>
       {children}
     </h1>
   )

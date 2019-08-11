@@ -70,26 +70,26 @@ const LayoutFooter = (props) => {
               <Column isSize="1/2">
                 <Header className={style.sectionHeader} size={Header.Sizes.H4}>More Info</Header>
                 <p>
-                  <a href="mailto:{{conn.constants.contact_email}}">Contact</a>
+                  <a href={ExternalRoutes.CONTACT_URL}>Contact</a>
                 </p>
                 <p>
-                  <a href="https://github.com/fifteenfortyfive" target="_blank">Software</a>
+                  <a href={ExternalRoutes.GITHUB_URL} target="_blank">Software</a>
                 </p>
                 <p>
-                  <a href="/volunteer" native>Volunteer</a>
+                  <a href={Routes.VOLUNTEER}>Volunteer</a>
                 </p>
               </Column>
 
               <Column isSize="1/2">
                 <Header className={style.sectionHeader} size={Header.Sizes.H4}>Past Events</Header>
                 <p>
-                  <Link href="/events/16">Summer 2019</Link>
+                  <Link href={Routes.EVENT(16)}>Summer 2019</Link>
                 </p>
                 <p>
-                  <Link href="/events/19">Summer 2018</Link>
+                  <Link href={Routes.EVENT(19)}>Summer 2018</Link>
                 </p>
                 <p>
-                  <Link href="/events/20">Summer 2017</Link>
+                  <Link href={Routes.EVENT(20)}>Summer 2017</Link>
                 </p>
               </Column>
             </Columns>
@@ -98,7 +98,7 @@ const LayoutFooter = (props) => {
           <Column>
             <Header className={style.sectionHeader} size={Header.Sizes.H4}>Other Events</Header>
             <BoxLink
-                href="https://twitch.tv/rareware301"
+                href={ExternalRoutes.RAREWARE_301_URL}
                 target="_blank"
                 title="Rareware 301"
                 className={style.boxLink}
@@ -107,7 +107,7 @@ const LayoutFooter = (props) => {
             </BoxLink>
 
             <BoxLink
-                href="https://www.twitch.tv/crashmarathon"
+                href={ExternalRoutes.CRASH_MARATHON_URL}
                 target="_blank"
                 title="Crash Marathon"
                 className={style.boxLink}
@@ -116,7 +116,7 @@ const LayoutFooter = (props) => {
             </BoxLink>
 
             <BoxLink
-                href="https://docs.google.com/spreadsheets/d/1n1bZ8DV7vhFT0X2fLaXpThEZa9M8aNNyIN1SqR8dr-Q/edit?usp=sharing"
+                href={ExternalRoutes.SPRASHFECTA_URL}
                 target="_blank"
                 title="Sprashfecta"
                 className={style.boxLink}
@@ -125,7 +125,7 @@ const LayoutFooter = (props) => {
             </BoxLink>
 
             <BoxLink
-                href="https://spyrothon.marathons.gg"
+                href={ExternalRoutes.SPYROTHON_URL}
                 target="_blank"
                 title="Spyrothon"
                 className={style.boxLink}
@@ -134,7 +134,7 @@ const LayoutFooter = (props) => {
             </BoxLink>
 
             <BoxLink
-                href="https://twitch.tv/602Race"
+                href={ExternalRoutes.MARIO_602_URL}
                 target="_blank"
                 title="Super Mario 602"
                 className={style.boxLink}
@@ -148,7 +148,7 @@ const LayoutFooter = (props) => {
           <Column>
             <Text>
               &copy; 2019 <BrandLogo />.
-              Site designed by <a href="https://github.com/faultyserver" native target="_blank">faulty</a>.
+              Site designed by <a href={ExternalRoutes.GITHUB_FAULTY_URL} native target="_blank">faulty</a>.
             </Text>
           </Column>
         </Columns>

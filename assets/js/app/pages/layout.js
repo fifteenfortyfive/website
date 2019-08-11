@@ -8,6 +8,8 @@ import {
   Section
 } from 'bloomer';
 
+import style from './layout.css';
+
 const Layout = (props) => {
   const {
     withContainer=true,
@@ -17,14 +19,16 @@ const Layout = (props) => {
   return (
     <div>
       <Navbar />
-      { withContainer
-        ? <Container>
-            <Section>
-              {children}
-            </Section>
-          </Container>
-        : children
-      }
+      <div class={style.body}>
+        { withContainer
+          ? <Container>
+              <Section>
+                {children}
+              </Section>
+            </Container>
+          : children
+        }
+      </div>
       <Footer />
     </div>
   );
