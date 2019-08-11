@@ -69,18 +69,7 @@ const LayoutNavbar = (props) => {
             </NavbarItem>
 
             { isAdmin &&
-              <NavbarItem hasDropdown isHoverable>
-                <NavbarLink href={Routes.ADMIN} native>Admin</NavbarLink>
-
-                <NavbarDropdown isBoxed>
-                  <NavbarItem href={Routes.ADMIN_USERS} native>
-                    Account Management
-                  </NavbarItem>
-                  <NavbarItem href={Routes.ADMIN_EVENTS} native>
-                    Events
-                  </NavbarItem>
-                </NavbarDropdown>
-              </NavbarItem>
+              <NavbarItem href={Routes.ADMIN} native>Admin</NavbarItem>
             }
           </NavbarStart>
 

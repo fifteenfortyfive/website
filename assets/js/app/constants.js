@@ -22,9 +22,7 @@ export const Routes = {
   VOLUNTEER: '/volunteer',
 
   // Admin
-  ADMIN: '/admin',
-  ADMIN_USERS: '/admin/users',
-  ADMIN_EVENTS: '/admin/events',
+  ADMIN: '/admin/v2/',
 
   // Auth
   LOGIN: '/login',

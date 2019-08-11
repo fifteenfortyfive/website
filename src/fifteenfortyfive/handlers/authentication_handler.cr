@@ -34,7 +34,6 @@ class AuthenticationHandler
   end
 
   def default_redirect(conn : HTTP::Server::Context)
-    conn.response.headers.add "Location", login_path(redirect: conn.request.path)
-    conn.response.status_code = 302
+    conn.response.status_code = 401
   end
 end

@@ -10,7 +10,6 @@ const IndexPage = () => {
         <h1 class="title">Admin V2</h1>
 
         <ul>
-          <li><Link href="/accounts">Accounts</Link></li>
           <li><Link href="/events/16/submissions">Submissions</Link></li>
         </ul>
       </section>

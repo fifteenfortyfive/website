@@ -7,73 +7,21 @@ router AppRouter do
   use AnalyticsHandler
   use SessionHandler
 
-  concern :authenticated do
-    use AuthenticationHandler
-  end
-
   concern :api_authenticated do
-    use AuthenticationHandler.new{ |conn| conn.response.status_code = 401 }
-  end
-
-  concern :admin_authorized do
-    implements :authenticated
-    use AuthorizationHandler.new(required_level: :admin, api: false)
+    use AuthenticationHandler
   end
 
   concern :api_admin_authorized do
     implements :api_authenticated
-    use AuthorizationHandler.new(required_level: :admin, api: true)
-  end
-
-
-  scope "accounts", helper_prefix: "user" do
-    match "*", to: "static#app_root"
-  end
-
-  scope "@me" do
-    match "*", to: "static#app_root"
-  end
-
-  scope "events", helper_prefix: "events" do
-    match "/", to: "static#app_root"
-
-    scope ":event_id" do
-      get  "/", to: "static#app_root", helper: "show"
-
-      implements :authenticated
-      get  ":event_id/submit",       to: "run_submissions#new",     helper: "submit"
-      post ":event_id/submit",       to: "run_submissions#create",  helper: "create"
-
-      implements :admin_authorized
-      get  ":event_id/submissions", to: "run_submissions#index",    helper: "run_submissions"
-    end
-
-    match "*", to: "static#app_root"
+    use AuthorizationHandler.new(required_level: :admin)
   end
 
 
   scope "admin", helper_prefix: "admin" do
-    implements :admin_authorized
-
-    scope "events", helper_prefix: "events" do
-      root to: "admin::Events#index"
-      get   "/:event_id",        to: "admin::Events#show",    helper: "show"
-      get   "/new",              to: "admin::Events#new",     helper: "new"
-      post  "/create",           to: "admin::Events#create",  helper: "create"
-      get   "/:event_id/edit",   to: "admin::Events#edit",    helper: "edit"
-      post  "/:event_id/update", to: "admin::Events#update",  helper: "update"
-
-      get   "/:event_id/submissions", to: "admin::RunSubmissions#index",  helper: "submissions"
-      get   "/:event_id/submissions/:submission_id/accept", to: "admin::RunSubmissions#accept",  helper: "submissions_accept"
-      get   "/:event_id/submissions/:submission_id/unaccept", to: "admin::RunSubmissions#unaccept",  helper: "submissions_unaccept"
-    end
-
-    scope "users", helper_prefix: "users" do
-      root to: "admin::Users#index"
-    end
+    implements :api_admin_authorized
 
     scope "v2" do
-      get "/", to: "admin::V2::App#index"
+      match "*", to: "admin::V2::App#index"
     end
   end
 
@@ -235,12 +183,6 @@ router AppRouter do
 
     match "*", to: "aPI::Errors#not_found"
   end
-
-
-  root to: "static#app_root"
-
-  get   "login",  to: "static#app_root", helper: "login"
-  get   "logout", to: "static#app_root", helper: "logout"
 
 
   ## Static assets
