@@ -1,0 +1,23 @@
+@value colors: '../../style/colors.css';
+@value white from colors;
+
+.streamPreview {
+  color: white;
+  padding: 4px 8px;
+}
+
+.image {
+  margin: 4px 0;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  transition: box-shadow 0.1s ease-out;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.title {
+  overflow: hidden;
+}

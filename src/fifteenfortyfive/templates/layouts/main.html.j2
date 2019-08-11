@@ -9,23 +9,11 @@
     </script>
     <link rel="stylesheet" href="/css/app.css?">
 
-    <script src="https://use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
-
-    <script>
-      window.currentUserId = {{ conn.user.id | d("null") }};
-      // Yay hardcoding
-      window.mainEventId = 16;
-    </script>
-
     {% block head %}{% endblock %}
   </head>
 
   <body>
-    {% include "layouts/_navbar.html.j2" %}
-
     {% block main %}{% endblock %}
-
-    {% include "layouts/_footer.html.j2" %}
   </body>
 
   {% block postbody %}{% endblock %}

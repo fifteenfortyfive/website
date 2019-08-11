@@ -1,7 +1,14 @@
 import {h} from 'preact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import {
+  Image
+} from 'bloomer';
+import Header from '../../uikit/header';
+import Text from '../../uikit/text';
+
 import {Colors} from '../../constants';
+import style from './stream-preview.css';
 
 const StreamPreview = (props) => {
   const {
@@ -25,25 +32,29 @@ const StreamPreview = (props) => {
       .replace('{height}', expectedHeight);
 
   return (
-    <div class="stream-preview" style={{backgroundColor: Colors.TWITCH}}>
+    <div class={style.streamPreview} style={{backgroundColor: Colors.TWITCH}}>
       <a
-        native
         href={`https://twitch.tv/${username}`}
         target="_blank"
         rel="nofollow noopener"
       >
-        <div class="has-padding-left-md has-padding-right-md has-padding-top-sm has-padding-bottom-sm">
-          <span class="stream-preview__header">NOW STREAMING:</span>
-        </div>
-        <figure class="stream-preview__image image is-16by9 is-clipped">
-          <img src={url} />
-        </figure>
+        <Header
+            size={Header.Sizes.H6}
+            color={Header.Colors.WHITE}
+          >
+          NOW STREAMING:
+        </Header>
 
-        <div class="stream-preview__title has-padding-left-md has-padding-right-md has-padding-top-sm has-padding-bottom-sm">
+        <Image isRatio="16:9" className={style.image} src={url} />
+
+        <Text
+            size={Text.Sizes.SIZE_14}
+            color={Text.Colors.WHITE}
+            className={style.title}
+          >
           {title}
-        </div>
+        </Text>
       </a>
-
     </div>
   );
 };
