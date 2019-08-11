@@ -1,5 +1,8 @@
-require "./twitch_service.cr"
 require "tempfile"
+
+require "awscr-s3"
+
+require "./twitch_service.cr"
 
 module FileUploadService
   extend self

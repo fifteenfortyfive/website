@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html class="{{ page_class | d('page') }}">
+<html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}The 1545{% endblock %}</title>
+    <title>The 1545</title>
+
     <script src="https://use.typekit.net/abb5hmw.js"></script>
     <script>
       try{Typekit.load({ async: true });}catch(e){}
     </script>
+
     <link rel="stylesheet" href="/css/app.css?">
   </head>
 
   <body>
-    {% block main %}{% endblock %}
-  </body>
+    <div id="admin-container"></div>
 
-  {% block postbody %}{% endblock %}
+    <script src="/js/admin.js"></script>
+  </body>
 </html>

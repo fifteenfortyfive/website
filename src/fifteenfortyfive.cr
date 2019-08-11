@@ -1,6 +1,7 @@
 require "pg"
 require "crecto"
 require "honcho"
+require "awscr-s3"
 
 require "dotenv"
 

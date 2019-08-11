@@ -1,18 +1,28 @@
 require "../contexts/accounts.cr"
-require "../util/template.cr"
 require "./errors.cr"
 
 class AppController
   include Orion::ControllerHelper
   include AppRouter::Helpers
 
+  TEMPLATE_DIR = File.join(__DIR__, "..", "templates")
+  @@cached_templates = {} of String => String
+
   def redirect_to(location, status : Int32 = 302)
     response.headers.add "Location", location
     response.status_code = status
   end
 
-  def render(template, locals={} of String => String)
-    Template.render(@context, template, locals)
+  def render(template, path : String = TEMPLATE_DIR, status : Int32 = 200)
+    file_path = File.real_path(File.join(path, template))
+
+    unless template_content = @@cached_templates[file_path]?
+      template_content = File.read(file_path)
+      @@cached_templates[file_path] = template_content
+    end
+
+    response.status_code = status
+    response.print(template_content)
   end
 
   def render_error(status : Int32, message : String)

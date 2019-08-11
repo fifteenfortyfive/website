@@ -1,5 +1,5 @@
 class StaticController < AppController
   def app_root
-    render("static/app_root.html.j2")
+    render("static/app_root.html")
   end
 end
