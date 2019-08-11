@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import * as EventStore from '../../selectors/events';
 import Header from '../../uikit/header';
 import Link from '../../uikit/link';
+import Text from '../../uikit/text';
 
 import {Routes} from '../../constants';
 import style from './event-card.css';
@@ -28,7 +29,7 @@ const EventCard = (props) => {
           {name}
         </Header>
       </Link>
-      <p class="subtitle">{summary}</p>
+      <Text>{summary}</Text>
     </div>
   );
 };

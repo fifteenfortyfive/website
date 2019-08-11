@@ -19,7 +19,7 @@ const EventHeader = (props) => {
   } = event;
 
   return (
-    <Columns className="has-margin-bottom-lg">
+    <Columns>
       <Column isSize={2} />
       <Column isSize={8}>
         <Text size={Text.Sizes.SIZE_20} color={Text.Colors.MUTED}>

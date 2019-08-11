@@ -1,0 +1,37 @@
+@value colors: "../../style/colors.css";
+@value gray-200 from colors;
+
+
+.container {
+  padding: 0;
+  overflow: hidden;
+}
+
+.header {
+  background-color: gray-200;
+  padding-top: 32px;
+  padding-bottom: 16px;
+  text-align: center;
+}
+
+.avatar {
+  display: block;
+  margin: auto;
+  margin-bottom: 16px;
+}
+
+.username {
+  margin-bottom: 4px;
+}
+
+.adminTag {
+  margin-bottom: 8px;
+}
+
+.content {
+  padding: 16px;
+}
+
+.joinedAt {
+  margin: 8px 16px;
+}

@@ -2,10 +2,18 @@ import {h} from 'preact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import StreamPreview from './stream-preview';
+
+import {
+  Box,
+  Tag
+} from 'bloomer';
 import SocialLink from '../../uikit/social-link';
 import Avatar from '../../uikit/avatar';
+import Header from '../../uikit/header';
+import Text from '../../uikit/text';
 
 import {simpleDate} from '../../util';
+import style from './account-card.css';
 
 const AccountCard = (props) => {
   const {
@@ -28,27 +36,31 @@ const AccountCard = (props) => {
 
 
   return (
-    <div class="box is-paddingless is-clipped">
-      <div class="account-header has-padding-md has-padding-top-lg has-background-white-ter">
-        <div class="has-text-centered has-margin-bottom-sm">
-          <Avatar src={avatar_hash} />
-        </div>
+    <Box className={style.container}>
+      <div class={style.header}>
+        <Avatar className={style.avatar} src={avatar_hash} />
 
-        <div class="has-text-centered">
-          <p class="is-size-4 has-text-weight-bold">
+        <div class={style.textCentered}>
+          <Header size={Header.Sizes.H4} className={style.username}>
             {username}
-          </p>
-            { admin &&
-              <span class="tag is-info is-small is-outlined is-uppercase">
-                Admin
-              </span>
-            }
+          </Header>
+          { admin &&
+            <Tag
+                className={style.adminTag}
+                isColor="info"
+                isSize="small"
+                isOutlined
+                isUppercase
+              >
+              ADMIN
+            </Tag>
+          }
         </div>
 
         { bio &&
-          <div class="has-margin-top-sm has-text-centered">
+          <Text class={style.bio}>
             {bio}
-          </div>
+          </Text>
         }
       </div>
 
@@ -60,7 +72,7 @@ const AccountCard = (props) => {
         />
       }
 
-      <div class="account-content has-padding-md">
+      <div class={style.content}>
         { twitch &&
           <SocialLink
             service={SocialLink.Services.TWITCH}
@@ -86,12 +98,12 @@ const AccountCard = (props) => {
         }
 
         { created_at &&
-          <p class="has-margin-sm has-margin-left-md has-margin-right-md">
+          <p class={style.joinedAt}>
             Joined {simpleDate(created_at)}
           </p>
         }
       </div>
-    </div>
+    </Box>
   );
 };
 
