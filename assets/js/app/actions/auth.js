@@ -28,6 +28,16 @@ export function logout() {
   });
 }
 
+export function loadSession() {
+  return (dispatch) => {
+    const existingSession = Cookies.get('1545_session_id');
+
+    if(existingSession != null) {
+      dispatch(loginSuccess(existingSession));
+    }
+  };
+}
+
 
 
 export function loginSuccess(sessionId) {

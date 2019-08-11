@@ -6,7 +6,9 @@ import { Match } from 'preact-router/match';
 import { createHashHistory } from 'history';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import * as AuthActions from './actions/auth';
 import * as EventActions from './actions/events';
+import * as MeActions from './actions/me';
 
 import AccountPage from './pages/account-page';
 import MePage from './pages/me-page';
@@ -22,7 +24,9 @@ import NotFoundPage from './pages/not-found-page';
 class App extends Component {
   componentDidMount() {
     const {currentUserId, eventId, dispatch} = this.props;
+    dispatch(AuthActions.loadSession());
     dispatch(EventActions.fetchEvent(eventId));
+    dispatch(MeActions.fetchMe());
   }
 
   render() {

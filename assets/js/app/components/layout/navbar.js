@@ -35,13 +35,10 @@ const LayoutNavbar = (props) => {
   } = props;
 
   const [isActive, setIsActive] = useState(false);
-  const user = useSelector(MeStore.getAccount);
   const loggedIn = useSelector(AuthStore.isLoggedIn);
+  const user = useSelector(MeStore.getAccount);
 
   const isAdmin = loggedIn && user != null && user.admin;
-
-  const dispatch = useDispatch();
-  useEffect(() => loggedIn && dispatch(MeActions.fetchMe()), [loggedIn]);
 
   return (
     <Navbar isTransparent={isDark}>
