@@ -245,9 +245,8 @@ router AppRouter do
 
   root to: "static#app_root"
 
-  get   "signin",  to: "sessions#new", helper: "login"
-  post  "signin",  to: "sessions#create", helper: "sessions_create"
-  get   "signout", to: "sessions#destroy", helper: "logout"
+  get   "login",  to: "static#app_root", helper: "login"
+  get   "logout", to: "static#app_root", helper: "logout"
 
 
   ## Static assets
