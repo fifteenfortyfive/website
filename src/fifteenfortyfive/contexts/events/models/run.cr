@@ -1,10 +1,5 @@
-require "crinja"
-
 module Events
-  @[Crinja::Attributes]
   class Run < Crecto::Model
-    include Crinja::Object::Auto
-
     schema "ev_runs" do
       belongs_to :submission, RunSubmission
       belongs_to :event, Event

@@ -1,10 +1,5 @@
-require "crinja"
-
 module Events
-  @[Crinja::Attributes]
   class Team < Crecto::Model
-    include Crinja::Object::Auto
-
     schema "ev_teams" do
       field :name, String
       field :color, String

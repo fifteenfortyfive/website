@@ -1,10 +1,5 @@
-require "crinja"
-
 module Inventory
-  @[Crinja::Attributes]
   class Game < Crecto::Model
-    include Crinja::Object::Auto
-
     schema "inv_games" do
       field :name, String
       field :series, String

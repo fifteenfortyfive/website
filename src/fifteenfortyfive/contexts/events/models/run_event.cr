@@ -1,5 +1,3 @@
-require "crinja"
-
 module Events
   # RunEvents track the event log for Runs. This allows Run to be mutable
   # without losing data about when different events happen, and also allowing

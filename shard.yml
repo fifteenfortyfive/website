@@ -18,13 +18,9 @@ dependencies:
   pg:
     github: will/crystal-pg
     version: 0.15.0
-  crinja:
-    github: straight-shoota/crinja
-    version: 0.4.1
   crecto:
-    # github: crecto/crecto
-    # Using this until updated changesets and typecasting are
-    # supported by the official crecto
+    # crecto is no longer officially supported.
+    # This fork also has important additions like `cast`.
     github: faultyserver/crecto
     commit: 1155a1944f861f2367de21c2cc227ad149e1211f
   migrate:

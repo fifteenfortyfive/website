@@ -1,10 +1,5 @@
-require "crinja"
-
 module Events
-  @[Crinja::Attributes]
   class Event < Crecto::Model
-    include Crinja::Object::Auto
-
     STATES = [
       "created",
       "signups open",
@@ -50,11 +45,6 @@ module Events
 
       has_many :runner_submissions, RunnerSubmission
       has_many :run_submissions, RunSubmission
-    end
-
-    @[Crinja::Attribute]
-    def available_states
-      STATES
     end
   end
 end

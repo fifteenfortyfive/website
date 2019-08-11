@@ -16,10 +16,6 @@ shards:
     github: faultyserver/crecto
     commit: 1155a1944f861f2367de21c2cc227ad149e1211f
 
-  crinja:
-    github: straight-shoota/crinja
-    version: 0.4.1
-
   db:
     github: crystal-lang/crystal-db
     version: 0.5.1
