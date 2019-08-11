@@ -1,7 +1,7 @@
 const defaultState = {
-  account: {},
-  preferences: {},
-  preferenceDescriptions: {}
+  account: null,
+  preferences: null,
+  preferenceDescriptions: null
 }
 
 const actions = {

@@ -1,6 +1,7 @@
 import {h, Fragment} from 'preact';
 import {useCallback, useEffect, useState} from 'preact/hooks';
 import {connect, useDispatch, useSelector} from 'react-redux';
+import {route} from 'preact-router';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -42,7 +43,10 @@ const LayoutNavbar = (props) => {
   const isAdmin = loggedIn && user != null && user.admin;
 
   const dispatch = useDispatch();
-  const handleLogout = useCallback(() => dispatch(AuthActions.logout()), [dispatch]);
+  const handleLogout = useCallback(() => {
+    dispatch(AuthActions.logout())
+      .then(() => route(Routes.HOME));
+  }, [dispatch]);
 
   return (
     <Navbar isTransparent={isDark}>

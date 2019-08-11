@@ -1,11 +1,11 @@
-import { h, render, Component } from 'preact';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Router } from 'preact-router';
-import { Match } from 'preact-router/match';
-import { createHashHistory } from 'history';
+import { h } from 'preact';
+import {useCallback, useEffect} from 'preact/hooks';
+import {useDispatch, useSelector} from 'react-redux';
+import { Router, route } from 'preact-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import * as AuthStore from './selectors/auth';
+import * as MeStore from './selectors/me';
 import * as AuthActions from './actions/auth';
 import * as MeActions from './actions/me';
 
@@ -21,36 +21,52 @@ import Index from './static-pages/index';
 import Volunteer from './static-pages/volunteer';
 import NotFoundPage from './pages/not-found-page';
 
-class App extends Component {
-  componentDidMount() {
-    const {dispatch} = this.props;
-    dispatch(AuthActions.loadSession());
-    dispatch(MeActions.fetchMe());
-  }
+import {Routes} from './constants';
 
-  render() {
-    return (
-      <Router>
-        <Index path="/" exact />
-        <TeamPage path="/teams/:teamId" />
-        <EventsPage path="/events" />
-        <EventPage path="/events/:eventId" />
-        <AccountsNewPage path="/accounts/new" />
-        <AccountPage path="/accounts/:accountId" />
-        <MePage path="/@me/:page?" />
-        <StreamsPage path="/streams" />
-        <LoginPage path="/login" />
-        <Volunteer path="/volunteer" />
-        <NotFoundPage default />
-      </Router>
-    );
-  }
+const App = (props) => {
+  const dispatch = useDispatch();
+
+  const isLoggedIn = useSelector(AuthStore.isLoggedIn);
+  const currentUser = useSelector(MeStore.getAccount);
+
+  useEffect(() => {
+    dispatch(AuthActions.loadSession());
+  }, []);
+
+  useEffect(() => {
+    if(isLoggedIn && !currentUser) {
+      dispatch(MeActions.fetchMe());
+    }
+  }, [isLoggedIn, currentUser]);
+
+
+  const handleRouteChange = useCallback((e) => {
+    const {current: requestedRoute} = e;
+    const {needsAuth, needsAdmin} = requestedRoute.props;
+    const isAdmin = currentUser && currentUser.isAdmin;
+
+    if(needsAuth && !isLoggedIn) route(Routes.LOGIN, true);
+    if(needsAdmin && !isAdmin) route(Routes.LOGIN, true);
+  }, [isLoggedIn, currentUser]);
+
+  return (
+    <Router onChange={handleRouteChange}>
+      <Index path={Routes.HOME} exact />
+      <Volunteer path={Routes.VOLUNTEER} />
+      <LoginPage path={Routes.LOGIN} />
+
+      <TeamPage path="/teams/:teamId" />
+      <EventsPage path={Routes.EVENTS} />
+      <EventPage path="/events/:eventId" />
+      <AccountsNewPage path={Routes.ACCOUNTS_NEW} />
+      <AccountPage path="/accounts/:accountId" />
+      <StreamsPage path={Routes.STREAMS} />
+
+      <MePage path="/@me/:page?" needsAuth />
+
+      <NotFoundPage default />
+    </Router>
+  );
 }
 
-const mapStateToProps = (state) => ({});
-const mapDispatchToProps = (dispatch) => ({dispatch});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default App;

@@ -41,7 +41,9 @@ const LoginPage = (props) => {
     dispatch(AuthActions.login(username, password))
         .then(() => {
           setSubmitting(false);
-          route(props.redirectRoute || Routes.ME);
+          // For some reason logging in doesn't actually get recognized as an
+          // action in time for a local redirect to happen here.
+          window.location.href = props.redirectRoute || Routes.HOME;
         })
         .catch(() => {
           setFailed(true);
