@@ -23,6 +23,8 @@ router AppRouter do
     scope "v2" do
       match "*", to: "admin::V2::App#index"
     end
+
+    match "*", to: "static#app_root"
   end
 
   scope "api" do

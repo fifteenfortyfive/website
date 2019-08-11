@@ -114,7 +114,7 @@ class MePage extends Component {
       loadingAccount
     } = this.props;
 
-    if(account == null) return "loading";
+    if(account == null) return <Layout>Loading</Layout>;
 
     return (
       <Layout>

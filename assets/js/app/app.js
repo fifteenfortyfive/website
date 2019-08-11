@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import {useCallback, useEffect} from 'preact/hooks';
+import {useCallback, useEffect, useState} from 'preact/hooks';
 import {useDispatch, useSelector} from 'react-redux';
 import { Router, route } from 'preact-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,6 +21,8 @@ import Index from './static-pages/index';
 import Volunteer from './static-pages/volunteer';
 import NotFoundPage from './pages/not-found-page';
 
+import AdminIndex from './modules/admin/components/index';
+
 import {Routes} from './constants';
 
 const App = (props) => {
@@ -41,19 +43,19 @@ const App = (props) => {
 
 
   const handleRouteChange = useCallback((e) => {
-    const {current: requestedRoute} = e;
+    const {url, current: requestedRoute} = e;
     const {needsAuth, needsAdmin} = requestedRoute.props;
-    const isAdmin = currentUser && currentUser.isAdmin;
+    const isAdmin = currentUser && currentUser.admin;
 
-    if(needsAuth && !isLoggedIn) route(Routes.LOGIN, true);
-    if(needsAdmin && !isAdmin) route(Routes.LOGIN, true);
+    if(needsAuth && !isLoggedIn) route(Routes.LOGIN({redirect: url}), true);
+    if(needsAdmin && !isAdmin) route(Routes.LOGIN({redirect: url}), true);
   }, [isLoggedIn, currentUser]);
 
   return (
     <Router onChange={handleRouteChange}>
       <Index path={Routes.HOME} exact />
       <Volunteer path={Routes.VOLUNTEER} />
-      <LoginPage path={Routes.LOGIN} />
+      <LoginPage path={Routes.LOGIN()} />
 
       <TeamPage path="/teams/:teamId" />
       <EventsPage path={Routes.EVENTS} />
@@ -63,6 +65,9 @@ const App = (props) => {
       <StreamsPage path={Routes.STREAMS} />
 
       <MePage path="/@me/:page?" needsAuth />
+
+      <AdminIndex path={Routes.ADMIN} needsAdmin />
+      <AdminIndex path={Routes.ADMIN_EVENT} needsAdmin />
 
       <NotFoundPage default />
     </Router>

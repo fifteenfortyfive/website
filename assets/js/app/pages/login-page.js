@@ -31,7 +31,7 @@ const LoginPage = (props) => {
 
   useEffect(() => {
     if(props.isLoggedIn) {
-      route(props.redirectRoute || Routes.ME);
+      route(props.redirectRoute || Routes.ME, true);
     }
   }, [isLoggedIn]);
 

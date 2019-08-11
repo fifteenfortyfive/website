@@ -34,7 +34,7 @@ class TeamPage extends Component {
       runs,
     } = this.props;
 
-    if(loading || team == null) return <div>Loading</div>;
+    if(loading || team == null) return <Layout>Loading</Layout>;
 
     const {
       name,

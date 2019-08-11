@@ -103,7 +103,7 @@ const LayoutNavbar = (props) => {
                 </Fragment>
               : <NavbarItem isPaddingless>
                   <div class={style.buttonGroup}>
-                    <Button className={style.navButton} isSize="small" isColor="danger" isOutlined href={Routes.LOGIN}>
+                    <Button className={style.navButton} isSize="small" isColor="danger" isOutlined href={Routes.LOGIN()}>
                       Sign In
                     </Button>
                     <Button className={style.navButton} isSize="small" isColor={isDark ? 'white' : 'dark'} isOutlined href={Routes.ACCOUNTS_NEW}>

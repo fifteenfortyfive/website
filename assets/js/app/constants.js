@@ -22,10 +22,11 @@ export const Routes = {
   VOLUNTEER: '/volunteer',
 
   // Admin
-  ADMIN: '/admin/v2/',
+  ADMIN: '/admin',
+  ADMIN_EVENT: '/admin/event',
 
   // Auth
-  LOGIN: '/login',
+  LOGIN: ({redirect} = {}) => redirect ? `/login?redirectRoute=${redirect}` : '/login',
   LOGOUT: '/logout',
 };
 
