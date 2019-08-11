@@ -25,6 +25,7 @@
   flex: 1 0 100px;
   color: primary;
   font-size: 16px;
+  line-height: 1;
   border-right: 1px solid primary;
   padding: 2px 8px;
   margin: 4px 0;

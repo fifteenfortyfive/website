@@ -7,7 +7,6 @@ import { createHashHistory } from 'history';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import * as AuthActions from './actions/auth';
-import * as EventActions from './actions/events';
 import * as MeActions from './actions/me';
 
 import AccountPage from './pages/account-page';
@@ -23,23 +22,20 @@ import NotFoundPage from './pages/not-found-page';
 
 class App extends Component {
   componentDidMount() {
-    const {currentUserId, eventId, dispatch} = this.props;
+    const {dispatch} = this.props;
     dispatch(AuthActions.loadSession());
-    dispatch(EventActions.fetchEvent(eventId));
     dispatch(MeActions.fetchMe());
   }
 
   render() {
-    const {currentUserId, eventId} = this.props;
-
     return (
       <Router>
         <Index path="/" exact />
         <TeamPage path="/teams/:teamId" />
         <EventsPage path="/events" />
         <EventPage path="/events/:eventId" />
-        <AccountPage path="/accounts/:accountId" currentUserId={currentUserId} />
-        <MePage path="/@me/:page?" eventId={eventId} />
+        <AccountPage path="/accounts/:accountId" />
+        <MePage path="/@me/:page?" />
         <StreamsPage path="/streams" />
         <LoginPage path="/login" />
         <Volunteer path="/volunteer" />
@@ -49,12 +45,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  ...state,
-  currentUserId: window.currentUserId,
-  eventId: window.mainEventId,
-});
-
+const mapStateToProps = (state) => ({});
 const mapDispatchToProps = (dispatch) => ({dispatch});
 
 export default connect(

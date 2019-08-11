@@ -36,6 +36,7 @@ const Button = (props) => {
     fullwidth,
     onClick,
     children,
+    disabled=false,
     className
   } = props;
 
@@ -50,6 +51,7 @@ const Button = (props) => {
           }
         )}
         onClick={onClick}
+        disabled={disabled}
       >
       {children}
     </button>

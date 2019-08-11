@@ -1,9 +1,10 @@
 import {h, Fragment} from 'preact';
-import {useEffect, useState} from 'preact/hooks';
+import {useCallback, useEffect, useState} from 'preact/hooks';
 import {connect, useDispatch, useSelector} from 'react-redux';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import * as AuthActions from '../../actions/auth';
 import * as MeActions from '../../actions/me';
 import * as AuthStore from '../../selectors/auth';
 import * as MeStore from '../../selectors/me';
@@ -39,6 +40,9 @@ const LayoutNavbar = (props) => {
   const user = useSelector(MeStore.getAccount);
 
   const isAdmin = loggedIn && user != null && user.admin;
+
+  const dispatch = useDispatch();
+  const handleLogout = useCallback(() => dispatch(AuthActions.logout()));
 
   return (
     <Navbar isTransparent={isDark}>
@@ -99,7 +103,7 @@ const LayoutNavbar = (props) => {
                       <NavbarItem href={Routes.ME}>Profile</NavbarItem>
                       <NavbarItem href={Routes.ME_EDIT}>Edit Account</NavbarItem>
                       <NavbarDivider />
-                      <NavbarItem href="/signout">Log Out</NavbarItem>
+                      <NavbarItem tag="a" onClick={handleLogout}>Log Out</NavbarItem>
                     </NavbarDropdown>
                   </NavbarItem>
 

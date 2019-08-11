@@ -21,7 +21,6 @@ class AccountPage extends Component {
     const {
       account,
       stream,
-      currentUserId,
       loadingAccount,
       loadingStream
     } = this.props;

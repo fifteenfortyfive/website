@@ -11,7 +11,7 @@
   /* common style */
   padding: 8px 12px;
   margin-bottom: 8px;
-  border-radius: 3px;
+  border-radius: 2em;
   font-size: 1em;
   user-select: none;
 
@@ -20,7 +20,6 @@
   }
 
   &:active {
-    outline: 2px solid primary-bg-600;
     box-shadow: 0 0 4px primary;
   }
 }
@@ -31,11 +30,11 @@
 }
 
 .colorDefault {
-  background-color: gray-100;
+  background-color: gray-200;
   color: black;
 
   &:hover {
-    background-color: gray-200;
+    background-color: gray-300;
   }
 }
 

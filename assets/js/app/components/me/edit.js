@@ -6,6 +6,7 @@ import _ from 'lodash';
 import * as MeActions from '../../actions/me';
 
 import Avatar from '../../uikit/avatar';
+import Button from '../../uikit/button';
 import Checkbox from '../../uikit/checkbox';
 import TextInput from '../../uikit/text-input';
 import PasswordInput from '../../uikit/password-input';
@@ -192,22 +193,18 @@ class Edit extends Component {
 
         <div class="field is-grouped has-margin-top-md">
           <span class="control">
-            <button
-              class="button is-danger is-medium"
-              disabled={submitting}
-              onClick={this.handleSave}
-            >
+            <Button
+                color={Button.Colors.PRIMARY}
+                disabled={submitting}
+                onClick={this.handleSave}
+              >
               { submitting ? "Submitting..." : "Save Changes" }
-            </button>
+            </Button>
           </span>
           <span class="control">
-            <button
-              class="button is-light is-medium"
-              disabled={submitting}
-              onClick={onFinish}
-            >
+            <Button disabled={submitting} onClick={onFinish}>
               Cancel
-            </button>
+            </Button>
           </span>
         </div>
       </div>

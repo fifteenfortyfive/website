@@ -5,6 +5,7 @@ import _ from 'lodash';
 
 import * as MeActions from '../../actions/me';
 
+import Button from '../../uikit/button';
 import Checkbox from '../../uikit/checkbox';
 
 class Preferences extends Component {
@@ -84,22 +85,18 @@ class Preferences extends Component {
 
         <div class="field is-grouped has-margin-top-md">
           <span class="control">
-            <button
-              class="button is-danger is-medium"
-              disabled={submitting}
-              onClick={this.handleSave.bind(this)}
-            >
-              { submitting ? "Submitting..." : "Save Preferences" }
-            </button>
+            <Button
+                color={Button.Colors.PRIMARY}
+                disabled={submitting}
+                onClick={this.handleSave.bind(this)}
+              >
+              { submitting ? "Submitting..." : "Save Changes" }
+            </Button>
           </span>
           <span class="control">
-            <button
-              class="button is-light is-medium"
-              disabled={submitting}
-              onClick={onFinish}
-            >
+            <Button disabled={submitting} onClick={onFinish}>
               Cancel
-            </button>
+            </Button>
           </span>
         </div>
       </div>
