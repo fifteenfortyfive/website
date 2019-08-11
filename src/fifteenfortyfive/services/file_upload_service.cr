@@ -1,4 +1,5 @@
 require "./twitch_service.cr"
+require "tempfile"
 
 module FileUploadService
   extend self

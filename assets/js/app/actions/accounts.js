@@ -26,6 +26,24 @@ export function fetchAccount(accountId) {
   });
 }
 
+export function createAccount(accountProps) {
+  const {username, password, discordUsername, discordDiscriminator} = accountProps;
+
+  return commonThunk({
+    method: 'post',
+    path: '/api/v1/accounts/create',
+    name: 'accounts.create',
+    body: {
+      username,
+      password,
+      discord_username: discordUsername,
+      discord_discriminator: discordDiscriminator
+    }
+  }, (dispatch, response) => {
+    dispatch(receiveAccounts([response.account]));
+  });
+}
+
 
 
 export function receiveAccounts(accounts) {

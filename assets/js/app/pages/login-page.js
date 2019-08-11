@@ -22,7 +22,7 @@ import { Routes } from '../constants';
 
 
 const LoginPage = (props) => {
-  const {isLoggedIn, redirectRoute} = props;
+  const {isLoggedIn, redirectRoute, dispatch} = props;
 
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
@@ -36,8 +36,6 @@ const LoginPage = (props) => {
   }, [isLoggedIn]);
 
   const handleLogin = useCallback(() => {
-    const {dispatch} = props;
-
     setFailed(false);
     setSubmitting(true);
     dispatch(AuthActions.login(username, password))
@@ -49,7 +47,7 @@ const LoginPage = (props) => {
           setFailed(true);
           setSubmitting(false);
         });
-  }, [username, password, submitting, failed]);
+  }, [username, password, submitting, failed, dispatch]);
 
   return (
     <Layout>
@@ -64,7 +62,6 @@ const LoginPage = (props) => {
           />
           <PasswordInput
             label="Password"
-            value={password}
             onInput={({target}) => setPassword(target.value)}
           />
 

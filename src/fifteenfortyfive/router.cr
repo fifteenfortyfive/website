@@ -27,15 +27,7 @@ router AppRouter do
 
 
   scope "accounts", helper_prefix: "user" do
-    get   "new",    to: "accounts#new",     helper: "new"
-    post  "create", to: "accounts#create",  helper: "create"
-    get   ":id",    to: "static#app_root",  helper: "show"
-
-    scope do
-      implements :authenticated
-      get   "edit",   to: "accounts#edit",    helper: "edit"
-      post  "update", to: "accounts#update",  helper: "update"
-    end
+    match "*", to: "static#app_root"
   end
 
   scope "@me" do
@@ -141,6 +133,8 @@ router AppRouter do
       scope "accounts" do
         get "/", to: "aPI::Accounts#index"
         get "/:account_id", to: "aPI::Accounts#get"
+
+        post "/create", to: "aPI::Accounts#create"
       end
 
       scope "sessions" do

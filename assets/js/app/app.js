@@ -10,6 +10,7 @@ import * as AuthActions from './actions/auth';
 import * as MeActions from './actions/me';
 
 import AccountPage from './pages/account-page';
+import AccountsNewPage from './pages/accounts-new-page';
 import MePage from './pages/me-page';
 import StreamsPage from './pages/streams-page';
 import TeamPage from './pages/team-page';
@@ -34,6 +35,7 @@ class App extends Component {
         <TeamPage path="/teams/:teamId" />
         <EventsPage path="/events" />
         <EventPage path="/events/:eventId" />
+        <AccountsNewPage path="/accounts/new" />
         <AccountPage path="/accounts/:accountId" />
         <MePage path="/@me/:page?" />
         <StreamsPage path="/streams" />

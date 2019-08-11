@@ -42,7 +42,7 @@ const LayoutNavbar = (props) => {
   const isAdmin = loggedIn && user != null && user.admin;
 
   const dispatch = useDispatch();
-  const handleLogout = useCallback(() => dispatch(AuthActions.logout()));
+  const handleLogout = useCallback(() => dispatch(AuthActions.logout()), [dispatch]);
 
   return (
     <Navbar isTransparent={isDark}>
