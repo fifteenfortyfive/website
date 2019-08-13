@@ -66,9 +66,6 @@ const App = (props) => {
 
       <MePage path="/@me/:page?" needsAuth />
 
-      <AdminIndex path={Routes.ADMIN} needsAdmin />
-      <AdminIndex path={Routes.ADMIN_EVENT} needsAdmin />
-
       <NotFoundPage default />
     </Router>
   );

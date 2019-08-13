@@ -23,6 +23,7 @@ export const Routes = {
 
   // Admin
   ADMIN: '/admin',
+  ADMIN_V2: '/admin/v2',
   ADMIN_EVENT: '/admin/event',
 
   // Auth

@@ -31,7 +31,7 @@ const Index = (props) => {
           <Container className={style.textCentered}>
             <BrandLogo className={style.brandLogo} />
             <h2 class={style.subtitle}>
-              July 12-14, 2019
+              Any% Relay - September 21st, 2019
             </h2>
           </Container>
         </HeroBody>

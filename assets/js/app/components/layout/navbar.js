@@ -73,7 +73,7 @@ const LayoutNavbar = (props) => {
             </NavbarItem>
 
             { isAdmin &&
-              <NavbarItem href={Routes.ADMIN} native>Admin</NavbarItem>
+              <NavbarItem href={Routes.ADMIN_V2} native>Admin</NavbarItem>
             }
           </NavbarStart>
 
