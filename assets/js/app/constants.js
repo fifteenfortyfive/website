@@ -7,19 +7,25 @@ export const Colors = {
 
 
 export const Routes = {
+  // Public
   HOME: '/',
-  ME: '/@me',
-  ME_EDIT: '/@me/edit',
-  ME_PREFERENCES: '/@me/preferences',
-  ME_RUN_DASHBOARD: '/@me/run-dashboard',
   ACCOUNT: (id) => `/accounts/${id}`,
   ACCOUNTS_NEW: '/accounts/new',
   TEAMS: '/teams',
   TEAM: (id) => `/teams/${id}`,
-  EVENTS: '/events',
-  EVENT: (id) => `/events/${id}`,
   STREAMS: '/streams',
   VOLUNTEER: '/volunteer',
+
+  // Me
+  ME: '/@me',
+  ME_EDIT: '/@me/edit',
+  ME_PREFERENCES: '/@me/preferences',
+  ME_RUN_DASHBOARD: '/@me/run-dashboard',
+
+  // Events
+  EVENTS: '/events',
+  EVENT: (eventId) => `/events/${eventId}`,
+  EVENT_SUBMIT_RUN: (eventId) => `/events/${eventId}/submit`,
 
   // Admin
   ADMIN: '/admin',

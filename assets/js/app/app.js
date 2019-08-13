@@ -19,9 +19,8 @@ import EventsPage from './pages/events-page';
 import LoginPage from './pages/login-page';
 import Index from './static-pages/index';
 import Volunteer from './static-pages/volunteer';
+import NewSubmission from './modules/submissions/components/new-submission';
 import NotFoundPage from './pages/not-found-page';
-
-import AdminIndex from './modules/admin/components/index';
 
 import {Routes} from './constants';
 
@@ -57,14 +56,16 @@ const App = (props) => {
       <Volunteer path={Routes.VOLUNTEER} />
       <LoginPage path={Routes.LOGIN()} />
 
-      <TeamPage path="/teams/:teamId" />
-      <EventsPage path={Routes.EVENTS} />
-      <EventPage path="/events/:eventId" />
+      <TeamPage path={Routes.TEAM(":teamId")} />
       <AccountsNewPage path={Routes.ACCOUNTS_NEW} />
-      <AccountPage path="/accounts/:accountId" />
+      <AccountPage path={Routes.ACCOUNT(":accountId")} />
       <StreamsPage path={Routes.STREAMS} />
 
       <MePage path="/@me/:page?" needsAuth />
+
+      <EventsPage path={Routes.EVENTS} />
+      <EventPage path={Routes.EVENT(":eventId")} />
+      <NewSubmission path={Routes.EVENT_SUBMIT_RUN(":eventId")} needsAuth />
 
       <NotFoundPage default />
     </Router>

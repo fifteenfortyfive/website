@@ -13,6 +13,7 @@ const TextInput = (props) => {
     note,
     placeholder="",
     multiline=false,
+    editable=true,
     onChange,
     onInput,
     className,
@@ -34,6 +35,7 @@ const TextInput = (props) => {
         class={style.input}
         onChange={onChange}
         onInput={onInput}
+        disabled={!editable}
         {...inputProps}
       />
     </InputWrapper>
