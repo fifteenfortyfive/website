@@ -76,6 +76,11 @@ const NewSubmission = (props) => {
         options={['SM64', 'Kazooie', 'Tooie', 'Spyro 1', 'Crash 3']}
       />
 
+      <Select
+        label="Category"
+        options={['SM64', 'Kazooie', 'Tooie', 'Spyro 1', 'Crash 3']}
+      />
+
       <Button color={Button.Colors.PRIMARY} disabled={!acceptedTimezones}>
         Submit Your Run
       </Button>

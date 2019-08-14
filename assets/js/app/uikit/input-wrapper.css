@@ -1,5 +1,5 @@
 @value colors: '../style/colors.css';
-@value primary, primary-bg-400, foreground-1, foreground-2 from colors;
+@value primary, primary-bg-200, primary-bg-400, foreground-1, foreground-2 from colors;
 
 .container {
   margin-bottom: 1em;
@@ -14,6 +14,11 @@
   border: 1px solid primary;
   border-radius: 100em;
   background: transparent;
+  transition: background-color 0.12s linear;
+
+  &:hover {
+    background-color: primary-bg-200;
+  }
 
   &:focus,
   &:focus-within {

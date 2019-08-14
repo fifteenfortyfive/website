@@ -8,6 +8,8 @@
   border-radius: 5px;
   user-select: none;
   cursor: pointer;
+  background: transparent;
+  transition: background-color 0.12s linear;
 
   &:focus,
   &:focus-within {
