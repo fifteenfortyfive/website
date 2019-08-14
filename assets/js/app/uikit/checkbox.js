@@ -9,22 +9,32 @@ import style from './checkbox.css';
 const Checkbox = (props) => {
   const {
     checked = false,
-    header,
     disabled,
+    marginless = false,
     children,
     onChange,
     className
   } = props;
 
-  const visibleUnchecked = checked ? "hidden" : "visible";
-  const visibleChecked = checked ? "visible" : "hidden";
+  const handleKeyDown = (event) => {
+    const {key} = event;
+    if(key === " " || key === "Enter" || key === "Spacebar") {
+      event.preventDefault();
+      onChange(!checked);
+    }
+  };
 
   return (
     <div
         class={classNames(style.checkbox, {
-          [style.disabled]: disabled
+          [style.disabled]: disabled,
+          [style.marginless]: marginless,
         })}
+        tabindex="0"
         onClick={() => !disabled && onChange(!checked)}
+        onKeyDown={handleKeyDown}
+        aria-role="checkbox"
+        aria-checked={checked}
       >
       <div class={style.check}>
         <span class={classNames({[style.visible]: !checked})}>
@@ -35,13 +45,16 @@ const Checkbox = (props) => {
         </span>
       </div>
       <label class={style.label}>
-        <Header size={Header.Sizes.H5} className="has-margin-top-nudge has-margin-bottom-sm">
-          {header}
-        </Header>
         {children}
       </label>
     </div>
   );
 }
+
+Checkbox.Header = ({children, ...props}) => (
+  <Header size={Header.Sizes.H5} {...props} className={style.header}>
+    {children}
+  </Header>
+);
 
 export default Checkbox;

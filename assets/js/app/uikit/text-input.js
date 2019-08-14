@@ -28,6 +28,7 @@ const TextInput = (props) => {
         className={className}
       >
       <input
+        {...inputProps}
         type="text"
         name={name}
         value={value}
@@ -36,7 +37,6 @@ const TextInput = (props) => {
         onChange={onChange}
         onInput={onInput}
         disabled={!editable}
-        {...inputProps}
       />
     </InputWrapper>
   );

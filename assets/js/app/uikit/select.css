@@ -1,0 +1,20 @@
+@value colors: '../style/colors.css';
+@value foreground-1, primary, primary-bg-400 from colors;
+
+.input {
+  flex: 4 1 200px;
+  position: relative;
+  display: block;
+  width: 100%;
+  border: none;
+  margin: 0 16px;
+  background: transparent;
+  font-size: 1em;
+  color: foreground-1;
+  cursor: pointer;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}

@@ -50,9 +50,10 @@ class Preferences extends Component {
         className="has-padding-md has-margin-top-sm has-margin-bottom-sm"
         checked={requirementsMet && value}
         disabled={!requirementsMet}
+        marginless
         onChange={(checked) => this.handlePreferenceChange(preference, checked)}
-        header={name}
       >
+        <Checkbox.Header>{name}</Checkbox.Header>
         <p>{description}</p>
         { requires &&
           <p class="is-size-6 has-text-grey has-margin-top-xs">

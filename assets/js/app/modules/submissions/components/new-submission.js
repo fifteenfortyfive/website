@@ -10,6 +10,8 @@ import Layout from '../../../pages/layout';
 import Button from '../../../uikit/button';
 import Checkbox from '../../../uikit/checkbox';
 import Header from '../../../uikit/header';
+import Select from '../../../uikit/select';
+import Text from '../../../uikit/text';
 import TextInput from '../../../uikit/text-input';
 
 
@@ -57,17 +59,22 @@ const NewSubmission = (props) => {
       <Checkbox
         checked={acceptedTimezones}
         onChange={setAcceptedTimezones}
-        header="I Understand Timezones"
       >
-        <p>
+        <Checkbox.Header>I Understand Timezones</Checkbox.Header>
+        <Text marginless>
           By checking this box, you confirm that you know:
           <ul>
             <li>a) the name of the timezone you live in</li>
             <li>b) the hour offset your timezone is from UTC</li>
             <li>c) that you are responsible for interpreting timezones in all event scheduling as it pertains to you.</li>
           </ul>
-        </p>
+        </Text>
       </Checkbox>
+
+      <Select
+        label="Game"
+        options={['SM64', 'Kazooie', 'Tooie', 'Spyro 1', 'Crash 3']}
+      />
 
       <Button color={Button.Colors.PRIMARY} disabled={!acceptedTimezones}>
         Submit Your Run

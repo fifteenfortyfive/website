@@ -14,8 +14,8 @@
   border: 1px solid primary;
   border-radius: 100em;
   background: transparent;
-  overflow: hidden;
 
+  &:focus,
   &:focus-within {
     background-color: primary-bg-400;
   }

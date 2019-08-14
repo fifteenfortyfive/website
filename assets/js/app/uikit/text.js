@@ -25,12 +25,21 @@ const Text = (props) => {
   const {
     size = Sizes.SIZE_16,
     color = Colors.DEFAULT,
+    marginless = false,
     className,
     children
   } = props;
 
   return (
-    <p className={classNames(style.text, style[color], style[size], className)}>
+    <p  className={classNames(
+          style.text,
+          style[color],
+          style[size],
+          className, {
+            [style.marginless]: marginless,
+          }
+        )}
+      >
       {children}
     </p>
   )

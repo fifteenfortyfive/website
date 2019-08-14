@@ -3,16 +3,34 @@
 
 .checkbox {
   display: flex;
-  padding: 0.75em 1em;
+  padding: 16px;
+  margin-bottom: 16px;
   border-radius: 5px;
   user-select: none;
   cursor: pointer;
+
+  &:focus,
+  &:focus-within {
+    outline: none;
+    background-color: primary-bg-400;
+  }
+
+  &:active {
+    background-color: primary-bg-600;
+  }
+}
+
+.marginless {
+  margin-bottom: 0;
 }
 
 .label {
   cursor: pointer;
-  /* margin-top: 0.125rem; */
   margin-left: 32px;
+}
+
+.header {
+  margin-bottom: 8px;
 }
 
 .check {
