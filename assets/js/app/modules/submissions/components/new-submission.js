@@ -6,6 +6,9 @@ import {useAuth} from '../../../hooks/useAuth';
 import * as EventActions from '../../../actions/events';
 import * as EventStore from '../../../selectors/events';
 
+import * as SubmissionsActions from '../actions';
+import * as SubmissionsStore from '../selectors';
+
 import Layout from '../../../pages/layout';
 import Button from '../../../uikit/button';
 import Checkbox from '../../../uikit/checkbox';
@@ -22,12 +25,26 @@ const NewSubmission = (props) => {
   const {isLoggedIn, account} = useAuth();
   const [acceptedTimezones, setAcceptedTimezones] = useState(false);
 
+  const [selectedCategoryId, setSelectedCategoryId] = useState();
+
   useEffect(() => {
     dispatch(EventActions.fetchEvent(eventId));
+    dispatch(SubmissionsActions.fetchAllowedRuns(eventId));
   }, [eventId]);
 
   const event = useSelector((state) => {
     return EventStore.getEvent(state, {eventId});
+  });
+  const categories = useSelector((state) => {
+    const allowed = SubmissionsStore.getAllowedCategories(state);
+
+    return allowed.map((category) => {
+      const game = SubmissionsStore.getAllowedGame(state, category.game_id);
+      return {
+        name: `${game && game.name} - ${category.name}`,
+        value: category.id
+      }
+    });
   });
 
   if(event == null) return <Layout>Loading</Layout>;
@@ -35,7 +52,7 @@ const NewSubmission = (props) => {
   return (
     <Layout>
       <Header>Submit a Run</Header>
-      <Header size={Header.Sizes.H4} color={Header.Colors.MUTED}>
+      <Header size={Header.Sizes.H4} color={Header.Colors.MUTED} withMargin>
         Submitting to {event.name}
       </Header>
 
@@ -43,6 +60,14 @@ const NewSubmission = (props) => {
         label="You"
         value={account && account.username}
         editable={false}
+      />
+
+      <Select
+        label="Run"
+        options={categories}
+        value={selectedCategoryId}
+        placeholder="Select a run..."
+        onChange={({target}) => setSelectedCategoryId(target.value)}
       />
 
       <TextInput
@@ -57,9 +82,9 @@ const NewSubmission = (props) => {
       />
 
       <Checkbox
-        checked={acceptedTimezones}
-        onChange={setAcceptedTimezones}
-      >
+          checked={acceptedTimezones}
+          onChange={setAcceptedTimezones}
+        >
         <Checkbox.Header>I Understand Timezones</Checkbox.Header>
         <Text marginless>
           By checking this box, you confirm that you know:
@@ -70,16 +95,6 @@ const NewSubmission = (props) => {
           </ul>
         </Text>
       </Checkbox>
-
-      <Select
-        label="Game"
-        options={['SM64', 'Kazooie', 'Tooie', 'Spyro 1', 'Crash 3']}
-      />
-
-      <Select
-        label="Category"
-        options={['SM64', 'Kazooie', 'Tooie', 'Spyro 1', 'Crash 3']}
-      />
 
       <Button color={Button.Colors.PRIMARY} disabled={!acceptedTimezones}>
         Submit Your Run

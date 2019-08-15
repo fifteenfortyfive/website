@@ -17,10 +17,10 @@ const BoxLink = (props) => {
   return (
     <p className={className}>
       <a className={style.boxLink} href={href} {...linkProps}>
-        <Text className={style.header} color={Text.Colors.PRIMARY}>
+        <Text className={style.header} color={Text.Colors.PRIMARY} marginless>
           {title}
         </Text>
-        <Text className={style.body}>
+        <Text className={style.body} marginless>
           {children}
         </Text>
       </a>

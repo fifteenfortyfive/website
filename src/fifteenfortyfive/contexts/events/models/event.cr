@@ -40,6 +40,8 @@ module Events
       belongs_to :series, Series
       belongs_to :game, Inventory::Game
       belongs_to :category, Inventory::Category
+      # Allowed Runs will replace these associations in the future
+      has_many :allowed_runs, AllowedRun
 
       belongs_to :owner, Accounts::Account, foreign_key: :owner_id
 

@@ -16,7 +16,7 @@ const Select = (props) => {
     options=[],
     label,
     note,
-    placeholder="",
+    placeholder=null,
     multiline=false,
     editable=true,
     onChange,
@@ -31,7 +31,10 @@ const Select = (props) => {
         note={note}
         className={className}
       >
-      <select class={style.input} onChange={onChange}>
+      <select class={style.input} onChange={onChange} disabled={!editable} value={value}>
+        { placeholder &&
+          <option disabled selected value="">{placeholder}</option>
+        }
         { options.map((option) => {
             if(typeof(option) === 'object') {
               return <option value={option.value}>{option.name}</option>

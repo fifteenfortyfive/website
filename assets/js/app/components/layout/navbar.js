@@ -60,8 +60,6 @@ const LayoutNavbar = (props) => {
 
         <NavbarMenu isActive={isActive}>
           <NavbarStart>
-            <NavbarItem href={Routes.TEAMS}>Teams</NavbarItem>
-
             <NavbarItem href={Routes.STREAMS}>Streams</NavbarItem>
 
             <NavbarItem hasDropdown isHoverable>

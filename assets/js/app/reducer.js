@@ -10,6 +10,7 @@ import games from './reducers/games';
 import me from './reducers/me';
 import runs from './reducers/runs';
 import streams from './reducers/streams';
+import submissions from './modules/submissions/reducer';
 import teams from './reducers/teams';
 
 const combinedReducer = combineReducers({
@@ -22,6 +23,7 @@ const combinedReducer = combineReducers({
   me,
   runs,
   streams,
+  submissions,
   teams
 });
 

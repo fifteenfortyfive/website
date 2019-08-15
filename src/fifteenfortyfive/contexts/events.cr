@@ -103,6 +103,115 @@ module Events
     Repo.update(changeset)
   end
 
+  # Returns true if the event has any restrictions on types of run submissions.
+  # This really just means if any AllowedRun records exist, regardless of
+  # whether they form a blacklist or whitelist.
+  def has_restricted_runs?(event : Event)
+    event.allowed_runs ||= Repo.get_association(event, :allowed_runs).as(Array(AllowedRun))
+
+    return event.allowed_runs.size == 0
+  end
+
+  def list_allowed_games(event : Event) : Array(Inventory::Game)
+    allowed_runs = Repo.get_association(event, :allowed_runs).as(Array(AllowedRun))
+
+    query = Query.new
+    if allowed_runs.size > 0
+      query = query.where(id: allowed_runs.map(&.game_id))
+    end
+
+    Repo.all(Inventory::Game, query)
+  end
+
+  def list_allowed_categories(event : Event) : Array(Inventory::Category)
+    allowed_runs = Repo.get_association(event, :allowed_runs).as(Array(AllowedRun))
+
+    allowances = allowed_runs.select{ |a| a.category_id }.map(&.category_id)
+    game_allowances = allowed_runs.select{ |a| a.game_id && !a.category_id }.map(&.game_id)
+
+    query = Query.new
+    if allowances.size > 0
+      query = query.where(id: allowances)
+    end
+    if game_allowances.size > 0
+      query = query.or_where(game_id: game_allowances)
+    end
+
+    Repo.all(Inventory::Category, query)
+  end
+
+  def can_submit_run?(event : Event, run : RunSubmission)
+    allowed_runs =
+      event.allowed_runs ||= Repo.get_association(event, :allowed_runs).as(Array(AllowedRun))
+
+    return true if allowed_runs.size == 0
+
+    passes_restrictions = allowed_runs.any? do |rule|
+      matches = rule.game_id == run.game_id
+
+      if rule.category_id
+        matches = matches && rule.category_id == run.category_id
+      end
+
+      matches
+    end
+
+    return passes_restrictions
+  end
+
+
+
+  ###
+  # Allowed Runs
+  ###
+
+  ###
+  # Teams
+  ###
+
+  def list_allowed_runs(query : Query = Query.new)
+    Repo.all(AllowedRun, query)
+  end
+
+  def list_allowed_runs(event_id, query : Query = Query.new)
+    Repo.all(AllowedRun, query.where(event_id: event_id.to_s))
+  end
+
+  def get_allowed_run(allowed_run_id, query : Query = Query.new)
+    Repo.all(AllowedRun, query
+      .where(id: allowed_run_id.to_s)
+      .preload([:game, :category])
+      .limit(1)
+    ).first?
+  end
+
+  def get_allowed_run!(allowed_run_id, query : Query = Query.new)
+    Repo.all(AllowedRun, query
+      .where(id: allowed_run_id.to_s)
+      .preload([:game, :category])
+      .limit(1)
+    ).first
+  end
+
+  def new_allowed_run()
+    AllowedRun.new
+  end
+
+  def create_allowed_run(attrs)
+    allowed_run = AllowedRun.new
+    allowed_run = allowed_run.cast(attrs)
+    Repo.insert(allowed_run)
+  end
+
+  def update_allowed_run(allowed_run : AllowedRun, changes)
+    changeset = allowed_run.cast(changes)
+    Repo.update(changeset)
+  end
+
+  def delete_allowed_run(allowed_run : AllowedRun)
+    Repo.delete(allowed_run)
+  end
+
 
 
   ###
@@ -135,10 +244,6 @@ module Events
 
   def new_team()
     Team.new
-  end
-
-  def create_team(submission : Team)
-    Repo.insert(submission)
   end
 
   def create_team(attrs)

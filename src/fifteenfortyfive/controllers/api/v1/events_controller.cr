@@ -32,6 +32,23 @@ class API::EventsController < AppController
     })
   end
 
+  def allowed_runs
+    unless event_id = url_params["event_id"]?
+      render_error_json(Errors::NotFound)
+      return
+    end
+
+    unless event = Events.get_event(event_id)
+      render_error_json(Errors::NotFound)
+      return
+    end
+
+    render_json({
+      games: Events.list_allowed_games(event),
+      categories: Events.list_allowed_categories(event)
+    })
+  end
+
 
   def start
     unless event_id = url_params["event_id"]?
