@@ -65,6 +65,15 @@ class AppController
     @query_params ||= request.query_params.to_h
   end
 
+  def structured_params(structure)
+    body = raw_request_body
+    unless body.empty?
+      structure.from_json(body)
+    else
+      structure.from_json("{}")
+    end
+  end
+
   def body_content
     @body_content ||= request.body.not_nil!.gets_to_end
   end

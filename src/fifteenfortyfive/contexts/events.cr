@@ -399,6 +399,21 @@ module Events
     Repo.delete(submission)
   end
 
+  def delete_existing_submissions(account_id, event_id)
+    submissions = Events.list_runner_submissions(
+      Query.where(account_id: account_id, event_id: event_id)
+    )
+
+    submissions.each do |submission|
+      run_submissions = Events.list_run_submissions(Query.where(runner_submission_id: submission.id))
+      run_submissions.each do |run|
+        Events.delete_run_submission(run)
+      end
+
+      Events.delete_runner_submission(submission)
+    end
+  end
+
 
 
   ###

@@ -50,6 +50,71 @@ class API::EventsController < AppController
   end
 
 
+  def submit
+    account = @context.current_user
+
+    unless event_id = url_params["event_id"]?
+      render_error_json(Errors::NotFound)
+      return
+    end
+
+    unless event = Events.get_event(event_id)
+      render_error_json(Errors::NotFound)
+      return
+    end
+
+    runner_params = json_params["runner"]?.try(&.as_h?)
+    runs_params = json_params["runs"]?.try(&.as_a?)
+
+    if !runner_params || !runs_params
+      render_error_json(Errors::Unprocessable)
+      return
+    end
+
+    Events.delete_existing_submissions(account.id, event_id)
+
+    identifying_params = {
+      "account_id" => account.id,
+      "event_id" => event_id
+    }
+
+    runner_params = runner_params.merge(identifying_params)
+    runner_changeset = Events.create_runner_submission(runner_params)
+
+    unless runner_changeset.valid?
+      render_error_json(Errors::Unprocessable)
+      return
+    end
+
+    rank = 1
+    run_changesets = runs_params.map do |run_params|
+      run_params = run_params.as_h.merge({
+        "account_id" => account.id,
+        "event_id" => event_id,
+        "runner_submission_id" => runner_changeset.instance.id,
+        "pb_seconds" => Events.convert_time_string_to_seconds!(run_params["pb"].as_s),
+        "est_seconds" => Events.convert_time_string_to_seconds!(run_params["est"].as_s),
+        "rank" => rank
+      })
+
+      rank += 1
+      run_submission = Events.create_run_submission(run_params)
+    end
+
+    unless run_changesets.all?(&.valid?)
+      render_error_json(Errors::Unprocessable)
+      return
+    end
+
+    submission = runner_changeset.instance
+    submission.run_submissions = run_changesets.map(&.instance)
+
+    render_json({
+      submission: submission
+    })
+  end
+
+
   def start
     unless event_id = url_params["event_id"]?
       render_error_json(Errors::NotFound)

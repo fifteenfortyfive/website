@@ -17,5 +17,14 @@ module Events
 
       belongs_to :runner_submission, RunnerSubmission
     end
+
+    validate_required [
+      :account_id,
+      :event_id,
+      :game_id,
+      :category_id,
+      :pb_seconds,
+      :est_seconds
+    ]
   end
 end

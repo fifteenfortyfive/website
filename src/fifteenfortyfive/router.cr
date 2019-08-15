@@ -36,8 +36,11 @@ router AppRouter do
 
         scope ":event_id" do
           get "/", to: "aPI::Events#get"
-
           get "/allowed-runs", to: "aPI::Events#allowed_runs"
+
+          implements :api_authenticated
+
+          post "/submit", to: "aPI::Events#submit"
 
           scope do
             implements :api_admin_authorized

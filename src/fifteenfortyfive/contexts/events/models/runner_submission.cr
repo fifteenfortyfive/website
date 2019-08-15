@@ -15,5 +15,7 @@ module Events
 
       has_many :run_submissions, RunSubmission
     end
+
+    validate_required [:account_id, :event_id]
   end
 end
