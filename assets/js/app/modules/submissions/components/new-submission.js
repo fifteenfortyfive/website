@@ -8,7 +8,12 @@ import * as EventStore from '../../../selectors/events';
 
 import * as SubmissionsActions from '../actions';
 import * as SubmissionsStore from '../selectors';
+import RunSubmissionForm from './run-submission-form';
 
+import {
+  Column,
+  Columns
+} from 'bloomer';
 import Layout from '../../../pages/layout';
 import Button from '../../../uikit/button';
 import Checkbox from '../../../uikit/checkbox';
@@ -25,16 +30,12 @@ const NewSubmission = (props) => {
   const {isLoggedIn, account} = useAuth();
   const [acceptedTimezones, setAcceptedTimezones] = useState(false);
 
-  const [selectedCategoryId, setSelectedCategoryId] = useState();
-
   useEffect(() => {
     dispatch(EventActions.fetchEvent(eventId));
     dispatch(SubmissionsActions.fetchAllowedRuns(eventId));
+    dispatch(SubmissionsActions.fetchRunnerSubmission(eventId));
   }, [eventId]);
 
-  const event = useSelector((state) => {
-    return EventStore.getEvent(state, {eventId});
-  });
   const categories = useSelector((state) => {
     const allowed = SubmissionsStore.getAllowedCategories(state);
 
@@ -46,59 +47,74 @@ const NewSubmission = (props) => {
       }
     });
   });
+  const event = useSelector((state) => {
+    return EventStore.getEvent(state, {eventId});
+  });
+  const runner = useSelector(SubmissionsStore.getRunnerSubmission);
+  const runs = useSelector(SubmissionsStore.getRunSubmissions);
 
   if(event == null) return <Layout>Loading</Layout>;
 
   return (
     <Layout>
-      <Header>Submit a Run</Header>
-      <Header size={Header.Sizes.H4} color={Header.Colors.MUTED} withMargin>
-        Submitting to {event.name}
-      </Header>
+      <Columns isCentered>
+        <Column isSize={{desktop: 10, widescreen: 8}}>
+          <Header>Submit a Run</Header>
+          <Header size={Header.Sizes.H4} color={Header.Colors.MUTED} withMargin>
+            Submitting to {event.name}
+          </Header>
 
-      <TextInput
-        label="You"
-        value={account && account.username}
-        editable={false}
-      />
+          <TextInput
+            label="Max Games"
+            value={runner && runner.max_games}
+          />
 
-      <Select
-        label="Run"
-        options={categories}
-        value={selectedCategoryId}
-        placeholder="Select a run..."
-        onChange={({target}) => setSelectedCategoryId(target.value)}
-      />
+          <TextInput
+            label="Max Time"
+            value={runner && runner.max_time}
+          />
 
-      <TextInput
-        label="PB"
-        value={null}
-        placeholder="00:00:00"
-      />
-      <TextInput
-        label="Estimate"
-        value={null}
-        placeholder="00:00:00"
-      />
+          <TextInput
+            label="Pair With"
+            note="Separate names with commas"
+            value={runner && runner.pair_with}
+          />
 
-      <Checkbox
-          checked={acceptedTimezones}
-          onChange={setAcceptedTimezones}
-        >
-        <Checkbox.Header>I Understand Timezones</Checkbox.Header>
-        <Text marginless>
-          By checking this box, you confirm that you know:
-          <ul>
-            <li>a) the name of the timezone you live in</li>
-            <li>b) the hour offset your timezone is from UTC</li>
-            <li>c) that you are responsible for interpreting timezones in all event scheduling as it pertains to you.</li>
-          </ul>
-        </Text>
-      </Checkbox>
+          <TextInput
+            label="Avoid"
+            note="Separate names with commas"
+            value={runner && runner.avoid}
+          />
 
-      <Button color={Button.Colors.PRIMARY} disabled={!acceptedTimezones}>
-        Submit Your Run
-      </Button>
+          <Checkbox
+              checked={acceptedTimezones}
+              onChange={setAcceptedTimezones}
+            >
+            <Checkbox.Header>I Understand Timezones</Checkbox.Header>
+            <Text marginless>
+              By checking this box, you confirm that you know:
+              <ul>
+                <li>a) the name of the timezone you live in</li>
+                <li>b) the hour offset your timezone is from UTC</li>
+                <li>c) that you are responsible for interpreting timezones in all event scheduling as it pertains to you.</li>
+              </ul>
+            </Text>
+          </Checkbox>
+
+          <Button color={Button.Colors.PRIMARY} disabled={!acceptedTimezones}>
+            Start Submitting Runs
+          </Button>
+
+          { runs.map((run, index) => <RunSubmissionForm
+              run={run}
+              categories={categories}
+              index={index+1}
+            />)
+          }
+
+          <RunSubmissionForm categories={categories} />
+        </Column>
+      </Columns>
     </Layout>
   );
 };

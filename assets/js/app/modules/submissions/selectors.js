@@ -5,6 +5,14 @@ const getSubmissionsState = (state) => state.submissions;
 const getAllowedRuns = (state) => state.submissions.allowedRuns;
 const getGameId = (_, gameId) => gameId;
 
+export const getRunnerSubmission = (state) => state.submissions.runner;
+
+const getRuns = (state) => state.submissions.runs;
+export const getRunSubmissions = createSelector(
+  [getRuns],
+  (runs) => Object.values(runs)
+);
+
 export const getAllowedGames = createSelector(
   [getAllowedRuns],
   (runs) => Object.values(runs.games)

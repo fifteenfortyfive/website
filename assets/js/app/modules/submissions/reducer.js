@@ -4,7 +4,9 @@ const defaultState = {
   allowedRuns: {
     games: {},
     categories: {}
-  }
+  },
+  runner: null,
+  runs: {}
 };
 
 const actions = {
@@ -27,6 +29,45 @@ const actions = {
       }
     };
   },
+
+  'SUBMISSIONS_RECEIVE_RUNNER_SUBMISSION': (state, {data}) => {
+    const {submission} = data;
+
+    return {
+      ...state,
+      runner: submission
+    };
+  },
+
+  'SUBMISSIONS_RECEIVE_RUNS': (state, {data}) => {
+    const {runs} = data;
+
+    const runsById = _.reduce(runs, (acc, run) => {
+      acc[run.id] = run;
+      return acc;
+    }, {});
+
+    return {
+      ...state,
+      runs: {
+        ...state.runs,
+        ...runsById
+      }
+    };
+  },
+
+  'SUBMISSIONS_DELETE_RUN': (state, {data}) => {
+    const {runId} = data;
+    const {
+      [runId]: _deletedRun,
+      ...filteredRuns
+    } = state.runs;
+
+    return {
+      ...state,
+      runs: filteredRuns
+    }
+  }
 };
 
 

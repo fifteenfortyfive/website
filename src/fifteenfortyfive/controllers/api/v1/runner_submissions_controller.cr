@@ -12,8 +12,11 @@ class API::RunnerSubmissionsController < AppController
       return
     end
 
+    runs = Events.list_run_submissions_for_account(event_id, account.id)
+
     render_json({
-      submission: submission
+      submission: submission,
+      runs: runs
     })
   end
 

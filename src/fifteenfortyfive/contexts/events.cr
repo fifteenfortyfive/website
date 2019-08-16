@@ -314,7 +314,7 @@ module Events
   end
 
   def list_run_submissions_for_account(event_id, account_id)
-    Repo.all(RunSubmission, Query.where(account_id: account_id, event_id: event_id))
+    Repo.all(RunSubmission, Query.where(account_id: account_id, event_id: event_id).order_by("rank ASC"))
   end
 
   def get_run_submission(submission_id, query : Query = Query.new)
