@@ -165,10 +165,6 @@ module Events
   # Allowed Runs
   ###
 
-  ###
-  # Teams
-  ###
-
   def list_allowed_runs(query : Query = Query.new)
     Repo.all(AllowedRun, query)
   end
@@ -317,6 +313,10 @@ module Events
     Repo.all(RunSubmission, query)
   end
 
+  def list_run_submissions_for_account(event_id, account_id)
+    Repo.all(RunSubmission, Query.where(account_id: account_id, event_id: event_id))
+  end
+
   def get_run_submission(submission_id, query : Query = Query.new)
     Repo.all(RunSubmission, query.where(id: submission_id.to_s).limit(1)).first?
   end
@@ -374,6 +374,16 @@ module Events
 
   def get_runner_submission!(submission_id, query : Query = Query.new)
     Repo.all(RunnerSubmission, query.where(id: submission_id.to_s).limit(1)).first
+  end
+
+  def get_runner_submission_for_account(event_id, account_id)
+    query = Query.where(account_id: account_id, event_id: event_id)
+    Repo.all(RunnerSubmission, query.limit(1)).first?
+  end
+
+  def get_runner_submission_for_account!(event_id, account_id)
+    query = Query.where(account_id: account_id, event_id: event_id)
+    Repo.all(RunnerSubmission, query.limit(1)).first
   end
 
   def new_runner_submission()

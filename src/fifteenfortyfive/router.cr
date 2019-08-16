@@ -38,9 +38,20 @@ router AppRouter do
           get "/", to: "aPI::Events#get"
           get "/allowed-runs", to: "aPI::Events#allowed_runs"
 
-          implements :api_authenticated
+          scope "runner-submission" do
+            implements :api_authenticated
 
-          post "/submit", to: "aPI::Events#submit"
+            get  "/", to: "aPI::RunnerSubmissions#get"
+            post "/", to: "aPI::RunnerSubmissions#create"
+            post "/update", to: "aPI::RunnerSubmissions#update"
+            post "/revoke", to: "aPI::RunnerSubmissions#revoke"
+            post "/unrevoke", to: "aPI::RunnerSubmissions#unrevoke"
+
+            get  "/runs", to: "aPI::RunnerSubmissions#runs_index"
+            post "/runs", to: "aPI::RunnerSubmissions#runs_create"
+            post "/runs/:run_id", to: "aPI::RunnerSubmissions#runs_update"
+            post "/runs/:run_id/delete", to: "aPI::RunnerSubmissions#runs_delete"
+          end
 
           scope do
             implements :api_admin_authorized
