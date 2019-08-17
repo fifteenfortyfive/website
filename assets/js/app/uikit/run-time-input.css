@@ -1,0 +1,18 @@
+@value colors: '../style/colors.css';
+@value foreground-1 from colors;
+
+.input {
+  flex: 4 1 200px;
+  display: block;
+  width: 100%;
+  padding: 0.625em 1em;
+  border: none;
+  background: transparent;
+  font-size: 1em;
+  color: foreground-1;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}

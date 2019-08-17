@@ -20,6 +20,11 @@
   margin-bottom: 2rem;
 }
 
+.heroActions {
+  display: flex;
+  justify-content: center;
+}
+
 .heroFoot {
   padding: 2em 0;
   font-size: 2em;

@@ -4,6 +4,7 @@ import createCachedSelector from 're-reselect';
 const getSubmissionsState = (state) => state.submissions;
 const getAllowedRuns = (state) => state.submissions.allowedRuns;
 const getGameId = (_, gameId) => gameId;
+const getCategoryId = (_, categoryId) => categoryId;
 
 export const getRunnerSubmission = (state) => state.submissions.runner;
 
@@ -27,6 +28,11 @@ export const getAllowedCategories = createSelector(
   [getAllowedRuns],
   (runs) => Object.values(runs.categories)
 );
+
+export const getAllowedCategory = createCachedSelector(
+  [getAllowedRuns, getCategoryId],
+  (runs, categoryId) => runs.categories[categoryId]
+)(getCategoryId);
 
 export const getAllowedCategoriesForGame = createSelector(
   [getAllowedCategories, getGameId],

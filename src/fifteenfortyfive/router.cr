@@ -46,6 +46,7 @@ router AppRouter do
             post "/update", to: "aPI::RunnerSubmissions#update"
             post "/revoke", to: "aPI::RunnerSubmissions#revoke"
             post "/unrevoke", to: "aPI::RunnerSubmissions#unrevoke"
+            post "/delete", to: "aPI::RunnerSubmissions#delete"
 
             get  "/runs", to: "aPI::RunnerSubmissions#runs_index"
             post "/runs", to: "aPI::RunnerSubmissions#runs_create"

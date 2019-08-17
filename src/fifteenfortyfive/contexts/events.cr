@@ -400,6 +400,19 @@ module Events
     Repo.insert(submission)
   end
 
+  def ensure_runner_submission!(event_id, account_id)
+    if existing = get_runner_submission_for_account(event_id, account_id)
+      return existing
+    end
+
+    changeset = create_runner_submission({
+      event_id: event_id,
+      account_id: account_id
+    })
+
+    changeset.instance
+  end
+
   def update_runner_submission(submission : RunnerSubmission, changes)
     changeset = submission.cast(changes)
     Repo.update(changeset)

@@ -1,4 +1,5 @@
 import {h, Fragment} from 'preact';
+import {Link} from 'preact-router';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 import Footer from '../components/layout/footer';
@@ -16,7 +17,9 @@ import {
   Section,
 } from 'bloomer';
 import BrandLogo from '../uikit/brand-logo';
+import Button from '../uikit/button';
 
+import {Routes} from '../constants';
 import style from './index.css';
 
 const Index = (props) => {
@@ -33,6 +36,13 @@ const Index = (props) => {
             <h2 class={style.subtitle}>
               Any% Relay - September 21st, 2019
             </h2>
+            <div class={style.heroActions}>
+              <Link href={Routes.EVENT_SUBMIT_RUN(23)}>
+                <Button color={Button.Colors.PRIMARY}>
+                  Submit a Run
+                </Button>
+              </Link>
+            </div>
           </Container>
         </HeroBody>
 

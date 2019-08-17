@@ -1,0 +1,26 @@
+@value colors: "../../../style/colors.css";
+@value primary-bg-200 from colors;
+
+.submission {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1em;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: primary-bg-200;
+  }
+}
+
+.editing {
+  background-color: primary-bg-200;
+}
+
+.actions {
+  flex: 0 0 120px;
+}
+
+.form {
+  flex: 1 1 100%;
+}

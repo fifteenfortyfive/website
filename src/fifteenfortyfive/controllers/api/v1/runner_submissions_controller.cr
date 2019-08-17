@@ -72,6 +72,22 @@ class API::RunnerSubmissionsController < AppController
     })
   end
 
+  def delete
+    event_id = url_params["event_id"]
+    account = @context.current_user
+
+    unless existing = Events.get_runner_submission_for_account(event_id, account.id)
+      render_error_json(Errors::BadRequest)
+      return
+    end
+
+    Events.delete_runner_submission(existing)
+
+    render_json({
+      processed: true
+    })
+  end
+
   def revoke
     event_id = url_params["event_id"]
     account = @context.current_user
@@ -118,11 +134,7 @@ class API::RunnerSubmissionsController < AppController
   def runs_create
     event_id = url_params["event_id"]
     account = @context.current_user
-
-    unless runner = Events.get_runner_submission_for_account(event_id, account.id)
-      render_error_json(Errors::BadRequest)
-      return
-    end
+    runner = Events.ensure_runner_submission!(event_id, account.id)
 
     params = json_params.as_h.merge({
       "event_id" => event_id,
@@ -146,11 +158,8 @@ class API::RunnerSubmissionsController < AppController
     event_id = url_params["event_id"]
     account = @context.current_user
     run_id = url_params["run_id"]
+    runner = Events.ensure_runner_submission!(event_id, account.id)
 
-    unless runner = Events.get_runner_submission_for_account(event_id, account.id)
-      render_error_json(Errors::BadRequest)
-      return
-    end
     unless existing = Events.get_run_submission(run_id)
       render_error_json(Errors::BadRequest)
       return

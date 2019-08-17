@@ -1,0 +1,11 @@
+.runsContainer {
+  margin-bottom: 32px;
+}
+
+.submission {
+  margin-bottom: 16px;
+}
+
+.newSubmission {
+  composes: submission;
+}

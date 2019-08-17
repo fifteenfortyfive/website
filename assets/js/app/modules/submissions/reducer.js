@@ -67,6 +67,14 @@ const actions = {
       ...state,
       runs: filteredRuns
     }
+  },
+
+  'SUBMISSIONS_DELETE_ALL_SUBMISSIONS': (state, {data}) => {
+    return {
+      ...state,
+      runner: null,
+      runs: [],
+    }
   }
 };
 

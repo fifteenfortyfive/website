@@ -19,7 +19,7 @@ import EventsPage from './pages/events-page';
 import LoginPage from './pages/login-page';
 import Index from './static-pages/index';
 import Volunteer from './static-pages/volunteer';
-import NewSubmission from './modules/submissions/components/new-submission';
+import Submit from './modules/submissions/components/submit';
 import NotFoundPage from './pages/not-found-page';
 
 import {Routes} from './constants';
@@ -65,7 +65,7 @@ const App = (props) => {
 
       <EventsPage path={Routes.EVENTS} />
       <EventPage path={Routes.EVENT(":eventId")} />
-      <NewSubmission path={Routes.EVENT_SUBMIT_RUN(":eventId")} needsAuth />
+      <Submit path={Routes.EVENT_SUBMIT_RUN(":eventId")} needsAuth />
 
       <NotFoundPage default />
     </Router>
