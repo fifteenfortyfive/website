@@ -1,0 +1,7 @@
+.container {
+  display: flex;
+}
+
+.avatar {
+  margin-right: 8px;
+}

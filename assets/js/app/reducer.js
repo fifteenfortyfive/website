@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
 import accounts from './reducers/accounts';
+import admin from './admin/reducer';
 import auth from './reducers/auth';
 import dashboard from './reducers/dashboard';
 import events from './reducers/events';
@@ -15,6 +16,7 @@ import teams from './reducers/teams';
 
 const combinedReducer = combineReducers({
   accounts,
+  admin,
   auth,
   dashboard,
   events,

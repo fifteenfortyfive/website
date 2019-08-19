@@ -28,13 +28,19 @@ export const Routes = {
   EVENT_SUBMIT_RUN: (eventId) => `/events/${eventId}/submit`,
 
   // Admin
-  ADMIN: '/admin',
+  ADMIN_BASE: '/admin/:*?',
+  // AdminV2 is the old admin o.o
   ADMIN_V2: '/admin/v2',
-  ADMIN_EVENT: '/admin/event',
 
   // Auth
   LOGIN: ({redirect} = {}) => redirect ? `/login?redirectRoute=${redirect}` : '/login',
   LOGOUT: '/logout',
+};
+
+export const AdminRoutes = {
+  HOME: '/admin',
+  EVENT: '/admin/event',
+  ACCOUNTS: '/admin/accounts',
 };
 
 

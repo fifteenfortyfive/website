@@ -4,8 +4,9 @@ import * as AuthStore from '../selectors/auth';
 import * as MeStore from '../selectors/me';
 
 const useAuth = () => {
-  const isLoggedIn = useSelector(AuthStore.isLoggedIn);
-  const account = useSelector(MeStore.getAccount);
+  const [isLoggedIn, account] = useSelector((state) => {
+    return [AuthStore.isLoggedIn, MeStore.getAccount];
+  });
 
   return {isLoggedIn, account};
 };

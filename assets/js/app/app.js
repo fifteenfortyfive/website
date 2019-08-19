@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import {useCallback, useEffect, useState} from 'preact/hooks';
 import {useDispatch, useSelector} from 'react-redux';
-import { Router, route } from 'preact-router';
+import { Router, Route, route } from 'preact-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import * as AuthStore from './selectors/auth';
@@ -9,6 +9,7 @@ import * as MeStore from './selectors/me';
 import * as AuthActions from './actions/auth';
 import * as MeActions from './actions/me';
 
+import AdminRouter from './admin/router';
 import AccountPage from './pages/account-page';
 import AccountsNewPage from './pages/accounts-new-page';
 import MePage from './pages/me-page';
@@ -66,6 +67,8 @@ const App = (props) => {
       <EventsPage path={Routes.EVENTS} />
       <EventPage path={Routes.EVENT(":eventId")} />
       <Submit path={Routes.EVENT_SUBMIT_RUN(":eventId")} needsAuth />
+
+      <AdminRouter path={Routes.ADMIN_BASE} needsAdmin />
 
       <NotFoundPage default />
     </Router>

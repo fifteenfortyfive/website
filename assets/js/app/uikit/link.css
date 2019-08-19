@@ -1,4 +1,9 @@
+@value colors: "../style/colors.css";
+@value primary from colors;
+
 .wrapper {
+  color: primary;
+
   &:hover,
   &:active,
   &:focus {

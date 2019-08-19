@@ -13,7 +13,7 @@ import style from './layout.css';
 const Layout = (props) => {
   const {
     withContainer=true,
-    children
+    children,
   } = props;
 
   return (

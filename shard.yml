@@ -25,6 +25,7 @@ dependencies:
     commit: 1155a1944f861f2367de21c2cc227ad149e1211f
   migrate:
     github: vladfaust/migrate.cr
+    version: 0.4.1
   orion:
     github: obsidian/orion
     version: 1.6.0
@@ -37,6 +38,7 @@ dependencies:
     version: 0.5.2
   honcho:
     github: faultyserver/honcho
+    commit: 8939e7651e6cfd2e427ec978fef4baddc0e098ae
   dotenv:
     github: gdotdesign/cr-dotenv
     version: 0.2.0
