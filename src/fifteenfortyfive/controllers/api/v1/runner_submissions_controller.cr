@@ -24,6 +24,16 @@ class API::RunnerSubmissionsController < AppController
     event_id = url_params["event_id"]
     account = @context.current_user
 
+    unless event = Events.get_event(event_id)
+      render_error_json(Errors::BadRequest)
+      return
+    end
+
+    unless Events.accepting_submissions?(event)
+      render_error_json(Errors::Conflict)
+      return
+    end
+
     if existing = Events.get_runner_submission_for_account(event_id, account.id)
       render_error_json(Errors::BadRequest)
       return
@@ -134,6 +144,17 @@ class API::RunnerSubmissionsController < AppController
   def runs_create
     event_id = url_params["event_id"]
     account = @context.current_user
+
+    unless event = Events.get_event(event_id)
+      render_error_json(Errors::BadRequest)
+      return
+    end
+
+    unless Events.accepting_submissions?(event)
+      render_error_json(Errors::Conflict)
+      return
+    end
+
     runner = Events.ensure_runner_submission!(event_id, account.id)
 
     params = json_params.as_h.merge({

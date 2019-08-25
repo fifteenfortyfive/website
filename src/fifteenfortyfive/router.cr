@@ -179,11 +179,6 @@ router AppRouter do
 
     implements :api_authenticated
 
-    scope "events" do
-      get  "/:event_id/runner_submission", to: "aPI::Events#get_existing_submission"
-      post "/:event_id/submit", to: "aPI::Events#submit"
-    end
-
     scope "admin" do
       implements :api_admin_authorized
       scope "events" do

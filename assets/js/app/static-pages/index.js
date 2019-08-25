@@ -36,13 +36,7 @@ const Index = (props) => {
             <h2 class={style.subtitle}>
               Any% Relay - September 21st, 2019
             </h2>
-            <div class={style.heroActions}>
-              <Link href={Routes.EVENT_SUBMIT_RUN(23)}>
-                <Button color={Button.Colors.PRIMARY}>
-                  Submit a Run
-                </Button>
-              </Link>
-            </div>
+            <div class={style.heroActions} />
           </Container>
         </HeroBody>
 

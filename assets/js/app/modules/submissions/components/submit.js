@@ -1,4 +1,5 @@
 import {h} from 'preact';
+import {route} from 'preact-router';
 import {useCallback, useEffect, useState} from 'preact/hooks';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -23,6 +24,7 @@ import Select from '../../../uikit/select';
 import Text from '../../../uikit/text';
 import TextInput from '../../../uikit/text-input';
 
+import {Routes} from '../../../constants';
 import style from './submit.css';
 
 const NewSubmission = (props) => {
@@ -43,7 +45,11 @@ const NewSubmission = (props) => {
   const runner = useSelector(SubmissionsStore.getRunnerSubmission);
   const runs = useSelector(SubmissionsStore.getRunSubmissions);
 
-  if(event == null) return <Layout>Loading</Layout>;
+  useEffect(() => {
+    if(event != null && event.state != "signups open") {
+      route(Routes.HOME);
+    }
+  }, [event]);
 
   const handleUpdateRun = useCallback((runData) => {
     dispatch(SubmissionsActions.updateRunSubmission(eventId, runData));
@@ -79,6 +85,8 @@ const NewSubmission = (props) => {
   const deleteSubmission = useCallback(() => {
     dispatch(SubmissionsActions.deleteRunnerSubmission(eventId));
   }, [eventId]);
+
+  if(event == null) return <Layout>Loading</Layout>;
 
   return (
     <Layout>

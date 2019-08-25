@@ -140,6 +140,10 @@ module Events
     Repo.all(Inventory::Category, query)
   end
 
+  def accepting_submissions?(event : Event)
+    return event.state == "signups open"
+  end
+
   def can_submit_run?(event : Event, run : RunSubmission)
     allowed_runs =
       event.allowed_runs ||= Repo.get_association(event, :allowed_runs).as(Array(AllowedRun))
