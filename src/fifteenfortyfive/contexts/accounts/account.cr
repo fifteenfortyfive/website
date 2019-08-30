@@ -71,20 +71,36 @@ module Accounts
       json.raw(self.to_h.to_json)
     end
 
-    def to_h
-      {
-        "id" => id,
-        "username" => username,
-        "bio" => bio,
-        "discord_username" => preferences.show_discord_username ? discord_username : nil,
-        "discord_discriminator" => preferences.show_discord_discriminator ? discord_discriminator : nil,
-        "discord_tag" => discord_tag.empty? ? discord_tag : nil,
-        "twitch" => preferences.show_twitch ? twitch : nil,
-        "twitter" => preferences.show_twitter ? twitter : nil,
-        "timezone" => timezone,
-        "admin" => admin,
-        "avatar_hash" => avatar_hash
-      }
+    def to_h(as_admin=false)
+      if as_admin
+        {
+          "id" => id,
+          "username" => username,
+          "bio" => bio,
+          "discord_username" => discord_username,
+          "discord_discriminator" => discord_discriminator,
+          "discord_tag" => discord_tag,
+          "twitch" => twitch,
+          "twitter" => twitter,
+          "timezone" => timezone,
+          "admin" => admin,
+          "avatar_hash" => avatar_hash
+        }
+      else
+        {
+          "id" => id,
+          "username" => username,
+          "bio" => bio,
+          "discord_username" => preferences.show_discord_username ? discord_username : nil,
+          "discord_discriminator" => preferences.show_discord_discriminator ? discord_discriminator : nil,
+          "discord_tag" => discord_tag.empty? ? discord_tag : nil,
+          "twitch" => preferences.show_twitch ? twitch : nil,
+          "twitter" => preferences.show_twitter ? twitter : nil,
+          "timezone" => timezone,
+          "admin" => admin,
+          "avatar_hash" => avatar_hash
+        }
+      end
     end
   end
 end

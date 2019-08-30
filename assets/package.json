@@ -2,6 +2,8 @@
   "repository": {},
   "license": "MIT",
   "scripts": {
+    "build:admin": "webpack --config webpack.admin.config.js --mode production",
+    "watch:admin": "webpack --config webpack.admin.config.js --watch --mode development",
     "build": "webpack --mode production",
     "watch": "webpack --watch --mode development",
     "analyze": "webpack --profile --json > webpack-stats.json"

@@ -34,7 +34,7 @@ class API::AdminController < AppController
   def accounts
     accounts = Accounts.list_accounts()
 
-    render_json(accounts)
+    render_json(accounts.map(&.to_h(as_admin: true)))
   end
 
   def games

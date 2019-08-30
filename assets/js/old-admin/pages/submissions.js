@@ -2,7 +2,6 @@ import { h, Component } from 'preact';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'preact-router';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';
 
 import Table, { ReactTableDefaults } from 'react-table';
@@ -26,9 +25,9 @@ const SubmissionsPage = ({event, accounts, games, loading}) => {
     return acc.concat(submission.run_submissions);
   }, []);
 
-  const gameColumns =  _.chain(Object.values(games))
-      .groupBy('series')
-      .map((seriesGames, series) => ({
+  const gameColumns =  _.flow([
+      (columns) => _.groupBy(columns, 'series'),
+      (columns) => _.map(columns, (seriesGames, series) => ({
         Header: _.capitalize(series),
         foldable: true,
         headerClassName: `${series}-bg`,
@@ -44,7 +43,7 @@ const SubmissionsPage = ({event, accounts, games, loading}) => {
           />
         })),
       }))
-      .value();
+    ])(Object.values(games));
 
   const columns = [
     {

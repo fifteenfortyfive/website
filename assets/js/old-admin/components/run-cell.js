@@ -12,19 +12,21 @@ const RunCell = (props) => {
 
   if(run == null) return null;
 
+  console.log(games)
+
   const game = games[run.game_id];
   const pb = Duration.fromMillis(run.pb_seconds * 1000).toFormat("hh:mm:ss");
   const est = Duration.fromMillis(run.est_seconds * 1000).toFormat("hh:mm:ss");
-  const pairs = _.chain(submission.pair_with)
-      .split(',')
-      .filter()
-      .map(_.trim)
-      .value();
-  const avoids = _.chain(submission.avoid)
-      .split(',')
-      .filter()
-      .map(_.trim)
-      .value();
+  const pairs = _.flow([
+      (p) => _.split(p, ','),
+      _.filter,
+      (p) => _.map(_.trim)
+    ])(submission.pair_with);
+    const avoids = _.flow([
+      (a) => _.split(a, ','),
+      _.filter,
+      (a) => _.map(_.trim)
+    ])(submission.pair_with);
 
   return (
     <div class="has-hover-card">
@@ -45,6 +47,9 @@ const RunCell = (props) => {
               <strong class="header">Runner</strong>
               <p><strong>{runner.username}</strong></p>
               <p><small>{runner.discord_username}#{runner.discord_discriminator}</small></p>
+              { runner.timezone &&
+                <p><small>Timezone: {runner.timezone}</small></p>
+              }
               { submission.captain &&
                 <p><small>Willing to be Captain</small></p>
               }

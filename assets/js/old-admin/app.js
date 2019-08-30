@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Router, Link } from 'preact-router';
 import { createHashHistory } from 'history';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import * as Actions from './actions';
 
