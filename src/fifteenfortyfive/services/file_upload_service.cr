@@ -1,5 +1,3 @@
-require "tempfile"
-
 require "awscr-s3"
 
 require "./twitch_service.cr"
@@ -51,7 +49,7 @@ module FileUploadService
   # Returns nil if the data is invalid in any way.
   def extract_image_from_multipart(part : HTTP::FormData::Part) : File?
     if  _content_type_is_image(part.headers["Content-Type"])
-      tempfile = Tempfile.open("avatar_upload") do |file|
+      tempfile = File.tempfile("avatar_upload") do |file|
         IO.copy(part.body, file)
       end
       avatar_file = File.open(tempfile.path)

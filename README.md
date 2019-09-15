@@ -11,7 +11,7 @@ If you have any questions or would like to help contribute, please contact us at
 To run the application locally, you will need:
 
 - A postgres database
-- Crystal 0.26.1 (check `.tool-versions` for the most up to date version)
+- Crystal 0.30.1 (check `.tool-versions` for the most up to date version)
 - NodeJS 8.9.4 (check `.tool-versions` for the most up to date version)
 - The `yarn` package manager.
 

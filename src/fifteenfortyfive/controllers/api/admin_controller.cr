@@ -1,4 +1,4 @@
-require "../../../contexts/events"
+require "../../contexts/events"
 
 class API::AdminController < AppController
   def events
