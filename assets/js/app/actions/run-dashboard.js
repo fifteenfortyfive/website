@@ -3,9 +3,10 @@ import { commonThunk, denulled } from '../actions';
 export function fetchRuns(eventId, accountId) {
   return commonThunk({
     method: 'get',
-    path: `/api/v1/events/${eventId}/runs`,
+    path: `/api/v1/runs`,
     name: 'runs',
     query: denulled({
+      event_id: eventId,
       account_id: accountId
     })
   }, (dispatch, response) => {

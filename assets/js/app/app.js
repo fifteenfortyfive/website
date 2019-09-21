@@ -23,7 +23,7 @@ import Volunteer from './static-pages/volunteer';
 import Submit from './modules/submissions/components/submit';
 import NotFoundPage from './pages/not-found-page';
 
-import {Routes} from './constants';
+import {CURRENT_EVENT_ID, Routes} from './constants';
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -62,7 +62,7 @@ const App = (props) => {
       <AccountPage path={Routes.ACCOUNT(":accountId")} />
       <StreamsPage path={Routes.STREAMS} />
 
-      <MePage path="/@me/:page?" needsAuth />
+      <MePage path="/@me/:page?" eventId={CURRENT_EVENT_ID} needsAuth />
 
       <EventsPage path={Routes.EVENTS} />
       <EventPage path={Routes.EVENT(":eventId")} />
