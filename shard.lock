@@ -6,35 +6,31 @@ shards:
 
   awscr-s3:
     github: taylorfinnell/awscr-s3
-    version: 0.3.2
+    commit: 93126f023217fd3f2b462242a13919def967809f
 
   awscr-signer:
     github: taylorfinnell/awscr-signer
-    version: 0.5.2
+    version: 0.6.0
 
   crecto:
     github: faultyserver/crecto
-    commit: 1155a1944f861f2367de21c2cc227ad149e1211f
+    commit: 5fe764eaf4ddeae4d4df44e13f6595d037639625
 
   db:
     github: crystal-lang/crystal-db
-    version: 0.5.1
+    version: 0.7.0
 
   dotenv:
     github: gdotdesign/cr-dotenv
-    version: 0.2.0
+    version: 0.3.1
 
   honcho:
     github: faultyserver/honcho
-    commit: 8939e7651e6cfd2e427ec978fef4baddc0e098ae
+    version: 0.2.0
 
   inflector:
     github: phoffer/inflector.cr
     version: 0.1.8
-
-  migrate:
-    github: vladfaust/migrate.cr
-    version: 0.4.1
 
   mime-types:
     github: jwaldrip/mime-types-cr
@@ -46,13 +42,9 @@ shards:
 
   orion:
     github: obsidian/orion
-    version: 1.6.0
+    version: 1.7.0
 
   pg:
     github: will/crystal-pg
-    version: 0.15.0
-
-  time_format:
-    github: vladfaust/time_format.cr
-    version: 0.1.1
+    version: 0.19.0
 

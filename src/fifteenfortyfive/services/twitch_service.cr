@@ -19,32 +19,32 @@ module TwitchService
 
   module Schemas
     struct UserData
-      JSON.mapping(
-        id: String,
-        login: String,
-        display_name: String,
-        type: String,
-        broadcaster_type: String,
-        description: String,
-        profile_image_url: String,
-        offline_image_url: String,
-        view_count: Int64,
-        email: String?
-      )
+      include JSON::Serializable
+
+      property id : String
+      property login : String
+      property display_name : String
+      property type : String
+      property broadcaster_type : String
+      property description : String
+      property profile_image_url : String
+      property offline_image_url : String
+      property view_count : Int64
+      property email : String?
     end
 
     struct StreamData
-      JSON.mapping(
-        id: String,
-        user_id: String,
-        game_id: String,
-        type: String,
-        title: String,
-        viewer_count: Int64,
-        started_at: String,
-        language: String,
-        thumbnail_url: String
-      )
+      include JSON::Serializable
+
+      property id : String
+      property user_id : String
+      property game_id : String
+      property type : String
+      property title : String
+      property viewer_count : Int64
+      property started_at : String
+      property language : String
+      property thumbnail_url : String
 
       def in_community?(community_id : String)
         community_ids.includes?(community_id)

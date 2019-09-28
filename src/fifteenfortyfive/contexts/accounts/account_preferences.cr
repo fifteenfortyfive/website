@@ -7,6 +7,9 @@ module Accounts
 
     DEFAULT = self.new
 
+    def initialize
+    end
+
     ###
     # General profile visibility
     ###
