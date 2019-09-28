@@ -6,7 +6,7 @@ shards:
 
   awscr-s3:
     github: taylorfinnell/awscr-s3
-    version: 0.5.0
+    commit: 93126f023217fd3f2b462242a13919def967809f
 
   awscr-signer:
     github: taylorfinnell/awscr-signer
@@ -14,11 +14,11 @@ shards:
 
   crecto:
     github: faultyserver/crecto
-    commit: 67a6dee5431462c75a39ce95224135efb622f93e
+    commit: 5fe764eaf4ddeae4d4df44e13f6595d037639625
 
   db:
     github: crystal-lang/crystal-db
-    version: 0.6.0
+    version: 0.7.0
 
   dotenv:
     github: gdotdesign/cr-dotenv
@@ -31,10 +31,6 @@ shards:
   inflector:
     github: phoffer/inflector.cr
     version: 0.1.8
-
-  migrate:
-    github: vladfaust/migrate.cr
-    version: 0.5.0
 
   mime-types:
     github: jwaldrip/mime-types-cr
@@ -50,9 +46,5 @@ shards:
 
   pg:
     github: will/crystal-pg
-    version: 0.18.1
-
-  time_format:
-    github: vladfaust/time_format.cr
-    version: 0.1.1
+    version: 0.19.0
 

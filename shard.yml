@@ -18,21 +18,19 @@ targets:
 dependencies:
   pg:
     github: will/crystal-pg
-    version: 0.18.1
+    version: 0.19.0
   crecto:
-    # crecto is no longer officially supported.
-    # This fork also has important additions like `cast`.
+    # This fork has additions like `cast`.
     github: faultyserver/crecto
-    commit: 67a6dee5431462c75a39ce95224135efb622f93e
-  migrate:
-    github: vladfaust/migrate.cr
-    version: 0.5.0
+    commit: 5fe764eaf4ddeae4d4df44e13f6595d037639625
   orion:
     github: obsidian/orion
     version: 1.7.0
   awscr-s3:
     github: taylorfinnell/awscr-s3
-    version: 0.5.0
+    # version: 0.5.0
+    # holdover for 0.31.0 support to land
+    commit: 93126f023217fd3f2b462242a13919def967809f
   honcho:
     github: faultyserver/honcho
     version: 0.2.0
@@ -42,3 +40,10 @@ dependencies:
   auto_initialize:
     github: kostya/auto_initialize
     version: 0.1.0
+
+# Leaving out until db 0.7.0 is supported.
+# `tool` is the only thing that relies on this, so this is fine for now.
+# development_dependencies:
+  # migrate:
+  #   github: vladfaust/migrate.cr
+  #   version: 0.5.0
