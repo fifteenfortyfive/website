@@ -25,14 +25,14 @@ const Team = (props) => {
   return (
     <div style={{'--themeColor': `#${color}`}}>
       <Link href={Routes.TEAM(teamId)}>
-        <Header size={Header.Sizes.H4} color={Header.Colors.THEMED}>
+        <Header size={Header.Sizes.H4} color={Header.Colors.THEMED} withMargin>
           {name}
         </Header>
       </Link>
 
       { _.map(runs, (run) => (
           <div>
-            <Text color={Text.Colors.MUTED}>{run.game.name}</Text>
+            <Text color={Text.Colors.MUTED} marginless>{run.game.name}</Text>
             <Link href={Routes.ACCOUNT(run.account_id)}>
               <Text>{run.account.username}</Text>
             </Link>
