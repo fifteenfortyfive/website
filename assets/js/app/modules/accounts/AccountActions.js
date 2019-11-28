@@ -12,7 +12,7 @@ export function fetchAccounts(accountIds) {
     },
     (dispatch, response) => {
       dispatch(receiveAccounts(response.accounts));
-    },
+    }
   );
 }
 
@@ -28,7 +28,7 @@ export function fetchAccount(accountId) {
     },
     (dispatch, response) => {
       dispatch(receiveAccounts([response.account]));
-    },
+    }
   );
 }
 
@@ -49,7 +49,7 @@ export function createAccount(accountProps) {
     },
     (dispatch, response) => {
       dispatch(receiveAccounts([response.account]));
-    },
+    }
   );
 }
 

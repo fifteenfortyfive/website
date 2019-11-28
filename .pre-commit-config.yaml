@@ -1,0 +1,18 @@
+default_stages: [commit]
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier
+        entry: ./assets/node_modules/.bin/prettier
+        language: node
+        stages: [commit]
+        files: (.*)\.(js|jsx|ts|tsx|css)$
+        args: ["--write"]

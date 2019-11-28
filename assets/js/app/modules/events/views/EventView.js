@@ -49,7 +49,7 @@ class EventView extends Component {
                 <Column isSize={3}>
                   <Team team={team}></Team>
                 </Column>
-              ),
+              )
           )}
         </Columns>
       </Layout>

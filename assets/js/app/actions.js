@@ -103,7 +103,7 @@ export function denulled(object) {
       if (value != null) acc[key] = value;
       return acc;
     },
-    {},
+    {}
   );
 }
 

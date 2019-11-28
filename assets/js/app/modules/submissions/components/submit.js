@@ -51,7 +51,7 @@ const NewSubmission = props => {
     runData => {
       dispatch(SubmissionActions.updateRunSubmission(eventId, runData));
     },
-    [dispatch, eventId],
+    [dispatch, eventId]
   );
 
   const handleCancelEdit = useCallback(() => {
@@ -64,7 +64,7 @@ const NewSubmission = props => {
         dispatch(SubmissionActions.deleteRunSubmission(eventId, runData.id));
       }
     },
-    [dispatch],
+    [dispatch]
   );
 
   const handleCreateRun = useCallback(
@@ -72,7 +72,7 @@ const NewSubmission = props => {
       dispatch(SubmissionActions.createRunSubmission(eventId, runData));
       setShowNewRun(false);
     },
-    [dispatch, eventId],
+    [dispatch, eventId]
   );
 
   const handleCancelNewRun = useCallback(() => {

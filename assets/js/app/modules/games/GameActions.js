@@ -12,7 +12,7 @@ export function fetchGames(gameIds) {
     },
     (dispatch, response) => {
       dispatch(receiveGames(response.games));
-    },
+    }
   );
 }
 

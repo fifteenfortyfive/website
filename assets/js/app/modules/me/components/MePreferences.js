@@ -91,5 +91,5 @@ export default connect(
     loading: state.fetching['@me.account_preferences'],
     submitting: state.fetching['sending.@me.account_preferences'],
   }),
-  dispatch => ({ dispatch }),
+  dispatch => ({ dispatch })
 )(MePreferences);

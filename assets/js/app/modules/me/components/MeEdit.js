@@ -198,5 +198,5 @@ export default connect(
     submitting: state.fetching['sending.@me.account'],
     submittingAvatar: state.fetching['sending.@me.avatar'],
   }),
-  dispatch => ({ dispatch }),
+  dispatch => ({ dispatch })
 )(MeEdit);

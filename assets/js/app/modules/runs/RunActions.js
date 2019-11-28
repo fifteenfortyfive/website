@@ -17,7 +17,7 @@ export function fetchRuns(queryParams) {
     },
     (dispatch, response) => {
       dispatch(receiveRuns(response.runs));
-    },
+    }
   );
 }
 

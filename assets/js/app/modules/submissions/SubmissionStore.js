@@ -15,17 +15,17 @@ export const getAllowedGames = createSelector([getAllowedRuns], runs => Object.v
 
 export const getAllowedGame = createCachedSelector(
   [getAllowedRuns, getGameId],
-  (runs, gameId) => runs.games[gameId],
+  (runs, gameId) => runs.games[gameId]
 )(getGameId);
 
 export const getAllowedCategories = createSelector([getAllowedRuns], runs => Object.values(runs.categories));
 
 export const getAllowedCategory = createCachedSelector(
   [getAllowedRuns, getCategoryId],
-  (runs, categoryId) => runs.categories[categoryId],
+  (runs, categoryId) => runs.categories[categoryId]
 )(getCategoryId);
 
 export const getAllowedCategoriesForGame = createSelector(
   [getAllowedCategories, getGameId],
-  (categories, gameId) => categories.filter(category => category.game_id == gameId),
+  (categories, gameId) => categories.filter(category => category.game_id == gameId)
 );

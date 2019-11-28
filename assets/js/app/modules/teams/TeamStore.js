@@ -24,19 +24,19 @@ export const getCaptainId = createCachedSelector([getTeam], team => team && team
 export const getTeamRunIds = createCachedSelector([getTeamRuns], runs => _.map(runs, 'id'))(getTeamId);
 
 export const getTeamEstimate = createCachedSelector([getTeamRuns], runs => _.sumBy(runs, 'est_seconds'))(
-  getTeamId,
+  getTeamId
 );
 
 export const getTeamActualGameTime = createCachedSelector([getTeamRuns], runs =>
-  _.sumBy(runs, 'actual_seconds'),
+  _.sumBy(runs, 'actual_seconds')
 )(getTeamId);
 
 export const getTeamActualTime = createCachedSelector([getTeam], team => team.actual_time_seconds)(getTeamId);
 
 export const getTeamStartTime = createCachedSelector([getTeam], team => timeFromISO(team.actual_start_time))(
-  getTeamId,
+  getTeamId
 );
 
 export const getTeamEndTime = createCachedSelector([getTeam], team => timeFromISO(team.actual_end_time))(
-  getTeamId,
+  getTeamId
 );

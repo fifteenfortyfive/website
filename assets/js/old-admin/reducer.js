@@ -48,7 +48,7 @@ const reducerActions = {
         acc[account.id] = account;
         return acc;
       },
-      {},
+      {}
     );
 
     return {
@@ -68,7 +68,7 @@ const reducerActions = {
         acc[event.id] = event;
         return acc;
       },
-      {},
+      {}
     );
 
     return {
@@ -88,7 +88,7 @@ const reducerActions = {
         acc[game.id] = game;
         return acc;
       },
-      {},
+      {}
     );
 
     return {

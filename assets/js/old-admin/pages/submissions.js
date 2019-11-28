@@ -26,7 +26,7 @@ const SubmissionsPage = ({ event, accounts, games, loading }) => {
     (acc, submission) => {
       return acc.concat(submission.run_submissions);
     },
-    [],
+    []
   );
 
   const gameColumns = _.flow([

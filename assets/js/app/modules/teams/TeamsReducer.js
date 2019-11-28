@@ -11,7 +11,7 @@ const actions = {
         acc[team.id] = team;
         return acc;
       },
-      {},
+      {}
     );
 
     return {

@@ -8,7 +8,7 @@ export function fetchAccounts() {
     },
     (dispatch, response) => {
       dispatch(receiveAccounts(response));
-    },
+    }
   );
 }
 

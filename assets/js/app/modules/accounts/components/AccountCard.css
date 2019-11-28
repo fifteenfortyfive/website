@@ -1,7 +1,6 @@
 @value colors: "../../../style/colors.css";
 @value gray-200 from colors;
 
-
 .container {
   padding: 0;
   overflow: hidden;

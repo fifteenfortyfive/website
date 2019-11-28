@@ -16,7 +16,7 @@ export function login(username, password) {
       const { session_id: sessionId } = response;
       Cookies.set('1545_session_id', sessionId, { expires: 31 });
       dispatch(loginSuccess(response.sessionId));
-    },
+    }
   );
 }
 
@@ -30,7 +30,7 @@ export function logout() {
     (dispatch, response) => {
       Cookies.remove('1545_session_id');
       dispatch(logoutSuccess());
-    },
+    }
   );
 }
 

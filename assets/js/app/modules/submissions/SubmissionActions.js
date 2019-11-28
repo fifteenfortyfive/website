@@ -8,7 +8,7 @@ export function fetchAllowedRuns(eventId) {
     },
     (dispatch, response) => {
       dispatch(receiveAllowedRuns(response.games, response.categories));
-    },
+    }
   );
 }
 
@@ -21,7 +21,7 @@ export function fetchRunnerSubmission(eventId) {
     (dispatch, response) => {
       dispatch(receiveRunnerSubmission(response.submission));
       dispatch(receiveRunSubmissions(response.runs));
-    },
+    }
   );
 }
 
@@ -40,7 +40,7 @@ export function createRunnerSubmission(eventId, { maxGames, maxTime, pairWith, a
     },
     (dispatch, response) => {
       dispatch(receiveRunnerSubmission(response.submission));
-    },
+    }
   );
 }
 
@@ -59,7 +59,7 @@ export function updateRunnerSubmission(eventId, { maxGames, maxTime, pairWith, a
     },
     (dispatch, response) => {
       dispatch(receiveRunnerSubmission(response.submission));
-    },
+    }
   );
 }
 
@@ -71,7 +71,7 @@ export function revokeRunnerSubmission(eventId) {
     },
     (dispatch, response) => {
       dispatch(receiveRunnerSubmission(response.submission));
-    },
+    }
   );
 }
 
@@ -83,7 +83,7 @@ export function unrevokeRunnerSubmission(eventId) {
     },
     (dispatch, response) => {
       dispatch(receiveRunnerSubmission(response.submission));
-    },
+    }
   );
 }
 
@@ -95,7 +95,7 @@ export function deleteRunnerSubmission(eventId) {
     },
     (dispatch, response) => {
       dispatch(removeAllSubmissions());
-    },
+    }
   );
 }
 
@@ -113,7 +113,7 @@ export function createRunSubmission(eventId, { gameId, categoryId, pb, est }) {
     },
     (dispatch, response) => {
       dispatch(receiveRunSubmissions([response.run]));
-    },
+    }
   );
 }
 
@@ -131,7 +131,7 @@ export function updateRunSubmission(eventId, { id, gameId, categoryId, pb, est }
     },
     (dispatch, response) => {
       dispatch(receiveRunSubmissions([response.run]));
-    },
+    }
   );
 }
 
@@ -143,7 +143,7 @@ export function deleteRunSubmission(eventId, id) {
     },
     (dispatch, response) => {
       dispatch(removeRunSubmission(id));
-    },
+    }
   );
 }
 

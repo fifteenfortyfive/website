@@ -13,5 +13,5 @@ render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.querySelector('#admin-container'),
+  document.querySelector('#admin-container')
 );

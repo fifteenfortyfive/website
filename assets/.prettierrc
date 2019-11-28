@@ -1,6 +1,6 @@
 {
-  trailingComma: "all",
-  singleQuote: true,
-  jsxBracketSameLine: true,
-  printWidth: 110,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "jsxBracketSameLine": true,
+  "printWidth": 110
 }

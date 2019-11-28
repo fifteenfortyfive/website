@@ -35,7 +35,7 @@ const RunTimeInput = props => {
       const value = RunDurationUtils.timeStringToSeconds(raw);
       onChange && onChange(value);
     },
-    [onChange],
+    [onChange]
   );
 
   const handleInput = useCallback(
@@ -44,7 +44,7 @@ const RunTimeInput = props => {
       const value = RunDurationUtils.timeStringToSeconds(raw);
       onInput && onInput(value);
     },
-    [onInput],
+    [onInput]
   );
 
   return (

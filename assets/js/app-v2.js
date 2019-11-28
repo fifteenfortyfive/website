@@ -14,5 +14,5 @@ render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.querySelector('#app-container'),
+  document.querySelector('#app-container')
 );

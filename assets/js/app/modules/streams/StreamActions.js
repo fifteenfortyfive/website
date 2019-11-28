@@ -9,7 +9,7 @@ export function fetchStreams() {
     },
     (dispatch, response) => {
       dispatch(receiveStreams(response.streams));
-    },
+    }
   );
 }
 
@@ -22,7 +22,7 @@ export function fetchStream(accountId) {
     },
     (dispatch, response) => {
       dispatch(receiveStreams({ [accountId]: response.stream }));
-    },
+    }
   );
 }
 

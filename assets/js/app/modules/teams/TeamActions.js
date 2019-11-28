@@ -13,7 +13,7 @@ export function fetchTeams(queryParams = {}) {
     },
     (dispatch, response) => {
       dispatch(receiveTeams(response.teams));
-    },
+    }
   );
 }
 
@@ -26,7 +26,7 @@ export function fetchTeam(teamId) {
     },
     (dispatch, response) => {
       dispatch(receiveTeams([response.team]));
-    },
+    }
   );
 }
 

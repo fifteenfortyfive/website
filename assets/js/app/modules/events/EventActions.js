@@ -12,7 +12,7 @@ export function fetchEvents(eventIds) {
     },
     (dispatch, response) => {
       dispatch(receiveEvents(response.events));
-    },
+    }
   );
 }
 

@@ -8,7 +8,7 @@ export const getAccounts = createSelector([getAccountsState], accounts => Object
 
 export const getAccount = createCachedSelector(
   [getAccountsState, getAccountId],
-  (accounts, accountId) => accounts[accountId],
+  (accounts, accountId) => accounts[accountId]
 )(getAccountId);
 
 export const getAccountIds = createSelector([getAccountsState], accounts => Object.keys(accounts));

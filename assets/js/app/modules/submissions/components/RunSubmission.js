@@ -34,14 +34,14 @@ const RunSubmission = props => {
       onSave(runData);
       setEditing(false);
     },
-    [onSave],
+    [onSave]
   );
   const handleDelete = useCallback(
     runData => {
       onDelete(runData);
       setEditing(false);
     },
-    [onDelete],
+    [onDelete]
   );
   const handleCancel = useCallback(() => setEditing(false));
 

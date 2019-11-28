@@ -18,7 +18,7 @@ const actions = {
         acc[game.id] = game;
         return acc;
       },
-      {},
+      {}
     );
     const categoriesById = _.reduce(
       categories,
@@ -26,7 +26,7 @@ const actions = {
         acc[category.id] = category;
         return acc;
       },
-      {},
+      {}
     );
 
     return {
@@ -56,7 +56,7 @@ const actions = {
         acc[run.id] = run;
         return acc;
       },
-      {},
+      {}
     );
 
     return {

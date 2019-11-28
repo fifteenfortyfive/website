@@ -13,7 +13,7 @@ const actions = {
         acc[run.id] = run;
         return acc;
       },
-      {},
+      {}
     );
 
     return {

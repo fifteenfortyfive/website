@@ -7,7 +7,7 @@
     "build": "webpack --mode production",
     "watch": "webpack --watch --mode development",
     "analyze": "webpack --profile --json > webpack-stats.json",
-    "fix:prettier": "prettier --write \"**/*.js\"",
+    "fix:prettier": "prettier --write \"**/*.{js,jsx,css,ts,tsx}\"",
     "fix": "yarn fix:prettier"
   },
   "dependencies": {

@@ -50,7 +50,7 @@ const App = props => {
       if (needsAuth && !isLoggedIn) route(Routes.LOGIN({ redirect: url }), true);
       if (needsAdmin && !isAdmin) route(Routes.LOGIN({ redirect: url }), true);
     },
-    [isLoggedIn, currentUser],
+    [isLoggedIn, currentUser]
   );
 
   return (

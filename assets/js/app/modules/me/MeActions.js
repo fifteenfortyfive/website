@@ -9,7 +9,7 @@ export function fetchMe() {
     },
     (dispatch, response) => {
       dispatch(receiveMe(response.account));
-    },
+    }
   );
 }
 
@@ -25,7 +25,7 @@ export function persistMe(account) {
     },
     (dispatch, response) => {
       dispatch(receiveMe(response.account));
-    },
+    }
   );
 }
 
@@ -42,7 +42,7 @@ export function uploadAvatar(avatar) {
     },
     (dispatch, response) => {
       dispatch(fetchMe());
-    },
+    }
   );
 }
 
@@ -55,7 +55,7 @@ export function fetchPreferences() {
     },
     (dispatch, response) => {
       dispatch(receivePreferences(response.account_preferences, response.descriptions));
-    },
+    }
   );
 }
 
@@ -69,7 +69,7 @@ export function persistPreferences(preferences) {
     },
     (dispatch, response) => {
       // nothing to do
-    },
+    }
   );
 }
 

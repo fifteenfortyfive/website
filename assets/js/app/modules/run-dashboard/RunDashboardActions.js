@@ -13,7 +13,7 @@ export function fetchRuns(eventId, accountId) {
     },
     (dispatch, response) => {
       dispatch(receiveDashboardRuns(response.runs));
-    },
+    }
   );
 }
 
@@ -26,7 +26,7 @@ export function startRun(eventId, runId) {
     },
     (dispatch, response) => {
       dispatch(receiveDashboardRuns([response.run]));
-    },
+    }
   );
 }
 
@@ -39,7 +39,7 @@ export function finishRun(eventId, runId) {
     },
     (dispatch, response) => {
       dispatch(receiveDashboardRuns([response.run]));
-    },
+    }
   );
 }
 
@@ -52,7 +52,7 @@ export function resetRun(eventId, runId) {
     },
     (dispatch, response) => {
       dispatch(receiveDashboardRuns([response.run]));
-    },
+    }
   );
 }
 
@@ -65,7 +65,7 @@ export function resumeRun(eventId, runId) {
     },
     (dispatch, response) => {
       dispatch(receiveDashboardRuns([response.run]));
-    },
+    }
   );
 }
 

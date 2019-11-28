@@ -13,9 +13,9 @@ export const getEvents = createSelector([getEventsState], eventsState => Object.
 export const getEventIds = createSelector([getEventsState], eventsState => Object.keys(eventsState));
 
 export const getSortedEvents = createSelector([getEvents], events =>
-  _.orderBy(events, ['start_time'], ['desc']),
+  _.orderBy(events, ['start_time'], ['desc'])
 );
 
 export const getEventTeams = createCachedSelector([getEventId, getTeams], (eventId, teams) =>
-  _.filter(teams, t => t.event_id == eventId),
+  _.filter(teams, t => t.event_id == eventId)
 )(getEventId);

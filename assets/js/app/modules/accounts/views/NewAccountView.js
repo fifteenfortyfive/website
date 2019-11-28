@@ -54,7 +54,7 @@ const NewAccountView = props => {
         password,
         discordUsername,
         discordDiscriminator,
-      }),
+      })
     )
       .then(() => {
         setSubmitting(false);

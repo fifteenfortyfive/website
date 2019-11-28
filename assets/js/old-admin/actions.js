@@ -18,7 +18,7 @@ export function fetchAccounts() {
     },
     (dispatch, response) => {
       dispatch(receiveAccounts(response));
-    },
+    }
   );
 }
 
@@ -31,7 +31,7 @@ export function fetchGames() {
     },
     (dispatch, response) => {
       dispatch(receiveGames(response));
-    },
+    }
   );
 }
 
@@ -44,7 +44,7 @@ export function fetchEvents() {
     },
     (dispatch, response) => {
       dispatch(receiveEvents(response));
-    },
+    }
   );
 }
 
