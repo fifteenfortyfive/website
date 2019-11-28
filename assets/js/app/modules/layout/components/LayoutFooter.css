@@ -1,4 +1,4 @@
-@value colors: '../../style/colors.css';
+@value colors: '../../../style/colors.css';
 @value gray-300 from colors;
 
 .footer {

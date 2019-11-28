@@ -5,10 +5,10 @@ import {route} from 'preact-router';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import * as AuthActions from '../../modules/auth/AuthActions';
-import * as AuthStore from '../../modules/auth/AuthStore';
-import * as MeActions from '../../modules/me/MeActions';
-import * as MeStore from '../../modules/me/MeStore';
+import * as AuthActions from '../../auth/AuthActions';
+import * as AuthStore from '../../auth/AuthStore';
+import * as MeActions from '../../me/MeActions';
+import * as MeStore from '../../me/MeStore';
 
 import {
   Navbar,
