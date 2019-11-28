@@ -4,20 +4,20 @@ import {useDispatch, useSelector} from 'react-redux';
 import { Router, Route, route } from 'preact-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import * as AuthStore from './selectors/auth';
-import * as MeStore from './selectors/me';
-import * as AuthActions from './actions/auth';
 import * as MeActions from './actions/me';
+import * as MeStore from './selectors/me';
+import * as AuthActions from './modules/auth/AuthActions';
+import * as AuthStore from './modules/auth/AuthStore';
 
 import AdminRouter from './admin/router';
 import AccountView from './modules/accounts/views/AccountView';
 import NewAccountView from './modules/accounts/views/NewAccountView';
+import LoginPage from './modules/auth/views/LoginView';
 import StreamsView from './modules/streams/views/StreamsView';
 import MePage from './pages/me-page';
 import TeamPage from './pages/team-page';
 import EventPage from './pages/event-page';
 import EventsPage from './pages/events-page';
-import LoginPage from './pages/login-page';
 import Index from './static-pages/index';
 import Volunteer from './static-pages/volunteer';
 import Submit from './modules/submissions/components/submit';

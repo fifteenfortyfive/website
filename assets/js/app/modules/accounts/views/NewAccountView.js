@@ -3,7 +3,7 @@ import {useCallback, useEffect, useState} from 'preact/hooks';
 import {useDispatch, useSelector} from 'react-redux';
 import {route} from 'preact-router';
 
-import * as AuthStore from '../../../selectors/auth';
+import * as AuthStore from '../../auth/AuthStore';
 import * as AccountActions from '../AccountActions';
 import Layout from '../../../pages/layout';
 

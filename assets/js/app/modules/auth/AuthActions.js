@@ -1,4 +1,4 @@
-import { commonThunk, denulled } from '../actions';
+import { commonThunk, denulled } from '../../actions';
 import * as Cookies from 'js-cookie';
 
 export function login(username, password) {

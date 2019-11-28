@@ -4,24 +4,24 @@ import { connect } from 'react-redux';
 import { route } from 'preact-router';
 import _ from 'lodash';
 
-import * as AuthActions from '../actions/auth';
-import * as AuthStore from '../selectors/auth';
+import * as AuthActions from '../AuthActions';
+import * as AuthStore from '../AuthStore';
 
 import {
   Columns,
   Column
 } from 'bloomer';
-import Button from '../uikit/button';
-import Header from '../uikit/header';
-import Link from '../uikit/link';
-import PasswordInput from '../uikit/password-input';
-import TextInput from '../uikit/text-input';
-import Layout from './layout';
+import Button from '../../../uikit/button';
+import Header from '../../../uikit/header';
+import Link from '../../../uikit/link';
+import PasswordInput from '../../../uikit/password-input';
+import TextInput from '../../../uikit/text-input';
+import Layout from '../../../pages/layout';
 
-import { Routes } from '../constants';
+import { Routes } from '../../../constants';
 
 
-const LoginPage = (props) => {
+const LoginView = (props) => {
   const {isLoggedIn, redirectRoute, dispatch} = props;
 
   const [username, setUsername] = useState();
@@ -88,4 +88,4 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-)(LoginPage);
+)(LoginView);

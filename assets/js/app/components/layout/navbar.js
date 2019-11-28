@@ -5,9 +5,9 @@ import {route} from 'preact-router';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import * as AuthActions from '../../actions/auth';
+import * as AuthActions from '../../modules/auth/AuthActions';
+import * as AuthStore from '../../modules/auth/AuthStore';
 import * as MeActions from '../../actions/me';
-import * as AuthStore from '../../selectors/auth';
 import * as MeStore from '../../selectors/me';
 
 import {

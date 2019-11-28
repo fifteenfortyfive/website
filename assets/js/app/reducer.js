@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import admin from './admin/reducer';
 import accounts from './modules/accounts/AccountsReducer';
 import streams from './modules/streams/StreamsReducer';
-import auth from './reducers/auth';
+import auth from './modules/auth/AuthReducer';
 import dashboard from './reducers/dashboard';
 import events from './reducers/events';
 import fetching from './reducers/fetching';
