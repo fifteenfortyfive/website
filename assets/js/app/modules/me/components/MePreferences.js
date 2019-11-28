@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';
 
-import * as MeActions from '../../actions/me';
+import * as MeActions from '../MeActions';
 
-import Button from '../../uikit/button';
-import Checkbox from '../../uikit/checkbox';
+import Button from '../../../uikit/button';
+import Checkbox from '../../../uikit/checkbox';
 
-class Preferences extends Component {
+class MePreferences extends Component {
   componentDidMount() {
     const {dispatch} = this.props;
     dispatch(MeActions.fetchPreferences());
@@ -110,6 +110,6 @@ export default connect((state) => ({
   descriptions: state.me.preferenceDescriptions,
   loading: state.fetching['@me.account_preferences'],
   submitting: state.fetching['sending.@me.account_preferences']
-}), (dispatch) => ({dispatch}))(Preferences);
+}), (dispatch) => ({dispatch}))(MePreferences);
 
 

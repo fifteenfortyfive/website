@@ -7,8 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import * as AuthActions from '../../modules/auth/AuthActions';
 import * as AuthStore from '../../modules/auth/AuthStore';
-import * as MeActions from '../../actions/me';
-import * as MeStore from '../../selectors/me';
+import * as MeActions from '../../modules/me/MeActions';
+import * as MeStore from '../../modules/me/MeStore';
 
 import {
   Navbar,

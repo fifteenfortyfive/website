@@ -3,18 +3,18 @@ import { connect } from 'react-redux';
 import { route } from 'preact-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import * as StreamActions from '../modules/streams/StreamActions';
-import * as MeActions from '../actions/me';
-import Edit from '../components/me/edit';
-import Preferences from '../components/me/preferences';
-import RunDashboard from '../components/me/run-dashboard';
-import * as AccountActions from '../modules/accounts/AccountActions';
-import AccountCard from '../modules/accounts/components/AccountCard';
-import RunList from '../modules/accounts/components/RunList';
-import Button from '../uikit/button';
-import Layout from './layout';
+import Button from '../../../uikit/button';
+import Layout from '../../../pages/layout';
+import * as StreamActions from '../../streams/StreamActions';
+import * as AccountActions from '../../accounts/AccountActions';
+import AccountCard from '../../accounts/components/AccountCard';
+import RunList from '../../accounts/components/RunList';
+import * as MeActions from '../MeActions';
+import Edit from '../components/MeEdit';
+import Preferences from '../components/MePreferences';
+import RunDashboard from '../components/MeRunDashboard';
 
-import { Routes } from '../constants';
+import { Routes } from '../../../constants';
 
 const Pages = {
   SHOW: 'show',
@@ -23,7 +23,7 @@ const Pages = {
   RUN_DASHBOARD: 'run-dashboard'
 };
 
-class MePage extends Component {
+class MeView extends Component {
   constructor(props) {
     super(props);
   }
@@ -148,9 +148,6 @@ const mapStateToProps = (state) => {
   };
 }
 
-const mapDispatchToProps = (dispatch) => ({dispatch});
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(MePage);
+  mapStateToProps
+)(MeView);

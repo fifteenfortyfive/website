@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';
 
-import * as MeActions from '../../actions/me';
+import * as MeActions from '../MeActions';
 
-import Avatar from '../../uikit/avatar';
-import Button from '../../uikit/button';
-import Checkbox from '../../uikit/checkbox';
-import TextInput from '../../uikit/text-input';
-import PasswordInput from '../../uikit/password-input';
+import Avatar from '../../../uikit/avatar';
+import Button from '../../../uikit/button';
+import Checkbox from '../../../uikit/checkbox';
+import TextInput from '../../../uikit/text-input';
+import PasswordInput from '../../../uikit/password-input';
 
-class Edit extends Component {
+class MeEdit extends Component {
   constructor(props) {
     super(props);
 
@@ -217,6 +217,6 @@ export default connect((state) => ({
   loading: state.fetching['@me.account'],
   submitting: state.fetching['sending.@me.account'],
   submittingAvatar: state.fetching['sending.@me.avatar']
-}), (dispatch) => ({dispatch}))(Edit);
+}), (dispatch) => ({dispatch}))(MeEdit);
 
 

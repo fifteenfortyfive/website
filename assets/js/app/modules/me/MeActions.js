@@ -1,4 +1,4 @@
-import { commonThunk, multipartThunk, denulled } from '../actions';
+import { commonThunk, multipartThunk, denulled } from '../../actions';
 
 export function fetchMe() {
   return commonThunk({

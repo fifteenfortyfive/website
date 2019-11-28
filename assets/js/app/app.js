@@ -4,17 +4,17 @@ import {useDispatch, useSelector} from 'react-redux';
 import { Router, Route, route } from 'preact-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import * as MeActions from './actions/me';
-import * as MeStore from './selectors/me';
 import * as AuthActions from './modules/auth/AuthActions';
 import * as AuthStore from './modules/auth/AuthStore';
+import * as MeActions from './modules/me/MeActions';
+import * as MeStore from './modules/me/MeStore';
 
 import AdminRouter from './admin/router';
 import AccountView from './modules/accounts/views/AccountView';
 import NewAccountView from './modules/accounts/views/NewAccountView';
 import LoginPage from './modules/auth/views/LoginView';
 import StreamsView from './modules/streams/views/StreamsView';
-import MePage from './pages/me-page';
+import MeView from './modules/me/views/MeView';
 import TeamPage from './pages/team-page';
 import EventPage from './pages/event-page';
 import EventsPage from './pages/events-page';
@@ -62,7 +62,7 @@ const App = (props) => {
       <AccountView path={Routes.ACCOUNT(":accountId")} />
       <StreamsView path={Routes.STREAMS} />
 
-      <MePage path="/@me/:page?" eventId={CURRENT_EVENT_ID} needsAuth />
+      <MeView path="/@me/:page?" eventId={CURRENT_EVENT_ID} needsAuth />
 
       <EventsPage path={Routes.EVENTS} />
       <EventPage path={Routes.EVENT(":eventId")} />
