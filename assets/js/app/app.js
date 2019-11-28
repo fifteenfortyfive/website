@@ -12,7 +12,7 @@ import * as MeStore from './modules/me/MeStore';
 import AdminRouter from './admin/router';
 import AccountView from './modules/accounts/views/AccountView';
 import NewAccountView from './modules/accounts/views/NewAccountView';
-import LoginPage from './modules/auth/views/LoginView';
+import LoginView from './modules/auth/views/LoginView';
 import MeView from './modules/me/views/MeView';
 import StreamsView from './modules/streams/views/StreamsView';
 import TeamView from './modules/teams/views/TeamView';
@@ -55,7 +55,7 @@ const App = (props) => {
     <Router onChange={handleRouteChange}>
       <Index path={Routes.HOME} exact />
       <Volunteer path={Routes.VOLUNTEER} />
-      <LoginPage path={Routes.LOGIN()} />
+      <LoginView path={Routes.LOGIN()} />
 
       <TeamView path={Routes.TEAM(":teamId")} />
       <NewAccountView path={Routes.ACCOUNTS_NEW} />
