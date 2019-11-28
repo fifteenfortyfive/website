@@ -8,7 +8,7 @@ import events from './modules/events/EventsReducer';
 import games from './modules/games/GamesReducer';
 import me from './modules/me/MeReducer';
 import streams from './modules/streams/StreamsReducer';
-import submissions from './modules/submissions/reducer';
+import submissions from './modules/submissions/SubmissionsReducer';
 import dashboard from './modules/run-dashboard/RunDashboardReducer';
 import runs from './modules/runs/RunsReducer';
 import teams from './modules/teams/TeamsReducer';

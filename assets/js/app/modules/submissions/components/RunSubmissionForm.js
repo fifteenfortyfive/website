@@ -2,7 +2,7 @@ import {h} from 'preact';
 import {useCallback, useEffect, useState} from 'preact/hooks';
 import {useSelector} from 'react-redux';
 
-import * as SubmissionsStore from '../selectors';
+import * as SubmissionStore from '../SubmissionStore';
 
 import Button from '../../../uikit/button';
 import ButtonGroup from '../../../uikit/button-group';
@@ -35,10 +35,10 @@ const RunSubmissionForm = (props) => {
   const [est, setEstimate] = useState(est_seconds);
   const [isValid, setValid] = useState(false);
   const categories = useSelector((state) => {
-    const allowed = SubmissionsStore.getAllowedCategories(state);
+    const allowed = SubmissionStore.getAllowedCategories(state);
 
     return allowed.map((category) => {
-      const game = SubmissionsStore.getAllowedGame(state, category.game_id);
+      const game = SubmissionStore.getAllowedGame(state, category.game_id);
       return {
         name: `${game && game.name} - ${category.name}`,
         value: category.id
@@ -47,7 +47,7 @@ const RunSubmissionForm = (props) => {
   });
   const gameId = useSelector((state) => {
     if(selectedCategoryId) {
-      const category = SubmissionsStore.getAllowedCategory(state, selectedCategoryId);
+      const category = SubmissionStore.getAllowedCategory(state, selectedCategoryId);
       return category && category.game_id;
     } else {
       return null;

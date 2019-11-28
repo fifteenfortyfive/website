@@ -3,8 +3,8 @@ import {useCallback, useState} from 'preact/hooks';
 import {useSelector} from 'react-redux';
 import classNames from 'classnames';
 
-import * as SubmissionsStore from '../selectors';
-import RunSubmissionForm from './run-submission-form';
+import * as SubmissionStore from '../SubmissionStore';
+import RunSubmissionForm from './RunSubmissionForm';
 
 import {
   Column,
@@ -16,7 +16,7 @@ import Select from '../../../uikit/select';
 import Text from '../../../uikit/text';
 
 import {runTime} from '../../../util';
-import style from './run-submission.css';
+import style from './RunSubmission.css';
 
 const RunSubmission = (props) => {
   const {
@@ -35,8 +35,8 @@ const RunSubmission = (props) => {
 
   const [isEditing, setEditing] = useState(false);
   const submissionName = useSelector((state) => {
-    const category = SubmissionsStore.getAllowedCategory(state, category_id);
-    const game = SubmissionsStore.getAllowedGame(state, game_id);
+    const category = SubmissionStore.getAllowedCategory(state, category_id);
+    const game = SubmissionStore.getAllowedGame(state, game_id);
     if(category == null || game == null) return null;
 
     return `${game.name} - ${category.name}`;

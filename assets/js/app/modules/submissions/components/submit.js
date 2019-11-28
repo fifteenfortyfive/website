@@ -7,10 +7,10 @@ import {useAuth} from '../../../hooks/useAuth';
 import * as EventActions from '../../events/EventActions';
 import * as EventStore from '../../events/EventStore';
 
-import * as SubmissionsActions from '../actions';
-import * as SubmissionsStore from '../selectors';
-import RunSubmission from './run-submission';
-import RunSubmissionForm from './run-submission-form';
+import * as SubmissionActions from '../SubmissionActions';
+import * as SubmissionStore from '../SubmissionStore';
+import RunSubmission from './RunSubmission';
+import RunSubmissionForm from './RunSubmissionForm';
 
 import {
   Column,
@@ -25,7 +25,7 @@ import Text from '../../../uikit/text';
 import TextInput from '../../../uikit/text-input';
 
 import {Routes} from '../../../constants';
-import style from './submit.css';
+import style from './Submit.css';
 
 const NewSubmission = (props) => {
   const {eventId} = props;
@@ -37,13 +37,13 @@ const NewSubmission = (props) => {
 
   useEffect(() => {
     dispatch(EventActions.fetchEvent(eventId));
-    dispatch(SubmissionsActions.fetchAllowedRuns(eventId));
-    dispatch(SubmissionsActions.fetchRunnerSubmission(eventId));
+    dispatch(SubmissionActions.fetchAllowedRuns(eventId));
+    dispatch(SubmissionActions.fetchRunnerSubmission(eventId));
   }, [eventId]);
 
   const event = useSelector((state) => EventStore.getEvent(state, {eventId}));
-  const runner = useSelector(SubmissionsStore.getRunnerSubmission);
-  const runs = useSelector(SubmissionsStore.getRunSubmissions);
+  const runner = useSelector(SubmissionStore.getRunnerSubmission);
+  const runs = useSelector(SubmissionStore.getRunSubmissions);
 
   useEffect(() => {
     if(event != null && event.state != "signups open") {
@@ -52,7 +52,7 @@ const NewSubmission = (props) => {
   }, [event]);
 
   const handleUpdateRun = useCallback((runData) => {
-    dispatch(SubmissionsActions.updateRunSubmission(eventId, runData));
+    dispatch(SubmissionActions.updateRunSubmission(eventId, runData));
   }, [dispatch, eventId]);
 
   const handleCancelEdit = useCallback(() => {
@@ -61,12 +61,12 @@ const NewSubmission = (props) => {
 
   const handleDeleteRun = useCallback((runData) => {
     if(runData.id) {
-      dispatch(SubmissionsActions.deleteRunSubmission(eventId, runData.id));
+      dispatch(SubmissionActions.deleteRunSubmission(eventId, runData.id));
     }
   }, [dispatch]);
 
   const handleCreateRun = useCallback((runData) => {
-    dispatch(SubmissionsActions.createRunSubmission(eventId, runData));
+    dispatch(SubmissionActions.createRunSubmission(eventId, runData));
     setShowNewRun(false);
   }, [dispatch, eventId]);
 
@@ -75,15 +75,15 @@ const NewSubmission = (props) => {
   });
 
   const revokeSubmission = useCallback(() => {
-    dispatch(SubmissionsActions.revokeRunnerSubmission(eventId));
+    dispatch(SubmissionActions.revokeRunnerSubmission(eventId));
   }, [eventId]);
 
   const unrevokeSubmission = useCallback(() => {
-    dispatch(SubmissionsActions.unrevokeRunnerSubmission(eventId));
+    dispatch(SubmissionActions.unrevokeRunnerSubmission(eventId));
   }, [eventId]);
 
   const deleteSubmission = useCallback(() => {
-    dispatch(SubmissionsActions.deleteRunnerSubmission(eventId));
+    dispatch(SubmissionActions.deleteRunnerSubmission(eventId));
   }, [eventId]);
 
   if(event == null) return <Layout>Loading</Layout>;

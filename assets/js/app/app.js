@@ -20,7 +20,7 @@ import EventView from './modules/events/views/EventView';
 import EventsView from './modules/events/views/EventsView';
 import Index from './static-pages/index';
 import Volunteer from './static-pages/volunteer';
-import Submit from './modules/submissions/components/submit';
+import Submit from './modules/submissions/components/Submit';
 import NotFoundPage from './pages/not-found-page';
 
 import {CURRENT_EVENT_ID, Routes} from './constants';
