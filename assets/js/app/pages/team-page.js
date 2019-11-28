@@ -2,7 +2,7 @@ import { h, Component } from 'preact';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import * as RunActions from '../actions/runs';
+import * as RunActions from '../modules/runs/RunActions';
 import * as FetchActions from '../actions/fetch';
 import * as TeamActions from '../actions/teams';
 import * as FetchStore from '../selectors/fetch';

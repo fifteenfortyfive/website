@@ -2,7 +2,7 @@ import {createSelector} from 'reselect';
 import createCachedSelector from 're-reselect';
 import _ from 'lodash';
 
-import {getRuns} from './runs';
+import {getRuns} from '../modules/runs/RunStore';
 
 import {timeFromISO} from '../util';
 

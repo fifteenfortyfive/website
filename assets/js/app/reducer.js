@@ -7,10 +7,10 @@ import auth from './modules/auth/AuthReducer';
 import me from './modules/me/MeReducer';
 import streams from './modules/streams/StreamsReducer';
 import dashboard from './modules/run-dashboard/RunDashboardReducer';
+import runs from './modules/runs/RunsReducer';
 import events from './reducers/events';
 import fetching from './reducers/fetching';
 import games from './reducers/games';
-import runs from './reducers/runs';
 import submissions from './modules/submissions/reducer';
 import teams from './reducers/teams';
 
