@@ -2,9 +2,9 @@ import {createSelector} from 'reselect';
 import createCachedSelector from 're-reselect';
 import _ from 'lodash';
 
-import {getRuns} from '../modules/runs/RunStore';
+import {getRuns} from '../runs/RunStore';
 
-import {timeFromISO} from '../util';
+import {timeFromISO} from '../../util';
 
 
 export const getTeamsState = (state) => state.teams;

@@ -13,9 +13,9 @@ import AdminRouter from './admin/router';
 import AccountView from './modules/accounts/views/AccountView';
 import NewAccountView from './modules/accounts/views/NewAccountView';
 import LoginPage from './modules/auth/views/LoginView';
-import StreamsView from './modules/streams/views/StreamsView';
 import MeView from './modules/me/views/MeView';
-import TeamPage from './pages/team-page';
+import StreamsView from './modules/streams/views/StreamsView';
+import TeamView from './modules/teams/views/TeamView';
 import EventPage from './pages/event-page';
 import EventsPage from './pages/events-page';
 import Index from './static-pages/index';
@@ -57,7 +57,7 @@ const App = (props) => {
       <Volunteer path={Routes.VOLUNTEER} />
       <LoginPage path={Routes.LOGIN()} />
 
-      <TeamPage path={Routes.TEAM(":teamId")} />
+      <TeamView path={Routes.TEAM(":teamId")} />
       <NewAccountView path={Routes.ACCOUNTS_NEW} />
       <AccountView path={Routes.ACCOUNT(":accountId")} />
       <StreamsView path={Routes.STREAMS} />

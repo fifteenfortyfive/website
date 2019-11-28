@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import _ from 'lodash';
 
 import * as EventActions from '../actions/events';
-import * as TeamActions from '../actions/teams';
+import * as TeamActions from '../modules/teams/TeamActions';
 import * as EventStore from '../selectors/events';
 import * as FetchStore from '../selectors/fetch';
 

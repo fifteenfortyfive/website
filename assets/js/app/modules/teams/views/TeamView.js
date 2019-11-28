@@ -2,23 +2,23 @@ import { h, Component } from 'preact';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import * as RunActions from '../modules/runs/RunActions';
-import * as FetchActions from '../actions/fetch';
-import * as TeamActions from '../actions/teams';
-import * as FetchStore from '../selectors/fetch';
-import * as TeamStore from '../selectors/teams';
-import * as AccountActions from '../modules/accounts/AccountActions';
-import * as AccountStore from '../modules/accounts/AccountStore';
-import RunList from '../modules/accounts/components/RunList';
-import Avatar from '../uikit/avatar';
-import Link from '../uikit/link';
-import Layout from './layout';
+import * as FetchActions from '../../../actions/fetch';
+import Avatar from '../../../uikit/avatar';
+import Link from '../../../uikit/link';
+import * as FetchStore from '../../../selectors/fetch';
+import * as RunActions from '../../runs/RunActions';
+import * as AccountActions from '../../accounts/AccountActions';
+import * as AccountStore from '../../accounts/AccountStore';
+import RunList from '../../accounts/components/RunList';
+import * as TeamActions from '../TeamActions';
+import * as TeamStore from '../TeamStore';
+import Layout from '../../../pages/layout';
 
-import {Routes} from '../constants';
-import {runTime} from '../util';
-import style from './team-page.css';
+import {Routes} from '../../../constants';
+import {runTime} from '../../../util';
+import style from './TeamView.css';
 
-class TeamPage extends Component {
+class TeamView extends Component {
   componentDidMount() {
     const {captainId, teamId, dispatch} = this.props;
     dispatch(TeamActions.fetchTeam(teamId));
@@ -128,4 +128,4 @@ const mapStateToProps = (state, props) => {
 
 export default connect(
   mapStateToProps,
-)(TeamPage);
+)(TeamView);
