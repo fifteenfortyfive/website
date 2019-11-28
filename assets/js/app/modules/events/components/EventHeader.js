@@ -1,10 +1,10 @@
 import {h} from 'preact';
 
 import {Columns, Column} from 'bloomer';
-import Header from '../../uikit/header';
-import Text from '../../uikit/text';
+import Header from '../../../uikit/header';
+import Text from '../../../uikit/text';
 
-import {fullDate} from '../../util';
+import {fullDate} from '../../../util';
 
 const EventHeader = (props) => {
   const {

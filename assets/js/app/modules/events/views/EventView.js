@@ -2,23 +2,23 @@ import {h, Component} from 'preact';
 import {connect} from 'react-redux';
 import _ from 'lodash';
 
-import * as EventActions from '../actions/events';
-import * as TeamActions from '../modules/teams/TeamActions';
-import * as EventStore from '../selectors/events';
-import * as FetchStore from '../selectors/fetch';
+import * as FetchStore from '../../../selectors/fetch';
+import * as TeamActions from '../../teams/TeamActions';
+import * as EventActions from '../EventActions';
+import * as EventStore from '../EventStore';
+import EventHeader from '../components/EventHeader';
+import Team from '../components/EventTeam';
 
 import {
   Columns,
   Column,
   Heading,
 } from 'bloomer';
-import EventHeader from '../components/events/event-header';
-import Team from '../components/events/team';
-import Header from '../uikit/header';
-import Text from '../uikit/text';
-import Layout from './layout';
+import Header from '../../../uikit/header';
+import Text from '../../../uikit/text';
+import Layout from '../../../pages/layout';
 
-class EventPage extends Component {
+class EventView extends Component {
   componentDidMount() {
     const { eventId, dispatch } = this.props;
     this.fetchEvent();
@@ -72,4 +72,4 @@ function mapStateToProps(state, props) {
 
 export default connect(
   mapStateToProps
-)(EventPage);
+)(EventView);

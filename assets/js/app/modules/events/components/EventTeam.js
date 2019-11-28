@@ -2,15 +2,15 @@ import {h} from 'preact';
 import {connect} from 'react-redux';
 import _ from 'lodash';
 
-import * as EventStore from '../../selectors/events';
+import * as EventStore from '../EventStore';
 
-import Header from '../../uikit/header';
-import Link from '../../uikit/link';
-import Text from '../../uikit/text';
+import Header from '../../../uikit/header';
+import Link from '../../../uikit/link';
+import Text from '../../../uikit/text';
 
-import {Routes} from '../../constants';
+import {Routes} from '../../../constants';
 
-const Team = (props) => {
+const EventTeam = (props) => {
   const {
     team
   } = props;
@@ -43,4 +43,4 @@ const Team = (props) => {
   );
 };
 
-export default Team;
+export default EventTeam;

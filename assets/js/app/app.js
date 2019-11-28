@@ -16,8 +16,8 @@ import LoginPage from './modules/auth/views/LoginView';
 import MeView from './modules/me/views/MeView';
 import StreamsView from './modules/streams/views/StreamsView';
 import TeamView from './modules/teams/views/TeamView';
-import EventPage from './pages/event-page';
-import EventsPage from './pages/events-page';
+import EventView from './modules/events/views/EventView';
+import EventsView from './modules/events/views/EventsView';
 import Index from './static-pages/index';
 import Volunteer from './static-pages/volunteer';
 import Submit from './modules/submissions/components/submit';
@@ -64,8 +64,8 @@ const App = (props) => {
 
       <MeView path="/@me/:page?" eventId={CURRENT_EVENT_ID} needsAuth />
 
-      <EventsPage path={Routes.EVENTS} />
-      <EventPage path={Routes.EVENT(":eventId")} />
+      <EventsView path={Routes.EVENTS} />
+      <EventView path={Routes.EVENT(":eventId")} />
       <Submit path={Routes.EVENT_SUBMIT_RUN(":eventId")} needsAuth />
 
       <AdminRouter path={Routes.ADMIN_BASE} needsAdmin />

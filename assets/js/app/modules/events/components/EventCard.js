@@ -1,13 +1,13 @@
 import {h} from 'preact';
 import {connect} from 'react-redux';
 
-import * as EventStore from '../../selectors/events';
-import Header from '../../uikit/header';
-import Link from '../../uikit/link';
-import Text from '../../uikit/text';
+import Header from '../../../uikit/header';
+import Link from '../../../uikit/link';
+import Text from '../../../uikit/text';
+import * as EventStore from '../EventStore';
 
-import {Routes} from '../../constants';
-import style from './event-card.css';
+import {Routes} from '../../../constants';
+import style from './EventCard.css';
 
 
 const EventCard = (props) => {

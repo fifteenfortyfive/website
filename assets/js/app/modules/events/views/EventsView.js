@@ -2,14 +2,14 @@ import { h, Component } from 'preact';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import * as EventActions from '../actions/events';
-import * as EventStore from '../selectors/events';
-import EventCard from '../components/events/event-card';
-import Header from '../uikit/header';
-import Layout from './layout';
+import Header from '../../../uikit/header';
+import Layout from '../../../pages/layout';
+import * as EventActions from '../EventActions';
+import * as EventStore from '../EventStore';
+import EventCard from '../components/EventCard';
 
 
-class EventsPage extends Component {
+class EventsView extends Component {
   componentDidMount() {
     const {dispatch} = this.props;
     dispatch(EventActions.fetchEvents());
@@ -36,4 +36,4 @@ const mapStateToProps = (state, props) => {
 
 export default connect(
   mapStateToProps,
-)(EventsPage);
+)(EventsView);

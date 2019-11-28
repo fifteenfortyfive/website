@@ -4,8 +4,8 @@ import {useCallback, useEffect, useState} from 'preact/hooks';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {useAuth} from '../../../hooks/useAuth';
-import * as EventActions from '../../../actions/events';
-import * as EventStore from '../../../selectors/events';
+import * as EventActions from '../../events/EventActions';
+import * as EventStore from '../../events/EventStore';
 
 import * as SubmissionsActions from '../actions';
 import * as SubmissionsStore from '../selectors';
