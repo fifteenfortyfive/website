@@ -1,8 +1,8 @@
 import {h} from 'preact';
 import classNames from 'classnames';
 
-import { ASSETS_URL } from '../constants';
-import style from './avatar.css';
+import { ASSETS_URL } from '../Constants';
+import style from './Avatar.css';
 
 const Avatar = (props) => {
   const {

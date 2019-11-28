@@ -1,7 +1,7 @@
 import {h} from 'preact';
 import classNames from 'classnames';
 
-import style from './brand-logo.css';
+import style from './BrandLogo.css';
 
 const BrandLogo = (props) => {
   const {

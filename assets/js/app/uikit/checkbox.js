@@ -2,9 +2,9 @@ import { h } from 'preact';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import Header from './header';
+import Header from './Header';
 
-import style from './checkbox.css';
+import style from './Checkbox.css';
 
 const Checkbox = (props) => {
   const {

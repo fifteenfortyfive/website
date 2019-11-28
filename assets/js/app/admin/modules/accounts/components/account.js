@@ -4,9 +4,9 @@ import classNames from 'classnames';
 
 import * as AdminAccountsStore from '../selectors';
 
-import Avatar from '../../../../uikit/avatar';
-import Header from '../../../../uikit/header';
-import Text from '../../../../uikit/text';
+import Avatar from '../../../../uikit/Avatar';
+import Header from '../../../../uikit/Header';
+import Text from '../../../../uikit/Text';
 
 import style from './account.css';
 

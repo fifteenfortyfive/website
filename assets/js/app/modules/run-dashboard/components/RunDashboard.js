@@ -8,7 +8,7 @@ import * as RunDashboardActions from '../RunDashboardActions';
 import * as DashboardStore from '../RunDashboardStore';
 import RunDashboardRun from './RunDashboardRun';
 
-import {getUTCNow} from '../../../util';
+import {getUTCNow} from '../../../utils/TimeUtils';
 
 const TICK_INTERVAL = 1000;
 const REFRESH_INTERVAL = 15 * 1000;

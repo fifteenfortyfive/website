@@ -10,12 +10,12 @@ import {
   Column,
   Columns,
 } from 'bloomer';
-import Button from '../../../uikit/button';
-import Header from '../../../uikit/header';
-import Select from '../../../uikit/select';
-import Text from '../../../uikit/text';
+import Button from '../../../uikit/Button';
+import Header from '../../../uikit/Header';
+import Select from '../../../uikit/Select';
+import Text from '../../../uikit/Text';
 
-import {runTime} from '../../../util';
+import {runTime} from '../../../utils/TimeUtils';
 import style from './RunSubmission.css';
 
 const RunSubmission = (props) => {

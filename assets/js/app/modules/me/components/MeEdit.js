@@ -5,11 +5,11 @@ import _ from 'lodash';
 
 import * as MeActions from '../MeActions';
 
-import Avatar from '../../../uikit/avatar';
-import Button from '../../../uikit/button';
-import Checkbox from '../../../uikit/checkbox';
-import TextInput from '../../../uikit/text-input';
-import PasswordInput from '../../../uikit/password-input';
+import Avatar from '../../../uikit/Avatar';
+import Button from '../../../uikit/Button';
+import Checkbox from '../../../uikit/Checkbox';
+import TextInput from '../../../uikit/TextInput';
+import PasswordInput from '../../../uikit/PasswordInput';
 
 class MeEdit extends Component {
   constructor(props) {

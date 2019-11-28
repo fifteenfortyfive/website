@@ -2,10 +2,10 @@ import { h, Component } from 'preact';
 import {useCallback} from 'preact/hooks';
 import classNames from 'classnames';
 
-import InputWrapper from './input-wrapper';
+import InputWrapper from './InputWrapper';
 
-import RunDurationUtils from '../utils/run-duration';
-import style from './text-input.css';
+import RunDurationUtils from '../utils/RunDurationUtils';
+import style from './TextInput.css';
 
 const TIME_PATTERN = "\d{1,3}:\d{2}:\d{2}";
 

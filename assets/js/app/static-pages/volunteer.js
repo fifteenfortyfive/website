@@ -1,6 +1,6 @@
 import {h} from 'preact';
 
-import Layout from '../pages/layout';
+import Layout from '../modules/layout/components/Layout';
 
 import {Content, Section} from 'bloomer';
 

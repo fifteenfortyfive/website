@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';
 
+import Avatar from '../../../uikit/Avatar';
 import * as AccountActions from '../../accounts/AccountActions';
-import Avatar from '../../../uikit/avatar';
-import Layout from '../../../pages/layout';
+import Layout from '../../layout/components/Layout';
 import * as StreamActions from '../StreamActions';
 import StreamCard from '../components/StreamCard';
 
-import {Routes} from '../../../constants';
+import {Routes} from '../../../Constants';
 
 
 class StreamsView extends Component {

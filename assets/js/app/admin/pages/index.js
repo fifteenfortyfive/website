@@ -1,10 +1,10 @@
 import { h, Component } from 'preact';
 
-import Layout from '../../pages/layout';
-import Header from '../../uikit/header';
-import Link from '../../uikit/link';
+import Layout from '../../modules/layout/components/Layout';
+import Header from '../../uikit/Header';
+import Link from '../../uikit/Link';
 
-import {AdminRoutes} from '../../constants';
+import {AdminRoutes} from '../../Constants';
 
 const AdminIndex = () => {
   return (

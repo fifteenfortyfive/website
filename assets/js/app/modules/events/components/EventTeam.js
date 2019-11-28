@@ -4,11 +4,11 @@ import _ from 'lodash';
 
 import * as EventStore from '../EventStore';
 
-import Header from '../../../uikit/header';
-import Link from '../../../uikit/link';
-import Text from '../../../uikit/text';
+import Header from '../../../uikit/Header';
+import Link from '../../../uikit/Link';
+import Text from '../../../uikit/Text';
 
-import {Routes} from '../../../constants';
+import {Routes} from '../../../Constants';
 
 const EventTeam = (props) => {
   const {

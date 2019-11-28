@@ -1,9 +1,9 @@
 import {h} from 'preact';
 
-import Link from './link';
-import Text from './text';
+import Link from './Link';
+import Text from './Text';
 
-import style from './box-link.css';
+import style from './BoxLink.css';
 
 const BoxLink = (props) => {
   const {

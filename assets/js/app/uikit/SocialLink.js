@@ -1,7 +1,7 @@
 import {h} from 'preact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import style from './social-link.css';
+import style from './SocialLink.css';
 
 const SocialTag = (props) => {
   const {

@@ -2,8 +2,8 @@ import {h, Fragment} from 'preact';
 import {Link} from 'preact-router';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
-import Footer from '../components/layout/footer';
-import Navbar from '../components/layout/navbar';
+import LayoutFooter from '../modules/layout/components/LayoutFooter';
+import LayoutNavbar from '../modules/layout/components/LayoutNavbar';
 
 import {
   Column,
@@ -16,18 +16,18 @@ import {
   HeroHeader,
   Section,
 } from 'bloomer';
-import BrandLogo from '../uikit/brand-logo';
-import Button from '../uikit/button';
+import BrandLogo from '../uikit/BrandLogo';
+import Button from '../uikit/Button';
 
-import {Routes} from '../constants';
-import style from './index.css';
+import {Routes} from '../Constants';
+import style from './Index.css';
 
 const Index = (props) => {
   return (
     <Fragment>
       <Hero className={style.splash} isColor="dark" isFullHeight>
         <HeroHeader>
-          <Navbar isDark />
+          <LayoutNavbar isDark />
         </HeroHeader>
 
         <HeroBody className={style.splashPrimary}>
@@ -68,7 +68,7 @@ const Index = (props) => {
         </Container>
       </Section>
 
-      <Footer />
+      <LayoutFooter />
     </Fragment>
   );
 }

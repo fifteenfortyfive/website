@@ -1,14 +1,14 @@
 import {h} from 'preact';
 
-import Navbar from '../components/layout/navbar';
-import Footer from '../components/layout/footer';
+import LayoutNavbar from './LayoutNavbar';
+import LayoutFooter from './LayoutFooter';
 
 import {
   Container,
   Section
 } from 'bloomer';
 
-import style from './layout.css';
+import style from './Layout.css';
 
 const Layout = (props) => {
   const {
@@ -18,7 +18,7 @@ const Layout = (props) => {
 
   return (
     <div>
-      <Navbar />
+      <LayoutNavbar />
       <div class={style.body}>
         { withContainer
           ? <Container>
@@ -29,7 +29,7 @@ const Layout = (props) => {
           : children
         }
       </div>
-      <Footer />
+      <LayoutFooter />
     </div>
   );
 };

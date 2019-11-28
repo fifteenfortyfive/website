@@ -1,4 +1,4 @@
-import { commonThunk, denulled } from '../../../actions';
+import { commonThunk, denulled } from '../../../Actions';
 
 export function fetchAccounts() {
   return commonThunk({

@@ -1,7 +1,7 @@
 import {h} from 'preact';
 import classNames from 'classnames';
 
-import style from './text.css';
+import style from './Text.css';
 
 const Sizes = {
   SIZE_24: 'size24',

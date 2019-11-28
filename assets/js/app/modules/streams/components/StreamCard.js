@@ -1,9 +1,9 @@
 import {h} from 'preact';
 
-import Avatar from '../../../uikit/avatar';
+import Avatar from '../../../uikit/Avatar';
+import getThumbnailURL from '../getThumbnailURL';
 
-import { Routes, ASSETS_URL } from '../../../constants';
-import { getThumbnailURL } from '../../../util';
+import { Routes, ASSETS_URL } from '../../../Constants';
 
 const StreamCard = (props) => {
   const {

@@ -3,19 +3,19 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import * as FetchActions from '../../../actions/fetch';
-import Avatar from '../../../uikit/avatar';
-import Link from '../../../uikit/link';
+import Avatar from '../../../uikit/Avatar';
+import Link from '../../../uikit/Link';
 import * as FetchStore from '../../../selectors/fetch';
-import * as RunActions from '../../runs/RunActions';
 import * as AccountActions from '../../accounts/AccountActions';
 import * as AccountStore from '../../accounts/AccountStore';
 import RunList from '../../accounts/components/RunList';
+import Layout from '../../layout/components/Layout';
+import * as RunActions from '../../runs/RunActions';
 import * as TeamActions from '../TeamActions';
 import * as TeamStore from '../TeamStore';
-import Layout from '../../../pages/layout';
 
-import {Routes} from '../../../constants';
-import {runTime} from '../../../util';
+import {Routes} from '../../../Constants';
+import {runTime} from '../../../utils/TimeUtils';
 import style from './TeamView.css';
 
 class TeamView extends Component {

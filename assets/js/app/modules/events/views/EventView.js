@@ -4,6 +4,7 @@ import _ from 'lodash';
 
 import * as FetchStore from '../../../selectors/fetch';
 import * as TeamActions from '../../teams/TeamActions';
+import Layout from '../../layout/components/Layout';
 import * as EventActions from '../EventActions';
 import * as EventStore from '../EventStore';
 import EventHeader from '../components/EventHeader';
@@ -14,9 +15,9 @@ import {
   Column,
   Heading,
 } from 'bloomer';
-import Header from '../../../uikit/header';
-import Text from '../../../uikit/text';
-import Layout from '../../../pages/layout';
+import Header from '../../../uikit/Header';
+import Text from '../../../uikit/Text';
+
 
 class EventView extends Component {
   componentDidMount() {

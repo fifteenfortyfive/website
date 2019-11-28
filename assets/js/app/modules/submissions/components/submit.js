@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useAuth} from '../../../hooks/useAuth';
 import * as EventActions from '../../events/EventActions';
 import * as EventStore from '../../events/EventStore';
-
+import Layout from '../../layout/components/Layout';
 import * as SubmissionActions from '../SubmissionActions';
 import * as SubmissionStore from '../SubmissionStore';
 import RunSubmission from './RunSubmission';
@@ -16,15 +16,14 @@ import {
   Column,
   Columns
 } from 'bloomer';
-import Layout from '../../../pages/layout';
-import Button from '../../../uikit/button';
-import ButtonGroup from '../../../uikit/button-group';
-import Header from '../../../uikit/header';
-import Select from '../../../uikit/select';
-import Text from '../../../uikit/text';
-import TextInput from '../../../uikit/text-input';
+import Button from '../../../uikit/Button';
+import ButtonGroup from '../../../uikit/ButtonGroup';
+import Header from '../../../uikit/Header';
+import Select from '../../../uikit/Select';
+import Text from '../../../uikit/Text';
+import TextInput from '../../../uikit/TextInput';
 
-import {Routes} from '../../../constants';
+import {Routes} from '../../../Constants';
 import style from './Submit.css';
 
 const NewSubmission = (props) => {

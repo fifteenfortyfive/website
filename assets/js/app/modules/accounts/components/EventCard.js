@@ -1,10 +1,10 @@
 import {h} from 'preact';
 import _ from 'lodash';
 
-import Link from '../../../uikit/link';
+import Link from '../../../uikit/Link';
 
-import {Routes} from '../../../constants';
-import {runTime, fullDate} from '../../../util';
+import {Routes} from '../../../Constants';
+import {runTime, fullDate} from '../../../utils/TimeUtils';
 
 const EventCard = (props) => {
   const {

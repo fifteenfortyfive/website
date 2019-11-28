@@ -7,12 +7,12 @@ import {
   Box,
   Tag
 } from 'bloomer';
-import SocialLink from '../../../uikit/social-link';
-import Avatar from '../../../uikit/avatar';
-import Header from '../../../uikit/header';
-import Text from '../../../uikit/text';
+import SocialLink from '../../../uikit/SocialLink';
+import Avatar from '../../../uikit/Avatar';
+import Header from '../../../uikit/Header';
+import Text from '../../../uikit/Text';
 
-import {simpleDate} from '../../../util';
+import {simpleDate} from '../../../utils/TimeUtils';
 import styles from './AccountCard.css';
 
 const AccountCard = (props) => {

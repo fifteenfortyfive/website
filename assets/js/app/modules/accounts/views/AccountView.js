@@ -2,13 +2,13 @@ import { h, Component, Fragment } from 'preact';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import Layout from '../../layout/components/Layout';
 import * as StreamActions from '../../streams/StreamActions';
 import RunList from '../components/RunList';
 import * as AccountActions from '../AccountActions';
 import AccountCard from '../components/AccountCard';
-import Layout from '../../../pages/layout';
 
-import Header from '../../../uikit/header';
+import Header from '../../../uikit/Header';
 
 
 class AccountView extends Component {

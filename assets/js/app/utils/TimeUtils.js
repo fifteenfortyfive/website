@@ -44,10 +44,3 @@ export function simpleDateTime(date) {
     timeZoneName: 'short'
   });
 }
-
-
-export function getThumbnailURL(urlTemplate, width, height) {
-  return urlTemplate
-      .replace("{width}", width)
-      .replace("{height}", height);
-};

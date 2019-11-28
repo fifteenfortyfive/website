@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 import {getRuns} from '../runs/RunStore';
 
-import {timeFromISO} from '../../util';
+import {timeFromISO} from '../../utils/TimeUtils';
 
 
 export const getTeamsState = (state) => state.teams;

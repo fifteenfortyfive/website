@@ -2,7 +2,7 @@ import {h} from 'preact';
 import _ from 'lodash';
 import classNames from 'classnames';
 
-import buttonStyle from './button.css';
+import buttonStyle from './Button.css';
 
 const Colors = {
   PRIMARY: 'colorPrimary',

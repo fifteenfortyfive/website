@@ -1,8 +1,8 @@
 import { h, Component } from 'preact';
 
-import InputWrapper from './input-wrapper';
+import InputWrapper from './InputWrapper';
 
-import style from './password-input.css';
+import style from './PasswordInput.css';
 
 // Password inputs are intentionally uncontrolled to avoid potentially leaking
 // the value

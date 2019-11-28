@@ -1,9 +1,9 @@
 import { h, Component } from 'preact';
 import classNames from 'classnames';
 
-import InputWrapper from './input-wrapper';
+import InputWrapper from './InputWrapper';
 
-import style from './text-input.css';
+import style from './TextInput.css';
 
 const TextInput = (props) => {
   const {

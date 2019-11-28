@@ -11,14 +11,14 @@ import {
   Columns,
   Column
 } from 'bloomer';
-import Button from '../../../uikit/button';
-import Header from '../../../uikit/header';
-import Link from '../../../uikit/link';
-import PasswordInput from '../../../uikit/password-input';
-import TextInput from '../../../uikit/text-input';
-import Layout from '../../../pages/layout';
+import Button from '../../../uikit/Button';
+import Header from '../../../uikit/Header';
+import Link from '../../../uikit/Link';
+import PasswordInput from '../../../uikit/PasswordInput';
+import TextInput from '../../../uikit/TextInput';
+import Layout from '../../layout/components/Layout';
 
-import { Routes } from '../../../constants';
+import { Routes } from '../../../Constants';
 
 
 const LoginView = (props) => {

@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import Layout from './layout';
+import Layout from '../modules/layout/components/Layout';
 
 const NotFoundPage = () => {
   return (

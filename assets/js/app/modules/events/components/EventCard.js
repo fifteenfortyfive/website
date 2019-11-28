@@ -1,12 +1,12 @@
 import {h} from 'preact';
 import {connect} from 'react-redux';
 
-import Header from '../../../uikit/header';
-import Link from '../../../uikit/link';
-import Text from '../../../uikit/text';
+import Header from '../../../uikit/Header';
+import Link from '../../../uikit/Link';
+import Text from '../../../uikit/Text';
 import * as EventStore from '../EventStore';
 
-import {Routes} from '../../../constants';
+import {Routes} from '../../../Constants';
 import style from './EventCard.css';
 
 

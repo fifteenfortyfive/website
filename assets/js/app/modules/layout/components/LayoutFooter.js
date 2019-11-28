@@ -7,13 +7,13 @@ import {
   Columns,
   Column,
 } from 'bloomer';
-import BoxLink from '../../../uikit/box-link';
-import BrandLogo from '../../../uikit/brand-logo';
-import Header from '../../../uikit/header';
-import Text from '../../../uikit/text';
-import Link from '../../../uikit/link';
+import BoxLink from '../../../uikit/BoxLink';
+import BrandLogo from '../../../uikit/BrandLogo';
+import Header from '../../../uikit/Header';
+import Text from '../../../uikit/Text';
+import Link from '../../../uikit/Link';
 
-import {Routes, ExternalRoutes} from '../../../constants';
+import {Routes, ExternalRoutes} from '../../../Constants';
 import style from './LayoutFooter.css';
 
 const LayoutFooter = (props) => {

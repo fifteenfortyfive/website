@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 import * as RunDashboardActions from '../RunDashboardActions';
 
-import {runTime, runTimeFromStart} from '../../../util';
+import {runTime, runTimeFromStart} from '../../../utils/TimeUtils';
 
 class RunDashboardRun extends Component {
   constructor(props) {

@@ -4,13 +4,13 @@ import {useSelector} from 'react-redux';
 
 import * as SubmissionStore from '../SubmissionStore';
 
-import Button from '../../../uikit/button';
-import ButtonGroup from '../../../uikit/button-group';
-import Header from '../../../uikit/header';
-import Select from '../../../uikit/select';
-import RunTimeInput from '../../../uikit/run-time-input';
+import Button from '../../../uikit/Button';
+import ButtonGroup from '../../../uikit/ButtonGroup';
+import Header from '../../../uikit/Header';
+import Select from '../../../uikit/Select';
+import RunTimeInput from '../../../uikit/RunTimeInput';
 
-import {runTime} from '../../../util';
+import {runTime} from '../../../utils/TimeUtils';
 
 const RunSubmissionForm = (props) => {
   const {

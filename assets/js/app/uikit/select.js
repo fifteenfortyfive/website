@@ -1,9 +1,9 @@
 import {h, Fragment} from 'preact';
 import classNames from 'classnames';
 
-import InputWrapper from './input-wrapper';
+import InputWrapper from './InputWrapper';
 
-import style from './select.css';
+import style from './Select.css';
 
 /*
   Simple select input styled like all other inputs. `options` is either a list

@@ -2,8 +2,8 @@ import { h, Component } from 'preact';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import Header from '../../../uikit/header';
-import Layout from '../../../pages/layout';
+import Header from '../../../uikit/Header';
+import Layout from '../../layout/components/Layout';
 import * as EventActions from '../EventActions';
 import * as EventStore from '../EventStore';
 import EventCard from '../components/EventCard';

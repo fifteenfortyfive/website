@@ -1,4 +1,4 @@
-import { commonThunk, denulled } from '../../actions';
+import { commonThunk, denulled } from '../../Actions';
 import _ from 'lodash';
 
 export function fetchRuns(queryParams) {

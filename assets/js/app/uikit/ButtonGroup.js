@@ -1,7 +1,7 @@
 import {h} from 'preact';
 import classNames from 'classnames';
 
-import style from './button-group.css';
+import style from './ButtonGroup.css';
 
 const ButtonGroup = (props) => {
   const {

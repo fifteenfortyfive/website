@@ -24,11 +24,11 @@ import {
   Button,
   Container
 } from 'bloomer';
-import Avatar from '../../uikit/avatar';
-import BrandLogo from '../../uikit/brand-logo';
+import Avatar from '../../../uikit/Avatar';
+import BrandLogo from '../../../uikit/BrandLogo';
 
-import {Routes, ExternalRoutes} from '../../constants';
-import style from './navbar.css';
+import {Routes, ExternalRoutes} from '../../../Constants';
+import style from './LayoutNavbar.css';
 
 const LayoutNavbar = (props) => {
   const {

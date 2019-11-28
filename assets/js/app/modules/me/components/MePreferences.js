@@ -5,8 +5,8 @@ import _ from 'lodash';
 
 import * as MeActions from '../MeActions';
 
-import Button from '../../../uikit/button';
-import Checkbox from '../../../uikit/checkbox';
+import Button from '../../../uikit/Button';
+import Checkbox from '../../../uikit/Checkbox';
 
 class MePreferences extends Component {
   componentDidMount() {

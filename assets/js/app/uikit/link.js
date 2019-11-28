@@ -2,7 +2,7 @@ import {h} from 'preact';
 import classNames from 'classnames';
 import {Link} from 'preact-router';
 
-import style from './link.css';
+import style from './Link.css';
 
 const UILink = (props) => {
   const {

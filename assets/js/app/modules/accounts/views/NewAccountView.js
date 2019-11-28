@@ -4,20 +4,20 @@ import {useDispatch, useSelector} from 'react-redux';
 import {route} from 'preact-router';
 
 import * as AuthStore from '../../auth/AuthStore';
+import Layout from '../../layout/components/Layout';
 import * as AccountActions from '../AccountActions';
-import Layout from '../../../pages/layout';
 
 import {
   Columns,
   Column,
 } from 'bloomer';
-import Button from '../../../uikit/button';
-import Header from '../../../uikit/header';
-import Text from '../../../uikit/text';
-import TextInput from '../../../uikit/text-input';
-import PasswordInput from '../../../uikit/password-input';
+import Button from '../../../uikit/Button';
+import Header from '../../../uikit/Header';
+import Text from '../../../uikit/Text';
+import TextInput from '../../../uikit/TextInput';
+import PasswordInput from '../../../uikit/PasswordInput';
 
-import {Routes} from '../../../constants';
+import {Routes} from '../../../Constants';
 
 const NewAccountView = (props) => {
   const isLoggedIn = useSelector(AuthStore.isLoggedIn);
