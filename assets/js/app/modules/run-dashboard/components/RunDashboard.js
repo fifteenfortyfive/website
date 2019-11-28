@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';
 
-import * as GameActions from '../../../actions/games';
+import * as GameActions from '../../games/GameActions';
 import * as RunDashboardActions from '../RunDashboardActions';
 import * as DashboardStore from '../RunDashboardStore';
 import RunDashboardRun from './RunDashboardRun';
