@@ -2,16 +2,16 @@ import { h, Component, Fragment } from 'preact';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import * as AccountActions from '../actions/accounts';
-import * as StreamActions from '../actions/streams';
-import AccountCard from '../components/accounts/account-card';
-import RunList from '../components/accounts/run-list';
-import Layout from './layout';
+import * as StreamActions from '../../../actions/streams';
+import RunList from '../components/RunList';
+import * as AccountActions from '../AccountActions';
+import AccountCard from '../components/AccountCard';
+import Layout from '../../../pages/layout';
 
-import Header from '../uikit/header';
+import Header from '../../../uikit/header';
 
 
-class AccountPage extends Component {
+class AccountView extends Component {
   componentDidMount() {
     const {accountId, dispatch} = this.props;
 
@@ -70,4 +70,4 @@ const mapDispatchToProps = (dispatch) => ({dispatch});
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(AccountPage);
+)(AccountView);

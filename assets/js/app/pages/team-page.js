@@ -2,14 +2,14 @@ import { h, Component } from 'preact';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import * as AccountActions from '../actions/accounts';
 import * as RunActions from '../actions/runs';
 import * as FetchActions from '../actions/fetch';
 import * as TeamActions from '../actions/teams';
-import * as AccountStore from '../selectors/accounts';
 import * as FetchStore from '../selectors/fetch';
 import * as TeamStore from '../selectors/teams';
-import RunList from '../components/accounts/run-list';
+import * as AccountActions from '../modules/accounts/AccountActions';
+import * as AccountStore from '../modules/accounts/AccountStore';
+import RunList from '../modules/accounts/components/RunList';
 import Avatar from '../uikit/avatar';
 import Link from '../uikit/link';
 import Layout from './layout';

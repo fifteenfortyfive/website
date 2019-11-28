@@ -10,8 +10,8 @@ import * as AuthActions from './actions/auth';
 import * as MeActions from './actions/me';
 
 import AdminRouter from './admin/router';
-import AccountPage from './pages/account-page';
-import AccountsNewPage from './pages/accounts-new-page';
+import AccountView from './modules/accounts/views/AccountView';
+import NewAccountView from './modules/accounts/views/NewAccountView';
 import MePage from './pages/me-page';
 import StreamsPage from './pages/streams-page';
 import TeamPage from './pages/team-page';
@@ -58,8 +58,8 @@ const App = (props) => {
       <LoginPage path={Routes.LOGIN()} />
 
       <TeamPage path={Routes.TEAM(":teamId")} />
-      <AccountsNewPage path={Routes.ACCOUNTS_NEW} />
-      <AccountPage path={Routes.ACCOUNT(":accountId")} />
+      <NewAccountView path={Routes.ACCOUNTS_NEW} />
+      <AccountView path={Routes.ACCOUNT(":accountId")} />
       <StreamsPage path={Routes.STREAMS} />
 
       <MePage path="/@me/:page?" eventId={CURRENT_EVENT_ID} needsAuth />

@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';
 
-import * as AccountActions from '../actions/accounts';
 import * as StreamActions from '../actions/streams';
 import StreamCard from '../components/stream-card';
+import * as AccountActions from '../modules/accounts/AccountActions';
 import Avatar from '../uikit/avatar';
 import Layout from './layout';
 

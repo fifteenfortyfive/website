@@ -1,19 +1,19 @@
 import {h} from 'preact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import StreamPreview from './stream-preview';
+import StreamPreview from './StreamPreview';
 
 import {
   Box,
   Tag
 } from 'bloomer';
-import SocialLink from '../../uikit/social-link';
-import Avatar from '../../uikit/avatar';
-import Header from '../../uikit/header';
-import Text from '../../uikit/text';
+import SocialLink from '../../../uikit/social-link';
+import Avatar from '../../../uikit/avatar';
+import Header from '../../../uikit/header';
+import Text from '../../../uikit/text';
 
-import {simpleDate} from '../../util';
-import style from './account-card.css';
+import {simpleDate} from '../../../util';
+import styles from './AccountCard.css';
 
 const AccountCard = (props) => {
   const {
@@ -36,17 +36,17 @@ const AccountCard = (props) => {
 
 
   return (
-    <Box className={style.container}>
-      <div class={style.header}>
-        <Avatar className={style.avatar} src={avatar_hash} />
+    <Box className={styles.container}>
+      <div class={styles.header}>
+        <Avatar className={styles.avatar} src={avatar_hash} />
 
-        <div class={style.textCentered}>
-          <Header size={Header.Sizes.H4} className={style.username}>
+        <div class={styles.textCentered}>
+          <Header size={Header.Sizes.H4} className={styles.username}>
             {username}
           </Header>
           { admin &&
             <Tag
-                className={style.adminTag}
+                className={styles.adminTag}
                 isColor="info"
                 isSize="small"
                 isOutlined
@@ -58,7 +58,7 @@ const AccountCard = (props) => {
         </div>
 
         { bio &&
-          <Text class={style.bio}>
+          <Text class={styles.bio}>
             {bio}
           </Text>
         }
@@ -72,7 +72,7 @@ const AccountCard = (props) => {
         />
       }
 
-      <div class={style.content}>
+      <div class={styles.content}>
         { twitch &&
           <SocialLink
             service={SocialLink.Services.TWITCH}
@@ -98,7 +98,7 @@ const AccountCard = (props) => {
         }
 
         { created_at &&
-          <p class={style.joinedAt}>
+          <p class={styles.joinedAt}>
             Joined {simpleDate(created_at)}
           </p>
         }

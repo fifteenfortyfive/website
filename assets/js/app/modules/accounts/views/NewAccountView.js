@@ -3,23 +3,23 @@ import {useCallback, useEffect, useState} from 'preact/hooks';
 import {useDispatch, useSelector} from 'react-redux';
 import {route} from 'preact-router';
 
-import * as AccountActions from '../actions/accounts';
-import * as AuthStore from '../selectors/auth';
-import Layout from './layout';
+import * as AuthStore from '../../../selectors/auth';
+import * as AccountActions from '../AccountActions';
+import Layout from '../../../pages/layout';
 
 import {
   Columns,
   Column,
 } from 'bloomer';
-import Button from '../uikit/button';
-import Header from '../uikit/header';
-import Text from '../uikit/text';
-import TextInput from '../uikit/text-input';
-import PasswordInput from '../uikit/password-input';
+import Button from '../../../uikit/button';
+import Header from '../../../uikit/header';
+import Text from '../../../uikit/text';
+import TextInput from '../../../uikit/text-input';
+import PasswordInput from '../../../uikit/password-input';
 
-import {Routes} from '../constants';
+import {Routes} from '../../../constants';
 
-const NewAccountPage = (props) => {
+const NewAccountView = (props) => {
   const isLoggedIn = useSelector(AuthStore.isLoggedIn);
 
   useEffect(() => {
@@ -115,4 +115,4 @@ const NewAccountPage = (props) => {
   );
 };
 
-export default NewAccountPage;
+export default NewAccountView;

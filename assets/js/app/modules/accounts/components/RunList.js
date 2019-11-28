@@ -1,7 +1,7 @@
 import {h} from 'preact';
 import _ from 'lodash';
 
-import EventCard from './event-card';
+import EventCard from './EventCard';
 
 const RunList = (props) => {
   const {

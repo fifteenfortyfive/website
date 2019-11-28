@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { route } from 'preact-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import * as AccountActions from '../actions/accounts';
 import * as StreamActions from '../actions/streams';
 import * as MeActions from '../actions/me';
 import Edit from '../components/me/edit';
 import Preferences from '../components/me/preferences';
 import RunDashboard from '../components/me/run-dashboard';
-import AccountCard from '../components/accounts/account-card';
-import RunList from '../components/accounts/run-list';
+import * as AccountActions from '../modules/accounts/AccountActions';
+import AccountCard from '../modules/accounts/components/AccountCard';
+import RunList from '../modules/accounts/components/RunList';
 import Button from '../uikit/button';
 import Layout from './layout';
 

@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
-import accounts from './reducers/accounts';
+import accounts from './modules/accounts/AccountsReducer';
 import admin from './admin/reducer';
 import auth from './reducers/auth';
 import dashboard from './reducers/dashboard';

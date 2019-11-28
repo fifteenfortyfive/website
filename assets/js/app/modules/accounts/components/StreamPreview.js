@@ -4,11 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   Image
 } from 'bloomer';
-import Header from '../../uikit/header';
-import Text from '../../uikit/text';
+import Header from '../../../uikit/header';
+import Text from '../../../uikit/text';
 
-import {Colors} from '../../constants';
-import style from './stream-preview.css';
+import {Colors} from '../../../constants';
+import style from './StreamPreview.css';
 
 const StreamPreview = (props) => {
   const {
