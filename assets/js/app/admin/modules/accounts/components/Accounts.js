@@ -2,16 +2,16 @@ import { h, Component } from 'preact';
 import {useEffect} from 'preact/hooks';
 import {useDispatch, useSelector} from 'react-redux';
 
-import * as AdminAccountActions from '../actions';
-import * as AdminAccountsStore from '../selectors';
-import Account from './account';
+import * as AdminAccountActions from '../AccountActions';
+import * as AdminAccountStore from '../AccountStore';
+import Account from './Account';
 
 import Layout from '../../../../modules/layout/components/Layout';
 import Header from '../../../../uikit/Header';
 import Link from '../../../../uikit/Link';
 
 import {AdminRoutes} from '../../../../Constants';
-import style from './index.css';
+import style from './Accounts.css';
 
 const AdminAccounts = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const AdminAccounts = () => {
     dispatch(AdminAccountActions.fetchAccounts())
   }, []);
 
-  const accountIds = useSelector(AdminAccountsStore.getAccountIds);
+  const accountIds = useSelector(AdminAccountStore.getAccountIds);
 
   return (
     <Layout>

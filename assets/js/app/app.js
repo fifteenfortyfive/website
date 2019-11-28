@@ -9,7 +9,7 @@ import * as AuthStore from './modules/auth/AuthStore';
 import * as MeActions from './modules/me/MeActions';
 import * as MeStore from './modules/me/MeStore';
 
-import AdminRouter from './admin/router';
+import AdminRouter from './admin/AdminRouter';
 import AccountView from './modules/accounts/views/AccountView';
 import NewAccountView from './modules/accounts/views/NewAccountView';
 import LoginView from './modules/auth/views/LoginView';

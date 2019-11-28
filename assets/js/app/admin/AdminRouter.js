@@ -1,15 +1,15 @@
 import { h, Component } from 'preact';
 import { Router } from 'preact-router';
 
-import Index from './pages/index';
-import Accounts from './modules/accounts/components/index';
+import AdminIndex from './pages/AdminIndex';
+import Accounts from './modules/accounts/components/Accounts';
 
 import {AdminRoutes} from '../Constants';
 
 const AdminRouter = () => {
   return (
     <Router>
-      <Index path={AdminRoutes.HOME} />
+      <AdminIndex path={AdminRoutes.HOME} />
       <Accounts path={AdminRoutes.ACCOUNTS} />
     </Router>
   );

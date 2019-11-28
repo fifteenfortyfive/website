@@ -2,13 +2,13 @@ import {h} from 'preact';
 import {useSelector} from 'react-redux';
 import classNames from 'classnames';
 
-import * as AdminAccountsStore from '../selectors';
+import * as AdminAccountStore from '../AccountStore';
 
 import Avatar from '../../../../uikit/Avatar';
 import Header from '../../../../uikit/Header';
 import Text from '../../../../uikit/Text';
 
-import style from './account.css';
+import style from './Account.css';
 
 const Account = (props) => {
   const {
@@ -17,7 +17,7 @@ const Account = (props) => {
   } = props;
 
   const account = useSelector((state) => {
-    return AdminAccountsStore.getAccount(state, accountId);
+    return AdminAccountStore.getAccount(state, accountId);
   });
 
   if(account == null) return null;
