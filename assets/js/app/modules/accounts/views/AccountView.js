@@ -2,7 +2,7 @@ import { h, Component, Fragment } from 'preact';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import * as StreamActions from '../../../actions/streams';
+import * as StreamActions from '../../streams/StreamActions';
 import RunList from '../components/RunList';
 import * as AccountActions from '../AccountActions';
 import AccountCard from '../components/AccountCard';

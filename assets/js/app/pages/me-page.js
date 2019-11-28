@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { route } from 'preact-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import * as StreamActions from '../actions/streams';
+import * as StreamActions from '../modules/streams/StreamActions';
 import * as MeActions from '../actions/me';
 import Edit from '../components/me/edit';
 import Preferences from '../components/me/preferences';

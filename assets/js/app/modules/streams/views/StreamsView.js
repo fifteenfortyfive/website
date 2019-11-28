@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';
 
-import * as StreamActions from '../actions/streams';
-import StreamCard from '../components/stream-card';
-import * as AccountActions from '../modules/accounts/AccountActions';
-import Avatar from '../uikit/avatar';
-import Layout from './layout';
+import * as AccountActions from '../../accounts/AccountActions';
+import Avatar from '../../../uikit/avatar';
+import Layout from '../../../pages/layout';
+import * as StreamActions from '../StreamActions';
+import StreamCard from '../components/StreamCard';
 
-import {Routes} from '../constants';
+import {Routes} from '../../../constants';
 
 
-class StreamsPage extends Component {
+class StreamsView extends Component {
   componentDidMount() {
     const {dispatch} = this.props;
     dispatch(StreamActions.fetchStreams());
@@ -70,11 +70,4 @@ const mapStateToProps = (state, props) => {
   };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {dispatch};
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(StreamsPage);
+export default connect(mapStateToProps)(StreamsView);

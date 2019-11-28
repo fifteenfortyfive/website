@@ -1,6 +1,6 @@
 import {h} from 'preact';
 
-import StreamCard from './stream-card';
+import StreamCard from './StreamCard';
 
 const StreamGrid = (props) => {
   const {
