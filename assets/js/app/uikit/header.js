@@ -1,4 +1,4 @@
-import {h} from 'preact';
+import { h } from 'preact';
 import classNames from 'classnames';
 
 import style from './Header.css';
@@ -22,28 +22,17 @@ const Colors = {
   WHITE: 'colorWhite',
 };
 
-const Header = (props) => {
-  const {
-    size = Sizes.H2,
-    color = Colors.DEFAULT,
-    withMargin=false,
-    className,
-    children
-  } = props;
+const Header = props => {
+  const { size = Sizes.H2, color = Colors.DEFAULT, withMargin = false, className, children } = props;
 
   return (
-    <h1 className={classNames(
-          style.header,
-          style[color],
-          style[size],
-          className,
-          {
-            [style.withMargin]: withMargin
-          }
-        )}>
+    <h1
+      className={classNames(style.header, style[color], style[size], className, {
+        [style.withMargin]: withMargin,
+      })}>
       {children}
     </h1>
-  )
+  );
 };
 
 Header.Sizes = Sizes;

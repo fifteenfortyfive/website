@@ -1,17 +1,15 @@
 const defaultState = {};
 
 const actions = {
-  'RECEIVE_STREAMS': (state, {data}) => {
-    const {streams} = data;
+  RECEIVE_STREAMS: (state, { data }) => {
+    const { streams } = data;
 
     return {
       ...state,
-      ...streams
+      ...streams,
     };
   },
 };
-
-
 
 export default function reducer(state = defaultState, action) {
   const func = actions[action.type];

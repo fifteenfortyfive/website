@@ -14,36 +14,43 @@ import Folder from '../components/foldable-header';
 import RunCell from '../components/run-cell';
 import RunnerCell from '../components/runner-cell';
 
-const SubmissionsPage = ({event, accounts, games, loading}) => {
-  if(loading || event == null) return <h1 class="title">Loading...</h1>;
+const SubmissionsPage = ({ event, accounts, games, loading }) => {
+  if (loading || event == null) return <h1 class="title">Loading...</h1>;
 
-  const {name, runner_submissions} = event;
+  const { name, runner_submissions } = event;
 
   const submissionsByAccount = _.keyBy(runner_submissions, 'account_id');
 
-  const allRuns = _.reduce(runner_submissions, (acc, submission) => {
-    return acc.concat(submission.run_submissions);
-  }, []);
+  const allRuns = _.reduce(
+    runner_submissions,
+    (acc, submission) => {
+      return acc.concat(submission.run_submissions);
+    },
+    [],
+  );
 
-  const gameColumns =  _.flow([
-      (columns) => _.groupBy(columns, 'series'),
-      (columns) => _.map(columns, (seriesGames, series) => ({
+  const gameColumns = _.flow([
+    columns => _.groupBy(columns, 'series'),
+    columns =>
+      _.map(columns, (seriesGames, series) => ({
         Header: _.capitalize(series),
         foldable: true,
         headerClassName: `${series}-bg`,
-        columns: _.map(seriesGames, (game) => ({
+        columns: _.map(seriesGames, game => ({
           Header: game.name,
           id: `game-${game.id}`,
-          accessor: sub => _.find(sub.run_submissions, (g) => g.game_id == game.id),
-          Cell: ({value: run}) => <RunCell
+          accessor: sub => _.find(sub.run_submissions, g => g.game_id == game.id),
+          Cell: ({ value: run }) => (
+            <RunCell
               run={run}
               runner={run && accounts[run.account_id]}
               submission={run && submissionsByAccount[run.account_id]}
               games={games}
-          />
+            />
+          ),
         })),
-      }))
-    ])(Object.values(games));
+      })),
+  ])(Object.values(games));
 
   const columns = [
     {
@@ -52,9 +59,9 @@ const SubmissionsPage = ({event, accounts, games, loading}) => {
       accessor: sub => accounts[sub.account_id].username,
       minWidth: 160,
       defaultPageSize: 20,
-      Cell: ({original: sub}) => <RunnerCell submission={sub} runner={accounts[sub.account_id]} />,
+      Cell: ({ original: sub }) => <RunnerCell submission={sub} runner={accounts[sub.account_id]} />,
     },
-    ...gameColumns
+    ...gameColumns,
   ];
 
   return (
@@ -71,9 +78,9 @@ const SubmissionsPage = ({event, accounts, games, loading}) => {
         columns={columns}
         defaultSorted={[
           {
-            id: "runner",
-            desc: false
-          }
+            id: 'runner',
+            desc: false,
+          },
         ]}
         FoldButtonComponent={Folder}
       />
@@ -81,19 +88,15 @@ const SubmissionsPage = ({event, accounts, games, loading}) => {
   );
 };
 
-
 const mapStateToProps = (state, props) => ({
   event: state.events[props.eventId],
   accounts: state.accounts,
   games: state.games,
-  loading: _.some(state.fetching)
+  loading: _.some(state.fetching),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  dispatch: bindActionCreators(Actions, dispatch)
+const mapDispatchToProps = dispatch => ({
+  dispatch: bindActionCreators(Actions, dispatch),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SubmissionsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(SubmissionsPage);

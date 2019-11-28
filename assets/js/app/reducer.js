@@ -26,7 +26,7 @@ const combinedReducer = combineReducers({
   runs,
   streams,
   submissions,
-  teams
+  teams,
 });
 
 export const store = createStore(combinedReducer, applyMiddleware(thunk));

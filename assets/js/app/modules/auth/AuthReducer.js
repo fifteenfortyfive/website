@@ -1,30 +1,28 @@
 import _ from 'lodash';
 
 const defaultState = {
-  sessionId: null
+  sessionId: null,
 };
 
 const actions = {
-  'LOGIN_SUCCESS': (state, {data}) => {
-    const {sessionId} = data;
+  LOGIN_SUCCESS: (state, { data }) => {
+    const { sessionId } = data;
 
     return {
       ...state,
-      sessionId
+      sessionId,
     };
   },
 
-  'LOGOUT_SUCCESS': (state, {data}) => {
-    const {sessionId} = data;
+  LOGOUT_SUCCESS: (state, { data }) => {
+    const { sessionId } = data;
 
     return {
       ...state,
-      sessionId: null
+      sessionId: null,
     };
-  }
+  },
 };
-
-
 
 export default function reducer(state = defaultState, action) {
   const func = actions[action.type];

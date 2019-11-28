@@ -1,25 +1,18 @@
-import {h} from 'preact';
-import {connect} from 'react-redux';
+import { h } from 'preact';
+import { connect } from 'react-redux';
 
 import Header from '../../../uikit/Header';
 import Link from '../../../uikit/Link';
 import Text from '../../../uikit/Text';
 import * as EventStore from '../EventStore';
 
-import {Routes} from '../../../Constants';
+import { Routes } from '../../../Constants';
 import style from './EventCard.css';
 
+const EventCard = props => {
+  const { event } = props;
 
-const EventCard = (props) => {
-  const {
-    event
-  } = props;
-
-  const {
-    name,
-    series,
-    summary
-  } = event;
+  const { name, series, summary } = event;
 
   return (
     <div class={style.container}>
@@ -40,6 +33,4 @@ function mapStateToProps(state, props) {
   };
 }
 
-export default connect(
-  mapStateToProps
-)(EventCard);
+export default connect(mapStateToProps)(EventCard);

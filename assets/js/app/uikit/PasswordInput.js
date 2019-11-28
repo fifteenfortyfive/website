@@ -6,12 +6,12 @@ import style from './PasswordInput.css';
 
 // Password inputs are intentionally uncontrolled to avoid potentially leaking
 // the value
-const PasswordInput = (props) => {
+const PasswordInput = props => {
   const {
     label,
     name,
-    placeholder="",
-    multiline=false,
+    placeholder = '',
+    multiline = false,
     note,
     onChange,
     className,
@@ -19,12 +19,7 @@ const PasswordInput = (props) => {
   } = props;
 
   return (
-    <InputWrapper
-        name={name}
-        label={label}
-        note={note}
-        className={className}
-      >
+    <InputWrapper name={name} label={label} note={note} className={className}>
       <input
         type="password"
         name={name}

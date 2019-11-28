@@ -12,7 +12,7 @@ import NotFoundPage from './pages/not-found';
 
 class App extends Component {
   componentDidMount() {
-    const {dispatch} = this.props;
+    const { dispatch } = this.props;
 
     dispatch.fetchAccounts();
     dispatch.fetchGames();
@@ -32,15 +32,12 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   ...state,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  dispatch: bindActionCreators(Actions, dispatch)
+const mapDispatchToProps = dispatch => ({
+  dispatch: bindActionCreators(Actions, dispatch),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

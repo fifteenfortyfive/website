@@ -4,7 +4,7 @@ module.exports = {
   entry: './js/admin.js',
   output: {
     filename: 'admin.js',
-    path: path.resolve(__dirname, '../public/js')
+    path: path.resolve(__dirname, '../public/js'),
   },
   module: {
     rules: [
@@ -12,32 +12,30 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+        },
       },
       {
-        test:/\.css$/,
+        test: /\.css$/,
         use: [
           'style-loader',
           {
             loader: 'css-loader',
-            options: {modules: true}
+            options: { modules: true },
           },
-          'postcss-loader'
-        ]
+          'postcss-loader',
+        ],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader'
-        ]
-      }
-    ]
+        use: ['file-loader'],
+      },
+    ],
   },
   resolve: {
     alias: {
-      "react": "preact/compat",
-      "react-dom": "preact/compat"
-    }
-  }
+      react: 'preact/compat',
+      'react-dom': 'preact/compat',
+    },
+  },
 };

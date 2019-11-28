@@ -6,17 +6,17 @@ export function getUTCNow() {
 }
 
 export function runTime(seconds) {
-  return Duration.fromMillis(seconds * 1000).toFormat("hh:mm:ss");
+  return Duration.fromMillis(seconds * 1000).toFormat('hh:mm:ss');
 }
 
 export function timeFromISO(timeString) {
-  return DateTime.fromISO(timeString, {zone: 'utc'});
+  return DateTime.fromISO(timeString, { zone: 'utc' });
 }
 
 export function runTimeFromStart(startString) {
   return DateTime.utc()
-      .diff(timeFromISO(startString))
-      .toFormat("hh:mm:ss");
+    .diff(timeFromISO(startString))
+    .toFormat('hh:mm:ss');
 }
 
 export function simpleDate(date) {
@@ -30,7 +30,7 @@ export function fullDate(date) {
   return timeFromISO(date).toLocaleString({
     year: 'numeric',
     month: 'long',
-    day: '2-digit'
+    day: '2-digit',
   });
 }
 
@@ -41,6 +41,6 @@ export function simpleDateTime(date) {
     day: '2-digit',
     hour: '2-digit',
     minute: '2-digit',
-    timeZoneName: 'short'
+    timeZoneName: 'short',
   });
 }

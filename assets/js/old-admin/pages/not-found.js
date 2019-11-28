@@ -1,7 +1,6 @@
 import { h, Component } from 'preact';
 import { Link } from 'preact-router';
 
-
 const NotFoundPage = () => {
   return (
     <div class="container">

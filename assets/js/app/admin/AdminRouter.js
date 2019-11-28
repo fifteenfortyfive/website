@@ -4,7 +4,7 @@ import { Router } from 'preact-router';
 import AdminIndex from './pages/AdminIndex';
 import Accounts from './modules/accounts/components/Accounts';
 
-import {AdminRoutes} from '../Constants';
+import { AdminRoutes } from '../Constants';
 
 const AdminRouter = () => {
   return (

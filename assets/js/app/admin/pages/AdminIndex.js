@@ -4,7 +4,7 @@ import Layout from '../../modules/layout/components/Layout';
 import Header from '../../uikit/Header';
 import Link from '../../uikit/Link';
 
-import {AdminRoutes} from '../../Constants';
+import { AdminRoutes } from '../../Constants';
 
 const AdminIndex = () => {
   return (

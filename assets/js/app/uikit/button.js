@@ -1,4 +1,4 @@
-import {h} from 'preact';
+import { h } from 'preact';
 import _ from 'lodash';
 import classNames from 'classnames';
 
@@ -28,31 +28,24 @@ const Styles = {
   DISABLED: 'styleDisabled',
 };
 
-
-const Button = (props) => {
+const Button = props => {
   const {
     color = Colors.DEFAULT,
     style = Styles.NORMAL,
     fullwidth,
     onClick,
     children,
-    disabled=false,
-    className
+    disabled = false,
+    className,
   } = props;
 
   return (
     <button
-        class={classNames(
-          buttonStyle.button,
-          buttonStyle[color],
-          buttonStyle[style],
-          className, {
-            [buttonStyle.isFullwidth]: fullwidth
-          }
-        )}
-        onClick={onClick}
-        disabled={disabled}
-      >
+      class={classNames(buttonStyle.button, buttonStyle[color], buttonStyle[style], className, {
+        [buttonStyle.isFullwidth]: fullwidth,
+      })}
+      onClick={onClick}
+      disabled={disabled}>
       {children}
     </button>
   );

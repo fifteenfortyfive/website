@@ -1,19 +1,18 @@
-export const ASSETS_URL = "https://fifteenfortyfive-assets.nyc3.cdn.digitaloceanspaces.com";
+export const ASSETS_URL = 'https://fifteenfortyfive-assets.nyc3.cdn.digitaloceanspaces.com';
 
 export const CURRENT_EVENT_ID = 23;
 
 export const Colors = {
-  TWITCH: '#6441A4'
+  TWITCH: '#6441A4',
 };
-
 
 export const Routes = {
   // Public
   HOME: '/',
-  ACCOUNT: (id) => `/accounts/${id}`,
+  ACCOUNT: id => `/accounts/${id}`,
   ACCOUNTS_NEW: '/accounts/new',
   TEAMS: '/teams',
-  TEAM: (id) => `/teams/${id}`,
+  TEAM: id => `/teams/${id}`,
   STREAMS: '/streams',
   VOLUNTEER: '/volunteer',
 
@@ -25,8 +24,8 @@ export const Routes = {
 
   // Events
   EVENTS: '/events',
-  EVENT: (eventId) => `/events/${eventId}`,
-  EVENT_SUBMIT_RUN: (eventId) => `/events/${eventId}/submit`,
+  EVENT: eventId => `/events/${eventId}`,
+  EVENT_SUBMIT_RUN: eventId => `/events/${eventId}/submit`,
 
   // Admin
   ADMIN_BASE: '/admin/:*?',
@@ -34,7 +33,7 @@ export const Routes = {
   ADMIN_V2: '/admin/v2',
 
   // Auth
-  LOGIN: ({redirect} = {}) => redirect ? `/login?redirectRoute=${redirect}` : '/login',
+  LOGIN: ({ redirect } = {}) => (redirect ? `/login?redirectRoute=${redirect}` : '/login'),
   LOGOUT: '/logout',
 };
 
@@ -43,7 +42,6 @@ export const AdminRoutes = {
   EVENT: '/admin/event',
   ACCOUNTS: '/admin/accounts',
 };
-
 
 export const ExternalRoutes = {
   CONTACT_URL: 'mailto:contact@fifteenfortyfive.org',
@@ -58,10 +56,11 @@ export const ExternalRoutes = {
   // Friends
   RAREWARE_301_URL: 'https://twitch.tv/rareware301',
   CRASH_MARATHON_URL: 'https://www.twitch.tv/crashmarathon',
-  SPRASHFECTA_URL: 'https://docs.google.com/spreadsheets/d/1n1bZ8DV7vhFT0X2fLaXpThEZa9M8aNNyIN1SqR8dr-Q/edit?usp=sharing',
+  SPRASHFECTA_URL:
+    'https://docs.google.com/spreadsheets/d/1n1bZ8DV7vhFT0X2fLaXpThEZa9M8aNNyIN1SqR8dr-Q/edit?usp=sharing',
   SPYROTHON_URL: 'https://twitch.tv/spyrothon',
   MARIO_602_URL: 'https://twitch.tv/602Race',
 
   // Attribution
-  GITHUB_FAULTY_URL: 'https://github.com/faultyserver'
+  GITHUB_FAULTY_URL: 'https://github.com/faultyserver',
 };

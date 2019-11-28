@@ -1,4 +1,4 @@
-import {h} from 'preact';
+import { h } from 'preact';
 import classNames from 'classnames';
 
 import style from './Text.css';
@@ -21,28 +21,17 @@ const Colors = {
   WHITE: 'colorWhite',
 };
 
-const Text = (props) => {
-  const {
-    size = Sizes.SIZE_16,
-    color = Colors.DEFAULT,
-    marginless = false,
-    className,
-    children
-  } = props;
+const Text = props => {
+  const { size = Sizes.SIZE_16, color = Colors.DEFAULT, marginless = false, className, children } = props;
 
   return (
-    <p  className={classNames(
-          style.text,
-          style[color],
-          style[size],
-          className, {
-            [style.marginless]: marginless,
-          }
-        )}
-      >
+    <p
+      className={classNames(style.text, style[color], style[size], className, {
+        [style.marginless]: marginless,
+      })}>
       {children}
     </p>
-  )
+  );
 };
 
 Text.Sizes = Sizes;

@@ -1,18 +1,12 @@
-import {h} from 'preact';
+import { h } from 'preact';
 
 import Link from './Link';
 import Text from './Text';
 
 import style from './BoxLink.css';
 
-const BoxLink = (props) => {
-  const {
-    title,
-    children,
-    href,
-    className,
-    ...linkProps
-  } = props;
+const BoxLink = props => {
+  const { title, children, href, className, ...linkProps } = props;
 
   return (
     <p className={className}>

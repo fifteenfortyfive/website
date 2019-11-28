@@ -3,6 +3,6 @@ module.exports = {
     'postcss-import': {},
     'postcss-preset-env': {},
     'postcss-nesting': {},
-    'cssnano': {}
-  }
-}
+    cssnano: {},
+  },
+};

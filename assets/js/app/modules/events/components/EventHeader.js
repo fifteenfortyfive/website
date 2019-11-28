@@ -1,40 +1,29 @@
-import {h} from 'preact';
+import { h } from 'preact';
 
-import {Columns, Column} from 'bloomer';
+import { Columns, Column } from 'bloomer';
 import Header from '../../../uikit/Header';
 import Text from '../../../uikit/Text';
 
-import {fullDate} from '../../../utils/TimeUtils';
+import { fullDate } from '../../../utils/TimeUtils';
 
-const EventHeader = (props) => {
-  const {
-    event
-  } = props;
+const EventHeader = props => {
+  const { event } = props;
 
-  const {
-    name,
-    series,
-    summary,
-    start_time
-  } = event;
+  const { name, series, summary, start_time } = event;
 
   return (
     <Columns>
       <Column isSize={2} />
       <Column isSize={8}>
         <Text size={Text.Sizes.SIZE_20} color={Text.Colors.MUTED}>
-          { series && series.name.toUpperCase() }
+          {series && series.name.toUpperCase()}
         </Text>
         <Header>{name}</Header>
-        <Text size={Text.Sizes.SIZE_16}>
-          Starts {fullDate(start_time)}
-        </Text>
-        <Text>
-          {summary}
-        </Text>
+        <Text size={Text.Sizes.SIZE_16}>Starts {fullDate(start_time)}</Text>
+        <Text>{summary}</Text>
       </Column>
     </Columns>
   );
-}
+};
 
 export default EventHeader;

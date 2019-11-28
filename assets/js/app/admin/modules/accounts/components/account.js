@@ -1,5 +1,5 @@
-import {h} from 'preact';
-import {useSelector} from 'react-redux';
+import { h } from 'preact';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 
 import * as AdminAccountStore from '../AccountStore';
@@ -10,24 +10,23 @@ import Text from '../../../../uikit/Text';
 
 import style from './Account.css';
 
-const Account = (props) => {
-  const {
-    accountId,
-    className
-  } = props;
+const Account = props => {
+  const { accountId, className } = props;
 
-  const account = useSelector((state) => {
+  const account = useSelector(state => {
     return AdminAccountStore.getAccount(state, accountId);
   });
 
-  if(account == null) return null;
+  if (account == null) return null;
 
   return (
     <div class={classNames(style.container, className)}>
       <Avatar className={style.avatar} src={account.avatar_hash} size={48} />
       <div>
         <Header size={Header.Sizes.H5}>{account.username}</Header>
-        <Text color={Text.Colors.MUTED} marginless>{account.discord_tag}</Text>
+        <Text color={Text.Colors.MUTED} marginless>
+          {account.discord_tag}
+        </Text>
       </div>
     </div>
   );

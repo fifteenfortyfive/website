@@ -4,7 +4,7 @@ module.exports = {
   entry: './js/app-v2.js',
   output: {
     filename: 'app-v2.js',
-    path: path.resolve(__dirname, '../public/js')
+    path: path.resolve(__dirname, '../public/js'),
   },
   module: {
     rules: [
@@ -12,11 +12,11 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+        },
       },
       {
-        test:/\.css$/,
+        test: /\.css$/,
         use: [
           'style-loader',
           {
@@ -27,21 +27,19 @@ module.exports = {
               },
             },
           },
-          'postcss-loader'
-        ]
+          'postcss-loader',
+        ],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader'
-        ]
-      }
-    ]
+        use: ['file-loader'],
+      },
+    ],
   },
   resolve: {
     alias: {
-      "react": "preact/compat",
-      "react-dom": "preact/compat"
-    }
-  }
+      react: 'preact/compat',
+      'react-dom': 'preact/compat',
+    },
+  },
 };

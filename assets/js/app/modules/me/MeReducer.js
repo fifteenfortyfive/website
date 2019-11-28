@@ -1,54 +1,53 @@
 const defaultState = {
   account: null,
   preferences: null,
-  preferenceDescriptions: null
-}
+  preferenceDescriptions: null,
+};
 
 const actions = {
-  'RECEIVE_ACCOUNT_PREFERENCES': (state, {data}) => {
-    const {preferences, descriptions} = data;
+  RECEIVE_ACCOUNT_PREFERENCES: (state, { data }) => {
+    const { preferences, descriptions } = data;
 
     return {
       ...state,
       preferences,
-      preferenceDescriptions: descriptions
+      preferenceDescriptions: descriptions,
     };
   },
 
-  'SET_ACCOUNT_PREFERENCE': (state, {data}) => {
-    const {preference, value} = data;
+  SET_ACCOUNT_PREFERENCE: (state, { data }) => {
+    const { preference, value } = data;
 
     return {
       ...state,
       preferences: {
         ...state.preferences,
-        [preference]: value
-      }
+        [preference]: value,
+      },
     };
   },
 
-  'RECEIVE_ME': (state, {data}) => {
-    const {account} = data;
+  RECEIVE_ME: (state, { data }) => {
+    const { account } = data;
 
     return {
       ...state,
-      account
+      account,
     };
   },
 
-  'SET_ACCOUNT_DETAIL': (state, {data}) => {
-    const {name, value} = data;
+  SET_ACCOUNT_DETAIL: (state, { data }) => {
+    const { name, value } = data;
 
     return {
       ...state,
       account: {
         ...state.account,
-        [name]: value
-      }
+        [name]: value,
+      },
     };
   },
 };
-
 
 export default function reducer(state = defaultState, action) {
   const func = actions[action.type];

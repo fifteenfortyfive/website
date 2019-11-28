@@ -3,25 +3,18 @@ import classNames from 'classnames';
 
 import style from './InputWrapper.css';
 
-const InputWrapper = (props) => {
-  const {
-    name,
-    label,
-    note,
-    multiline=false,
-    children,
-    className,
-  } = props;
+const InputWrapper = props => {
+  const { name, label, note, multiline = false, children, className } = props;
 
   return (
     <div class={classNames(style.container, className)}>
       <div class={style.control}>
-        <label for={name} class={style.label}>{label}</label>
+        <label for={name} class={style.label}>
+          {label}
+        </label>
         {children}
       </div>
-      { note &&
-        <p class={style.note}>{note}</p>
-      }
+      {note && <p class={style.note}>{note}</p>}
     </div>
   );
 };

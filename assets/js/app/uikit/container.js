@@ -1,13 +1,11 @@
-import {h} from 'preact';
+import { h } from 'preact';
 
-const Container = (props) => {
-  const {children} = props;
+const Container = props => {
+  const { children } = props;
 
   return (
     <div class="container">
-      <section class="section">
-        {children}
-      </section>
+      <section class="section">{children}</section>
     </div>
   );
 };

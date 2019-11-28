@@ -5,15 +5,15 @@ import InputWrapper from './InputWrapper';
 
 import style from './TextInput.css';
 
-const TextInput = (props) => {
+const TextInput = props => {
   const {
     name,
     value,
     label,
     note,
-    placeholder="",
-    multiline=false,
-    editable=true,
+    placeholder = '',
+    multiline = false,
+    editable = true,
     onChange,
     onInput,
     className,
@@ -21,12 +21,7 @@ const TextInput = (props) => {
   } = props;
 
   return (
-    <InputWrapper
-        name={name}
-        label={label}
-        note={note}
-        className={className}
-      >
+    <InputWrapper name={name} label={label} note={note} className={className}>
       <input
         {...inputProps}
         type="text"

@@ -1,6 +1,6 @@
 import { h } from 'preact';
-import {useCallback, useEffect, useState} from 'preact/hooks';
-import {useDispatch, useSelector} from 'react-redux';
+import { useCallback, useEffect, useState } from 'preact/hooks';
+import { useDispatch, useSelector } from 'react-redux';
 import { Router, Route, route } from 'preact-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -13,19 +13,19 @@ import AdminRouter from './admin/AdminRouter';
 import AccountView from './modules/accounts/views/AccountView';
 import NewAccountView from './modules/accounts/views/NewAccountView';
 import LoginView from './modules/auth/views/LoginView';
-import MeView from './modules/me/views/MeView';
-import StreamsView from './modules/streams/views/StreamsView';
-import TeamView from './modules/teams/views/TeamView';
 import EventView from './modules/events/views/EventView';
 import EventsView from './modules/events/views/EventsView';
+import MeView from './modules/me/views/MeView';
+import StreamsView from './modules/streams/views/StreamsView';
+import Submit from './modules/submissions/components/Submit';
+import TeamView from './modules/teams/views/TeamView';
+import NotFoundPage from './pages/NotFoundPage';
 import Index from './static-pages/index';
 import Volunteer from './static-pages/volunteer';
-import Submit from './modules/submissions/components/Submit';
-import NotFoundPage from './pages/NotFoundPage';
 
-import {CURRENT_EVENT_ID, Routes} from './Constants';
+import { CURRENT_EVENT_ID, Routes } from './Constants';
 
-const App = (props) => {
+const App = props => {
   const dispatch = useDispatch();
 
   const isLoggedIn = useSelector(AuthStore.isLoggedIn);
@@ -36,20 +36,22 @@ const App = (props) => {
   }, []);
 
   useEffect(() => {
-    if(isLoggedIn && !currentUser) {
+    if (isLoggedIn && !currentUser) {
       dispatch(MeActions.fetchMe());
     }
   }, [isLoggedIn, currentUser]);
 
+  const handleRouteChange = useCallback(
+    e => {
+      const { url, current: requestedRoute } = e;
+      const { needsAuth, needsAdmin } = requestedRoute.props;
+      const isAdmin = currentUser && currentUser.admin;
 
-  const handleRouteChange = useCallback((e) => {
-    const {url, current: requestedRoute} = e;
-    const {needsAuth, needsAdmin} = requestedRoute.props;
-    const isAdmin = currentUser && currentUser.admin;
-
-    if(needsAuth && !isLoggedIn) route(Routes.LOGIN({redirect: url}), true);
-    if(needsAdmin && !isAdmin) route(Routes.LOGIN({redirect: url}), true);
-  }, [isLoggedIn, currentUser]);
+      if (needsAuth && !isLoggedIn) route(Routes.LOGIN({ redirect: url }), true);
+      if (needsAdmin && !isAdmin) route(Routes.LOGIN({ redirect: url }), true);
+    },
+    [isLoggedIn, currentUser],
+  );
 
   return (
     <Router onChange={handleRouteChange}>
@@ -57,22 +59,22 @@ const App = (props) => {
       <Volunteer path={Routes.VOLUNTEER} />
       <LoginView path={Routes.LOGIN()} />
 
-      <TeamView path={Routes.TEAM(":teamId")} />
+      <TeamView path={Routes.TEAM(':teamId')} />
       <NewAccountView path={Routes.ACCOUNTS_NEW} />
-      <AccountView path={Routes.ACCOUNT(":accountId")} />
+      <AccountView path={Routes.ACCOUNT(':accountId')} />
       <StreamsView path={Routes.STREAMS} />
 
       <MeView path="/@me/:page?" eventId={CURRENT_EVENT_ID} needsAuth />
 
       <EventsView path={Routes.EVENTS} />
-      <EventView path={Routes.EVENT(":eventId")} />
-      <Submit path={Routes.EVENT_SUBMIT_RUN(":eventId")} needsAuth />
+      <EventView path={Routes.EVENT(':eventId')} />
+      <Submit path={Routes.EVENT_SUBMIT_RUN(':eventId')} needsAuth />
 
       <AdminRouter path={Routes.ADMIN_BASE} needsAdmin />
 
       <NotFoundPage default />
     </Router>
   );
-}
+};
 
 export default App;

@@ -6,88 +6,100 @@ const defaultState = {
   accounts: {},
   events: {},
   games: {},
-  fetching: {}
+  fetching: {},
 };
 
 const reducerActions = {
-  'FETCH_STARTED': (state, {data}) => {
+  FETCH_STARTED: (state, { data }) => {
     return {
       ...state,
       fetching: {
         ...state.fetching,
-        [data.fetchId]: true
-      }
+        [data.fetchId]: true,
+      },
     };
   },
 
-  'FETCH_SUCCEEDED': (state, {data}) => {
+  FETCH_SUCCEEDED: (state, { data }) => {
     return {
       ...state,
       fetching: {
         ...state.fetching,
-        [data.fetchId]: false
-      }
+        [data.fetchId]: false,
+      },
     };
   },
 
-  'FETCH_FAILED': (state, {data}) => {
+  FETCH_FAILED: (state, { data }) => {
     return {
       ...state,
       fetching: {
         ...state.fetching,
-        [data.fetchId]: 'failed'
-      }
+        [data.fetchId]: 'failed',
+      },
     };
   },
 
-  'RECEIVE_ACCOUNTS': (state, {data}) => {
-    const {accounts} = data;
-    const accountsById = _.reduce(accounts, (acc, account) => {
-      acc[account.id] = account;
-      return acc;
-    }, {});
+  RECEIVE_ACCOUNTS: (state, { data }) => {
+    const { accounts } = data;
+    const accountsById = _.reduce(
+      accounts,
+      (acc, account) => {
+        acc[account.id] = account;
+        return acc;
+      },
+      {},
+    );
 
     return {
       ...state,
       accounts: {
         ...state.accounts,
-        ...accountsById
-      }
-    }
+        ...accountsById,
+      },
+    };
   },
 
-  'RECEIVE_EVENTS': (state, {data}) => {
-    const {events} = data;
-    const eventsById = _.reduce(events, (acc, event) => {
-      acc[event.id] = event;
-      return acc;
-    }, {});
+  RECEIVE_EVENTS: (state, { data }) => {
+    const { events } = data;
+    const eventsById = _.reduce(
+      events,
+      (acc, event) => {
+        acc[event.id] = event;
+        return acc;
+      },
+      {},
+    );
 
     return {
       ...state,
       events: {
         ...state.events,
-        ...eventsById
-      }
-    }
+        ...eventsById,
+      },
+    };
   },
 
-  'RECEIVE_GAMES': (state, {data}) => {
-    const {games} = data;
-    const gamesById = _.reduce(games, (acc, game) => {
-      acc[game.id] = game;
-      return acc;
-    }, {});
+  RECEIVE_GAMES: (state, { data }) => {
+    const { games } = data;
+    const gamesById = _.reduce(
+      games,
+      (acc, game) => {
+        acc[game.id] = game;
+        return acc;
+      },
+      {},
+    );
 
     return {
       ...state,
       games: {
         ...state.games,
-        ...gamesById
-      }
-    }
-  }
-}
+        ...gamesById,
+      },
+    };
+  },
+};
 
 export function reducer(state = defaultState, action) {
   const func = reducerActions[action.type];

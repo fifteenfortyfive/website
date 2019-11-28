@@ -4,24 +4,24 @@ import Duration from 'luxon/src/duration';
 export default {
   // Converts from seconds to a Luxon Duration object.
   fromSeconds(seconds) {
-    if(typeof(seconds) !== "number") {
+    if (typeof seconds !== 'number') {
       seconds = parseInt(seconds);
     }
 
-    return Duration.fromMillis(seconds * 1000).toFormat("hh:mm:ss");
+    return Duration.fromMillis(seconds * 1000).toFormat('hh:mm:ss');
   },
 
   // Converts from 00:00:00 to seconds
   timeStringToSeconds(string) {
     const [hoursRaw, minutesRaw, secondsRaw] = string.split(':');
     const hours = parseInt(hoursRaw);
-    if(isNaN(hours)) return 0;
+    if (isNaN(hours)) return 0;
 
     const minutes = parseInt(minutesRaw);
-    if(isNaN(minutes)) return hours * 3600;
+    if (isNaN(minutes)) return hours * 3600;
 
     const seconds = parseInt(secondsRaw);
-    if(isNaN(seconds)) return hours * 3600 + minutes * 60;
+    if (isNaN(seconds)) return hours * 3600 + minutes * 60;
 
     return hours * 3600 + minutes * 60 + seconds;
   },
@@ -32,13 +32,13 @@ export default {
   },
 
   // Converts from seconds to 00:00:00
-  secondsToString(rawSeconds, stringifyNull=false) {
-    if(!rawSeconds) return stringifyNull ? "00:00:00" : null;
-    if(typeof(rawSeconds) !== "number") {
+  secondsToString(rawSeconds, stringifyNull = false) {
+    if (!rawSeconds) return stringifyNull ? '00:00:00' : null;
+    if (typeof rawSeconds !== 'number') {
       rawSeconds = parseInt(rawSeconds);
     }
 
-    if(isNaN(rawSeconds)) return stringifyNull ? "00:00:00" : null;
+    if (isNaN(rawSeconds)) return stringifyNull ? '00:00:00' : null;
 
     const hours = Math.floor(rawSeconds / 3600);
     const minutes = Math.floor(rawSeconds / 60) % 60;
