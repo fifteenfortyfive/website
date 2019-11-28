@@ -1,4 +1,4 @@
-import { commonThunk, denulled } from '../actions';
+import { commonThunk, denulled } from '../../actions';
 
 export function fetchRuns(eventId, accountId) {
   return commonThunk({

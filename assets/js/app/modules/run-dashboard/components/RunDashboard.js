@@ -3,17 +3,17 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';
 
-import * as RunDashboardActions from '../../../actions/run-dashboard';
 import * as GameActions from '../../../actions/games';
-import * as DashboardStore from '../../../selectors/dashboard';
-import MeDashboardRun from './dashboard/MeDashboardRun';
+import * as RunDashboardActions from '../RunDashboardActions';
+import * as DashboardStore from '../RunDashboardStore';
+import RunDashboardRun from './RunDashboardRun';
 
 import {getUTCNow} from '../../../util';
 
 const TICK_INTERVAL = 1000;
 const REFRESH_INTERVAL = 15 * 1000;
 
-class MeRunDashboard extends Component {
+class RunDashboard extends Component {
   constructor(props) {
     super(props);
     this.timerIntervalID = null;
@@ -62,7 +62,7 @@ class MeRunDashboard extends Component {
           <p>These controls are how the main stream knows what to show, so make sure to start and finish your runs! Your run will <em>not</em> automatically start after the previous run for your team. <strong>You must start each of your runs manually when you begin</strong>.</p>
         </div>
 
-        { _.map(runs, (run) => <MeDashboardRun run={run} currentTime={currentTime} eventId={eventId} />) }
+        { _.map(runs, (run) => <RunDashboardRun run={run} currentTime={currentTime} eventId={eventId} />) }
       </div>
     );
   }
@@ -72,6 +72,6 @@ export default connect((state) => {
   return {
     runs: DashboardStore.getOrderedRuns(state),
   };
-})(MeRunDashboard);
+})(RunDashboard);
 
 

@@ -5,14 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Button from '../../../uikit/button';
 import Layout from '../../../pages/layout';
-import * as StreamActions from '../../streams/StreamActions';
 import * as AccountActions from '../../accounts/AccountActions';
 import AccountCard from '../../accounts/components/AccountCard';
 import RunList from '../../accounts/components/RunList';
+import RunDashboard from '../../run-dashboard/components/RunDashboard';
+import * as StreamActions from '../../streams/StreamActions';
 import * as MeActions from '../MeActions';
 import Edit from '../components/MeEdit';
 import Preferences from '../components/MePreferences';
-import RunDashboard from '../components/MeRunDashboard';
 
 import { Routes } from '../../../constants';
 

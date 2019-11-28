@@ -6,7 +6,7 @@ import accounts from './modules/accounts/AccountsReducer';
 import auth from './modules/auth/AuthReducer';
 import me from './modules/me/MeReducer';
 import streams from './modules/streams/StreamsReducer';
-import dashboard from './reducers/dashboard';
+import dashboard from './modules/run-dashboard/RunDashboardReducer';
 import events from './reducers/events';
 import fetching from './reducers/fetching';
 import games from './reducers/games';

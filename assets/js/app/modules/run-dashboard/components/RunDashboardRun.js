@@ -2,11 +2,11 @@ import { h, Component } from 'preact';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import * as RunDashboardActions from '../../../../actions/run-dashboard';
+import * as RunDashboardActions from '../RunDashboardActions';
 
-import {runTime, runTimeFromStart} from '../../../../util';
+import {runTime, runTimeFromStart} from '../../../util';
 
-class MeDashboardRun extends Component {
+class RunDashboardRun extends Component {
   constructor(props) {
     super(props);
     this.handleStartRun  = this._handleStartRun.bind(this);
@@ -149,6 +149,6 @@ export default connect((state, props) => {
     runId: run.id,
     game: state.games[run.game_id]
   };
-})(MeDashboardRun);
+})(RunDashboardRun);
 
 
