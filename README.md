@@ -4,7 +4,9 @@ This repository contains all of the sources powering the website for [The 1545](
 
 If you have any questions or would like to help contribute, please contact us at contact@fifteenfortyfive.org, or in [our community Discord server](https://discord.fifteenfortyfive.org).
 
+#### Contributing
 
+If you would like to contribute to this project, check out [CONTRIBUTING.md](./CONTRIBUTING.md) for an introduction.
 
 ## Running locally
 
@@ -19,7 +21,6 @@ It is recommended to use `asdf` for managing Crystal and Node versions, as they 
 
 If this is your first time using Crystal for development, you may run into issues when compiling where external libraries can't be found. Check [here](https://github.com/crystal-lang/crystal/wiki/All-required-libraries) for information about what libraries are needed for your platform.
 
-
 ### Building
 
 After cloning this repository and ensuring that all dependencies above are satisfied, create a `.env` file based on the provided `.env.example`:
@@ -29,18 +30,15 @@ After cloning this repository and ensuring that all dependencies above are satis
 - `TWITCH_CLIENT_ID` is for loading stream information. You can generate a token from Twitch's developer portal as a new application. It is not necessary for the site to run.
 - `ASSETS_*` are the S3-compliant configurations for storing user assets (avatars, etc.). This is only required if you need are developing features with avatars, icons, or other dynamic images.
 
-
 With the `.env` file set up, you should be able to run `shards build` to build the application. This application is also configured to work with [`sentry`](https://github.com/samueleaton/sentry) for live-reloading changes.
 
 To compile the assets, move to the `assets` folder and run `yarn build`. You can also run `yarn watch` to have the assets recompiled every time a file change is detected.
-
 
 ### Database setup
 
 Database migrations are done using the `tool` executable. You can build it with `shards build tool`. To run migrations, use `./bin/tool db:migrate`.
 
 **The database migrations are not currently set up to build a complete database from scratch. Efforts to fix this are greatly appreciated.**
-
 
 ### Running
 
@@ -50,11 +48,9 @@ If you're using `sentry`, the server will auto-restart every time you make chang
 
 The frontend is now written entirely in React, so to see anything on the site, you'll need to have run `yarn build`, or have `yarn watch` running from the `assets` folder to have live-reloaded changes.
 
-
 ## Setting up a Production Server
 
 We use Ansible to provision new servers. Ansible allows us to define a series of tasks and dependencies as configuration that can then be executed on nearly any platform. It also provides mechanisms for provisioning multiple servers at once using groups.
-
 
 ### Hosts file
 
@@ -62,11 +58,9 @@ First, you'll need to create a `hosts` file under `ansible/inventory`. This file
 
 You can see an example hosts file [here](/example-hosts). The only required groups as `[py3-hosts]` and `[py3-hosts:vars]`. Most modern OSs have Python 3 installed by default, but Ansible defaults to Python 2. These groups tell Ansible to use Python 3 on those servers. Other groups are up to you.
 
-
 ### Defining Users
 
 In the `ansible/inventory/group_vars/all/users.yml` file, you can add and remove users who will be able to access your servers. Add your user to this file before continuing with the steps below. **If you leave our names in there, we will have access to your servers!**
-
 
 ### Provisioning
 
@@ -122,7 +116,6 @@ sudo apt-get update && sudo apt-get install yarn
 
 And that's it. Your server is now completely set up to build, release, and run the application.
 
-
 ### Releasing the Application
 
 Two scripts are provided under the `scripts` directory for building a new release and starting the generated application.
@@ -133,24 +126,21 @@ Two scripts are provided under the `scripts` directory for building a new releas
 
 These scripts will likely be updated for a more robust deployment solution in the near future.
 
-
 ### Accessing the Database
 
 If you'd like to access the database remotely, you can find the generated credentials in the `.env` file on the server. The `DATABASE_URL` can then be pasted into your favorite client.
 
 Note that the database only listens for connections on `localhost`, so you'll need to have an SSH tunnel (as any user) to be able to make the connection.
 
-
 ### Setting up Swapfile
 
-Crystal uses a very large amount of RAM when compiling medium-size applications such as this one. Especially on small servers like DigitalOcean's $5/month droplet, this is a big issue. That server is more than capable enough with CPU (even with only 1 core), but 1GB of RAM is not nearly large enough even just to build the app, let alone also have it running and a database up as well.
+Crystal uses a very large amount of RAM when compiling medium-size applications such as this one. Especially on small servers like DigitalOcean's \$5/month droplet, this is a big issue. That server is more than capable enough with CPU (even with only 1 core), but 1GB of RAM is not nearly large enough even just to build the app, let alone also have it running and a database up as well.
 
 Swapfiles let you provide more space for the OS to move data around to simulate more RAM. It should be used _sparingly_, but is useful for situations like this.
 
 [This guide](https://linuxize.com/post/how-to-add-swap-space-on-ubuntu-18-04/) goes through how to configure a Swapfile on Ubuntu. A 2GB Swapfile will be more than sufficient for the needs of this application.
 
 Configuring the Swappiness to a low value is also good (to ensure that it is only really used when compiling, not in normal operation).
-
 
 ### Installing `systemd` service
 
