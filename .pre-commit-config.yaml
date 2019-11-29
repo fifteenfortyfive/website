@@ -23,3 +23,9 @@ repos:
         stages: [commit]
         files: (.*)\.(js|jsx|ts|tsx|css)$
         args: ["--ext", ".tsx,.ts,.js", "--fix"]
+      - id: crystal-format
+        name: crystal-format
+        entry: crystal tool format
+        language: system
+        pass_filenames: true
+        files: \.cr$
