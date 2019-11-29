@@ -1,9 +1,12 @@
 import { h } from 'preact';
 
-import StreamCard from './StreamCard';
+import Avatar from '../../../uikit/Avatar';
+import getThumbnailURL from '../getThumbnailURL';
+
+import { Routes } from '../../../Constants';
 
 const StreamGrid = props => {
-  const { account, stream, loadingAccount, loadingStream } = props;
+  const { account, stream } = props;
 
   return (
     <div class="stream-card">

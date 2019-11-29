@@ -7,6 +7,7 @@ export function fetchAccounts(accountIds) {
       path: '/api/v1/accounts',
       name: 'accounts',
       query: denulled({
+        // eslint-disable-next-line camelcase
         account_ids: accountIds,
       }),
     },
@@ -43,8 +44,10 @@ export function createAccount(accountProps) {
       body: {
         username,
         password,
+        /* eslint-disable camelcase */
         discord_username: discordUsername,
         discord_discriminator: discordDiscriminator,
+        /* eslint-enable camelcase */
       },
     },
     (dispatch, response) => {

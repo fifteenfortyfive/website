@@ -1,15 +1,11 @@
 import { h, Component } from 'preact';
 import { connect } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';
 
-import Avatar from '../../../uikit/Avatar';
 import * as AccountActions from '../../accounts/AccountActions';
 import Layout from '../../layout/components/Layout';
 import * as StreamActions from '../StreamActions';
 import StreamCard from '../components/StreamCard';
-
-import { Routes } from '../../../Constants';
 
 class StreamsView extends Component {
   componentDidMount() {
@@ -19,7 +15,7 @@ class StreamsView extends Component {
 
   componentDidUpdate(prevProps) {
     const { streams } = this.props;
-    if (prevProps.streams != streams) {
+    if (prevProps.streams !== streams) {
       this.refetchAccounts();
     }
   }
@@ -60,8 +56,8 @@ const mapStateToProps = (state, props) => {
   return {
     streams: state.streams,
     accounts: state.accounts,
-    loading: state.fetching['streams'],
-    loadingAccounts: state.fetching['accounts'],
+    loading: state.fetching.streams,
+    loadingAccounts: state.fetching.accounts,
   };
 };
 

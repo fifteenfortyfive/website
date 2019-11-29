@@ -1,4 +1,3 @@
-import DateTime from 'luxon/src/datetime';
 import Duration from 'luxon/src/duration';
 
 export default {
@@ -28,7 +27,7 @@ export default {
 
   // Converts from 00:00:00 to a Luxon Duration object
   fromTimeString(string) {
-    return fromSeconds(timeStringToSeconds(string));
+    return this.fromSeconds(this.timeStringToSeconds(string));
   },
 
   // Converts from seconds to 00:00:00

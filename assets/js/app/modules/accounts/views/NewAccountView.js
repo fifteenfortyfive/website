@@ -39,7 +39,7 @@ const NewAccountView = props => {
     discordUsername &&
     discordUsername.length > 2 &&
     discordDiscriminator &&
-    discordDiscriminator.length == 4 &&
+    discordDiscriminator.length === 4 &&
     parseInt(discordDiscriminator);
 
   const dispatch = useDispatch();

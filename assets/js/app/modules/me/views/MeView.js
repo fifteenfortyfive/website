@@ -1,15 +1,11 @@
 import { h, Component } from 'preact';
 import { connect } from 'react-redux';
 import { route } from 'preact-router';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Button from '../../../uikit/Button';
-import * as AccountActions from '../../accounts/AccountActions';
 import AccountCard from '../../accounts/components/AccountCard';
-import RunList from '../../accounts/components/RunList';
 import Layout from '../../layout/components/Layout';
 import RunDashboard from '../../run-dashboard/components/RunDashboard';
-import * as StreamActions from '../../streams/StreamActions';
 import * as MeActions from '../MeActions';
 import Edit from '../components/MeEdit';
 import Preferences from '../components/MePreferences';
@@ -24,10 +20,6 @@ const Pages = {
 };
 
 class MeView extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const { dispatch } = this.props;
 
@@ -36,7 +28,7 @@ class MeView extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { dispatch, page } = this.props;
-    const pageChanged = prevState.page != page;
+    const pageChanged = prevState.page !== page;
 
     if (pageChanged && page === Pages.SHOW) {
       dispatch(MeActions.fetchMe());
@@ -78,7 +70,7 @@ class MeView extends Component {
       case Pages.PREFERENCES:
         return <Preferences onFinish={() => route(Routes.ME)} />;
       case Pages.RUN_DASHBOARD:
-        return <RunDashboard eventId={eventId} accountId={accountId} eventId={eventId} />;
+        return <RunDashboard eventId={eventId} accountId={accountId} />;
       case Pages.EDIT:
         return <Edit onFinish={() => route(Routes.ME)} />;
       case Pages.SHOW:

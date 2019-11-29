@@ -18,7 +18,7 @@ const SocialTag = props => {
         <FontAwesomeIcon {...service.iconProps} />
       </span>
       {url ? (
-        <a native href={url} target="_blank" rel="nofollow noopener">
+        <a native href={url} target="_blank" rel="noopener noreferrer">
           {name}
         </a>
       ) : (

@@ -1,6 +1,5 @@
 import { h, Component, Fragment } from 'preact';
 import { connect } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Layout from '../../layout/components/Layout';
 import * as StreamActions from '../../streams/StreamActions';

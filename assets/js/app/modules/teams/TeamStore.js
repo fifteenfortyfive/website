@@ -15,7 +15,7 @@ export const getTeams = createSelector([getTeamsState], teamsState => Object.val
 export const getSortedTeams = createSelector([getTeams], teams => _.sortBy(teams, 'id'));
 
 export const getTeamRuns = createCachedSelector([getRuns, getTeamId], (runs, teamId) => {
-  const teamRuns = _.filter(runs, run => run.team_id == teamId);
+  const teamRuns = _.filter(runs, run => run.team_id === teamId);
   return _.sortBy(teamRuns, 'index');
 })(getTeamId);
 

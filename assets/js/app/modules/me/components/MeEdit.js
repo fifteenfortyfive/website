@@ -1,26 +1,18 @@
 import { h, Component, createRef } from 'preact';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import _ from 'lodash';
 
 import * as MeActions from '../MeActions';
 
 import Avatar from '../../../uikit/Avatar';
 import Button from '../../../uikit/Button';
-import Checkbox from '../../../uikit/Checkbox';
 import TextInput from '../../../uikit/TextInput';
-import PasswordInput from '../../../uikit/PasswordInput';
 
 class MeEdit extends Component {
   constructor(props) {
     super(props);
 
-    this.handleSave = this._handleSave.bind(this);
-    this.handleUploadAvatar = this._handleUploadAvatar.bind(this);
-    this.stageAvatarUpload = this._stageAvatarUpload.bind(this);
-
     this.avatarUploadInput = createRef();
-
     this.state = {
       avatarChanged: false,
       newAvatarSrc: null,
@@ -33,11 +25,7 @@ class MeEdit extends Component {
     dispatch(MeActions.fetchMe());
   }
 
-  componentDidUpdate(prevProps) {
-    const { submitting } = this.props;
-  }
-
-  _stageAvatarUpload() {
+  handleAvatarChanged = () => {
     const file = this.avatarUploadInput.current.files[0];
     const newAvatarSrc = URL.createObjectURL(file);
 
@@ -46,9 +34,9 @@ class MeEdit extends Component {
       newAvatarSrc,
       avatarChangeFailed: false,
     });
-  }
+  };
 
-  _handleUploadAvatar() {
+  handleUploadAvatar = () => {
     const { dispatch } = this.props;
     const newAvatar = this.avatarUploadInput.current.files[0];
 
@@ -59,13 +47,13 @@ class MeEdit extends Component {
       .catch(() => {
         this.setState({ avatarChangeFailed: true });
       });
-  }
+  };
 
-  _handleSave() {
+  handleSave = () => {
     const { account, dispatch, onFinish } = this.props;
     dispatch(MeActions.persistMe(account));
     onFinish();
-  }
+  };
 
   setDetail(name, value) {
     const { dispatch } = this.props;
@@ -96,7 +84,7 @@ class MeEdit extends Component {
                     ref={this.avatarUploadInput}
                     class="file-input"
                     type="file"
-                    onChange={this.stageAvatarUpload}
+                    onChange={this.handleAvatarChanged}
                   />
                   <span class="file-cta">
                     <span class="file-icon">

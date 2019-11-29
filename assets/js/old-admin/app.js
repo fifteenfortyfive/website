@@ -1,7 +1,7 @@
-import { h, render, Component } from 'preact';
+import { h, Component } from 'preact';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Router, Link } from 'preact-router';
+import { Router } from 'preact-router';
 import { createHashHistory } from 'history';
 
 import * as Actions from './actions';

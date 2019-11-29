@@ -2,13 +2,9 @@ import { h, Component } from 'preact';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import * as FetchActions from '../../../actions/fetch';
 import Avatar from '../../../uikit/Avatar';
 import Link from '../../../uikit/Link';
-import * as FetchStore from '../../../selectors/fetch';
-import * as AccountActions from '../../accounts/AccountActions';
 import * as AccountStore from '../../accounts/AccountStore';
-import RunList from '../../accounts/components/RunList';
 import Layout from '../../layout/components/Layout';
 import * as RunActions from '../../runs/RunActions';
 import * as TeamActions from '../TeamActions';
@@ -20,23 +16,23 @@ import style from './TeamView.css';
 
 class TeamView extends Component {
   componentDidMount() {
-    const { captainId, teamId, dispatch } = this.props;
+    const { dispatch, teamId } = this.props;
     dispatch(TeamActions.fetchTeam(teamId));
     dispatch(RunActions.fetchRuns({ teamId, embeds: ['game', 'category', 'account'] }));
   }
 
   render() {
-    const { teamId, team, estimate, loading, runs } = this.props;
+    const { team, estimate, loading, runs } = this.props;
 
     if (loading || team == null) return <Layout>Loading</Layout>;
 
-    const { name, avatar_hash } = team;
+    const { name, avatar_hash: avatarHash } = team;
 
     return (
       <Layout>
         <div class="columns">
           <div class="column is-4">
-            <Avatar src={avatar_hash} />
+            <Avatar src={avatarHash} />
             <h1 class="title is-3" style={{ color: `#${team.color}` }}>
               {name}
             </h1>
@@ -52,7 +48,7 @@ class TeamView extends Component {
             )}
             {estimate && <p>Game Estimate: {runTime(estimate)}</p>}
             {team.actual_time_seconds && <p>Finished in: {runTime(team.actual_time_seconds)}</p>}
-            <p></p>
+            <p />
           </div>
           <div class="column">
             <table class="table is-fullwidth">
@@ -97,7 +93,7 @@ class TeamView extends Component {
 
 const mapStateToProps = (state, props) => {
   const loadingTeam = state.fetching[`teams.${props.teamId}`];
-  const loadingRuns = state.fetching[`runs`];
+  const loadingRuns = state.fetching.runs;
 
   const captainId = TeamStore.getCaptainId(state, props);
 

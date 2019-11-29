@@ -1,4 +1,4 @@
-import { h, Component } from 'preact';
+import { h } from 'preact';
 import _ from 'lodash';
 import Duration from 'luxon/src/duration';
 
@@ -94,7 +94,7 @@ const RunCell = props => {
               <ul>
                 {_.map(submission.run_submissions, subRun => {
                   const game = games[subRun.game_id];
-                  const isThisGame = subRun.game_id == run.game_id;
+                  const isThisGame = subRun.game_id === run.game_id;
                   return (
                     <li class={isThisGame ? 'has-text-weight-bold' : ''}>
                       <strong>{subRun.rank} - </strong>

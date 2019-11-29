@@ -1,13 +1,11 @@
 import { h, Fragment } from 'preact';
-import { useCallback, useEffect, useState } from 'preact/hooks';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useCallback, useState } from 'preact/hooks';
+import { useDispatch, useSelector } from 'react-redux';
 import { route } from 'preact-router';
-import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import * as AuthActions from '../../auth/AuthActions';
 import * as AuthStore from '../../auth/AuthStore';
-import * as MeActions from '../../me/MeActions';
 import * as MeStore from '../../me/MeStore';
 
 import {
@@ -45,7 +43,7 @@ const LayoutNavbar = props => {
   }, [dispatch]);
 
   return (
-    <Navbar isTransparent={isDark}>
+    <Navbar isTransparent={isDark} className={className}>
       <Container>
         <NavbarBrand>
           <NavbarItem href={Routes.HOME}>
@@ -126,35 +124,35 @@ const LayoutNavbar = props => {
                   href={ExternalRoutes.DISCORD_URL}
                   target="_blank"
                   native>
-                  <FontAwesomeIcon icon={['fab', 'discord']}></FontAwesomeIcon>
+                  <FontAwesomeIcon icon={['fab', 'discord']} />
                 </Button>
                 <Button
                   isColor={isDark ? 'dark' : 'white'}
                   href={ExternalRoutes.SRCOM_URL}
                   target="_blank"
                   native>
-                  <FontAwesomeIcon icon={['fas', 'trophy']}></FontAwesomeIcon>
+                  <FontAwesomeIcon icon={['fas', 'trophy']} />
                 </Button>
                 <Button
                   isColor={isDark ? 'dark' : 'white'}
                   href={ExternalRoutes.TWITCH_URL}
                   target="_blank"
                   native>
-                  <FontAwesomeIcon icon={['fab', 'twitch']}></FontAwesomeIcon>
+                  <FontAwesomeIcon icon={['fab', 'twitch']} />
                 </Button>
                 <Button
                   isColor={isDark ? 'dark' : 'white'}
                   href={ExternalRoutes.TWITTER_URL}
                   target="_blank"
                   native>
-                  <FontAwesomeIcon icon={['fab', 'twitter']}></FontAwesomeIcon>
+                  <FontAwesomeIcon icon={['fab', 'twitter']} />
                 </Button>
                 <Button
                   isColor={isDark ? 'dark' : 'white'}
                   href={ExternalRoutes.YOUTUBE_URL}
                   target="_blank"
                   native>
-                  <FontAwesomeIcon icon={['fab', 'youtube']}></FontAwesomeIcon>
+                  <FontAwesomeIcon icon={['fab', 'youtube']} />
                 </Button>
               </div>
             </NavbarItem>

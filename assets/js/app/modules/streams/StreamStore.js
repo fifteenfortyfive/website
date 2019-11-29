@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import createCachedSelector from 're-reselect';
+import _ from 'lodash';
 
 export const getStreamsState = state => state.streams;
 export const getStreamId = (_, props) => props.streamId;

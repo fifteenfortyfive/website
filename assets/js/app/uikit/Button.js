@@ -1,5 +1,4 @@
 import { h } from 'preact';
-import _ from 'lodash';
 import classNames from 'classnames';
 
 import buttonStyle from './Button.css';

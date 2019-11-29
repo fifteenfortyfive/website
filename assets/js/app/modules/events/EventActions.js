@@ -7,6 +7,7 @@ export function fetchEvents(eventIds) {
       path: '/api/v1/events',
       name: 'events',
       query: denulled({
+        // eslint-disable-next-line camelcase
         event_ids: eventIds,
       }),
     },

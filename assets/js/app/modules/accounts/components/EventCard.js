@@ -54,7 +54,6 @@ const EventCard = props => {
                       <span class="has-text-grey-light has-text-weight-bold">DNF</span>
                     )}
                   </td>
-                  {/*<td><span class="has-text-grey-light">{runTime(run.est_seconds)}</span></td>*/}
                 </tr>
               );
             })}

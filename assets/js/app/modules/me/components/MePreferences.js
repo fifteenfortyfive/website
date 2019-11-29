@@ -1,6 +1,5 @@
 import { h, Component } from 'preact';
 import { connect } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';
 
 import * as MeActions from '../MeActions';
@@ -12,10 +11,6 @@ class MePreferences extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(MeActions.fetchPreferences());
-  }
-
-  componentDidUpdate(prevProps) {
-    const { submitting } = this.props;
   }
 
   handleSave() {
@@ -31,7 +26,7 @@ class MePreferences extends Component {
 
   renderPreference(preference, value, detail) {
     const { preferences, descriptions } = this.props;
-    const { name, type, requires, description } = detail;
+    const { name, requires, description } = detail;
 
     const requirements = _.flow([
       _.partialRight(_.map, pref => descriptions[pref].name),

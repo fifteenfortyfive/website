@@ -1,4 +1,4 @@
-import { h, Component } from 'preact';
+import { h } from 'preact';
 import { useEffect } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -27,7 +27,7 @@ const AdminAccounts = () => {
 
       <div class={style.accounts}>
         {accountIds.map(accountId => (
-          <Account className={style.account} accountId={accountId} />
+          <Account key={accountId} className={style.account} accountId={accountId} />
         ))}
       </div>
 

@@ -9,7 +9,7 @@ import { fullDate } from '../../../utils/TimeUtils';
 const EventHeader = props => {
   const { event } = props;
 
-  const { name, series, summary, start_time } = event;
+  const { name, series, summary, start_time: startTime } = event;
 
   return (
     <Columns>
@@ -19,7 +19,7 @@ const EventHeader = props => {
           {series && series.name.toUpperCase()}
         </Text>
         <Header>{name}</Header>
-        <Text size={Text.Sizes.SIZE_16}>Starts {fullDate(start_time)}</Text>
+        <Text size={Text.Sizes.SIZE_16}>Starts {fullDate(startTime)}</Text>
         <Text>{summary}</Text>
       </Column>
     </Columns>

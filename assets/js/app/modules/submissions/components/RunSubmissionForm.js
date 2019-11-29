@@ -6,21 +6,18 @@ import * as SubmissionStore from '../SubmissionStore';
 
 import Button from '../../../uikit/Button';
 import ButtonGroup from '../../../uikit/ButtonGroup';
-import Header from '../../../uikit/Header';
 import Select from '../../../uikit/Select';
 import RunTimeInput from '../../../uikit/RunTimeInput';
 
-import { runTime } from '../../../utils/TimeUtils';
-
 const RunSubmissionForm = props => {
-  const { run = {}, index, className, onSave, onDelete, onCancel } = props;
+  const { run = {}, className, onSave, onDelete, onCancel } = props;
 
-  const { id, category_id, pb_seconds, est_seconds } = run;
+  const { id, category_id: categoryId, pb_seconds: pbSeconds, est_seconds: estSeconds } = run;
 
   const isNewRun = !id;
-  const [selectedCategoryId, setSelectedCategoryId] = useState(category_id);
-  const [pb, setPB] = useState(pb_seconds);
-  const [est, setEstimate] = useState(est_seconds);
+  const [selectedCategoryId, setSelectedCategoryId] = useState(categoryId);
+  const [pb, setPB] = useState(pbSeconds);
+  const [est, setEstimate] = useState(estSeconds);
   const [isValid, setValid] = useState(false);
   const categories = useSelector(state => {
     const allowed = SubmissionStore.getAllowedCategories(state);
@@ -67,7 +64,7 @@ const RunSubmissionForm = props => {
       <Select
         label="Run"
         options={categories}
-        value={selectedCategoryId || category_id}
+        value={selectedCategoryId || categoryId}
         placeholder="Select a run..."
         onChange={({ target }) => setSelectedCategoryId(target.value)}
       />

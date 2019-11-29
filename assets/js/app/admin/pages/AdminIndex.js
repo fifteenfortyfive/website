@@ -1,4 +1,4 @@
-import { h, Component } from 'preact';
+import { h } from 'preact';
 
 import Layout from '../../modules/layout/components/Layout';
 import Header from '../../uikit/Header';

@@ -8,10 +8,12 @@ export function fetchRuns(queryParams) {
       path: `/api/v1/runs`,
       name: 'runs',
       query: denulled({
+        /* eslint-disable camelcase */
         event_id: queryParams.eventId,
         team_id: queryParams.teamId,
         account_id: queryParams.accountId,
         run_ids: queryParams.runIds,
+        /* eslint-enable camelcase */
         embeds: _.join(queryParams.embeds, ','),
       }),
     },

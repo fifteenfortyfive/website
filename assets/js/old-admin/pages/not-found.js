@@ -1,5 +1,4 @@
-import { h, Component } from 'preact';
-import { Link } from 'preact-router';
+import { h } from 'preact';
 
 const NotFoundPage = () => {
   return (

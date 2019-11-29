@@ -1,4 +1,3 @@
-import { createSelector } from 'reselect';
 import createCachedSelector from 're-reselect';
 
 export const getFetchState = state => state.fetching;

@@ -1,8 +1,5 @@
 import { h } from 'preact';
-import { connect } from 'react-redux';
 import _ from 'lodash';
-
-import * as EventStore from '../EventStore';
 
 import Header from '../../../uikit/Header';
 import Link from '../../../uikit/Link';

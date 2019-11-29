@@ -19,7 +19,7 @@ const Checkbox = props => {
 
   return (
     <div
-      class={classNames(style.checkbox, {
+      class={classNames(style.checkbox, className, {
         [style.disabled]: disabled,
         [style.marginless]: marginless,
       })}

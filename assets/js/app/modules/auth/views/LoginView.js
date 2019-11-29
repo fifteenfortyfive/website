@@ -1,8 +1,7 @@
-import { h, Fragment } from 'preact';
+import { h } from 'preact';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import { connect } from 'react-redux';
 import { route } from 'preact-router';
-import _ from 'lodash';
 
 import * as AuthActions from '../AuthActions';
 import * as AuthStore from '../AuthStore';
@@ -10,7 +9,6 @@ import * as AuthStore from '../AuthStore';
 import { Columns, Column } from 'bloomer';
 import Button from '../../../uikit/Button';
 import Header from '../../../uikit/Header';
-import Link from '../../../uikit/Link';
 import PasswordInput from '../../../uikit/PasswordInput';
 import TextInput from '../../../uikit/TextInput';
 import Layout from '../../layout/components/Layout';
@@ -26,10 +24,10 @@ const LoginView = props => {
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
-    if (props.isLoggedIn) {
-      route(props.redirectRoute || Routes.ME, true);
+    if (isLoggedIn) {
+      route(redirectRoute || Routes.ME, true);
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, redirectRoute]);
 
   const handleLogin = useCallback(() => {
     setFailed(false);

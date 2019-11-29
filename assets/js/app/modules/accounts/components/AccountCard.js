@@ -1,5 +1,4 @@
 import { h } from 'preact';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import StreamPreview from './StreamPreview';
 
@@ -13,14 +12,23 @@ import { simpleDate } from '../../../utils/TimeUtils';
 import styles from './AccountCard.css';
 
 const AccountCard = props => {
-  const { account, stream, loading, loadingStream } = props;
+  const { account, stream, loadingStream } = props;
 
-  const { bio, avatar_hash, username, twitch, twitter, discord_tag, created_at, admin } = account;
+  const {
+    bio,
+    avatar_hash: avatarHash,
+    username,
+    twitch,
+    twitter,
+    discord_tag: discordTag,
+    created_at: createdAt,
+    admin,
+  } = account;
 
   return (
     <Box className={styles.container}>
       <div class={styles.header}>
-        <Avatar className={styles.avatar} src={avatar_hash} />
+        <Avatar className={styles.avatar} src={avatarHash} />
 
         <div class={styles.textCentered}>
           <Header size={Header.Sizes.H4} className={styles.username}>
@@ -43,9 +51,9 @@ const AccountCard = props => {
 
         {twitter && <SocialLink service={SocialLink.Services.TWITTER} name={twitter} key="Twitter" />}
 
-        {discord_tag && <SocialLink service={SocialLink.Services.DISCORD} name={discord_tag} key="Discord" />}
+        {discordTag && <SocialLink service={SocialLink.Services.DISCORD} name={discordTag} key="Discord" />}
 
-        {created_at && <p class={styles.joinedAt}>Joined {simpleDate(created_at)}</p>}
+        {createdAt && <p class={styles.joinedAt}>Joined {simpleDate(createdAt)}</p>}
       </div>
     </Box>
   );

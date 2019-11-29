@@ -10,18 +10,15 @@ import * as EventStore from '../EventStore';
 import EventHeader from '../components/EventHeader';
 import Team from '../components/EventTeam';
 
-import { Columns, Column, Heading } from 'bloomer';
-import Header from '../../../uikit/Header';
-import Text from '../../../uikit/Text';
+import { Columns, Column } from 'bloomer';
 
 class EventView extends Component {
   componentDidMount() {
-    const { eventId, dispatch } = this.props;
     this.fetchEvent();
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.eventId != this.props.eventId) {
+    if (prevProps.eventId !== this.props.eventId) {
       this.fetchEvent();
     }
   }
@@ -47,7 +44,7 @@ class EventView extends Component {
             team =>
               team && (
                 <Column isSize={3}>
-                  <Team team={team}></Team>
+                  <Team team={team} />
                 </Column>
               )
           )}

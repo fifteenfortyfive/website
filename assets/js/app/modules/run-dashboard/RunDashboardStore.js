@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import { createSelector } from 'reselect';
-import createCachedSelector from 're-reselect';
 
 export const getDashboardState = state => state.dashboard;
 

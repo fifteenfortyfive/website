@@ -1,5 +1,4 @@
-import { h, Component } from 'preact';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { h } from 'preact';
 
 import Layout from '../modules/layout/components/Layout';
 

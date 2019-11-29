@@ -7,6 +7,7 @@ export function fetchGames(gameIds) {
       path: '/api/v1/games',
       name: 'games',
       query: denulled({
+        // eslint-disable-next-line camelcase
         game_ids: gameIds,
       }),
     },

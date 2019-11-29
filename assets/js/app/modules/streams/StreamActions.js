@@ -1,4 +1,4 @@
-import { commonThunk, denulled } from '../../Actions';
+import { commonThunk } from '../../Actions';
 
 export function fetchStreams() {
   return commonThunk(

@@ -1,4 +1,4 @@
-import { h, Component } from 'preact';
+import { h } from 'preact';
 import { Router } from 'preact-router';
 
 import AdminIndex from './pages/AdminIndex';

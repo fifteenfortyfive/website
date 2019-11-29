@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import createCachedSelector from 're-reselect';
+import _ from 'lodash';
 
 export const getGamesState = state => state.games;
 export const getGameId = (_, props) => props.gameId;

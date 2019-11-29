@@ -7,8 +7,10 @@ export function fetchTeams(queryParams = {}) {
       path: `/api/v1/teams`,
       name: 'teams',
       query: denulled({
+        /* eslint-disable camelcase */
         event_id: queryParams.eventId,
         team_ids: queryParams.teamIds,
+        /* eslint-enable camelcase */
       }),
     },
     (dispatch, response) => {

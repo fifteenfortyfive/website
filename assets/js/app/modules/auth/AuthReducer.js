@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 const defaultState = {
   sessionId: null,
 };
@@ -14,9 +12,7 @@ const actions = {
     };
   },
 
-  LOGOUT_SUCCESS: (state, { data }) => {
-    const { sessionId } = data;
-
+  LOGOUT_SUCCESS: (state, _action) => {
     return {
       ...state,
       sessionId: null,

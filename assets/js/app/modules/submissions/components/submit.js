@@ -3,7 +3,6 @@ import { route } from 'preact-router';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { useAuth } from '../../../hooks/useAuth';
 import * as EventActions from '../../events/EventActions';
 import * as EventStore from '../../events/EventStore';
 import Layout from '../../layout/components/Layout';
@@ -16,9 +15,7 @@ import { Column, Columns } from 'bloomer';
 import Button from '../../../uikit/Button';
 import ButtonGroup from '../../../uikit/ButtonGroup';
 import Header from '../../../uikit/Header';
-import Select from '../../../uikit/Select';
 import Text from '../../../uikit/Text';
-import TextInput from '../../../uikit/TextInput';
 
 import { Routes } from '../../../Constants';
 import style from './Submit.css';
@@ -27,8 +24,6 @@ const NewSubmission = props => {
   const { eventId } = props;
   const dispatch = useDispatch();
 
-  const { isLoggedIn, account } = useAuth();
-  const [acceptedTimezones, setAcceptedTimezones] = useState(false);
   const [showNewRun, setShowNewRun] = useState(false);
 
   useEffect(() => {
@@ -42,7 +37,7 @@ const NewSubmission = props => {
   const runs = useSelector(SubmissionStore.getRunSubmissions);
 
   useEffect(() => {
-    if (event != null && event.state != 'signups open') {
+    if (event != null && event.state !== 'signups open') {
       route(Routes.HOME);
     }
   }, [event]);
@@ -53,10 +48,6 @@ const NewSubmission = props => {
     },
     [dispatch, eventId]
   );
-
-  const handleCancelEdit = useCallback(() => {
-    setShowNewRun(true);
-  });
 
   const handleDeleteRun = useCallback(
     runData => {
@@ -111,6 +102,7 @@ const NewSubmission = props => {
           <div class={style.runsContainer}>
             {runs.map(run => (
               <RunSubmission
+                key={run.game_id}
                 className={style.submission}
                 run={run}
                 onSave={handleUpdateRun}

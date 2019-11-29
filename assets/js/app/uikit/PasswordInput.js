@@ -1,4 +1,4 @@
-import { h, Component } from 'preact';
+import { h } from 'preact';
 
 import InputWrapper from './InputWrapper';
 
@@ -7,16 +7,7 @@ import style from './PasswordInput.css';
 // Password inputs are intentionally uncontrolled to avoid potentially leaking
 // the value
 const PasswordInput = props => {
-  const {
-    label,
-    name,
-    placeholder = '',
-    multiline = false,
-    note,
-    onChange,
-    className,
-    ...inputProps
-  } = props;
+  const { label, name, placeholder = '', note, onChange, className, ...inputProps } = props;
 
   return (
     <InputWrapper name={name} label={label} note={note} className={className}>

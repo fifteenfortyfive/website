@@ -1,5 +1,4 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import thunk from 'redux-thunk';
+import { combineReducers } from 'redux';
 
 import accounts from './modules/accounts/AccountsReducer';
 

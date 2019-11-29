@@ -97,7 +97,7 @@ export function fetchFailed(fetchId) {
 }
 
 function checkStatus(response) {
-  if ((response.status >= 200 && response.status < 300) || response.status == 422) {
+  if ((response.status >= 200 && response.status < 300) || response.status === 422) {
     return response;
   } else {
     throw response;

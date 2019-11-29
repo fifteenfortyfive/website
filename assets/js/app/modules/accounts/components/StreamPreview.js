@@ -1,5 +1,4 @@
 import { h } from 'preact';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { Image } from 'bloomer';
 import Header from '../../../uikit/Header';
@@ -13,13 +12,12 @@ const StreamPreview = props => {
 
   if (loading) return null;
 
-  const { title, thumbnail_url, viewer_count } = stream;
-  const isLive = stream.type == 'live';
-  const url = thumbnail_url.replace('{width}', expectedWidth).replace('{height}', expectedHeight);
+  const { title, thumbnail_url: thumbnailUrl } = stream;
+  const url = thumbnailUrl.replace('{width}', expectedWidth).replace('{height}', expectedHeight);
 
   return (
     <div class={style.streamPreview} style={{ backgroundColor: Colors.TWITCH }}>
-      <a href={`https://twitch.tv/${username}`} target="_blank" rel="nofollow noopener">
+      <a href={`https://twitch.tv/${username}`} target="_blank" rel="noreferrer noopener">
         <Header size={Header.Sizes.H6} color={Header.Colors.WHITE}>
           NOW STREAMING:
         </Header>

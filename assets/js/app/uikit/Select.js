@@ -1,5 +1,4 @@
-import { h, Fragment } from 'preact';
-import classNames from 'classnames';
+import { h } from 'preact';
 
 import InputWrapper from './InputWrapper';
 
@@ -17,11 +16,9 @@ const Select = props => {
     label,
     note,
     placeholder = null,
-    multiline = false,
     editable = true,
     onChange,
     className,
-    ...inputProps
   } = props;
 
   return (

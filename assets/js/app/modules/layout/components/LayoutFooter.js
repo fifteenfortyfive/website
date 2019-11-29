@@ -23,7 +23,7 @@ const LayoutFooter = props => {
                   Social
                 </Header>
                 <p>
-                  <a href={ExternalRoutes.DISCORD_URL} target="_blank" native>
+                  <a href={ExternalRoutes.DISCORD_URL} target="_blank" rel="noopener noreferrer" native>
                     <span class={style.linkIcon}>
                       <FontAwesomeIcon icon={['fab', 'discord']} fixedWidth />
                     </span>
@@ -31,7 +31,7 @@ const LayoutFooter = props => {
                   </a>
                 </p>
                 <p>
-                  <a href={ExternalRoutes.SRCOM_URL} target="_blank" native>
+                  <a href={ExternalRoutes.SRCOM_URL} target="_blank" rel="noopener noreferrer" native>
                     <span class={style.linkIcon}>
                       <FontAwesomeIcon icon="trophy" fixedWidth />
                     </span>
@@ -39,7 +39,7 @@ const LayoutFooter = props => {
                   </a>
                 </p>
                 <p>
-                  <a href={ExternalRoutes.TWITCH_URL} target="_blank" native>
+                  <a href={ExternalRoutes.TWITCH_URL} target="_blank" rel="noopener noreferrer" native>
                     <span class={style.linkIcon}>
                       <FontAwesomeIcon icon={['fab', 'twitch']} fixedWidth />
                     </span>
@@ -47,7 +47,7 @@ const LayoutFooter = props => {
                   </a>
                 </p>
                 <p>
-                  <a href={ExternalRoutes.TWITTER_URL} target="_blank" native>
+                  <a href={ExternalRoutes.TWITTER_URL} target="_blank" rel="noopener noreferrer" native>
                     <span class={style.linkIcon}>
                       <FontAwesomeIcon icon={['fab', 'twitter']} fixedWidth />
                     </span>
@@ -55,7 +55,7 @@ const LayoutFooter = props => {
                   </a>
                 </p>
                 <p>
-                  <a href={ExternalRoutes.YOUTUBE_URL} target="_blank" native>
+                  <a href={ExternalRoutes.YOUTUBE_URL} target="_blank" rel="noopener noreferrer" native>
                     <span class={style.linkIcon}>
                       <FontAwesomeIcon icon={['fab', 'youtube']} fixedWidth />
                     </span>
@@ -72,7 +72,7 @@ const LayoutFooter = props => {
                   <a href={ExternalRoutes.CONTACT_URL}>Contact</a>
                 </p>
                 <p>
-                  <a href={ExternalRoutes.GITHUB_URL} target="_blank">
+                  <a href={ExternalRoutes.GITHUB_URL} target="_blank" rel="noopener noreferrer">
                     Software
                   </a>
                 </p>
@@ -150,7 +150,7 @@ const LayoutFooter = props => {
           <Column>
             <Text>
               &copy; 2019 <BrandLogo />. Site designed by{' '}
-              <a href={ExternalRoutes.GITHUB_FAULTY_URL} native target="_blank">
+              <a href={ExternalRoutes.GITHUB_FAULTY_URL} native target="_blank" rel="noopener noreferrer">
                 faulty
               </a>
               .

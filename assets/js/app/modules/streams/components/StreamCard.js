@@ -3,17 +3,17 @@ import { h } from 'preact';
 import Avatar from '../../../uikit/Avatar';
 import getThumbnailURL from '../getThumbnailURL';
 
-import { Routes, ASSETS_URL } from '../../../Constants';
+import { Routes } from '../../../Constants';
 
 const StreamCard = props => {
-  const { account, stream, loadingAccount, loadingStream } = props;
+  const { account, stream } = props;
 
   const twitchPath = account ? account.twitch : stream.user_id;
 
   return (
     <div class="ff-card">
       <div class="ff-card__image-header">
-        <a native href={`https://twitch.tv/${twitchPath}`} target="_blank" rel="nofollow noopener">
+        <a native href={`https://twitch.tv/${twitchPath}`} target="_blank" rel="noopener noreferrer">
           <figure class="image is-16-by-9">
             <img src={getThumbnailURL(stream.thumbnail_url, 320, 180)} />
           </figure>
@@ -34,7 +34,7 @@ const StreamCard = props => {
             </div>
           </div>
         ) : (
-          <div class="placeholder"></div>
+          <div class="placeholder" />
         )}
       </div>
     </div>

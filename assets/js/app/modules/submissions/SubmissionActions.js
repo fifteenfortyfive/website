@@ -1,4 +1,4 @@
-import { commonThunk, denulled } from '../../Actions';
+import { commonThunk } from '../../Actions';
 
 export function fetchAllowedRuns(eventId) {
   return commonThunk(
@@ -31,9 +31,11 @@ export function createRunnerSubmission(eventId, { maxGames, maxTime, pairWith, a
       method: 'post',
       path: `/api/v1/events/${eventId}/runner-submission`,
       body: {
+        /* eslint-disable camelcase */
         max_games: maxGames,
         max_time: maxTime,
         pair_with: pairWith,
+        /* eslint-enable camelcase */
         avoid: avoid,
         captain: captain,
       },
@@ -50,9 +52,11 @@ export function updateRunnerSubmission(eventId, { maxGames, maxTime, pairWith, a
       method: 'post',
       path: `/api/v1/events/${eventId}/runner-submission/update`,
       body: {
+        /* eslint-disable camelcase */
         max_games: maxGames,
         max_time: maxTime,
         pair_with: pairWith,
+        /* eslint-enable camelcase */
         avoid: avoid,
         captain: captain,
       },
@@ -105,10 +109,12 @@ export function createRunSubmission(eventId, { gameId, categoryId, pb, est }) {
       method: 'post',
       path: `/api/v1/events/${eventId}/runner-submission/runs`,
       body: {
+        /* eslint-disable camelcase */
         game_id: gameId,
         category_id: categoryId,
         pb_seconds: pb,
         est_seconds: est,
+        /* eslint-enable camelcase */
       },
     },
     (dispatch, response) => {
@@ -123,10 +129,12 @@ export function updateRunSubmission(eventId, { id, gameId, categoryId, pb, est }
       method: 'post',
       path: `/api/v1/events/${eventId}/runner-submission/runs/${id}`,
       body: {
+        /* eslint-disable camelcase */
         game_id: gameId,
         category_id: categoryId,
         pb_seconds: pb,
         est_seconds: est,
+        /* eslint-enable camelcase */
       },
     },
     (dispatch, response) => {

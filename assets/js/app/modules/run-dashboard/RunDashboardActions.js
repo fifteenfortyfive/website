@@ -7,8 +7,10 @@ export function fetchRuns(eventId, accountId) {
       path: `/api/v1/runs`,
       name: 'runs',
       query: denulled({
+        /* eslint-disable camelcase */
         event_id: eventId,
         account_id: accountId,
+        /* eslint-enable camelcase */
       }),
     },
     (dispatch, response) => {

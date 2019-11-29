@@ -1,5 +1,4 @@
-import { h, Component } from 'preact';
-import Duration from 'luxon/src/duration';
+import { h } from 'preact';
 
 const RunnerCell = props => {
   const { runner, submission } = props;

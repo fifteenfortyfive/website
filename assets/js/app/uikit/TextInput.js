@@ -1,5 +1,4 @@
-import { h, Component } from 'preact';
-import classNames from 'classnames';
+import { h } from 'preact';
 
 import InputWrapper from './InputWrapper';
 
@@ -12,7 +11,6 @@ const TextInput = props => {
     label,
     note,
     placeholder = '',
-    multiline = false,
     editable = true,
     onChange,
     onInput,

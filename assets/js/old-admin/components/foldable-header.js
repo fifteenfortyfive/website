@@ -1,5 +1,4 @@
 import { h } from 'preact';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Folder = ({ header, collapsed, icon, onClick }) => {
   return (

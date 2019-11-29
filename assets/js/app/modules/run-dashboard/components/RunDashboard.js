@@ -1,6 +1,5 @@
 import { h, Component } from 'preact';
 import { connect } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';
 
 import * as GameActions from '../../games/GameActions';

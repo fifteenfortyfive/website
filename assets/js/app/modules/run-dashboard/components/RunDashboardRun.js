@@ -1,60 +1,51 @@
 import { h, Component } from 'preact';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 
 import * as RunDashboardActions from '../RunDashboardActions';
 
 import { runTime, runTimeFromStart } from '../../../utils/TimeUtils';
 
 class RunDashboardRun extends Component {
-  constructor(props) {
-    super(props);
-    this.handleStartRun = this._handleStartRun.bind(this);
-    this.handleFinishRun = this._handleFinishRun.bind(this);
-    this.handleResetRun = this._handleResetRun.bind(this);
-    this.handleResumeRun = this._handleResumeRun.bind(this);
-  }
-
-  _handleStartRun() {
+  handleStartRun = () => {
     const { dispatch, eventId, runId } = this.props;
     dispatch(RunDashboardActions.startRun(eventId, runId));
-  }
+  };
 
-  _handleFinishRun() {
+  handleFinishRun = () => {
     const { dispatch, eventId, runId } = this.props;
     dispatch(RunDashboardActions.finishRun(eventId, runId));
-  }
+  };
 
-  _handleResumeRun() {
+  handleResumeRun = () => {
     const { dispatch, eventId, runId } = this.props;
     dispatch(RunDashboardActions.resumeRun(eventId, runId));
-  }
+  };
 
-  _handleResetRun() {
+  handleResetRun = () => {
     const { dispatch, eventId, runId } = this.props;
     if (confirm('Are you sure you want to reset? You cannot go back after resetting.')) {
       dispatch(RunDashboardActions.resetRun(eventId, runId));
     }
-  }
+  };
 
   getRunTime(run) {
-    const { started_at, actual_seconds } = run;
+    const { started_at: startedAt, actual_seconds: actualSeconds } = run;
 
-    if (actual_seconds) {
-      return runTime(actual_seconds);
-    } else if (started_at) {
-      return runTimeFromStart(started_at);
+    if (actualSeconds) {
+      return runTime(actualSeconds);
+    } else if (startedAt) {
+      return runTimeFromStart(startedAt);
     } else {
       return runTime(0);
     }
   }
 
   getRunState(run) {
-    const { started_at, actual_seconds } = run;
+    const { started_at: startedAt, actual_seconds: actualSeconds } = run;
 
-    if (actual_seconds) {
+    if (actualSeconds) {
       return 'finished';
-    } else if (started_at) {
+    } else if (startedAt) {
       return 'running';
     } else {
       return 'ready';
@@ -62,9 +53,9 @@ class RunDashboardRun extends Component {
   }
 
   render() {
-    const { game, run, runId, eventId } = this.props;
+    const { game, run } = this.props;
 
-    const { index, pb_seconds, est_seconds, started_at, actual_seconds } = run;
+    const { index, est_seconds: estSeconds, actual_seconds: actualSeconds, started_at: startedAt } = run;
 
     return (
       <div>
@@ -84,34 +75,31 @@ class RunDashboardRun extends Component {
           <div>
             <p class="is-marginless is-uppercase has-text-weight-bold">{this.getRunState(run)}</p>
             <p class="is-marginless is-size-1">{this.getRunTime(run)}</p>
-            <p class="is-marginless is-size-5">Estimate: {runTime(est_seconds)}</p>
+            <p class="is-marginless is-size-5">Estimate: {runTime(estSeconds)}</p>
           </div>
 
           <div>
             <div class="field is-grouped">
               <p class="control">
-                <button class="button is-info" disabled={run.started_at} onClick={this.handleStartRun}>
+                <button class="button is-info" disabled={startedAt} onClick={this.handleStartRun}>
                   Start Run
                 </button>
               </p>
               <p class="control">
                 <button
                   class="button is-success"
-                  disabled={!run.started_at || run.actual_seconds}
+                  disabled={!startedAt || actualSeconds}
                   onClick={this.handleFinishRun}>
                   Finish Run
                 </button>
               </p>
               <p class="control">
-                <button
-                  class="button is-default"
-                  disabled={!run.actual_seconds}
-                  onClick={this.handleResumeRun}>
+                <button class="button is-default" disabled={!actualSeconds} onClick={this.handleResumeRun}>
                   Resume Run
                 </button>
               </p>
               <p class="control">
-                <button class="button is-danger" disabled={!run.started_at} onClick={this.handleResetRun}>
+                <button class="button is-danger" disabled={!startedAt} onClick={this.handleResetRun}>
                   Reset Run
                 </button>
               </p>

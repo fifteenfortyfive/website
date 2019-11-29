@@ -1,10 +1,10 @@
-import { h, Component } from 'preact';
+import { h } from 'preact';
 import classNames from 'classnames';
 
 import style from './InputWrapper.css';
 
 const InputWrapper = props => {
-  const { name, label, note, multiline = false, children, className } = props;
+  const { name, label, note, children, className } = props;
 
   return (
     <div class={classNames(style.container, className)}>

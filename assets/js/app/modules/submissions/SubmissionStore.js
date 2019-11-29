@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect';
 import createCachedSelector from 're-reselect';
 
-const getSubmissionsState = state => state.submissions;
 const getAllowedRuns = state => state.submissions.allowedRuns;
 const getGameId = (_, gameId) => gameId;
 const getCategoryId = (_, categoryId) => categoryId;
@@ -27,5 +26,5 @@ export const getAllowedCategory = createCachedSelector(
 
 export const getAllowedCategoriesForGame = createSelector(
   [getAllowedCategories, getGameId],
-  (categories, gameId) => categories.filter(category => category.game_id == gameId)
+  (categories, gameId) => categories.filter(category => category.game_id === gameId)
 );

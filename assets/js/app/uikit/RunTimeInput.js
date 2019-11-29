@@ -1,6 +1,5 @@
-import { h, Component } from 'preact';
+import { h } from 'preact';
 import { useCallback } from 'preact/hooks';
-import classNames from 'classnames';
 
 import InputWrapper from './InputWrapper';
 

@@ -1,5 +1,4 @@
 import { h, Fragment } from 'preact';
-import { Link } from 'preact-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import LayoutFooter from '../modules/layout/components/LayoutFooter';
@@ -17,9 +16,7 @@ import {
   Section,
 } from 'bloomer';
 import BrandLogo from '../uikit/BrandLogo';
-import Button from '../uikit/Button';
 
-import { Routes } from '../Constants';
 import style from './Index.css';
 
 const Index = props => {

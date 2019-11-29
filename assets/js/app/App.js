@@ -1,8 +1,7 @@
 import { h } from 'preact';
-import { useCallback, useEffect, useState } from 'preact/hooks';
+import { useCallback, useEffect } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
-import { Router, Route, route } from 'preact-router';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Router, route } from 'preact-router';
 
 import * as AuthActions from './modules/auth/AuthActions';
 import * as AuthStore from './modules/auth/AuthStore';

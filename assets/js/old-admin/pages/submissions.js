@@ -1,12 +1,9 @@
-import { h, Component } from 'preact';
+import { h } from 'preact';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Link } from 'preact-router';
 import _ from 'lodash';
-
-import Table, { ReactTableDefaults } from 'react-table';
+import Table from 'react-table';
 import FoldableTableHOC from 'react-table/lib/hoc/foldableTable';
-const FoldableTable = FoldableTableHOC(Table);
 
 import * as Actions from '../actions';
 
@@ -14,20 +11,14 @@ import Folder from '../components/foldable-header';
 import RunCell from '../components/run-cell';
 import RunnerCell from '../components/runner-cell';
 
+const FoldableTable = FoldableTableHOC(Table);
+
 const SubmissionsPage = ({ event, accounts, games, loading }) => {
   if (loading || event == null) return <h1 class="title">Loading...</h1>;
 
-  const { name, runner_submissions } = event;
+  const { name, runner_submissions: runnerSubmissions } = event;
 
-  const submissionsByAccount = _.keyBy(runner_submissions, 'account_id');
-
-  const allRuns = _.reduce(
-    runner_submissions,
-    (acc, submission) => {
-      return acc.concat(submission.run_submissions);
-    },
-    []
-  );
+  const submissionsByAccount = _.keyBy(runnerSubmissions, 'account_id');
 
   const gameColumns = _.flow([
     columns => _.groupBy(columns, 'series'),
@@ -39,7 +30,7 @@ const SubmissionsPage = ({ event, accounts, games, loading }) => {
         columns: _.map(seriesGames, game => ({
           Header: game.name,
           id: `game-${game.id}`,
-          accessor: sub => _.find(sub.run_submissions, g => g.game_id == game.id),
+          accessor: sub => _.find(sub.run_submissions, g => g.game_id === game.id),
           Cell: ({ value: run }) => (
             <RunCell
               run={run}
@@ -74,7 +65,7 @@ const SubmissionsPage = ({ event, accounts, games, loading }) => {
 
       <FoldableTable
         className="has-margin-bottom-lg -striped -highlight"
-        data={runner_submissions}
+        data={runnerSubmissions}
         columns={columns}
         defaultSorted={[
           {

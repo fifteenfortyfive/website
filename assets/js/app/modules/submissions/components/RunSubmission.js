@@ -6,10 +6,8 @@ import classNames from 'classnames';
 import * as SubmissionStore from '../SubmissionStore';
 import RunSubmissionForm from './RunSubmissionForm';
 
-import { Column, Columns } from 'bloomer';
 import Button from '../../../uikit/Button';
 import Header from '../../../uikit/Header';
-import Select from '../../../uikit/Select';
 import Text from '../../../uikit/Text';
 
 import { runTime } from '../../../utils/TimeUtils';
@@ -18,12 +16,12 @@ import style from './RunSubmission.css';
 const RunSubmission = props => {
   const { run = {}, className, onSave, onDelete } = props;
 
-  const { category_id, game_id, pb_seconds, est_seconds } = run;
+  const { category_id: categoryId, game_id: gameId, pb_seconds: pbSeconds, est_seconds: estSeconds } = run;
 
   const [isEditing, setEditing] = useState(false);
   const submissionName = useSelector(state => {
-    const category = SubmissionStore.getAllowedCategory(state, category_id);
-    const game = SubmissionStore.getAllowedGame(state, game_id);
+    const category = SubmissionStore.getAllowedCategory(state, categoryId);
+    const game = SubmissionStore.getAllowedGame(state, gameId);
     if (category == null || game == null) return null;
 
     return `${game.name} - ${category.name}`;
@@ -63,8 +61,8 @@ const RunSubmission = props => {
           <div class={style.content}>
             <Header size={Header.Sizes.H5}>{submissionName}</Header>
 
-            <Text marginless>PB: {runTime(pb_seconds)}</Text>
-            <Text marginless>EST: {runTime(est_seconds)}</Text>
+            <Text marginless>PB: {runTime(pbSeconds)}</Text>
+            <Text marginless>EST: {runTime(estSeconds)}</Text>
           </div>
 
           <div class={style.actions}>
