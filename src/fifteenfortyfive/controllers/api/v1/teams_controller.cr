@@ -14,7 +14,7 @@ class API::TeamsController < AppController
     end
 
     render_json({
-      teams: Events.list_teams(query)
+      teams: Events.list_teams(query),
     })
   end
 
@@ -30,7 +30,7 @@ class API::TeamsController < AppController
     end
 
     render_json({
-      team: team
+      team: team,
     })
   end
 
@@ -49,7 +49,7 @@ class API::TeamsController < AppController
 
     render_json({
       succeeded: !!(changeset && changeset.valid?),
-      team: team
+      team:      team,
     })
   end
 
@@ -68,7 +68,7 @@ class API::TeamsController < AppController
 
     render_json({
       succeeded: !!(changeset && changeset.valid?),
-      team: team
+      team:      team,
     })
   end
 
@@ -87,7 +87,7 @@ class API::TeamsController < AppController
 
     render_json({
       succeeded: !!(changeset && changeset.valid?),
-      team: team
+      team:      team,
     })
   end
 
@@ -106,7 +106,7 @@ class API::TeamsController < AppController
 
     render_json({
       succeeded: !!(changeset && changeset.valid?),
-      team: team
+      team:      team,
     })
   end
 end

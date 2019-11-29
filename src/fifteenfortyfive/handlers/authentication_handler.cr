@@ -19,7 +19,6 @@ class AuthenticationHandler
   def initialize(&@on_failure : FailureProc)
   end
 
-
   def call(conn : HTTP::Server::Context)
     if conn.current_user?
       call_next(conn)

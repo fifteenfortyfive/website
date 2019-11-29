@@ -25,7 +25,6 @@ class CORSHandler
     conn.response.status_code = 404
   end
 
-
   private def _add_default_headers(conn : HTTP::Server::Context)
     conn.response.headers["Access-Control-Allow-Origin"] = conn.request.headers["Origin"]? || "*"
     conn.response.headers["Allow"] = "HEAD,GET,PUT,POST,DELETE,OPTIONS"

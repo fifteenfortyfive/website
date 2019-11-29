@@ -16,7 +16,6 @@ router AppRouter do
     use AuthorizationHandler.new(required_level: :admin)
   end
 
-
   scope "admin", helper_prefix: "admin" do
     implements :api_admin_authorized
 
@@ -41,14 +40,14 @@ router AppRouter do
           scope "runner-submission" do
             implements :api_authenticated
 
-            get  "/", to: "aPI::RunnerSubmissions#get"
+            get "/", to: "aPI::RunnerSubmissions#get"
             post "/", to: "aPI::RunnerSubmissions#create"
             post "/update", to: "aPI::RunnerSubmissions#update"
             post "/revoke", to: "aPI::RunnerSubmissions#revoke"
             post "/unrevoke", to: "aPI::RunnerSubmissions#unrevoke"
             post "/delete", to: "aPI::RunnerSubmissions#delete"
 
-            get  "/runs", to: "aPI::RunnerSubmissions#runs_index"
+            get "/runs", to: "aPI::RunnerSubmissions#runs_index"
             post "/runs", to: "aPI::RunnerSubmissions#runs_create"
             post "/runs/:run_id", to: "aPI::RunnerSubmissions#runs_update"
             post "/runs/:run_id/delete", to: "aPI::RunnerSubmissions#runs_delete"
@@ -57,10 +56,10 @@ router AppRouter do
           scope do
             implements :api_admin_authorized
 
-            post "/start",  to: "aPI::Events#start"
+            post "/start", to: "aPI::Events#start"
             post "/finish", to: "aPI::Events#finish"
             post "/resume", to: "aPI::Events#resume"
-            post "/reset",  to: "aPI::Events#reset"
+            post "/reset", to: "aPI::Events#reset"
           end
 
           scope "teams" do
@@ -71,10 +70,10 @@ router AppRouter do
 
               implements :api_admin_authorized
 
-              post "/start",  to: "aPI::Teams#start"
+              post "/start", to: "aPI::Teams#start"
               post "/finish", to: "aPI::Teams#finish"
               post "/resume", to: "aPI::Teams#resume"
-              post "/reset",  to: "aPI::Teams#reset"
+              post "/reset", to: "aPI::Teams#reset"
             end
           end
 
@@ -89,10 +88,10 @@ router AppRouter do
 
             implements :api_authenticated
 
-            post "/:run_id/start",  to: "aPI::Runs#start"
+            post "/:run_id/start", to: "aPI::Runs#start"
             post "/:run_id/finish", to: "aPI::Runs#finish"
             post "/:run_id/resume", to: "aPI::Runs#resume"
-            post "/:run_id/reset",  to: "aPI::Runs#reset"
+            post "/:run_id/reset", to: "aPI::Runs#reset"
           end
         end
       end
@@ -132,13 +131,13 @@ router AppRouter do
       scope "@me" do
         implements :api_authenticated
 
-        get  "/", to: "API::MeController#get"
+        get "/", to: "API::MeController#get"
         post "/", to: "API::MeController#update_account"
 
         post "/avatar", to: "API::MeController#update_avatar"
 
         scope "account_preferences" do
-          get  "/", to: "aPI::AccountPreferences#get"
+          get "/", to: "aPI::AccountPreferences#get"
           post "/", to: "aPI::AccountPreferences#update"
         end
       end
@@ -161,19 +160,23 @@ router AppRouter do
       end
 
       scope "stream" do
-        use HTTP::WebSocketHandler.new{ |socket, conn|
+        use HTTP::WebSocketHandler.new { |socket, conn|
           socket.on_message(&->SocketService.broadcast_to_admin(String))
           SocketService.add_stream(socket)
         }
 
-        match "*" do |conn| true end
+        match "*" do |conn|
+          true
+        end
       end
 
       scope "admin" do
         implements :api_admin_authorized
-        use HTTP::WebSocketHandler.new{ |socket, conn| SocketService.add_stream_admin(socket) }
+        use HTTP::WebSocketHandler.new { |socket, conn| SocketService.add_stream_admin(socket) }
 
-        match "*" do |conn| true end
+        match "*" do |conn|
+          true
+        end
       end
     end
 
@@ -198,8 +201,7 @@ router AppRouter do
     match "*", to: "aPI::Errors#not_found"
   end
 
-
-  ## Static assets
+  # # Static assets
   scope "css" do
     use HTTP::StaticFileHandler.new("public/", fallthrough: false, directory_listing: false)
   end

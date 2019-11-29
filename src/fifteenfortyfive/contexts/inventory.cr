@@ -4,7 +4,6 @@ require "crecto"
 module Inventory
   extend self
 
-
   ###
   # Games
   ###
@@ -21,7 +20,7 @@ module Inventory
     Repo.all(Game, query.where(id: game_id).limit(1)).first
   end
 
-  def new_game()
+  def new_game
     Game.new
   end
 

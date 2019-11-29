@@ -25,9 +25,9 @@ class Export::Admin::RunnerSubmissions
           row << sub.avoid
           row << sub.max_games
           row << sub.max_time
-          row << sub.games.map{ |g| g["game"].as_h["id"] }.join(",")
+          row << sub.games.map { |g| g["game"].as_h["id"] }.join(",")
           ["sm64", "sms", "smg1", "smg2", "kazooie", "tooie", "dk64", "spyro1", "spyro2", "spyro3", "crash1", "crash2", "crash3"].each do |name|
-            if game = sub.games.find{ |g| name == g["game"].as_h["id"] }
+            if game = sub.games.find { |g| name == g["game"].as_h["id"] }
               row << sub.games.index(game).try(&.+(1))
               row << game["est"]
               row << game["pb"]

@@ -14,14 +14,14 @@ module SocketService
 
   def self.add_stream(socket : HTTP::WebSocket)
     if serv = @@service
-      socket.on_close{ serv.remove_stream(socket) }
+      socket.on_close { serv.remove_stream(socket) }
       serv.add_stream(socket)
     end
   end
 
   def self.add_stream_admin(socket : HTTP::WebSocket)
     if serv = @@service
-      socket.on_close{ serv.remove_stream_admin(socket) }
+      socket.on_close { serv.remove_stream_admin(socket) }
       serv.add_stream_admin(socket)
     end
   end
@@ -37,7 +37,6 @@ module SocketService
       serv.broadcast_to_admin(message)
     end
   end
-
 
   class Service
     property sockets : Array(HTTP::WebSocket)
@@ -64,7 +63,6 @@ module SocketService
       @admins.delete(socket)
     end
 
-
     def ping_all
       @sockets = @sockets.reject(&.closed?)
       @sockets.each(&.send(%q({"type": "ping"})))
@@ -88,7 +86,6 @@ module SocketService
         @admins.delete(sock)
       end
     end
-
 
     private def notify(socket : HTTP::WebSocket, message : String)
       socket.send(message)

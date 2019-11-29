@@ -5,7 +5,6 @@ module Accounts
 
   SESSION_EXPIRATION_TIME = Time::Span.new(31, 0, 0, 0)
 
-
   ###
   # Accounts
   ###
@@ -22,7 +21,7 @@ module Accounts
     Repo.get(Account, session.account_id)
   end
 
-  def new_account()
+  def new_account
     Account.new
   end
 
@@ -46,7 +45,6 @@ module Accounts
     Repo.all(Account, Query.where(username: username).limit(1)).first?
   end
 
-
   ###
   # Avatars
   ###
@@ -56,7 +54,6 @@ module Accounts
     update_account(account, {avatar_hash: avatar_hash})
   end
 
-
   ###
   # Account Preferences
   ###
@@ -64,12 +61,10 @@ module Accounts
   def update_account_preferences(account : Account, preferences : AccountPreferences)
     account.preferences = account.preferences.merge(preferences)
     changeset = account.cast({
-      preference_overrides: account.preferences.to_json
+      preference_overrides: account.preferences.to_json,
     })
     Repo.update(changeset)
   end
-
-
 
   ###
   # Sessions
@@ -86,8 +81,8 @@ module Accounts
   def create_session(account : Account)
     session = Session.new.cast({
       "account_id" => account.id.to_s,
-      "active" => true,
-      "expires_at" => Time.now + SESSION_EXPIRATION_TIME
+      "active"     => true,
+      "expires_at" => Time.now + SESSION_EXPIRATION_TIME,
     })
     session.instance.id = Random::Secure.hex(32)
     session = Repo.insert(session)

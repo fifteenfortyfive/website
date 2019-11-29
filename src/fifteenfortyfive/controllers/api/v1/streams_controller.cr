@@ -5,10 +5,10 @@ require "../../errors"
 
 class API::StreamsController < AppController
   def index
-    streams = Streams.list_streams_by_account()
+    streams = Streams.list_streams_by_account
 
     render_json({
-      streams: streams
+      streams: streams,
     })
   end
 
@@ -24,7 +24,7 @@ class API::StreamsController < AppController
     end
 
     render_json({
-      stream: stream
+      stream: stream,
     })
   end
 end

@@ -2,8 +2,8 @@ module Repo
   extend Crecto::Repo
 
   config do |conf|
-    conf.adapter  = Crecto::Adapters::Postgres
-    conf.uri      = ENV["DATABASE_URL"]
+    conf.adapter = Crecto::Adapters::Postgres
+    conf.uri = ENV["DATABASE_URL"]
   end
 end
 

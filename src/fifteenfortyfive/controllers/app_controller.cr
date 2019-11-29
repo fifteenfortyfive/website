@@ -44,10 +44,10 @@ class AppController
     render_json(error.message, error.status)
   end
 
-  property! body_params   : Hash(String, String)
-  property! url_params    : Hash(String, String)
-  property! query_params  : Hash(String, String)
-  property! body_content  : String
+  property! body_params : Hash(String, String)
+  property! url_params : Hash(String, String)
+  property! query_params : Hash(String, String)
+  property! body_content : String
 
   def body_params
     @body_params ||= HTTP::Params.parse(body_content).to_h
@@ -77,7 +77,6 @@ class AppController
   def body_content
     @body_content ||= request.body.not_nil!.gets_to_end
   end
-
 
   protected def sign_in_user(account : Accounts::Account)
     session = Accounts.create_session(account)

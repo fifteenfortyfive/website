@@ -11,14 +11,13 @@ module FileUploadService
 
   ACCEPTABLE_IMAGE_TYPES = ["image/jpeg", "image/png"]
 
-  STORAGE = Constants::STORAGE_CLIENT
-  UPLOADER = Awscr::S3::FileUploader.new(STORAGE)
+  STORAGE        = Constants::STORAGE_CLIENT
+  UPLOADER       = Awscr::S3::FileUploader.new(STORAGE)
   DEFAULT_BUCKET = Constants::DEFAULT_ASSET_BUCKET
-
 
   UPLOAD_OPTS = {
     # Avatar files need to be public for clients to load them easily.
-    "x-amz-acl" => "public-read"
+    "x-amz-acl" => "public-read",
   }
 
   class UploadException < Exception; end
@@ -41,14 +40,13 @@ module FileUploadService
     return object_id
   end
 
-
   # Validates that the given form part _should_ contain an image that is
   # acceptable by this service, then copies the image data into a new Tempfile
   # buffer to return to the caller.
   #
   # Returns nil if the data is invalid in any way.
   def extract_image_from_multipart(part : HTTP::FormData::Part) : File?
-    if  _content_type_is_image(part.headers["Content-Type"])
+    if _content_type_is_image(part.headers["Content-Type"])
       tempfile = File.tempfile("avatar_upload") do |file|
         IO.copy(part.body, file)
       end

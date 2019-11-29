@@ -5,24 +5,23 @@ require "crecto"
 require "../fifteenfortyfive/repo.cr"
 require "../fifteenfortyfive/models/**"
 
-
 submissions = Repo.all(RunnerSubmission, preload: [:account])
 games = Repo.all(Game)
 
 game_map = {
-  "sm64"      => games.find{ |g| g.name == "SM64" }.not_nil!,
-  "sms"       => games.find{ |g| g.name == "Sunshine" }.not_nil!,
-  "smg1"      => games.find{ |g| g.name == "Galaxy 1" }.not_nil!,
-  "smg2"      => games.find{ |g| g.name == "Galaxy 2" }.not_nil!,
-  "kazooie"   => games.find{ |g| g.name == "Kazooie" }.not_nil!,
-  "tooie"     => games.find{ |g| g.name == "Tooie" }.not_nil!,
-  "dk64"      => games.find{ |g| g.name == "DK64" }.not_nil!,
-  "spyro1"    => games.find{ |g| g.name == "Spyro 1" }.not_nil!,
-  "spyro2"    => games.find{ |g| g.name == "Spyro 2" }.not_nil!,
-  "spyro3"    => games.find{ |g| g.name == "Spyro 3" }.not_nil!,
-  "crash1"    => games.find{ |g| g.name == "Crash 1" }.not_nil!,
-  "crash2"    => games.find{ |g| g.name == "Crash 2" }.not_nil!,
-  "crash3"    => games.find{ |g| g.name == "Crash 3" }.not_nil!
+  "sm64"    => games.find { |g| g.name == "SM64" }.not_nil!,
+  "sms"     => games.find { |g| g.name == "Sunshine" }.not_nil!,
+  "smg1"    => games.find { |g| g.name == "Galaxy 1" }.not_nil!,
+  "smg2"    => games.find { |g| g.name == "Galaxy 2" }.not_nil!,
+  "kazooie" => games.find { |g| g.name == "Kazooie" }.not_nil!,
+  "tooie"   => games.find { |g| g.name == "Tooie" }.not_nil!,
+  "dk64"    => games.find { |g| g.name == "DK64" }.not_nil!,
+  "spyro1"  => games.find { |g| g.name == "Spyro 1" }.not_nil!,
+  "spyro2"  => games.find { |g| g.name == "Spyro 2" }.not_nil!,
+  "spyro3"  => games.find { |g| g.name == "Spyro 3" }.not_nil!,
+  "crash1"  => games.find { |g| g.name == "Crash 1" }.not_nil!,
+  "crash2"  => games.find { |g| g.name == "Crash 2" }.not_nil!,
+  "crash3"  => games.find { |g| g.name == "Crash 3" }.not_nil!,
 }
 
 submissions.each do |sub|

@@ -13,11 +13,11 @@ module Errors
     end
   end
 
-  BadRequest = Error.new("bad request", 400)
-  Unauthorized = Error.new("unauthorized", 401)
-  Forbidden = Error.new("forbidden", 403)
-  NotFound = Error.new("not found", 404)
-  Conflict = Error.new("conflict", 409)
+  BadRequest          = Error.new("bad request", 400)
+  Unauthorized        = Error.new("unauthorized", 401)
+  Forbidden           = Error.new("forbidden", 403)
+  NotFound            = Error.new("not found", 404)
+  Conflict            = Error.new("conflict", 409)
   InternalServerError = Error.new("internal server error", 500)
-  Unprocessable = Error.new("unprocessable entity", 422)
+  Unprocessable       = Error.new("unprocessable entity", 422)
 end

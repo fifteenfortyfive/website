@@ -18,7 +18,7 @@ class API::SessionsController < AppController
     session = sign_in_user(account)
 
     render_json({
-      session_id: session.id
+      session_id: session.id,
     })
   end
 
@@ -28,7 +28,7 @@ class API::SessionsController < AppController
     end
 
     render_json({
-      logged_out: true
+      logged_out: true,
     })
   end
 end

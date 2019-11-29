@@ -10,7 +10,7 @@ class API::EventsController < AppController
     end
 
     render_json({
-      events: Events.list_events(query)
+      events: Events.list_events(query),
     })
   end
 
@@ -28,7 +28,7 @@ class API::EventsController < AppController
     end
 
     render_json({
-      event: event
+      event: event,
     })
   end
 
@@ -44,11 +44,10 @@ class API::EventsController < AppController
     end
 
     render_json({
-      games: Events.list_allowed_games(event),
-      categories: Events.list_allowed_categories(event)
+      games:      Events.list_allowed_games(event),
+      categories: Events.list_allowed_categories(event),
     })
   end
-
 
   def start
     unless event_id = url_params["event_id"]?
@@ -65,7 +64,7 @@ class API::EventsController < AppController
 
     render_json({
       succeeded: !!(changeset && changeset.valid?),
-      event: event
+      event:     event,
     })
   end
 
@@ -84,7 +83,7 @@ class API::EventsController < AppController
 
     render_json({
       succeeded: !!(changeset && changeset.valid?),
-      event: event
+      event:     event,
     })
   end
 
@@ -103,7 +102,7 @@ class API::EventsController < AppController
 
     render_json({
       succeeded: !!(changeset && changeset.valid?),
-      event: event
+      event:     event,
     })
   end
 
@@ -122,7 +121,7 @@ class API::EventsController < AppController
 
     render_json({
       succeeded: !!(changeset && changeset.valid?),
-      event: event
+      event:     event,
     })
   end
 end

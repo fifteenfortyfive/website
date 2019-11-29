@@ -1,4 +1,3 @@
-
 class API::MeController < AppController
   def get
     account = @context.current_user
@@ -40,7 +39,7 @@ class API::MeController < AppController
       Accounts.set_account_avatar(account, avatar_file)
 
       render_json({
-        succeeded: true
+        succeeded: true,
       })
     rescue FileUploadService::UploadException
       render_error_json(Errors::Unprocessable)
@@ -51,23 +50,22 @@ class API::MeController < AppController
     end
   end
 
-
   private def serialize_me(account : Accounts::Account)
     # The current user bypasses all visibility restrictions on their own data.
     {
-      id: account.id,
-      username: account.username,
-      bio: account.bio,
-      discord_username: account.discord_username,
+      id:                    account.id,
+      username:              account.username,
+      bio:                   account.bio,
+      discord_username:      account.discord_username,
       discord_discriminator: account.discord_discriminator,
-      discord_tag: account.discord_tag,
-      twitch: account.twitch,
-      twitter: account.twitter,
-      timezone: account.timezone,
-      admin: account.admin,
-      avatar_hash: account.avatar_hash,
-      created_at: account.created_at,
-      updated_at: account.updated_at
+      discord_tag:           account.discord_tag,
+      twitch:                account.twitch,
+      twitter:               account.twitter,
+      timezone:              account.timezone,
+      admin:                 account.admin,
+      avatar_hash:           account.avatar_hash,
+      created_at:            account.created_at,
+      updated_at:            account.updated_at,
     }
   end
 end

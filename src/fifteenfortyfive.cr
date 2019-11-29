@@ -6,7 +6,7 @@ require "awscr-s3"
 require "dotenv"
 
 Dotenv.load!
-APP_PORT = ENV["PORT"].to_i
+APP_PORT           = ENV["PORT"].to_i
 ANALYTICS_ENDPOINT = ENV["ANALYTICS_ENDPOINT"]
 
 require "./fifteenfortyfive/router.cr"

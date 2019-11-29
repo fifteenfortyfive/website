@@ -3,16 +3,16 @@ require "../../errors"
 
 class API::RunsController < AppController
   ALLOWED_PRELOADS = {
-    "team" => :team,
-    "account" => :account,
-    "category" => :category,
-    "game" => :game,
-    "run_events" => :run_events
+    "team"       => :team,
+    "account"    => :account,
+    "category"   => :category,
+    "game"       => :game,
+    "run_events" => :run_events,
   }
 
   def index
     requested_preloads = query_params["embeds"]?.try(&.split(',')) || [] of String
-    preloads = requested_preloads.map{ |p| ALLOWED_PRELOADS[p]? }.compact.uniq
+    preloads = requested_preloads.map { |p| ALLOWED_PRELOADS[p]? }.compact.uniq
     query = Query.preload([:run_events] + preloads)
     has_selector = false
 
@@ -42,7 +42,7 @@ class API::RunsController < AppController
     end
 
     render_json({
-      runs: Events.list_runs(query)
+      runs: Events.list_runs(query),
     })
   end
 
@@ -58,7 +58,7 @@ class API::RunsController < AppController
     end
 
     render_json({
-      run: run
+      run: run,
     })
   end
 
@@ -69,11 +69,11 @@ class API::RunsController < AppController
     end
 
     unless run = Events.get_run(
-          run_id,
-          Query
-            .where(account_id: @context.current_user.id.to_s)
-            .preload([:run_events])
-        )
+             run_id,
+             Query
+               .where(account_id: @context.current_user.id.to_s)
+               .preload([:run_events])
+           )
       render_error_json(Errors::NotFound)
       return
     end
@@ -81,7 +81,7 @@ class API::RunsController < AppController
     Events.start_run(run, Time.utc_now)
 
     render_json({
-      run: run
+      run: run,
     })
   end
 
@@ -92,11 +92,11 @@ class API::RunsController < AppController
     end
 
     unless run = Events.get_run(
-          run_id,
-          Query
-            .where(account_id: @context.current_user.id.to_s)
-            .preload([:run_events])
-        )
+             run_id,
+             Query
+               .where(account_id: @context.current_user.id.to_s)
+               .preload([:run_events])
+           )
       render_error_json(Errors::NotFound)
       return
     end
@@ -104,7 +104,7 @@ class API::RunsController < AppController
     Events.finish_run(run, Time.utc_now)
 
     render_json({
-      run: run
+      run: run,
     })
   end
 
@@ -115,11 +115,11 @@ class API::RunsController < AppController
     end
 
     unless run = Events.get_run(
-          run_id,
-          Query
-            .where(account_id: @context.current_user.id.to_s)
-            .preload([:run_events])
-        )
+             run_id,
+             Query
+               .where(account_id: @context.current_user.id.to_s)
+               .preload([:run_events])
+           )
       render_error_json(Errors::NotFound)
       return
     end
@@ -127,7 +127,7 @@ class API::RunsController < AppController
     Events.resume_run(run, Time.utc_now)
 
     render_json({
-      run: run
+      run: run,
     })
   end
 
@@ -138,11 +138,11 @@ class API::RunsController < AppController
     end
 
     unless run = Events.get_run(
-          run_id,
-          Query
-            .where(account_id: @context.current_user.id.to_s)
-            .preload([:run_events])
-        )
+             run_id,
+             Query
+               .where(account_id: @context.current_user.id.to_s)
+               .preload([:run_events])
+           )
       render_error_json(Errors::NotFound)
       return
     end
@@ -150,7 +150,7 @@ class API::RunsController < AppController
     Events.reset_run(run, Time.utc_now)
 
     render_json({
-      run: run
+      run: run,
     })
   end
 end

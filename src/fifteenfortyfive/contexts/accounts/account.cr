@@ -19,13 +19,11 @@ module Accounts
       field :preference_overrides, Json
     end
 
-
     validate_required :username
-    validate_length   :username, min: 1
+    validate_length :username, min: 1
     validate_required :discord_username
     validate_required :discord_discriminator
-    validate_length   :bio, max: 140
-
+    validate_length :bio, max: 140
 
     def password=(new_password : String)
       @encrypted_password = Crypto::Bcrypt::Password.create(new_password).to_s
@@ -41,6 +39,7 @@ module Accounts
     end
 
     @preferences : Accounts::AccountPreferences?
+
     def preferences
       @preferences ||= begin
         if json = @preference_overrides
@@ -56,6 +55,7 @@ module Accounts
     end
 
     @discord_tag : String?
+
     def discord_tag
       @discord_tag ||= String.build do |str|
         if preferences.show_discord_username
@@ -71,34 +71,34 @@ module Accounts
       json.raw(self.to_h.to_json)
     end
 
-    def to_h(as_admin=false)
+    def to_h(as_admin = false)
       if as_admin
         {
-          "id" => id,
-          "username" => username,
-          "bio" => bio,
-          "discord_username" => discord_username,
+          "id"                    => id,
+          "username"              => username,
+          "bio"                   => bio,
+          "discord_username"      => discord_username,
           "discord_discriminator" => discord_discriminator,
-          "discord_tag" => discord_tag,
-          "twitch" => twitch,
-          "twitter" => twitter,
-          "timezone" => timezone,
-          "admin" => admin,
-          "avatar_hash" => avatar_hash
+          "discord_tag"           => discord_tag,
+          "twitch"                => twitch,
+          "twitter"               => twitter,
+          "timezone"              => timezone,
+          "admin"                 => admin,
+          "avatar_hash"           => avatar_hash,
         }
       else
         {
-          "id" => id,
-          "username" => username,
-          "bio" => bio,
-          "discord_username" => preferences.show_discord_username ? discord_username : nil,
+          "id"                    => id,
+          "username"              => username,
+          "bio"                   => bio,
+          "discord_username"      => preferences.show_discord_username ? discord_username : nil,
           "discord_discriminator" => preferences.show_discord_discriminator ? discord_discriminator : nil,
-          "discord_tag" => discord_tag.empty? ? discord_tag : nil,
-          "twitch" => preferences.show_twitch ? twitch : nil,
-          "twitter" => preferences.show_twitter ? twitter : nil,
-          "timezone" => timezone,
-          "admin" => admin,
-          "avatar_hash" => avatar_hash
+          "discord_tag"           => discord_tag.empty? ? discord_tag : nil,
+          "twitch"                => preferences.show_twitch ? twitch : nil,
+          "twitter"               => preferences.show_twitter ? twitter : nil,
+          "timezone"              => timezone,
+          "admin"                 => admin,
+          "avatar_hash"           => avatar_hash,
         }
       end
     end

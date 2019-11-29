@@ -4,7 +4,6 @@ require "crecto"
 module Streams
   extend self
 
-
   ###
   # StreamIDs
   ###
@@ -29,7 +28,7 @@ module Streams
     Repo.all(StreamID, query.where(service_user_id: service_user_id.to_s).limit(1)).first
   end
 
-  def new_stream_id()
+  def new_stream_id
     StreamID.new
   end
 
@@ -52,12 +51,11 @@ module Streams
     Repo.delete_all(StreamID, Query.where(account_id: account_id.to_s))
   end
 
-
   ###
   # Stream status
   ###
 
-  def list_streams_by_account()
+  def list_streams_by_account
     StreamStatusService.statuses
   end
 

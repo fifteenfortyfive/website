@@ -7,11 +7,11 @@ class API::GamesController < AppController
       if game_ids = query_params["game_ids"]?
         Inventory.list_games(Query.where(id: game_ids.split(',')))
       else
-        Inventory.list_games()
+        Inventory.list_games
       end
 
     render_json({
-      games: games
+      games: games,
     })
   end
 
@@ -27,7 +27,7 @@ class API::GamesController < AppController
     end
 
     render_json({
-      game: game
+      game: game,
     })
   end
 end

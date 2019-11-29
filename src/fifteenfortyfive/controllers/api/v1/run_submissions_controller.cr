@@ -11,7 +11,7 @@ class API::RunSubmissionsController < AppController
     end
 
     render_json({
-      runs: Events.list_run_submissions(query)
+      runs: Events.list_run_submissions(query),
     })
   end
 
@@ -27,7 +27,7 @@ class API::RunSubmissionsController < AppController
     end
 
     render_json({
-      run: run
+      run: run,
     })
   end
 end

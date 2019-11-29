@@ -5,7 +5,6 @@ require "crecto"
 require "../fifteenfortyfive/repo.cr"
 require "../fifteenfortyfive/models/**"
 
-
 # Pre-determined mapping of game names to their twitch IDs. Don't want to
 # unnecessarily have to call out to Twitch for this info, which couldn't happen
 # automatically anyway, since we don't currently store the full game names.
@@ -38,7 +37,7 @@ GAME_IDS = {
   # Super Mario Galaxy
   "Galaxy 1" => "14766",
   # Super Mario Galaxy 2
-  "Galaxy 2" => "24239"
+  "Galaxy 2" => "24239",
 }
 
 games = Repo.all(Game, Query.where(name: GAME_IDS.keys))

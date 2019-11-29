@@ -26,7 +26,7 @@ class Analytics
     @@instance = new(endpoint, channel)
   end
 
-  def self.track(data, flush : Bool=false)
+  def self.track(data, flush : Bool = false)
     channel.send(Message.new(
       content: data.to_json,
       flush: flush

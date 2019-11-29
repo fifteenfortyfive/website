@@ -7,7 +7,7 @@ class API::AccountPreferencesController < AppController
 
     render_json({
       account_preferences: account.preferences,
-      descriptions: Accounts::AccountPreferences::PREFERENCE_DESCRIPTIONS
+      descriptions:        Accounts::AccountPreferences::PREFERENCE_DESCRIPTIONS,
     })
   end
 
@@ -20,7 +20,7 @@ class API::AccountPreferencesController < AppController
 
     render_json({
       account_preferences: account.preferences,
-      descriptions: Accounts::AccountPreferences::PREFERENCE_DESCRIPTIONS
+      descriptions:        Accounts::AccountPreferences::PREFERENCE_DESCRIPTIONS,
     })
   end
 end

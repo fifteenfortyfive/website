@@ -24,7 +24,7 @@ module Events
       :game_id,
       :category_id,
       :pb_seconds,
-      :est_seconds
+      :est_seconds,
     ]
   end
 end

@@ -5,7 +5,6 @@ require "crecto"
 require "../fifteenfortyfive/repo.cr"
 require "../fifteenfortyfive/models/**"
 
-
 # A list of the time formats that I've seen from accounts on the site.
 # Ordering is somewhat important here. Crystal's Time parser doesn't care
 # if the whole string is consumed, so something like `%H:%M` coming before
@@ -16,16 +15,14 @@ require "../fifteenfortyfive/models/**"
 KNOWN_FORMATS = [
   "%H:%M:%S",
   "%H:%M",
-  "%H.%M"
+  "%H.%M",
 ]
-
 
 def to_seconds(time : Time)
   time.hour * 3600 +
-  time.minute * 60 +
-  time.second
+    time.minute * 60 +
+    time.second
 end
-
 
 runs = Repo.all(Run)
 runs.each do |run|

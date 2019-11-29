@@ -6,19 +6,18 @@ module Constants
   SRCOM_URL   = "https://www.speedrun.com/1545"
   YOUTUBE_URL = "https://www.youtube.com/channel/UCH-_VSTu551p5M4Oz95GIjQ"
 
-  CONTACT_EMAIL = "contact@fifteenfortyfive.org"
+  CONTACT_EMAIL   = "contact@fifteenfortyfive.org"
   VOLUNTEER_EMAIL = "volunteer@fifteenfortyfive.org"
 
   # TODO: Get rid of this soon
   MAIN_EVENT_ID = 16
 
   # Various Twitch configurations
-  TWITCH_CLIENT_ID = ENV["TWITCH_CLIENT_ID"]
+  TWITCH_CLIENT_ID    = ENV["TWITCH_CLIENT_ID"]
   TWITCH_COMMUNITY_ID = "50978467-0688-470d-8959-fd9863362400"
 
-
   # Asset Storage configuration (avatars, etc.)
-  ASSETS_URL  = "https://fifteenfortyfive-assets.nyc3.cdn.digitaloceanspaces.com"
+  ASSETS_URL     = "https://fifteenfortyfive-assets.nyc3.cdn.digitaloceanspaces.com"
   STORAGE_CLIENT = Awscr::S3::Client.new(
     ENV["ASSETS_REGION"],
     ENV["ASSETS_KEY"],
@@ -29,14 +28,14 @@ module Constants
 
   def self.template_constants
     {
-      "discord_url" => DISCORD_URL,
-      "twitch_url" => TWITCH_URL,
-      "twitter_url" => TWITTER_URL,
-      "srcom_url" => SRCOM_URL,
-      "youtube_url" => YOUTUBE_URL,
-      "assets_url" => ASSETS_URL,
-      "contact_email" => CONTACT_EMAIL,
-      "volunteer_email" => VOLUNTEER_EMAIL
+      "discord_url"     => DISCORD_URL,
+      "twitch_url"      => TWITCH_URL,
+      "twitter_url"     => TWITTER_URL,
+      "srcom_url"       => SRCOM_URL,
+      "youtube_url"     => YOUTUBE_URL,
+      "assets_url"      => ASSETS_URL,
+      "contact_email"   => CONTACT_EMAIL,
+      "volunteer_email" => VOLUNTEER_EMAIL,
     }
   end
 end

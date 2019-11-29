@@ -7,11 +7,11 @@ class API::AccountsController < AppController
       if account_ids = query_params["account_ids"]?
         Accounts.list_accounts(Query.where(id: account_ids.split(',')))
       else
-        Accounts.list_accounts()
+        Accounts.list_accounts
       end
 
     render_json({
-      accounts: accounts
+      accounts: accounts,
     })
   end
 
@@ -31,13 +31,13 @@ class API::AccountsController < AppController
     end
 
     runs = Events.list_runs(
-        Query
-          .where(account_id: account_id)
-          .preload([:team, :game, :category, :event, :submission])
-      )
+      Query
+        .where(account_id: account_id)
+        .preload([:team, :game, :category, :event, :submission])
+    )
 
     render_json({
-      account: make_account_hash(account, runs)
+      account: make_account_hash(account, runs),
     })
   end
 
@@ -55,25 +55,25 @@ class API::AccountsController < AppController
     Streams.refresh_stream(account)
 
     render_json({
-      account: make_account_hash(account)
+      account: make_account_hash(account),
     })
   end
 
   private def make_account_hash(account : Accounts::Account, runs : Array(Events::Run) = [] of Events::Run)
     {
-      id: account.id,
-      username: account.username,
-      bio: account.bio,
-      twitch: account.preferences.show_twitch ? account.twitch : nil,
-      twitter: account.preferences.show_twitter ? account.twitter : nil,
-      discord_username: account.preferences.show_discord_username ? account.discord_username : nil,
+      id:                    account.id,
+      username:              account.username,
+      bio:                   account.bio,
+      twitch:                account.preferences.show_twitch ? account.twitch : nil,
+      twitter:               account.preferences.show_twitter ? account.twitter : nil,
+      discord_username:      account.preferences.show_discord_username ? account.discord_username : nil,
       discord_discriminator: account.preferences.show_discord_discriminator ? account.discord_discriminator : nil,
-      discord_tag: account.discord_tag,
-      timezone: account.timezone,
-      admin: account.admin,
-      avatar_hash: account.avatar_hash,
-      created_at: account.preferences.show_join_date ? account.created_at : nil,
-      runs: account.preferences.show_run_history ? runs : [] of String
+      discord_tag:           account.discord_tag,
+      timezone:              account.timezone,
+      admin:                 account.admin,
+      avatar_hash:           account.avatar_hash,
+      created_at:            account.preferences.show_join_date ? account.created_at : nil,
+      runs:                  account.preferences.show_run_history ? runs : [] of String,
     }
   end
 end

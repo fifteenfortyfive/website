@@ -28,7 +28,6 @@ end
 
 require "./tools/**"
 
-
 unless task_name = ARGV.first?
   puts help(error: "no task name given")
   exit

@@ -20,11 +20,11 @@ accounts = Repo.all(Account)
 #
 # Thanks, Twitch.
 puts "Starting StreamID pull from Twitch for #{accounts.size} accounts."
-puts "Estimated time: #{accounts.size * 2.0 / 60 } minutes"
+puts "Estimated time: #{accounts.size * 2.0 / 60} minutes"
 index = 0
 accounts.each_with_index do |account, index|
   sleep(2)
-  puts "#{index+1}/#{accounts.size}: Loading ID for #{account.username} (#{account.twitch})"
+  puts "#{index + 1}/#{accounts.size}: Loading ID for #{account.username} (#{account.twitch})"
   TwitchService.get_user_id_for(account)
 end
 

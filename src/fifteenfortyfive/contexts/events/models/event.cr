@@ -8,7 +8,7 @@ module Events
       "scheduled",
       "in progress",
       "completed",
-      "cancelled"
+      "cancelled",
     ]
 
     schema "ev_events" do

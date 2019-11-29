@@ -4,12 +4,12 @@ require "crecto"
 module Events
   extend self
 
-
   ###
   # Events
   ###
 
   EVENT_PRELOADS = [:game, :category, :series]
+
   def list_events(query : Query = Query.new)
     Repo.all(Event, query.preload(EVENT_PRELOADS))
   end
@@ -22,17 +22,17 @@ module Events
     Repo.all(Event, query.where(id: event_id.to_s).preload(EVENT_PRELOADS).limit(1)).first
   end
 
-  def new_event()
+  def new_event
     Event.new
   end
 
   def create_event(attrs)
     parsed_attrs = attrs.to_h.merge({
-      "start_time"              => maybe_parse_date_time(attrs, "start_time"),
-      "end_time"                => maybe_parse_date_time(attrs, "end_time"),
-      "signups_open_time"       => maybe_parse_date_time(attrs, "signups_open_time"),
-      "signups_closed_time"     => maybe_parse_date_time(attrs, "signups_closed_time"),
-      "runners_announced_time"  => maybe_parse_date_time(attrs, "runners_announced_time")
+      "start_time"             => maybe_parse_date_time(attrs, "start_time"),
+      "end_time"               => maybe_parse_date_time(attrs, "end_time"),
+      "signups_open_time"      => maybe_parse_date_time(attrs, "signups_open_time"),
+      "signups_closed_time"    => maybe_parse_date_time(attrs, "signups_closed_time"),
+      "runners_announced_time" => maybe_parse_date_time(attrs, "runners_announced_time"),
     })
 
     event = Event.new
@@ -42,11 +42,11 @@ module Events
 
   def update_event(event : Event, changes)
     parsed_changes = changes.to_h.merge({
-      "start_time"              => maybe_parse_date_time(changes, "start_time"),
-      "end_time"                => maybe_parse_date_time(changes, "end_time"),
-      "signups_open_time"       => maybe_parse_date_time(changes, "signups_open_time"),
-      "signups_closed_time"     => maybe_parse_date_time(changes, "signups_closed_time"),
-      "runners_announced_time"  => maybe_parse_date_time(changes, "runners_announced_time")
+      "start_time"             => maybe_parse_date_time(changes, "start_time"),
+      "end_time"               => maybe_parse_date_time(changes, "end_time"),
+      "signups_open_time"      => maybe_parse_date_time(changes, "signups_open_time"),
+      "signups_closed_time"    => maybe_parse_date_time(changes, "signups_closed_time"),
+      "runners_announced_time" => maybe_parse_date_time(changes, "runners_announced_time"),
     })
 
     changeset = event.cast(parsed_changes)
@@ -57,14 +57,13 @@ module Events
     Repo.delete(event)
   end
 
-
   def start_event(event : Event, start_at : Time = Time.utc_now)
     return if event.actual_start_time
 
     changeset = event.cast({
-      actual_start_time: start_at,
-      actual_end_time: nil,
-      actual_time_seconds: nil
+      actual_start_time:   start_at,
+      actual_end_time:     nil,
+      actual_time_seconds: nil,
     })
 
     Repo.update(changeset)
@@ -77,7 +76,7 @@ module Events
     elapsed_seconds = (finish_at - started_at).total_seconds
     changeset = event.cast({
       actual_time_seconds: elapsed_seconds,
-      actual_end_time: finish_at,
+      actual_end_time:     finish_at,
     })
     Repo.update(changeset)
   end
@@ -87,7 +86,7 @@ module Events
 
     changeset = event.cast({
       actual_time_seconds: nil,
-      actual_end_time: nil,
+      actual_end_time:     nil,
     })
     Repo.update(changeset)
   end
@@ -97,8 +96,8 @@ module Events
 
     changeset = event.cast({
       actual_time_seconds: nil,
-      actual_start_time: nil,
-      actual_end_time: nil,
+      actual_start_time:   nil,
+      actual_end_time:     nil,
     })
     Repo.update(changeset)
   end
@@ -126,8 +125,8 @@ module Events
   def list_allowed_categories(event : Event) : Array(Inventory::Category)
     allowed_runs = Repo.get_association(event, :allowed_runs).as(Array(AllowedRun))
 
-    allowances = allowed_runs.select{ |a| a.category_id }.map(&.category_id)
-    game_allowances = allowed_runs.select{ |a| a.game_id && !a.category_id }.map(&.game_id)
+    allowances = allowed_runs.select { |a| a.category_id }.map(&.category_id)
+    game_allowances = allowed_runs.select { |a| a.game_id && !a.category_id }.map(&.game_id)
 
     query = Query.new
     if allowances.size > 0
@@ -163,8 +162,6 @@ module Events
     return passes_restrictions
   end
 
-
-
   ###
   # Allowed Runs
   ###
@@ -193,7 +190,7 @@ module Events
     ).first
   end
 
-  def new_allowed_run()
+  def new_allowed_run
     AllowedRun.new
   end
 
@@ -211,8 +208,6 @@ module Events
   def delete_allowed_run(allowed_run : AllowedRun)
     Repo.delete(allowed_run)
   end
-
-
 
   ###
   # Teams
@@ -242,7 +237,7 @@ module Events
     ).first
   end
 
-  def new_team()
+  def new_team
     Team.new
   end
 
@@ -261,14 +256,13 @@ module Events
     Repo.delete(team)
   end
 
-
   def start_team(team : Team, start_at : Time = Time.utc_now)
     return if team.actual_start_time
 
     changeset = team.cast({
-      actual_start_time: start_at,
-      actual_end_time: nil,
-      actual_time_seconds: nil
+      actual_start_time:   start_at,
+      actual_end_time:     nil,
+      actual_time_seconds: nil,
     })
 
     Repo.update(changeset)
@@ -281,7 +275,7 @@ module Events
     elapsed_seconds = (finish_at - started_at).total_seconds
     changeset = team.cast({
       actual_time_seconds: elapsed_seconds,
-      actual_end_time: finish_at,
+      actual_end_time:     finish_at,
     })
     Repo.update(changeset)
   end
@@ -291,7 +285,7 @@ module Events
 
     changeset = team.cast({
       actual_time_seconds: nil,
-      actual_end_time: nil,
+      actual_end_time:     nil,
     })
     Repo.update(changeset)
   end
@@ -301,13 +295,11 @@ module Events
 
     changeset = team.cast({
       actual_time_seconds: nil,
-      actual_start_time: nil,
-      actual_end_time: nil,
+      actual_start_time:   nil,
+      actual_end_time:     nil,
     })
     Repo.update(changeset)
   end
-
-
 
   ###
   # Run Submissions
@@ -329,7 +321,7 @@ module Events
     Repo.all(RunSubmission, query.where(id: submission_id.to_s).limit(1)).first
   end
 
-  def new_run_submission()
+  def new_run_submission
     RunSubmission.new
   end
 
@@ -362,8 +354,6 @@ module Events
     Repo.update(submission)
   end
 
-
-
   ###
   # Runner Submissions
   ###
@@ -390,7 +380,7 @@ module Events
     Repo.all(RunnerSubmission, query.limit(1)).first
   end
 
-  def new_runner_submission()
+  def new_runner_submission
     RunnerSubmission.new
   end
 
@@ -410,8 +400,8 @@ module Events
     end
 
     changeset = create_runner_submission({
-      event_id: event_id,
-      account_id: account_id
+      event_id:   event_id,
+      account_id: account_id,
     })
 
     changeset.instance
@@ -441,8 +431,6 @@ module Events
     end
   end
 
-
-
   ###
   # Runs
   ###
@@ -459,7 +447,7 @@ module Events
     Repo.all(Run, query.where(id: run_id.to_s).limit(1)).first
   end
 
-  def new_run()
+  def new_run
     Run.new
   end
 
@@ -482,8 +470,6 @@ module Events
     Repo.delete(run)
   end
 
-
-
   ###
   # Run Events
   ###
@@ -494,10 +480,10 @@ module Events
     run_event = log_run_event(run.id, "run_started", start_at)
 
     changeset = run.cast({
-      finished: "false",
+      finished:       "false",
       actual_seconds: nil,
-      started_at: start_at,
-      finished_at: nil
+      started_at:     start_at,
+      finished_at:    nil,
     })
     changeset = Repo.update(changeset)
 
@@ -516,9 +502,9 @@ module Events
 
     elapsed_seconds = (finish_at - started_at).total_seconds
     changeset = run.cast({
-      finished: "true",
+      finished:       "true",
       actual_seconds: elapsed_seconds,
-      finished_at: finish_at,
+      finished_at:    finish_at,
     })
     changeset = Repo.update(changeset)
 
@@ -534,9 +520,9 @@ module Events
     run_event = log_run_event(run.id, "run_resumed", resume_at)
 
     changeset = run.cast({
-      finished: "false",
+      finished:       "false",
       actual_seconds: nil,
-      finished_at: nil,
+      finished_at:    nil,
     })
     changeset = Repo.update(changeset)
 
@@ -552,10 +538,10 @@ module Events
     run_event = log_run_event(run.id, "run_reset", reset_at)
 
     changeset = run.cast({
-      finished: "false",
+      finished:       "false",
       actual_seconds: nil,
-      started_at: nil,
-      finished_at: nil,
+      started_at:     nil,
+      finished_at:    nil,
     })
     changeset = Repo.update(changeset)
 
@@ -569,14 +555,12 @@ module Events
   def log_run_event(run_id, type : String, timestamp : Time)
     run_event = RunEvent.new
     run_event = run_event.cast({
-      run_id: run_id,
-      type: type,
-      occurred_at: timestamp
+      run_id:      run_id,
+      type:        type,
+      occurred_at: timestamp,
     })
     Repo.insert(run_event)
   end
-
-
 
   ###
   # Utility
@@ -589,9 +573,9 @@ module Events
     units = time_string.split(":")
     hours, minutes, seconds = units[0], units[1], units[2]
 
-    return  hours.to_i * 3600 +
-            minutes.to_i * 60 +
-            seconds.to_i
+    return hours.to_i * 3600 +
+      minutes.to_i * 60 +
+      seconds.to_i
   end
 
   def seconds_to_string(seconds : Int)

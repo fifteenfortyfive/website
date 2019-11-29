@@ -16,7 +16,7 @@ class API::RunnerSubmissionsController < AppController
 
     render_json({
       submission: submission,
-      runs: runs
+      runs:       runs,
     })
   end
 
@@ -41,7 +41,7 @@ class API::RunnerSubmissionsController < AppController
 
     params = json_params.as_h.merge({
       "account_id" => account.id.to_json,
-      "event_id" => event_id
+      "event_id"   => event_id,
     })
 
     changeset = Events.create_runner_submission(params)
@@ -52,7 +52,7 @@ class API::RunnerSubmissionsController < AppController
     end
 
     render_json({
-      submission: changeset.instance
+      submission: changeset.instance,
     })
   end
 
@@ -67,7 +67,7 @@ class API::RunnerSubmissionsController < AppController
 
     params = json_params.as_h.merge({
       "account_id" => account.id.to_json,
-      "event_id" => event_id
+      "event_id"   => event_id,
     })
 
     changeset = Events.update_runner_submission(existing, params)
@@ -78,7 +78,7 @@ class API::RunnerSubmissionsController < AppController
     end
 
     render_json({
-      submission: changeset.instance
+      submission: changeset.instance,
     })
   end
 
@@ -94,7 +94,7 @@ class API::RunnerSubmissionsController < AppController
     Events.delete_runner_submission(existing)
 
     render_json({
-      processed: true
+      processed: true,
     })
   end
 
@@ -107,10 +107,10 @@ class API::RunnerSubmissionsController < AppController
       return
     end
 
-    changeset = Events.update_runner_submission(existing, { revoked: "true" })
+    changeset = Events.update_runner_submission(existing, {revoked: "true"})
 
     render_json({
-      submission: changeset.instance
+      submission: changeset.instance,
     })
   end
 
@@ -123,21 +123,19 @@ class API::RunnerSubmissionsController < AppController
       return
     end
 
-    changeset = Events.update_runner_submission(existing, { revoked: "false" })
+    changeset = Events.update_runner_submission(existing, {revoked: "false"})
 
     render_json({
-      submission: changeset.instance
+      submission: changeset.instance,
     })
   end
-
-
 
   def runs_index
     event_id = url_params["event_id"]
     account = @context.current_user
 
     render_json({
-      runs: Events.list_run_submissions_for_account(event_id, account.id)
+      runs: Events.list_run_submissions_for_account(event_id, account.id),
     })
   end
 
@@ -158,9 +156,9 @@ class API::RunnerSubmissionsController < AppController
     runner = Events.ensure_runner_submission!(event_id, account.id)
 
     params = json_params.as_h.merge({
-      "event_id" => event_id,
-      "account_id" => account.id.to_json,
-      "runner_submission_id" => runner.id
+      "event_id"             => event_id,
+      "account_id"           => account.id.to_json,
+      "runner_submission_id" => runner.id,
     })
 
     changeset = Events.create_run_submission(params)
@@ -171,7 +169,7 @@ class API::RunnerSubmissionsController < AppController
     end
 
     render_json({
-      run: changeset.instance
+      run: changeset.instance,
     })
   end
 
@@ -187,9 +185,9 @@ class API::RunnerSubmissionsController < AppController
     end
 
     params = json_params.as_h.merge({
-      "event_id" => event_id,
-      "account_id" => account.id.to_json,
-      "runner_submission_id" => runner.id
+      "event_id"             => event_id,
+      "account_id"           => account.id.to_json,
+      "runner_submission_id" => runner.id,
     })
 
     changeset = Events.update_run_submission(existing, params)
@@ -200,7 +198,7 @@ class API::RunnerSubmissionsController < AppController
     end
 
     render_json({
-      run: changeset.instance
+      run: changeset.instance,
     })
   end
 
@@ -220,7 +218,7 @@ class API::RunnerSubmissionsController < AppController
     end
 
     render_json({
-      processed: true
+      processed: true,
     })
   end
 end

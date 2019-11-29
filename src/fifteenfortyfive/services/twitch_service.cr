@@ -5,17 +5,16 @@ module TwitchService
   extend self
 
   TWITCH_CLIENT = HTTP::Client.new(URI.parse("https://api.twitch.tv"))
-  HEADERS = begin
+  HEADERS       = begin
     headers = HTTP::Headers.new
     headers["Client-ID"] = Constants::TWITCH_CLIENT_ID
     headers
   end
 
   ENDPOINTS = {
-    users: "/helix/users",
-    streams: "/helix/streams"
+    users:   "/helix/users",
+    streams: "/helix/streams",
   }
-
 
   module Schemas
     struct UserData
@@ -54,7 +53,7 @@ module TwitchService
         self.type == "live"
       end
 
-      def thumbnail_url(width=340, height=180)
+      def thumbnail_url(width = 340, height = 180)
         @thumbnail_url.gsub("{width}", width).gsub("{height}", height)
       end
     end
@@ -66,11 +65,9 @@ module TwitchService
     end
   end
 
-
   def stream_link(channel)
     "https://twitch.tv/#{channel}"
   end
-
 
   def get_user_id_for(account : Accounts::Account)
     response = TWITCH_CLIENT.get(
@@ -88,13 +85,12 @@ module TwitchService
       Streams.update_stream_id(stream_id, {service_user_id: user_data.id})
     else
       Streams.create_stream_id({
-        account_id: account.id,
-        service: "twitch",
-        service_user_id: user_data.id
+        account_id:      account.id,
+        service:         "twitch",
+        service_user_id: user_data.id,
       })
     end
   end
-
 
   def get_streams(ids : Array(String))
     id_params = ids.map do |id|

@@ -11,14 +11,16 @@ module StreamStatusService
   def live : Array(Stream)
     @@statuses.values.select(&.live?)
   end
+
   def live(community : String) : Array(Stream)
-    @@statuses.values.select{ |stream| stream.live? && stream.in_community?(community) }
+    @@statuses.values.select { |stream| stream.live? && stream.in_community?(community) }
   end
 
   # Returns true if the given account is currently streaming.
   def live?(account_id : KeyType) : Bool
     @@statuses[account_id]?.try(&.live?) || false
   end
+
   def live?(account : Accounts::Account) : Bool
     self.live?(account.id)
   end
@@ -37,7 +39,6 @@ module StreamStatusService
   def clear!(account_id : KeyType)
     @@statuses.delete(account_id)
   end
-
 
   def run
     loop do
@@ -64,7 +65,6 @@ module StreamStatusService
   def run_in_background
     spawn run
   end
-
 
   @@cached_streams = [] of Streams::StreamID
 
