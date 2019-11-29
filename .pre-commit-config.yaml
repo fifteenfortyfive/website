@@ -16,3 +16,10 @@ repos:
         stages: [commit]
         files: (.*)\.(js|jsx|ts|tsx|css)$
         args: ["--write"]
+      - id: eslint
+        name: eslint
+        entry: ./assets/node_modules/.bin/eslint
+        language: node
+        stages: [commit]
+        files: (.*)\.(js|jsx|ts|tsx|css)$
+        args: ["--ext", ".tsx,.ts,.js", "--fix"]
