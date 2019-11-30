@@ -1,15 +1,12 @@
-@value colors: "../../../style/colors.css";
-@value gray-200, gray-300 from colors;
-
 .container {
   margin-bottom: 16px;
   overflow: hidden;
-  border: 1px solid gray-300;
+  border: 1px solid var(--gray-300);
   border-radius: 4px;
 }
 
 .header {
-  background-color: gray-200;
+  background-color: var(--gray-200);
   padding-top: 32px;
   padding-bottom: 16px;
   text-align: center;

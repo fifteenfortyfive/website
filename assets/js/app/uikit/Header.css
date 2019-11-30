@@ -1,6 +1,3 @@
-@value colors: '../style/colors.css';
-@value black, gray-660, gray-500, white, primary, secondary from colors;
-
 .header {
   font-weight: 700;
 }
@@ -35,19 +32,19 @@
 }
 
 .colorDefault {
-  color: gray-660;
+  color: var(--gray-660);
 }
 
 .colorMuted {
-  color: gray-500;
+  color: var(--gray-500);
 }
 
 .colorPrimary {
-  color: primary;
+  color: var(--primary);
 }
 
 .colorSecondary {
-  color: secondary;
+  color: var(--secondary);
 }
 
 .colorThemed {
@@ -55,11 +52,11 @@
 }
 
 .colorBlack {
-  color: black;
+  color: var(--black);
 }
 
 .colorWhite {
-  color: white;
+  color: var(--white);
 }
 
 .withMargin {

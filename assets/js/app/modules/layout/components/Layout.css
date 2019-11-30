@@ -1,6 +1,5 @@
 .layout {
-  font-family: 'Encode Sans', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-    'Fira Sans', 'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: var(--font-sans);
 
   /* TODO: Make everything use a common Link element instead. */
   & a {

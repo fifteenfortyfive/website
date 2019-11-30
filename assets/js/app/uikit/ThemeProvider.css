@@ -1,0 +1,57 @@
+.theme {
+  /* Colors */
+  --black: hsl(0, 0%, 4%);
+  --gray-800: hsl(0, 0%, 7%);
+  --gray-700: hsl(0, 0%, 14%);
+  --gray-660: hsl(0, 0%, 21%);
+  --gray-600: hsl(0, 0%, 29%);
+  --gray-500: hsl(0, 0%, 48%);
+  --gray-460: hsl(0, 0%, 62%);
+  --gray-430: hsl(0, 0%, 67%);
+  --gray-400: hsl(0, 0%, 71%);
+  --gray-330: hsl(0, 0%, 86%);
+  --gray-300: hsl(0, 0%, 92%);
+  --gray-200: hsl(0, 0%, 96%);
+  --gray-100: hsl(0, 0%, 98%);
+  --white: hsl(0, 0%, 100%);
+
+  --orange: #e26144;
+  --yellow: #f9dc59;
+  --green: hsl(141, 71%, 48%);
+  --turquoise: hsl(171, 100%, 41%);
+  --cyan: hsl(204, 86%, 53%);
+  --blue: hsl(217, 71%, 53%);
+  --purple: #75456c;
+  --red: #eb3d4c;
+
+  --primary: #eb3d4c;
+  --primary-bg: #fce3e6;
+  --primary-bg-200: #fef6f6;
+  --primary-bg-300: #fdedee;
+  --primary-bg-400: #fce3e6;
+  --primary-bg-600: #fad1d5;
+
+  --secondary: hsl(171, 100%, 41%);
+
+  --hover-darken: rgba(0, 0, 0, 0.06);
+
+  --foreground-1: var(--gray-660);
+  --foreground-2: var(--gray-500);
+  --foreground-3: var(--gray-400);
+
+  /* This is dependent on the including page loading the fonts either by `link` or `import` */
+  --font-sans: 'Encode Sans', BlinkMacSystemFont, -apple-system, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  --family-monospace: monospace;
+
+  /* Global defaults */
+  font-family: var(--font-sans);
+
+  /*
+    Bulma overrides
+  */
+  & input,
+  & button {
+    font-family: var(--font-sans);
+  }
+}

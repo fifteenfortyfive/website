@@ -1,15 +1,12 @@
-@value colors: "../../../style/colors.css";
-@value gray-300 from colors;
-
 .card {
   margin-bottom: 16px;
   overflow: hidden;
-  border: 1px solid gray-300;
+  border: 1px solid var(--gray-300);
   border-radius: 4px;
 }
 
 .header {
-  color: white;
+  color: var(--white);
   padding: 4px 8px;
 }
 

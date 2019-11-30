@@ -1,8 +1,5 @@
-@value colors: '../../../style/colors.css';
-@value gray-300 from colors;
-
 .footer {
-  background-color: gray-300;
+  background-color: var(--gray-300);
   padding: 3rem 1.5rem;
   font-size: 1rem;
   font-family: 'Encode Sans', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,

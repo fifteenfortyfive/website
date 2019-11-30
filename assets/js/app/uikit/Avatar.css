@@ -1,6 +1,3 @@
-@value colors: '../style/colors.css';
-@value black, white from colors;
-
 .avatar {
   --size: 48px;
   width: var(--size);
@@ -15,11 +12,11 @@
   }
 
   &.is-bordered {
-    border: 5px solid white;
+    border: 5px solid var(--white);
   }
 
   &.is-bordered--outset {
     box-sizing: content-box;
-    border: 5px solid white;
+    border: 5px solid var(--white);
   }
 }

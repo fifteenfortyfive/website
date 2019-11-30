@@ -1,5 +1,6 @@
 import { h } from 'preact';
 
+import ThemeProvider from '../../../uikit/ThemeProvider';
 import LayoutNavbar from './LayoutNavbar';
 import LayoutFooter from './LayoutFooter';
 
@@ -11,19 +12,21 @@ const Layout = props => {
   const { withContainer = true, children } = props;
 
   return (
-    <div className={styles.layout}>
-      <LayoutNavbar />
-      <div class={styles.body}>
-        {withContainer ? (
-          <Container>
-            <Section>{children}</Section>
-          </Container>
-        ) : (
-          children
-        )}
+    <ThemeProvider>
+      <div className={styles.layout}>
+        <LayoutNavbar />
+        <div class={styles.body}>
+          {withContainer ? (
+            <Container>
+              <Section>{children}</Section>
+            </Container>
+          ) : (
+            children
+          )}
+        </div>
+        <LayoutFooter />
       </div>
-      <LayoutFooter />
-    </div>
+    </ThemeProvider>
   );
 };
 

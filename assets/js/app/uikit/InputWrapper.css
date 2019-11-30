@@ -1,6 +1,3 @@
-@value colors: '../style/colors.css';
-@value primary, primary-bg-200, primary-bg-400, foreground-1, foreground-2 from colors;
-
 .container {
   margin-bottom: 1em;
   width: 100%;
@@ -12,27 +9,27 @@
   justify-content: stretch;
   width: 100%;
   height: 42px;
-  border: 1px solid primary;
+  border: 1px solid var(--primary);
   border-radius: 100em;
   background: transparent;
   transition: background-color 0.12s linear;
 
   &:hover {
-    background-color: primary-bg-200;
+    background-color: var(--primary-bg-200);
   }
 
   &:focus,
   &:focus-within {
-    background-color: primary-bg-400;
+    background-color: var(--primary-bg-400);
   }
 }
 
 .label {
   flex: 1 0 100px;
-  color: primary;
+  color: var(--primary);
   font-size: 16px;
   line-height: 1;
-  border-right: 1px solid primary;
+  border-right: 1px solid var(--primary);
   padding: 2px 8px;
   margin: 4px 0;
   margin-left: 12px;
@@ -46,7 +43,7 @@
   border: none;
   background: transparent;
   font-size: 1em;
-  color: foreground-1;
+  color: var(--foreground-1);
 
   &:focus,
   &:active {
@@ -56,6 +53,6 @@
 
 .note {
   margin: 4px 0 0 16px;
-  color: foreground-2;
+  color: var(--foreground-2);
   font-size: 14px;
 }

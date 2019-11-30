@@ -1,8 +1,7 @@
-@value colors: '../../../style/colors.css';
-@value primary, gray-300, gray-700 from colors;
-
 .container {
   margin-top: 8px;
+  font-family: 'Encode Sans', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .avatar {
@@ -16,7 +15,7 @@
 
 .divider {
   border-radius: 0;
-  border-right: 1px solid gray-300;
+  border-right: 1px solid var(--gray-300);
   margin: 1.25rem 0.25rem;
   padding: 0;
 }
@@ -32,15 +31,15 @@
 .container.container {
   & :global {
     & a {
-      color: gray-700;
+      color: var(--gray-700);
     }
 
     & .navbar-dropdown .navbar-item {
-      color: gray-700;
+      color: var(--gray-700);
     }
 
     & .navbar-link::after {
-      border-color: primary;
+      border-color: var(--primary);
     }
   }
 }
@@ -48,7 +47,7 @@
 .container.dark {
   & :global {
     & a {
-      color: gray-300;
+      color: var(--gray-300);
     }
   }
 }

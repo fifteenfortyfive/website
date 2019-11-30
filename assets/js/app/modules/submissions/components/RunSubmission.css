@@ -1,6 +1,3 @@
-@value colors: "../../../style/colors.css";
-@value primary-bg-200 from colors;
-
 .submission {
   display: flex;
   justify-content: space-between;
@@ -9,12 +6,12 @@
   border-radius: 8px;
 
   &:hover {
-    background-color: primary-bg-200;
+    background-color: var(--primary-bg-200);
   }
 }
 
 .editing {
-  background-color: primary-bg-200;
+  background-color: var(--primary-bg-200);
 }
 
 .actions {

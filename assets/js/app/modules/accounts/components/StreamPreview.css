@@ -1,8 +1,5 @@
-@value colors: '../../../style/colors.css';
-@value white from colors;
-
 .streamPreview {
-  color: white;
+  color: var(--white);
   padding: 4px 8px;
 }
 
