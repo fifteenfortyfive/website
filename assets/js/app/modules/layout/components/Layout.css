@@ -1,3 +1,13 @@
+.layout {
+  font-family: 'Encode Sans', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* TODO: Make everything use a common Link element instead. */
+  & a {
+    color: #eb3d4c;
+  }
+}
+
 .body {
   min-height: 65vh;
 }

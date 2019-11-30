@@ -90,7 +90,7 @@ class MeEdit extends Component {
                     <span class="file-icon">
                       <FontAwesomeIcon icon="upload" />
                     </span>
-                    <span class="file-label">Choose a new Avatar...</span>
+                    <span class="file-label">Change Avatar</span>
                   </span>
                 </label>
               </div>

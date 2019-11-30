@@ -1,9 +1,11 @@
 @value colors: "../../../style/colors.css";
-@value gray-200 from colors;
+@value gray-200, gray-300 from colors;
 
 .container {
-  padding: 0;
+  margin-bottom: 16px;
   overflow: hidden;
+  border: 1px solid gray-300;
+  border-radius: 4px;
 }
 
 .header {

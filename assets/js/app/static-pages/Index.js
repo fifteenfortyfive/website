@@ -29,7 +29,7 @@ const Index = props => {
 
         <HeroBody className={style.splashPrimary}>
           <Container className={style.textCentered}>
-            <BrandLogo className={style.brandLogo} />
+            <BrandLogo className={style.brandLogo} size={150} />
             <h2 class={style.subtitle}>Any% Relay - September 21st, 2019</h2>
             <div class={style.heroActions} />
           </Container>

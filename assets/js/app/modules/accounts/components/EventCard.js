@@ -6,6 +6,8 @@ import Link from '../../../uikit/Link';
 import { Routes } from '../../../Constants';
 import { runTime, fullDate } from '../../../utils/TimeUtils';
 
+import styles from './EventCard.css';
+
 const EventCard = props => {
   const { event, team, runs } = props;
 
@@ -15,10 +17,8 @@ const EventCard = props => {
   const color = team && team.color ? `#${team.color}` : 'hsl(0, 0%, 71%)';
 
   return (
-    <div class="box has-margin-bottom-md is-paddingless is-clipped">
-      <div
-        class="has-padding-left-md has-padding-right-md has-padding-top-nudge has-padding-bottom-xs has-text-white is-clearfix"
-        style={{ backgroundColor: `${color}` }}>
+    <div class={styles.card}>
+      <div class={styles.header} style={{ backgroundColor: `${color}` }}>
         <div class="is-pulled-right">
           <p>{fullDate(startTime)}</p>
         </div>
@@ -29,7 +29,7 @@ const EventCard = props => {
         )}
       </div>
 
-      <div class="has-padding-md" style={{ border: `3px solid #${color}` }}>
+      <div class={styles.body} style={{ border: `3px solid #${color}` }}>
         <h2 class="is-size-5 has-text-weight-bold">{event.name}</h2>
 
         <table class="table is-fullwidth is-narrow">

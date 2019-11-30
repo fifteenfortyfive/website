@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,400i,800,700i,900,900i&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Encode+Sans:400,400i,600,600i&display=swap');
-
+/* This is dependent on the including page loading the fonts either by `link` or `import` */
 @value family-sans-serif 'Encode Sans', BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 @value family-monospace monospace;
 @value render-mode optimizeLegibility;

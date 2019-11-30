@@ -2,6 +2,7 @@ import { h, Fragment } from 'preact';
 import { useCallback, useState } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
 import { route } from 'preact-router';
+import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import * as AuthActions from '../../auth/AuthActions';
@@ -26,7 +27,7 @@ import Avatar from '../../../uikit/Avatar';
 import BrandLogo from '../../../uikit/BrandLogo';
 
 import { Routes, ExternalRoutes } from '../../../Constants';
-import style from './LayoutNavbar.css';
+import styles from './LayoutNavbar.css';
 
 const LayoutNavbar = props => {
   const { isDark = false, className } = props;
@@ -43,11 +44,13 @@ const LayoutNavbar = props => {
   }, [dispatch]);
 
   return (
-    <Navbar isTransparent={isDark} className={className}>
+    <Navbar
+      isTransparent={isDark}
+      className={classNames(styles.container, className, { [styles.dark]: isDark })}>
       <Container>
         <NavbarBrand>
           <NavbarItem href={Routes.HOME}>
-            <BrandLogo className={style.brandLogo} />
+            <BrandLogo className={styles.brandLogo} color={isDark ? 'white' : 'black'} />
           </NavbarItem>
           <NavbarBurger onClick={() => setIsActive(!isActive)} />
         </NavbarBrand>
@@ -78,7 +81,9 @@ const LayoutNavbar = props => {
               <Fragment>
                 <NavbarItem hasDropdown isHoverable isPaddingless>
                   <NavbarLink>
-                    {user.avatar_hash && <Avatar className={style.avatar} src={user.avatar_hash} size={28} />}
+                    {user.avatar_hash && (
+                      <Avatar className={styles.avatar} src={user.avatar_hash} size={28} />
+                    )}
                     {user.username}
                   </NavbarLink>
 
@@ -94,9 +99,9 @@ const LayoutNavbar = props => {
               </Fragment>
             ) : (
               <NavbarItem isPaddingless>
-                <div class={style.buttonGroup}>
+                <div class={styles.buttonGroup}>
                   <Button
-                    className={style.navButton}
+                    className={styles.navButton}
                     isSize="small"
                     isColor="danger"
                     isOutlined
@@ -104,7 +109,7 @@ const LayoutNavbar = props => {
                     Sign In
                   </Button>
                   <Button
-                    className={style.navButton}
+                    className={styles.navButton}
                     isSize="small"
                     isColor={isDark ? 'white' : 'dark'}
                     isOutlined
@@ -115,10 +120,10 @@ const LayoutNavbar = props => {
               </NavbarItem>
             )}
 
-            <div class={style.divider} />
+            <div class={styles.divider} />
 
             <NavbarItem isPaddingless>
-              <div class={style.buttonGroup}>
+              <div class={styles.buttonGroup}>
                 <Button
                   isColor={isDark ? 'dark' : 'white'}
                   href={ExternalRoutes.DISCORD_URL}

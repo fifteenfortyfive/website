@@ -11,18 +11,18 @@ repos:
     hooks:
       - id: prettier
         name: prettier
-        entry: ./assets/node_modules/.bin/prettier
-        language: node
+        entry: sh -c "cd assets && yarn fix:prettier"
+        language: system
         stages: [commit]
-        files: (.*)\.(js|jsx|ts|tsx|css)$
+        pass_filenames: true
+        files: (.*)\.(jsx?|tsx?|css|html)$
         args: ["--write"]
       - id: eslint
         name: eslint
-        entry: ./assets/node_modules/.bin/eslint
-        language: node
+        entry: sh -c "cd assets && yarn fix:eslint"
+        language: system
         stages: [commit]
-        files: (.*)\.(js|jsx|ts|tsx|css)$
-        args: ["--ext", ".tsx,.ts,.js", "--fix"]
+        files: (.*)\.(jsx?|tsx?|css)$
       - id: crystal-format
         name: crystal-format
         entry: crystal tool format

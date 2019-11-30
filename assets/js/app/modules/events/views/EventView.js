@@ -8,7 +8,7 @@ import Layout from '../../layout/components/Layout';
 import * as EventActions from '../EventActions';
 import * as EventStore from '../EventStore';
 import EventHeader from '../components/EventHeader';
-import Team from '../components/EventTeam';
+import EventTeam from '../components/EventTeam';
 
 import { Columns, Column } from 'bloomer';
 
@@ -44,7 +44,7 @@ class EventView extends Component {
             team =>
               team && (
                 <Column isSize={3}>
-                  <Team team={team} />
+                  <EventTeam team={team} />
                 </Column>
               )
           )}

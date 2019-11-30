@@ -1,9 +1,8 @@
-@value font-brand from '../style/fonts.css';
-
 .brandLogo {
-  display: inline-block;
-  font-family: font-brand;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  padding: 0 0.4em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inline {
 }

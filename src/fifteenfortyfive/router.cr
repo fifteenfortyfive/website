@@ -208,6 +208,9 @@ router AppRouter do
   scope "js" do
     use HTTP::StaticFileHandler.new("public/", fallthrough: false, directory_listing: false)
   end
+  scope "images" do
+    use HTTP::StaticFileHandler.new("public/", fallthrough: false, directory_listing: false)
+  end
 
   match "*", to: "static#app_root"
 end

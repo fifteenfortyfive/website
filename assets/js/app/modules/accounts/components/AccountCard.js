@@ -2,7 +2,7 @@ import { h } from 'preact';
 
 import StreamPreview from './StreamPreview';
 
-import { Box, Tag } from 'bloomer';
+import { Tag } from 'bloomer';
 import SocialLink from '../../../uikit/SocialLink';
 import Avatar from '../../../uikit/Avatar';
 import Header from '../../../uikit/Header';
@@ -26,7 +26,7 @@ const AccountCard = props => {
   } = account;
 
   return (
-    <Box className={styles.container}>
+    <div className={styles.container}>
       <div class={styles.header}>
         <Avatar className={styles.avatar} src={avatarHash} />
 
@@ -55,7 +55,7 @@ const AccountCard = props => {
 
         {createdAt && <p class={styles.joinedAt}>Joined {simpleDate(createdAt)}</p>}
       </div>
-    </Box>
+    </div>
   );
 };
 

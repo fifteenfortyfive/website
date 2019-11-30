@@ -32,7 +32,22 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader'],
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: '../images/',
+              publicPath: '/images/',
+              name: file => {
+                if (process.env.NODE_ENV === 'development') {
+                  return '[name].[ext]';
+                }
+
+                return '[contenthash].[ext]';
+              },
+            },
+          },
+        ],
       },
     ],
   },
