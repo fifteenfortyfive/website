@@ -64,7 +64,7 @@ const SubmissionsPage = ({ event, accounts, games, loading }) => {
       </div>
 
       <FoldableTable
-        className="has-margin-bottom-lg -striped -highlight"
+        className="-striped -highlight"
         data={runnerSubmissions}
         columns={columns}
         defaultSorted={[

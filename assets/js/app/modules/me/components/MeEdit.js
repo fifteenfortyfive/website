@@ -73,8 +73,8 @@ class MeEdit extends Component {
 
         <div class="columns is-desktop">
           <div class="column is-4-desktop">
-            <div class="has-margin-bottom-lg">
-              <div class="has-padding-md">
+            <div>
+              <div>
                 {newAvatarSrc ? <Avatar fullSrc={newAvatarSrc} /> : <Avatar src={account.avatar_hash} />}
               </div>
 
@@ -97,7 +97,7 @@ class MeEdit extends Component {
 
               {avatarChanged && (
                 <button
-                  class="button is-danger is-medium has-margin-top-sm has-margin-bottom-sm"
+                  class="button is-danger is-medium"
                   disabled={submittingAvatar}
                   onClick={this.handleUploadAvatar}>
                   {submittingAvatar ? 'Saving' : 'Save Avatar'}
@@ -114,7 +114,7 @@ class MeEdit extends Component {
           </div>
 
           <div class="column is-8-desktop">
-            <div class="has-margin-bottom-lg">
+            <div>
               <TextInput
                 label="Username"
                 value={account.username}
@@ -137,7 +137,7 @@ class MeEdit extends Component {
           </div>
         </div>
 
-        <div class="has-margin-bottom-lg">
+        <div>
           <TextInput
             label="Twitch"
             value={account.twitch}
@@ -162,7 +162,7 @@ class MeEdit extends Component {
           />
         </div>
 
-        <div class="field is-grouped has-margin-top-md">
+        <div class="field is-grouped">
           <span class="control">
             <Button color={Button.Colors.PRIMARY} disabled={submitting} onClick={this.handleSave}>
               {submitting ? 'Submitting...' : 'Save Changes'}

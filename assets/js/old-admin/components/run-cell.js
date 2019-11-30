@@ -24,7 +24,7 @@ const RunCell = props => {
       <div class="hover-card-container">
         <div class="hover-card">
           <div class="verti-flex">
-            <div class="has-margin-bottom-sm">
+            <div>
               <strong class="header">Run</strong>
               <p>
                 <strong>
@@ -35,7 +35,7 @@ const RunCell = props => {
               <p>{game.name}</p>
             </div>
 
-            <div class="has-margin-bottom-sm">
+            <div>
               <strong class="header">Runner</strong>
               <p>
                 <strong>{runner.username}</strong>
@@ -57,7 +57,7 @@ const RunCell = props => {
               )}
             </div>
 
-            <div class="has-margin-bottom-sm">
+            <div>
               <strong class="header">Pairing</strong>
               {pairs.length > 0 ? (
                 <p>
@@ -89,7 +89,7 @@ const RunCell = props => {
               )}
             </div>
 
-            <div class="has-margin-bottom-sm">
+            <div>
               <strong class="header">Ranking</strong>
               <ul>
                 {_.map(submission.run_submissions, subRun => {
@@ -105,7 +105,7 @@ const RunCell = props => {
               </ul>
             </div>
 
-            <div class="has-margin-bottom-sm">
+            <div>
               <strong class="header">Limits</strong>
               <p>Max Games: {submission.max_games || 'No limit'}</p>
               <p>Max Time: {submission.max_time || 'No limit'}</p>

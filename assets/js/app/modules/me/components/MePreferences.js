@@ -37,14 +37,13 @@ class MePreferences extends Component {
     return (
       <Checkbox
         key={name}
-        className="has-padding-md has-margin-top-sm has-margin-bottom-sm"
         checked={requirementsMet && value}
         disabled={!requirementsMet}
         marginless
         onChange={checked => this.handlePreferenceChange(preference, checked)}>
         <Checkbox.Header>{name}</Checkbox.Header>
         <p>{description}</p>
-        {requires && <p class="is-size-6 has-text-grey has-margin-top-xs">Requires: {requirements}</p>}
+        {requires && <p class="is-size-6 has-text-grey">Requires: {requirements}</p>}
       </Checkbox>
     );
   }
@@ -62,7 +61,7 @@ class MePreferences extends Component {
           return this.renderPreference(preference, value, detail);
         })}
 
-        <div class="field is-grouped has-margin-top-md">
+        <div class="field is-grouped">
           <span class="control">
             <Button color={Button.Colors.PRIMARY} disabled={submitting} onClick={this.handleSave.bind(this)}>
               {submitting ? 'Submitting...' : 'Save Changes'}

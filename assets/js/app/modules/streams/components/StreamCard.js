@@ -20,10 +20,10 @@ const StreamCard = props => {
         </a>
       </div>
 
-      <div class="ff-card__content has-padding-sm">
+      <div class="ff-card__content">
         {account ? (
           <div class="is-flex">
-            <div class="has-margin-right-sm" style={{ flex: '0 0 48px' }}>
+            <div style={{ flex: '0 0 48px' }}>
               <Avatar src={account.avatar_hash} size={48} />
             </div>
             <div>

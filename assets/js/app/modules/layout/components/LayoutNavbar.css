@@ -1,6 +1,10 @@
 @value colors: '../../../style/colors.css';
 @value primary, gray-300, gray-700 from colors;
 
+.container {
+  margin-top: 8px;
+}
+
 .avatar {
   margin-right: 12px;
 }
