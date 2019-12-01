@@ -19,8 +19,8 @@ import StreamsView from './modules/streams/views/StreamsView';
 import Submit from './modules/submissions/components/Submit';
 import TeamView from './modules/teams/views/TeamView';
 import NotFoundPage from './pages/NotFoundPage';
-import Index from './static-pages/index';
-import Volunteer from './static-pages/volunteer';
+import Index from './static-pages/Index';
+import Volunteer from './static-pages/Volunteer';
 
 import { CURRENT_EVENT_ID, Routes } from './Constants';
 
