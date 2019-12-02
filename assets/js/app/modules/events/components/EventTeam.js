@@ -1,8 +1,8 @@
 import { h } from 'preact';
 import _ from 'lodash';
 
+import Anchor from '../../../uikit/Anchor';
 import Header from '../../../uikit/Header';
-import Link from '../../../uikit/Link';
 import Text from '../../../uikit/Text';
 
 import { Routes } from '../../../Constants';
@@ -14,20 +14,20 @@ const EventTeam = props => {
 
   return (
     <div style={{ '--themeColor': `#${color}` }}>
-      <Link href={Routes.TEAM(teamId)}>
+      <Anchor href={Routes.TEAM(teamId)}>
         <Header size={Header.Sizes.H4} color={Header.Colors.THEMED} withMargin>
           {name}
         </Header>
-      </Link>
+      </Anchor>
 
       {_.map(runs, run => (
         <div>
           <Text color={Text.Colors.MUTED} marginless>
             {run.game.name}
           </Text>
-          <Link href={Routes.ACCOUNT(run.account_id)}>
+          <Anchor href={Routes.ACCOUNT(run.account_id)}>
             <Text>{run.account.username}</Text>
-          </Link>
+          </Anchor>
         </div>
       ))}
     </div>

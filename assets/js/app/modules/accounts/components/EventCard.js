@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import _ from 'lodash';
 
-import Link from '../../../uikit/Link';
+import Anchor from '../../../uikit/Anchor';
 
 import { Routes } from '../../../Constants';
 import { runTime, fullDate } from '../../../utils/TimeUtils';
@@ -23,9 +23,9 @@ const EventCard = props => {
           <p>{fullDate(startTime)}</p>
         </div>
         {team && (
-          <Link href={Routes.TEAM(team.id)}>
+          <Anchor href={Routes.TEAM(team.id)}>
             <span class="has-text-weight-bold has-text-white">{team.name}</span>
-          </Link>
+          </Anchor>
         )}
       </div>
 

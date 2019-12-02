@@ -2,8 +2,8 @@ import { h, Component } from 'preact';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
+import Anchor from '../../../uikit/Anchor';
 import Avatar from '../../../uikit/Avatar';
-import Link from '../../../uikit/Link';
 import * as AccountStore from '../../accounts/AccountStore';
 import Layout from '../../layout/components/Layout';
 import * as RunActions from '../../runs/RunActions';
@@ -38,12 +38,12 @@ class TeamView extends Component {
             </h1>
             {team.captain && (
               <p class="subtitle is-4">
-                Captain: <Link href={Routes.ACCOUNT(team.captain_id)}>{team.captain.username}</Link>
+                Captain: <Anchor href={Routes.ACCOUNT(team.captain_id)}>{team.captain.username}</Anchor>
               </p>
             )}
             {team.event && (
               <p>
-                Part of: <Link href={Routes.EVENT(team.event_id)}>{team.event.name}</Link>
+                Part of: <Anchor href={Routes.EVENT(team.event_id)}>{team.event.name}</Anchor>
               </p>
             )}
             {estimate && <p>Game Estimate: {runTime(estimate)}</p>}
@@ -57,10 +57,10 @@ class TeamView extends Component {
                   return (
                     <tr>
                       <td class={style.tableCell}>
-                        <Link className={style.flexInline} href={Routes.ACCOUNT(run.account_id)}>
+                        <Anchor className={style.flexInline} href={Routes.ACCOUNT(run.account_id)}>
                           <Avatar className={style.runnerAvatar} src={run.account.avatar_hash} size={24} />
                           {run.account.username}
-                        </Link>
+                        </Anchor>
                       </td>
                       <td>
                         {run.game.name} - {run.category.name}

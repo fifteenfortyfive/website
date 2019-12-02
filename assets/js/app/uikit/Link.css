@@ -1,9 +1,0 @@
-.wrapper {
-  color: var(--primary);
-
-  &:hover,
-  &:active,
-  &:focus {
-    text-decoration: underline currentColor;
-  }
-}

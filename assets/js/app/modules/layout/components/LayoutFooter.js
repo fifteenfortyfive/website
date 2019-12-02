@@ -7,7 +7,6 @@ import BoxLink from '../../../uikit/BoxLink';
 import BrandLogo from '../../../uikit/BrandLogo';
 import Header from '../../../uikit/Header';
 import Text from '../../../uikit/Text';
-import Link from '../../../uikit/Link';
 
 import { Routes, ExternalRoutes } from '../../../Constants';
 import style from './LayoutFooter.css';
@@ -87,13 +86,13 @@ const LayoutFooter = props => {
                   Past Events
                 </Header>
                 <p>
-                  <Link href={Routes.EVENT(16)}>Summer 2019</Link>
+                  <Anchor href={Routes.EVENT(16)}>Summer 2019</Anchor>
                 </p>
                 <p>
-                  <Link href={Routes.EVENT(19)}>Summer 2018</Link>
+                  <Anchor href={Routes.EVENT(19)}>Summer 2018</Anchor>
                 </p>
                 <p>
-                  <Link href={Routes.EVENT(20)}>Summer 2017</Link>
+                  <Anchor href={Routes.EVENT(20)}>Summer 2017</Anchor>
                 </p>
               </Column>
             </Columns>

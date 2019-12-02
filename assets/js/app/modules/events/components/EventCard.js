@@ -1,8 +1,8 @@
 import { h } from 'preact';
 import { connect } from 'react-redux';
 
+import Anchor from '../../../uikit/Anchor';
 import Header from '../../../uikit/Header';
-import Link from '../../../uikit/Link';
 import Text from '../../../uikit/Text';
 import * as EventStore from '../EventStore';
 
@@ -16,12 +16,12 @@ const EventCard = props => {
 
   return (
     <div class={style.container}>
-      <Link href={Routes.EVENT(event.id)}>
+      <Anchor href={Routes.EVENT(event.id)}>
         <Header size={Header.Sizes.H4} color={Header.Colors.PRIMARY}>
           {series && `${series.name} - `}
           {name}
         </Header>
-      </Link>
+      </Anchor>
       <Text>{summary}</Text>
     </div>
   );

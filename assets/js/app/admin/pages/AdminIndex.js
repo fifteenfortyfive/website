@@ -1,8 +1,8 @@
 import { h } from 'preact';
 
 import Layout from '../../modules/layout/components/Layout';
+import Anchor from '../../uikit/Anchor';
 import Header from '../../uikit/Header';
-import Link from '../../uikit/Link';
 
 import { AdminRoutes } from '../../Constants';
 
@@ -11,7 +11,7 @@ const AdminIndex = () => {
     <Layout>
       <Header>Admin</Header>
 
-      <Link href={AdminRoutes.ACCOUNTS}>Accounts</Link>
+      <Anchor href={AdminRoutes.ACCOUNTS}>Accounts</Anchor>
     </Layout>
   );
 };

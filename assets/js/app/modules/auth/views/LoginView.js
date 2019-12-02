@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import { connect } from 'react-redux';
-import { route } from 'preact-router';
+import { navigate } from 'hookrouter';
 
 import * as AuthActions from '../AuthActions';
 import * as AuthStore from '../AuthStore';
@@ -25,7 +25,7 @@ const LoginView = props => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      route(redirectRoute || Routes.ME, true);
+      navigate(redirectRoute || Routes.ME, true);
     }
   }, [isLoggedIn, redirectRoute]);
 

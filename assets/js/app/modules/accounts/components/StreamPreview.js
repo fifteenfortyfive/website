@@ -2,7 +2,7 @@ import { h } from 'preact';
 
 import { Image } from 'bloomer';
 import Header from '../../../uikit/Header';
-import Link from '../../../uikit/Link';
+import Anchor from '../../../uikit/Anchor';
 import Text from '../../../uikit/Text';
 
 import { Colors } from '../../../Constants';
@@ -18,7 +18,7 @@ const StreamPreview = props => {
 
   return (
     <div class={style.streamPreview} style={{ backgroundColor: Colors.TWITCH }}>
-      <Link href={`https://twitch.tv/${username}`} target="_blank" rel="noreferrer noopener">
+      <Anchor href={`https://twitch.tv/${username}`}>
         <Header size={Header.Sizes.H6} color={Header.Colors.WHITE}>
           NOW STREAMING:
         </Header>
@@ -28,7 +28,7 @@ const StreamPreview = props => {
         <Text size={Text.Sizes.SIZE_14} color={Text.Colors.WHITE} className={style.title}>
           {title}
         </Text>
-      </Link>
+      </Anchor>
     </div>
   );
 };

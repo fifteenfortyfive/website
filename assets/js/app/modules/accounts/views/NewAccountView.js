@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
-import { route } from 'preact-router';
+import { navigate } from 'hookrouter';
 
 import * as AuthStore from '../../auth/AuthStore';
 import Layout from '../../layout/components/Layout';
@@ -21,7 +21,7 @@ const NewAccountView = props => {
 
   useEffect(() => {
     if (props.isLoggedIn) {
-      route(props.redirectRoute || Routes.ME);
+      navigate(props.redirectRoute || Routes.ME);
     }
   }, [isLoggedIn]);
 
@@ -58,7 +58,7 @@ const NewAccountView = props => {
     )
       .then(() => {
         setSubmitting(false);
-        route(Routes.ME);
+        navigate(Routes.ME);
       })
       .catch(() => {
         setSubmitting(false);

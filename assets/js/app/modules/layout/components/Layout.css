@@ -1,10 +1,5 @@
 .layout {
   font-family: var(--font-sans);
-
-  /* TODO: Make everything use a common Link element instead. */
-  & a {
-    color: #eb3d4c;
-  }
 }
 
 .body {

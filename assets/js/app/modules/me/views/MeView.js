@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 import { connect } from 'react-redux';
-import { route } from 'preact-router';
+import { navigate } from 'hookrouter';
 
 import Button from '../../../uikit/Button';
 import AccountCard from '../../accounts/components/AccountCard';
@@ -41,21 +41,21 @@ class MeView extends Component {
     return (
       <div>
         {accountId && (
-          <Button fullwidth onClick={() => route(Routes.ACCOUNT(accountId))}>
+          <Button fullwidth onClick={() => navigate(Routes.ACCOUNT(accountId))}>
             View Public Profile
           </Button>
         )}
 
         <div>
-          <Button color={Button.Colors.PRIMARY} fullwidth onClick={() => route(Routes.ME_RUN_DASHBOARD)}>
+          <Button color={Button.Colors.PRIMARY} fullwidth onClick={() => navigate(Routes.ME_RUN_DASHBOARD)}>
             Run Dashboard
           </Button>
 
-          <Button fullwidth onClick={() => route(Routes.ME_PREFERENCES)}>
+          <Button fullwidth onClick={() => navigate(Routes.ME_PREFERENCES)}>
             Edit Preferences
           </Button>
 
-          <Button fullwidth onClick={() => route(Routes.ME_EDIT)}>
+          <Button fullwidth onClick={() => navigate(Routes.ME_EDIT)}>
             Edit Account
           </Button>
         </div>
@@ -68,11 +68,11 @@ class MeView extends Component {
 
     switch (page) {
       case Pages.PREFERENCES:
-        return <Preferences onFinish={() => route(Routes.ME)} />;
+        return <Preferences onFinish={() => navigate(Routes.ME)} />;
       case Pages.RUN_DASHBOARD:
         return <RunDashboard eventId={eventId} accountId={accountId} />;
       case Pages.EDIT:
-        return <Edit onFinish={() => route(Routes.ME)} />;
+        return <Edit onFinish={() => navigate(Routes.ME)} />;
       case Pages.SHOW:
       default:
         return <div>Hi there's nothing here yet</div>;

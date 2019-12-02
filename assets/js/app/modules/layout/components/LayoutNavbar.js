@@ -1,7 +1,7 @@
 import { h, Fragment } from 'preact';
 import { useCallback, useState } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
-import { route } from 'preact-router';
+import { navigate } from 'hookrouter';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -40,7 +40,7 @@ const LayoutNavbar = props => {
 
   const dispatch = useDispatch();
   const handleLogout = useCallback(() => {
-    dispatch(AuthActions.logout()).then(() => route(Routes.HOME));
+    dispatch(AuthActions.logout()).then(() => navigate(Routes.HOME));
   }, [dispatch]);
 
   return (

@@ -7,8 +7,8 @@ import * as AdminAccountStore from '../AccountStore';
 import Account from './Account';
 
 import Layout from '../../../../modules/layout/components/Layout';
+import Anchor from '../../../../uikit/Anchor';
 import Header from '../../../../uikit/Header';
-import Link from '../../../../uikit/Link';
 
 import { AdminRoutes } from '../../../../Constants';
 import style from './Accounts.css';
@@ -31,7 +31,7 @@ const AdminAccounts = () => {
         ))}
       </div>
 
-      <Link href={AdminRoutes.HOME}>Home</Link>
+      <Anchor href={AdminRoutes.HOME}>Home</Anchor>
     </Layout>
   );
 };

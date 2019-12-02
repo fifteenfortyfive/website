@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { route } from 'preact-router';
+import { navigate } from 'hookrouter';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -38,7 +38,7 @@ const NewSubmission = props => {
 
   useEffect(() => {
     if (event != null && event.state !== 'signups open') {
-      route(Routes.HOME);
+      navigate(Routes.HOME);
     }
   }, [event]);
 
