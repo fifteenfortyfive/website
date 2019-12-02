@@ -1,5 +1,6 @@
 import { h } from 'preact';
 
+import Anchor from './Anchor';
 import Text from './Text';
 
 import style from './BoxLink.css';
@@ -9,14 +10,14 @@ const BoxLink = props => {
 
   return (
     <p className={className}>
-      <a className={style.boxLink} href={href} {...linkProps}>
+      <Anchor className={style.boxLink} href={href} {...linkProps}>
         <Text className={style.header} color={Text.Colors.PRIMARY} marginless>
           {title}
         </Text>
         <Text className={style.body} marginless>
           {children}
         </Text>
-      </a>
+      </Anchor>
     </p>
   );
 };

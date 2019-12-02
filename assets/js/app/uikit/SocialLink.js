@@ -1,9 +1,11 @@
 import { h } from 'preact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import Anchor from './Anchor';
+
 import style from './SocialLink.css';
 
-const SocialTag = props => {
+const SocialLink = props => {
   const {
     service, // one of `Services`
     name,
@@ -17,18 +19,12 @@ const SocialTag = props => {
       <span class={style.icon}>
         <FontAwesomeIcon {...service.iconProps} />
       </span>
-      {url ? (
-        <a native href={url} target="_blank" rel="noopener noreferrer">
-          {name}
-        </a>
-      ) : (
-        <span>{name}</span>
-      )}
+      {url ? <Anchor href={url}>{name}</Anchor> : <span>{name}</span>}
     </div>
   );
 };
 
-SocialTag.Services = {
+SocialLink.Services = {
   TWITCH: {
     name: 'Twitch',
     url: 'https://twitch.tv',
@@ -49,4 +45,4 @@ SocialTag.Services = {
   },
 };
 
-export default SocialTag;
+export default SocialLink;

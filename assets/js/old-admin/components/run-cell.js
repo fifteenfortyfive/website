@@ -7,8 +7,6 @@ const RunCell = props => {
 
   if (run == null) return null;
 
-  console.log(games);
-
   const game = games[run.game_id];
   const pb = Duration.fromMillis(run.pb_seconds * 1000).toFormat('hh:mm:ss');
   const est = Duration.fromMillis(run.est_seconds * 1000).toFormat('hh:mm:ss');

@@ -2,6 +2,7 @@ import { h } from 'preact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { Footer, Container, Columns, Column } from 'bloomer';
+import Anchor from '../../../uikit/Anchor';
 import BoxLink from '../../../uikit/BoxLink';
 import BrandLogo from '../../../uikit/BrandLogo';
 import Header from '../../../uikit/Header';
@@ -23,44 +24,44 @@ const LayoutFooter = props => {
                   Social
                 </Header>
                 <p>
-                  <a href={ExternalRoutes.DISCORD_URL} target="_blank" rel="noopener noreferrer" native>
+                  <Anchor href={ExternalRoutes.DISCORD_URL}>
                     <span class={style.linkIcon}>
                       <FontAwesomeIcon icon={['fab', 'discord']} fixedWidth />
                     </span>
                     Discord
-                  </a>
+                  </Anchor>
                 </p>
                 <p>
-                  <a href={ExternalRoutes.SRCOM_URL} target="_blank" rel="noopener noreferrer" native>
+                  <Anchor href={ExternalRoutes.SRCOM_URL}>
                     <span class={style.linkIcon}>
                       <FontAwesomeIcon icon="trophy" fixedWidth />
                     </span>
                     speedrun.com
-                  </a>
+                  </Anchor>
                 </p>
                 <p>
-                  <a href={ExternalRoutes.TWITCH_URL} target="_blank" rel="noopener noreferrer" native>
+                  <Anchor href={ExternalRoutes.TWITCH_URL}>
                     <span class={style.linkIcon}>
                       <FontAwesomeIcon icon={['fab', 'twitch']} fixedWidth />
                     </span>
                     Twitch
-                  </a>
+                  </Anchor>
                 </p>
                 <p>
-                  <a href={ExternalRoutes.TWITTER_URL} target="_blank" rel="noopener noreferrer" native>
+                  <Anchor href={ExternalRoutes.TWITTER_URL}>
                     <span class={style.linkIcon}>
                       <FontAwesomeIcon icon={['fab', 'twitter']} fixedWidth />
                     </span>
                     Twitter
-                  </a>
+                  </Anchor>
                 </p>
                 <p>
-                  <a href={ExternalRoutes.YOUTUBE_URL} target="_blank" rel="noopener noreferrer" native>
+                  <Anchor href={ExternalRoutes.YOUTUBE_URL}>
                     <span class={style.linkIcon}>
                       <FontAwesomeIcon icon={['fab', 'youtube']} fixedWidth />
                     </span>
                     YouTube
-                  </a>
+                  </Anchor>
                 </p>
               </Column>
 
@@ -69,15 +70,15 @@ const LayoutFooter = props => {
                   More Info
                 </Header>
                 <p>
-                  <a href={ExternalRoutes.CONTACT_URL}>Contact</a>
+                  <Anchor href={ExternalRoutes.CONTACT_URL}>Contact</Anchor>
                 </p>
                 <p>
-                  <a href={ExternalRoutes.GITHUB_URL} target="_blank" rel="noopener noreferrer">
+                  <Anchor href={ExternalRoutes.GITHUB_URL} target="_blank" rel="noopener noreferrer">
                     Software
-                  </a>
+                  </Anchor>
                 </p>
                 <p>
-                  <a href={Routes.VOLUNTEER}>Volunteer</a>
+                  <Anchor href={Routes.VOLUNTEER}>Volunteer</Anchor>
                 </p>
               </Column>
 
@@ -150,10 +151,7 @@ const LayoutFooter = props => {
           <Column>
             <Text>
               &copy; 2019 <BrandLogo />. Site designed by{' '}
-              <a href={ExternalRoutes.GITHUB_FAULTY_URL} native target="_blank" rel="noopener noreferrer">
-                faulty
-              </a>
-              .
+              <Anchor href={ExternalRoutes.GITHUB_FAULTY_URL}>faulty</Anchor>.
             </Text>
           </Column>
         </Columns>

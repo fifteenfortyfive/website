@@ -1,5 +1,6 @@
 import { h } from 'preact';
 
+import Anchor from '../../../uikit/Anchor';
 import Avatar from '../../../uikit/Avatar';
 import getThumbnailURL from '../getThumbnailURL';
 
@@ -22,7 +23,7 @@ const StreamGrid = props => {
           <div>
             <p class="has-text-weight-bold">{stream.title}</p>
             <p>
-              <a href={Routes.ACCOUNT(account.id)}>{account.username}</a>
+              <Anchor href={Routes.ACCOUNT(account.id)}>{account.username}</Anchor>
             </p>
           </div>
         </div>

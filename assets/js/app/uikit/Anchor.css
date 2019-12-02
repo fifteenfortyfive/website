@@ -1,0 +1,5 @@
+.content {
+  font-family: var(--font-sans);
+  color: var(--primary);
+  font-weight: 400;
+}

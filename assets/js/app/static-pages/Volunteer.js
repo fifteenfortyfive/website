@@ -1,6 +1,7 @@
 import { h } from 'preact';
 
 import Layout from '../modules/layout/components/Layout';
+import Anchor from '../uikit/Anchor';
 
 import { Content } from 'bloomer';
 
@@ -16,9 +17,9 @@ const Volunteer = props => {
           Below we've listed a few positions that we are specifically looking to fill. If you're interested in
           getting involved with the production of The 1545 or any new events we'll be planning in the future,
           check them out and hit us up either on Discord (by messaging an Organizer), or by email at{' '}
-          <a href="mailto:volunteer@fifteenfortyfive.org">volunteer@fifteenfortyfive.org</a>! If you have
-          other suggestions for positions that you'd like to fill, or any other feedback, feel free to talk to
-          us about it!
+          <Anchor href="mailto:volunteer@fifteenfortyfive.org">volunteer@fifteenfortyfive.org</Anchor>! If you
+          have other suggestions for positions that you'd like to fill, or any other feedback, feel free to
+          talk to us about it!
         </p>
 
         <h2>Marketing</h2>

@@ -1,5 +1,6 @@
 import { h } from 'preact';
 
+import Anchor from '../../../uikit/Anchor';
 import Avatar from '../../../uikit/Avatar';
 import getThumbnailURL from '../getThumbnailURL';
 
@@ -13,11 +14,11 @@ const StreamCard = props => {
   return (
     <div class="ff-card">
       <div class="ff-card__image-header">
-        <a native href={`https://twitch.tv/${twitchPath}`} target="_blank" rel="noopener noreferrer">
+        <Anchor href={`https://twitch.tv/${twitchPath}`}>
           <figure class="image is-16-by-9">
             <img src={getThumbnailURL(stream.thumbnail_url, 320, 180)} />
           </figure>
-        </a>
+        </Anchor>
       </div>
 
       <div class="ff-card__content">
@@ -29,7 +30,7 @@ const StreamCard = props => {
             <div>
               <p class="has-text-weight-bold">{stream.title}</p>
               <p>
-                <a href={Routes.ACCOUNT(account.id)}>{account.username}</a>
+                <Anchor href={Routes.ACCOUNT(account.id)}>{account.username}</Anchor>
               </p>
             </div>
           </div>

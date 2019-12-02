@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import LayoutFooter from '../modules/layout/components/LayoutFooter';
 import LayoutNavbar from '../modules/layout/components/LayoutNavbar';
+import Anchor from '../uikit/Anchor';
 import ThemeProvider from '../uikit/ThemeProvider';
 import BrandLogo from '../uikit/BrandLogo';
 
@@ -64,13 +65,13 @@ const Index = props => {
               <Column size={5}>
                 <h1 class="title">Summer 2019</h1>
                 <p>
-                  This year's event schedule is now live. Check out the <a href="/events">Event Calendar</a>{' '}
-                  for more details on signups, team announcements, and all of the other events we have planned
-                  for this year!
+                  This year's event schedule is now live. Check out the{' '}
+                  <Anchor href="/events">Event Calendar</Anchor> for more details on signups, team
+                  announcements, and all of the other events we have planned for this year!
                 </p>
                 <p>
-                  Follow us on <a href="https://twitter.com/The_1545">Twitter</a> to keep up with these and
-                  other updates throughout the year.
+                  Follow us on <Anchor href="https://twitter.com/The_1545">Twitter</Anchor> to keep up with
+                  these and other updates throughout the year.
                 </p>
               </Column>
             </Columns>

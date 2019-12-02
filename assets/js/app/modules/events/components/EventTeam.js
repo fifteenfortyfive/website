@@ -12,8 +12,6 @@ const EventTeam = props => {
 
   const { id: teamId, name, color, runs } = team;
 
-  console.log(name, color);
-
   return (
     <div style={{ '--themeColor': `#${color}` }}>
       <Link href={Routes.TEAM(teamId)}>
