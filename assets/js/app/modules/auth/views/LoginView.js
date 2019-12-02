@@ -1,7 +1,6 @@
 import { h } from 'preact';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import { connect } from 'react-redux';
-import { navigate } from 'hookrouter';
 
 import * as AuthActions from '../AuthActions';
 import * as AuthStore from '../AuthStore';
@@ -12,6 +11,7 @@ import Header from '../../../uikit/Header';
 import PasswordInput from '../../../uikit/PasswordInput';
 import TextInput from '../../../uikit/TextInput';
 import Layout from '../../layout/components/Layout';
+import * as RouterUtils from '../../router/RouterUtils';
 
 import { Routes } from '../../../Constants';
 
@@ -25,7 +25,7 @@ const LoginView = props => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate(redirectRoute || Routes.ME, true);
+      RouterUtils.navigateTo(redirectRoute || Routes.ME, true);
     }
   }, [isLoggedIn, redirectRoute]);
 

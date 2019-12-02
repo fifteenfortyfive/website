@@ -1,11 +1,11 @@
 import { h } from 'preact';
-import { navigate } from 'hookrouter';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
 
 import * as EventActions from '../../events/EventActions';
 import * as EventStore from '../../events/EventStore';
 import Layout from '../../layout/components/Layout';
+import * as RouterUtils from '../../router/RouterUtils';
 import * as SubmissionActions from '../SubmissionActions';
 import * as SubmissionStore from '../SubmissionStore';
 import RunSubmission from './RunSubmission';
@@ -38,7 +38,7 @@ const NewSubmission = props => {
 
   useEffect(() => {
     if (event != null && event.state !== 'signups open') {
-      navigate(Routes.HOME);
+      RouterUtils.navigateTo(Routes.HOME);
     }
   }, [event]);
 

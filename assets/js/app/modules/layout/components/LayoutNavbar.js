@@ -1,13 +1,13 @@
 import { h, Fragment } from 'preact';
 import { useCallback, useState } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
-import { navigate } from 'hookrouter';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import * as AuthActions from '../../auth/AuthActions';
 import * as AuthStore from '../../auth/AuthStore';
 import * as MeStore from '../../me/MeStore';
+import * as RouterUtils from '../../router/RouterUtils';
 
 import {
   Navbar,
@@ -40,7 +40,7 @@ const LayoutNavbar = props => {
 
   const dispatch = useDispatch();
   const handleLogout = useCallback(() => {
-    dispatch(AuthActions.logout()).then(() => navigate(Routes.HOME));
+    dispatch(AuthActions.logout()).then(() => RouterUtils.navigateTo(Routes.HOME));
   }, [dispatch]);
 
   return (

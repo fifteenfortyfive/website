@@ -1,10 +1,10 @@
 import { h, Component } from 'preact';
 import { connect } from 'react-redux';
-import { navigate } from 'hookrouter';
 
 import Button from '../../../uikit/Button';
 import AccountCard from '../../accounts/components/AccountCard';
 import Layout from '../../layout/components/Layout';
+import * as RouterUtils from '../../router/RouterUtils';
 import RunDashboard from '../../run-dashboard/components/RunDashboard';
 import * as MeActions from '../MeActions';
 import Edit from '../components/MeEdit';
@@ -41,21 +41,24 @@ class MeView extends Component {
     return (
       <div>
         {accountId && (
-          <Button fullwidth onClick={() => navigate(Routes.ACCOUNT(accountId))}>
+          <Button fullwidth onClick={() => RouterUtils.navigateTo(Routes.ACCOUNT(accountId))}>
             View Public Profile
           </Button>
         )}
 
         <div>
-          <Button color={Button.Colors.PRIMARY} fullwidth onClick={() => navigate(Routes.ME_RUN_DASHBOARD)}>
+          <Button
+            color={Button.Colors.PRIMARY}
+            fullwidth
+            onClick={() => RouterUtils.navigateTo(Routes.ME_RUN_DASHBOARD)}>
             Run Dashboard
           </Button>
 
-          <Button fullwidth onClick={() => navigate(Routes.ME_PREFERENCES)}>
+          <Button fullwidth onClick={() => RouterUtils.navigateTo(Routes.ME_PREFERENCES)}>
             Edit Preferences
           </Button>
 
-          <Button fullwidth onClick={() => navigate(Routes.ME_EDIT)}>
+          <Button fullwidth onClick={() => RouterUtils.navigateTo(Routes.ME_EDIT)}>
             Edit Account
           </Button>
         </div>
@@ -68,11 +71,11 @@ class MeView extends Component {
 
     switch (page) {
       case Pages.PREFERENCES:
-        return <Preferences onFinish={() => navigate(Routes.ME)} />;
+        return <Preferences onFinish={() => RouterUtils.navigateTo(Routes.ME)} />;
       case Pages.RUN_DASHBOARD:
         return <RunDashboard eventId={eventId} accountId={accountId} />;
       case Pages.EDIT:
-        return <Edit onFinish={() => navigate(Routes.ME)} />;
+        return <Edit onFinish={() => RouterUtils.navigateTo(Routes.ME)} />;
       case Pages.SHOW:
       default:
         return <div>Hi there's nothing here yet</div>;

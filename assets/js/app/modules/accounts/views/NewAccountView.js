@@ -1,10 +1,10 @@
 import { h } from 'preact';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
-import { navigate } from 'hookrouter';
 
 import * as AuthStore from '../../auth/AuthStore';
 import Layout from '../../layout/components/Layout';
+import * as RouterUtils from '../../router/RouterUtils';
 import * as AccountActions from '../AccountActions';
 
 import { Columns, Column } from 'bloomer';
@@ -21,7 +21,7 @@ const NewAccountView = props => {
 
   useEffect(() => {
     if (props.isLoggedIn) {
-      navigate(props.redirectRoute || Routes.ME);
+      RouterUtils.navigateTo(props.redirectRoute || Routes.ME);
     }
   }, [isLoggedIn]);
 
@@ -58,7 +58,7 @@ const NewAccountView = props => {
     )
       .then(() => {
         setSubmitting(false);
-        navigate(Routes.ME);
+        RouterUtils.navigateTo(Routes.ME);
       })
       .catch(() => {
         setSubmitting(false);
