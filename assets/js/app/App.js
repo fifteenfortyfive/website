@@ -20,7 +20,7 @@ import Submit from './modules/submissions/components/Submit';
 import TeamView from './modules/teams/views/TeamView';
 import NotFoundPage from './pages/NotFoundPage';
 import CommunityChest from './static-pages/CommunityChest';
-// import Index from './static-pages/Index';
+import Index from './static-pages/Index';
 import The1545 from './static-pages/The1545';
 import Volunteer from './static-pages/Volunteer';
 import AuthenticatedRoute from './AuthenticatedRoute';
@@ -46,7 +46,7 @@ const App = props => {
   return (
     <Router history={history}>
       <Switch>
-        <Route path={Routes.HOME} exact component={The1545} />
+        <Route path={Routes.HOME} exact component={Index} />
         <Route path={Routes.VOLUNTEER} component={Volunteer} />
         <Route path={Routes.THE_1545} component={The1545} />
         <Route path={Routes.COMMUNITY_CHEST} component={CommunityChest} />

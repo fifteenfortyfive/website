@@ -12,16 +12,22 @@ const STYLES = {
 // `size` is used as the height of the text and uses the same values as a
 // normal `font-size` property. The width will be 3 times the height.
 const MCSN = props => {
-  const { size = 20, look, color, className, ...imgProps } = props;
+  const { size, look, color = 'currentColor', className, ...imgProps } = props;
 
   const src = STYLES[look];
 
-  const width = size * 3;
-  const height = size;
+  const width = size != null ? size * 3 : undefined;
+  const height = size != null ? size : undefined;
 
   if (look === 'monotone') {
     return (
-      <svg width={width} height={height} viewBox="0 0 605 153" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        {...imgProps}
+        width={width}
+        height={height}
+        viewBox="0 0 605 153"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
         <path
           d="M229.1 151.5C214.9 148.4 204.3 142.5 193.8 132.1C188 126.3 181.2 116.1 178.5 109.3C176.2 103.7 173.919 95.5 173.5 88C172.635 72.5 173.58 68.56 174.7 61.2C179.8 35.1 201.3 11.3 227.4 3C235.9 0.2 237.7 0 251.4 0C260.8 0 268 0.5 271.4 1.4C276.6 2.8 289.6 8.5 290.6 9.8C290.9 10.2 293.7 12.5 297 15C302.9 19.5 307.9 25.5 313 34.2L315.7 38.9L311.7 41.2L273.3 64C272.5 64 270.2 61.3 268.2 58C259.3 43.6 241.8 42.5 233.2 55.8C228.7 62.6 226.3 70.7 226.9 76.9C227.4 82.8 230.8 92.1 233.5 95.4C238.2 100.9 251.4 103.2 258.2 99.7C261.8 97.8 267.5 91.8 270.5 86.8C271.8 84.7 273 83 273.3 83C274.1 83 313.9 105.8 316.5 107.7C317.2 108.2 313.7 115.1 309.4 121.5C298.1 138.3 283.9 147.8 264.3 151.5C254.7 153.3 237.3 153.3 229.1 151.5Z"
           fill={color}

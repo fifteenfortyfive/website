@@ -1,0 +1,9 @@
+.logoImage {
+  width: 100%;
+}
+
+.eventLogo {
+  display: block;
+  width: 80%;
+  margin: 8px auto;
+}

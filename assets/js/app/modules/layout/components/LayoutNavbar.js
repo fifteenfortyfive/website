@@ -50,7 +50,7 @@ const LayoutNavbar = props => {
       <Container>
         <NavbarBrand>
           <NavbarItem href={Routes.HOME}>
-            <BrandLogo className={styles.brandLogo} color={isDark ? 'white' : 'black'} />
+            <BrandLogo className={styles.brandLogo} size={20} />
           </NavbarItem>
           <NavbarBurger onClick={() => setIsActive(!isActive)} />
         </NavbarBrand>

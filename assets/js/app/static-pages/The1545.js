@@ -20,7 +20,7 @@ import {
 } from 'bloomer';
 
 import { ExternalRoutes } from '../Constants';
-import styles from './The1545.mod.mod.css';
+import styles from './The1545.mod.css';
 
 const The1545 = props => {
   return (

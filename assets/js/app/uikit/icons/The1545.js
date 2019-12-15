@@ -3,10 +3,10 @@ import { h } from 'preact';
 // `size` is used as the height of the text and uses the same values as a
 // normal `font-size` property. The width will be 3 times the height.
 const The1545 = props => {
-  const { size = 20, color = 'currentColor', className, ...passthroughProps } = props;
+  const { size, color = 'currentColor', className, ...passthroughProps } = props;
 
-  const height = size;
-  const width = size * 3;
+  const width = size != null ? size * 3 : undefined;
+  const height = size != null ? size : undefined;
 
   return (
     <svg
