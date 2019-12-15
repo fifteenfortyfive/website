@@ -3,18 +3,18 @@ import { h } from 'preact';
 import Anchor from './Anchor';
 import Text from './Text';
 
-import style from './BoxLink.css';
+import styles from './BoxLink.mod.css';
 
 const BoxLink = props => {
   const { title, children, href, className, ...linkProps } = props;
 
   return (
     <p className={className}>
-      <Anchor className={style.boxLink} href={href} {...linkProps}>
-        <Text className={style.header} color={Text.Colors.PRIMARY} marginless>
+      <Anchor className={styles.boxLink} href={href} {...linkProps}>
+        <Text className={styles.header} color={Text.Colors.PRIMARY} marginless>
           {title}
         </Text>
-        <Text className={style.body} marginless>
+        <Text className={styles.body} marginless>
           {children}
         </Text>
       </Anchor>

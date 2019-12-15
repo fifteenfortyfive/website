@@ -12,7 +12,7 @@ import * as TeamStore from '../TeamStore';
 
 import { Routes } from '../../../Constants';
 import { runTime } from '../../../utils/TimeUtils';
-import style from './TeamView.css';
+import styles from './TeamView.mod.css';
 
 class TeamView extends Component {
   componentDidMount() {
@@ -56,9 +56,9 @@ class TeamView extends Component {
                 {_.map(runs, run => {
                   return (
                     <tr>
-                      <td class={style.tableCell}>
-                        <Anchor className={style.flexInline} href={Routes.ACCOUNT(run.account_id)}>
-                          <Avatar className={style.runnerAvatar} src={run.account.avatar_hash} size={24} />
+                      <td class={styles.tableCell}>
+                        <Anchor className={styles.flexInline} href={Routes.ACCOUNT(run.account_id)}>
+                          <Avatar className={styles.runnerAvatar} src={run.account.avatar_hash} size={24} />
                           {run.account.username}
                         </Anchor>
                       </td>

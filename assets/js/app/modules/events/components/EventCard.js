@@ -7,7 +7,7 @@ import Text from '../../../uikit/Text';
 import * as EventStore from '../EventStore';
 
 import { Routes } from '../../../Constants';
-import style from './EventCard.css';
+import styles from './EventCard.mod.css';
 
 const EventCard = props => {
   const { event } = props;
@@ -15,7 +15,7 @@ const EventCard = props => {
   const { name, series, summary } = event;
 
   return (
-    <div class={style.container}>
+    <div class={styles.container}>
       <Anchor href={Routes.EVENT(event.id)}>
         <Header size={Header.Sizes.H4} color={Header.Colors.PRIMARY}>
           {series && `${series.name} - `}

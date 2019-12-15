@@ -6,7 +6,7 @@ import LayoutFooter from './LayoutFooter';
 
 import { Container, Section } from 'bloomer';
 
-import styles from './Layout.css';
+import styles from './Layout.mod.css';
 
 const Layout = props => {
   const { withContainer = true, children } = props;

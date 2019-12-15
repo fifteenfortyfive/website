@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import classNames from 'classnames';
 
-import style from './Header.css';
+import styles from './Header.mod.css';
 
 const Sizes = {
   H1: 'size1',
@@ -27,8 +27,8 @@ const Header = props => {
 
   return (
     <h1
-      className={classNames(style.header, style[color], style[size], className, {
-        [style.withMargin]: withMargin,
+      className={classNames(styles.header, styles[color], styles[size], className, {
+        [styles.withMargin]: withMargin,
       })}>
       {children}
     </h1>

@@ -6,7 +6,7 @@ import Anchor from '../../../uikit/Anchor';
 import { Routes } from '../../../Constants';
 import { runTime, fullDate } from '../../../utils/TimeUtils';
 
-import styles from './EventCard.css';
+import styles from './EventCard.mod.css';
 
 const EventCard = props => {
   const { event, team, runs } = props;

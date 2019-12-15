@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import classNames from 'classnames';
 
-import style from './Text.css';
+import styles from './Text.mod.css';
 
 const Sizes = {
   SIZE_24: 'size24',
@@ -26,8 +26,8 @@ const Text = props => {
 
   return (
     <p
-      className={classNames(style.text, style[color], style[size], className, {
-        [style.marginless]: marginless,
+      className={classNames(styles.text, styles[color], styles[size], className, {
+        [styles.marginless]: marginless,
       })}>
       {children}
     </p>

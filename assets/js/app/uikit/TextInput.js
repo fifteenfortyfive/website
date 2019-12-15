@@ -2,7 +2,7 @@ import { h } from 'preact';
 
 import InputWrapper from './InputWrapper';
 
-import style from './TextInput.css';
+import styles from './TextInput.mod.css';
 
 const TextInput = props => {
   const {
@@ -26,7 +26,7 @@ const TextInput = props => {
         name={name}
         value={value}
         placeholder={placeholder}
-        class={style.input}
+        class={styles.input}
         onChange={onChange}
         onInput={onInput}
         disabled={!editable}

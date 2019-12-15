@@ -18,7 +18,7 @@ import Header from '../../../uikit/Header';
 import Text from '../../../uikit/Text';
 
 import { Routes } from '../../../Constants';
-import style from './Submit.css';
+import styles from './Submit.mod.css';
 
 const NewSubmission = props => {
   const { eventId } = props;
@@ -99,11 +99,11 @@ const NewSubmission = props => {
             close.
           </Text>
 
-          <div class={style.runsContainer}>
+          <div class={styles.runsContainer}>
             {runs.map(run => (
               <RunSubmission
                 key={run.game_id}
-                className={style.submission}
+                className={styles.submission}
                 run={run}
                 onSave={handleUpdateRun}
                 onDelete={handleDeleteRun}
@@ -112,7 +112,7 @@ const NewSubmission = props => {
 
             {showNewRun ? (
               <RunSubmissionForm
-                className={style.newSubmision}
+                className={styles.newSubmision}
                 onSave={handleCreateRun}
                 onCancel={handleCancelNewRun}
               />

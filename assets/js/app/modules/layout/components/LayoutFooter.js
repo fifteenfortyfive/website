@@ -8,22 +8,22 @@ import Header from '../../../uikit/Header';
 import Text from '../../../uikit/Text';
 
 import { Routes, ExternalRoutes } from '../../../Constants';
-import style from './LayoutFooter.css';
+import styles from './LayoutFooter.mod.css';
 
 const LayoutFooter = props => {
   return (
-    <Footer className={style.footer}>
+    <Footer className={styles.footer}>
       <Container>
         <Columns>
           <Column isSize={6}>
             <Columns isMultiline isMobile>
               <Column isSize="1/2">
-                <Header className={style.sectionHeader} size={Header.Sizes.H4}>
+                <Header className={styles.sectionHeader} size={Header.Sizes.H4}>
                   Social
                 </Header>
                 <p>
                   <Anchor href={ExternalRoutes.DISCORD_URL}>
-                    <span class={style.linkIcon}>
+                    <span class={styles.linkIcon}>
                       <FontAwesomeIcon icon={['fab', 'discord']} fixedWidth />
                     </span>
                     Discord
@@ -31,7 +31,7 @@ const LayoutFooter = props => {
                 </p>
                 <p>
                   <Anchor href={ExternalRoutes.SRCOM_URL}>
-                    <span class={style.linkIcon}>
+                    <span class={styles.linkIcon}>
                       <FontAwesomeIcon icon="trophy" fixedWidth />
                     </span>
                     speedrun.com
@@ -39,7 +39,7 @@ const LayoutFooter = props => {
                 </p>
                 <p>
                   <Anchor href={ExternalRoutes.TWITCH_URL}>
-                    <span class={style.linkIcon}>
+                    <span class={styles.linkIcon}>
                       <FontAwesomeIcon icon={['fab', 'twitch']} fixedWidth />
                     </span>
                     Twitch
@@ -47,7 +47,7 @@ const LayoutFooter = props => {
                 </p>
                 <p>
                   <Anchor href={ExternalRoutes.TWITTER_URL}>
-                    <span class={style.linkIcon}>
+                    <span class={styles.linkIcon}>
                       <FontAwesomeIcon icon={['fab', 'twitter']} fixedWidth />
                     </span>
                     Twitter
@@ -55,7 +55,7 @@ const LayoutFooter = props => {
                 </p>
                 <p>
                   <Anchor href={ExternalRoutes.YOUTUBE_URL}>
-                    <span class={style.linkIcon}>
+                    <span class={styles.linkIcon}>
                       <FontAwesomeIcon icon={['fab', 'youtube']} fixedWidth />
                     </span>
                     YouTube
@@ -64,7 +64,7 @@ const LayoutFooter = props => {
               </Column>
 
               <Column isSize="1/2">
-                <Header className={style.sectionHeader} size={Header.Sizes.H4}>
+                <Header className={styles.sectionHeader} size={Header.Sizes.H4}>
                   More Info
                 </Header>
                 <p>
@@ -81,7 +81,7 @@ const LayoutFooter = props => {
               </Column>
 
               <Column isSize="1/2">
-                <Header className={style.sectionHeader} size={Header.Sizes.H4}>
+                <Header className={styles.sectionHeader} size={Header.Sizes.H4}>
                   Past Events
                 </Header>
                 <p>
@@ -98,14 +98,14 @@ const LayoutFooter = props => {
           </Column>
 
           <Column>
-            <Header className={style.sectionHeader} size={Header.Sizes.H4}>
+            <Header className={styles.sectionHeader} size={Header.Sizes.H4}>
               Other Events
             </Header>
             <BoxLink
               href={ExternalRoutes.RAREWARE_301_URL}
               target="_blank"
               title="Rareware 301"
-              className={style.boxLink}>
+              className={styles.boxLink}>
               Banjo Kazooie, Banjo Tooie, and Donkey Kong 64 played to full completion. Hosted annually in
               January.
             </BoxLink>
@@ -114,7 +114,7 @@ const LayoutFooter = props => {
               href={ExternalRoutes.CRASH_MARATHON_URL}
               target="_blank"
               title="Crash Marathon"
-              className={style.boxLink}>
+              className={styles.boxLink}>
               A marathon dedicated to showcasing the speedruns of the Crash Bandicoot series.
             </BoxLink>
 
@@ -122,7 +122,7 @@ const LayoutFooter = props => {
               href={ExternalRoutes.SPRASHFECTA_URL}
               target="_blank"
               title="Sprashfecta"
-              className={style.boxLink}>
+              className={styles.boxLink}>
               The original Spyro and Crash trilogies played to full completion. Hosted annually in December.
             </BoxLink>
 
@@ -130,7 +130,7 @@ const LayoutFooter = props => {
               href={ExternalRoutes.SPYROTHON_URL}
               target="_blank"
               title="Spyrothon"
-              className={style.boxLink}>
+              className={styles.boxLink}>
               The Spyro speedrunning community marathon. Usually hosted at the end of Summer.
             </BoxLink>
 
@@ -138,7 +138,7 @@ const LayoutFooter = props => {
               href={ExternalRoutes.MARIO_602_URL}
               target="_blank"
               title="Super Mario 602"
-              className={style.boxLink}>
+              className={styles.boxLink}>
               Super Mario 64, Sunshine, Galaxy, and Galaxy 2 played to full completion. Hosted every Summer
               and Winter.
             </BoxLink>

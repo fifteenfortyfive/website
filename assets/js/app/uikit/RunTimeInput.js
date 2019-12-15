@@ -4,7 +4,7 @@ import { useCallback } from 'preact/hooks';
 import InputWrapper from './InputWrapper';
 
 import RunDurationUtils from '../utils/RunDurationUtils';
-import style from './TextInput.css';
+import styles from './TextInput.mod.css';
 
 const TIME_PATTERN = 'd{1,3}:d{2}:d{2}';
 
@@ -55,7 +55,7 @@ const RunTimeInput = props => {
         value={value}
         placeholder={placeholder}
         pattern={TIME_PATTERN}
-        class={style.input}
+        class={styles.input}
         onChange={handleChange}
         onInput={handleInput}
         disabled={!editable}

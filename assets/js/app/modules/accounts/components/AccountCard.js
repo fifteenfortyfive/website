@@ -9,7 +9,7 @@ import Header from '../../../uikit/Header';
 import Text from '../../../uikit/Text';
 
 import { simpleDate } from '../../../utils/TimeUtils';
-import styles from './AccountCard.css';
+import styles from './AccountCard.mod.css';
 
 const AccountCard = props => {
   const { account, stream, loadingStream } = props;

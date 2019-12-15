@@ -2,7 +2,7 @@ import { h } from 'preact';
 
 import InputWrapper from './InputWrapper';
 
-import style from './Select.css';
+import styles from './Select.mod.css';
 
 /*
   Simple select input styled like all other inputs. `options` is either a list
@@ -23,7 +23,7 @@ const Select = props => {
 
   return (
     <InputWrapper name={name} label={label} note={note} className={className}>
-      <select class={style.input} onChange={onChange} disabled={!editable} value={value}>
+      <select class={styles.input} onChange={onChange} disabled={!editable} value={value}>
         {placeholder && (
           <option disabled selected value="">
             {placeholder}

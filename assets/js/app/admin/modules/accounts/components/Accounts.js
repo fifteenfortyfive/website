@@ -11,7 +11,7 @@ import Anchor from '../../../../uikit/Anchor';
 import Header from '../../../../uikit/Header';
 
 import { AdminRoutes } from '../../../../Constants';
-import style from './Accounts.css';
+import styles from './Accounts.mod.css';
 
 const AdminAccounts = () => {
   const dispatch = useDispatch();
@@ -25,9 +25,9 @@ const AdminAccounts = () => {
     <Layout>
       <Header>Accounts</Header>
 
-      <div class={style.accounts}>
+      <div class={styles.accounts}>
         {accountIds.map(accountId => (
-          <Account key={accountId} className={style.account} accountId={accountId} />
+          <Account key={accountId} className={styles.account} accountId={accountId} />
         ))}
       </div>
 

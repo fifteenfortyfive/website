@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Anchor from './Anchor';
 
-import style from './SocialLink.css';
+import styles from './SocialLink.mod.css';
 
 const SocialLink = props => {
   const {
@@ -15,8 +15,8 @@ const SocialLink = props => {
   const url = urlOverride || (service.url ? `${service.url}/${name}` : null);
 
   return (
-    <div class={style.container}>
-      <span class={style.icon}>
+    <div class={styles.container}>
+      <span class={styles.icon}>
         <FontAwesomeIcon {...service.iconProps} />
       </span>
       {url ? <Anchor href={url}>{name}</Anchor> : <span>{name}</span>}

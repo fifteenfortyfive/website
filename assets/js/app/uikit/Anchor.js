@@ -4,7 +4,7 @@ import { setLinkProps } from 'hookrouter';
 
 import * as RouterUtils from '../modules/router/RouterUtils';
 
-import styles from './Anchor.css';
+import styles from './Anchor.mod.css';
 
 const Anchor = props => {
   const { children, className, ...linkProps } = props;

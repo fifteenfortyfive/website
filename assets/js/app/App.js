@@ -48,8 +48,8 @@ const App = props => {
       const { needsAuth, needsAdmin } = requestedRoute.props;
       const isAdmin = currentUser && currentUser.admin;
 
-      if (needsAuth && !isLoggedIn) route(Routes.LOGIN({ redirect: url }), false);
-      if (needsAdmin && !isAdmin) route(Routes.LOGIN({ redirect: url }), false);
+      if (needsAuth && !isLoggedIn) route(Routes.LOGIN({ redirect: url }), true);
+      if (needsAdmin && !isAdmin) route(Routes.LOGIN({ redirect: url }), true);
     },
     [isLoggedIn, currentUser]
   );

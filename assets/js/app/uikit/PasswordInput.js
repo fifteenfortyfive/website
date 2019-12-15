@@ -2,7 +2,7 @@ import { h } from 'preact';
 
 import InputWrapper from './InputWrapper';
 
-import style from './PasswordInput.css';
+import styles from './PasswordInput.mod.css';
 
 // Password inputs are intentionally uncontrolled to avoid potentially leaking
 // the value
@@ -14,7 +14,7 @@ const PasswordInput = props => {
       <input
         type="password"
         name={name}
-        class={style.input}
+        class={styles.input}
         placeholder={placeholder}
         onChange={onChange}
         {...inputProps}

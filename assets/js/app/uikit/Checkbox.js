@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Header from './Header';
 
-import style from './Checkbox.css';
+import styles from './Checkbox.mod.css';
 
 const Checkbox = props => {
   const { checked = false, disabled, marginless = false, children, onChange, className } = props;
@@ -19,30 +19,30 @@ const Checkbox = props => {
 
   return (
     <div
-      class={classNames(style.checkbox, className, {
-        [style.disabled]: disabled,
-        [style.marginless]: marginless,
+      class={classNames(styles.checkbox, className, {
+        [styles.disabled]: disabled,
+        [styles.marginless]: marginless,
       })}
       tabindex="0"
       onClick={() => !disabled && onChange(!checked)}
       onKeyDown={handleKeyDown}
       aria-role="checkbox"
       aria-checked={checked}>
-      <div class={style.check}>
-        <span class={classNames({ [style.visible]: !checked })}>
+      <div class={styles.check}>
+        <span class={classNames({ [styles.visible]: !checked })}>
           <FontAwesomeIcon className="icon" icon={['far', 'square']} size="lg" />
         </span>
-        <span class={classNames({ [style.visible]: checked })}>
+        <span class={classNames({ [styles.visible]: checked })}>
           <FontAwesomeIcon className="icon" icon={['far', 'check-square']} size="lg" />
         </span>
       </div>
-      <label class={style.label}>{children}</label>
+      <label class={styles.label}>{children}</label>
     </div>
   );
 };
 
 Checkbox.Header = ({ children, ...props }) => (
-  <Header size={Header.Sizes.H5} {...props} className={style.header}>
+  <Header size={Header.Sizes.H5} {...props} className={styles.header}>
     {children}
   </Header>
 );

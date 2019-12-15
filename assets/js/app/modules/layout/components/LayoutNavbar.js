@@ -27,7 +27,7 @@ import Avatar from '../../../uikit/Avatar';
 import BrandLogo from '../../../uikit/BrandLogo';
 
 import { Routes, ExternalRoutes } from '../../../Constants';
-import styles from './LayoutNavbar.css';
+import styles from './LayoutNavbar.mod.css';
 
 const LayoutNavbar = props => {
   const { isDark = false, className } = props;

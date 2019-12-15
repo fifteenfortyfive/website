@@ -11,7 +11,7 @@ import Header from '../../../uikit/Header';
 import Text from '../../../uikit/Text';
 
 import { runTime } from '../../../utils/TimeUtils';
-import style from './RunSubmission.css';
+import styles from './RunSubmission.mod.css';
 
 const RunSubmission = props => {
   const { run = {}, className, onSave, onDelete } = props;
@@ -45,12 +45,12 @@ const RunSubmission = props => {
 
   return (
     <div
-      class={classNames(className, style.submission, {
-        [style.editing]: isEditing,
+      class={classNames(className, styles.submission, {
+        [styles.editing]: isEditing,
       })}>
       {isEditing ? (
         <RunSubmissionForm
-          className={style.form}
+          className={styles.form}
           run={run}
           onSave={handleSave}
           onCancel={handleCancel}
@@ -58,14 +58,14 @@ const RunSubmission = props => {
         />
       ) : (
         <Fragment>
-          <div class={style.content}>
+          <div class={styles.content}>
             <Header size={Header.Sizes.H5}>{submissionName}</Header>
 
             <Text marginless>PB: {runTime(pbSeconds)}</Text>
             <Text marginless>EST: {runTime(estSeconds)}</Text>
           </div>
 
-          <div class={style.actions}>
+          <div class={styles.actions}>
             <Button fullwidth onClick={() => setEditing(true)}>
               Edit
             </Button>

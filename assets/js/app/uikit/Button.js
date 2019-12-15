@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import classNames from 'classnames';
 
-import buttonStyle from './Button.css';
+import styles from './Button.mod.css';
 
 const Colors = {
   PRIMARY: 'colorPrimary',
@@ -40,8 +40,8 @@ const Button = props => {
 
   return (
     <button
-      class={classNames(buttonStyle.button, buttonStyle[color], buttonStyle[style], className, {
-        [buttonStyle.isFullwidth]: fullwidth,
+      class={classNames(styles.button, styles[color], styles[style], className, {
+        [styles.isFullwidth]: fullwidth,
       })}
       onClick={onClick}
       disabled={disabled}>

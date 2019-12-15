@@ -1,6 +1,6 @@
 import { h } from 'preact';
 
-import styles from './ThemeProvider.css';
+import styles from './ThemeProvider.mod.css';
 
 const ThemeProvider = props => {
   const { children } = props;

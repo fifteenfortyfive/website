@@ -2,7 +2,7 @@ import { h } from 'preact';
 import classNames from 'classnames';
 
 import { ASSETS_URL } from '../Constants';
-import style from './Avatar.css';
+import styles from './Avatar.mod.css';
 
 const Avatar = props => {
   const { url = ASSETS_URL, src, fullSrc = null, size = 128, useDefault = true, className } = props;
@@ -12,7 +12,7 @@ const Avatar = props => {
 
   return (
     <img
-      class={classNames(style.avatar, className)}
+      class={classNames(styles.avatar, className)}
       style={{ '--size': `${size}px` }}
       width={size}
       height={size}
