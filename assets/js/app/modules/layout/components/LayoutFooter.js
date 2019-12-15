@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Footer, Container, Columns, Column } from 'bloomer';
 import Anchor from '../../../uikit/Anchor';
 import BoxLink from '../../../uikit/BoxLink';
-import BrandLogo from '../../../uikit/BrandLogo';
 import Header from '../../../uikit/Header';
 import Text from '../../../uikit/Text';
 
@@ -149,7 +148,7 @@ const LayoutFooter = props => {
         <Columns>
           <Column>
             <Text>
-              &copy; 2019 <BrandLogo />. Site designed by{' '}
+              &copy; 2019 <strong>MCSN</strong>. Site designed by{' '}
               <Anchor href={ExternalRoutes.GITHUB_FAULTY_URL}>faulty</Anchor>.
             </Text>
           </Column>

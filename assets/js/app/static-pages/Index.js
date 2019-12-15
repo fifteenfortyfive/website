@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import LayoutFooter from '../modules/layout/components/LayoutFooter';
 import LayoutNavbar from '../modules/layout/components/LayoutNavbar';
 import Anchor from '../uikit/Anchor';
+import Icon from '../uikit/Icon';
 import ThemeProvider from '../uikit/ThemeProvider';
-import BrandLogo from '../uikit/BrandLogo';
 
 import {
   Column,
@@ -31,7 +31,7 @@ const Index = props => {
 
         <HeroBody className={style.splashPrimary}>
           <Container className={style.textCentered}>
-            <BrandLogo className={style.brandLogo} size={150} />
+            <Icon name={Icon.Names.THE_1545} size={150} />
             <h2 class={style.subtitle}>Any% Relay - September 21st, 2019</h2>
             <div class={style.heroActions} />
           </Container>
