@@ -51,7 +51,7 @@ class MePreferences extends Component {
   render() {
     const { preferences, descriptions, loading, submitting, onFinish } = this.props;
 
-    if (loading) return 'Loading...';
+    if (loading) return <span>Loading...</span>;
 
     return (
       <div>

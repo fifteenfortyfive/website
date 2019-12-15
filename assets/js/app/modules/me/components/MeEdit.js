@@ -65,7 +65,7 @@ class MeEdit extends Component {
 
     const { avatarChanged, newAvatarSrc, avatarChangeFailed } = this.state;
 
-    if (loading) return 'Loading...';
+    if (loading) return <span>Loading...</span>;
 
     return (
       <div>

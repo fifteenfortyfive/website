@@ -1,5 +1,6 @@
 import { h, Component } from 'preact';
 import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 
 import Button from '../../../uikit/Button';
 import AccountCard from '../../accounts/components/AccountCard';
@@ -12,27 +13,11 @@ import Preferences from '../components/MePreferences';
 
 import { Routes } from '../../../Constants';
 
-const Pages = {
-  SHOW: 'show',
-  EDIT: 'edit',
-  PREFERENCES: 'preferences',
-  RUN_DASHBOARD: 'run-dashboard',
-};
-
 class MeView extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
 
     dispatch(MeActions.fetchMe());
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { dispatch, page } = this.props;
-    const pageChanged = prevState.page !== page;
-
-    if (pageChanged && page === Pages.SHOW) {
-      dispatch(MeActions.fetchMe());
-    }
   }
 
   renderNav() {
@@ -66,24 +51,8 @@ class MeView extends Component {
     );
   }
 
-  renderPageBody() {
-    const { accountId, eventId, page } = this.props;
-
-    switch (page) {
-      case Pages.PREFERENCES:
-        return <Preferences onFinish={() => RouterUtils.navigateTo(Routes.ME)} />;
-      case Pages.RUN_DASHBOARD:
-        return <RunDashboard eventId={eventId} accountId={accountId} />;
-      case Pages.EDIT:
-        return <Edit onFinish={() => RouterUtils.navigateTo(Routes.ME)} />;
-      case Pages.SHOW:
-      default:
-        return <div>Hi there's nothing here yet</div>;
-    }
-  }
-
   render() {
-    const { account, loadingAccount } = this.props;
+    const { account, accountId, eventId, loadingAccount } = this.props;
 
     if (account == null) return <Layout>Loading</Layout>;
 
@@ -96,7 +65,22 @@ class MeView extends Component {
             {this.renderNav()}
           </div>
 
-          <div class="column is-8">{this.renderPageBody()}</div>
+          <div class="column is-8">
+            <Switch>
+              <Route path={Routes.ME_PREFERENCES} exact>
+                <Preferences onFinish={() => RouterUtils.navigateTo(Routes.ME)} />
+              </Route>
+              <Route path={Routes.ME_RUN_DASHBOARD} exact>
+                <RunDashboard eventId={eventId} accountId={accountId} />
+              </Route>
+              <Route path={Routes.ME_EDIT} exact>
+                <Edit onFinish={() => RouterUtils.navigateTo(Routes.ME)} />
+              </Route>
+              <Route path={Routes.ME} exact>
+                <div>Hi there's nothing here yet</div>
+              </Route>
+            </Switch>
+          </div>
         </div>
       </Layout>
     );

@@ -16,7 +16,8 @@ import * as RouterUtils from '../../router/RouterUtils';
 import { Routes } from '../../../Constants';
 
 const LoginView = props => {
-  const { isLoggedIn, redirectRoute, dispatch } = props;
+  const { isLoggedIn, dispatch } = props;
+  const { redirectRoute } = RouterUtils.getSearchParams();
 
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
@@ -24,8 +25,9 @@ const LoginView = props => {
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
+    console.log(isLoggedIn, redirectRoute);
     if (isLoggedIn) {
-      RouterUtils.navigateTo(redirectRoute || Routes.ME, true);
+      RouterUtils.navigateTo(redirectRoute || Routes.ME, { replace: true });
     }
   }, [isLoggedIn, redirectRoute]);
 
@@ -35,15 +37,12 @@ const LoginView = props => {
     dispatch(AuthActions.login(username, password))
       .then(() => {
         setSubmitting(false);
-        // For some reason logging in doesn't actually get recognized as an
-        // action in time for a local redirect to happen here.
-        window.location.href = props.redirectRoute || Routes.HOME;
       })
       .catch(() => {
         setFailed(true);
         setSubmitting(false);
       });
-  }, [username, password, submitting, failed, dispatch]);
+  }, [username, password, submitting, failed, redirectRoute, dispatch]);
 
   return (
     <Layout>
