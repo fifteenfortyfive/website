@@ -57,6 +57,13 @@ const LayoutNavbar = props => {
 
         <NavbarMenu isActive={isActive}>
           <NavbarStart>
+            <NavbarItem hasDropdown isHoverable>
+              <NavbarLink>Events</NavbarLink>
+              <NavbarDropdown isBoxed>
+                <NavbarItem href={Routes.COMMUNITY_CHEST}>Community Chest</NavbarItem>
+                <NavbarItem href={Routes.THE_1545}>The 1545</NavbarItem>
+              </NavbarDropdown>
+            </NavbarItem>
             <NavbarItem href={Routes.STREAMS}>Streams</NavbarItem>
 
             <NavbarItem hasDropdown isHoverable>

@@ -19,7 +19,9 @@ import StreamsView from './modules/streams/views/StreamsView';
 import Submit from './modules/submissions/components/Submit';
 import TeamView from './modules/teams/views/TeamView';
 import NotFoundPage from './pages/NotFoundPage';
-import Index from './static-pages/Index';
+import CommunityChest from './static-pages/CommunityChest';
+// import Index from './static-pages/Index';
+import The1545 from './static-pages/The1545';
 import Volunteer from './static-pages/Volunteer';
 
 import { CURRENT_EVENT_ID, Routes } from './Constants';
@@ -54,9 +56,11 @@ const App = props => {
 
   return (
     <Router onChange={handleRouteChange}>
-      <Index path={Routes.HOME} exact />
+      <The1545 path={Routes.HOME} exact />
       <Volunteer path={Routes.VOLUNTEER} />
       <LoginView path={Routes.LOGIN()} />
+      <The1545 path={Routes.THE_1545} />
+      <CommunityChest path={Routes.COMMUNITY_CHEST} />
 
       <TeamView path={Routes.TEAM(':teamId')} />
       <NewAccountView path={Routes.ACCOUNTS_NEW} />

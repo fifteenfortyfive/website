@@ -7,10 +7,6 @@
   padding-bottom: 0rem;
 }
 
-.brandLogo {
-  font-size: 15vw;
-}
-
 .subtitle {
   font-size: 24px;
   line-height: 1.4em;
@@ -18,11 +14,6 @@
   font-weight: bold;
   letter-spacing: 4px;
   margin-bottom: 2rem;
-}
-
-.heroActions {
-  display: flex;
-  justify-content: center;
 }
 
 .heroFoot {

@@ -15,6 +15,8 @@ export const Routes = {
   TEAM: id => `/teams/${id}`,
   STREAMS: '/streams',
   VOLUNTEER: '/volunteer',
+  THE_1545: '/1545',
+  COMMUNITY_CHEST: '/community-chest',
 
   // Me
   ME: '/@me',
@@ -47,8 +49,8 @@ export const ExternalRoutes = {
   CONTACT_URL: 'mailto:contact@fifteenfortyfive.org',
   VOLUNTEER_URL: 'mailto:volunteer@fifteenfortyfive.org',
   DISCORD_URL: 'http://discord.fifteenfortyfive.org',
-  TWITCH_URL: 'https://twitch.tv/The1545',
-  TWITTER_URL: 'https://twitter.com/The_1545',
+  TWITCH_URL: 'https://twitch.tv/mcsn',
+  TWITTER_URL: 'https://twitter.com/MCSNSpeedruns',
   SRCOM_URL: 'https://www.speedrun.com/1545',
   YOUTUBE_URL: 'https://www.youtube.com/channel/UCH-_VSTu551p5M4Oz95GIjQ',
   GITHUB_URL: 'https://github.com/fifteenfortyfive',

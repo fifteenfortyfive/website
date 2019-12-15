@@ -19,26 +19,27 @@ import {
   Section,
 } from 'bloomer';
 
-import style from './Index.css';
+import { ExternalRoutes } from '../Constants';
+import styles from './The1545.mod.css';
 
-const Index = props => {
+const The1545 = props => {
   return (
     <ThemeProvider>
-      <Hero className={style.splash} isColor="dark" isFullHeight>
+      <Hero className={styles.splash} isColor="dark" isFullHeight>
         <HeroHeader>
           <LayoutNavbar isDark />
         </HeroHeader>
 
-        <HeroBody className={style.splashPrimary}>
-          <Container className={style.textCentered}>
+        <HeroBody className={styles.splashPrimary}>
+          <Container className={styles.textCentered}>
             <Icon name={Icon.Names.THE_1545} size={150} />
-            <h2 class={style.subtitle}>Any% Relay - September 21st, 2019</h2>
-            <div class={style.heroActions} />
+            <h2 class={styles.subtitle}>Summer 2020</h2>
+            <div class={styles.heroActions} />
           </Container>
         </HeroBody>
 
-        <HeroFooter className={style.heroFoot}>
-          <Container className={style.textCentered}>
+        <HeroFooter className={styles.heroFoot}>
+          <Container className={styles.textCentered}>
             <FontAwesomeIcon size="large" icon="arrow-circle-down" />
           </Container>
         </HeroFooter>
@@ -48,7 +49,7 @@ const Index = props => {
         <Container>
           <Content>
             <Columns isDesktop>
-              <Column size={7}>
+              <Column size={8}>
                 <h1 class="title">The Relay</h1>
                 <p class="is-size-4">
                   The 1545 is a massive annual speedrunning relay race where teams of runners will complete
@@ -58,20 +59,16 @@ const Index = props => {
                 <p>
                   Every year, dozens of runners from the three communities come together in one of the largest
                   single races in speedrunning to date. Last year, more than 70 runners took part, with times
-                  averaging just over 50 hours per team.
+                  averaging around 48 hours per team.
                 </p>
               </Column>
 
-              <Column size={5}>
-                <h1 class="title">Summer 2019</h1>
+              <Column size={4}>
+                <h1 class="title">Summer 2020</h1>
                 <p>
-                  This year's event schedule is now live. Check out the{' '}
-                  <Anchor href="/events">Event Calendar</Anchor> for more details on signups, team
-                  announcements, and all of the other events we have planned for this year!
-                </p>
-                <p>
-                  Follow us on <Anchor href="https://twitter.com/The_1545">Twitter</Anchor> to keep up with
-                  these and other updates throughout the year.
+                  Our plans for a 2020 have not yet been announced! Follow us on{' '}
+                  <Anchor href={ExternalRoutes.TWITTER_URL}>Twitter</Anchor> to keep up with announcements and
+                  hear when we announce this year's schedule.
                 </p>
               </Column>
             </Columns>
@@ -84,4 +81,4 @@ const Index = props => {
   );
 };
 
-export default Index;
+export default The1545;
