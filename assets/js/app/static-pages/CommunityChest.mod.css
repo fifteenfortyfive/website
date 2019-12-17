@@ -1,0 +1,26 @@
+.splash {
+  position: relative;
+}
+
+.splashPrimary {
+  padding-top: 0;
+  padding-bottom: 0rem;
+}
+
+.subtitle {
+  font-size: 28px;
+  line-height: 1.4em;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 4px;
+  margin-bottom: 2rem;
+}
+
+.heroFoot {
+  padding: 2em 0;
+  font-size: 2em;
+}
+
+.textCentered {
+  text-align: center;
+}

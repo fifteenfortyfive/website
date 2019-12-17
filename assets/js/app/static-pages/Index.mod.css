@@ -2,8 +2,11 @@
   width: 100%;
 }
 
-.eventLogo {
-  display: block;
-  width: 80%;
-  margin: 8px auto;
+.eventsHeader {
+  margin-bottom: 32px;
+}
+
+.event {
+  align-items: center;
+  padding-bottom: 32px;
 }
