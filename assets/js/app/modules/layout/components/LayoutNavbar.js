@@ -23,6 +23,7 @@ import {
   Button,
   Container,
 } from 'bloomer';
+import Anchor from '../../../uikit/Anchor';
 import Avatar from '../../../uikit/Avatar';
 import BrandLogo from '../../../uikit/BrandLogo';
 
@@ -49,9 +50,9 @@ const LayoutNavbar = props => {
       className={classNames(styles.container, className, { [styles.dark]: isDark })}>
       <Container>
         <NavbarBrand>
-          <NavbarItem href={Routes.HOME}>
+          <Anchor className="navbar-item" href={Routes.HOME}>
             <BrandLogo className={styles.brandLogo} size={20} />
-          </NavbarItem>
+          </Anchor>
           <NavbarBurger onClick={() => setIsActive(!isActive)} />
         </NavbarBrand>
 
@@ -60,26 +61,34 @@ const LayoutNavbar = props => {
             <NavbarItem hasDropdown isHoverable>
               <NavbarLink>Events</NavbarLink>
               <NavbarDropdown isBoxed>
-                <NavbarItem href={Routes.COMMUNITY_CHEST}>Community Chest</NavbarItem>
-                <NavbarItem href={Routes.THE_1545}>The 1545</NavbarItem>
+                <Anchor className="navbar-item" href={Routes.COMMUNITY_CHEST}>
+                  Community Chest
+                </Anchor>
+                <Anchor className="navbar-item" href={Routes.THE_1545}>
+                  The 1545
+                </Anchor>
               </NavbarDropdown>
             </NavbarItem>
-            <NavbarItem href={Routes.STREAMS}>Streams</NavbarItem>
+            <Anchor className="navbar-item" href={Routes.STREAMS}>
+              Streams
+            </Anchor>
 
             <NavbarItem hasDropdown isHoverable>
               <NavbarLink>More</NavbarLink>
               <NavbarDropdown isBoxed>
-                <NavbarItem href={ExternalRoutes.CONTACT_URL} native>
+                <Anchor className="navbar-item" href={ExternalRoutes.CONTACT_URL}>
                   Contact
-                </NavbarItem>
-                <NavbarItem href={Routes.VOLUNTEER}>Volunteer</NavbarItem>
+                </Anchor>
+                <Anchor className="navbar-item" href={Routes.VOLUNTEER}>
+                  Volunteer
+                </Anchor>
               </NavbarDropdown>
             </NavbarItem>
 
             {isAdmin && (
-              <NavbarItem href={Routes.ADMIN_V2} native>
+              <Anchor className="navbar-item" href={Routes.ADMIN_V2}>
                 Admin
-              </NavbarItem>
+              </Anchor>
             )}
           </NavbarStart>
 
@@ -95,8 +104,12 @@ const LayoutNavbar = props => {
                   </NavbarLink>
 
                   <NavbarDropdown isBoxed>
-                    <NavbarItem href={Routes.ME}>Profile</NavbarItem>
-                    <NavbarItem href={Routes.ME_EDIT}>Edit Account</NavbarItem>
+                    <Anchor className="navbar-item" href={Routes.ME}>
+                      Profile
+                    </Anchor>
+                    <Anchor className="navbar-item" href={Routes.ME_EDIT}>
+                      Edit Account
+                    </Anchor>
                     <NavbarDivider />
                     <NavbarItem tag="a" onClick={handleLogout}>
                       Log Out
@@ -131,39 +144,19 @@ const LayoutNavbar = props => {
 
             <NavbarItem isPaddingless>
               <div class={styles.buttonGroup}>
-                <Button
-                  isColor={isDark ? 'dark' : 'white'}
-                  href={ExternalRoutes.DISCORD_URL}
-                  target="_blank"
-                  native>
+                <Button isColor={isDark ? 'dark' : 'white'} href={ExternalRoutes.DISCORD_URL} target="_blank">
                   <FontAwesomeIcon icon={['fab', 'discord']} />
                 </Button>
-                <Button
-                  isColor={isDark ? 'dark' : 'white'}
-                  href={ExternalRoutes.SRCOM_URL}
-                  target="_blank"
-                  native>
+                <Button isColor={isDark ? 'dark' : 'white'} href={ExternalRoutes.SRCOM_URL} target="_blank">
                   <FontAwesomeIcon icon={['fas', 'trophy']} />
                 </Button>
-                <Button
-                  isColor={isDark ? 'dark' : 'white'}
-                  href={ExternalRoutes.TWITCH_URL}
-                  target="_blank"
-                  native>
+                <Button isColor={isDark ? 'dark' : 'white'} href={ExternalRoutes.TWITCH_URL} target="_blank">
                   <FontAwesomeIcon icon={['fab', 'twitch']} />
                 </Button>
-                <Button
-                  isColor={isDark ? 'dark' : 'white'}
-                  href={ExternalRoutes.TWITTER_URL}
-                  target="_blank"
-                  native>
+                <Button isColor={isDark ? 'dark' : 'white'} href={ExternalRoutes.TWITTER_URL} target="_blank">
                   <FontAwesomeIcon icon={['fab', 'twitter']} />
                 </Button>
-                <Button
-                  isColor={isDark ? 'dark' : 'white'}
-                  href={ExternalRoutes.YOUTUBE_URL}
-                  target="_blank"
-                  native>
+                <Button isColor={isDark ? 'dark' : 'white'} href={ExternalRoutes.YOUTUBE_URL} target="_blank">
                   <FontAwesomeIcon icon={['fab', 'youtube']} />
                 </Button>
               </div>
