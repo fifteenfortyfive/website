@@ -68,7 +68,7 @@ const The1545 = props => {
                 <p>
                   Our plans for a 2020 have not yet been announced! Follow us on{' '}
                   <Anchor href={ExternalRoutes.TWITTER_URL}>Twitter</Anchor> to keep up with announcements and
-                  hear when we announce this year's schedule.
+                  hear when this year's schedule goes live.
                 </p>
               </Column>
             </Columns>

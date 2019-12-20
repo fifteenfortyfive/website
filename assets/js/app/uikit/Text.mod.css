@@ -55,3 +55,9 @@
 .colorWhite {
   color: var(--white);
 }
+
+/* Overriding Bulma's styles */
+strong,
+em {
+  color: currentColor;
+}
