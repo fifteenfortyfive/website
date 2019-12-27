@@ -1,11 +1,11 @@
-module Events
+module Runs
   class Run < Crecto::Model
     schema "ev_runs" do
-      belongs_to :submission, RunSubmission
-      belongs_to :event, Event
+      belongs_to :submission, Events::RunSubmission
+      belongs_to :event, Events::Event
       has_many :run_events, RunEvent
 
-      belongs_to :team, Team
+      belongs_to :team, Events::Team
       belongs_to :account, Accounts::Account
       belongs_to :game, Inventory::Game
       belongs_to :category, Inventory::Category

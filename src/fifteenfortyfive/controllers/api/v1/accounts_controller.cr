@@ -30,7 +30,7 @@ class API::AccountsController < AppController
       return
     end
 
-    runs = Events.list_runs(
+    runs = Runs.list_runs(
       Query
         .where(account_id: account_id)
         .preload([:team, :game, :category, :event, :submission])
@@ -59,7 +59,7 @@ class API::AccountsController < AppController
     })
   end
 
-  private def make_account_hash(account : Accounts::Account, runs : Array(Events::Run) = [] of Events::Run)
+  private def make_account_hash(account : Accounts::Account, runs : Array(Runs::Run) = [] of Runs::Run)
     {
       id:                    account.id,
       username:              account.username,
