@@ -41,9 +41,8 @@ dependencies:
     version: 0.1.0
 
 development_dependencies:
-  {}
-  # Leaving out until db 0.7.0 is supported.
-  # `tool` is the only thing that relies on this, so this is fine for now.
-  # migrate:
-  #   github: vladfaust/migrate.cr
-  #   version: 0.5.0
+  # This is a hash because 0.7.0 support has been stalled by testing errors.
+  # But the code itself works, so it can be used fine.
+  migrate:
+    github: vladfaust/migrate.cr
+    commit: 54f91fe46696097a36a3e49f80405ac53d1cd812

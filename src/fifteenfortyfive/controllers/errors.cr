@@ -6,9 +6,11 @@ module Errors
     def initialize(@message : String, @status : Int32)
     end
 
-    def to_json(json)
-      json.object do
-        json.field "message", message
+    def to_json(str)
+      str << JSON.build do |json|
+        json.object do
+          json.field "message", message
+        end
       end
     end
   end

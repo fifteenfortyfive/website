@@ -96,6 +96,14 @@ router AppRouter do
         end
       end
 
+      scope "schedules" do
+        get "/:schedule_id", to: "aPI::Schedules#get"
+        post "/", to: "aPI::Schedules#create"
+
+        post "/:schedule_id/add-activity", to: "aPI::Schedules#add_activity"
+        post "/:schedule_id/remove-activity", to: "aPI::Schedules#remove_activity"
+      end
+
       scope "accounts" do
         get "/", to: "aPI::Accounts#index"
         get "/:account_id", to: "aPI::Accounts#get"

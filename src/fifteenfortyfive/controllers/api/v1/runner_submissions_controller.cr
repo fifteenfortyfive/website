@@ -45,7 +45,6 @@ class API::RunnerSubmissionsController < AppController
     })
 
     changeset = Events.create_runner_submission(params)
-
     unless changeset.valid?
       render_error_json(Errors::Unprocessable)
       return

@@ -1,3 +1,5 @@
+require "crecto"
+
 require "./runs/**"
 
 module Runs
