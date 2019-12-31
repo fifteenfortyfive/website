@@ -57,7 +57,7 @@ module Events
     Repo.delete(event)
   end
 
-  def start_event(event : Event, start_at : Time = Time.utc_now)
+  def start_event(event : Event, start_at : Time = Time.utc)
     return if event.actual_start_time
 
     changeset = event.cast({
@@ -69,7 +69,7 @@ module Events
     Repo.update(changeset)
   end
 
-  def finish_event(event : Event, finish_at : Time = Time.utc_now)
+  def finish_event(event : Event, finish_at : Time = Time.utc)
     return unless started_at = event.actual_start_time
     return if event.actual_end_time
 
@@ -81,7 +81,7 @@ module Events
     Repo.update(changeset)
   end
 
-  def resume_event(event : Event, resume_at : Time = Time.utc_now)
+  def resume_event(event : Event, resume_at : Time = Time.utc)
     return unless event.actual_end_time
 
     changeset = event.cast({
@@ -91,7 +91,7 @@ module Events
     Repo.update(changeset)
   end
 
-  def reset_event(event : Event, reset_at : Time = Time.utc_now)
+  def reset_event(event : Event, reset_at : Time = Time.utc)
     return unless event.actual_start_time
 
     changeset = event.cast({
@@ -256,7 +256,7 @@ module Events
     Repo.delete(team)
   end
 
-  def start_team(team : Team, start_at : Time = Time.utc_now)
+  def start_team(team : Team, start_at : Time = Time.utc)
     return if team.actual_start_time
 
     changeset = team.cast({
@@ -268,7 +268,7 @@ module Events
     Repo.update(changeset)
   end
 
-  def finish_team(team : Team, finish_at : Time = Time.utc_now)
+  def finish_team(team : Team, finish_at : Time = Time.utc)
     return unless started_at = team.actual_start_time
     return if team.actual_end_time
 
@@ -280,7 +280,7 @@ module Events
     Repo.update(changeset)
   end
 
-  def resume_team(team : Team, resume_at : Time = Time.utc_now)
+  def resume_team(team : Team, resume_at : Time = Time.utc)
     return unless team.actual_end_time
 
     changeset = team.cast({
@@ -290,7 +290,7 @@ module Events
     Repo.update(changeset)
   end
 
-  def reset_team(team : Team, reset_at : Time = Time.utc_now)
+  def reset_team(team : Team, reset_at : Time = Time.utc)
     return unless team.actual_start_time
 
     changeset = team.cast({

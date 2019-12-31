@@ -48,7 +48,7 @@ module Runs
   # Run Events
   ###
 
-  def start_run(run : Run, start_at : Time = Time.utc_now)
+  def start_run(run : Run, start_at : Time = Time.utc)
     return if run.started_at
 
     run_event = log_run_event(run.id, "run_started", start_at)
@@ -68,7 +68,7 @@ module Runs
     changeset
   end
 
-  def finish_run(run : Run, finish_at : Time = Time.utc_now)
+  def finish_run(run : Run, finish_at : Time = Time.utc)
     return unless started_at = run.started_at
     return if run.finished_at
 
@@ -89,7 +89,7 @@ module Runs
     changeset
   end
 
-  def resume_run(run : Run, resume_at : Time = Time.utc_now)
+  def resume_run(run : Run, resume_at : Time = Time.utc)
     return unless run.finished_at
     run_event = log_run_event(run.id, "run_resumed", resume_at)
 
@@ -107,7 +107,7 @@ module Runs
     changeset
   end
 
-  def reset_run(run : Run, reset_at : Time = Time.utc_now)
+  def reset_run(run : Run, reset_at : Time = Time.utc)
     return unless run.started_at
     run_event = log_run_event(run.id, "run_reset", reset_at)
 

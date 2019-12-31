@@ -45,7 +45,7 @@ class API::TeamsController < AppController
       return
     end
 
-    changeset = Events.start_team(team, Time.utc_now)
+    changeset = Events.start_team(team, Time.utc)
 
     render_json({
       succeeded: !!(changeset && changeset.valid?),
@@ -64,7 +64,7 @@ class API::TeamsController < AppController
       return
     end
 
-    changeset = Events.finish_team(team, Time.utc_now)
+    changeset = Events.finish_team(team, Time.utc)
 
     render_json({
       succeeded: !!(changeset && changeset.valid?),
@@ -83,7 +83,7 @@ class API::TeamsController < AppController
       return
     end
 
-    changeset = Events.resume_team(team, Time.utc_now)
+    changeset = Events.resume_team(team, Time.utc)
 
     render_json({
       succeeded: !!(changeset && changeset.valid?),
@@ -102,7 +102,7 @@ class API::TeamsController < AppController
       return
     end
 
-    changeset = Events.reset_team(team, Time.utc_now)
+    changeset = Events.reset_team(team, Time.utc)
 
     render_json({
       succeeded: !!(changeset && changeset.valid?),

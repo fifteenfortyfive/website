@@ -78,7 +78,7 @@ class API::RunsController < AppController
       return
     end
 
-    Runs.start_run(run, Time.utc_now)
+    Runs.start_run(run, Time.utc)
 
     render_json({
       run: run,
@@ -101,7 +101,7 @@ class API::RunsController < AppController
       return
     end
 
-    Runs.finish_run(run, Time.utc_now)
+    Runs.finish_run(run, Time.utc)
 
     render_json({
       run: run,
@@ -124,7 +124,7 @@ class API::RunsController < AppController
       return
     end
 
-    Runs.resume_run(run, Time.utc_now)
+    Runs.resume_run(run, Time.utc)
 
     render_json({
       run: run,
@@ -147,7 +147,7 @@ class API::RunsController < AppController
       return
     end
 
-    Runs.reset_run(run, Time.utc_now)
+    Runs.reset_run(run, Time.utc)
 
     render_json({
       run: run,

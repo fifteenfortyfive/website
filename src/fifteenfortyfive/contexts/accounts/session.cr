@@ -12,7 +12,7 @@ module Accounts
 
     def valid?
       if e = @expires_at
-        @active && e > Time.now
+        @active && e > Time.utc
       else
         @active
       end

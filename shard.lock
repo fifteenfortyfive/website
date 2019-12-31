@@ -6,11 +6,11 @@ shards:
 
   awscr-s3:
     github: taylorfinnell/awscr-s3
-    commit: 93126f023217fd3f2b462242a13919def967809f
+    version: 0.7.0
 
   awscr-signer:
     github: taylorfinnell/awscr-signer
-    version: 0.6.0
+    version: 0.7.0
 
   crecto:
     github: faultyserver/crecto
@@ -26,7 +26,7 @@ shards:
 
   honcho:
     github: faultyserver/honcho
-    version: 0.2.0
+    version: 0.3.0
 
   inflector:
     github: phoffer/inflector.cr
@@ -46,7 +46,7 @@ shards:
 
   orion:
     github: obsidian/orion
-    version: 1.7.0
+    version: 2.1.1
 
   pg:
     github: will/crystal-pg
