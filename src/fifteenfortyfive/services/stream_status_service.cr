@@ -1,3 +1,4 @@
+require "../contexts/streams"
 require "./twitch_service.cr"
 
 module StreamStatusService

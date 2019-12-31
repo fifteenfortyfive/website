@@ -1,3 +1,6 @@
+require "../../accounts"
+require "../../runs"
+
 module Events
   class Team < Crecto::Model
     schema "ev_teams" do

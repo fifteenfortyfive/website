@@ -3,7 +3,6 @@ require "./errors.cr"
 
 class AppController
   include Orion::ControllerHelper
-  include AppRouter::Helpers
 
   TEMPLATE_DIR = File.join(__DIR__, "..", "templates")
   @@cached_templates = {} of String => String

@@ -12,7 +12,8 @@ ANALYTICS_ENDPOINT = ENV["ANALYTICS_ENDPOINT"]
 require "./fifteenfortyfive/router.cr"
 require "./fifteenfortyfive/repo.cr"
 require "./fifteenfortyfive/controllers/app_controller.cr"
-require "./fifteenfortyfive/**"
+require "./fifteenfortyfive/services/stream_status_service.cr"
+require "./fifteenfortyfive/live-api/socket_service.cr"
 require "./analytics/analytics.cr"
 
 visor = Honcho::Visor.new(strategy: Honcho::Strategy::ISOLATED)
@@ -24,11 +25,11 @@ visor.start_supervised("app[router]") do
   puts "app[router] is running on port #{APP_PORT}"
   AppRouter.listen(host: "0.0.0.0", port: APP_PORT)
 end
-visor.start_supervised("analytics", delay: 1.0) do
-  puts "analytics service started"
-  Analytics.start_service(ANALYTICS_ENDPOINT)
-  Analytics.instance.run
-end
+# visor.start_supervised("analytics", delay: 1.0) do
+#   puts "analytics service started"
+#   Analytics.start_service(ANALYTICS_ENDPOINT)
+#   Analytics.instance.run
+# end
 visor.start_supervised("socket service", &->SocketService.run)
 
 visor.run

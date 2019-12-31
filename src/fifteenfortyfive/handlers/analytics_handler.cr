@@ -1,6 +1,8 @@
 require "http"
 require "uuid"
 
+require "../router"
+
 class HTTP::Server::Context
   property! request_id : UUID
 end

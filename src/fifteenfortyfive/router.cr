@@ -1,10 +1,16 @@
 require "http"
 require "orion"
 
+require "./controllers/**"
+require "./handlers/authentication_handler"
+require "./handlers/authorization_handler"
+require "./handlers/cors_handler"
+require "./handlers/session_handler"
+
 router AppRouter do
   use HTTP::ErrorHandler
   use HTTP::LogHandler.new(STDOUT)
-  use AnalyticsHandler
+  # use AnalyticsHandler
   use SessionHandler
 
   concern :api_authenticated do
