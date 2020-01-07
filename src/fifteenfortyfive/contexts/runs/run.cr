@@ -2,7 +2,7 @@ require "../submissions"
 
 module Runs
   class Run < Crecto::Model
-    schema "ev_runs" do
+    schema "run_runs" do
       belongs_to :submission, Submissions::Submission
       belongs_to :event, Events::Event
       has_many :run_events, RunEvent
