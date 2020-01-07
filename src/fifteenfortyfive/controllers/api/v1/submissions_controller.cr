@@ -1,7 +1,7 @@
 require "../../../contexts/events"
 require "../../errors"
 
-class API::RunSubmissionsController < AppController
+class API::SubmissionsController < AppController
   def index
     event_id = url_params["event_id"]
     query = Query.where(event_id: event_id)
@@ -11,7 +11,7 @@ class API::RunSubmissionsController < AppController
     end
 
     render_json({
-      runs: Events.list_run_submissions(query),
+      runs: Submissions.list_submissions(query),
     })
   end
 
@@ -21,7 +21,7 @@ class API::RunSubmissionsController < AppController
       return
     end
 
-    unless run = Events.get_run_submission(run_id)
+    unless run = Submissions.get_submission(run_id)
       render_error_json(Errors::NotFound)
       return
     end

@@ -46,17 +46,17 @@ router AppRouter do
           scope "runner-submission" do
             implements :api_authenticated
 
-            get "/", to: "aPI::RunnerSubmissions#get"
-            post "/", to: "aPI::RunnerSubmissions#create"
-            post "/update", to: "aPI::RunnerSubmissions#update"
-            post "/revoke", to: "aPI::RunnerSubmissions#revoke"
-            post "/unrevoke", to: "aPI::RunnerSubmissions#unrevoke"
-            post "/delete", to: "aPI::RunnerSubmissions#delete"
+            get "/", to: "aPI::SubmissionMeta#get"
+            post "/", to: "aPI::SubmissionMeta#create"
+            post "/update", to: "aPI::SubmissionMeta#update"
+            post "/revoke", to: "aPI::SubmissionMeta#revoke"
+            post "/unrevoke", to: "aPI::SubmissionMeta#unrevoke"
+            post "/delete", to: "aPI::SubmissionMeta#delete"
 
-            get "/runs", to: "aPI::RunnerSubmissions#runs_index"
-            post "/runs", to: "aPI::RunnerSubmissions#runs_create"
-            post "/runs/:run_id", to: "aPI::RunnerSubmissions#runs_update"
-            post "/runs/:run_id/delete", to: "aPI::RunnerSubmissions#runs_delete"
+            get "/runs", to: "aPI::SubmissionMeta#runs_index"
+            post "/runs", to: "aPI::SubmissionMeta#runs_create"
+            post "/runs/:run_id", to: "aPI::SubmissionMeta#runs_update"
+            post "/runs/:run_id/delete", to: "aPI::SubmissionMeta#runs_delete"
           end
 
           scope do
@@ -83,9 +83,9 @@ router AppRouter do
             end
           end
 
-          scope "run_submissions" do
-            get "/", to: "aPI::RunSubmissions#index"
-            get "/:run_submission_id", to: "aPI::RunSubmissions#get"
+          scope "submissions" do
+            get "/", to: "aPI::Submissions#index"
+            get "/:submission_id", to: "aPI::Submissions#get"
           end
 
           scope "runs" do

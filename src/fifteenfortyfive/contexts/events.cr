@@ -143,7 +143,7 @@ module Events
     return event.state == "signups open"
   end
 
-  def can_submit_run?(event : Event, run : RunSubmission)
+  def can_submit_run?(event : Event, run : Submissions::Submission)
     allowed_runs =
       event.allowed_runs ||= Repo.get_association(event, :allowed_runs).as(Array(AllowedRun))
 
@@ -302,136 +302,6 @@ module Events
   end
 
   ###
-  # Run Submissions
-  ###
-
-  def list_run_submissions(query : Query = Query.new)
-    Repo.all(RunSubmission, query)
-  end
-
-  def list_run_submissions_for_account(event_id, account_id)
-    Repo.all(RunSubmission, Query.where(account_id: account_id, event_id: event_id).order_by("rank ASC"))
-  end
-
-  def get_run_submission(submission_id, query : Query = Query.new)
-    Repo.all(RunSubmission, query.where(id: submission_id.to_s).limit(1)).first?
-  end
-
-  def get_run_submission!(submission_id, query : Query = Query.new)
-    Repo.all(RunSubmission, query.where(id: submission_id.to_s).limit(1)).first
-  end
-
-  def new_run_submission
-    RunSubmission.new
-  end
-
-  def create_run_submission(submission : RunSubmission)
-    Repo.insert(submission)
-  end
-
-  def create_run_submission(attrs)
-    submission = RunSubmission.new
-    submission = submission.cast(attrs)
-    Repo.insert(submission)
-  end
-
-  def update_run_submission(submission : RunSubmission, changes)
-    changeset = submission.cast(changes)
-    Repo.update(changeset)
-  end
-
-  def delete_run_submission(submission : RunSubmission)
-    Repo.delete(submission)
-  end
-
-  def accept_run_submission(submission : RunSubmission)
-    submission.accepted = true
-    Repo.update(submission)
-  end
-
-  def unaccept_run_submission(submission : RunSubmission)
-    submission.accepted = false
-    Repo.update(submission)
-  end
-
-  ###
-  # Runner Submissions
-  ###
-
-  def list_runner_submissions(query : Query = Query.new)
-    Repo.all(RunnerSubmission, query)
-  end
-
-  def get_runner_submission(submission_id, query : Query = Query.new)
-    Repo.all(RunnerSubmission, query.where(id: submission_id.to_s).limit(1)).first?
-  end
-
-  def get_runner_submission!(submission_id, query : Query = Query.new)
-    Repo.all(RunnerSubmission, query.where(id: submission_id.to_s).limit(1)).first
-  end
-
-  def get_runner_submission_for_account(event_id, account_id)
-    query = Query.where(account_id: account_id, event_id: event_id)
-    Repo.all(RunnerSubmission, query.limit(1)).first?
-  end
-
-  def get_runner_submission_for_account!(event_id, account_id)
-    query = Query.where(account_id: account_id, event_id: event_id)
-    Repo.all(RunnerSubmission, query.limit(1)).first
-  end
-
-  def new_runner_submission
-    RunnerSubmission.new
-  end
-
-  def create_runner_submission(submission : RunnerSubmission)
-    Repo.insert(submission)
-  end
-
-  def create_runner_submission(attrs)
-    submission = RunnerSubmission.new
-    submission = submission.cast(attrs)
-    Repo.insert(submission)
-  end
-
-  def ensure_runner_submission!(event_id, account_id)
-    if existing = get_runner_submission_for_account(event_id, account_id)
-      return existing
-    end
-
-    changeset = create_runner_submission({
-      event_id:   event_id,
-      account_id: account_id,
-    })
-
-    changeset.instance
-  end
-
-  def update_runner_submission(submission : RunnerSubmission, changes)
-    changeset = submission.cast(changes)
-    Repo.update(changeset)
-  end
-
-  def delete_runner_submission(submission : RunnerSubmission)
-    Repo.delete(submission)
-  end
-
-  def delete_existing_submissions(account_id, event_id)
-    submissions = Events.list_runner_submissions(
-      Query.where(account_id: account_id, event_id: event_id)
-    )
-
-    submissions.each do |submission|
-      run_submissions = Events.list_run_submissions(Query.where(runner_submission_id: submission.id))
-      run_submissions.each do |run|
-        Events.delete_run_submission(run)
-      end
-
-      Events.delete_runner_submission(submission)
-    end
-  end
-
-  ###
   # Utility
   ###
 
@@ -453,10 +323,6 @@ module Events
     seconds = seconds % 60
 
     sprintf("%02d:%02d:%02d", hours, minutes, seconds)
-  end
-
-  def accepting_submissions?(event : Event)
-    event.state == "signups open"
   end
 
   def maybe_parse_date_time(attrs, attribute)
