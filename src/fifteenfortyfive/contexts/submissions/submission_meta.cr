@@ -16,7 +16,7 @@ module Submissions
       field :captain, Bool, default: false
       field :revoked, Bool, default: false
 
-      has_many :submissions, Submission
+      has_many :submissions, Submission, foreign_key: :meta_id
     end
 
     validate_required [:account_id, :event_id]

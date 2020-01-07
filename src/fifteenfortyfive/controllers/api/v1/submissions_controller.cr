@@ -16,18 +16,18 @@ class API::SubmissionsController < AppController
   end
 
   def get
-    unless run_id = url_params["run_id"]?
+    unless submission_id = url_params["submission_id"]?
       render_error_json(Errors::NotFound)
       return
     end
 
-    unless run = Submissions.get_submission(run_id)
+    unless submission = Submissions.get_submission(submission_id)
       render_error_json(Errors::NotFound)
       return
     end
 
     render_json({
-      run: run,
+      submission: submission,
     })
   end
 end

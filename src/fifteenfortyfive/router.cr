@@ -43,7 +43,7 @@ router AppRouter do
           get "/", to: "aPI::Events#get"
           get "/allowed-runs", to: "aPI::Events#allowed_runs"
 
-          scope "runner-submission" do
+          scope "submission" do
             implements :api_authenticated
 
             get "/", to: "aPI::SubmissionMeta#get"

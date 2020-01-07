@@ -12,13 +12,15 @@ module Submissions
       field :pb_seconds, Int64
       field :est_seconds, Int64
       field :rank, Int32, default: 1
+      field :will_race, Bool, default: false
 
       field :comment, String
+      field :video, String
 
       field :revoked, Bool, default: false
       field :accepted, Bool, default: false
 
-      belongs_to :meta, SubmissionMeta
+      belongs_to :meta, SubmissionMeta, foreign_key: :meta_id
     end
 
     validate_required [

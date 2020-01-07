@@ -10,6 +10,7 @@ import * as SubmissionActions from '../SubmissionActions';
 import * as SubmissionStore from '../SubmissionStore';
 import RunSubmission from './RunSubmission';
 import RunSubmissionForm from './RunSubmissionForm';
+import SubmissionMeta from './SubmissionMeta';
 
 import { Column, Columns } from 'bloomer';
 import Button from '../../../uikit/Button';
@@ -87,6 +88,9 @@ const NewSubmission = props => {
   return (
     <Layout>
       <Columns isCentered>
+        <Column isSize={{ desktop: 3, widescreen: 4, fullhd: 4 }}>
+          <SubmissionMeta eventId={eventId} />
+        </Column>
         <Column isSize={{ desktop: 9, widescreen: 8, fullhd: 7 }}>
           <Header>Submit a Run</Header>
           <Header size={Header.Sizes.H4} color={Header.Colors.MUTED} withMargin>

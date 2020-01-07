@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import { useCallback } from 'preact/hooks';
 
 import InputWrapper from './InputWrapper';
 
@@ -18,6 +19,14 @@ const TextInput = props => {
     ...inputProps
   } = props;
 
+  const handleChange = useCallback(
+    event => {
+      const { value } = event.target;
+      onChange != null && onChange(value);
+    },
+    [onChange]
+  );
+
   return (
     <InputWrapper name={name} label={label} note={note} className={className}>
       <input
@@ -27,7 +36,7 @@ const TextInput = props => {
         value={value}
         placeholder={placeholder}
         class={styles.input}
-        onChange={onChange}
+        onChange={handleChange}
         onInput={onInput}
         disabled={!editable}
       />

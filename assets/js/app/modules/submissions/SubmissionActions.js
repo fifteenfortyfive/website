@@ -16,7 +16,7 @@ export function fetchRunnerSubmission(eventId) {
   return commonThunk(
     {
       method: 'get',
-      path: `/api/v1/events/${eventId}/runner-submission`,
+      path: `/api/v1/events/${eventId}/submission/`,
     },
     (dispatch, response) => {
       dispatch(receiveRunnerSubmission(response.submission));
@@ -29,7 +29,7 @@ export function createRunnerSubmission(eventId, { maxGames, maxTime, pairWith, a
   return commonThunk(
     {
       method: 'post',
-      path: `/api/v1/events/${eventId}/runner-submission`,
+      path: `/api/v1/events/${eventId}/submission`,
       body: {
         /* eslint-disable camelcase */
         max_games: maxGames,
@@ -50,7 +50,7 @@ export function updateRunnerSubmission(eventId, { maxGames, maxTime, pairWith, a
   return commonThunk(
     {
       method: 'post',
-      path: `/api/v1/events/${eventId}/runner-submission/update`,
+      path: `/api/v1/events/${eventId}/submission/update`,
       body: {
         /* eslint-disable camelcase */
         max_games: maxGames,
@@ -71,7 +71,7 @@ export function revokeRunnerSubmission(eventId) {
   return commonThunk(
     {
       method: 'post',
-      path: `/api/v1/events/${eventId}/runner-submission/revoke`,
+      path: `/api/v1/events/${eventId}/submission/revoke`,
     },
     (dispatch, response) => {
       dispatch(receiveRunnerSubmission(response.submission));
@@ -83,7 +83,7 @@ export function unrevokeRunnerSubmission(eventId) {
   return commonThunk(
     {
       method: 'post',
-      path: `/api/v1/events/${eventId}/runner-submission/unrevoke`,
+      path: `/api/v1/events/${eventId}/submission/unrevoke`,
     },
     (dispatch, response) => {
       dispatch(receiveRunnerSubmission(response.submission));
@@ -95,7 +95,7 @@ export function deleteRunnerSubmission(eventId) {
   return commonThunk(
     {
       method: 'post',
-      path: `/api/v1/events/${eventId}/runner-submission/delete`,
+      path: `/api/v1/events/${eventId}/submission/delete`,
     },
     (dispatch, response) => {
       dispatch(removeAllSubmissions());
@@ -107,7 +107,7 @@ export function createRunSubmission(eventId, { gameId, categoryId, pb, est }) {
   return commonThunk(
     {
       method: 'post',
-      path: `/api/v1/events/${eventId}/runner-submission/runs`,
+      path: `/api/v1/events/${eventId}/submission/runs`,
       body: {
         /* eslint-disable camelcase */
         game_id: gameId,
@@ -127,7 +127,7 @@ export function updateRunSubmission(eventId, { id, gameId, categoryId, pb, est }
   return commonThunk(
     {
       method: 'post',
-      path: `/api/v1/events/${eventId}/runner-submission/runs/${id}`,
+      path: `/api/v1/events/${eventId}/submission/runs/${id}`,
       body: {
         /* eslint-disable camelcase */
         game_id: gameId,
@@ -147,7 +147,7 @@ export function deleteRunSubmission(eventId, id) {
   return commonThunk(
     {
       method: 'post',
-      path: `/api/v1/events/${eventId}/runner-submission/runs/${id}/delete`,
+      path: `/api/v1/events/${eventId}/submission/runs/${id}/delete`,
     },
     (dispatch, response) => {
       dispatch(removeRunSubmission(id));
