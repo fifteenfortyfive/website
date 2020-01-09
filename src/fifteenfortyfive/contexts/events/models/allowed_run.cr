@@ -1,3 +1,5 @@
+require "crecto"
+
 module Events
   # AllowedRuns represent restrictions on what games/categories are allowed to
   # be submitted to an event.

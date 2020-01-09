@@ -8,16 +8,26 @@ import Button from '../../../uikit/Button';
 import ButtonGroup from '../../../uikit/ButtonGroup';
 import Select from '../../../uikit/Select';
 import RunTimeInput from '../../../uikit/RunTimeInput';
+import TextInput from '../../../uikit/TextInput';
 
 const RunSubmissionForm = props => {
   const { run = {}, className, onSave, onDelete, onCancel } = props;
 
-  const { id, category_id: categoryId, pb_seconds: pbSeconds, est_seconds: estSeconds } = run;
+  const {
+    id,
+    category_id: categoryId,
+    pb_seconds: pbSeconds,
+    est_seconds: estSeconds,
+    comment: initialComment,
+    video: initialVideo,
+  } = run;
 
   const isNewRun = !id;
   const [selectedCategoryId, setSelectedCategoryId] = useState(categoryId);
   const [pb, setPB] = useState(pbSeconds);
   const [est, setEstimate] = useState(estSeconds);
+  const [comment, setComment] = useState(initialComment);
+  const [video, setVideo] = useState(initialVideo);
   const [isValid, setValid] = useState(false);
   const categories = useSelector(state => {
     const allowed = SubmissionStore.getAllowedCategories(state);
@@ -71,6 +81,9 @@ const RunSubmissionForm = props => {
 
       <RunTimeInput label="PB" value={pb} onChange={setPB} placeholder="00:00:00" />
       <RunTimeInput label="Estimate" value={est} placeholder="00:00:00" onChange={setEstimate} />
+
+      <TextInput label="Comment" value={comment} onChange={setComment} />
+      <TextInput label="Video" value={video} onChange={setVideo} />
 
       <ButtonGroup>
         <Button onClick={handleSave} color={Button.Colors.PRIMARY} disabled={!isValid}>

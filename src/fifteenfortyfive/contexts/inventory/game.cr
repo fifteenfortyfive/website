@@ -1,3 +1,5 @@
+require "crecto"
+
 module Inventory
   class Game < Crecto::Model
     schema "inv_games" do

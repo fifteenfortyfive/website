@@ -12,7 +12,7 @@ const SubmissionMeta = props => {
 
   return (
     <div>
-      <Header withMargin>General Info</Header>
+      <Header>General Info</Header>
 
       <Text>
         If you are submitting multiple games, let us know how many you would be willing to run and/or a

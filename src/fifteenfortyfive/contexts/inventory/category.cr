@@ -1,3 +1,5 @@
+require "crecto"
+
 module Inventory
   class Category < Crecto::Model
     schema "inv_categories" do
