@@ -1,3 +1,6 @@
+require "../../accounts"
+require "../../runs"
+
 module Events
   class Team < Crecto::Model
     schema "ev_teams" do
@@ -5,7 +8,7 @@ module Events
       field :color, String
       field :slug, String
 
-      has_many :runs, Events::Run
+      has_many :runs, Runs::Run
 
       field :actual_start_time, Time
       field :actual_end_time, Time

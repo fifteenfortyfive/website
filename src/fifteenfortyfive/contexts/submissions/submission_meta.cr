@@ -1,8 +1,11 @@
-module Events
-  class RunnerSubmission < Crecto::Model
-    schema "ev_runner_submissions" do
+require "../accounts"
+require "../events"
+
+module Submissions
+  class SubmissionMeta < Crecto::Model
+    schema "sub_submission_metas" do
       belongs_to :account, Accounts::Account
-      belongs_to :event, Event
+      belongs_to :event, Events::Event
 
       field :max_games, Int32
       field :max_time, String
@@ -13,7 +16,7 @@ module Events
       field :captain, Bool, default: false
       field :revoked, Bool, default: false
 
-      has_many :run_submissions, RunSubmission
+      has_many :submissions, Submission, foreign_key: :meta_id
     end
 
     validate_required [:account_id, :event_id]

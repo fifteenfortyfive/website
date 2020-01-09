@@ -60,7 +60,7 @@ class API::EventsController < AppController
       return
     end
 
-    changeset = Events.start_event(event, Time.utc_now)
+    changeset = Events.start_event(event, Time.utc)
 
     render_json({
       succeeded: !!(changeset && changeset.valid?),
@@ -79,7 +79,7 @@ class API::EventsController < AppController
       return
     end
 
-    changeset = Events.finish_event(event, Time.utc_now)
+    changeset = Events.finish_event(event, Time.utc)
 
     render_json({
       succeeded: !!(changeset && changeset.valid?),
@@ -98,7 +98,7 @@ class API::EventsController < AppController
       return
     end
 
-    changeset = Events.resume_event(event, Time.utc_now)
+    changeset = Events.resume_event(event, Time.utc)
 
     render_json({
       succeeded: !!(changeset && changeset.valid?),
@@ -117,7 +117,7 @@ class API::EventsController < AppController
       return
     end
 
-    changeset = Events.reset_event(event, Time.utc_now)
+    changeset = Events.reset_event(event, Time.utc)
 
     render_json({
       succeeded: !!(changeset && changeset.valid?),

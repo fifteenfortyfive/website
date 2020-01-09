@@ -57,7 +57,7 @@ module Events
     Repo.delete(event)
   end
 
-  def start_event(event : Event, start_at : Time = Time.utc_now)
+  def start_event(event : Event, start_at : Time = Time.utc)
     return if event.actual_start_time
 
     changeset = event.cast({
@@ -69,7 +69,7 @@ module Events
     Repo.update(changeset)
   end
 
-  def finish_event(event : Event, finish_at : Time = Time.utc_now)
+  def finish_event(event : Event, finish_at : Time = Time.utc)
     return unless started_at = event.actual_start_time
     return if event.actual_end_time
 
@@ -81,7 +81,7 @@ module Events
     Repo.update(changeset)
   end
 
-  def resume_event(event : Event, resume_at : Time = Time.utc_now)
+  def resume_event(event : Event, resume_at : Time = Time.utc)
     return unless event.actual_end_time
 
     changeset = event.cast({
@@ -91,7 +91,7 @@ module Events
     Repo.update(changeset)
   end
 
-  def reset_event(event : Event, reset_at : Time = Time.utc_now)
+  def reset_event(event : Event, reset_at : Time = Time.utc)
     return unless event.actual_start_time
 
     changeset = event.cast({
@@ -143,7 +143,7 @@ module Events
     return event.state == "signups open"
   end
 
-  def can_submit_run?(event : Event, run : RunSubmission)
+  def can_submit_run?(event : Event, run : Submissions::Submission)
     allowed_runs =
       event.allowed_runs ||= Repo.get_association(event, :allowed_runs).as(Array(AllowedRun))
 
@@ -256,7 +256,7 @@ module Events
     Repo.delete(team)
   end
 
-  def start_team(team : Team, start_at : Time = Time.utc_now)
+  def start_team(team : Team, start_at : Time = Time.utc)
     return if team.actual_start_time
 
     changeset = team.cast({
@@ -268,7 +268,7 @@ module Events
     Repo.update(changeset)
   end
 
-  def finish_team(team : Team, finish_at : Time = Time.utc_now)
+  def finish_team(team : Team, finish_at : Time = Time.utc)
     return unless started_at = team.actual_start_time
     return if team.actual_end_time
 
@@ -280,7 +280,7 @@ module Events
     Repo.update(changeset)
   end
 
-  def resume_team(team : Team, resume_at : Time = Time.utc_now)
+  def resume_team(team : Team, resume_at : Time = Time.utc)
     return unless team.actual_end_time
 
     changeset = team.cast({
@@ -290,7 +290,7 @@ module Events
     Repo.update(changeset)
   end
 
-  def reset_team(team : Team, reset_at : Time = Time.utc_now)
+  def reset_team(team : Team, reset_at : Time = Time.utc)
     return unless team.actual_start_time
 
     changeset = team.cast({
@@ -299,267 +299,6 @@ module Events
       actual_end_time:     nil,
     })
     Repo.update(changeset)
-  end
-
-  ###
-  # Run Submissions
-  ###
-
-  def list_run_submissions(query : Query = Query.new)
-    Repo.all(RunSubmission, query)
-  end
-
-  def list_run_submissions_for_account(event_id, account_id)
-    Repo.all(RunSubmission, Query.where(account_id: account_id, event_id: event_id).order_by("rank ASC"))
-  end
-
-  def get_run_submission(submission_id, query : Query = Query.new)
-    Repo.all(RunSubmission, query.where(id: submission_id.to_s).limit(1)).first?
-  end
-
-  def get_run_submission!(submission_id, query : Query = Query.new)
-    Repo.all(RunSubmission, query.where(id: submission_id.to_s).limit(1)).first
-  end
-
-  def new_run_submission
-    RunSubmission.new
-  end
-
-  def create_run_submission(submission : RunSubmission)
-    Repo.insert(submission)
-  end
-
-  def create_run_submission(attrs)
-    submission = RunSubmission.new
-    submission = submission.cast(attrs)
-    Repo.insert(submission)
-  end
-
-  def update_run_submission(submission : RunSubmission, changes)
-    changeset = submission.cast(changes)
-    Repo.update(changeset)
-  end
-
-  def delete_run_submission(submission : RunSubmission)
-    Repo.delete(submission)
-  end
-
-  def accept_run_submission(submission : RunSubmission)
-    submission.accepted = true
-    Repo.update(submission)
-  end
-
-  def unaccept_run_submission(submission : RunSubmission)
-    submission.accepted = false
-    Repo.update(submission)
-  end
-
-  ###
-  # Runner Submissions
-  ###
-
-  def list_runner_submissions(query : Query = Query.new)
-    Repo.all(RunnerSubmission, query)
-  end
-
-  def get_runner_submission(submission_id, query : Query = Query.new)
-    Repo.all(RunnerSubmission, query.where(id: submission_id.to_s).limit(1)).first?
-  end
-
-  def get_runner_submission!(submission_id, query : Query = Query.new)
-    Repo.all(RunnerSubmission, query.where(id: submission_id.to_s).limit(1)).first
-  end
-
-  def get_runner_submission_for_account(event_id, account_id)
-    query = Query.where(account_id: account_id, event_id: event_id)
-    Repo.all(RunnerSubmission, query.limit(1)).first?
-  end
-
-  def get_runner_submission_for_account!(event_id, account_id)
-    query = Query.where(account_id: account_id, event_id: event_id)
-    Repo.all(RunnerSubmission, query.limit(1)).first
-  end
-
-  def new_runner_submission
-    RunnerSubmission.new
-  end
-
-  def create_runner_submission(submission : RunnerSubmission)
-    Repo.insert(submission)
-  end
-
-  def create_runner_submission(attrs)
-    submission = RunnerSubmission.new
-    submission = submission.cast(attrs)
-    Repo.insert(submission)
-  end
-
-  def ensure_runner_submission!(event_id, account_id)
-    if existing = get_runner_submission_for_account(event_id, account_id)
-      return existing
-    end
-
-    changeset = create_runner_submission({
-      event_id:   event_id,
-      account_id: account_id,
-    })
-
-    changeset.instance
-  end
-
-  def update_runner_submission(submission : RunnerSubmission, changes)
-    changeset = submission.cast(changes)
-    Repo.update(changeset)
-  end
-
-  def delete_runner_submission(submission : RunnerSubmission)
-    Repo.delete(submission)
-  end
-
-  def delete_existing_submissions(account_id, event_id)
-    submissions = Events.list_runner_submissions(
-      Query.where(account_id: account_id, event_id: event_id)
-    )
-
-    submissions.each do |submission|
-      run_submissions = Events.list_run_submissions(Query.where(runner_submission_id: submission.id))
-      run_submissions.each do |run|
-        Events.delete_run_submission(run)
-      end
-
-      Events.delete_runner_submission(submission)
-    end
-  end
-
-  ###
-  # Runs
-  ###
-
-  def list_runs(query : Query = Query.new)
-    Repo.all(Run, query)
-  end
-
-  def get_run(run_id, query : Query = Query.new)
-    Repo.all(Run, query.where(id: run_id.to_s).limit(1)).first?
-  end
-
-  def get_run!(run_id, query : Query = Query.new)
-    Repo.all(Run, query.where(id: run_id.to_s).limit(1)).first
-  end
-
-  def new_run
-    Run.new
-  end
-
-  def create_run(run : Run)
-    Repo.insert(run)
-  end
-
-  def create_run(attrs)
-    run = Run.new
-    run = run.cast(attrs)
-    Repo.insert(run)
-  end
-
-  def update_run(run : Run, changes)
-    changeset = run.cast(changes)
-    Repo.update(changeset)
-  end
-
-  def delete_run(run : Run)
-    Repo.delete(run)
-  end
-
-  ###
-  # Run Events
-  ###
-
-  def start_run(run : Run, start_at : Time = Time.utc_now)
-    return if run.started_at
-
-    run_event = log_run_event(run.id, "run_started", start_at)
-
-    changeset = run.cast({
-      finished:       "false",
-      actual_seconds: nil,
-      started_at:     start_at,
-      finished_at:    nil,
-    })
-    changeset = Repo.update(changeset)
-
-    if changeset.valid?
-      SocketService.broadcast(run_event.instance)
-    end
-
-    changeset
-  end
-
-  def finish_run(run : Run, finish_at : Time = Time.utc_now)
-    return unless started_at = run.started_at
-    return if run.finished_at
-
-    run_event = log_run_event(run.id, "run_finished", finish_at)
-
-    elapsed_seconds = (finish_at - started_at).total_seconds
-    changeset = run.cast({
-      finished:       "true",
-      actual_seconds: elapsed_seconds,
-      finished_at:    finish_at,
-    })
-    changeset = Repo.update(changeset)
-
-    if changeset.valid?
-      SocketService.broadcast(run_event.instance)
-    end
-
-    changeset
-  end
-
-  def resume_run(run : Run, resume_at : Time = Time.utc_now)
-    return unless run.finished_at
-    run_event = log_run_event(run.id, "run_resumed", resume_at)
-
-    changeset = run.cast({
-      finished:       "false",
-      actual_seconds: nil,
-      finished_at:    nil,
-    })
-    changeset = Repo.update(changeset)
-
-    if changeset.valid?
-      SocketService.broadcast(run_event.instance)
-    end
-
-    changeset
-  end
-
-  def reset_run(run : Run, reset_at : Time = Time.utc_now)
-    return unless run.started_at
-    run_event = log_run_event(run.id, "run_reset", reset_at)
-
-    changeset = run.cast({
-      finished:       "false",
-      actual_seconds: nil,
-      started_at:     nil,
-      finished_at:    nil,
-    })
-    changeset = Repo.update(changeset)
-
-    if changeset.valid?
-      SocketService.broadcast(run_event.instance)
-    end
-
-    changeset
-  end
-
-  def log_run_event(run_id, type : String, timestamp : Time)
-    run_event = RunEvent.new
-    run_event = run_event.cast({
-      run_id:      run_id,
-      type:        type,
-      occurred_at: timestamp,
-    })
-    Repo.insert(run_event)
   end
 
   ###
@@ -584,10 +323,6 @@ module Events
     seconds = seconds % 60
 
     sprintf("%02d:%02d:%02d", hours, minutes, seconds)
-  end
-
-  def accepting_submissions?(event : Event)
-    event.state == "signups open"
   end
 
   def maybe_parse_date_time(attrs, attribute)

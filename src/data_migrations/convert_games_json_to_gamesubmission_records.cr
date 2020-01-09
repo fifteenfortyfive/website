@@ -5,7 +5,7 @@ require "crecto"
 require "../fifteenfortyfive/repo.cr"
 require "../fifteenfortyfive/models/**"
 
-submissions = Repo.all(RunnerSubmission, preload: [:account])
+submissions = Repo.all(Submissions::SubmissionMeta, preload: [:account])
 games = Repo.all(Game)
 
 game_map = {

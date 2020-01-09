@@ -65,7 +65,7 @@ const App = props => {
           <MeView eventId={CURRENT_EVENT_ID} />
         </AuthenticatedRoute>
 
-        <Route path={Routes.EVENT(':eventId')}>
+        <Route exact path={Routes.EVENT(':eventId')}>
           {({ match }) => <EventView eventId={match.params.eventId} />}
         </Route>
         <Route exact path={Routes.EVENTS} component={EventsView} />

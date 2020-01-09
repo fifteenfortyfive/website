@@ -7,7 +7,6 @@ require "http"
 # a callback to bring them back to the originally-requested route.
 class AuthenticationHandler
   include HTTP::Handler
-  include AppRouter::Helpers
 
   alias FailureProc = HTTP::Server::Context ->
 

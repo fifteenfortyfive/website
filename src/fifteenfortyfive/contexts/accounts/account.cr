@@ -31,7 +31,7 @@ module Accounts
     end
 
     def password_matches?(other_password : String)
-      Crypto::Bcrypt::Password.new(@encrypted_password.not_nil!) == other_password
+      Crypto::Bcrypt::Password.new(@encrypted_password.not_nil!).verify(other_password)
     end
 
     def avatar_hash

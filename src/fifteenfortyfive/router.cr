@@ -1,10 +1,16 @@
 require "http"
 require "orion"
 
+require "./controllers/**"
+require "./handlers/authentication_handler"
+require "./handlers/authorization_handler"
+require "./handlers/cors_handler"
+require "./handlers/session_handler"
+
 router AppRouter do
   use HTTP::ErrorHandler
   use HTTP::LogHandler.new(STDOUT)
-  use AnalyticsHandler
+  # use AnalyticsHandler
   use SessionHandler
 
   concern :api_authenticated do
@@ -37,20 +43,20 @@ router AppRouter do
           get "/", to: "aPI::Events#get"
           get "/allowed-runs", to: "aPI::Events#allowed_runs"
 
-          scope "runner-submission" do
+          scope "submission" do
             implements :api_authenticated
 
-            get "/", to: "aPI::RunnerSubmissions#get"
-            post "/", to: "aPI::RunnerSubmissions#create"
-            post "/update", to: "aPI::RunnerSubmissions#update"
-            post "/revoke", to: "aPI::RunnerSubmissions#revoke"
-            post "/unrevoke", to: "aPI::RunnerSubmissions#unrevoke"
-            post "/delete", to: "aPI::RunnerSubmissions#delete"
+            get "/", to: "aPI::SubmissionMeta#get"
+            post "/", to: "aPI::SubmissionMeta#create"
+            post "/update", to: "aPI::SubmissionMeta#update"
+            post "/revoke", to: "aPI::SubmissionMeta#revoke"
+            post "/unrevoke", to: "aPI::SubmissionMeta#unrevoke"
+            post "/delete", to: "aPI::SubmissionMeta#delete"
 
-            get "/runs", to: "aPI::RunnerSubmissions#runs_index"
-            post "/runs", to: "aPI::RunnerSubmissions#runs_create"
-            post "/runs/:run_id", to: "aPI::RunnerSubmissions#runs_update"
-            post "/runs/:run_id/delete", to: "aPI::RunnerSubmissions#runs_delete"
+            get "/runs", to: "aPI::SubmissionMeta#runs_index"
+            post "/runs", to: "aPI::SubmissionMeta#runs_create"
+            post "/runs/:run_id", to: "aPI::SubmissionMeta#runs_update"
+            post "/runs/:run_id/delete", to: "aPI::SubmissionMeta#runs_delete"
           end
 
           scope do
@@ -77,9 +83,9 @@ router AppRouter do
             end
           end
 
-          scope "run_submissions" do
-            get "/", to: "aPI::RunSubmissions#index"
-            get "/:run_submission_id", to: "aPI::RunSubmissions#get"
+          scope "submissions" do
+            get "/", to: "aPI::Submissions#index"
+            get "/:submission_id", to: "aPI::Submissions#get"
           end
 
           scope "runs" do
@@ -94,6 +100,14 @@ router AppRouter do
             post "/:run_id/reset", to: "aPI::Runs#reset"
           end
         end
+      end
+
+      scope "schedules" do
+        get "/:schedule_id", to: "aPI::Schedules#get"
+        post "/", to: "aPI::Schedules#create"
+
+        post "/:schedule_id/add-activity", to: "aPI::Schedules#add_activity"
+        post "/:schedule_id/remove-activity", to: "aPI::Schedules#remove_activity"
       end
 
       scope "accounts" do

@@ -82,7 +82,7 @@ module Accounts
     session = Session.new.cast({
       "account_id" => account.id.to_s,
       "active"     => true,
-      "expires_at" => Time.now + SESSION_EXPIRATION_TIME,
+      "expires_at" => Time.utc + SESSION_EXPIRATION_TIME,
     })
     session.instance.id = Random::Secure.hex(32)
     session = Repo.insert(session)

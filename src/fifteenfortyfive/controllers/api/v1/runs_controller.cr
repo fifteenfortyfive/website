@@ -42,7 +42,7 @@ class API::RunsController < AppController
     end
 
     render_json({
-      runs: Events.list_runs(query),
+      runs: Runs.list_runs(query),
     })
   end
 
@@ -52,7 +52,7 @@ class API::RunsController < AppController
       return
     end
 
-    unless run = Events.get_run(run_id, Query.preload([:run_events]))
+    unless run = Runs.get_run(run_id, Query.preload([:run_events]))
       render_error_json(Errors::NotFound)
       return
     end
@@ -68,7 +68,7 @@ class API::RunsController < AppController
       return
     end
 
-    unless run = Events.get_run(
+    unless run = Runs.get_run(
              run_id,
              Query
                .where(account_id: @context.current_user.id.to_s)
@@ -78,7 +78,7 @@ class API::RunsController < AppController
       return
     end
 
-    Events.start_run(run, Time.utc_now)
+    Runs.start_run(run, Time.utc)
 
     render_json({
       run: run,
@@ -91,7 +91,7 @@ class API::RunsController < AppController
       return
     end
 
-    unless run = Events.get_run(
+    unless run = Runs.get_run(
              run_id,
              Query
                .where(account_id: @context.current_user.id.to_s)
@@ -101,7 +101,7 @@ class API::RunsController < AppController
       return
     end
 
-    Events.finish_run(run, Time.utc_now)
+    Runs.finish_run(run, Time.utc)
 
     render_json({
       run: run,
@@ -114,7 +114,7 @@ class API::RunsController < AppController
       return
     end
 
-    unless run = Events.get_run(
+    unless run = Runs.get_run(
              run_id,
              Query
                .where(account_id: @context.current_user.id.to_s)
@@ -124,7 +124,7 @@ class API::RunsController < AppController
       return
     end
 
-    Events.resume_run(run, Time.utc_now)
+    Runs.resume_run(run, Time.utc)
 
     render_json({
       run: run,
@@ -137,7 +137,7 @@ class API::RunsController < AppController
       return
     end
 
-    unless run = Events.get_run(
+    unless run = Runs.get_run(
              run_id,
              Query
                .where(account_id: @context.current_user.id.to_s)
@@ -147,7 +147,7 @@ class API::RunsController < AppController
       return
     end
 
-    Events.reset_run(run, Time.utc_now)
+    Runs.reset_run(run, Time.utc)
 
     render_json({
       run: run,

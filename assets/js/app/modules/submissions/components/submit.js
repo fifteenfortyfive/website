@@ -10,6 +10,7 @@ import * as SubmissionActions from '../SubmissionActions';
 import * as SubmissionStore from '../SubmissionStore';
 import RunSubmission from './RunSubmission';
 import RunSubmissionForm from './RunSubmissionForm';
+import SubmissionMeta from './SubmissionMeta';
 
 import { Column, Columns } from 'bloomer';
 import Button from '../../../uikit/Button';
@@ -79,7 +80,9 @@ const NewSubmission = props => {
   }, [eventId]);
 
   const deleteSubmission = useCallback(() => {
-    dispatch(SubmissionActions.deleteRunnerSubmission(eventId));
+    if (confirm('Are you sure you want to fully delete your submission? This cannot be undone.')) {
+      dispatch(SubmissionActions.deleteRunnerSubmission(eventId));
+    }
   }, [eventId]);
 
   if (event == null) return <Layout>Loading</Layout>;
@@ -87,42 +90,9 @@ const NewSubmission = props => {
   return (
     <Layout>
       <Columns isCentered>
-        <Column isSize={{ desktop: 9, widescreen: 8, fullhd: 7 }}>
-          <Header>Submit a Run</Header>
-          <Header size={Header.Sizes.H4} color={Header.Colors.MUTED} withMargin>
-            Submitting to {event.name}
-          </Header>
-
-          <Text>
-            Hello! Thanks for choosing to submit a run to this event! Use this form to add and remove games
-            that you're interested in running. You can come back and edit this at any time before submissions
-            close.
-          </Text>
-
-          <div class={styles.runsContainer}>
-            {runs.map(run => (
-              <RunSubmission
-                key={run.game_id}
-                className={styles.submission}
-                run={run}
-                onSave={handleUpdateRun}
-                onDelete={handleDeleteRun}
-              />
-            ))}
-
-            {showNewRun ? (
-              <RunSubmissionForm
-                className={styles.newSubmision}
-                onSave={handleCreateRun}
-                onCancel={handleCancelNewRun}
-              />
-            ) : (
-              <Button onClick={() => setShowNewRun(true)} color={Button.Colors.PRIMARY}>
-                Add a Run
-              </Button>
-            )}
-          </div>
-
+        <Column isSize={{ desktop: 4, widescreen: 4, fullhd: 4 }}>
+          <SubmissionMeta eventId={eventId} />
+          <hr />
           {runner &&
             (runner.revoked ? (
               <div>
@@ -159,13 +129,48 @@ const NewSubmission = props => {
                   event. You will be able to resubmit, but all of your existing submissions for this event
                   will not be recoverable.
                 </Text>
-
                 <ButtonGroup>
                   <Button onClick={revokeSubmission}>Revoke Submission</Button>
                   <Button onClick={deleteSubmission}>Delete Submission</Button>
                 </ButtonGroup>
               </div>
             ))}
+        </Column>
+        <Column isSize={{ desktop: 8, widescreen: 8, fullhd: 7 }}>
+          <Header>Submit a Run</Header>
+          <Header size={Header.Sizes.H4} color={Header.Colors.MUTED} withMargin>
+            Submitting to {event.name}
+          </Header>
+
+          <Text>
+            Hello! Thanks for choosing to submit a run to this event! Use this form to add and remove games
+            that you're interested in running. You can come back and edit this at any time before submissions
+            close.
+          </Text>
+
+          <div class={styles.runsContainer}>
+            {runs.map(run => (
+              <RunSubmission
+                key={run.game_id}
+                className={styles.submission}
+                run={run}
+                onSave={handleUpdateRun}
+                onDelete={handleDeleteRun}
+              />
+            ))}
+
+            {showNewRun ? (
+              <RunSubmissionForm
+                className={styles.newSubmision}
+                onSave={handleCreateRun}
+                onCancel={handleCancelNewRun}
+              />
+            ) : (
+              <Button onClick={() => setShowNewRun(true)} color={Button.Colors.PRIMARY}>
+                Add a Run
+              </Button>
+            )}
+          </div>
         </Column>
       </Columns>
     </Layout>

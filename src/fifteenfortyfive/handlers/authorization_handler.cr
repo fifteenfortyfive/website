@@ -5,7 +5,6 @@ require "http"
 # (e.g., AuthenticationHandler should be placed _before_ this handler).
 class AuthorizationHandler
   include HTTP::Handler
-  include AppRouter::Helpers
 
   def initialize(@required_level = :admin)
   end

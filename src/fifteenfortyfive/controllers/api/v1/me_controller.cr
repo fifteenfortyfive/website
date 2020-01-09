@@ -1,3 +1,5 @@
+require "../../../services/file_upload_service"
+
 class API::MeController < AppController
   def get
     account = @context.current_user

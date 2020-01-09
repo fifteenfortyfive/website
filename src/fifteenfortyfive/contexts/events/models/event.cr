@@ -1,3 +1,5 @@
+require "../../submissions"
+
 module Events
   class Event < Crecto::Model
     STATES = [
@@ -45,8 +47,8 @@ module Events
 
       belongs_to :owner, Accounts::Account, foreign_key: :owner_id
 
-      has_many :runner_submissions, RunnerSubmission
-      has_many :run_submissions, RunSubmission
+      has_many :submission_metas, Submissions::SubmissionMeta
+      has_many :submissions, Submissions::Submission
     end
   end
 end

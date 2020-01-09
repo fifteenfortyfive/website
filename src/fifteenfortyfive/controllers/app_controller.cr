@@ -3,7 +3,6 @@ require "./errors.cr"
 
 class AppController
   include Orion::ControllerHelper
-  include AppRouter::Helpers
 
   TEMPLATE_DIR = File.join(__DIR__, "..", "templates")
   @@cached_templates = {} of String => String
@@ -41,7 +40,7 @@ class AppController
   end
 
   def render_error_json(error : Errors::Error)
-    render_json(error.message, error.status)
+    render_json(error, error.status)
   end
 
   property! body_params : Hash(String, String)
@@ -66,7 +65,7 @@ class AppController
   end
 
   def structured_params(structure)
-    body = raw_request_body
+    body = body_content
     unless body.empty?
       structure.from_json(body)
     else

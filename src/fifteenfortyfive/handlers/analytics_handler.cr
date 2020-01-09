@@ -1,6 +1,8 @@
 require "http"
 require "uuid"
 
+require "../router"
+
 class HTTP::Server::Context
   property! request_id : UUID
 end
@@ -14,9 +16,9 @@ class AnalyticsHandler
     conn.request_id = UUID.random
     path = conn.request.path
 
-    request_start = Time.now
+    request_start = Time.utc
     call_next(conn)
-    request_end = Time.now
+    request_end = Time.utc
 
     processing_time = (request_end - request_start).total_nanoseconds
 

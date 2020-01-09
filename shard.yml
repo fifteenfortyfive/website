@@ -1,6 +1,6 @@
 name: fifteenfortyfive
-version: 0.2.0
-crystal: 0.30.1
+version: 0.3.0
+crystal: 0.32.1
 license: MIT
 authors:
   - Jon Egeland <jonegeland@gmail.com>
@@ -24,15 +24,13 @@ dependencies:
     commit: 5fe764eaf4ddeae4d4df44e13f6595d037639625
   orion:
     github: obsidian/orion
-    version: 1.7.0
+    version: 2.1.1
   awscr-s3:
     github: taylorfinnell/awscr-s3
-    # version: 0.5.0
-    # holdover for 0.31.0 support to land
-    commit: 93126f023217fd3f2b462242a13919def967809f
+    version: 0.7.0
   honcho:
     github: faultyserver/honcho
-    version: 0.2.0
+    version: 0.3.0
   dotenv:
     github: gdotdesign/cr-dotenv
     version: 0.3.1
@@ -41,9 +39,8 @@ dependencies:
     version: 0.1.0
 
 development_dependencies:
-  {}
-  # Leaving out until db 0.7.0 is supported.
-  # `tool` is the only thing that relies on this, so this is fine for now.
-  # migrate:
-  #   github: vladfaust/migrate.cr
-  #   version: 0.5.0
+  # This is a hash because 0.7.0 support has been stalled by testing errors.
+  # But the code itself works, so it can be used fine.
+  migrate:
+    github: vladfaust/migrate.cr
+    commit: 54f91fe46696097a36a3e49f80405ac53d1cd812

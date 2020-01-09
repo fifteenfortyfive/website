@@ -4,7 +4,6 @@ require "http"
 # inserting the necessary `Access-Control-*` headers to regular responses.
 class CORSHandler
   include HTTP::Handler
-  include AppRouter::Helpers
 
   def initialize(@path : String)
   end

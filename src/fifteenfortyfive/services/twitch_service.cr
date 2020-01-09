@@ -1,6 +1,8 @@
 require "http/client"
 require "json"
 
+require "../constants"
+
 module TwitchService
   extend self
 

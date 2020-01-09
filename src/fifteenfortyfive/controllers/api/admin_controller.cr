@@ -2,7 +2,7 @@ require "../../contexts/events"
 
 class API::AdminController < AppController
   def events
-    events = Events.list_events(Query.preload(:runner_submissions, Query.preload(:run_submissions)))
+    events = Events.list_events(Query.preload(:submission_metas, Query.preload(:submissions)))
     render_json(events.map do |event|
       {
         id:                     event.id,
@@ -20,13 +20,13 @@ class API::AdminController < AppController
         link:                   event.link,
         state:                  event.state,
         owner_id:               event.owner_id,
-        runner_submissions:     event.runner_submissions,
+        submission_metas:       event.submission_metas,
       }
     end)
   end
 
   def event
-    event = Events.get_event!(url_params["event_id"], Query.preload(:runner_submissions, Query.preload(:run_submissions)))
+    event = Events.get_event!(url_params["event_id"], Query.preload(:submission_metas, Query.preload(:submissions)))
 
     render_json(event)
   end
