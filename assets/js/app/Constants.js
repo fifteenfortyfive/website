@@ -1,6 +1,6 @@
 export const ASSETS_URL = 'https://fifteenfortyfive-assets.nyc3.cdn.digitaloceanspaces.com';
 
-export const CURRENT_EVENT_ID = 23;
+export const CURRENT_EVENT_ID = 20;
 
 export const Colors = {
   TWITCH: '#6441A4',
@@ -30,7 +30,7 @@ export const Routes = {
   EVENT_SUBMIT_RUN: eventId => `/events/${eventId}/submit`,
 
   // Admin
-  ADMIN_BASE: '/admin/:*?',
+  ADMIN_BASE: '/admin',
   // AdminV2 is the old admin o.o
   ADMIN_V2: '/admin/v2',
 
@@ -42,6 +42,7 @@ export const Routes = {
 export const AdminRoutes = {
   HOME: '/admin',
   EVENT: '/admin/event',
+  EVENT_SCHEDULING: ({ eventId }) => `/admin/event/${eventId}/schedule`,
   ACCOUNTS: '/admin/accounts',
 };
 

@@ -86,7 +86,7 @@ const LayoutNavbar = props => {
             </NavbarItem>
 
             {isAdmin && (
-              <Anchor className="navbar-item" href={Routes.ADMIN_V2}>
+              <Anchor className="navbar-item" href={Routes.ADMIN_BASE}>
                 Admin
               </Anchor>
             )}

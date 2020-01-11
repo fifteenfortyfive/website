@@ -34,7 +34,7 @@ class API::EventsController < AppController
 
   def allowed_runs
     unless event_id = url_params["event_id"]?
-      render_error_json(Errors::NotFound)
+      render_error_json(Errors::BadRequest)
       return
     end
 

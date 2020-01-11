@@ -43,6 +43,9 @@ router AppRouter do
           get "/", to: "aPI::Events#get"
           get "/allowed-runs", to: "aPI::Events#allowed_runs"
 
+          get "/schedule", to: "aPI::Events#schedule"
+          get "/all-runs", to: "aPI::Events#all_runs"
+
           scope "submission" do
             implements :api_authenticated
 

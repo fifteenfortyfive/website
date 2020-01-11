@@ -6,6 +6,7 @@ import useAuth from '../hooks/useAuth';
 import RouterUtils from '../modules/router/RouterUtils';
 import AdminIndex from './pages/AdminIndex';
 import Accounts from './modules/accounts/components/Accounts';
+import SchedulingEvent from './modules/scheduling/components/SchedulingEvent';
 
 import { AdminRoutes, Routes } from '../Constants';
 
@@ -20,8 +21,9 @@ const AdminRouter = () => {
 
   return (
     <Switch>
-      <Route path={AdminRoutes.HOME} component={AdminIndex} />
-      <Route path={AdminRoutes.ACCOUNTS} component={Accounts} />
+      <Route exact path={AdminRoutes.HOME} component={AdminIndex} />
+      <Route path={AdminRoutes.EVENT_SCHEDULING({ eventId: ':eventId' })} component={SchedulingEvent} />
+      <Route exact path={AdminRoutes.ACCOUNTS} component={Accounts} />
     </Switch>
   );
 };

@@ -1,4 +1,5 @@
 require "./events/models/**"
+require "./runs"
 require "crecto"
 
 module Events
@@ -160,6 +161,10 @@ module Events
     end
 
     return passes_restrictions
+  end
+
+  def list_runs_for_event(event_id)
+    Runs.list_runs(Query.where(event_id: event_id))
   end
 
   ###

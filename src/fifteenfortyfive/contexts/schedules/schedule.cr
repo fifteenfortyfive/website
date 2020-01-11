@@ -1,6 +1,10 @@
+require "crecto"
+require "../events"
+
 module Schedules
   class Schedule < Crecto::Model
     schema "sched_schedules" do
+      belongs_to :event, Events::Event
       has_many :activities, Activity
 
       field :name, String
