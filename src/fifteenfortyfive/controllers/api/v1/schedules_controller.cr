@@ -54,8 +54,9 @@ class API::SchedulesController < AppController
     activities = Schedules.add_activity(activities, changeset.instance, params.index)
     activities = Schedules.update_schedule_activities(schedule, activities)
 
+    schedule = Schedules.get_schedule(schedule_id)
     render_json({
-      activities: activities,
+      schedule: schedule,
     })
   end
 
@@ -80,8 +81,9 @@ class API::SchedulesController < AppController
     activities = Schedules.remove_activity(activities, params.activity_id)
     activities = Schedules.update_schedule_activities(schedule, activities)
 
+    schedule = Schedules.get_schedule(schedule_id)
     render_json({
-      activities: activities,
+      schedule: schedule,
     })
   end
 end

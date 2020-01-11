@@ -2,6 +2,7 @@ import { h } from 'preact';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import { connect } from 'react-redux';
 
+import useAuth from '../../../hooks/useAuth';
 import * as AuthActions from '../AuthActions';
 import * as AuthStore from '../AuthStore';
 
@@ -16,9 +17,10 @@ import * as RouterUtils from '../../router/RouterUtils';
 import { Routes } from '../../../Constants';
 
 const LoginView = props => {
-  const { isLoggedIn, dispatch } = props;
+  const { dispatch } = props;
   const { redirectRoute } = RouterUtils.getSearchParams();
 
+  const { isLoggedIn } = useAuth();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [submitting, setSubmitting] = useState(false);

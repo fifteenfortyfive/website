@@ -9,16 +9,23 @@ module Schedules
   # Schedules
   ###
 
+  SCHEDULE_PRELOADS = [:activities]
+
   def list_schedules(query : Query = Query.new)
     Repo.all(Schedule, query)
   end
 
   def get_schedule(schedule_id, query : Query = Query.new)
-    Repo.all(Schedule, query.where(id: schedule_id.to_s).limit(1)).first?
+    Repo.all(Schedule, query.preload(SCHEDULE_PRELOADS).where(id: schedule_id.to_s).limit(1)).first?
   end
 
   def get_schedule!(schedule_id, query : Query = Query.new)
-    Repo.all(Schedule, query.where(id: schedule_id.to_s).limit(1)).first
+    Repo.all(Schedule, query.preload(SCHEDULE_PRELOADS).where(id: schedule_id.to_s).limit(1)).first
+  end
+
+  def get_event_schedule(event_id)
+    matches = list_schedules(Query.where(event_id: event_id).preload(SCHEDULE_PRELOADS))
+    matches.first? || create_schedule({event_id: event_id}).instance
   end
 
   def new_schedule

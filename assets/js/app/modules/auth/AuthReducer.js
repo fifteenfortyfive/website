@@ -1,5 +1,6 @@
 const defaultState = {
   sessionId: null,
+  loaded: false,
 };
 
 const actions = {
@@ -9,6 +10,7 @@ const actions = {
     return {
       ...state,
       sessionId,
+      loaded: true,
     };
   },
 
@@ -16,6 +18,14 @@ const actions = {
     return {
       ...state,
       sessionId: null,
+      loaded: true,
+    };
+  },
+
+  AUTH_FETCH_SUCCESS: (state, _action) => {
+    return {
+      ...state,
+      loaded: true,
     };
   },
 };

@@ -11,18 +11,25 @@ import SchedulingEvent from './modules/scheduling/components/SchedulingEvent';
 import { AdminRoutes, Routes } from '../Constants';
 
 const AdminRouter = () => {
-  const { isLoggedIn, account } = useAuth();
+  const { isLoggedIn, account, isLoaded } = useAuth();
 
   useEffect(() => {
-    if (!isLoggedIn || !account.admin) {
+    if (isLoaded && !isLoggedIn) {
+      RouterUtils.navigateTo(Routes.LOGIN, { replace: false });
+      return;
+    }
+
+    if (isLoaded && account != null && !account.admin) {
       RouterUtils.navigateTo(Routes.HOME, { replace: true });
     }
-  }, [isLoggedIn, account]);
+  }, [isLoggedIn, account, isLoaded]);
 
   return (
     <Switch>
       <Route exact path={AdminRoutes.HOME} component={AdminIndex} />
-      <Route path={AdminRoutes.EVENT_SCHEDULING({ eventId: ':eventId' })} component={SchedulingEvent} />
+      <Route path={AdminRoutes.EVENT_SCHEDULING({ eventId: ':eventId' })}>
+        {({ match }) => <SchedulingEvent eventId={match.params.eventId} />}
+      </Route>
       <Route exact path={AdminRoutes.ACCOUNTS} component={Accounts} />
     </Switch>
   );

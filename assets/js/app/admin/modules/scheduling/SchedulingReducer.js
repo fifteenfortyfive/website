@@ -3,27 +3,36 @@ import _ from 'lodash';
 const defaultState = {
   schedule: null,
   runs: {},
+  runners: {},
+  games: {},
+  categories: {},
+  event: null,
 };
 
 const actions = {
-  'admin/RECEIVE_SCHEDULE': (state, { data }) => {
-    const { schedule } = data;
+  'admin/RECEIVE_SCHEDULING_DATA': (state, { data }) => {
+    const { schedule, runs, runners, games, categories, event } = data;
+    const runsById = _.keyBy(runs, 'id');
+    const runnersById = _.keyBy(runners, 'id');
+    const gamesById = _.keyBy(games, 'id');
+    const categoriesById = _.keyBy(categories, 'id');
 
     return {
       ...state,
       schedule,
+      runs: runsById,
+      runners: runnersById,
+      games: gamesById,
+      categories: categoriesById,
+      event,
     };
   },
-  'admin/RECEIVE_SCHEDULE_RUNS': (state, { data }) => {
-    const { runs } = data;
-    const runsById = _.keyBy(runs, 'id');
 
+  'admin/RECEIVE_SCHEDULE': (state, { data }) => {
+    const { schedule } = data;
     return {
       ...state,
-      runs: {
-        ...state.runs,
-        ...runsById,
-      },
+      schedule,
     };
   },
 };

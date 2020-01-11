@@ -20,14 +20,22 @@ export function runTimeFromStart(startString) {
 }
 
 export function simpleDate(date) {
-  return timeFromISO(date).toLocaleString({
+  if (typeof date === 'string') {
+    date = timeFromISO(date);
+  }
+
+  return date.toLocaleString({
     year: 'numeric',
     month: 'long',
   });
 }
 
 export function fullDate(date) {
-  return timeFromISO(date).toLocaleString({
+  if (typeof date === 'string') {
+    date = timeFromISO(date);
+  }
+
+  return date.toLocaleString({
     year: 'numeric',
     month: 'long',
     day: '2-digit',
@@ -35,7 +43,11 @@ export function fullDate(date) {
 }
 
 export function simpleDateTime(date) {
-  return timeFromISO(date).toLocaleString({
+  if (typeof date === 'string') {
+    date = timeFromISO(date);
+  }
+
+  return date.toLocaleString({
     year: 'numeric',
     month: 'short',
     day: '2-digit',

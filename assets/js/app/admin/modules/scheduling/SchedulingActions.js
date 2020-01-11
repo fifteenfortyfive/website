@@ -1,43 +1,53 @@
 import { commonThunk } from '../../../Actions';
 
-export function fetchEventSchedule(eventId) {
+export function fetchSchedulingData(eventId) {
   return commonThunk(
     {
       method: 'get',
-      path: `/api/events/${eventId}/schedule`,
+      path: `/api/v1/admin/events/${eventId}/scheduling`,
     },
     (dispatch, response) => {
-      dispatch(receiveEventSchedule(response.schedule));
+      dispatch(receiveSchedulingData(response));
     }
   );
 }
 
-export function fetchEventRuns(eventId) {
+export function addRun(scheduleId, runId, index = 0) {
   return commonThunk(
     {
-      method: 'get',
-      path: `/api/events/${eventId}/runs`,
+      method: 'post',
+      path: `/api/v1/schedules/${scheduleId}/add-activity`,
+      body: {
+        // eslint-disable-next-line camelcase
+        run_id: runId,
+        index,
+      },
     },
     (dispatch, response) => {
-      dispatch(receiveEventScheduleRuns(response.runs));
+      dispatch(receiveSchedule(response));
     }
   );
 }
 
-export function receiveEventSchedule(schedule) {
+export function receiveSchedulingData({ schedule, runs, runners, games, categories, event }) {
   return {
-    type: 'admin/RECEIVE_SCHEDULE',
+    type: 'admin/RECEIVE_SCHEDULING_DATA',
     data: {
       schedule,
+      runs,
+      runners,
+      games,
+      categories,
+      event,
     },
   };
 }
 
-export function receiveEventScheduleRuns(runs = []) {
+export function receiveSchedule({ schedule }) {
   return {
-    type: 'admin/RECEIVE_SCHEDULE_RUNS',
+    type: 'admin/RECEIVE_SCHEDULE',
     data: {
-      runs,
+      schedule,
     },
   };
 }

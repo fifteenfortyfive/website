@@ -163,7 +163,7 @@ module Events
     return passes_restrictions
   end
 
-  def list_runs_for_event(event_id)
+  def list_available_runs_for_event(event_id)
     Runs.list_runs(Query.where(event_id: event_id))
   end
 

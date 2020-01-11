@@ -43,9 +43,6 @@ router AppRouter do
           get "/", to: "aPI::Events#get"
           get "/allowed-runs", to: "aPI::Events#allowed_runs"
 
-          get "/schedule", to: "aPI::Events#schedule"
-          get "/all-runs", to: "aPI::Events#all_runs"
-
           scope "submission" do
             implements :api_authenticated
 
@@ -156,6 +153,16 @@ router AppRouter do
         scope "account_preferences" do
           get "/", to: "aPI::AccountPreferences#get"
           post "/", to: "aPI::AccountPreferences#update"
+        end
+      end
+
+      scope "admin" do
+        implements :api_admin_authorized
+
+        scope "events" do
+          scope ":event_id" do
+            get "/scheduling", to: "API::Admin::SchedulingController#get"
+          end
         end
       end
     end
