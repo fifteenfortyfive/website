@@ -1,6 +1,7 @@
 require "crecto"
 
 require "./runs/**"
+require "./submissions"
 
 module Runs
   extend self
@@ -33,6 +34,18 @@ module Runs
     run = Run.new
     run = run.cast(attrs)
     Repo.insert(run)
+  end
+
+  def create_run_from_submission(submission : Submissions::Submission)
+    create_run({
+      submission_id: submission.id,
+      event_id:      submission.event_id,
+      account_id:    submission.account_id,
+      game_id:       submission.game_id,
+      category_id:   submission.category_id,
+      pb_seconds:    submission.pb_seconds,
+      est_seconds:   submission.est_seconds,
+    })
   end
 
   def update_run(run : Run, changes)
