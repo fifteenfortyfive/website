@@ -27,10 +27,18 @@ const Styles = {
   DISABLED: 'styleDisabled',
 };
 
+const Sizes = {
+  ICON: 'sizeIcon',
+  SMALL: 'sizeSmall',
+  NORMAL: 'sizeNormal',
+  LARGE: 'sizeLarge',
+};
+
 const Button = props => {
   const {
     color = Colors.DEFAULT,
     style = Styles.NORMAL,
+    size = Sizes.NORMAL,
     fullwidth,
     onClick,
     children,
@@ -40,7 +48,7 @@ const Button = props => {
 
   return (
     <button
-      class={classNames(styles.button, styles[color], styles[style], className, {
+      class={classNames(styles.button, styles[color], styles[style], styles[size], className, {
         [styles.isFullwidth]: fullwidth,
       })}
       onClick={onClick}
@@ -52,5 +60,6 @@ const Button = props => {
 
 Button.Colors = Colors;
 Button.Styles = Styles;
+Button.Sizes = Sizes;
 
 export default Button;

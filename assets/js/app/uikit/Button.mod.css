@@ -41,6 +41,22 @@
   }
 }
 
+.sizeIcon {
+  padding: 8px;
+}
+
+.sizeSmall {
+  padding: 4px 8px;
+}
+
+.sizeNormal {
+  padding: 8px 16px;
+}
+
+.sizeLarge {
+  padding: 12px 24px;
+}
+
 .isFullwidth {
   width: 100%;
 }

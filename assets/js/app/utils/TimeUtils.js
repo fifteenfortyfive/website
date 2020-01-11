@@ -56,3 +56,16 @@ export function simpleDateTime(date) {
     timeZoneName: 'short',
   });
 }
+
+export function shortDateTime(date) {
+  if (typeof date === 'string') {
+    date = timeFromISO(date);
+  }
+
+  return date.toLocaleString({
+    month: 'short',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+}
