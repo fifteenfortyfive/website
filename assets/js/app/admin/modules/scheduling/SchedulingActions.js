@@ -29,6 +29,23 @@ export function addRun(scheduleId, runId, index = 0) {
   );
 }
 
+export function updateActivity(scheduleId, activityId, changes) {
+  return commonThunk(
+    {
+      method: 'post',
+      path: `/api/v1/schedules/${scheduleId}/update-activity`,
+      body: {
+        // eslint-disable-next-line camelcase
+        activity_id: activityId,
+        changes,
+      },
+    },
+    (dispatch, response) => {
+      dispatch(receiveSchedule(response));
+    }
+  );
+}
+
 export function removeActivity(scheduleId, activityId) {
   return commonThunk(
     {

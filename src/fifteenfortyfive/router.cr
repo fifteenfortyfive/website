@@ -108,6 +108,7 @@ router AppRouter do
 
         post "/:schedule_id/add-activity", to: "aPI::Schedules#add_activity"
         post "/:schedule_id/remove-activity", to: "aPI::Schedules#remove_activity"
+        post "/:schedule_id/update-activity", to: "aPI::Schedules#update_activity"
       end
 
       scope "accounts" do

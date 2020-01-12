@@ -3,6 +3,7 @@ import { useCallback } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '../../../../uikit/Button';
+import ButtonGroup from '../../../../uikit/ButtonGroup';
 import Header from '../../../../uikit/Header';
 import Icon from '../../../../uikit/Icon';
 import Text from '../../../../uikit/Text';
@@ -16,7 +17,7 @@ const SchedulingActivity = props => {
   const dispatch = useDispatch();
   const { activityId, offset, startTime } = props;
 
-  const { scheduleId, run, game, category, runner } = useSelector(state => {
+  const { scheduleId, activity, run, game, category, runner } = useSelector(state => {
     const activity = SchedulingStore.getActivity(state, { activityId });
     const run = SchedulingStore.getRun(state, { runId: activity.run_id });
     return {
@@ -32,6 +33,10 @@ const SchedulingActivity = props => {
   const handleRemoveActivity = useCallback(() => {
     dispatch(SchedulingActions.removeActivity(scheduleId, activityId));
   }, [scheduleId, activityId]);
+
+  const handleMoveUp = useCallback(() => {
+    dispatch(SchedulingActions.updateActivity(scheduleId, activity.id, { index: activity.index - 1 }));
+  }, [scheduleId, activity]);
 
   const estimatedStart = startTime.plus({ seconds: offset });
 
@@ -49,9 +54,14 @@ const SchedulingActivity = props => {
           &middot; EST: {TimeUtils.runTime(run.est_seconds)}
         </Text>
       </div>
-      <Button className={styles.button} size={Button.Sizes.ICON} onClick={handleRemoveActivity}>
-        <Icon name={Icon.Names.MINUS} />
-      </Button>
+      <ButtonGroup className={styles.buttons}>
+        <Button size={Button.Sizes.ICON} onClick={handleRemoveActivity}>
+          <Icon name={Icon.Names.MINUS} />
+        </Button>
+        <Button size={Button.Sizes.ICON} onClick={handleMoveUp}>
+          Up
+        </Button>
+      </ButtonGroup>
     </div>
   );
 };

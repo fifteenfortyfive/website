@@ -51,8 +51,48 @@ class API::SchedulesController < AppController
     end
 
     activities = Schedules.get_schedule_activities(schedule)
-    activities = Schedules.add_activity(activities, changeset.instance, params.index)
+    activities = Schedules.add_activity(activities, changeset.instance, params.index || 0)
     activities = Schedules.update_schedule_activities(schedule, activities)
+
+    schedule = Schedules.get_schedule(schedule_id)
+    render_json({
+      schedule: schedule,
+    })
+  end
+
+  struct UpdateActivityParams
+    include JSON::Serializable
+
+    property activity_id : Int32
+    property changes : JSON::Any
+  end
+
+  def update_activity
+    schedule_id = url_params["schedule_id"]
+    params = structured_params(UpdateActivityParams)
+
+    unless schedule = Schedules.get_schedule(schedule_id)
+      return render_error_json(Errors::NotFound)
+    end
+
+    unless activity = Schedules.get_activity(params.activity_id)
+      return render_error_json(Errors::NotFound)
+    end
+
+    changes = params.changes.as_h
+    requested_index = changes.delete("index").try(&.as_i)
+    previous_index = activity.index
+    changeset = Schedules.update_activity(activity, changes)
+
+    unless changeset.valid?
+      return render_error_json(Errors::Unprocessable)
+    end
+
+    if requested_index && requested_index != previous_index
+      activities = Schedules.get_schedule_activities(schedule)
+      activities = Schedules.add_activity(activities, changeset.instance, requested_index || 0)
+      activities = Schedules.update_schedule_activities(schedule, activities)
+    end
 
     schedule = Schedules.get_schedule(schedule_id)
     render_json({

@@ -79,15 +79,13 @@ module Schedules
   # Adds _or moves_ an activity on the schedule. Activities may only appear
   # once, so if the activity is already on the schedule, it is first removed,
   # then re-added to the list.
-  def add_activity(activities : Array(Activity), new_activity : Activity, position : Int32? = nil)
-    position = position ? position.clamp(0, activities.size - 1) : activities.size - 1
-
+  def add_activity(activities : Array(Activity), new_activity : Activity, given_position : Int32)
+    position = given_position.clamp(0, activities.size - 1)
     activities = activities.reduce([] of Activity?) do |acc, activity|
       # If the requested index is after the current index, removing the entry
       # will shift everything left by one, so the requested index needs to be
       # decremented as well.
       if activity.is_same(new_activity)
-        puts "found same activity, removing"
         next acc << nil
       end
 
