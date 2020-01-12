@@ -29,6 +29,22 @@ export function addRun(scheduleId, runId, index = 0) {
   );
 }
 
+export function removeActivity(scheduleId, activityId) {
+  return commonThunk(
+    {
+      method: 'post',
+      path: `/api/v1/schedules/${scheduleId}/remove-activity`,
+      body: {
+        // eslint-disable-next-line camelcase
+        activity_id: activityId,
+      },
+    },
+    (dispatch, response) => {
+      dispatch(receiveSchedule(response));
+    }
+  );
+}
+
 export function receiveSchedulingData({ schedule, runs, runners, games, categories, event }) {
   return {
     type: 'admin/RECEIVE_SCHEDULING_DATA',
