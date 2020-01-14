@@ -1,4 +1,20 @@
 .container {
+  box-sizing: border-box;
+
+  &:hover {
+    background-color: var(--primary-bg-200);
+  }
+
+  &:first-child {
+    border-top: 1px solid var(--primary-bg);
+  }
+
+  &.editing {
+    background-color: var(--primary-bg-300);
+  }
+}
+
+.mainRow {
   display: flex;
   align-items: center;
   justify-content: stretch;
@@ -8,14 +24,7 @@
   margin: 0 4px;
   border-bottom: 1px solid var(--primary-bg);
   border-collapse: collapse;
-
-  &:hover {
-    background-color: var(--primary-bg-200);
-  }
-
-  &:first-child {
-    border-top: 1px solid var(--primary-bg);
-  }
+  box-sizing: border-box;
 }
 
 .time {
@@ -32,4 +41,9 @@
   flex: 0 1 auto;
   float: right;
   margin: 0;
+}
+
+.form {
+  width: 100%;
+  padding: 16px;
 }
