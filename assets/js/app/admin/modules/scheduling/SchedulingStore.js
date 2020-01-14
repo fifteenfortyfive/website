@@ -48,8 +48,10 @@ export const getActivitiesWithOffsets = createSelector([getActivities, getRunsBy
   let nextOffset = 0;
   return activities.map(activity => {
     const run = runs[activity.run_id];
+    const runSeconds = run != null && run.est_seconds ? run.est_seconds : 0;
     const currentOffset = nextOffset;
-    nextOffset += activity.setup_seconds + run.est_seconds + activity.teardown_seconds;
+
+    nextOffset += activity.setup_seconds + runSeconds + activity.teardown_seconds;
     return {
       activity,
       offset: currentOffset,
