@@ -19,6 +19,10 @@ export const getRun = createCachedSelector(
   [getSchedulingState, getProp('runId')],
   (state, runId) => state.runs[runId]
 )(getProp('runId'));
+export const getAvailableRuns = createSelector([getRuns, getActivities], (runs, activities) => {
+  const scheduledRunIds = activities.map(activity => activity.run_id);
+  return runs.filter(run => !scheduledRunIds.includes(run.id));
+});
 
 export const getRunners = createSelector([getSchedulingState], state => Object.values(state.runners));
 export const getRunner = createCachedSelector(

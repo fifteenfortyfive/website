@@ -14,7 +14,7 @@ shards:
 
   crecto:
     github: faultyserver/crecto
-    commit: 5fe764eaf4ddeae4d4df44e13f6595d037639625
+    commit: e20f7a322aca265f774d9c0fcbc0f2d3e1f8c9b6
 
   db:
     github: crystal-lang/crystal-db

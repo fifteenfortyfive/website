@@ -6,10 +6,15 @@
   height: 100%;
   padding: 8px;
   margin: 0 4px;
-  border-radius: 4px;
+  border-bottom: 1px solid var(--primary-bg);
+  border-collapse: collapse;
 
   &:hover {
     background-color: var(--primary-bg-200);
+  }
+
+  &:first-child {
+    border-top: 1px solid var(--primary-bg);
   }
 }
 

@@ -17,14 +17,16 @@ const SchedulingBuilder = props => {
   return (
     <div>
       <Text>Event starts at {TimeUtils.simpleDateTime(event.start_time)}</Text>
-      {activities.map(({ activity, offset }) => (
-        <SchedulingActivity
-          key={activity.id}
-          activityId={activity.id}
-          offset={offset}
-          startTime={startTime}
-        />
-      ))}
+      <div>
+        {activities.map(({ activity, offset }) => (
+          <SchedulingActivity
+            key={activity.id}
+            activityId={activity.id}
+            offset={offset}
+            startTime={startTime}
+          />
+        ))}
+      </div>
     </div>
   );
 };

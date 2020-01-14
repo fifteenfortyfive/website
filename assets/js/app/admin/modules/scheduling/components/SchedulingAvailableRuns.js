@@ -5,7 +5,7 @@ import * as SchedulingStore from '../SchedulingStore';
 import SchedulingAvailableRun from './SchedulingAvailableRun';
 
 const SchedulingAvailableRuns = props => {
-  const runs = useSelector(SchedulingStore.getRuns);
+  const runs = useSelector(SchedulingStore.getAvailableRuns);
 
   return (
     <div>

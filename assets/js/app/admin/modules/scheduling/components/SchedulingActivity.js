@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useCallback } from 'preact/hooks';
+import { useCallback, useState } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '../../../../uikit/Button';
@@ -30,12 +30,27 @@ const SchedulingActivity = props => {
     };
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleRemoveActivity = useCallback(() => {
-    dispatch(SchedulingActions.removeActivity(scheduleId, activityId));
+    setLoading(true);
+    dispatch(SchedulingActions.removeActivity(scheduleId, activityId))
+      .then(() => setLoading(false))
+      .catch(() => setLoading(false));
   }, [scheduleId, activityId]);
 
   const handleMoveUp = useCallback(() => {
-    dispatch(SchedulingActions.updateActivity(scheduleId, activity.id, { index: activity.index - 1 }));
+    setLoading(true);
+    dispatch(SchedulingActions.updateActivity(scheduleId, activity.id, { index: activity.index - 1 }))
+      .then(() => setLoading(false))
+      .catch(() => setLoading(false));
+  }, [scheduleId, activity]);
+
+  const handleMoveDown = useCallback(() => {
+    setLoading(true);
+    dispatch(SchedulingActions.updateActivity(scheduleId, activity.id, { index: activity.index + 1 }))
+      .then(() => setLoading(false))
+      .catch(() => setLoading(false));
   }, [scheduleId, activity]);
 
   const estimatedStart = startTime.plus({ seconds: offset });
@@ -55,11 +70,14 @@ const SchedulingActivity = props => {
         </Text>
       </div>
       <ButtonGroup className={styles.buttons}>
-        <Button size={Button.Sizes.ICON} onClick={handleRemoveActivity}>
+        <Button size={Button.Sizes.ICON} onClick={handleRemoveActivity} disabled={loading}>
           <Icon name={Icon.Names.MINUS} />
         </Button>
-        <Button size={Button.Sizes.ICON} onClick={handleMoveUp}>
+        <Button size={Button.Sizes.ICON} onClick={handleMoveUp} disabled={loading}>
           Up
+        </Button>
+        <Button size={Button.Sizes.ICON} onClick={handleMoveDown} disabled={loading}>
+          Down
         </Button>
       </ButtonGroup>
     </div>

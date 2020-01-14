@@ -47,13 +47,10 @@ class API::SchedulesController < AppController
 
     changeset = Schedules.create_activity({schedule_id: schedule.id, run_id: run.id})
     unless changeset.valid?
-      return render_error_json(Errors::InternalServerError)
+      return render_error_json(Errors::Unprocessable)
     end
 
-    activities = Schedules.get_schedule_activities(schedule)
-    activities = Schedules.add_activity(activities, changeset.instance, params.index || 0)
-    activities = Schedules.update_schedule_activities(schedule, activities)
-
+    Schedules.add_activity(schedule, changeset.instance, params.index || 0)
     schedule = Schedules.get_schedule(schedule_id)
     render_json({
       schedule: schedule,
@@ -80,8 +77,9 @@ class API::SchedulesController < AppController
     end
 
     changes = params.changes.as_h
-    requested_index = changes.delete("index").try(&.as_i)
-    previous_index = activity.index
+    # Index will never be anything other than Int32, but crecto doesn't guarantee that.
+    previous_index = activity.index.to_s.to_i32
+    requested_index = changes["index"]?.try(&.as_i)
     changeset = Schedules.update_activity(activity, changes)
 
     unless changeset.valid?
@@ -89,9 +87,7 @@ class API::SchedulesController < AppController
     end
 
     if requested_index && requested_index != previous_index
-      activities = Schedules.get_schedule_activities(schedule)
-      activities = Schedules.add_activity(activities, changeset.instance, requested_index || 0)
-      activities = Schedules.update_schedule_activities(schedule, activities)
+      Schedules.move_activity(schedule, previous_index, requested_index)
     end
 
     schedule = Schedules.get_schedule(schedule_id)
@@ -117,9 +113,7 @@ class API::SchedulesController < AppController
       return render_error_json(Errors::NotFound)
     end
 
-    activities = Schedules.get_schedule_activities(schedule)
-    activities = Schedules.remove_activity(activities, params.activity_id)
-    activities = Schedules.update_schedule_activities(schedule, activities)
+    Schedules.remove_activity(schedule, params.activity_id)
 
     schedule = Schedules.get_schedule(schedule_id)
     render_json({
