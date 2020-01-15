@@ -5,8 +5,12 @@ export function getUTCNow() {
   return DateTime.utc();
 }
 
-export function runTime(seconds) {
-  return Duration.fromMillis(seconds * 1000).toFormat('hh:mm:ss');
+export function runTime(seconds, { shrink = false } = {}) {
+  if (shrink && seconds < 60 * 60) {
+    return Duration.fromMillis(seconds * 1000).toFormat('mm:ss');
+  } else {
+    return Duration.fromMillis(seconds * 1000).toFormat('hh:mm:ss');
+  }
 }
 
 export function timeFromISO(timeString) {

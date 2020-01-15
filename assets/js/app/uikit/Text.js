@@ -7,6 +7,7 @@ const Sizes = {
   SIZE_24: 'size24',
   SIZE_20: 'size20',
   SIZE_16: 'size16',
+  SIZE_14: 'size14',
   SIZE_12: 'size12',
   SIZE_10: 'size10',
 };

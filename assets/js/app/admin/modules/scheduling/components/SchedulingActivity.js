@@ -34,6 +34,8 @@ const SchedulingActivity = props => {
 
   const [loading, setLoading] = useState(false);
   const [editing, setEditing] = useState(false);
+  const [setupSeconds, setSetupSeconds] = useState(activity.setup_seconds);
+  const [teardownSeconds, setTeardownSeconds] = useState(activity.teardown_seconds);
 
   const handleRemoveActivity = useCallback(() => {
     setLoading(true);
@@ -62,17 +64,31 @@ const SchedulingActivity = props => {
 
   const handleSave = useCallback(() => {
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setEditing(false);
-    }, 450);
-  });
+    dispatch(
+      SchedulingActions.updateActivity(scheduleId, activity.id, {
+        /* eslint-disable camelcase */
+        setup_seconds: setupSeconds,
+        teardown_seconds: teardownSeconds,
+        /* eslint-enable camelcase */
+      })
+    )
+      .then(() => {
+        setLoading(false);
+        setEditing(false);
+      })
+      .catch(() => setLoading(false));
+  }, [setupSeconds, teardownSeconds]);
 
   const estimatedStart = startTime.plus({ seconds: offset });
 
   return (
     <div className={classNames(styles.container, { [styles.editing]: editing })}>
       <div className={styles.mainRow}>
+        <div className={styles.index}>
+          <Text marginless>
+            <strong>{activity.index + 1}</strong>
+          </Text>
+        </div>
         <div className={styles.time}>
           <Text marginless>{TimeUtils.shortDateTime(estimatedStart)}</Text>
         </div>
@@ -80,9 +96,15 @@ const SchedulingActivity = props => {
           <Header size={Header.Sizes.H5}>
             {game.name} - {category.name}
           </Header>
-          <Text marginless>
+          <Text marginless size={Text.Sizes.SIZE_14}>
             <strong>{runner.username} </strong>
             &middot; EST: {TimeUtils.runTime(run.est_seconds)}
+            {activity.setup_seconds
+              ? ` + ${TimeUtils.runTime(activity.setup_seconds, { shrink: true })} setup`
+              : null}
+            {activity.teardown_seconds
+              ? ` + ${TimeUtils.runTime(activity.teardown_seconds, { shrink: true })} teardown`
+              : null}
           </Text>
         </div>
         <ButtonGroup className={styles.buttons}>
@@ -103,8 +125,8 @@ const SchedulingActivity = props => {
 
       {editing ? (
         <div className={styles.form}>
-          <RunTimeInput label="Setup Time" value={activity.setup_seconds} />
-          <RunTimeInput label="Teardown Time" value={activity.teardown_seconds} />
+          <RunTimeInput label="Setup Time" value={setupSeconds} onChange={setSetupSeconds} />
+          <RunTimeInput label="Teardown Time" value={teardownSeconds} onChange={setTeardownSeconds} />
           <Button onClick={handleSave} disabled={loading}>
             Save Changes
           </Button>

@@ -7,16 +7,23 @@ import * as SchedulingStore from '../SchedulingStore';
 import SchedulingActivity from './SchedulingActivity';
 
 const SchedulingBuilder = props => {
-  const { activities, event } = useSelector(state => ({
+  const { activities, totalSeconds, event } = useSelector(state => ({
     activities: SchedulingStore.getActivitiesWithOffsets(state),
+    totalSeconds: SchedulingStore.getTotalEventSeconds(state),
     event: SchedulingStore.getEvent(state),
   }));
 
   const startTime = TimeUtils.timeFromISO(event.start_time);
 
+  console.log(totalSeconds);
+  const scheduleEndTime = startTime.plus({ seconds: totalSeconds });
+
   return (
     <div>
-      <Text>Event starts at {TimeUtils.simpleDateTime(event.start_time)}</Text>
+      <Text>
+        Event runs from {TimeUtils.simpleDateTime(event.start_time)} to{' '}
+        {TimeUtils.simpleDateTime(scheduleEndTime)}
+      </Text>
       <div>
         {activities.map(({ activity, offset }) => (
           <SchedulingActivity

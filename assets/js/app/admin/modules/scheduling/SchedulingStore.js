@@ -50,11 +50,25 @@ export const getActivitiesWithOffsets = createSelector([getActivities, getRunsBy
     const run = runs[activity.run_id];
     const runSeconds = run != null && run.est_seconds ? run.est_seconds : 0;
     const currentOffset = nextOffset;
+    const setup = activity.setup_seconds != null ? activity.setup_seconds : 0;
+    const teardown = activity.teardown_seconds != null ? activity.teardown_seconds : 0;
 
-    nextOffset += activity.setup_seconds + runSeconds + activity.teardown_seconds;
+    nextOffset += setup + runSeconds + teardown;
     return {
       activity,
       offset: currentOffset,
     };
   });
 });
+export const getTotalEventSeconds = createSelector(
+  [getActivitiesWithOffsets, getRunsById],
+  (activities, runs) => {
+    const { activity: last, offset } = _.last(activities);
+    const run = runs[last.run_id];
+    const runSeconds = run != null && run.est_seconds ? run.est_seconds : 0;
+    const setup = last.setup_seconds != null ? last.setup_seconds : 0;
+    const teardown = last.teardown_seconds != null ? last.teardown_seconds : 0;
+
+    return offset + setup + runSeconds + teardown;
+  }
+);
