@@ -20,18 +20,17 @@ const LoginView = props => {
   const { dispatch } = props;
   const { redirectRoute } = RouterUtils.getSearchParams();
 
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, isLoaded } = useAuth();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [submitting, setSubmitting] = useState(false);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
-    console.log(isLoggedIn, redirectRoute);
-    if (isLoggedIn) {
+    if (isLoaded && isLoggedIn) {
       RouterUtils.navigateTo(redirectRoute || Routes.ME, { replace: true });
     }
-  }, [isLoggedIn, redirectRoute]);
+  }, [isLoaded, isLoggedIn, redirectRoute]);
 
   const handleLogin = useCallback(() => {
     setFailed(false);
@@ -44,7 +43,7 @@ const LoginView = props => {
         setFailed(true);
         setSubmitting(false);
       });
-  }, [username, password, submitting, failed, redirectRoute, dispatch]);
+  }, [username, password, dispatch]);
 
   return (
     <Layout>
