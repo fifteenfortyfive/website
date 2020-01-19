@@ -1,18 +1,16 @@
 import { h } from 'preact';
 import { useEffect } from 'preact/hooks';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Router, Route, Switch } from 'react-router-dom';
 
 import AdminRouter from './admin/AdminRouter';
+import useAuth from './hooks/useAuth';
 import AccountView from './modules/accounts/views/AccountView';
 import NewAccountView from './modules/accounts/views/NewAccountView';
-import * as AuthActions from './modules/auth/AuthActions';
-import * as AuthStore from './modules/auth/AuthStore';
 import LoginView from './modules/auth/views/LoginView';
 import EventView from './modules/events/views/EventView';
 import EventsView from './modules/events/views/EventsView';
 import * as MeActions from './modules/me/MeActions';
-import * as MeStore from './modules/me/MeStore';
 import MeView from './modules/me/views/MeView';
 import { history } from './modules/router/RouterUtils';
 import StreamsView from './modules/streams/views/StreamsView';
@@ -30,12 +28,7 @@ import { CURRENT_EVENT_ID, Routes } from './Constants';
 const App = props => {
   const dispatch = useDispatch();
 
-  const isLoggedIn = useSelector(AuthStore.isLoggedIn);
-  const currentUser = useSelector(MeStore.getAccount);
-
-  useEffect(() => {
-    dispatch(AuthActions.loadSession());
-  }, []);
+  const { isLoggedIn, account: currentUser } = useAuth();
 
   useEffect(() => {
     if (isLoggedIn && !currentUser) {

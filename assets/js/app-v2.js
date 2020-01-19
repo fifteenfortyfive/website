@@ -6,9 +6,12 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { faTrophy, faArrowCircleDown, faUpload } from '@fortawesome/free-solid-svg-icons';
 
 import App from './app/App';
+import * as AuthActions from './app/modules/auth/AuthActions';
 import { store } from './app/Reducer';
 
 library.add(fab, far, faTrophy, faArrowCircleDown, faUpload);
+
+store.dispatch(AuthActions.loadSession());
 
 render(
   <Provider store={store}>

@@ -35,7 +35,7 @@ const Event = props => {
 
   return (
     <Layout>
-      <Header size={Header.Sizes.H1}>Event {event.name}</Header>
+      <Header size={Header.Sizes.H1}>{event.name}</Header>
       <Header size={Header.Sizes.H2} withMargin>
         {event.series.name}
       </Header>
