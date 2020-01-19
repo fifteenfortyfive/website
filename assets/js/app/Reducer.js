@@ -12,7 +12,6 @@ import submissions from './modules/submissions/SubmissionsReducer';
 import dashboard from './modules/run-dashboard/RunDashboardReducer';
 import runs from './modules/runs/RunsReducer';
 import teams from './modules/teams/TeamsReducer';
-import fetching from './reducers/fetching';
 
 const combinedReducer = combineReducers({
   accounts,
@@ -20,7 +19,6 @@ const combinedReducer = combineReducers({
   auth,
   dashboard,
   events,
-  fetching,
   games,
   me,
   runs,
