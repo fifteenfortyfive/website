@@ -9,9 +9,9 @@ const getSchedulingState = state => state.admin.scheduling;
 const getProp = propName => (_state, props) => props[propName];
 
 export const getSchedule = createSelector([getSchedulingState], state => state.schedule);
-export const getActivities = createSelector([getSchedule], schedule =>
-  schedule != null && schedule.activites != null ? schedule.activities : []
-);
+export const getActivities = createSelector([getSchedule], schedule => {
+  return schedule != null && schedule.activities != null ? schedule.activities : [];
+});
 export const getActivity = createSelector([getActivities, getProp('activityId')], (activities, activityId) =>
   _.find(activities, { id: activityId })
 );
@@ -66,6 +66,7 @@ export const getActivitiesWithOffsets = createSelector([getActivities, getRunsBy
     };
   });
 });
+
 export const getTotalEventSeconds = createSelector(
   [getActivitiesWithOffsets, getRunsById],
   (activities, runs) => {

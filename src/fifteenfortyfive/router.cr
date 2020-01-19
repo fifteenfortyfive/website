@@ -99,6 +99,7 @@ router AppRouter do
       end
 
       scope "schedules" do
+        get "/", to: "aPI::Schedules#index"
         get "/:schedule_id", to: "aPI::Schedules#get"
         post "/", to: "aPI::Schedules#create"
 

@@ -2,6 +2,20 @@ require "../../../contexts/schedules"
 require "../../errors"
 
 class API::SchedulesController < AppController
+  def index
+    query = Query.new
+
+    if event_id = query_params["event_id"]?
+      query.where(event_id: event_id)
+    end
+
+    schedules = Schedules.list_schedules(query)
+
+    render_json({
+      schedules: schedules,
+    })
+  end
+
   def get
     query = Query.preload(:activities, Query.order_by("index"))
     schedule_id = url_params["schedule_id"]
