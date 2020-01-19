@@ -14,7 +14,7 @@ module Schedules
   end
 
   def list_schedules(query : Query = Query.new)
-    Repo.all(Schedule, query)
+    Repo.all(Schedule, schedule_preload_query(query))
   end
 
   def get_schedule(schedule_id, query : Query = Query.new)

@@ -9,7 +9,7 @@ import SchedulingAvailableRun from './SchedulingAvailableRun';
 const SchedulingAvailableRuns = props => {
   const [query, setQuery] = useState('');
 
-  const runs = useSelector(state => SchedulingStore.getRunsMatchingQuery(state, { query }));
+  const runs = useSelector(state => SchedulingStore.getAvailableRunsMatchingQuery(state, { query }));
 
   return (
     <div>

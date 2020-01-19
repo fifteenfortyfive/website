@@ -10,7 +10,7 @@ const getProp = propName => (_state, props) => props[propName];
 
 export const getSchedule = createSelector([getSchedulingState], state => state.schedule);
 export const getActivities = createSelector([getSchedule], schedule =>
-  schedule != null ? schedule.activities : []
+  schedule != null && schedule.activites != null ? schedule.activities : []
 );
 export const getActivity = createSelector([getActivities, getProp('activityId')], (activities, activityId) =>
   _.find(activities, { id: activityId })
@@ -69,7 +69,10 @@ export const getActivitiesWithOffsets = createSelector([getActivities, getRunsBy
 export const getTotalEventSeconds = createSelector(
   [getActivitiesWithOffsets, getRunsById],
   (activities, runs) => {
-    const { activity: last, offset } = _.last(activities);
+    const lastActivity = _.last(activities);
+    if (lastActivity == null) return 0;
+    const { activity: last, offset } = lastActivity;
+
     const run = runs[last.run_id];
     const runSeconds = run != null && run.est_seconds ? run.est_seconds : 0;
     const setup = last.setup_seconds != null ? last.setup_seconds : 0;
@@ -79,8 +82,8 @@ export const getTotalEventSeconds = createSelector(
   }
 );
 
-export const getRunsMatchingQuery = createCachedSelector(
-  [getRuns, getGamesById, getCategoriesById, getRunnersById, getProp('query')],
+export const getAvailableRunsMatchingQuery = createCachedSelector(
+  [getAvailableRuns, getGamesById, getCategoriesById, getRunnersById, getProp('query')],
   (runs, games, categories, runners, query) => {
     return runs.filter(run => {
       const game = games[run.game_id] ? games[run.game_id] : '';

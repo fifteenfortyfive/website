@@ -40,13 +40,6 @@ export const Routes = {
   LOGOUT: '/logout',
 };
 
-export const AdminRoutes = {
-  HOME: '/admin',
-  EVENT: '/admin/event',
-  EVENT_SCHEDULING: ({ eventId }) => `/admin/event/${eventId}/schedule`,
-  ACCOUNTS: '/admin/accounts',
-};
-
 export const ExternalRoutes = {
   CONTACT_URL: 'mailto:contact@fifteenfortyfive.org',
   VOLUNTEER_URL: 'mailto:volunteer@fifteenfortyfive.org',

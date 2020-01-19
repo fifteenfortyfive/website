@@ -97,7 +97,6 @@ const mapStateToProps = state => {
   return {
     accountId,
     account: state.me.account,
-    loadingAccount: state.fetching[`accounts.${accountId}`],
   };
 };
 

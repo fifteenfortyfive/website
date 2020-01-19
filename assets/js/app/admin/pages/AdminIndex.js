@@ -4,7 +4,8 @@ import Layout from '../../modules/layout/components/Layout';
 import Anchor from '../../uikit/Anchor';
 import Header from '../../uikit/Header';
 
-import { AdminRoutes, CURRENT_EVENT_ID } from '../../Constants';
+import { CURRENT_EVENT_ID } from '../../Constants';
+import { AdminRoutes } from '../AdminRouter';
 
 const AdminIndex = () => {
   return (
@@ -14,6 +15,9 @@ const AdminIndex = () => {
       <ul>
         <li>
           <Anchor href={AdminRoutes.ACCOUNTS}>Accounts</Anchor>
+        </li>
+        <li>
+          <Anchor href={AdminRoutes.EVENTS}>Events</Anchor>
         </li>
         <li>
           <Anchor href={AdminRoutes.EVENT_SCHEDULING({ eventId: CURRENT_EVENT_ID })}>Scheduling</Anchor>

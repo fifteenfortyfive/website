@@ -10,7 +10,7 @@ import Layout from '../../../../modules/layout/components/Layout';
 import Anchor from '../../../../uikit/Anchor';
 import Header from '../../../../uikit/Header';
 
-import { AdminRoutes } from '../../../../Constants';
+import { AdminRoutes } from '../../../AdminRouter';
 import styles from './Accounts.mod.css';
 
 const AdminAccounts = () => {

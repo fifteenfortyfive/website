@@ -25,10 +25,6 @@ router AppRouter do
   scope "admin", helper_prefix: "admin" do
     implements :api_admin_authorized
 
-    scope "v2" do
-      match "*", to: "admin::V2::App#index"
-    end
-
     match "*", to: "static#app_root"
   end
 
@@ -162,7 +158,10 @@ router AppRouter do
         implements :api_admin_authorized
 
         scope "events" do
+          get "/", to: "API::Admin::EventsController#index"
+
           scope ":event_id" do
+            get "/", to: "API::Admin::EventsController#get"
             get "/scheduling", to: "API::Admin::SchedulingController#get"
           end
         end
