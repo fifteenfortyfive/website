@@ -24,6 +24,7 @@ const TextInput = props => {
     onChange,
     onInput,
     className,
+    ...inputProps
   } = props;
 
   const handleChange = useCallback(
@@ -39,6 +40,7 @@ const TextInput = props => {
   return (
     <InputWrapper name={name} label={label} note={note} className={className}>
       <Tag
+        {...inputProps}
         type={type}
         name={name}
         value={value}

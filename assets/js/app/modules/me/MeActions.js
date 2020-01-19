@@ -73,6 +73,24 @@ export function persistPreferences(preferences) {
   );
 }
 
+export function updatePassword(currentPassword, newPassword) {
+  return commonThunk(
+    {
+      method: 'post',
+      path: '/api/v1/@me/update-password',
+      body: {
+        /* eslint-disable camelcase */
+        current_password: currentPassword,
+        new_password: newPassword,
+        /* eslint-enable camelcase */
+      },
+    },
+    (dispatch, response) => {
+      dispatch(receiveMe(response.account));
+    }
+  );
+}
+
 export function receivePreferences(preferences, descriptions) {
   return {
     type: 'RECEIVE_ACCOUNT_PREFERENCES',

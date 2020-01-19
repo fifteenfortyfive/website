@@ -51,11 +51,12 @@ class API::AccountsController < AppController
     end
 
     account = changeset.instance
-    sign_in_user(account)
+    session = sign_in_user(account)
     Streams.refresh_stream(account)
 
     render_json({
-      account: make_account_hash(account),
+      account:    make_account_hash(account),
+      session_id: session.id,
     })
   end
 

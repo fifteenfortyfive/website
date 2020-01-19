@@ -148,6 +148,7 @@ router AppRouter do
 
         get "/", to: "API::MeController#get"
         post "/", to: "API::MeController#update_account"
+        post "/update-password", to: "API::MeController#update_password"
 
         post "/avatar", to: "API::MeController#update_avatar"
 

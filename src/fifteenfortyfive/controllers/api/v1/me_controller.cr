@@ -52,6 +52,31 @@ class API::MeController < AppController
     end
   end
 
+  struct UpdatePasswordParams
+    include JSON::Serializable
+
+    property current_password : String
+    property new_password : String
+  end
+
+  def update_password
+    account = @context.current_user
+    params = structured_params(UpdatePasswordParams)
+
+    unless account.password_matches?(params.current_password)
+      return render_error_json(Errors::Unprocessable)
+    end
+
+    changeset = Accounts.update_account(account, {password: params.new_password})
+
+    if changeset.valid?
+      updated_account = changeset.instance
+      render_json({account: serialize_me(updated_account)})
+    else
+      render_error_json(Errors::Unprocessable)
+    end
+  end
+
   private def serialize_me(account : Accounts::Account)
     # The current user bypasses all visibility restrictions on their own data.
     {

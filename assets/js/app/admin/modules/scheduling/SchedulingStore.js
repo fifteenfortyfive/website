@@ -97,7 +97,6 @@ export const getRunsMatchingQuery = createCachedSelector(
       ]
         .filter(q => q)
         .join(' ');
-      console.log(haystack);
       return StringUtils.fuzzysearch(query.toLowerCase(), haystack.toLowerCase());
     });
   }

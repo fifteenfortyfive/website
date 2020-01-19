@@ -1,4 +1,5 @@
 import { commonThunk, denulled } from '../../Actions';
+import * as AuthActions from '../auth/AuthActions';
 
 export function fetchAccounts(accountIds) {
   return commonThunk(
@@ -51,7 +52,7 @@ export function createAccount(accountProps) {
       },
     },
     (dispatch, response) => {
-      dispatch(receiveAccounts([response.account]));
+      dispatch(AuthActions.loginSuccess(response.session_id));
     }
   );
 }

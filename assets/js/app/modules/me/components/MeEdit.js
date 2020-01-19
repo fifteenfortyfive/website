@@ -4,9 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import * as MeActions from '../MeActions';
 
+import * as RouterUtils from '../../router/RouterUtils';
 import Avatar from '../../../uikit/Avatar';
 import Button from '../../../uikit/Button';
 import TextInput from '../../../uikit/TextInput';
+
+import { Routes } from '../../../Constants';
 
 class MeEdit extends Component {
   constructor(props) {
@@ -171,6 +174,11 @@ class MeEdit extends Component {
           <span class="control">
             <Button disabled={submitting} onClick={onFinish}>
               Cancel
+            </Button>
+          </span>
+          <span class="control">
+            <Button disabled={submitting} onClick={() => RouterUtils.navigateTo(Routes.ME_CHANGE_PASSWORD)}>
+              Change Password
             </Button>
           </span>
         </div>

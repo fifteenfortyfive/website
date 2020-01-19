@@ -41,6 +41,16 @@
   }
 }
 
+.colorSecondary {
+  background-color: var(--secondary);
+  color: var(--white);
+}
+
+.colorWarning {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
 .sizeIcon {
   padding: 8px;
 }

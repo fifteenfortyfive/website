@@ -20,6 +20,7 @@ export const Routes = {
 
   // Me
   ME: '/@me',
+  ME_CHANGE_PASSWORD: '/@me/change-password',
   ME_EDIT: '/@me/edit',
   ME_PREFERENCES: '/@me/preferences',
   ME_RUN_DASHBOARD: '/@me/run-dashboard',

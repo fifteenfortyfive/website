@@ -8,6 +8,7 @@ import Layout from '../../layout/components/Layout';
 import * as RouterUtils from '../../router/RouterUtils';
 import RunDashboard from '../../run-dashboard/components/RunDashboard';
 import * as MeActions from '../MeActions';
+import ChangePassword from '../components/MeChangePassword';
 import Edit from '../components/MeEdit';
 import Preferences from '../components/MePreferences';
 
@@ -67,6 +68,9 @@ class MeView extends Component {
 
           <div class="column is-8">
             <Switch>
+              <Route path={Routes.ME} exact>
+                <div>Hi there's nothing here yet</div>
+              </Route>
               <Route path={Routes.ME_PREFERENCES} exact>
                 <Preferences onFinish={() => RouterUtils.navigateTo(Routes.ME)} />
               </Route>
@@ -76,8 +80,8 @@ class MeView extends Component {
               <Route path={Routes.ME_EDIT} exact>
                 <Edit onFinish={() => RouterUtils.navigateTo(Routes.ME)} />
               </Route>
-              <Route path={Routes.ME} exact>
-                <div>Hi there's nothing here yet</div>
+              <Route path={Routes.ME_CHANGE_PASSWORD} exact>
+                <ChangePassword onFinish={() => RouterUtils.navigateTo(Routes.ME)} />
               </Route>
             </Switch>
           </div>

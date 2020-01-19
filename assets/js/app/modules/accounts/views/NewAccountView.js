@@ -1,8 +1,8 @@
 import { h } from 'preact';
 import { useCallback, useEffect, useState } from 'preact/hooks';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import * as AuthStore from '../../auth/AuthStore';
+import useAuth from '../../../hooks/useAuth';
 import Layout from '../../layout/components/Layout';
 import * as RouterUtils from '../../router/RouterUtils';
 import * as AccountActions from '../AccountActions';
@@ -17,10 +17,10 @@ import PasswordInput from '../../../uikit/PasswordInput';
 import { Routes } from '../../../Constants';
 
 const NewAccountView = props => {
-  const isLoggedIn = useSelector(AuthStore.isLoggedIn);
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
-    if (props.isLoggedIn) {
+    if (isLoggedIn) {
       RouterUtils.navigateTo(props.redirectRoute || Routes.ME);
     }
   }, [isLoggedIn]);
@@ -33,11 +33,11 @@ const NewAccountView = props => {
 
   const canSubmit =
     username &&
-    username.length > 2 &&
+    username.length >= 2 &&
     password &&
     password.length > 2 &&
     discordUsername &&
-    discordUsername.length > 2 &&
+    discordUsername.length >= 2 &&
     discordDiscriminator &&
     discordDiscriminator.length === 4 &&
     parseInt(discordDiscriminator);

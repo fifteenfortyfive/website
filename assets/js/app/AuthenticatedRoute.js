@@ -13,7 +13,9 @@ const AuthenticatedRoute = props => {
   const { isLoggedIn } = useAuth();
 
   useEffect(() => {
-    Routes.LOGIN({ redirect: RouterUtils.getCurrentPath() });
+    if (!isLoggedIn) {
+      RouterUtils.navigateTo(Routes.LOGIN({ redirect: RouterUtils.getCurrentPath() }));
+    }
   }, [isLoggedIn]);
 
   return <Route {...routeProps}>{isLoggedIn ? children : null}</Route>;
