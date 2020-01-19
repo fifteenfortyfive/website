@@ -2,6 +2,9 @@ import { createSelector } from 'reselect';
 import createCachedSelector from 're-reselect';
 import _ from 'lodash';
 
+import * as StringUtils from '../../../utils/StringUtils';
+import * as TimeUtils from '../../../utils/TimeUtils';
+
 const getSchedulingState = state => state.admin.scheduling;
 const getProp = propName => (_state, props) => props[propName];
 
@@ -25,18 +28,21 @@ export const getAvailableRuns = createSelector([getRuns, getActivities], (runs, 
 });
 
 export const getRunners = createSelector([getSchedulingState], state => Object.values(state.runners));
+export const getRunnersById = createSelector([getSchedulingState], state => state.runners);
 export const getRunner = createCachedSelector(
   [getSchedulingState, getProp('runnerId')],
   (state, runnerId) => state.runners[runnerId]
 )(getProp('runnerId'));
 
 export const getGames = createSelector([getSchedulingState], state => Object.values(state.games));
+export const getGamesById = createSelector([getSchedulingState], state => state.games);
 export const getGame = createCachedSelector(
   [getSchedulingState, getProp('gameId')],
   (state, gameId) => state.games[gameId]
 )(getProp('gameId'));
 
 export const getCategories = createSelector([getSchedulingState], state => Object.values(state.categories));
+export const getCategoriesById = createSelector([getSchedulingState], state => state.categories);
 export const getCategory = createCachedSelector(
   [getSchedulingState, getProp('categoryId')],
   (state, categoryId) => state.categories[categoryId]
@@ -72,3 +78,27 @@ export const getTotalEventSeconds = createSelector(
     return offset + setup + runSeconds + teardown;
   }
 );
+
+export const getRunsMatchingQuery = createCachedSelector(
+  [getRuns, getGamesById, getCategoriesById, getRunnersById, getProp('query')],
+  (runs, games, categories, runners, query) => {
+    return runs.filter(run => {
+      const game = games[run.game_id] ? games[run.game_id] : '';
+      const category = categories[run.category_id];
+      const runner = runners[run.account_id];
+      const estimate = run.est_seconds ? TimeUtils.runTime(run.est_seconds) : '';
+      const haystack = [
+        game && game.name,
+        category && category.name,
+        runner && runner.username,
+        estimate,
+        runner && runner.twitch,
+        runner && runner.twitter,
+      ]
+        .filter(q => q)
+        .join(' ');
+      console.log(haystack);
+      return StringUtils.fuzzysearch(query.toLowerCase(), haystack.toLowerCase());
+    });
+  }
+)(getProp('query'));

@@ -15,7 +15,6 @@ const SchedulingBuilder = props => {
 
   const startTime = TimeUtils.timeFromISO(event.start_time);
 
-  console.log(totalSeconds);
   const scheduleEndTime = startTime.plus({ seconds: totalSeconds });
 
   return (

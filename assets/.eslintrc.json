@@ -12,6 +12,7 @@
     }
   },
   "rules": {
-    "camelcase": ["error", { "allow": ["^_"] }]
+    "camelcase": ["error", { "allow": ["^_"] }],
+    "no-labels": ["error", { "allowLoop": true }]
   }
 }
