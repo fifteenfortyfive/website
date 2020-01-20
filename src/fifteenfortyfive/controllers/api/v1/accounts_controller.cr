@@ -4,7 +4,7 @@ require "../../errors"
 class API::AccountsController < AppController
   def index
     accounts =
-      if account_ids = query_params["account_ids"]?
+      if (account_ids = query_params["account_ids"]?) && !account_ids.empty?
         Accounts.list_accounts(Query.where(id: account_ids.split(',')))
       else
         Accounts.list_accounts

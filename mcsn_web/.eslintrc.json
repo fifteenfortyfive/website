@@ -1,0 +1,19 @@
+{
+  "parser": "babel-eslint",
+  "plugins": ["standard", "promise", "import", "react", "react-hooks", "prettier"],
+  "extends": ["standard", "standard-jsx", "prettier", "prettier/react", "prettier/standard"],
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "settings": {
+    "react": {
+      "pragma": "h"
+    }
+  },
+  "ignorePatterns": ["node_modules/", "public/"],
+  "rules": {
+    "camelcase": ["error", { "allow": ["^_"] }],
+    "no-labels": ["error", { "allowLoop": true }]
+  }
+}
