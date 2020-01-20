@@ -5,7 +5,7 @@ require "awscr-s3"
 
 require "dotenv"
 
-Dotenv.load!
+Dotenv.load!("../.env")
 APP_PORT           = ENV["PORT"].to_i
 ANALYTICS_ENDPOINT = ENV["ANALYTICS_ENDPOINT"]
 

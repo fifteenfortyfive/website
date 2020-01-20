@@ -22,12 +22,6 @@ router AppRouter do
     use AuthorizationHandler.new(required_level: :admin)
   end
 
-  scope "admin", helper_prefix: "admin" do
-    implements :api_admin_authorized
-
-    match "*", to: "static#app_root"
-  end
-
   scope "api" do
     scope "v1" do
       use CORSHandler.new("/api/v1")
@@ -226,17 +220,4 @@ router AppRouter do
 
     match "*", to: "aPI::Errors#not_found"
   end
-
-  # # Static assets
-  scope "css" do
-    use HTTP::StaticFileHandler.new("public/", fallthrough: false, directory_listing: false)
-  end
-  scope "js" do
-    use HTTP::StaticFileHandler.new("public/", fallthrough: false, directory_listing: false)
-  end
-  scope "images" do
-    use HTTP::StaticFileHandler.new("public/", fallthrough: false, directory_listing: false)
-  end
-
-  match "*", to: "static#app_root"
 end
