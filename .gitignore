@@ -23,6 +23,5 @@ webpack-stats.json
 
 # Executables
 bin/
-/mcsn
 /sentry
 /*.dwarf

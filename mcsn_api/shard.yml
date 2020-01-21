@@ -9,8 +9,8 @@ description: |
   API service for MCSN.
 
 targets:
-  mcsn:
-    main: src/mcsn.cr
+  mcsn_api:
+    main: src/mcsn_api.cr
   tool:
     main: src/tool.cr
 

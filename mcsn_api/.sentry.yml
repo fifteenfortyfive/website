@@ -1,7 +1,6 @@
-display_name: 1545 website
+display_name: MCSN API
 info: true
-build: crystal build src/mcsn.cr --error-trace
+build: crystal build src/mcsn_api.cr --error-trace
 watch:
   - src/mcsn/*.cr
   - src/mcsn/**/*.cr
-  - src/analytics/*.cr
