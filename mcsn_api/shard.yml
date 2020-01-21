@@ -1,4 +1,4 @@
-name: fifteenfortyfive
+name: mcsn_api
 version: 0.3.0
 crystal: 0.32.1
 license: MIT
@@ -6,11 +6,11 @@ authors:
   - Jon Egeland <jonegeland@gmail.com>
 
 description: |
-  Home page and management site for the 1545.
+  API service for MCSN.
 
 targets:
-  fifteenfortyfive:
-    main: src/fifteenfortyfive.cr
+  mcsn:
+    main: src/mcsn.cr
   tool:
     main: src/tool.cr
 

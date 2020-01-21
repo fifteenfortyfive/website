@@ -9,11 +9,11 @@ Dotenv.load!("../.env")
 APP_PORT           = ENV["PORT"].to_i
 ANALYTICS_ENDPOINT = ENV["ANALYTICS_ENDPOINT"]
 
-require "./fifteenfortyfive/router.cr"
-require "./fifteenfortyfive/repo.cr"
-require "./fifteenfortyfive/controllers/app_controller.cr"
-require "./fifteenfortyfive/services/stream_status_service.cr"
-require "./fifteenfortyfive/live-api/socket_service.cr"
+require "./mcsn/router.cr"
+require "./mcsn/repo.cr"
+require "./mcsn/controllers/app_controller.cr"
+require "./mcsn/services/stream_status_service.cr"
+require "./mcsn/live-api/socket_service.cr"
 require "./analytics/analytics.cr"
 
 visor = Honcho::Visor.new(strategy: Honcho::Strategy::ISOLATED)

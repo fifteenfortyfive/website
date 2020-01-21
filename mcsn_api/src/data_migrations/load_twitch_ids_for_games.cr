@@ -2,8 +2,8 @@
 require "pg"
 require "crecto"
 
-require "../fifteenfortyfive/repo.cr"
-require "../fifteenfortyfive/models/**"
+require "../mcsn/repo.cr"
+require "../mcsn/models/**"
 
 # Pre-determined mapping of game names to their twitch IDs. Don't want to
 # unnecessarily have to call out to Twitch for this info, which couldn't happen

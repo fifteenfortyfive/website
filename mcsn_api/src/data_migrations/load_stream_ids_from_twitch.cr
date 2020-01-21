@@ -2,10 +2,10 @@
 require "pg"
 require "crecto"
 
-require "../fifteenfortyfive/constants.cr"
-require "../fifteenfortyfive/repo.cr"
-require "../fifteenfortyfive/models/**"
-require "../fifteenfortyfive/services/**"
+require "../mcsn/constants.cr"
+require "../mcsn/repo.cr"
+require "../mcsn/models/**"
+require "../mcsn/services/**"
 
 accounts = Repo.all(Account)
 

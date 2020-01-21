@@ -6,8 +6,8 @@ require "crecto"
 require "dotenv"
 Dotenv.load!
 
-require "../fifteenfortyfive/contexts/inventory"
-require "../fifteenfortyfive/repo"
+require "../mcsn/contexts/inventory"
+require "../mcsn/repo"
 
 API_KEY = ENV["GIANTBOMB_API_KEY"]
 

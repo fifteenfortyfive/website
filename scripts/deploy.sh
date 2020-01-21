@@ -1,1 +1,1 @@
-nohup ./bin/fifteenfortyfive > log.fifteenfortyfive.txt 2>&1 &
+nohup ./bin/mcsn > log.mcsn.txt 2>&1 &

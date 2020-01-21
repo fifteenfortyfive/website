@@ -2,8 +2,8 @@
 require "pg"
 require "crecto"
 
-require "../fifteenfortyfive/repo.cr"
-require "../fifteenfortyfive/models/**"
+require "../mcsn/repo.cr"
+require "../mcsn/models/**"
 
 # A list of the time formats that I've seen from accounts on the site.
 # Ordering is somewhat important here. Crystal's Time parser doesn't care

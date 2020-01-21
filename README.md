@@ -1,6 +1,6 @@
-# The 1545 Website
+# The MCSN Website
 
-This repository contains all of the sources powering the website for [The 1545](fifteenfortyfive.org). This does _not_ include stream layouts or any other software developed for the event. Those will be made available on an individual basis as separate repositories under this GitHub organization.
+This repository contains all of the sources powering the website for [MCSN](mcsn.gg). This does _not_ include stream layouts or any other software developed for the event. Those will be made available on an individual basis as separate repositories under this GitHub organization.
 
 If you have any questions or would like to help contribute, please contact us at contact@fifteenfortyfive.org, or in [our community Discord server](https://discord.fifteenfortyfive.org).
 
@@ -42,7 +42,7 @@ Database migrations are done using the `tool` executable. You can build it with 
 
 ### Running
 
-Start the web server with `./bin/fifteenfortyfive` (or `sentry` if you're using it), then go to `localhost:<PORT>` (where `PORT` is what you configured in `.env`) to see the site.
+Start the web server with `./bin/mcsn` (or `sentry` if you're using it), then go to `localhost:<PORT>` (where `PORT` is what you configured in `.env`) to see the site.
 
 If you're using `sentry`, the server will auto-restart every time you make changes to the backend code. Otherwise, you'll need to re-build and re-run it whenever you want to see changes.
 
@@ -122,7 +122,7 @@ Two scripts are provided under the `scripts` directory for building a new releas
 
 `./scripts/build.sh` will pull from the remote git repository, build the application, and then build the assets.
 
-`./scripts/deploy.sh` will start the application in the background and output logs to `log.fifteenfortyfive.txt`.
+`./scripts/deploy.sh` will start the application in the background and output logs to `log.mcsn.txt`.
 
 These scripts will likely be updated for a more robust deployment solution in the near future.
 

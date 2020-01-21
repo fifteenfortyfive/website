@@ -2,8 +2,8 @@
 require "pg"
 require "crecto"
 
-require "../fifteenfortyfive/repo.cr"
-require "../fifteenfortyfive/models/**"
+require "../mcsn/repo.cr"
+require "../mcsn/models/**"
 
 submissions = Repo.all(Submissions::SubmissionMeta, preload: [:account])
 games = Repo.all(Game)

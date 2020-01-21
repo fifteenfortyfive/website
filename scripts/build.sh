@@ -8,7 +8,7 @@ asdf install
 
 # Build the application
 echo ">> building application"
-shards build fifteenfortyfive
+shards build mcsn
 
 # Build assets
 echo ">> compiling assets"
