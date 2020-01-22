@@ -6,9 +6,11 @@ module MCSN
     class RunAPI < Admiral::Command
       define_flag hostname : String,
         description: "The hostname the API should bind to",
+        default: "127.0.0.1",
         required: true
       define_flag port : Int32,
         description: "The port the API should listen on",
+        default: 3000,
         required: true
 
       def run
