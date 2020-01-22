@@ -4,6 +4,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "watch": "webpack --watch --mode development",
+    "serve": "webpack-dev-server",
     "analyze": "webpack --profile --json > webpack-stats.json",
     "fix:eslint": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix",
     "fix:prettier": "prettier --write \"**/*.{js,jsx,css,ts,tsx}\"",
@@ -73,6 +74,7 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.36.1",
     "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.10.1",
     "yarn": "1.17.3"
   }
 }

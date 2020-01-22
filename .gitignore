@@ -1,7 +1,4 @@
-# Caching
-.sass-cache
-.cache
-.shards
+# Mac directory caching
 .DS_Store
 
 # Config / Security
@@ -9,19 +6,5 @@
 .env
 ssl/
 
-# Crystal deps
-/lib/
-/dev/
-
-# Asset deps
-node_modules/
-public/
-webpack-stats.json
-
-# Database dump files from heroku
-*.dump
-
 # Executables
-bin/
-/sentry
 /*.dwarf
