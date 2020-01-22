@@ -9,7 +9,3 @@ asdf install
 # Build the application
 echo ">> building application"
 shards build mcsn
-
-# Build assets
-echo ">> compiling assets"
-(cd assets && yarn && yarn build)

@@ -11,6 +11,8 @@ description: |
 targets:
   mcsn_api:
     main: src/mcsn_api.cr
+  cli:
+    main: src/cli.cr
   tool:
     main: src/tool.cr
 
@@ -37,6 +39,9 @@ dependencies:
   auto_initialize:
     github: kostya/auto_initialize
     version: 0.1.0
+  admiral:
+    github: jwaldrip/admiral.cr
+    version: 1.9.0
 
 development_dependencies:
   # This is a hash because 0.7.0 support has been stalled by testing errors.

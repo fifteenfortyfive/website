@@ -24,5 +24,6 @@ webpack-stats.json
 # Executables
 bin/
 /mcsn_api
+/cli
 /sentry
 /*.dwarf

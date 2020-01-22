@@ -1,5 +1,5 @@
 [Unit]
-Description=The 1545 Web Services
+Description=The MCSN API
 
 [Service]
 User=deploy
@@ -9,7 +9,7 @@ Type=simple
 Restart=on-failure
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier=1545
+SyslogIdentifier=mcsn_api
 
 [Install]
 WantedBy=default.target
