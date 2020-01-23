@@ -22,7 +22,7 @@ yarn install
 yarn serve
 ```
 
-`yarn serve` will start a `webpack-dev-server` instance that listens on http://localhost:9000. The development server automatically watches files and recompiles the app whenever you change anything inside it.
+`yarn serve` will start a `webpack-dev-server` instance that listens on http://localhost:8080. The development server automatically watches files and recompiles the app whenever you change anything inside it.
 
 # Running a Production server
 
