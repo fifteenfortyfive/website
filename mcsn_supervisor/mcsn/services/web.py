@@ -14,12 +14,12 @@ def _do_build(ctx):
     return subprocess.run(["yarn", "build", "cli"], cwd=_get_service_dir(ctx.root))
 
 
-@click.group("mcsn_web")
+@click.group("web")
 @click.pass_obj
-def mcsn_web(ctx):
+def web(ctx):
     """Scripts for the MCSN API service"""
     click.secho("Operating on ", nl=False)
-    click.secho("mcsn_web", fg="cyan", bold=True, nl=False)
+    click.secho("web", fg="cyan", bold=True, nl=False)
     click.secho(" service")
 
 
@@ -64,8 +64,8 @@ def restart(_ctx):
     supervisor.restart_service("mcsn_basic:mcsn_web")
 
 
-mcsn_web.add_command(deps)
-mcsn_web.add_command(build)
-mcsn_web.add_command(start)
-mcsn_web.add_command(stop)
-mcsn_web.add_command(restart)
+web.add_command(deps)
+web.add_command(build)
+web.add_command(start)
+web.add_command(stop)
+web.add_command(restart)

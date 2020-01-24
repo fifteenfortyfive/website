@@ -3,7 +3,7 @@ from pathlib import Path
 import click
 
 # Import new service definitions here
-from .services.mcsn_web import mcsn_web
+from .services.web import web
 
 
 class Context:
@@ -26,4 +26,4 @@ def mcsn_cli(ctx):
 
 
 # Add new services here (as mentioned in `services/template.py`)
-mcsn_cli.add_command(mcsn_web)
+mcsn_cli.add_command(web)
