@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+
 echo "Hi! Setting up mcsn_supervisor!"
 
 # Ensure that Python is installed as expected by the application.
@@ -10,6 +11,9 @@ asdf install
 echo "> Reshimming..."
 asdf reshim python
 
+# Doing this after asdf cause it returns an error if python already exists
+set -e
+
 # Set up the working environment
 echo "> Creating virtualenv for mcsn_supervisor"
 python -m venv ./.venv --prompt mcsn_supervisor
@@ -17,10 +21,14 @@ echo "> Activating virtualenv"
 . ./.venv/bin/activate
 echo "> Getting pip up to date"
 pip install --upgrade pip
-echo "> Installing dependencies"
-pip install -r requirements.txt
+echo "> Installing setuptools"
+pip install --upgrade setuptools
+echo "> Setting up mcsn_cli"
+python setup.py install
+rm -rf ./build/ ./dist/ ./mcsn_supervisor.egg-info
 echo "> Leaving virtualenv"
 deactivate
+
 
 echo ""
 echo "mcsn_supervisor is ready to use!"
