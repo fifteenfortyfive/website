@@ -6,7 +6,7 @@ A tool for manging dependencies, builds, and processes for all of the services r
 
 This project is written in Python with a virtual environment set up to isolate its dependencies and keep your system clean. The only required tooling outside of this project is [`asdf`](https://asdf-vm.com), a language-agnostic version manager used across this repository for managing tool versions (e.g., Python, Crystal, Node) for each project independently.
 
-An `initialize` script is provided at `./scripts/initialize` to automatically ensure that asdf is set up correctly, install the tools necessary for running this project, and creating the virtual environment with requirements installed.
+An `initialize` script is provided at `./scripts/initialize` to automatically ensure that asdf is set up correctly, install the tools necessary for running this project, and create the virtual environment with requirements installed. It will also generate the `mcsn` executable.
 
 ```
 ./scripts/initialize
@@ -18,14 +18,7 @@ _This installation should be entirely local. It should not make any changes to y
 
 ## Usage
 
-_Note: currently, running the `mcsn` script does not work directly. For now, you will have to activate the virtualenv and run the script with `python mcsn.py` from this directory._
-
-```
-. ./.venv/bin/activate
-python mcsn.py mcsn_api build
-```
-
-`./scripts/mcsn` is the executable script for running the management CLI. After installation, you can either execute the script directly, or symlink it onto your `PATH` to run as `mcsn` without any path prefix. The examples in this README will just use `mcsn` to refer to "running the executable". It should work the same regardless of how you invoke the script.
+After running the `initialize` script, the virtualenv will have the CLI executable under `./.venv/bin/mcsn`. To run the CLI, you can either use this path directly, symlink it somewhere onto your path, or activate the virtualenv to have it automatically available as just `mcsn`. The examples in this README will just use `mcsn` to refer to "running the executable". It should work the same regardless of how you invoke the script.
 
 For a quick introduction of what's available in the CLI, run `mcsn --help`.
 
@@ -39,6 +32,20 @@ mcsn mcsn_api start
 ```
 
 Some commands accept additional arguments. You can see what's available for every command either by inspecting it's service definition in `./mcsn/services` in this project, or by simply passing `--help` to it on the command line.
+
+## Development
+
+While working on this project, if you change any of the source files, you may have to run `python setup.py install` again to update the executable with the latest code. This _shouldn't_ be necessary, but sometimes it doesn't update automatically.
+
+You can also run `./scripts/initialize` again to ensure everything is still set up correctly.
+
+### Adding new services
+
+To add a new managed service, copy the template file from `./services/template` and read the instructions in the comment at the top of that file.
+
+Services can choose to implement any set of commands, though the ones pre-defined in that template are the recommended minimum.
+
+After writing the implementation, make sure you register the commands in `./services/__main__.py`, then re-install the executable to test it out.
 
 # Using `supervisorctl` directly
 
