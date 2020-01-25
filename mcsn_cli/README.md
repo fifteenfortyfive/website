@@ -55,12 +55,12 @@ In development mode, every service is run in a way that automatically builds and
 ./.venv/bin/supervisord -c ./supervisord.dev.conf
 ```
 
-Verify that the supervisor has started by running `supervisorctl`. If it loads an `mcsn_clictl` prompt, then supervisord has started successfully.
+Verify that the supervisor has started by running `supervisorctl`. If it loads an `mcsn_suprvisorctl` prompt, then supervisord has started successfully.
 
 You can also see the current status of, start, restart, and inspect all services that the supervisor can manage at http://127.0.0.1:9001/.
 
 To bring up the basic services and get the site running, you can either run `start mcsn_basic:*` in the `supervisorctl` terminal prompt, or manually start the services starting with `mcsn_basic:` from the web interface.
 
-Once the services have started and say `RUNNING`, you should be able to load the app at `http://localhost:8000` (assuming default configuration).
+Once the services have started and say `RUNNING`, you should be able to load the app at `http://localhost:8080` (assuming default configuration).
 
 To bring everything down when you're not working on this project, you can either just shutdown all of the services via `superviserctl stop all` or `Stop All` on the web interface, or you can completely shutdown the supervisord instance (if, say, you need to use another supervisor instance on another project) with `supervisorctl shutdown`.
