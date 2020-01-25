@@ -1,5 +1,18 @@
 default_stages: [commit]
+exclude: (migrations/|static/(jquery.*|main.css))
 repos:
+  - repo: https://github.com/psf/black
+    rev: 19.10b0
+    hooks:
+      - id: black
+        name: black
+        pass_filenames: true
+        files: \.py$
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 3.7.9
+    hooks:
+      - id: flake8
+        files: \.py$
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.4.0
     hooks:
@@ -11,7 +24,7 @@ repos:
     hooks:
       - id: prettier
         name: prettier
-        entry: sh -c "cd assets && yarn fix:prettier"
+        entry: sh -c "cd mcsn_web && yarn fix:prettier"
         language: system
         stages: [commit]
         pass_filenames: true
@@ -19,7 +32,7 @@ repos:
         args: ["--write"]
       - id: eslint
         name: eslint
-        entry: sh -c "cd assets && yarn fix:eslint"
+        entry: sh -c "cd mcsn_web && yarn fix:eslint"
         language: system
         stages: [commit]
         files: (.*)\.(jsx?|tsx?|css)$

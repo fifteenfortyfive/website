@@ -1,0 +1,36 @@
+#!/usr/bin/env sh
+
+
+echo "Hi! Setting up mcsn_cli!"
+
+# Ensure that Python is installed as expected by the application.
+echo "> Ensuring asdf can manage Python"
+asdf plugin-add python
+echo "> Installing Python requirements"
+asdf install
+echo "> Reshimming..."
+asdf reshim python
+
+# Doing this after asdf cause it returns an error if python already exists
+set -e
+
+# Set up the working environment
+echo "> Creating virtualenv for mcsn_cli"
+python -m venv ./.venv --prompt mcsn_cli
+echo "> Activating virtualenv"
+. ./.venv/bin/activate
+echo "> Getting pip up to date"
+pip install --upgrade pip
+echo "> Installing setuptools"
+pip install --upgrade setuptools
+echo "> Setting up mcsn_cli"
+pip install -e .
+rm -rf ./build/ ./dist/
+echo "> Leaving virtualenv"
+deactivate
+
+
+echo ""
+echo "mcsn_cli is ready to use!"
+echo "NOTE: this script is idempotent. If any step failed,"
+echo "you can safely re-run this command to try again"

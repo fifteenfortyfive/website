@@ -1,0 +1,15 @@
+[Unit]
+Description=The MCSN API
+
+[Service]
+User=deploy
+WorkingDirectory=/home/deploy/build/fifteenfortyfive/
+ExecStart=/bin/bash ./scripts/deploy_systemctl.sh
+Type=simple
+Restart=on-failure
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=mcsn_api
+
+[Install]
+WantedBy=default.target

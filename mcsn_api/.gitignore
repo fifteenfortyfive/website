@@ -1,0 +1,28 @@
+# Caching
+.sass-cache
+.cache
+.shards
+.DS_Store
+
+# Config / Security
+/repo_config.yaml
+.env
+ssl/
+
+# Crystal deps
+/lib/
+
+# Asset deps
+node_modules/
+public/
+webpack-stats.json
+
+# Database dump files from heroku
+*.dump
+
+# Executables
+bin/
+/mcsn_api
+/cli
+/sentry
+/*.dwarf

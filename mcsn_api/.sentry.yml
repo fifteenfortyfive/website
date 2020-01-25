@@ -1,0 +1,7 @@
+display_name: MCSN API
+info: true
+build: crystal build src/cli.cr --error-trace
+run: ./cli
+watch:
+  - src/mcsn/*.cr
+  - src/mcsn/**/*.cr

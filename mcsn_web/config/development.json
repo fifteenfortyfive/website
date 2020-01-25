@@ -1,0 +1,9 @@
+{
+  "API_ENDPOINT": "//localhost:3000",
+  "ASSETS_ENDPOINT": "//localhost:3000",
+  "PAGE_TITLE": "MCSN | Multi-Community Speedrun Network (localdev)",
+  "private": {
+    "HOSTNAME": "localhost",
+    "PORT": 8080
+  }
+}

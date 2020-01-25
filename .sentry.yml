@@ -1,7 +1,0 @@
-display_name: 1545 website
-info: true
-build: crystal build src/fifteenfortyfive.cr --error-trace
-watch:
-  - src/fifteenfortyfive/*.cr
-  - src/fifteenfortyfive/**/*.cr
-  - src/analytics/*.cr

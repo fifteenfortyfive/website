@@ -5,7 +5,7 @@ users_deploy_user: deploy
 # OS group for deploy
 users_deploy_group: "{{ users_deploy_user }}"
 
-app_name: fifteenfortyfive
+app_name: mcsn
 app_port: 4001
 
 # Ports that the firewall opens for SSH
