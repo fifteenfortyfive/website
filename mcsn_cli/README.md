@@ -24,14 +24,16 @@ For a quick introduction of what's available in the CLI, run `mcsn --help`.
 
 The general structure of the CLI is just `<service> <command>`, where `service` is the name of the service to manage, and `command` is the operation to run for that service.
 
-For example, to `build` the `mcsn_api` service and then `start` is, just use:
+For example, to setup and run the `mcsn_api` service in the terminal, just use:
 
 ```
-mcsn mcsn_api build
-mcsn mcsn_api start
+# Install tooling and dependencies
+mcsn api deps
+# Start the application in a watching mode
+mcsn api start
 ```
 
-Some commands accept additional arguments. You can see what's available for every command either by inspecting it's service definition in `./mcsn/services` in this project, or by simply passing `--help` to it on the command line.
+Some commands may accept additional arguments. You can see what's available for every command either by inspecting it's service definition in `./mcsn/services` in this project, or by simply passing `--help` to it on the command line.
 
 ## Development
 
