@@ -1,6 +1,6 @@
-export const ASSETS_URL = 'https://fifteenfortyfive-assets.nyc3.cdn.digitaloceanspaces.com';
-
+export const ASSETS_URL = process.env.ASSETS_ENDPOINT;
 export const CURRENT_EVENT_ID = 20;
+export const API_ENDPOINT = process.env.API_ENDPOINT;
 
 export const Colors = {
   TWITCH: '#6441A4',

@@ -28,9 +28,12 @@ yarn serve
 
 This project also includes a production server for running an optimized build. The definition of this server lives in `server/`.
 
+First things first, create a `config/production.json` that defines the configuration for the app. Check `config/development.json` to see what needs to be defined.
+
 To run the production server, first build the app with `yarn build` in this directory, then cd into the server and run `yarn start`.
 
 ```
+# `build` runs with `--mode production`.
 yarn build
 cd server
 yarn start

@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { API_ENDPOINT } from './Constants';
 
 const bareHeaders = {
   Accept: 'application/json',
@@ -48,7 +49,7 @@ export function parseJSON(response) {
 
 export function commonThunk({ method, path, name, body, query }, then) {
   const fetchId = name || path;
-  const url = `//localhost:3000${path}?${query ? params(query) : ''}`;
+  const url = `${API_ENDPOINT}${path}?${query ? params(query) : ''}`;
 
   return dispatch => {
     dispatch(fetchStarted(fetchId));
@@ -76,7 +77,7 @@ export function multipartThunk({ method, path, name, body }, then) {
 
   return dispatch => {
     dispatch(fetchStarted(fetchId));
-    return fetch(`//localhost:3000${path}`, {
+    return fetch(`${API_ENDPOINT}${path}`, {
       headers: multipartHeaders,
       method: method.toUpperCase(),
       credentials: 'include',
