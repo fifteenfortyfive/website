@@ -89,11 +89,13 @@ This repo includes a basic `example.service` system service configuration. This 
 
 This also simplifies redeployment when updating the application, just the simple command `systemctl restart mcsn_api`.
 
-To install the service, copy the configuration into `/etc/systemd/user/`:
+To install the service, copy the configuration into `/etc/systemd/system/`:
 
 ```
-cp example.service /etc/systemd/user/
+cp example.service /etc/systemd/system/
 ```
+
+The service is added as a `system` service because it is meant to be global, not instantiated per-user.
 
 Note that you'll need a sudo permissions on the account managing the application (e.g., `deploy`) to be able to install and use this. `visudo` is good for this. For example, you could create an `/etc/sudoers.d/20-deploy` file and add the relevant control commands:
 

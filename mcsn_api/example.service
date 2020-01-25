@@ -3,8 +3,8 @@ Description=The MCSN API
 
 [Service]
 User=deploy
-WorkingDirectory=/home/deploy/build/mcsn/
-ExecStart=./cli
+WorkingDirectory=/home/deploy/build/mcsn/mcsn_api
+ExecStart=/home/deploy/build/mcs/mcsn_api/bin/cli --hostname 127.0.0.1 --port 3000
 Type=simple
 Restart=on-failure
 StandardOutput=syslog
