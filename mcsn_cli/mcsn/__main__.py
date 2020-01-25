@@ -4,6 +4,7 @@ import click
 
 # Import new service definitions here
 from .services.web import web
+from .services.api import api
 
 
 class Context:
@@ -34,3 +35,4 @@ def cli(ctx):
 
 # Add new services here (as mentioned in `services/template.py`)
 cli.add_command(web)
+cli.add_command(api)

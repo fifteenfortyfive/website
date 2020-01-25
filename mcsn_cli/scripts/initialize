@@ -25,7 +25,7 @@ echo "> Installing setuptools"
 pip install --upgrade setuptools
 echo "> Setting up mcsn_cli"
 pip install -e .
-rm -rf ./build/ ./dist/ ./mcsn_cli.egg-info
+rm -rf ./build/ ./dist/
 echo "> Leaving virtualenv"
 deactivate
 

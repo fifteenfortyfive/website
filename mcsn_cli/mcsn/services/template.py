@@ -45,15 +45,14 @@ def deps(_ctx):
 @click.command()
 @click.pass_obj
 def build(_ctx):
-    """Build the service to prepare for running"""
+    """Build the service to prepare for running statically"""
     click.secho("build ", fg="yellow", bold=True, nl=False)
     click.secho("has not been implemented", fg="yellow")
 
 
 @click.command()
-@click.option("--watch", help="Watch source files and auto-reload on changes")
 @click.pass_obj
-def start(_ctx, watch):
+def start(_ctx):
     """
     Start the service as a subprocess and let it run.
 
@@ -63,9 +62,6 @@ def start(_ctx, watch):
     """
     click.secho("start ", fg="yellow", bold=True, nl=False)
     click.secho("has not been implemented", fg="yellow")
-    # Make flake8 think `watch` is being used. Remove this when you start using
-    # this flag.
-    _ = watch
 
 
 # Change `service_name` here to match the name of the `@click.group`

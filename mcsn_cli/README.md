@@ -47,7 +47,7 @@ Services can choose to implement any set of commands, though the ones pre-define
 
 After writing the implementation, make sure you register the commands in `./services/__main__.py`, then re-install the executable to test it out.
 
-# Using `supervisorctl` directly
+# Using `supervisorctl`
 
 In development mode, every service is run in a way that automatically builds and reloads files as they change. To start local development, Boot the supervisor by running `supervisord` with the dev configuration:
 

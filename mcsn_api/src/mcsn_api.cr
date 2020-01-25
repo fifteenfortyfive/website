@@ -19,9 +19,11 @@ module MCSN
     # Delay restarting the stream status service by one full rate-limit window to avoid
     # an infinite loop of timeouts.
     visor.start_supervised("stream statuses", delay: 60.0, &->StreamStatusService.run)
-    visor.start_supervised("api[router]") do
+    visor.start_supervised("api[router]", delay: 5.0) do
       puts "api[router] is running on port #{port}"
       AppRouter.listen(host: host, port: port)
+    rescue e
+      pp! e
     end
     # visor.start_supervised("analytics", delay: 1.0) do
     #   puts "analytics service started"

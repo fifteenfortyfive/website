@@ -8,17 +8,15 @@ def _get_service_dir(ctx):
     return os.path.join(ctx.root, "mcsn_web")
 
 
-def _do_build(ctx):
-    return subprocess.run(["yarn", "build", "cli"], cwd=_get_service_dir(ctx.root))
-
-
 @click.group("web")
 @click.pass_obj
 def web(ctx):
-    """Scripts for the MCSN API service"""
+    """Scripts for the MCSN frontend service"""
     click.secho("Operating on ", nl=False)
     click.secho("web", fg="cyan", bold=True, nl=False)
     click.secho(" service")
+
+    os.chdir(_get_service_dir(ctx))
 
 
 @click.command()
@@ -32,8 +30,8 @@ def deps(_ctx):
 @click.command()
 @click.pass_obj
 def build(ctx):
-    """Build the service to prepare for running"""
-    _do_build(ctx)
+    """Build the service to prepare for running statically"""
+    subprocess.run(["yarn", "build"])
 
 
 @click.command()
@@ -46,7 +44,7 @@ def start(ctx):
     run directly, outputting to the console as if the command was invoked
     directly.
     """
-    subprocess.run(["yarn", "serve"], cwd=_get_service_dir(ctx))
+    subprocess.run(["yarn", "serve"])
 
 
 web.add_command(deps)
