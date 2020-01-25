@@ -4,6 +4,6 @@
   "PAGE_TITLE": "MCSN | Multi-Community Speedrun Network (localdev)",
   "private": {
     "HOSTNAME": "localhost",
-    "PORT": 25125
+    "PORT": 8080
   }
 }
