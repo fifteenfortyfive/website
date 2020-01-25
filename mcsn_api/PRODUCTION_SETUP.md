@@ -63,7 +63,7 @@ Two scripts are provided under the `scripts` directory for building a new releas
 
 `./scripts/build.sh` will pull from the remote git repository, upgrade tooling, and then build the application.
 
-`./scripts/deploy_*` files contain scripts for booting the application after it has been built. But, for a production deployment, you should use `systemctl` and the `mcsn.service` service definition instead (detailed in the "Installing `systemd` service" section below)
+`./scripts/deploy_*` files contain scripts for booting the application after it has been built. But, for a production deployment, you should use `systemctl` and the `example.service` service definition instead (detailed in the "Installing `systemd` service" section below)
 
 These scripts will likely be updated for a more robust deployment solution in the near future.
 
@@ -85,14 +85,14 @@ Configuring the Swappiness to a low value is also good (to ensure that it is onl
 
 ### Installing `systemd` service
 
-This repo includes a basic `mcsn_api.service` system service configuration. This can be installed on most unix-based servers and will take care of automatically restarting the application if it ever hard-crashes.
+This repo includes a basic `example.service` system service configuration. This can be installed on most unix-based servers and will take care of automatically restarting the application if it ever hard-crashes.
 
 This also simplifies redeployment when updating the application, just the simple command `systemctl restart mcsn_api`.
 
 To install the service, copy the configuration into `/etc/systemd/system/`:
 
 ```
-cp mcsn_api.service /etc/systemd/system/
+cp example.service /etc/systemd/system/
 ```
 
 Note that you'll need a sudo permissions on the account managing the application (e.g., `deploy`) to be able to install and use this. `visudo` is good for this.

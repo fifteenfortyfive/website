@@ -3,8 +3,8 @@ Description=The MCSN API
 
 [Service]
 User=deploy
-WorkingDirectory=/home/deploy/build/fifteenfortyfive/
-ExecStart=/bin/bash ./scripts/deploy_systemctl.sh
+WorkingDirectory=/home/deploy/build/mcsn/
+ExecStart=./cli
 Type=simple
 Restart=on-failure
 StandardOutput=syslog

@@ -26,3 +26,5 @@ bin/
 /cli
 /sentry
 /*.dwarf
+*.service
+!example.service
