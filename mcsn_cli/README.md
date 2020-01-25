@@ -1,4 +1,4 @@
-# mcsn_supervisor
+# mcsn_cli
 
 A tool for manging dependencies, builds, and processes for all of the services run by MCSN. This project maintains an `mcsn` executable that you can run from anywhere.
 
@@ -55,7 +55,7 @@ In development mode, every service is run in a way that automatically builds and
 ./.venv/bin/supervisord -c ./supervisord.dev.conf
 ```
 
-Verify that the supervisor has started by running `supervisorctl`. If it loads an `mcsn_supervisorctl` prompt, then supervisord has started successfully.
+Verify that the supervisor has started by running `supervisorctl`. If it loads an `mcsn_clictl` prompt, then supervisord has started successfully.
 
 You can also see the current status of, start, restart, and inspect all services that the supervisor can manage at http://127.0.0.1:9001/.
 

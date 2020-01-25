@@ -1,5 +1,5 @@
 # This file acts as a template for defining new services that can be managed by
-# `mcsn_supervisor`.
+# `mcsn_cli`.
 #
 # To add a new service, copy this file into a new file in this directory as,
 # `<service_name>.py`, then register the command with the CLI at the bottom of

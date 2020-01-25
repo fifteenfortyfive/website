@@ -18,7 +18,7 @@ class Context:
 
 @click.group()
 @click.pass_context
-def mcsn_cli(ctx):
+def cli(ctx):
     """A CLI for installing, building, and running MCSN services from anywhere
     on your machine.
 
@@ -33,4 +33,4 @@ def mcsn_cli(ctx):
 
 
 # Add new services here (as mentioned in `services/template.py`)
-mcsn_cli.add_command(web)
+cli.add_command(web)

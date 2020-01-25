@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 
-echo "Hi! Setting up mcsn_supervisor!"
+echo "Hi! Setting up mcsn_cli!"
 
 # Ensure that Python is installed as expected by the application.
 echo "> Ensuring asdf can manage Python"
@@ -15,8 +15,8 @@ asdf reshim python
 set -e
 
 # Set up the working environment
-echo "> Creating virtualenv for mcsn_supervisor"
-python -m venv ./.venv --prompt mcsn_supervisor
+echo "> Creating virtualenv for mcsn_cli"
+python -m venv ./.venv --prompt mcsn_cli
 echo "> Activating virtualenv"
 . ./.venv/bin/activate
 echo "> Getting pip up to date"
@@ -24,13 +24,13 @@ pip install --upgrade pip
 echo "> Installing setuptools"
 pip install --upgrade setuptools
 echo "> Setting up mcsn_cli"
-python setup.py install
-rm -rf ./build/ ./dist/ ./mcsn_supervisor.egg-info
+pip install -e .
+rm -rf ./build/ ./dist/ ./mcsn_cli.egg-info
 echo "> Leaving virtualenv"
 deactivate
 
 
 echo ""
-echo "mcsn_supervisor is ready to use!"
+echo "mcsn_cli is ready to use!"
 echo "NOTE: this script is idempotent. If any step failed,"
 echo "you can safely re-run this command to try again"

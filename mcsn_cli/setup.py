@@ -7,7 +7,7 @@ def read(filename):
 
 
 setup(
-    name="mcsn_supervisor",
+    name="mcsn",
     version="0.0.1",
     description=(
         "A tool for installing, building, and running the various services for MCSN."
@@ -17,5 +17,5 @@ setup(
     install_requires=["Click==7.0", "supervisor==4.1.0",],
     packages=find_packages("."),
     package_dir={"mcsn": "mcsn"},
-    entry_points={"console_scripts": ["mcsn = mcsn.__main__:mcsn_cli",],},
+    entry_points={"console_scripts": ["mcsn = mcsn.__main__:cli",],},
 )

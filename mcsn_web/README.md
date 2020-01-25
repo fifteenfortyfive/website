@@ -36,4 +36,6 @@ cd server
 yarn start
 ```
 
-By default, this server assumes an external process supervisor for restarting the server on errors. Anytime the app is rebuilt, it will automatically start serving the new assets, but it will not automatically rebuild them when source files change.
+By default, this server assumes an external process supervisor for restarting the server on errors. If a fatal error occurs and the process crashes, it will not automatically restart.
+
+Anytime the app is rebuilt, it will automatically start serving the new assets, but it will not automatically rebuild them when source files change.
