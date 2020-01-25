@@ -4,7 +4,7 @@ A tool for manging dependencies, builds, and processes for all of the services r
 
 ## Installation
 
-This project is written in Python with a virtual environment set up to isolate its dependencies and keep your system clean. The only required tooling outside of this project is [`asdf`](https://asdf-vm.com), a language-agnostic version manager used across this repository for managing tool versions (e.g., Python, Crystal, Node) for each project independently.
+This project is written in Python with a virtual environment set up to isolate its dependencies and keep your system clean. The only required tooling outside of this project is [`asdf`](https://asdf-vm.com), a language-agnostic version manager used across this repository for managing tool versions (e.g., Python, Crystal, Node) for each project independently, and [`yarn`](https://legacy.yarnpkg.com/lang/en/docs/install/), an alternative to `npm` for managing javascript projects.
 
 An `initialize` script is provided at `./scripts/initialize` to automatically ensure that asdf is set up correctly, install the tools necessary for running this project, and create the virtual environment with requirements installed. It will also generate the `mcsn` executable.
 

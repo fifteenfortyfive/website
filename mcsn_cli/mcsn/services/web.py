@@ -23,8 +23,17 @@ def web(ctx):
 @click.pass_obj
 def deps(_ctx):
     """Install tooling and dependencies for the service"""
-    click.secho("deps ", fg="yellow", bold=True, nl=False)
-    click.secho("has not been implemented", fg="yellow")
+    click.secho("> Installing Node", fg="cyan")
+    result = subprocess.run(["asdf", "install"])
+    if result.returncode != 0:
+        click.secho("Failed to install Node", fg="red", bold=True)
+        exit(1)
+
+    click.secho("> Installing depdencies", fg="cyan")
+    result = subprocess.run(["yarn", "install"])
+    if result.returncode != 0:
+        click.secho("Failed to install dependencies", fg="red", bold=True)
+        exit(1)
 
 
 @click.command()
