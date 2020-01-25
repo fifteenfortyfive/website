@@ -54,7 +54,13 @@ def build(_ctx):
 @click.option("--watch", help="Watch source files and auto-reload on changes")
 @click.pass_obj
 def start(_ctx, watch):
-    """Start the service via supervisord"""
+    """
+    Start the service as a subprocess and let it run.
+
+    This command should not daemonize the process and instead should let it
+    run directly, outputting to the console as if the command was invoked
+    directly.
+    """
     click.secho("start ", fg="yellow", bold=True, nl=False)
     click.secho("has not been implemented", fg="yellow")
     # Make flake8 think `watch` is being used. Remove this when you start using
@@ -62,26 +68,8 @@ def start(_ctx, watch):
     _ = watch
 
 
-@click.command()
-@click.pass_obj
-def stop(_ctx):
-    """Stop the service via supervisord"""
-    click.secho("stop ", fg="yellow", bold=True, nl=False)
-    click.secho("has not been implemented", fg="yellow")
-
-
-@click.command()
-@click.pass_obj
-def restart(_ctx):
-    """Restart the service via supervisord"""
-    click.secho("restart ", fg="yellow", bold=True, nl=False)
-    click.secho("has not been implemented", fg="yellow")
-
-
 # Change `service_name` here to match the name of the `@click.group`
 # function at the top of this file.
 service_name.add_command(deps)
 service_name.add_command(build)
 service_name.add_command(start)
-service_name.add_command(stop)
-service_name.add_command(restart)
