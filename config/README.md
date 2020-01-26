@@ -12,15 +12,17 @@ Some additional configuration may end up here as well as things develop.
 
 ##### Local development:
 
-| property | value                 |
-| -------- | --------------------- |
-| hostname | http://localhost:3000 |
+| property     | value                              |
+| ------------ | ---------------------------------- |
+| hostname     | http://localhost:3000              |
+| DATABASE_URL | postgres://mcsn@localhost/mcsn_api |
 
 ##### Production example
 
-| property | value               |
-| -------- | ------------------- |
-| hostname | https://api.mcsn.gg |
+| property     | value                                       |
+| ------------ | ------------------------------------------- |
+| hostname     | https://api.mcsn.gg                         |
+| DATABASE_URL | postgres://mcsn:password@127.0.0.1/mcsn_api |
 
 ### `mcsn_web`
 
