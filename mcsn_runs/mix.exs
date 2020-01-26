@@ -33,14 +33,19 @@ defmodule MCSN.Runs.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      # Phoenix deps
       {:phoenix, "~> 1.4.11"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.1"},
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:jason, "~> 1.1"},
+      {:plug_cowboy, "~> 2.0"},
+      # Commanded deps
+      {:commanded, "~> 1.0"},
+      {:eventstore, "~> 1.0", runtime: Mix.env() != :test},
+      {:commanded_eventstore_adapter, "~> 1.0", runtime: Mix.env() != :test}
     ]
   end
 

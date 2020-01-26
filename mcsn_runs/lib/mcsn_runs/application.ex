@@ -8,12 +8,12 @@ defmodule MCSN.Runs.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
+      # Start Commanded's EventStore
+      MCSN.Runs.EventStore,
       # Start the Ecto repository
       MCSN.Runs.Repo,
       # Start the endpoint when the application starts
       MCSN.RunsWeb.Endpoint
-      # Starts a worker by calling: MCSN.Runs.Worker.start_link(arg)
-      # {MCSN.Runs.Worker, arg},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

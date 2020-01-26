@@ -28,19 +28,21 @@ Some additional configuration may end up here as well as things develop.
 
 ##### Local development:
 
-| property     | value                               |
-| ------------ | ----------------------------------- |
-| hostname     | http://localhost:3214               |
-| DATABASE_URL | postgres://mcsn@localhost/mcsn_runs |
+| property        | value                                           |
+| --------------- | ----------------------------------------------- |
+| hostname        | http://localhost:3214                           |
+| DATABASE_URL    | postgres://mcsn@localhost/mcsn_runs             |
+| EVENT_STORE_URL | postgres://mcsn@localhost/mcsn_runs_event_store |
 
 ##### Production example
 
 _`mcsn_runs` is a private service, so it doesn't have a domain name as its hostname._
 
-| property     | value                                        |
-| ------------ | -------------------------------------------- |
-| hostname     | http://localhost:3214                        |
-| DATABASE_URL | postgres://mcsn:password@127.0.0.1/mcsn_runs |
+| property        | value                                                    |
+| --------------- | -------------------------------------------------------- |
+| hostname        | http://localhost:3214                                    |
+| DATABASE_URL    | postgres://mcsn:password@127.0.0.1/mcsn_runs             |
+| EVENT_STORE_URL | postgres://mcsn:password@127.0.0.1/mcsn_runs_event_store |
 
 ### `mcsn_web`
 

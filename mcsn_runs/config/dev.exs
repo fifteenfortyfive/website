@@ -22,6 +22,13 @@ config :mcsn_runs, MCSN.RunsWeb.Endpoint,
   check_origin: false,
   watchers: []
 
+config :mcsn_runs, MCSN.Runs.EventStore,
+  serializer: EventStore.JsonSerializer,
+  username: "mcsn",
+  password: "",
+  database: "mcsn_runs_event_store",
+  hostname: "localhost"
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

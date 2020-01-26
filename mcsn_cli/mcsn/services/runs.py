@@ -29,6 +29,7 @@ def deps(_ctx):
 
     log.progress("Running database migrations")
     shell.run(["mix", "ecto.setup"])
+    shell.run(["mix", "do", "event_store.create,", "event_store.init"])
 
 
 @click.command()

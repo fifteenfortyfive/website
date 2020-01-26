@@ -26,6 +26,17 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# Event Storage via Commanded
+config :mcsn_runs, event_stores: [MCSN.Runs.EventStore]
+
+config :mcsn_runs, MCSN.Runs.EventStore,
+  column_data_type: "jsonb",
+  serializer: EventStore.JsonbSerializer,
+  types: EventStore.PostgresTypes
+
+config :commanded,
+  event_store_adapter: Commanded.EventStore.Adapters.EventStore
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
