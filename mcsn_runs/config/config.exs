@@ -8,15 +8,15 @@
 use Mix.Config
 
 config :mcsn_runs,
-  namespace: MCSNRuns,
-  ecto_repos: [MCSNRuns.Repo]
+  namespace: MCSN.Runs,
+  ecto_repos: [MCSN.Runs.Repo]
 
 # Configures the endpoint
-config :mcsn_runs, MCSNRunsWeb.Endpoint,
+config :mcsn_runs, MCSN.RunsWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "E+0E+QSJIPUDS3noKE1OuD/vWWEez5p8YY9mx8IAPyQFehdxzGs7DotYcO2O+rBT",
-  render_errors: [view: MCSNRunsWeb.ErrorView, accepts: ~w(json)],
-  pubsub: [name: MCSNRuns.PubSub, adapter: Phoenix.PubSub.PG2]
+  secret_key_base: "UfZnLvifBEjDc3sYU+X8a4Eu/2VLzK9OBY3CW6CbCF8FdgH3FhKdpe1QodMU20fv",
+  render_errors: [view: MCSN.RunsWeb.ErrorView, accepts: ~w(json)],
+  pubsub: [name: MCSN.Runs.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,

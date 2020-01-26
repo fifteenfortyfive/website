@@ -1,7 +1,7 @@
 use Mix.Config
 
 # Configure your database
-config :mcsn_runs, MCSNRuns.Repo,
+config :mcsn_runs, MCSN.Runs.Repo,
   username: "mcsn",
   password: "",
   database: "mcsn_runs",
@@ -15,7 +15,7 @@ config :mcsn_runs, MCSNRuns.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :mcsn_runs, MCSNRunsWeb.Endpoint,
+config :mcsn_runs, MCSN.RunsWeb.Endpoint,
   http: [port: 3214],
   debug_errors: true,
   code_reloader: true,

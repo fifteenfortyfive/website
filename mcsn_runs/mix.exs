@@ -1,4 +1,4 @@
-defmodule MCSNRuns.MixProject do
+defmodule MCSN.Runs.MixProject do
   use Mix.Project
 
   def project do
@@ -19,7 +19,7 @@ defmodule MCSNRuns.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {MCSNRuns.Application, []},
+      mod: {MCSN.Runs.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

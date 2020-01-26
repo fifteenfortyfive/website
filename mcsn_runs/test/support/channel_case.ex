@@ -1,4 +1,4 @@
-defmodule MCSNRunsWeb.ChannelCase do
+defmodule MCSN.RunsWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -21,15 +21,15 @@ defmodule MCSNRunsWeb.ChannelCase do
       use Phoenix.ChannelTest
 
       # The default endpoint for testing
-      @endpoint MCSNRunsWeb.Endpoint
+      @endpoint MCSN.RunsWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(MCSNRuns.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(MCSN.Runs.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(MCSNRuns.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(MCSN.Runs.Repo, {:shared, self()})
     end
 
     :ok

@@ -1,7 +1,7 @@
-defmodule MCSNRunsWeb.Endpoint do
+defmodule MCSN.RunsWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :mcsn_runs
 
-  socket "/socket", MCSNRunsWeb.UserSocket,
+  socket "/socket", MCSN.RunsWeb.UserSocket,
     websocket: true,
     longpoll: false
 
@@ -38,7 +38,7 @@ defmodule MCSNRunsWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_mcsn_runs_key",
-    signing_salt: "7eb8YYaw"
+    signing_salt: "DE61oHv7"
 
-  plug MCSNRunsWeb.Router
+  plug MCSN.RunsWeb.Router
 end

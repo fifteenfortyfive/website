@@ -1,4 +1,4 @@
-defmodule MCSNRunsWeb.ConnCase do
+defmodule MCSN.RunsWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule MCSNRunsWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use MCSNRunsWeb.ConnCase, async: true`, although
+  by setting `use MCSN.RunsWeb.ConnCase, async: true`, although
   this option is not recommendded for other databases.
   """
 
@@ -21,18 +21,18 @@ defmodule MCSNRunsWeb.ConnCase do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
-      alias MCSNRunsWeb.Router.Helpers, as: Routes
+      alias MCSN.RunsWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint MCSNRunsWeb.Endpoint
+      @endpoint MCSN.RunsWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(MCSNRuns.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(MCSN.Runs.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(MCSNRuns.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(MCSN.Runs.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

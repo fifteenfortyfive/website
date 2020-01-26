@@ -1,6 +1,6 @@
-defmodule MCSNRuns do
+defmodule MCSN.Runs do
   @moduledoc """
-  MCSNRuns keeps the contexts that define your domain
+  MCSN.Runs keeps the contexts that define your domain
   and business logic.
 
   Contexts are also responsible for managing your data, regardless

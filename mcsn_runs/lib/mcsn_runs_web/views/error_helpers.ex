@@ -1,4 +1,4 @@
-defmodule MCSNRunsWeb.ErrorHelpers do
+defmodule MCSN.RunsWeb.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -25,9 +25,9 @@ defmodule MCSNRunsWeb.ErrorHelpers do
     # should be written to the errors.po file. The :count option is
     # set by Ecto and indicates we should also apply plural rules.
     if count = opts[:count] do
-      Gettext.dngettext(MCSNRunsWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(MCSN.RunsWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(MCSNRunsWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(MCSN.RunsWeb.Gettext, "errors", msg, opts)
     end
   end
 end

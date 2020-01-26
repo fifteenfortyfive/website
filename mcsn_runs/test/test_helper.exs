@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(MCSNRuns.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(MCSN.Runs.Repo, :manual)

@@ -1,5 +1,5 @@
-defmodule MCSNRunsWeb.ErrorView do
-  use MCSNRunsWeb, :view
+defmodule MCSN.RunsWeb.ErrorView do
+  use MCSN.RunsWeb, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.

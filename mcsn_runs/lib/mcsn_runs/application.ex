@@ -1,4 +1,4 @@
-defmodule MCSNRuns.Application do
+defmodule MCSN.Runs.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -9,23 +9,23 @@ defmodule MCSNRuns.Application do
     # List all child processes to be supervised
     children = [
       # Start the Ecto repository
-      MCSNRuns.Repo,
+      MCSN.Runs.Repo,
       # Start the endpoint when the application starts
-      MCSNRunsWeb.Endpoint
-      # Starts a worker by calling: MCSNRuns.Worker.start_link(arg)
-      # {MCSNRuns.Worker, arg},
+      MCSN.RunsWeb.Endpoint
+      # Starts a worker by calling: MCSN.Runs.Worker.start_link(arg)
+      # {MCSN.Runs.Worker, arg},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: MCSNRuns.Supervisor]
+    opts = [strategy: :one_for_one, name: MCSN.Runs.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    MCSNRunsWeb.Endpoint.config_change(changed, removed)
+    MCSN.RunsWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end
