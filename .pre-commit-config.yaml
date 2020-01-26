@@ -42,3 +42,9 @@ repos:
         language: system
         pass_filenames: true
         files: \.cr$
+      - id: mix-format
+        name: mix-format
+        entry: mix format
+        language: system
+        pass_filenames: true
+        files: \.exs?$
