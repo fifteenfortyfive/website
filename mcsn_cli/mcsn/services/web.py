@@ -1,7 +1,8 @@
 import os
-import subprocess
 
 import click
+
+from mcsn.lib import log, shell
 
 
 def _get_service_dir(ctx):
@@ -16,23 +17,23 @@ def web(ctx):
     click.secho("web", fg="cyan", bold=True, nl=False)
     click.secho(" service")
 
-    os.chdir(_get_service_dir(ctx))
+    shell.set_working_dir(_get_service_dir(ctx))
 
 
 @click.command()
 @click.pass_obj
 def deps(_ctx):
     """Install tooling and dependencies for the service"""
-    click.secho("> Installing Node", fg="cyan")
-    result = subprocess.run(["asdf", "install"])
+    log.progress("Installing Node")
+    result = shell.run(["asdf", "install"])
     if result.returncode != 0:
-        click.secho("Failed to install Node", fg="red", bold=True)
+        log.error("Failed to install Node")
         exit(1)
 
-    click.secho("> Installing depdencies", fg="cyan")
-    result = subprocess.run(["yarn", "install"])
+    log.progress("Installing depdencies")
+    result = shell.run(["yarn", "install"])
     if result.returncode != 0:
-        click.secho("Failed to install dependencies", fg="red", bold=True)
+        log.error("Failed to install dependencies")
         exit(1)
 
 
@@ -40,7 +41,7 @@ def deps(_ctx):
 @click.pass_obj
 def build(ctx):
     """Build the service to prepare for running statically"""
-    subprocess.run(["yarn", "build"])
+    shell.run(["yarn", "build"])
 
 
 @click.command()
@@ -53,7 +54,7 @@ def start(ctx):
     run directly, outputting to the console as if the command was invoked
     directly.
     """
-    subprocess.run(["yarn", "serve"])
+    shell.run(["yarn", "serve"])
 
 
 web.add_command(deps)

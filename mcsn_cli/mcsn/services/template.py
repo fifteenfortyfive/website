@@ -9,6 +9,8 @@ import os
 
 import click
 
+from mcsn.lib import log
+
 
 # Returns a Path representing the root of the service being managed. `root` is
 # a Path to the whole repositories root, off of which the service's directoy
@@ -38,16 +40,14 @@ def service_name(_ctx):
 @click.pass_obj
 def deps(_ctx):
     """Install tooling and dependencies for the service"""
-    click.secho("deps ", fg="yellow", bold=True, nl=False)
-    click.secho("has not been implemented", fg="yellow")
+    log.not_implemented("deps")
 
 
 @click.command()
 @click.pass_obj
 def build(_ctx):
     """Build the service to prepare for running statically"""
-    click.secho("build ", fg="yellow", bold=True, nl=False)
-    click.secho("has not been implemented", fg="yellow")
+    log.not_implemented("build")
 
 
 @click.command()
@@ -60,8 +60,7 @@ def start(_ctx):
     run directly, outputting to the console as if the command was invoked
     directly.
     """
-    click.secho("start ", fg="yellow", bold=True, nl=False)
-    click.secho("has not been implemented", fg="yellow")
+    log.not_implemented("start")
 
 
 # Change `service_name` here to match the name of the `@click.group`

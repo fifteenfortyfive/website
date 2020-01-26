@@ -2,9 +2,11 @@ from pathlib import Path
 
 import click
 
+from mcsn.commands.bootstrap import bootstrap
+
 # Import new service definitions here
-from .services.web import web
-from .services.api import api
+from mcsn.services.web import web
+from mcsn.services.api import api
 
 
 class Context:
@@ -33,6 +35,7 @@ def cli(ctx):
     ctx.obj = Context()
 
 
+cli.add_command(bootstrap)
 # Add new services here (as mentioned in `services/template.py`)
 cli.add_command(web)
 cli.add_command(api)

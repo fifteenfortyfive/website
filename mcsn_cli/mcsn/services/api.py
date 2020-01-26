@@ -1,7 +1,8 @@
 import os
-import subprocess
 
 import click
+
+from mcsn.lib import log, shell
 
 
 def _get_service_dir(ctx):
@@ -16,34 +17,34 @@ def api(ctx):
     click.secho("api", fg="cyan", bold=True, nl=False)
     click.secho(" service")
 
-    os.chdir(_get_service_dir(ctx))
+    shell.set_working_dir(_get_service_dir(ctx))
 
 
 @click.command()
 @click.pass_obj
 def deps(_ctx):
     """Install tooling and dependencies for the service"""
-    click.secho("> Installing Crystal", fg="cyan")
-    result = subprocess.run(["asdf", "install"])
+    log.progress("Installing Crystal")
+    result = shell.run(["asdf", "install"])
 
     if result.returncode != 0:
-        click.secho("Failed to install Crystal", fg="red", bold=True)
+        log.error("Failed to install Crystal")
         exit(1)
 
-    click.secho("> Installing depdencies", fg="cyan")
-    result = subprocess.run(["shards", "update"])
+    log.progress("Installing depdencies")
+    result = shell.run(["shards", "update"])
 
     if result.returncode != 0:
-        click.secho("Failed to install dependencies", fg="red", bold=True)
+        log.error("Failed to install dependencies")
         exit(1)
 
-    click.secho("> Building sentry watcher", fg="cyan")
-    result = subprocess.run(
+    log.progress("Building sentry watcher")
+    result = shell.run(
         ["crystal", "build", "--release", "./dev/sentry_cli.cr", "-o", "./sentry"]
     )
 
     if result.returncode != 0:
-        click.secho("Failed to install dependencies", fg="red", bold=True)
+        log.error("Failed to install dependencies")
         exit(1)
 
 
@@ -51,7 +52,7 @@ def deps(_ctx):
 @click.pass_obj
 def build(_ctx):
     """Build the service to prepare for running statically"""
-    subprocess.run(["shards", "build", "cli", "--production"])
+    shell.run(["shards", "build", "cli", "--production"])
 
 
 @click.command()
@@ -64,7 +65,7 @@ def start(_ctx):
     run directly, outputting to the console as if the command was invoked
     directly.
     """
-    subprocess.run(["./sentry"])
+    shell.run(["./sentry"])
 
 
 # Change `api` here to match the name of the `@click.group`
