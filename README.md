@@ -42,6 +42,8 @@ Instructions for how to install `yarn` can be found [here](https://legacy.yarnpk
 
 MCSN uses Postgres for all of its persistent data storage. Because Postgres is so ubiquitous and is generally an "always-running" process on developer's machines, MCSN will not try to install and/or manage postgres, and it will just be expected to be running whenever working on MCSN services.
 
+`mcsn boostrap` will create an `mcsn` superuser role in postgres which all of the services will default to using to create their necessary databases.
+
 As of now, any officially-supported version of Postgres should be sufficient, but as always, being on the latest version is best.
 
 Instructions for how to install `postgres` can be found [here](https://www.postgresql.org/download/)
