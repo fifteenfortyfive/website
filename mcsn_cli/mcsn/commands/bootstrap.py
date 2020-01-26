@@ -1,6 +1,6 @@
 import click
 
-from mcsn.lib import asdf, log, shell
+from mcsn.lib import asdf, log, shell, supervisor
 
 # mcsn bootstrap
 # `bootstrap` is a command for configuring a machine to be able to run all of
@@ -9,7 +9,8 @@ from mcsn.lib import asdf, log, shell
 # In short, this command will:
 #
 # - Check that prerequisite commands (asdf, yarn, postgres) are installed.
-# - Make sure the necessary asdf plugins are all installed
+# - Make sure the necessary asdf plugins are all installed and shims are up to date.
+# - Reload supervisord config in case it was updated.
 #
 #
 # This command should be idempotent, so if there are ever updates in the
@@ -36,8 +37,15 @@ def bootstrap(ctx):
     asdf.ensure_plugin("python")
     log.sub_progress("Node")
     asdf.ensure_plugin("nodejs")
+    log.sub_progress("Erlang")
+    asdf.ensure_plugin("erlang")
+    log.sub_progress("Elixir")
+    asdf.ensure_plugin("elixir")
 
     log.progress("Ensuring asdf shims are up to date")
     asdf.reshim()
+
+    log.progress("Reloading supervisord config")
+    supervisor.reload_config()
 
     pass

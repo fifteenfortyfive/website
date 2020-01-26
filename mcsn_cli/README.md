@@ -49,6 +49,12 @@ Services can choose to implement any set of commands, though the ones pre-define
 
 After writing the implementation, make sure you register the commands in `./services/__main__.py`, then re-install the executable to test it out.
 
+You should also be sure to add a program to `supervisord.dev.conf` by copying one of the existing definitions and replacing the `command` and `directory` files, then adding the program name to the appropriate group (probably `mcsn_aux`).
+
+You'll also need to reload supervisord to read this new configuration. `mcsn bootstrap` will automatically take care of this when it runs.
+
+[This commit](https://github.com/fifteenfortyfive/website/commit/0750ed31c3ddffc7b66778b31b22c14cd51bdecf) can act as a good example of everything that needs to be updated when adding new services.
+
 # Using `supervisorctl`
 
 In development mode, every service is run in a way that automatically builds and reloads files as they change. To start local development, Boot the supervisor by running `supervisord` with the dev configuration:
