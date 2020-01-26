@@ -2,7 +2,7 @@ import os
 
 import click
 
-from mcsn.lib import shell
+from mcsn.lib import log, shell
 
 
 def _get_service_dir(root):
@@ -24,7 +24,11 @@ def runs(ctx):
 @click.pass_obj
 def deps(_ctx):
     """Install tooling and dependencies for the service"""
+    log.progress("Updating dependencies")
     shell.run(["mix", "deps.get"])
+
+    log.progress("Running database migrations")
+    shell.run(["mix", "ecto.setup"])
 
 
 @click.command()
