@@ -5,8 +5,9 @@ import click
 from mcsn.commands.bootstrap import bootstrap
 
 # Import new service definitions here
-from mcsn.services.web import web
 from mcsn.services.api import api
+from mcsn.services.runs import runs
+from mcsn.services.web import web
 
 
 class Context:
@@ -37,5 +38,6 @@ def cli(ctx):
 
 cli.add_command(bootstrap)
 # Add new services here (as mentioned in `services/template.py`)
-cli.add_command(web)
 cli.add_command(api)
+cli.add_command(runs)
+cli.add_command(web)

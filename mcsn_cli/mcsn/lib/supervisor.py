@@ -17,3 +17,8 @@ def stop_service(service_name):
 def restart_service(service_name):
     """Tell supervisorctl to restart the given process"""
     subprocess.run(["supervisorctl", "restart", service_name])
+
+
+def reload_config():
+    """Tell supervisord reload its configuration"""
+    subprocess.run(["supervisorctl", "reload"])

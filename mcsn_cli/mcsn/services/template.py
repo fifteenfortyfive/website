@@ -9,7 +9,7 @@ import os
 
 import click
 
-from mcsn.lib import log
+from mcsn.lib import log, shell
 
 
 # Returns a Path representing the root of the service being managed. `root` is
@@ -29,11 +29,13 @@ def _get_service_dir(root):
 # underscores to dashes).
 @click.group("service_name")
 @click.pass_obj
-def service_name(_ctx):
+def service_name(ctx):
     """Scripts for the MCSN API service"""
     click.secho("Operating on ", nl=False)
     click.secho("service_name", fg="cyan", bold=True, nl=False)
     click.secho(" service")
+
+    shell.set_working_dir(_get_service_dir(ctx.root))
 
 
 @click.command()
