@@ -30,6 +30,9 @@ def deps(_ctx):
     log.progress("Running database migrations")
     shell.run(["mix", "ecto.setup"])
     shell.run(["mix", "do", "event_store.create,", "event_store.init"])
+    test_env = os.environ.copy()
+    test_env["MIX_ENV"] = "test"
+    shell.run(["mix", "ecto.setup"], env=test_env)
 
 
 @click.command()

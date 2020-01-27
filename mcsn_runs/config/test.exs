@@ -16,3 +16,10 @@ config :mcsn_runs, MCSN.RunsWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+# Use in-memory event storage for tests. Saves a lot of latency
+config :commanded,
+  event_store_adapter: Commanded.EventStore.Adapters.InMemory
+
+config :commanded, Commanded.EventStore.Adapters.InMemory,
+  serializer: Commanded.Serialization.JsonSerializer
