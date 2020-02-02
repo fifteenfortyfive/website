@@ -2,12 +2,17 @@ defmodule MCSN.Runs.Aggregates.Run do
   alias __MODULE__
   alias MCSN.Runs.{Commands, Events}
 
+  @type t :: %Run{
+          run_id: String.t(),
+          started_at: Time.t() | nil,
+          finished_at: Time.t() | nil
+        }
+
   @enforce_keys [:run_id]
   defstruct [
     :run_id,
     :started_at,
-    :finished_at,
-    :finished
+    :finished_at
   ]
 
   # Commands
