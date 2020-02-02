@@ -8,8 +8,8 @@ defmodule MCSN.Runs.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      # Start Commanded's EventStore
-      MCSN.Runs.EventStore,
+      # Start Commanded's event store
+      MCSN.Runs.App,
       # Start the Ecto repository
       MCSN.Runs.Repo,
       # Start the endpoint when the application starts
