@@ -8,7 +8,7 @@
 use Mix.Config
 
 config :mcsn_runs,
-  namespace: MCSN.Runs,
+  namespace: MCSN,
   ecto_repos: [MCSN.Runs.Repo]
 
 # Configures the endpoint

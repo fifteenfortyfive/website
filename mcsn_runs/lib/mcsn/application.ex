@@ -10,6 +10,8 @@ defmodule MCSN.Runs.Application do
     children = [
       # Start Commanded's event store
       MCSN.Runs.App,
+      # EventHandlers,
+      MCSN.Runs.Handlers.RunsEventHandler,
       # Start the Ecto repository
       MCSN.Runs.Repo,
       # Start the endpoint when the application starts
