@@ -11,7 +11,7 @@ defmodule MCSN.Runs.Application do
       # Start Commanded's event store
       MCSN.Runs.App,
       # EventHandlers,
-      MCSN.Runs.Handlers.RunsEventHandler,
+      MCSN.Runs.Handlers.RunsProjector,
       # Start the Ecto repository
       MCSN.Runs.Repo,
       # Start the endpoint when the application starts

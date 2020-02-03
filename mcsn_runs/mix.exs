@@ -45,7 +45,8 @@ defmodule MCSN.Runs.MixProject do
       # Commanded deps
       {:commanded, "~> 1.0"},
       {:eventstore, "~> 1.0", runtime: Mix.env() != :test},
-      {:commanded_eventstore_adapter, "~> 1.0", runtime: Mix.env() != :test}
+      {:commanded_eventstore_adapter, "~> 1.0", runtime: Mix.env() != :test},
+      {:commanded_ecto_projections, "~> 1.0"}
     ]
   end
 
@@ -59,6 +60,7 @@ defmodule MCSN.Runs.MixProject do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
+      "dev.event_store.reset": ["event_store.drop", "event_store.create", "event_store.init"],
       test: ["ecto.create --quiet", "ecto.migrate", "test"]
     ]
   end

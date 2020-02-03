@@ -1,10 +1,11 @@
 defmodule MCSN.Runs.RunsRouter do
   use Commanded.Commands.Router
 
-  alias MCSN.Runs.{Commands}
-  alias MCSN.Runs.Aggregates.Run
+  alias MCSN.Runs.{Commands, Aggregates}
 
-  identify(Run, by: :run_id)
+  identify(Aggregates.Run, by: :run_id)
 
-  dispatch(Commands.CreateRun, to: Run)
+  dispatch([Commands.CreateRun, Commands.StartRun, Commands.FinishRun, Commands.ResetRun],
+    to: Aggregates.Run
+  )
 end
