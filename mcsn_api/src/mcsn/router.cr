@@ -134,6 +134,10 @@ router AppRouter do
         get "/:account_id", to: "aPI::Streams#get"
       end
 
+      scope "password-reset" do
+        post "/", to: "aPI::PasswordReset#create"
+      end
+
       scope "@me" do
         implements :api_authenticated
 

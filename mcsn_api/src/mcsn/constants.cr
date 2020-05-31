@@ -10,7 +10,7 @@ module Constants
   VOLUNTEER_EMAIL = "volunteer@fifteenfortyfive.org"
 
   # TODO: Get rid of this soon
-  MAIN_EVENT_ID = 16
+  MAIN_EVENT_ID = 24
 
   # Various Twitch configurations
   TWITCH_CLIENT_ID    = ENV["TWITCH_CLIENT_ID"]
@@ -25,6 +25,9 @@ module Constants
     endpoint: ENV["ASSETS_ENDPOINT"]
   )
   DEFAULT_ASSET_BUCKET = "fifteenfortyfive-assets"
+
+  # Password reset request notifications to Discord
+  PASSWORD_RESET_WEBHOOK_URL = ENV["PASSWORD_RESET_WEBHOOK_URL"]
 
   def self.template_constants
     {

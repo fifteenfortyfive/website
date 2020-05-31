@@ -7,9 +7,11 @@ import * as AuthActions from '../AuthActions';
 import * as AuthStore from '../AuthStore';
 
 import { Columns, Column } from 'bloomer';
+import Anchor from '../../../uikit/Anchor';
 import Button from '../../../uikit/Button';
 import Header from '../../../uikit/Header';
 import PasswordInput from '../../../uikit/PasswordInput';
+import Text from '../../../uikit/Text';
 import TextInput from '../../../uikit/TextInput';
 import Layout from '../../layout/components/Layout';
 import * as RouterUtils from '../../router/RouterUtils';
@@ -55,6 +57,10 @@ const LoginView = props => {
 
           <TextInput label="Username" value={username} onInput={({ target }) => setUsername(target.value)} />
           <PasswordInput label="Password" onInput={({ target }) => setPassword(target.value)} />
+
+          <Text size={Text.Sizes.SIZE_14}>
+            Forgot your password? <Anchor href={Routes.FORGOT_PASSWORD}>Request a password reset</Anchor>
+          </Text>
 
           <Button disabled={submitting} color={Button.Colors.PRIMARY} onClick={handleLogin}>
             {submitting ? 'Logging in...' : 'Login'}

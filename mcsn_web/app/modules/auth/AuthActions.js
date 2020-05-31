@@ -34,6 +34,18 @@ export function logout() {
   );
 }
 
+export function requestPasswordReset(username) {
+  return commonThunk(
+    {
+      method: 'post',
+      path: `/api/v1/password-reset`,
+      name: 'password-reset',
+      body: { username },
+    },
+    () => null
+  );
+}
+
 export function loadSession() {
   return dispatch => {
     const existingSession = Cookies.get('1545_session_id');

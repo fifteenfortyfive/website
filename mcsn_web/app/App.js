@@ -7,6 +7,7 @@ import AdminRouter from './admin/AdminRouter';
 import useAuth from './hooks/useAuth';
 import AccountView from './modules/accounts/views/AccountView';
 import NewAccountView from './modules/accounts/views/NewAccountView';
+import ForgotPasswordView from './modules/auth/views/ForgotPasswordView';
 import LoginView from './modules/auth/views/LoginView';
 import EventView from './modules/events/views/EventView';
 import EventsView from './modules/events/views/EventsView';
@@ -44,6 +45,7 @@ const App = props => {
         <Route path={Routes.THE_1545} component={The1545} />
         <Route path={Routes.COMMUNITY_CHEST} component={CommunityChest} />
         <Route path={Routes.LOGIN()} component={LoginView} />
+        <Route path={Routes.FORGOT_PASSWORD} component={ForgotPasswordView} />
 
         <Route path={Routes.TEAM(':teamId')}>
           {({ match }) => <TeamView teamId={match.params.teamId} />}

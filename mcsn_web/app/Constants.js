@@ -38,6 +38,7 @@ export const Routes = {
   // Auth
   LOGIN: ({ redirect } = {}) => (redirect ? `/login?redirectRoute=${redirect}` : '/login'),
   LOGOUT: '/logout',
+  FORGOT_PASSWORD: '/forgot-password',
 };
 
 export const ExternalRoutes = {

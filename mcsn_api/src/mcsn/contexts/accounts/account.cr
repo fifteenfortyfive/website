@@ -56,7 +56,9 @@ module Accounts
 
     @discord_tag : String?
 
-    def discord_tag
+    def discord_tag(force = true)
+      return "#{discord_username}##{discord_discriminator}" if force
+
       @discord_tag ||= String.build do |str|
         if preferences.show_discord_username
           str << discord_username
@@ -79,7 +81,7 @@ module Accounts
           "bio"                   => bio,
           "discord_username"      => discord_username,
           "discord_discriminator" => discord_discriminator,
-          "discord_tag"           => discord_tag,
+          "discord_tag"           => discord_tag(force: true),
           "twitch"                => twitch,
           "twitter"               => twitter,
           "timezone"              => timezone,
