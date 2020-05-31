@@ -1,5 +1,5 @@
 export const ASSETS_URL = process.env.ASSETS_ENDPOINT;
-export const CURRENT_EVENT_ID = 20;
+export const CURRENT_EVENT_ID = 25;
 export const API_ENDPOINT = process.env.API_ENDPOINT;
 
 export const Colors = {

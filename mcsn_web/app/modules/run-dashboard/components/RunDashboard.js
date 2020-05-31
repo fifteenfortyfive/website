@@ -9,7 +9,7 @@ import RunDashboardRun from './RunDashboardRun';
 
 import { getUTCNow } from '../../../utils/TimeUtils';
 
-const TICK_INTERVAL = 1000;
+const TICK_INTERVAL = 100;
 const REFRESH_INTERVAL = 15 * 1000;
 
 class RunDashboard extends Component {
@@ -32,7 +32,7 @@ class RunDashboard extends Component {
       this.setState({ currentTime: getUTCNow() });
     }, TICK_INTERVAL);
 
-    this.timerIntervalID = setInterval(() => {
+    this.refreshIntervalID = setInterval(() => {
       dispatch(RunDashboardActions.fetchRuns(eventId, accountId));
     }, REFRESH_INTERVAL);
   }
