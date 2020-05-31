@@ -61,11 +61,11 @@ const LayoutNavbar = props => {
             <NavbarItem hasDropdown isHoverable>
               <NavbarLink>Events</NavbarLink>
               <NavbarDropdown isBoxed>
-                <Anchor className="navbar-item" href={Routes.COMMUNITY_CHEST}>
-                  Community Chest
-                </Anchor>
                 <Anchor className="navbar-item" href={Routes.THE_1545}>
                   The 1545
+                </Anchor>
+                <Anchor className="navbar-item" href={Routes.EVENT(25)}>
+                  The 1545 - Summer 2020
                 </Anchor>
               </NavbarDropdown>
             </NavbarItem>

@@ -2,10 +2,12 @@ import { h } from 'preact';
 import _ from 'lodash';
 
 import Anchor from '../../../uikit/Anchor';
+import Avatar from '../../../uikit/Avatar';
 import Header from '../../../uikit/Header';
 import Text from '../../../uikit/Text';
 
 import { Routes } from '../../../Constants';
+import styles from './EventTeam.mod.css';
 
 const EventTeam = props => {
   const { team } = props;
@@ -26,7 +28,10 @@ const EventTeam = props => {
             {run.game.name}
           </Text>
           <Anchor href={Routes.ACCOUNT(run.account_id)}>
-            <Text>{run.account.username}</Text>
+            <Text className={styles.runner} marginless>
+              <Avatar src={run.account.avatar_hash} size={24} className={styles.runnerAvatar} />
+              {run.account.username}
+            </Text>
           </Anchor>
         </div>
       ))}

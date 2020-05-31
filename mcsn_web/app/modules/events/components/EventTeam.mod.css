@@ -1,0 +1,9 @@
+.runner {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+
+.runnerAvatar {
+  margin-right: 8px;
+}

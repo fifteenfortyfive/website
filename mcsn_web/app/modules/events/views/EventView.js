@@ -42,7 +42,7 @@ class EventView extends Component {
             teams,
             team =>
               team && (
-                <Column isSize={3}>
+                <Column>
                   <EventTeam team={team} />
                 </Column>
               )
