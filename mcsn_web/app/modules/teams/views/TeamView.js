@@ -56,7 +56,7 @@ class TeamView extends Component {
                 Part of: <Anchor href={Routes.EVENT(team.event_id)}>{team.event.name}</Anchor>
               </p>
             )}
-            {estimate && <p>Game Estimate: {runTime(estimate)}</p>}
+            {estimate && <p>Estimated time: {runTime(estimate)}</p>}
             {team.actual_time_seconds && <p>Finished in: {runTime(team.actual_time_seconds)}</p>}
             <p />
           </div>
@@ -79,14 +79,10 @@ class TeamView extends Component {
                         {run.est_seconds && (
                           <span class="has-text-grey-light">{runTime(run.est_seconds)} / </span>
                         )}
-                        {run.finished ? (
-                          run.actual_seconds ? (
-                            runTime(run.actual_seconds)
-                          ) : (
-                            <span class="has-text-grey-light">No time recorded</span>
-                          )
+                        {run.actual_seconds ? (
+                          runTime(run.actual_seconds)
                         ) : (
-                          <span class="has-text-grey-light has-text-weight-bold">DNF</span>
+                          <span class="has-text-grey-light">No time recorded</span>
                         )}
                       </td>
                     </tr>

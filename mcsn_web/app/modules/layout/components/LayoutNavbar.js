@@ -64,7 +64,7 @@ const LayoutNavbar = props => {
                 <Anchor className="navbar-item" href={Routes.THE_1545}>
                   The 1545
                 </Anchor>
-                <Anchor className="navbar-item" href={Routes.EVENT(25)}>
+                <Anchor className="navbar-item" href={Routes.EVENT(24)}>
                   The 1545 - Summer 2020
                 </Anchor>
               </NavbarDropdown>
