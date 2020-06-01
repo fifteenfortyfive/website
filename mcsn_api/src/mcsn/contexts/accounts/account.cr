@@ -56,7 +56,7 @@ module Accounts
 
     @discord_tag : String?
 
-    def discord_tag(force = true)
+    def discord_tag(force = false)
       return "#{discord_username}##{discord_discriminator}" if force
 
       @discord_tag ||= String.build do |str|
