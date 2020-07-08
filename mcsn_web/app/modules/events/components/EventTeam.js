@@ -14,6 +14,8 @@ const EventTeam = props => {
 
   const { id: teamId, name, color, runs } = team;
 
+  const orderedRuns = runs != null ? [...runs].sort((a, b) => a.index - b.index) : [];
+
   return (
     <div style={{ '--themeColor': `#${color}` }}>
       <Anchor href={Routes.TEAM(teamId)}>
@@ -22,7 +24,7 @@ const EventTeam = props => {
         </Header>
       </Anchor>
 
-      {_.map(runs, run => (
+      {_.map(orderedRuns, run => (
         <div>
           <Text color={Text.Colors.MUTED} marginless>
             {run.game.name}
